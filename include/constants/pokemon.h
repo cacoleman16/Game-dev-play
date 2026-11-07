@@ -114,6 +114,13 @@
 #define TYPE_DARK           17
 #define NUMBER_OF_MON_TYPES 18
 
+// [QoL] Physical/Special split.
+// Each move now carries its own damage category (gBattleMoves[move].category)
+// instead of inheriting physical/special from its elemental type.
+#define DAMAGE_CATEGORY_PHYSICAL 0
+#define DAMAGE_CATEGORY_SPECIAL  1
+#define DAMAGE_CATEGORY_STATUS   2
+
 // Pokemon egg groups
 #define EGG_GROUP_NONE         0
 #define EGG_GROUP_MONSTER      1
