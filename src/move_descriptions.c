@@ -356,6 +356,14 @@ const u8 gMoveDescription_WaterPulse[] = _("An attack with a\npulsing blast of\n
 const u8 gMoveDescription_DoomDesire[] = _("A move that attacks\nthe foe with a\nblast of light two\nturns after use.");
 const u8 gMoveDescription_PsychoBoost[] = _("An intense attack\nthat also sharply\nreduces the user's\nSP. ATK stat.");
 
+// [QoL] Fairy moves
+const u8 gMoveDescription_FairyWind[] = _("The user stirs up\na fairy wind and\nstrikes the foe\nwith it.");
+const u8 gMoveDescription_DisarmingVoice[] = _("Letting out a\ncharming cry, the\nuser hits both foes.\nIt never misses.");
+const u8 gMoveDescription_DrainingKiss[] = _("A kiss that steals\nthe foe's HP. Half\nthe damage restores\nthe user's HP.");
+const u8 gMoveDescription_DazzlingGleam[] = _("The user damages\nboth foes by\nemitting a\npowerful flash.");
+const u8 gMoveDescription_Moonblast[] = _("Borrowing the power\nof the moon, it may\nlower the foe's\nSP. ATK stat.");
+const u8 gMoveDescription_PlayRough[] = _("The user plays\nrough with the foe.\nIt may lower the\nfoe's ATTACK stat.");
+
 const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] = {
     [MOVE_POUND         - 1] = gMoveDescription_Pound,
     [MOVE_KARATE_CHOP   - 1] = gMoveDescription_KarateChop,
@@ -711,4 +719,10 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] = {
     [MOVE_WATER_PULSE   - 1] = gMoveDescription_WaterPulse,
     [MOVE_DOOM_DESIRE   - 1] = gMoveDescription_DoomDesire,
     [MOVE_PSYCHO_BOOST  - 1] = gMoveDescription_PsychoBoost,
+    [MOVE_FAIRY_WIND      - 1] = gMoveDescription_FairyWind,
+    [MOVE_DISARMING_VOICE - 1] = gMoveDescription_DisarmingVoice,
+    [MOVE_DRAINING_KISS   - 1] = gMoveDescription_DrainingKiss,
+    [MOVE_DAZZLING_GLEAM  - 1] = gMoveDescription_DazzlingGleam,
+    [MOVE_MOONBLAST       - 1] = gMoveDescription_Moonblast,
+    [MOVE_PLAY_ROUGH      - 1] = gMoveDescription_PlayRough,
 };

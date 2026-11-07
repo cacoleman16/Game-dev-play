@@ -410,7 +410,8 @@ static const u16 sTMSpritePaletteOffsetByType[NUMBER_OF_MON_TYPES] = {
     [TYPE_PSYCHIC]  = 0x0d0,
     [TYPE_STEEL]    = 0x0e0,
     [TYPE_DARK]     = 0x0f0,
-    [TYPE_DRAGON]   = 0x100
+    [TYPE_DRAGON]   = 0x100,
+    [TYPE_FAIRY]    = 0x110, // [QoL] Fairy type: 2nd palette in disc_types_2.pal
 };
 
 void InitTMCase(u8 type, void (* exitCallback)(void), bool8 allowSelectClose)
@@ -1730,7 +1731,7 @@ static void LoadDiscTypePalettes(void)
 
     sTMSpritePaletteBuffer = Alloc(NUM_DISC_COLORS * sizeof(u16));
     LZDecompressWram(gTMCaseDiscTypes1_Pal, sTMSpritePaletteBuffer); // Decompress the first 16
-    LZDecompressWram(gTMCaseDiscTypes2_Pal, sTMSpritePaletteBuffer + 0x100); // Decompress the rest (Only 17 total, this is just Dragon type)
+    LZDecompressWram(gTMCaseDiscTypes2_Pal, sTMSpritePaletteBuffer + 0x100); // Decompress the rest (Dragon, plus Fairy in this hack)
     spritePalette.data = sTMSpritePaletteBuffer + NUM_DISC_COLORS;
     spritePalette.tag = TAG_DISC;
     LoadSpritePalette(&spritePalette);

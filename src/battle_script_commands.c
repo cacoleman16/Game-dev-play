@@ -8517,7 +8517,9 @@ static void Cmd_hiddenpowercalc(void)
 
     // Subtract 3 instead of 1 below because 2 types are excluded (TYPE_NORMAL and TYPE_MYSTERY)
     // The final + 1 skips past Normal, and the following conditional skips TYPE_MYSTERY
-    gBattleStruct->dynamicMoveType = ((NUMBER_OF_MON_TYPES - 3) * typeBits) / 63 + 1;
+    // [QoL] Fairy type: like Gen 6+, Hidden Power can never be Fairy, so the
+    // type count is pinned to the 18 original types (TYPE_FAIRY is excluded too).
+    gBattleStruct->dynamicMoveType = (((NUMBER_OF_MON_TYPES - 1) - 3) * typeBits) / 63 + 1;
     if (gBattleStruct->dynamicMoveType >= TYPE_MYSTERY)
         gBattleStruct->dynamicMoveType++;
     gBattleStruct->dynamicMoveType |= F_DYNAMIC_TYPE_1 | F_DYNAMIC_TYPE_2;

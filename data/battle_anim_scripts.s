@@ -375,7 +375,13 @@ gBattleAnims_Moves::
 	.4byte Move_WATER_PULSE
 	.4byte Move_DOOM_DESIRE
 	.4byte Move_PSYCHO_BOOST
-	.4byte Move_COUNT @ cannot be reached, because last move is Psycho Boost
+	.4byte Move_GUST @ [QoL] MOVE_FAIRY_WIND reuses this animation
+	.4byte Move_HYPER_VOICE @ [QoL] MOVE_DISARMING_VOICE reuses this animation
+	.4byte Move_ABSORB @ [QoL] MOVE_DRAINING_KISS reuses this animation
+	.4byte Move_LUSTER_PURGE @ [QoL] MOVE_DAZZLING_GLEAM reuses this animation
+	.4byte Move_MIST_BALL @ [QoL] MOVE_MOONBLAST reuses this animation
+	.4byte Move_DIZZY_PUNCH @ [QoL] MOVE_PLAY_ROUGH reuses this animation
+	.4byte Move_COUNT @ cannot be reached, because last move is Play Rough
 
 	.align 2
 gBattleAnims_StatusConditions::
