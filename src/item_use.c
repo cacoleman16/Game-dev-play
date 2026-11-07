@@ -568,6 +568,65 @@ static void Task_InitTeachyTvFromField(u8 taskId)
     }
 }
 
+// [QoL] Smart Repel loop.
+// Order in which Repels are offered once the last-used kind has run out.
+static const u16 sRepelItems[] = { ITEM_REPEL, ITEM_SUPER_REPEL, ITEM_MAX_REPEL };
+
+static bool8 IsRepelItem(u16 itemId)
+{
+    u32 i;
+
+    for (i = 0; i < ARRAY_COUNT(sRepelItems); i++)
+    {
+        if (sRepelItems[i] == itemId)
+            return TRUE;
+    }
+    return FALSE;
+}
+
+// Special, called by EventScript_RepelWoreOff.
+// Picks the Repel to offer: the last kind used if the bag still has one,
+// otherwise the first of REPEL / SUPER REPEL / MAX REPEL the bag has.
+// Out: gSpecialVar_Result = TRUE if found, gSpecialVar_0x8004 = item ID,
+//      gStringVar1 = item name.
+void GetRepelToReuse(void)
+{
+    u16 itemId = VarGet(VAR_LAST_REPEL_USED);
+    u32 i;
+
+    if (!IsRepelItem(itemId) || !CheckBagHasItem(itemId, 1))
+    {
+        itemId = ITEM_NONE;
+        for (i = 0; i < ARRAY_COUNT(sRepelItems); i++)
+        {
+            if (CheckBagHasItem(sRepelItems[i], 1))
+            {
+                itemId = sRepelItems[i];
+                break;
+            }
+        }
+    }
+
+    gSpecialVar_0x8004 = itemId;
+    gSpecialVar_Result = (itemId != ITEM_NONE);
+    if (itemId != ITEM_NONE)
+        CopyItemName(itemId, gStringVar1);
+}
+
+// Special, called by EventScript_RepelWoreOff after the player says YES.
+// Uses the Repel picked by GetRepelToReuse (gSpecialVar_0x8004).
+void UseRepelToReuse(void)
+{
+    u16 itemId = gSpecialVar_0x8004;
+
+    if (!IsRepelItem(itemId) || !CheckBagHasItem(itemId, 1))
+        return;
+
+    RemoveBagItem(itemId, 1);
+    VarSet(VAR_REPEL_STEP_COUNT, ItemId_GetHoldEffectParam(itemId));
+    VarSet(VAR_LAST_REPEL_USED, itemId);
+}
+
 void FieldUseFunc_Repel(u8 taskId)
 {
     if (VarGet(VAR_REPEL_STEP_COUNT) == 0)
@@ -586,6 +645,7 @@ static void Task_UseRepel(u8 taskId)
     {
         ItemUse_SetQuestLogEvent(QL_EVENT_USED_ITEM, NULL, gSpecialVar_ItemId, 0xFFFF);
         VarSet(VAR_REPEL_STEP_COUNT, ItemId_GetHoldEffectParam(gSpecialVar_ItemId));
+        VarSet(VAR_LAST_REPEL_USED, gSpecialVar_ItemId); // [QoL] remembered for the Smart Repel loop
         RemoveUsedItem();
         DisplayItemMessageInBag(taskId, FONT_NORMAL, gStringVar4, Task_ReturnToBagFromContextMenu);
     }

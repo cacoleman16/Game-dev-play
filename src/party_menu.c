@@ -4285,8 +4285,7 @@ static void CB2_UseItem(void)
     {
         GiveMoveToMon(&gPlayerParty[gPartyMenu.slotId], ItemIdToBattleMoveId(gSpecialVar_ItemId));
         AdjustFriendship(&gPlayerParty[gPartyMenu.slotId], FRIENDSHIP_EVENT_LEARN_TMHM);
-        if (gSpecialVar_ItemId < ITEM_HM01)
-            RemoveBagItem(gSpecialVar_ItemId, 1);
+        // [QoL] Infinite TMs: TMs are no longer consumed (was RemoveBagItem for item < ITEM_HM01).
         SetMainCallback2(gPartyMenu.exitCallback);
     }
     else
@@ -4305,8 +4304,7 @@ static void CB2_UseTMHMAfterForgettingMove(void)
         SetMonMoveSlot(mon, ItemIdToBattleMoveId(gSpecialVar_ItemId), moveIdx);
         AdjustFriendship(mon, FRIENDSHIP_EVENT_LEARN_TMHM);
         ItemUse_SetQuestLogEvent(QL_EVENT_USED_ITEM, mon, gSpecialVar_ItemId, move);
-        if (gSpecialVar_ItemId < ITEM_HM01)
-            RemoveBagItem(gSpecialVar_ItemId, 1);
+        // [QoL] Infinite TMs: TMs are no longer consumed (was RemoveBagItem for item < ITEM_HM01).
         SetMainCallback2(gPartyMenu.exitCallback);
     }
     else
@@ -4804,13 +4802,11 @@ static void Task_LearnedMove(u8 taskId)
 {
     struct Pokemon *mon = &gPlayerParty[gPartyMenu.slotId];
     s16 *data = gPartyMenu.data;
-    u16 item = gSpecialVar_ItemId;
 
     if (learnMoveMethod == LEARN_VIA_TMHM)
     {
         AdjustFriendship(mon, FRIENDSHIP_EVENT_LEARN_TMHM);
-        if (item < ITEM_HM01)
-            RemoveBagItem(item, 1);
+        // [QoL] Infinite TMs: TMs are no longer consumed (was RemoveBagItem for item < ITEM_HM01).
     }
     GetMonNickname(mon, gStringVar1);
     StringCopy(gStringVar2, gMoveNames[learnMoveId]);
@@ -5295,7 +5291,14 @@ void ItemUseCB_EvolutionStone(u8 taskId, TaskFunc func)
     bool8 noEffect;
 
     PlaySE(SE_SELECT);
-    noEffect = PokemonItemUseNoEffect(&gPlayerParty[gPartyMenu.slotId], gSpecialVar_ItemId, gPartyMenu.slotId, 0);
+    // [QoL] Solo evolution items: King's Rock, Metal Coat, Dragon Scale, Up-Grade
+    // and the Deep Sea Tooth/Scale are used like evolution stones. They have no
+    // entry in gItemEffectTable (IS_POKEMON_ITEM is FALSE for them), so the
+    // evolution table is checked directly.
+    if (!IS_POKEMON_ITEM(gSpecialVar_ItemId))
+        noEffect = (GetEvolutionTargetSpecies(&gPlayerParty[gPartyMenu.slotId], EVO_MODE_ITEM_USE, gSpecialVar_ItemId) == SPECIES_NONE);
+    else
+        noEffect = PokemonItemUseNoEffect(&gPlayerParty[gPartyMenu.slotId], gSpecialVar_ItemId, gPartyMenu.slotId, 0);
     if (noEffect)
     {
         gPartyMenuUseExitCallback = FALSE;
@@ -5310,7 +5313,18 @@ void ItemUseCB_EvolutionStone(u8 taskId, TaskFunc func)
 static void CB2_UseEvolutionStone(void)
 {
     gCB2_AfterEvolution = gPartyMenu.exitCallback;
-    ExecuteTableBasedItemEffect_(gPartyMenu.slotId, gSpecialVar_ItemId, 0);
+    if (!IS_POKEMON_ITEM(gSpecialVar_ItemId))
+    {
+        // [QoL] Solo evolution item (see ItemUseCB_EvolutionStone): start the
+        // evolution directly, the same way the ITEM4_EVO_STONE effect does.
+        struct Pokemon *mon = &gPlayerParty[gPartyMenu.slotId];
+
+        BeginEvolutionScene(mon, GetEvolutionTargetSpecies(mon, EVO_MODE_ITEM_USE, gSpecialVar_ItemId), FALSE, gPartyMenu.slotId);
+    }
+    else
+    {
+        ExecuteTableBasedItemEffect_(gPartyMenu.slotId, gSpecialVar_ItemId, 0);
+    }
     ItemUse_SetQuestLogEvent(QL_EVENT_USED_ITEM, &gPlayerParty[gPartyMenu.slotId], gSpecialVar_ItemId, 0xFFFF);
     RemoveBagItem(gSpecialVar_ItemId, 1);
 }

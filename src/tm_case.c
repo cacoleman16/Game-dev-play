@@ -720,16 +720,10 @@ static void List_ItemPrintFunc(u8 windowId, u32 itemIndex, u8 y)
 {
     if (itemIndex != LIST_CANCEL)
     {
-        if (!IS_HM(BagGetItemIdByPocketPosition(POCKET_TM_CASE, itemIndex)))
-        {
-            ConvertIntToDecimalStringN(gStringVar1, BagGetQuantityByPocketPosition(POCKET_TM_CASE, itemIndex), STR_CONV_MODE_RIGHT_ALIGN, 3);
-            StringExpandPlaceholders(gStringVar4, gText_TimesStrVar1);
-            TMCase_Print(windowId, FONT_SMALL, gStringVar4, 126, y, 0, 0, TEXT_SKIP_DRAW, COLOR_DARK);
-        }
-        else
-        {
+        // [QoL] Infinite TMs: TMs are reusable like HMs, so no "x1" quantity is
+        // drawn for them any more. HMs keep their HM badge.
+        if (IS_HM(BagGetItemIdByPocketPosition(POCKET_TM_CASE, itemIndex)))
             PlaceHMTileInWindow(windowId, 8, y);
-        }
     }
 }
 
@@ -1040,8 +1034,6 @@ static void Action_Use(u8 taskId)
 
 static void Action_Give(u8 taskId)
 {
-    s16 * data = gTasks[taskId].data;
-    u16 itemId = BagGetItemIdByPocketPosition(POCKET_TM_CASE, tSelection);
     RemoveContextMenu(&sTMCaseDynamicResources->contextMenuWindowId);
     ClearStdWindowAndFrameToTransparent(WIN_SELECTED_MSG, FALSE);
     ClearWindowTilemap(WIN_SELECTED_MSG);
@@ -1050,22 +1042,9 @@ static void Action_Give(u8 taskId)
     PutWindowTilemap(WIN_MOVE_INFO);
     ScheduleBgCopyTilemapToVram(0);
     ScheduleBgCopyTilemapToVram(1);
-    if (!IS_HM(itemId))
-    {
-        if (CalculatePlayerPartyCount() == 0)
-        {
-            PrintError_ThereIsNoPokemon(taskId);
-        }
-        else
-        {
-            sTMCaseDynamicResources->nextScreenCallback = CB2_ChooseMonToGiveItem;
-            Task_BeginFadeOutFromTMCase(taskId);
-        }
-    }
-    else
-    {
-        PrintError_ItemCantBeHeld(taskId);
-    }
+    // [QoL] Infinite TMs: TMs are reusable like HMs, so like HMs they can't be
+    // given to a Pokemon to hold (that would take the only copy out of the case).
+    PrintError_ItemCantBeHeld(taskId);
 }
 
 static void PrintError_ThereIsNoPokemon(u8 taskId)
@@ -1125,43 +1104,25 @@ static void Action_Exit(u8 taskId)
 
 static void Task_SelectedTMHM_GiveParty(u8 taskId)
 {
-    s16 * data = gTasks[taskId].data;
-
-    if (!IS_HM(BagGetItemIdByPocketPosition(POCKET_TM_CASE, tSelection)))
-    {
-        sTMCaseDynamicResources->nextScreenCallback = CB2_GiveHoldItem;
-        Task_BeginFadeOutFromTMCase(taskId);
-    }
-    else
-    {
-        // Can't hold "important" items (e.g. key items)
-        PrintError_ItemCantBeHeld(taskId);
-    }
+    // [QoL] Infinite TMs: TMs can't be held, same as HMs.
+    PrintError_ItemCantBeHeld(taskId);
 }
 
 static void Task_SelectedTMHM_GivePC(u8 taskId)
 {
-    s16 * data = gTasks[taskId].data;
-
-    if (!IS_HM(BagGetItemIdByPocketPosition(POCKET_TM_CASE, tSelection)))
-    {
-        sTMCaseDynamicResources->nextScreenCallback = CB2_ReturnToPokeStorage;
-        Task_BeginFadeOutFromTMCase(taskId);
-    }
-    else
-    {
-        // Can't hold "important" items (e.g. key items)
-        PrintError_ItemCantBeHeld(taskId);
-    }
+    // [QoL] Infinite TMs: TMs can't be held, same as HMs.
+    PrintError_ItemCantBeHeld(taskId);
 }
 
 static void Task_SelectedTMHM_Sell(u8 taskId)
 {
     s16 * data = gTasks[taskId].data;
 
-    if (ItemId_GetPrice(gSpecialVar_ItemId) == 0)
+    // [QoL] Infinite TMs: a reusable TM is never sold (it would be lost for good),
+    // so every TM/HM is refused here. Vanilla only refused price-0 items (HMs).
+    if (ItemId_GetPocket(gSpecialVar_ItemId) == POCKET_TM_CASE)
     {
-        // Can't sell TM/HMs with no price (by default this is just the HMs)
+        // Can't sell TM/HMs
         CopyItemName(gSpecialVar_ItemId, gStringVar1);
         StringExpandPlaceholders(gStringVar4, gText_OhNoICantBuyThat);
         PrintMessageWithFollowupTask(taskId, GetDialogBoxFontId(), gStringVar4, CloseMessageAndReturnToList);
