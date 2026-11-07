@@ -5,6 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>FireRed QoL Player</title>
 <meta name="description" content="Private in-browser player for a personal FireRed QoL build. The ROM is loaded from this device and never uploaded.">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#1d1b20">
+<link rel="icon" href="icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="FireRed QoL">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@500;700&family=IBM+Plex+Sans:wght@400;600&display=swap">
 <style>
@@ -47,7 +55,8 @@ button, .file-btn {
 }
 button:hover, .file-btn:hover { border-color: #5a5460; }
 button:focus-visible, .file-btn:focus-within { outline: 2px solid var(--gold); outline-offset: 2px; }
-button[disabled] { opacity: .45; cursor: not-allowed; }
+button[disabled], .file-btn[aria-disabled="true"] { opacity: .45; cursor: not-allowed; }
+.file-btn[aria-disabled="true"] input { pointer-events: none; }
 button.primary, .file-btn.primary { background: var(--red); border-color: var(--red); color: var(--red-ink); }
 button[aria-pressed="true"] { background: var(--gold); border-color: var(--gold); color: #241c05; }
 .lang button { min-height: 34px; padding: 6px 10px; font-size: .8rem; }
@@ -81,7 +90,8 @@ button[aria-pressed="true"] { background: var(--gold); border-color: var(--gold)
 .bar label { color: var(--muted); font-size: .85rem; display: flex; align-items: center; gap: 6px; }
 select { font: inherit; color: var(--ink); background: var(--shell-2); border: 1px solid var(--line); border-radius: 8px; padding: 8px; min-height: 42px; }
 
-.notes { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+.notes { display: grid; grid-template-columns: 1fr; gap: 12px; }
+@media (min-width: 640px) { .notes { grid-template-columns: 1fr 1fr; } }
 .note { background: var(--shell-2); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; min-width: 0; }
 .note h3 { margin: 0 0 6px; font: 700 .95rem/1.2 var(--font-display); letter-spacing: .04em; color: var(--gold); text-transform: uppercase; }
 .note ul { margin: 0; padding-left: 18px; color: var(--muted); }
@@ -149,6 +159,14 @@ footer a { color: var(--ink); }
       </ul>
     </div>
     <div class="note">
+      <h3 data-i18n="install">Install as an app</h3>
+      <ul>
+        <li data-i18n="nInst1">iPhone/iPad: Safari → Share → Add to Home Screen.</li>
+        <li data-i18n="nInst2">Android or desktop Chrome/Edge: menu → Install app.</li>
+        <li data-i18n="nInst3">After the first visit it also works offline.</li>
+      </ul>
+    </div>
+    <div class="note">
       <h3 data-i18n="saves">Saves</h3>
       <ul>
         <li data-i18n="nSave1">Your in-game save lives in this browser, under one fixed name, so it carries over when you load a newer build.</li>
@@ -191,6 +209,10 @@ footer a { color: var(--ink); }
       chooseRom: "ROMを選ぶ…", playLast: "{name} をプレイ", turbo: "ターボ", speed: "速度",
       exportSave: "セーブを書き出す", importSave: "セーブを読み込む", forget: "保存したROMを消す",
       inGame: "ゲーム内の便利操作", keys: "キーボード（初期設定）", saves: "セーブ",
+      install: "アプリとして追加",
+      nInst1: "iPhone/iPad：Safari → 共有 → ホーム画面に追加。",
+      nInst2: "Android・パソコンの Chrome/Edge：メニュー → アプリをインストール。",
+      nInst3: "一度開けば、オフラインでも遊べます。",
       nL: "<kbd>L</kbd> で自動ダッシュ切替（<kbd>B</kbd> を押している間は歩く）",
       nR: "<kbd>R</kbd> で登録したポケモンのずかんナビ検索",
       nSel: "がくしゅうそうちを <kbd>SELECT</kbd> に登録するとすぐ切り替えられます",
@@ -371,6 +393,11 @@ footer a { color: var(--ink); }
       lastRom = null; $("play-last").hidden = true; setStatus(t("forgotten")); barStatus(t("forgotten"));
     }).catch(function () {});
   });
+
+  // Installable web app: offline cache (sw.js). Harmless if unsupported.
+  if ("serviceWorker" in navigator && location.protocol !== "file:") {
+    navigator.serviceWorker.register("sw.js").catch(function () {});
+  }
 
   applyLang();
   loadRom().then(function (rec) {

@@ -107,6 +107,11 @@ A browser player built on EmulatorJS 4.2.3 with the mGBA core, vendored into
   layout changed.
 - **Turbo** button with ×2/×3/×4/×8, on-screen gamepad on phones, EN/日本語
   toggle, save states and control remapping in the emulator's own menu.
+- **Installable web app**: a manifest, icons and an offline cache (`web/sw.js`)
+  let you add it to your home screen (iPhone: Safari → Share → Add to Home
+  Screen; Android/desktop Chrome: menu → Install app). It runs full-screen and
+  works offline after the first visit. Bump `CACHE` in `sw.js` whenever `web/`
+  changes, so installed copies update.
 
 **Put it online (one time):** GitHub repo → **Settings → Pages → Build and
 deployment → Source: GitHub Actions**, then re-run the **Web player** workflow

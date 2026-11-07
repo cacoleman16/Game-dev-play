@@ -1,0 +1,16 @@
+{
+  "name": "FireRed QoL Player",
+  "short_name": "FireRed QoL",
+  "description": "Play your personal FireRed QoL build. The ROM is loaded from this device.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#1d1b20",
+  "theme_color": "#1d1b20",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
