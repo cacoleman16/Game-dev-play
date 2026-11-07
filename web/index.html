@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>FireRed QoL Player</title>
+<meta name="description" content="Private in-browser player for a personal FireRed QoL build. The ROM is loaded from this device and never uploaded.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@500;700&family=IBM+Plex+Sans:wght@400;600&display=swap">
+<style>
+/* Layout: one column, the console "screen" first, controls and notes below it. */
+:root {
+  --shell: #1d1b20;       /* handheld body */
+  --shell-2: #2a272e;     /* raised panels */
+  --line: #3b3740;
+  --ink: #f2ede6;
+  --muted: #b5aca3;
+  --red: #e2453a;         /* FireRed accent */
+  --red-ink: #fff4f2;
+  --gold: #e9b949;        /* turbo / active state */
+  --screen: #0d0c0f;
+  --font-display: "Pixelify Sans", "Courier New", monospace;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  background: radial-gradient(120% 80% at 50% 0%, #2b2730 0%, var(--shell) 60%) fixed, var(--shell);
+  color: var(--ink);
+  font: 15px/1.5 var(--font-body);
+  padding-block: max(12px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-bottom, 0px));
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.wrap { max-width: 860px; margin: 0 auto; display: grid; gap: 14px; }
+header { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+h1 { font: 700 1.5rem/1 var(--font-display); letter-spacing: .04em; margin: 0; text-wrap: balance; }
+h1 span { color: var(--red); }
+.lang { display: flex; gap: 4px; }
+button, .file-btn {
+  font: 600 .9rem/1 var(--font-body);
+  color: var(--ink); background: var(--shell-2);
+  border: 1px solid var(--line); border-radius: 10px;
+  padding: 10px 14px; cursor: pointer; min-height: 42px;
+}
+button:hover, .file-btn:hover { border-color: #5a5460; }
+button:focus-visible, .file-btn:focus-within { outline: 2px solid var(--gold); outline-offset: 2px; }
+button[disabled] { opacity: .45; cursor: not-allowed; }
+button.primary, .file-btn.primary { background: var(--red); border-color: var(--red); color: var(--red-ink); }
+button[aria-pressed="true"] { background: var(--gold); border-color: var(--gold); color: #241c05; }
+.lang button { min-height: 34px; padding: 6px 10px; font-size: .8rem; }
+
+.screen {
+  position: relative; background: var(--screen);
+  border: 10px solid #121114; border-radius: 18px;
+  box-shadow: inset 0 0 0 1px #000, 0 10px 30px rgba(0,0,0,.45);
+  aspect-ratio: 3 / 2; width: 100%; overflow: hidden;
+}
+@media (max-width: 640px) and (pointer: coarse) {
+  /* Room for EmulatorJS's on-screen gamepad on phones. */
+  .screen { aspect-ratio: auto; height: min(78vh, 640px); border-width: 6px; }
+}
+#game { position: absolute; inset: 0; }
+.slot {
+  position: absolute; inset: 0; display: grid; place-content: center; gap: 14px;
+  text-align: center; padding: 20px;
+  background: repeating-linear-gradient(0deg, rgba(255,255,255,.025) 0 2px, transparent 2px 4px), var(--screen);
+}
+.slot h2 { font: 700 1.25rem/1.2 var(--font-display); margin: 0; letter-spacing: .03em; }
+.slot p { margin: 0; color: var(--muted); max-width: 42ch; }
+.slot .row { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+.slot.drag { outline: 3px dashed var(--gold); outline-offset: -14px; }
+.file-btn { display: inline-flex; align-items: center; position: relative; }
+.file-btn input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+.status { font: .85rem/1.4 var(--font-body); color: var(--muted); min-height: 1.4em; }
+.status.error { color: #ff9b92; }
+
+.bar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.bar label { color: var(--muted); font-size: .85rem; display: flex; align-items: center; gap: 6px; }
+select { font: inherit; color: var(--ink); background: var(--shell-2); border: 1px solid var(--line); border-radius: 8px; padding: 8px; min-height: 42px; }
+
+.notes { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+.note { background: var(--shell-2); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; min-width: 0; }
+.note h3 { margin: 0 0 6px; font: 700 .95rem/1.2 var(--font-display); letter-spacing: .04em; color: var(--gold); text-transform: uppercase; }
+.note ul { margin: 0; padding-left: 18px; color: var(--muted); }
+.note li { margin: 2px 0; }
+kbd { font: 600 .8rem/1 var(--font-body); background: #141216; border: 1px solid var(--line); border-bottom-width: 2px; border-radius: 6px; padding: 2px 6px; color: var(--ink); }
+footer { color: var(--muted); font-size: .8rem; }
+footer a { color: var(--ink); }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>FireRed <span>QoL</span> Player</h1>
+    <div class="lang" role="group" aria-label="Language">
+      <button id="lang-en" type="button" aria-pressed="true">EN</button>
+      <button id="lang-ja" type="button" aria-pressed="false">日本語</button>
+    </div>
+  </header>
+
+  <div class="screen">
+    <div id="game"></div>
+    <div class="slot" id="slot">
+      <h2 data-i18n="slotTitle">Insert your cartridge</h2>
+      <p data-i18n="slotBody">Pick the .gba file you built from this repo. It stays on this device: nothing is uploaded.</p>
+      <div class="row">
+        <label class="file-btn primary"><span data-i18n="chooseRom">Choose ROM…</span><input id="rom-input" type="file" accept=".gba,.bin,application/octet-stream"></label>
+        <button id="play-last" type="button" hidden></button>
+      </div>
+      <div class="status" id="status" role="status" aria-live="polite"></div>
+    </div>
+  </div>
+
+  <div class="bar">
+    <button id="turbo" type="button" aria-pressed="false" disabled data-i18n="turbo">Turbo</button>
+    <label><span data-i18n="speed">Speed</span>
+      <select id="ratio" disabled>
+        <option value="2">×2</option>
+        <option value="3" selected>×3</option>
+        <option value="4">×4</option>
+        <option value="8">×8</option>
+      </select>
+    </label>
+    <button id="export-save" type="button" disabled data-i18n="exportSave">Export save</button>
+    <label class="file-btn" id="import-wrap" aria-disabled="true"><span data-i18n="importSave">Import save</span><input id="import-save" type="file" accept=".sav,.srm,application/octet-stream" disabled></label>
+    <button id="forget" type="button" data-i18n="forget">Forget stored ROM</button>
+    <div class="status" id="bar-status" role="status" aria-live="polite"></div>
+  </div>
+
+  <div class="notes">
+    <div class="note">
+      <h3 data-i18n="inGame">In-game QoL controls</h3>
+      <ul>
+        <li data-i18n="nL"><kbd>L</kbd> toggles auto-run (hold <kbd>B</kbd> to walk)</li>
+        <li data-i18n="nR"><kbd>R</kbd> starts a DexNav search once a species is registered</li>
+        <li data-i18n="nSel">Register EXP. SHARE to <kbd>SELECT</kbd> to toggle it fast</li>
+      </ul>
+    </div>
+    <div class="note">
+      <h3 data-i18n="keys">Keyboard (default)</h3>
+      <ul>
+        <li><kbd>←↑→↓</kbd> D-pad · <kbd>X</kbd> A · <kbd>Z</kbd> B</li>
+        <li><kbd>Enter</kbd> Start · <kbd>V</kbd> Select · <kbd>Q</kbd> L · <kbd>E</kbd> R</li>
+        <li data-i18n="nRemap">Remap under the gear menu → Controls. Phones get on-screen buttons.</li>
+      </ul>
+    </div>
+    <div class="note">
+      <h3 data-i18n="saves">Saves</h3>
+      <ul>
+        <li data-i18n="nSave1">Your in-game save lives in this browser, under one fixed name, so it carries over when you load a newer build.</li>
+        <li data-i18n="nSave2">Clearing site data erases it. Use Export save now and then.</li>
+      </ul>
+    </div>
+  </div>
+
+  <footer>
+    <span data-i18n="footer">Emulation by EmulatorJS 4.2.3 with the mGBA core (GPL-3.0), served from this folder.</span>
+    <a href="emulatorjs/LICENSE">License</a>
+  </footer>
+</div>
+
+<script>
+(function () {
+  "use strict";
+  // Saves are keyed by this name, not by the ROM file name, so a newer build
+  // of the hack keeps using the same save.
+  var GAME_NAME = "FireRed QoL";
+  var DB_NAME = "frqol-player";
+  var STORE = "roms";
+
+  var T = {
+    en: {
+      slotTitle: "Insert your cartridge",
+      slotBody: "Pick the .gba file you built from this repo. It stays on this device: nothing is uploaded.",
+      chooseRom: "Choose ROM…", playLast: "Play {name}", turbo: "Turbo", speed: "Speed",
+      exportSave: "Export save", importSave: "Import save", forget: "Forget stored ROM",
+      inGame: "In-game QoL controls", keys: "Keyboard (default)", saves: "Saves",
+      notGba: "That file doesn't look like a GBA ROM (expected .gba).",
+      loading: "Starting the emulator…", forgotten: "Stored ROM removed from this device.",
+      noSave: "No save yet. Save in the game first (START → SAVE).",
+      imported: "Save imported. The game restarted to load it.",
+      storeFail: "Couldn't keep the ROM for next time (browser storage unavailable); you'll pick it again later."
+    },
+    ja: {
+      slotTitle: "カートリッジを入れてください",
+      slotBody: "このリポジトリでビルドした .gba ファイルを選んでください。ファイルはこの端末から送信されません。",
+      chooseRom: "ROMを選ぶ…", playLast: "{name} をプレイ", turbo: "ターボ", speed: "速度",
+      exportSave: "セーブを書き出す", importSave: "セーブを読み込む", forget: "保存したROMを消す",
+      inGame: "ゲーム内の便利操作", keys: "キーボード（初期設定）", saves: "セーブ",
+      nL: "<kbd>L</kbd> で自動ダッシュ切替（<kbd>B</kbd> を押している間は歩く）",
+      nR: "<kbd>R</kbd> で登録したポケモンのずかんナビ検索",
+      nSel: "がくしゅうそうちを <kbd>SELECT</kbd> に登録するとすぐ切り替えられます",
+      nRemap: "歯車メニュー → Controls でボタン変更。スマホでは画面ボタンが出ます。",
+      nSave1: "ゲームのセーブはこのブラウザに固定の名前で保存されるので、新しいビルドでも引き継げます。",
+      nSave2: "サイトデータを消すとセーブも消えます。ときどき書き出してください。",
+      footer: "エミュレーション：EmulatorJS 4.2.3 + mGBA コア（GPL-3.0）。このフォルダから配信。",
+      notGba: "GBAのROMではないようです（.gba を選んでください）。",
+      loading: "エミュレーターを起動中…", forgotten: "保存したROMをこの端末から消しました。",
+      noSave: "まだセーブがありません。先にゲーム内でセーブしてください。",
+      imported: "セーブを読み込みました。ゲームを再起動しました。",
+      storeFail: "ブラウザの保存領域が使えないため、ROMは次回また選んでください。"
+    }
+  };
+  var lang = "en";
+  try { lang = localStorage.getItem("frqol-lang") === "ja" ? "ja" : "en"; } catch (e) {}
+  var defaults = {};
+  var lastRom = null;
+
+  function $(id) { return document.getElementById(id); }
+  function t(key) { return (T[lang] && T[lang][key]) || T.en[key] || ""; }
+  function setStatus(msg, isError) {
+    var el = $("status");
+    el.textContent = msg || "";
+    el.className = "status" + (isError ? " error" : "");
+  }
+
+  function applyLang() {
+    document.documentElement.lang = lang;
+    $("lang-en").setAttribute("aria-pressed", String(lang === "en"));
+    $("lang-ja").setAttribute("aria-pressed", String(lang === "ja"));
+    var nodes = document.querySelectorAll("[data-i18n]");
+    for (var i = 0; i < nodes.length; i++) {
+      var key = nodes[i].getAttribute("data-i18n");
+      if (!(key in defaults)) defaults[key] = nodes[i].innerHTML;
+      var val = lang === "en" ? defaults[key] : (T.ja[key] || defaults[key]);
+      nodes[i].innerHTML = val;
+    }
+    if (lastRom) $("play-last").textContent = t("playLast").replace("{name}", lastRom.name);
+  }
+  $("lang-en").addEventListener("click", function () { lang = "en"; try { localStorage.setItem("frqol-lang", lang); } catch (e) {} applyLang(); });
+  $("lang-ja").addEventListener("click", function () { lang = "ja"; try { localStorage.setItem("frqol-lang", lang); } catch (e) {} applyLang(); });
+
+  // --- ROM kept on this device (IndexedDB) so you don't have to pick it every visit.
+  function openDb() {
+    return new Promise(function (resolve, reject) {
+      if (!window.indexedDB) return reject(new Error("no indexedDB"));
+      var req = indexedDB.open(DB_NAME, 1);
+      req.onupgradeneeded = function () { req.result.createObjectStore(STORE); };
+      req.onsuccess = function () { resolve(req.result); };
+      req.onerror = function () { reject(req.error); };
+    });
+  }
+  function dbDo(mode, fn) {
+    return openDb().then(function (db) {
+      return new Promise(function (resolve, reject) {
+        var tx = db.transaction(STORE, mode);
+        var out = fn(tx.objectStore(STORE));
+        tx.oncomplete = function () { resolve(out && out.result); };
+        tx.onerror = function () { reject(tx.error); };
+      });
+    });
+  }
+  function saveRom(rec) { return dbDo("readwrite", function (s) { return s.put(rec, "last"); }); }
+  function loadRom() { return dbDo("readonly", function (s) { return s.get("last"); }); }
+  function clearRom() { return dbDo("readwrite", function (s) { return s.delete("last"); }); }
+
+  function looksLikeGba(bytes) {
+    // The GBA header has the fixed value 0x96 at offset 0xB2.
+    return bytes.length > 0xC0 && bytes[0xB2] === 0x96;
+  }
+
+  var started = false;
+  function startEmulator(buffer, name) {
+    if (started) { location.reload(); return; }
+    started = true;
+    setStatus(t("loading"));
+    var url = URL.createObjectURL(new Blob([buffer], { type: "application/octet-stream" }));
+    window.EJS_player = "#game";
+    window.EJS_core = "gba";
+    window.EJS_gameUrl = url;
+    window.EJS_gameName = GAME_NAME;
+    window.EJS_pathtodata = "emulatorjs/data/";
+    window.EJS_startOnLoaded = true;
+    window.EJS_threads = false;
+    window.EJS_DEBUG_XX = true; // load the unminified sources shipped in emulatorjs/data/src
+    window.EJS_color = "#e2453a";
+    window.EJS_backgroundColor = "#0d0c0f";
+    window.EJS_language = lang === "ja" ? "ja-JA" : "en-US";
+    window.EJS_onGameStart = onGameStart;
+    var s = document.createElement("script");
+    s.src = "emulatorjs/data/loader.js";
+    document.body.appendChild(s);
+    $("slot").hidden = true;
+  }
+
+  function gm() { return window.EJS_emulator && window.EJS_emulator.gameManager; }
+
+  function onGameStart() {
+    ["turbo", "ratio", "export-save", "import-save"].forEach(function (id) { $(id).disabled = false; });
+    $("import-wrap").removeAttribute("aria-disabled");
+    try { gm().setFastForwardRatio(Number($("ratio").value)); } catch (e) {}
+  }
+
+  $("turbo").addEventListener("click", function () {
+    var on = this.getAttribute("aria-pressed") !== "true";
+    try {
+      gm().setFastForwardRatio(Number($("ratio").value));
+      gm().toggleFastForward(on ? 1 : 0);
+      if (window.EJS_emulator) window.EJS_emulator.isFastForward = on;
+      this.setAttribute("aria-pressed", String(on));
+    } catch (e) {}
+  });
+  $("ratio").addEventListener("change", function () {
+    try { gm().setFastForwardRatio(Number(this.value)); } catch (e) {}
+  });
+
+  $("export-save").addEventListener("click", function () {
+    var data = null;
+    try { data = gm().getSaveFile(); } catch (e) {}
+    if (!data || !data.length) { barStatus(t("noSave"), true); return; }
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(new Blob([data], { type: "application/octet-stream" }));
+    var d = new Date();
+    a.download = "firered-qol-" + d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0") + ".sav";
+    document.body.appendChild(a); a.click(); a.remove();
+  });
+
+  $("import-save").addEventListener("change", function () {
+    var file = this.files && this.files[0];
+    if (!file) return;
+    file.arrayBuffer().then(function (buf) {
+      var g = gm();
+      g.FS.writeFile(g.getSaveFilePath(), new Uint8Array(buf));
+      g.loadSaveFiles();
+      g.restart();
+      barStatus(t("imported"));
+    }).catch(function (e) { barStatus(String(e), true); });
+    this.value = "";
+  });
+  function barStatus(msg, isError) {
+    var el = $("bar-status");
+    el.textContent = msg || "";
+    el.className = "status" + (isError ? " error" : "");
+  }
+
+  $("rom-input").addEventListener("change", function () {
+    var file = this.files && this.files[0];
+    if (!file) return;
+    handleFile(file);
+  });
+  function handleFile(file) {
+    file.arrayBuffer().then(function (buf) {
+      if (!looksLikeGba(new Uint8Array(buf))) { setStatus(t("notGba"), true); return; }
+      saveRom({ name: file.name, size: file.size, savedAt: Date.now(), data: buf })
+        .catch(function () { setStatus(t("storeFail"), true); })
+        .then(function () { startEmulator(buf, file.name); });
+    });
+  }
+
+  var slot = $("slot");
+  ["dragenter", "dragover"].forEach(function (ev) {
+    slot.addEventListener(ev, function (e) { e.preventDefault(); slot.classList.add("drag"); });
+  });
+  ["dragleave", "drop"].forEach(function (ev) {
+    slot.addEventListener(ev, function (e) { e.preventDefault(); slot.classList.remove("drag"); });
+  });
+  slot.addEventListener("drop", function (e) {
+    var f = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
+    if (f) handleFile(f);
+  });
+
+  $("play-last").addEventListener("click", function () {
+    if (lastRom) startEmulator(lastRom.data, lastRom.name);
+  });
+  $("forget").addEventListener("click", function () {
+    clearRom().then(function () {
+      lastRom = null; $("play-last").hidden = true; setStatus(t("forgotten")); barStatus(t("forgotten"));
+    }).catch(function () {});
+  });
+
+  applyLang();
+  loadRom().then(function (rec) {
+    if (rec && rec.data) {
+      lastRom = rec;
+      var btn = $("play-last");
+      btn.textContent = t("playLast").replace("{name}", rec.name);
+      btn.hidden = false;
+    }
+  }).catch(function () {});
+})();
+</script>
+</body>
+</html>

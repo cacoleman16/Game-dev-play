@@ -54,10 +54,8 @@ CeladonCity_DepartmentStore_5F_Vitamins::
 	.2byte ITEM_CALCIUM
 	.2byte ITEM_ZINC
 	.2byte ITEM_CARBOS
-	@ [QoL] Stat management: IV training (Bottle Caps), Ability Capsule/Patch,
-	@ all Nature Mints and the six EV-lowering Berries.
-	.2byte ITEM_BOTTLE_CAP
-	.2byte ITEM_GOLD_BOTTLE_CAP
+	@ [QoL] Stat management: Ability Capsule/Patch, all Nature Mints and the
+	@ six EV-lowering Berries. (Bottle Caps need a Hyper Training NPC first.)
 	.2byte ITEM_ABILITY_CAPSULE
 	.2byte ITEM_ABILITY_PATCH
 	.2byte ITEM_LONELY_MINT
