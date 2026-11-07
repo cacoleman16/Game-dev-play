@@ -1,21 +1,19 @@
-gText_WouldYouLikeToSaveTheGame::
+	.align 2
+gText_ConfirmSave::
 	.string "Would you like to save the game?$"
 
-gText_AlreadySaveFile_WouldLikeToOverwrite::
+gText_AlreadySavedFile::
 	.string "There is already a saved file.\n"
 	.string "Is it okay to overwrite it?$"
 
-gText_SavingDontTurnOffThePower::
+gText_SavingDontTurnOff::
 	.string "SAVING…\n"
 	.string "DON'T TURN OFF THE POWER.$"
 
-gText_PlayerSavedTheGame::
+gText_PlayerSavedGame::
 	.string "{PLAYER} saved the game.$"
 
-gText_SaveFailed2::
-	.string "セーブに　しっぱい　しました‥$"
-
-gText_DifferentGameFile::
+gText_DifferentSaveFile::
 	.string "WARNING!\p"
 	.string "There is a different game file that\n"
 	.string "is already saved.\p"
@@ -24,3 +22,12 @@ gText_DifferentGameFile::
 	.string "POKéMON, will be entirely lost.\p"
 	.string "Are you sure you want to save now\n"
 	.string "and overwrite the other save file?$"
+
+gText_SaveError::
+	.string "Save error.\p"
+	.string "Please exchange the\n"
+	.string "backup memory.$"
+
+gText_SavingDontTurnOffPower::
+	.string "SAVING…\n"
+	.string "DON'T TURN OFF THE POWER.$"

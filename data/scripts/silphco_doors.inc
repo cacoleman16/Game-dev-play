@@ -542,3 +542,14 @@ EventScript_OpenDoor::
 	special SetHiddenItemFlag
 	releaseall
 	end
+
+Text_CardKeyOpenedDoor::
+	.string "Bingo!\n"
+	.string "The CARD KEY opened the door!$"
+
+Text_ItNeedsCardKey::
+	.string "No!\n"
+	.string "It needs a CARD KEY!$"
+
+Text_TheDoorIsOpen::
+	.string "The door is open…$"

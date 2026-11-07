@@ -1,39 +1,47 @@
 #ifndef GUARD_BATTLE_TOWER_H
 #define GUARD_BATTLE_TOWER_H
 
-#include "global.h"
-#include "constants/battle_tower.h"
+#include "data.h"
+#include "battle_frontier.h"
 
-#define BATTLE_TOWER_EREADER_TRAINER_ID 200
-#define BATTLE_TOWER_RECORD_MIXING_TRAINER_BASE_ID 100
-
-struct BattleTowerTrainer
+struct RSBattleTowerRecord
 {
-    u8 trainerClass;
-    u8 name[3];
-    u8 teamFlags;
-    u16 greeting[6];
+    /*0x00*/ u8 lvlMode; // 0 = level 50, 1 = level 100
+    /*0x01*/ u8 facilityClass;
+    /*0x02*/ u16 winStreak;
+    /*0x04*/ u8 name[PLAYER_NAME_LENGTH + 1];
+    /*0x0C*/ u8 trainerId[TRAINER_ID_LENGTH];
+    /*0x10*/ u16 greeting[EASY_CHAT_BATTLE_WORDS_COUNT];
+    /*0x1C*/ struct BattleTowerPokemon party[FRONTIER_PARTY_SIZE];
+    /*0xA0*/ u32 checksum;
 };
 
-struct BattleTowerPokemonTemplate
-{
-    u16 species;
-    u8 heldItem;
-    u8 teamFlags;
-    u16 moves[4];
-    u8 evSpread;
-    u8 nature;
+struct FacilityClass {
+    u16 class;
+    u16 gfxId;
 };
 
-extern const u16 gBattleTowerBannedSpecies[];
+#define FACILITY_CLASSES_MALE   30
+#define FACILITY_CLASSES_FEMALE 20
 
-void ClearEReaderTrainer(struct BattleTowerEReaderTrainer *);
-void ValidateEReaderTrainer(void);
-u8 GetBattleTowerTrainerFrontSpriteId(void);
-u8 GetEreaderTrainerFrontSpriteId(void);
-void CopyEReaderTrainerName5(u8 *dest);
-void GetBattleTowerTrainerName(u8 *text);
-u8 GetEreaderTrainerClassId(void);
-u8 GetBattleTowerTrainerClassNameId(void);
+extern const struct FacilityClass gTowerMaleFacilityClasses[FACILITY_CLASSES_MALE];
+extern const struct FacilityClass gTowerFemaleFacilityClasses[FACILITY_CLASSES_FEMALE];
+extern const struct TrainerMon gSlateportBattleTentMons[];
+extern const struct BattleFrontierTrainer gSlateportBattleTentTrainers[];
+
+void CallBattleTowerFunc(void);
+void PutNewBattleTowerRecord(struct EmeraldBattleTowerRecord *newRecordEm);
+void CalcEmeraldBattleTowerChecksum(struct EmeraldBattleTowerRecord *record);
+void CalcRubyBattleTowerChecksum(struct RSBattleTowerRecord *record);
+u16 GetCurrentBattleTowerWinStreak(enum FrontierLevelMode lvlMode, u8 battleMode);
+void TryHideBattleTowerReporter(void);
+bool32 RubyBattleTowerRecordToEmerald(struct RSBattleTowerRecord *src, struct EmeraldBattleTowerRecord *dst);
+bool32 EmeraldBattleTowerRecordToRuby(struct EmeraldBattleTowerRecord *src, struct RSBattleTowerRecord *dst);
+void CalcApprenticeChecksum(struct Apprentice *apprentice);
+void GetBattleTowerTrainerLanguage(u8 *dst, u16 trainerId);
+u8 SetTentPtrsGetLevel(void);
+void TrySetLinkBattleTowerEnemyPartyLevel(void);
+void FillTentTrainerParty(u8 monsCount);
+
 
 #endif //GUARD_BATTLE_TOWER_H

@@ -1,9 +1,11 @@
 #include "global.h"
-#include "gflib.h"
 #include "battle.h"
 #include "event_data.h"
 #include "event_scripts.h"
 #include "random.h"
+#include "string_util.h"
+#include "strings.h"
+#include "constants/characters.h"
 #include "constants/trainer_fan_club.h"
 
 struct TrainerFanClub
@@ -26,16 +28,13 @@ static u16 GetNumFansOfPlayerInTrainerFanClub(struct TrainerFanClub *);
 static void TryLoseFansFromPlayTime(struct TrainerFanClub *);
 static bool16 IsFanClubMemberFanOfPlayer(struct TrainerFanClub *);
 static void SetInitialFansOfPlayer(struct TrainerFanClub *);
+#if FREE_LINK_BATTLE_RECORDS == FALSE
 static void BufferFanClubTrainerName(struct LinkBattleRecords *, u8, u8);
-static void UpdateTrainerFansAfterLinkBattle(struct TrainerFanClub *);
+#else
+static void BufferFanClubTrainerName(u8 whichLinkTrainer, u8 whichNPCTrainer);
+#endif //FREE_LINK_BATTLE_RECORDS
 static bool8 DidPlayerGetFirstFans(struct TrainerFanClub * );
 static void SetPlayerGotFirstFans(struct TrainerFanClub *);
-
-void ResetTrainerFanClub(void)
-{
-    VarSet(VAR_FANCLUB_FAN_COUNTER, 0);
-    VarSet(VAR_FANCLUB_LOSE_FAN_TIMER, 0);
-}
 
 void Script_TryLoseFansFromPlayTimeAfterLinkBattle(void)
 {
@@ -63,7 +62,7 @@ static void UpdateTrainerFanClubGameClear(struct TrainerFanClub *fanClub)
         SetPlayerGotFirstFans(fanClub);
         SetInitialFansOfPlayer(fanClub);
         VarSet(VAR_FANCLUB_LOSE_FAN_TIMER, gSaveBlock2Ptr->playTimeHours);
-        FlagClear(FLAG_HIDE_SAFFRON_FAN_CLUB_BLACK_BELT);
+        FlagClear(FLAG_HIDE_SAFFRON_FAN_CLUB_BLACKBELT);
         FlagClear(FLAG_HIDE_SAFFRON_FAN_CLUB_ROCKER);
         FlagClear(FLAG_HIDE_SAFFRON_FAN_CLUB_WOMAN);
         FlagClear(FLAG_HIDE_SAFFRON_FAN_CLUB_BEAUTY);
@@ -266,9 +265,17 @@ void Script_BufferFanClubTrainerName(void)
         whichLinkTrainer = 1;
         break;
     }
-    BufferFanClubTrainerName(&gSaveBlock2Ptr->linkBattleRecords, whichLinkTrainer, whichNPCTrainer);
+#if FREE_LINK_BATTLE_RECORDS == FALSE
+    BufferFanClubTrainerName(&gSaveBlock1Ptr->linkBattleRecords, whichLinkTrainer, whichNPCTrainer);
+#else
+    BufferFanClubTrainerName(whichLinkTrainer, whichNPCTrainer);
+#endif //FREE_LINK_BATTLE_RECORDS
 }
 
+static const u8 sText_LtSurge[] = _("LT. SURGE");
+static const u8 sText_Koga[] = _("KOGA");
+
+#if FREE_LINK_BATTLE_RECORDS == FALSE
 static void BufferFanClubTrainerName(struct LinkBattleRecords *linkRecords, u8 whichLinkTrainer, u8 whichNPCTrainer)
 {
     u8 *str;
@@ -278,16 +285,30 @@ static void BufferFanClubTrainerName(struct LinkBattleRecords *linkRecords, u8 w
         switch (whichNPCTrainer)
         {
         case 0:
+#if IS_FRLG
             StringCopy(gStringVar1, gSaveBlock1Ptr->rivalName);
+#else
+            if (gSaveBlock2Ptr->playerGender == MALE)
+                StringCopy(gStringVar1, gText_ExpandedPlaceholder_May);
+            else
+                StringCopy(gStringVar1, gText_ExpandedPlaceholder_Brendan);
+#endif
             break;
         case 1:
-            StringCopy(gStringVar1, gText_LtSurge);
+            StringCopy(gStringVar1, sText_LtSurge);
             break;
         case 2:
-            StringCopy(gStringVar1, gText_Koga);
+            StringCopy(gStringVar1, sText_Koga);
             break;
         default:
-            StringCopy(gStringVar1, gSaveBlock1Ptr->rivalName);
+#if IS_FRLG
+                StringCopy(gStringVar1, gSaveBlock1Ptr->rivalName);
+#else
+            if (gSaveBlock2Ptr->playerGender == MALE)
+                StringCopy(gStringVar1, gText_ExpandedPlaceholder_May);
+            else
+                StringCopy(gStringVar1, gText_ExpandedPlaceholder_Brendan);
+#endif
             break;
         }
     }
@@ -308,23 +329,26 @@ static void BufferFanClubTrainerName(struct LinkBattleRecords *linkRecords, u8 w
         }
     }
 }
-
-void Special_UpdateTrainerFansAfterLinkBattle(void)
+#else
+static void BufferFanClubTrainerName(u8 whichLinkTrainer, u8 whichNPCTrainer)
 {
-    UpdateTrainerFansAfterLinkBattle(TRAINER_FAN_CLUB);
-}
-
-static void UpdateTrainerFansAfterLinkBattle(struct TrainerFanClub *fanClub)
-{
-    if (VarGet(VAR_MAP_SCENE_SAFFRON_CITY_POKEMON_TRAINER_FAN_CLUB) == 2)
+    switch (whichNPCTrainer)
     {
-        TryLoseFansFromPlayTimeAfterLinkBattle(fanClub);
-        if (gBattleOutcome == B_OUTCOME_WON)
-            PlayerGainRandomTrainerFan(fanClub);
-        else
-            PlayerLoseRandomTrainerFan(fanClub);
+    case 0:
+    default:
+#if IS_FRLG
+        StringCopy(gStringVar1, gSaveBlock1Ptr->rivalName);
+        break;
+#endif
+    case 1:
+        StringCopy(gStringVar1, sText_LtSurge);
+        break;
+    case 2:
+        StringCopy(gStringVar1, sText_Koga);
+        break;
     }
 }
+#endif //FREE_LINK_BATTLE_RECORDS
 
 static bool8 DidPlayerGetFirstFans(struct TrainerFanClub *fanClub)
 {
@@ -341,7 +365,7 @@ static void SetPlayerGotFirstFans(struct TrainerFanClub *fanClub)
     fanClub->gotInitialFans = TRUE;
 }
 
-u8 Script_TryGainNewFanFromCounter(void)
+u8 Script_TryGainNewFanFromCounterFrlg(void)
 {
     return TryGainNewFanFromCounter(TRAINER_FAN_CLUB, gSpecialVar_0x8004);
 }

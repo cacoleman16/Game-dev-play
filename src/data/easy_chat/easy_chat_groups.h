@@ -23,115 +23,159 @@
 #include "easy_chat_group_trendy_saying.h"
 #include "easy_chat_group_pokemon2.h"
 
-static const struct EasyChatGroup sEasyChatGroups[] = {
+const struct EasyChatGroup gEasyChatGroups[EC_NUM_GROUPS] = {
+    [EC_GROUP_POKEMON] =
     {
-        .wordData = {.valueList = sEasyChatGroup_Pokemon},
-        .numWords = 202,
-        .numEnabledWords = 202
+        .name = COMPOUND_STRING("POKéMON"),
+        .wordData = {.valueList = gEasyChatGroup_Pokemon},
+        .numWords = ARRAY_COUNT(gEasyChatGroup_Pokemon),
+        .numEnabledWords = ARRAY_COUNT(gEasyChatGroup_Pokemon),
     },
+    [EC_GROUP_TRAINER] =
     {
-        .wordData = {.words = sEasyChatGroup_Trainer},
-        .numWords = 26,
-        .numEnabledWords = 25
+        .name = COMPOUND_STRING("TRAINER"),
+        .wordData = {.words = gEasyChatGroup_Trainer},
+        .numWords = ARRAY_COUNT(gEasyChatGroup_Trainer),
+        .numEnabledWords = ARRAY_COUNT(gEasyChatGroup_Trainer) - 6, // Excludes Red, Green, Flame, Gold, Leaf, and Silver
     },
+    [EC_GROUP_STATUS] =
     {
-        .wordData = {.words = sEasyChatGroup_Status},
-        .numWords = 109,
-        .numEnabledWords = 109
+        .name = COMPOUND_STRING("STATUS"),
+        .wordData = {.words = gEasyChatGroup_Status},
+        .numWords = ARRAY_COUNT(gEasyChatGroup_Status),
+        .numEnabledWords = ARRAY_COUNT(gEasyChatGroup_Status),
     },
+    [EC_GROUP_BATTLE] =
     {
-        .wordData = {.words = sEasyChatGroup_Battle},
-        .numWords = 63,
-        .numEnabledWords = 63
+        .name = COMPOUND_STRING("BATTLE"),
+        .wordData = {.words = gEasyChatGroup_Battle},
+        .numWords = ARRAY_COUNT(gEasyChatGroup_Battle),
+        .numEnabledWords = ARRAY_COUNT(gEasyChatGroup_Battle),
     },
+    [EC_GROUP_GREETINGS] =
     {
-        .wordData = {.words = sEasyChatGroup_Greetings},
-        .numWords = 42,
-        .numEnabledWords = 42
+        .name = COMPOUND_STRING("GREETINGS"),
+        .wordData = {.words = gEasyChatGroup_Greetings},
+        .numWords = ARRAY_COUNT(gEasyChatGroup_Greetings),
+        .numEnabledWords = ARRAY_COUNT(gEasyChatGroup_Greetings),
     },
+    [EC_GROUP_PEOPLE] =
     {
-        .wordData = {.words = sEasyChatGroup_People},
-        .numWords = 75,
-        .numEnabledWords = 75
+        .name = COMPOUND_STRING("PEOPLE"),
+        .wordData = {.words = gEasyChatGroup_People},
+        .numWords = ARRAY_COUNT(gEasyChatGroup_People),
+        .numEnabledWords = ARRAY_COUNT(gEasyChatGroup_People),
     },
+    [EC_GROUP_VOICES] =
     {
-        .wordData = {.words = sEasyChatGroup_Voices},
-        .numWords = 63,
-        .numEnabledWords = 63
+        .name = COMPOUND_STRING("VOICES"),
+        .wordData = {.words = gEasyChatGroup_Voices},
+        .numWords = ARRAY_COUNT(gEasyChatGroup_Voices),
+        .numEnabledWords = ARRAY_COUNT(gEasyChatGroup_Voices),
     },
+    [EC_GROUP_SPEECH] =
     {
-        .wordData = {.words = sEasyChatGroup_Speech},
-        .numWords = 60,
-        .numEnabledWords = 60
+        .name = COMPOUND_STRING("SPEECH"),
+        .wordData = {.words = gEasyChatGroup_Speech},
+        .numWords = ARRAY_COUNT(gEasyChatGroup_Speech),
+        .numEnabledWords = ARRAY_COUNT(gEasyChatGroup_Speech),
     },
+    [EC_GROUP_ENDINGS] =
     {
-        .wordData = {.words = sEasyChatGroup_Endings},
-        .numWords = 69,
-        .numEnabledWords = 69
+        .name = COMPOUND_STRING("ENDINGS"),
+        .wordData = {.words = gEasyChatGroup_Endings},
+        .numWords = ARRAY_COUNT(gEasyChatGroup_Endings),
+        .numEnabledWords = ARRAY_COUNT(gEasyChatGroup_Endings),
     },
+    [EC_GROUP_FEELINGS] =
     {
-        .wordData = {.words = sEasyChatGroup_Feelings},
-        .numWords = 69,
-        .numEnabledWords = 69
+        .name = COMPOUND_STRING("FEELINGS"),
+        .wordData = {.words = gEasyChatGroup_Feelings},
+        .numWords = ARRAY_COUNT(gEasyChatGroup_Feelings),
+        .numEnabledWords = ARRAY_COUNT(gEasyChatGroup_Feelings),
     },
+    [EC_GROUP_CONDITIONS] =
     {
-        .wordData = {.words = sEasyChatGroup_Conditions},
-        .numWords = 69,
-        .numEnabledWords = 69
+        .name = COMPOUND_STRING("CONDITIONS"),
+        .wordData = {.words = gEasyChatGroup_Conditions},
+        .numWords = ARRAY_COUNT(gEasyChatGroup_Conditions),
+        .numEnabledWords = ARRAY_COUNT(gEasyChatGroup_Conditions),
     },
+    [EC_GROUP_ACTIONS] =
     {
-        .wordData = {.words = sEasyChatGroup_Actions},
-        .numWords = 78,
-        .numEnabledWords = 78
+        .name = COMPOUND_STRING("ACTIONS"),
+        .wordData = {.words = gEasyChatGroup_Actions},
+        .numWords = ARRAY_COUNT(gEasyChatGroup_Actions),
+        .numEnabledWords = ARRAY_COUNT(gEasyChatGroup_Actions),
     },
+    [EC_GROUP_LIFESTYLE] =
     {
-        .wordData = {.words = sEasyChatGroup_Lifestyle},
-        .numWords = 45,
-        .numEnabledWords = 45
+        .name = COMPOUND_STRING("LIFESTYLE"),
+        .wordData = {.words = gEasyChatGroup_Lifestyle},
+        .numWords = ARRAY_COUNT(gEasyChatGroup_Lifestyle),
+        .numEnabledWords = ARRAY_COUNT(gEasyChatGroup_Lifestyle),
     },
+    [EC_GROUP_HOBBIES] =
     {
-        .wordData = {.words = sEasyChatGroup_Hobbies},
-        .numWords = 54,
-        .numEnabledWords = 54
+        .name = COMPOUND_STRING("HOBBIES"),
+        .wordData = {.words = gEasyChatGroup_Hobbies},
+        .numWords = ARRAY_COUNT(gEasyChatGroup_Hobbies),
+        .numEnabledWords = ARRAY_COUNT(gEasyChatGroup_Hobbies),
     },
+    [EC_GROUP_TIME] =
     {
-        .wordData = {.words = sEasyChatGroup_Time},
-        .numWords = 45,
-        .numEnabledWords = 45
+        .name = COMPOUND_STRING("TIME"),
+        .wordData = {.words = gEasyChatGroup_Time},
+        .numWords = ARRAY_COUNT(gEasyChatGroup_Time),
+        .numEnabledWords = ARRAY_COUNT(gEasyChatGroup_Time),
     },
+    [EC_GROUP_MISC] =
     {
-        .wordData = {.words = sEasyChatGroup_Misc},
-        .numWords = 42,
-        .numEnabledWords = 42
+        .name = COMPOUND_STRING("MISC."),
+        .wordData = {.words = gEasyChatGroup_Misc},
+        .numWords = ARRAY_COUNT(gEasyChatGroup_Misc),
+        .numEnabledWords = ARRAY_COUNT(gEasyChatGroup_Misc),
     },
+    [EC_GROUP_ADJECTIVES] =
     {
-        .wordData = {.words = sEasyChatGroup_Adjectives},
-        .numWords = 36,
-        .numEnabledWords = 36
+        .name = COMPOUND_STRING("ADJECTIVES"),
+        .wordData = {.words = gEasyChatGroup_Adjectives},
+        .numWords = ARRAY_COUNT(gEasyChatGroup_Adjectives),
+        .numEnabledWords = ARRAY_COUNT(gEasyChatGroup_Adjectives),
     },
+    [EC_GROUP_EVENTS] =
     {
-        .wordData = {.words = sEasyChatGroup_Events},
-        .numWords = 28,
-        .numEnabledWords = 19
+        .name = COMPOUND_STRING("EVENTS"),
+        .wordData = {.words = gEasyChatGroup_Events},
+        .numWords = ARRAY_COUNT(gEasyChatGroup_Events),
+        .numEnabledWords = ARRAY_COUNT(gEasyChatGroup_Events),
     },
+    [EC_GROUP_MOVE_1] =
     {
-        .wordData = {.valueList = sEasyChatGroup_Move1},
-        .numWords = 154,
-        .numEnabledWords = 154
+        .name = COMPOUND_STRING("MOVE 1"),
+        .wordData = {.valueList = gEasyChatGroup_Move1},
+        .numWords = ARRAY_COUNT(gEasyChatGroup_Move1),
+        .numEnabledWords = ARRAY_COUNT(gEasyChatGroup_Move1),
     },
+    [EC_GROUP_MOVE_2] =
     {
-        .wordData = {.valueList = sEasyChatGroup_Move2},
-        .numWords = 200,
-        .numEnabledWords = 200
+        .name = COMPOUND_STRING("MOVE 2"),
+        .wordData = {.valueList = gEasyChatGroup_Move2},
+        .numWords = ARRAY_COUNT(gEasyChatGroup_Move2),
+        .numEnabledWords = ARRAY_COUNT(gEasyChatGroup_Move2),
     },
+    [EC_GROUP_TRENDY_SAYING] =
     {
-        .wordData = {.words = sEasyChatGroup_TrendySaying},
-        .numWords = 33,
-        .numEnabledWords = 0
+        .name = COMPOUND_STRING("TRENDY SAYING"),
+        .wordData = {.words = gEasyChatGroup_TrendySaying},
+        .numWords = ARRAY_COUNT(gEasyChatGroup_TrendySaying),
+        .numEnabledWords = ARRAY_COUNT(gEasyChatGroup_TrendySaying),
     },
+    [EC_GROUP_POKEMON_NATIONAL] =
     {
-        .wordData = {.valueList = sEasyChatGroup_Pokemon2},
-        .numWords = 251,
-        .numEnabledWords = 251
+        .name = COMPOUND_STRING("POKéMON2"),
+        .wordData = {.valueList = gEasyChatGroup_Pokemon2},
+        .numWords = ARRAY_COUNT(gEasyChatGroup_Pokemon2),
+        .numEnabledWords = ARRAY_COUNT(gEasyChatGroup_Pokemon2),
     },
 };

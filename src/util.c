@@ -1,50 +1,14 @@
 #include "global.h"
+#include "util.h"
+#include "sprite.h"
+#include "palette.h"
+#include "constants/rgb.h"
 
-const u32 gBitTable[] =
-{
-    1 << 0,
-    1 << 1,
-    1 << 2,
-    1 << 3,
-    1 << 4,
-    1 << 5,
-    1 << 6,
-    1 << 7,
-    1 << 8,
-    1 << 9,
-    1 << 10,
-    1 << 11,
-    1 << 12,
-    1 << 13,
-    1 << 14,
-    1 << 15,
-    1 << 16,
-    1 << 17,
-    1 << 18,
-    1 << 19,
-    1 << 20,
-    1 << 21,
-    1 << 22,
-    1 << 23,
-    1 << 24,
-    1 << 25,
-    1 << 26,
-    1 << 27,
-    1 << 28,
-    1 << 29,
-    1 << 30,
-    1 << 31,
-};
-
-static const struct SpriteTemplate gInvisibleSpriteTemplate =
+static const struct SpriteTemplate sInvisibleSpriteTemplate =
 {
     .tileTag = 0,
     .paletteTag = 0,
     .oam = &gDummyOamData,
-    .anims = gDummySpriteAnimTable,
-    .images = NULL,
-    .affineAnims = gDummySpriteAffineAnimTable,
-    .callback = SpriteCallbackDummy,
 };
 
 static const u8 sSpriteDimensions[3][4][2] =
@@ -74,7 +38,7 @@ static const u8 sSpriteDimensions[3][4][2] =
     },
 };
 
-static const u16 gCrc16Table[] =
+static const u16 sCrc16Table[] =
 {
     0x0000, 0x1189, 0x2312, 0x329B, 0x4624, 0x57AD, 0x6536, 0x74BF,
     0x8C48, 0x9DC1, 0xAF5A, 0xBED3, 0xCA6C, 0xDBE5, 0xE97E, 0xF8F7,
@@ -110,11 +74,11 @@ static const u16 gCrc16Table[] =
     0x7BC7, 0x6A4E, 0x58D5, 0x495C, 0x3DE3, 0x2C6A, 0x1EF1, 0x0F78,
 };
 
-const u8 gMiscBlank_Gfx[] = INCBIN_U8("graphics/interface/blank.4bpp");
+const u8 gMiscBlank_Gfx[] = INCGFX_U8("graphics/interface/blank.png", ".4bpp");
 
 u8 CreateInvisibleSpriteWithCallback(void (*callback)(struct Sprite *))
 {
-    u8 sprite = CreateSprite(&gInvisibleSpriteTemplate, 248, 168, 14);
+    u8 sprite = CreateSprite(&sInvisibleSpriteTemplate, DISPLAY_WIDTH + 8, DISPLAY_HEIGHT + 8, 14);
     gSprites[sprite].invisible = TRUE;
     gSprites[sprite].callback = callback;
     return sprite;
@@ -154,33 +118,24 @@ void CopySpriteTiles(u8 shape, u8 size, u8 *tiles, u16 *tilemap, u8 *output)
 {
     u8 x, y;
     s8 i, j;
-    u8 xflip[32];
+    u8 ALIGNED(4) xflip[32];
     u8 h = sSpriteDimensions[shape][size][1];
     u8 w = sSpriteDimensions[shape][size][0];
 
     for (y = 0; y < h; y++)
     {
-        int filler = 32 - w;
-
         for (x = 0; x < w; x++)
         {
-            u16 tile = (*tilemap & 0x3ff) * 32;
-            int attr = *tilemap & 0xc00;
+            int tile = (*tilemap & 0x3ff) * 32;
 
-            if (attr == 0)
+            if ((*tilemap & 0xc00) == 0)
             {
-                DmaCopy32Defvars(3, tiles + tile, output, 32);
+                CpuCopy32(tiles + tile, output, 32);
             }
-            else if (attr == 0x800)  // yflip
+            else if ((*tilemap & 0xc00) == 0x800)  // yflip
             {
                 for (i = 0; i < 8; i++)
-                {
-                    u8 requiredForMatching = 0;
-
-                    ++requiredForMatching;
-                    --requiredForMatching;
-                    DmaCopy32Defvars(3, tile + (7 - i) * 4 + tiles, output + i * 4, 4);
-                }
+                    CpuCopy32(tiles + (tile + (7 - i) * 4), output + i * 4, 4);
             }
             else  // xflip
             {
@@ -189,46 +144,28 @@ void CopySpriteTiles(u8 shape, u8 size, u8 *tiles, u16 *tilemap, u8 *output)
                     for (j = 0; j < 4; j++)
                     {
                         u8 i2 = i * 4;
-                        xflip[i2 + (3 - j)] = (tiles[tile + i2 + j] & 0xf) << 4;
-                        xflip[i2 + (3 - j)] |= tiles[tile + i2 + j] >> 4;
+                        xflip[i2 + (3-j)] = (tiles[tile + i2 + j] & 0xf) << 4;
+                        xflip[i2 + (3-j)] |= tiles[tile + i2 + j] >> 4;
                     }
                 }
                 if (*tilemap & 0x800)  // yflip
                 {
                     for (i = 0; i < 8; i++)
-                    {
-                        ++tile;
-                        --tile;
-                        DmaCopy32Defvars(3, (7 - i) * 4 + xflip, output + i * 4, 4);
-                    }
+                        CpuCopy32(xflip + (7 - i) * 4, output + i * 4, 4);
                 }
                 else
                 {
-                    DmaCopy32Defvars(3, xflip, output, 32);
+                    CpuCopy32(xflip, output, 32);
                 }
             }
             tilemap++;
             output += 32;
         }
-        tilemap += filler;
+        tilemap += (32 - w);
     }
 }
 
-int CountTrailingZeroBits(u32 value)
-{
-    u8 i;
-
-    for (i = 0; i < 32; i++)
-    {
-        if ((value & 1) == 0)
-            value >>= 1;
-        else
-            return i;
-    }
-    return 0;
-}
-
-u16 CalcCRC16(const u8 *data, u32 length)
+u16 CalcCRC16(const u8 *data, s32 length)
 {
     u16 i, j;
     u16 crc = 0x1121;
@@ -257,20 +194,48 @@ u16 CalcCRC16WithTable(const u8 *data, u32 length)
     {
         byte = crc >> 8;
         crc ^= data[i];
-        crc = byte ^ gCrc16Table[(u8)crc];
+        crc = byte ^ sCrc16Table[(u8)crc];
     }
     return ~crc;
 }
 
-u32 CalcByteArraySum(const u8 * array, u32 size)
+u32 CalcByteArraySum(const u8 *data, u32 length)
 {
-    s32 i;
-    u32 result = 0;
+    u32 sum, i;
+    for (sum = 0, i = 0; i < length; i++)
+        sum += data[i];
+    return sum;
+}
 
-    for (i = 0; i < size; i++)
+void BlendPalette(u16 palOffset, u16 numEntries, u8 coeff, u32 blendColor)
+{
+    u16 i;
+    struct PlttData *data2 = (struct PlttData *) & blendColor;
+    assertf(palOffset + numEntries <= PLTT_BUFFER_SIZE, "BlendPalette out of bounds: palOffset=%d numEntries=%d", palOffset, numEntries)
     {
-        result += array[i];
+        return;
     }
+    for (i = 0; i < numEntries; i++)
+    {
+        u16 index = i + palOffset;
+        struct PlttData *data1 = (struct PlttData *)&gPlttBufferUnfaded[index];
+        s8 r = data1->r;
+        s8 g = data1->g;
+        s8 b = data1->b;
 
-    return result;
+        gPlttBufferFaded[index] = RGB(r + (((data2->r - r) * coeff) >> 4),
+                                      g + (((data2->g - g) * coeff) >> 4),
+                                      b + (((data2->b - b) * coeff) >> 4));
+    }
+}
+
+s32 SubtractClamped(s32 lowestVal, s32 highestVal, s32 currentVal, s32 delta)
+{
+    s32 newValue = currentVal - delta;
+    if (newValue > highestVal)
+        newValue = highestVal;
+    else if (newValue < lowestVal)
+        newValue = lowestVal;
+
+    return newValue;
 }

@@ -1,0 +1,506 @@
+From 620196ce1b867b43f14527ac71648d91f8cc5da7 Mon Sep 17 00:00:00 2001
+From: Claude <noreply@anthropic.com>
+Date: Sat, 7 Nov 2026 19:52:33 +0000
+Subject: [PATCH 4/6] Add infinite TMs, Smart Repel loop and solo trade
+ evolutions
+
+Infinite TMs: teaching a TM no longer removes it from the bag. In the TM
+Case, TMs behave like HMs: no quantity shown, can't be held or sold.
+
+Smart Repel loop: when a Repel wears off, EventScript_RepelWoreOff calls
+the new GetRepelToReuse special (prefers the kind used last, stored in
+VAR_LAST_REPEL_USED, the unused VAR_0x40A0) and asks "Would you like to
+use another REPEL?". Saying YES uses it via UseRepelToReuse.
+
+Solo evolutions: Kadabra, Machoke, Graveler and Haunter evolve at level
+40. Former trade-with-item evolutions (Politoed, Slowking, Steelix,
+Scizor, Kingdra, Porygon2, Huntail, Gorebyss) now happen by using the
+item from the bag like an evolution stone.
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01EDbdFFZUtxJmCbg3V6KwVM
+---
+ data/scripts/repel.inc       | 32 ++++++++++++++++-
+ data/specials.inc            |  2 ++
+ include/item_use.h           |  2 ++
+ src/data/items.json          | 24 ++++++-------
+ src/data/pokemon/evolution.h | 24 ++++++-------
+ src/item_use.c               | 60 ++++++++++++++++++++++++++++++++
+ src/party_menu.c             | 32 ++++++++++++-----
+ src/tm_case.c                | 67 ++++++++----------------------------
+ 8 files changed, 156 insertions(+), 87 deletions(-)
+
+diff --git a/data/scripts/repel.inc b/data/scripts/repel.inc
+index 97bf963..2a677da 100644
+--- a/data/scripts/repel.inc
++++ b/data/scripts/repel.inc
+@@ -1,6 +1,36 @@
++@ [QoL] Smart Repel loop.
++@ When a Repel wears off, look in the bag for another one (the kind used last
++@ first, then REPEL > SUPER REPEL > MAX REPEL) and offer to use it right away.
++@ GetRepelToReuse sets VAR_RESULT (TRUE if one was found), VAR_0x8004 (its item
++@ ID) and STR_VAR_1 (its name); UseRepelToReuse consumes it and restarts the
++@ step counter.
+ EventScript_RepelWoreOff::
+-	msgbox Text_RepelWoreOff, MSGBOX_SIGN
++	lockall
++	special GetRepelToReuse
++	goto_if_eq VAR_RESULT, FALSE, EventScript_RepelWoreOff_NoneLeft
++	msgbox Text_RepelWoreOffUseAnother, MSGBOX_YESNO
++	goto_if_eq VAR_RESULT, NO, EventScript_RepelWoreOff_Done
++	special UseRepelToReuse
++	playse SE_REPEL
++	msgbox Text_UsedAnotherRepel, MSGBOX_DEFAULT
++	waitse
++EventScript_RepelWoreOff_Done::
++	releaseall
++	end
++
++EventScript_RepelWoreOff_NoneLeft::
++	msgbox Text_RepelWoreOff, MSGBOX_DEFAULT
++	releaseall
+ 	end
+ 
+ Text_RepelWoreOff::
+ 	.string "REPEL's effect wore off…$"
++
++Text_RepelWoreOffUseAnother::
++	.string "REPEL's effect wore off…\p"
++	.string "Would you like to use another\n"
++	.string "{STR_VAR_1}?$"
++
++Text_UsedAnotherRepel::
++	.string "{PLAYER} used the\n"
++	.string "{STR_VAR_1}.$"
+diff --git a/data/specials.inc b/data/specials.inc
+index d880bf6..9427988 100644
+--- a/data/specials.inc
++++ b/data/specials.inc
+@@ -452,4 +452,6 @@ gSpecials::
+ 	def_special UpdateLoreleiDollCollection
+ 	def_special LoopWingFlapSound
+ 	def_special CreateEnemyEventMon
++	def_special GetRepelToReuse @ [QoL] Smart Repel loop
++	def_special UseRepelToReuse @ [QoL] Smart Repel loop
+ gSpecialsEnd::
+diff --git a/include/item_use.h b/include/item_use.h
+index 5d119fc..1a1e8f0 100644
+--- a/include/item_use.h
++++ b/include/item_use.h
+@@ -12,6 +12,8 @@ void FieldUseFunc_Rod(u8 taskId);
+ void FieldUseFunc_CoinCase(u8 taskId);
+ void FieldUseFunc_PowderJar(u8 taskId);
+ void FieldUseFunc_ExpShare(u8 taskId); // [QoL]
++void GetRepelToReuse(void);            // [QoL] special
++void UseRepelToReuse(void);            // [QoL] special
+ void FieldUseFunc_PokeFlute(u8 taskId);
+ void FieldUseFunc_Medicine(u8 taskId);
+ void FieldUseFunc_Ether(u8 taskId);
+diff --git a/src/data/items.json b/src/data/items.json
+index 7c025b1..a2220ae 100644
+--- a/src/data/items.json
++++ b/src/data/items.json
+@@ -3002,8 +3002,8 @@
+       "importance": 0,
+       "registrability": 0,
+       "pocket": "POCKET_ITEMS",
+-      "type": "ITEM_TYPE_BAG_MENU",
+-      "fieldUseFunc": "FieldUseFunc_OakStopsYou",
++      "type": "ITEM_TYPE_PARTY_MENU",
++      "fieldUseFunc": "FieldUseFunc_EvoItem",
+       "battleUsage": 0,
+       "battleUseFunc": "NULL",
+       "secondaryId": 0
+@@ -3082,8 +3082,8 @@
+       "importance": 0,
+       "registrability": 0,
+       "pocket": "POCKET_ITEMS",
+-      "type": "ITEM_TYPE_BAG_MENU",
+-      "fieldUseFunc": "FieldUseFunc_OakStopsYou",
++      "type": "ITEM_TYPE_PARTY_MENU",
++      "fieldUseFunc": "FieldUseFunc_EvoItem",
+       "battleUsage": 0,
+       "battleUseFunc": "NULL",
+       "secondaryId": 0
+@@ -3098,8 +3098,8 @@
+       "importance": 0,
+       "registrability": 0,
+       "pocket": "POCKET_ITEMS",
+-      "type": "ITEM_TYPE_BAG_MENU",
+-      "fieldUseFunc": "FieldUseFunc_OakStopsYou",
++      "type": "ITEM_TYPE_PARTY_MENU",
++      "fieldUseFunc": "FieldUseFunc_EvoItem",
+       "battleUsage": 0,
+       "battleUseFunc": "NULL",
+       "secondaryId": 0
+@@ -3194,8 +3194,8 @@
+       "importance": 0,
+       "registrability": 0,
+       "pocket": "POCKET_ITEMS",
+-      "type": "ITEM_TYPE_BAG_MENU",
+-      "fieldUseFunc": "FieldUseFunc_OakStopsYou",
++      "type": "ITEM_TYPE_PARTY_MENU",
++      "fieldUseFunc": "FieldUseFunc_EvoItem",
+       "battleUsage": 0,
+       "battleUseFunc": "NULL",
+       "secondaryId": 0
+@@ -3226,8 +3226,8 @@
+       "importance": 0,
+       "registrability": 0,
+       "pocket": "POCKET_ITEMS",
+-      "type": "ITEM_TYPE_BAG_MENU",
+-      "fieldUseFunc": "FieldUseFunc_OakStopsYou",
++      "type": "ITEM_TYPE_PARTY_MENU",
++      "fieldUseFunc": "FieldUseFunc_EvoItem",
+       "battleUsage": 0,
+       "battleUseFunc": "NULL",
+       "secondaryId": 0
+@@ -3498,8 +3498,8 @@
+       "importance": 0,
+       "registrability": 0,
+       "pocket": "POCKET_ITEMS",
+-      "type": "ITEM_TYPE_BAG_MENU",
+-      "fieldUseFunc": "FieldUseFunc_OakStopsYou",
++      "type": "ITEM_TYPE_PARTY_MENU",
++      "fieldUseFunc": "FieldUseFunc_EvoItem",
+       "battleUsage": 0,
+       "battleUseFunc": "NULL",
+       "secondaryId": 0
+diff --git a/src/data/pokemon/evolution.h b/src/data/pokemon/evolution.h
+index c9b0cf7..b8a07f0 100644
+--- a/src/data/pokemon/evolution.h
++++ b/src/data/pokemon/evolution.h
+@@ -38,27 +38,27 @@ const struct Evolution gEvolutionTable[NUM_SPECIES][EVOS_PER_MON] =
+     [SPECIES_GROWLITHE]  = {{EVO_ITEM, ITEM_FIRE_STONE, SPECIES_ARCANINE}},
+     [SPECIES_POLIWAG]    = {{EVO_LEVEL, 25, SPECIES_POLIWHIRL}},
+     [SPECIES_POLIWHIRL]  = {{EVO_ITEM, ITEM_WATER_STONE, SPECIES_POLIWRATH},
+-                            {EVO_TRADE_ITEM, ITEM_KINGS_ROCK, SPECIES_POLITOED}},
++                            {EVO_ITEM, ITEM_KINGS_ROCK, SPECIES_POLITOED}}, // [QoL] Solo evolution: use the item (was EVO_TRADE_ITEM)
+     [SPECIES_ABRA]       = {{EVO_LEVEL, 16, SPECIES_KADABRA}},
+-    [SPECIES_KADABRA]    = {{EVO_TRADE, 0, SPECIES_ALAKAZAM}},
++    [SPECIES_KADABRA]    = {{EVO_LEVEL, 40, SPECIES_ALAKAZAM}}, // [QoL] Solo evolution (was EVO_TRADE)
+     [SPECIES_MACHOP]     = {{EVO_LEVEL, 28, SPECIES_MACHOKE}},
+-    [SPECIES_MACHOKE]    = {{EVO_TRADE, 0, SPECIES_MACHAMP}},
++    [SPECIES_MACHOKE]    = {{EVO_LEVEL, 40, SPECIES_MACHAMP}}, // [QoL] Solo evolution (was EVO_TRADE)
+     [SPECIES_BELLSPROUT] = {{EVO_LEVEL, 21, SPECIES_WEEPINBELL}},
+     [SPECIES_WEEPINBELL] = {{EVO_ITEM, ITEM_LEAF_STONE, SPECIES_VICTREEBEL}},
+     [SPECIES_TENTACOOL]  = {{EVO_LEVEL, 30, SPECIES_TENTACRUEL}},
+     [SPECIES_GEODUDE]    = {{EVO_LEVEL, 25, SPECIES_GRAVELER}},
+-    [SPECIES_GRAVELER]   = {{EVO_TRADE, 0, SPECIES_GOLEM}},
++    [SPECIES_GRAVELER]   = {{EVO_LEVEL, 40, SPECIES_GOLEM}}, // [QoL] Solo evolution (was EVO_TRADE)
+     [SPECIES_PONYTA]     = {{EVO_LEVEL, 40, SPECIES_RAPIDASH}},
+     [SPECIES_SLOWPOKE]   = {{EVO_LEVEL, 37, SPECIES_SLOWBRO},
+-                            {EVO_TRADE_ITEM, ITEM_KINGS_ROCK, SPECIES_SLOWKING}},
++                            {EVO_ITEM, ITEM_KINGS_ROCK, SPECIES_SLOWKING}}, // [QoL] Solo evolution: use the item (was EVO_TRADE_ITEM)
+     [SPECIES_MAGNEMITE]  = {{EVO_LEVEL, 30, SPECIES_MAGNETON}},
+     [SPECIES_DODUO]      = {{EVO_LEVEL, 31, SPECIES_DODRIO}},
+     [SPECIES_SEEL]       = {{EVO_LEVEL, 34, SPECIES_DEWGONG}},
+     [SPECIES_GRIMER]     = {{EVO_LEVEL, 38, SPECIES_MUK}},
+     [SPECIES_SHELLDER]   = {{EVO_ITEM, ITEM_WATER_STONE, SPECIES_CLOYSTER}},
+     [SPECIES_GASTLY]     = {{EVO_LEVEL, 25, SPECIES_HAUNTER}},
+-    [SPECIES_HAUNTER]    = {{EVO_TRADE, 0, SPECIES_GENGAR}},
+-    [SPECIES_ONIX]       = {{EVO_TRADE_ITEM, ITEM_METAL_COAT, SPECIES_STEELIX}},
++    [SPECIES_HAUNTER]    = {{EVO_LEVEL, 40, SPECIES_GENGAR}}, // [QoL] Solo evolution (was EVO_TRADE)
++    [SPECIES_ONIX]       = {{EVO_ITEM, ITEM_METAL_COAT, SPECIES_STEELIX}}, // [QoL] Solo evolution: use the item (was EVO_TRADE_ITEM)
+     [SPECIES_DROWZEE]    = {{EVO_LEVEL, 26, SPECIES_HYPNO}},
+     [SPECIES_KRABBY]     = {{EVO_LEVEL, 28, SPECIES_KINGLER}},
+     [SPECIES_VOLTORB]    = {{EVO_LEVEL, 30, SPECIES_ELECTRODE}},
+@@ -68,17 +68,17 @@ const struct Evolution gEvolutionTable[NUM_SPECIES][EVOS_PER_MON] =
+     [SPECIES_RHYHORN]    = {{EVO_LEVEL, 42, SPECIES_RHYDON}},
+     [SPECIES_CHANSEY]    = {{EVO_FRIENDSHIP, 0, SPECIES_BLISSEY}},
+     [SPECIES_HORSEA]     = {{EVO_LEVEL, 32, SPECIES_SEADRA}},
+-    [SPECIES_SEADRA]     = {{EVO_TRADE_ITEM, ITEM_DRAGON_SCALE, SPECIES_KINGDRA}},
++    [SPECIES_SEADRA]     = {{EVO_ITEM, ITEM_DRAGON_SCALE, SPECIES_KINGDRA}}, // [QoL] Solo evolution: use the item (was EVO_TRADE_ITEM)
+     [SPECIES_GOLDEEN]    = {{EVO_LEVEL, 33, SPECIES_SEAKING}},
+     [SPECIES_STARYU]     = {{EVO_ITEM, ITEM_WATER_STONE, SPECIES_STARMIE}},
+-    [SPECIES_SCYTHER]    = {{EVO_TRADE_ITEM, ITEM_METAL_COAT, SPECIES_SCIZOR}},
++    [SPECIES_SCYTHER]    = {{EVO_ITEM, ITEM_METAL_COAT, SPECIES_SCIZOR}}, // [QoL] Solo evolution: use the item (was EVO_TRADE_ITEM)
+     [SPECIES_MAGIKARP]   = {{EVO_LEVEL, 20, SPECIES_GYARADOS}},
+     [SPECIES_EEVEE]      = {{EVO_ITEM, ITEM_THUNDER_STONE, SPECIES_JOLTEON},
+                             {EVO_ITEM, ITEM_WATER_STONE, SPECIES_VAPOREON},
+                             {EVO_ITEM, ITEM_FIRE_STONE, SPECIES_FLAREON},
+                             {EVO_FRIENDSHIP_DAY, 0, SPECIES_ESPEON},
+                             {EVO_FRIENDSHIP_NIGHT, 0, SPECIES_UMBREON}},
+-    [SPECIES_PORYGON]    = {{EVO_TRADE_ITEM, ITEM_UP_GRADE, SPECIES_PORYGON2}},
++    [SPECIES_PORYGON]    = {{EVO_ITEM, ITEM_UP_GRADE, SPECIES_PORYGON2}}, // [QoL] Solo evolution: use the item (was EVO_TRADE_ITEM)
+     [SPECIES_OMANYTE]    = {{EVO_LEVEL, 40, SPECIES_OMASTAR}},
+     [SPECIES_KABUTO]     = {{EVO_LEVEL, 40, SPECIES_KABUTOPS}},
+     [SPECIES_DRATINI]    = {{EVO_LEVEL, 30, SPECIES_DRAGONAIR}},
+@@ -171,8 +171,8 @@ const struct Evolution gEvolutionTable[NUM_SPECIES][EVOS_PER_MON] =
+     [SPECIES_GULPIN]     = {{EVO_LEVEL, 26, SPECIES_SWALOT}},
+     [SPECIES_WHISMUR]    = {{EVO_LEVEL, 20, SPECIES_LOUDRED}},
+     [SPECIES_LOUDRED]    = {{EVO_LEVEL, 40, SPECIES_EXPLOUD}},
+-    [SPECIES_CLAMPERL]   = {{EVO_TRADE_ITEM, ITEM_DEEP_SEA_TOOTH, SPECIES_HUNTAIL},
+-                            {EVO_TRADE_ITEM, ITEM_DEEP_SEA_SCALE, SPECIES_GOREBYSS}},
++    [SPECIES_CLAMPERL]   = {{EVO_ITEM, ITEM_DEEP_SEA_TOOTH, SPECIES_HUNTAIL}, // [QoL] Solo evolution: use the item (was EVO_TRADE_ITEM)
++                            {EVO_ITEM, ITEM_DEEP_SEA_SCALE, SPECIES_GOREBYSS}}, // [QoL] Solo evolution: use the item (was EVO_TRADE_ITEM)
+     [SPECIES_SHUPPET]    = {{EVO_LEVEL, 37, SPECIES_BANETTE}},
+     [SPECIES_ARON]       = {{EVO_LEVEL, 32, SPECIES_LAIRON}},
+     [SPECIES_LAIRON]     = {{EVO_LEVEL, 42, SPECIES_AGGRON}},
+diff --git a/src/item_use.c b/src/item_use.c
+index df28614..4cfeb04 100644
+--- a/src/item_use.c
++++ b/src/item_use.c
+@@ -568,6 +568,65 @@ static void Task_InitTeachyTvFromField(u8 taskId)
+     }
+ }
+ 
++// [QoL] Smart Repel loop.
++// Order in which Repels are offered once the last-used kind has run out.
++static const u16 sRepelItems[] = { ITEM_REPEL, ITEM_SUPER_REPEL, ITEM_MAX_REPEL };
++
++static bool8 IsRepelItem(u16 itemId)
++{
++    u32 i;
++
++    for (i = 0; i < ARRAY_COUNT(sRepelItems); i++)
++    {
++        if (sRepelItems[i] == itemId)
++            return TRUE;
++    }
++    return FALSE;
++}
++
++// Special, called by EventScript_RepelWoreOff.
++// Picks the Repel to offer: the last kind used if the bag still has one,
++// otherwise the first of REPEL / SUPER REPEL / MAX REPEL the bag has.
++// Out: gSpecialVar_Result = TRUE if found, gSpecialVar_0x8004 = item ID,
++//      gStringVar1 = item name.
++void GetRepelToReuse(void)
++{
++    u16 itemId = VarGet(VAR_LAST_REPEL_USED);
++    u32 i;
++
++    if (!IsRepelItem(itemId) || !CheckBagHasItem(itemId, 1))
++    {
++        itemId = ITEM_NONE;
++        for (i = 0; i < ARRAY_COUNT(sRepelItems); i++)
++        {
++            if (CheckBagHasItem(sRepelItems[i], 1))
++            {
++                itemId = sRepelItems[i];
++                break;
++            }
++        }
++    }
++
++    gSpecialVar_0x8004 = itemId;
++    gSpecialVar_Result = (itemId != ITEM_NONE);
++    if (itemId != ITEM_NONE)
++        CopyItemName(itemId, gStringVar1);
++}
++
++// Special, called by EventScript_RepelWoreOff after the player says YES.
++// Uses the Repel picked by GetRepelToReuse (gSpecialVar_0x8004).
++void UseRepelToReuse(void)
++{
++    u16 itemId = gSpecialVar_0x8004;
++
++    if (!IsRepelItem(itemId) || !CheckBagHasItem(itemId, 1))
++        return;
++
++    RemoveBagItem(itemId, 1);
++    VarSet(VAR_REPEL_STEP_COUNT, ItemId_GetHoldEffectParam(itemId));
++    VarSet(VAR_LAST_REPEL_USED, itemId);
++}
++
+ void FieldUseFunc_Repel(u8 taskId)
+ {
+     if (VarGet(VAR_REPEL_STEP_COUNT) == 0)
+@@ -586,6 +645,7 @@ static void Task_UseRepel(u8 taskId)
+     {
+         ItemUse_SetQuestLogEvent(QL_EVENT_USED_ITEM, NULL, gSpecialVar_ItemId, 0xFFFF);
+         VarSet(VAR_REPEL_STEP_COUNT, ItemId_GetHoldEffectParam(gSpecialVar_ItemId));
++        VarSet(VAR_LAST_REPEL_USED, gSpecialVar_ItemId); // [QoL] remembered for the Smart Repel loop
+         RemoveUsedItem();
+         DisplayItemMessageInBag(taskId, FONT_NORMAL, gStringVar4, Task_ReturnToBagFromContextMenu);
+     }
+diff --git a/src/party_menu.c b/src/party_menu.c
+index 7f3a881..7f90c2f 100644
+--- a/src/party_menu.c
++++ b/src/party_menu.c
+@@ -4285,8 +4285,7 @@ static void CB2_UseItem(void)
+     {
+         GiveMoveToMon(&gPlayerParty[gPartyMenu.slotId], ItemIdToBattleMoveId(gSpecialVar_ItemId));
+         AdjustFriendship(&gPlayerParty[gPartyMenu.slotId], FRIENDSHIP_EVENT_LEARN_TMHM);
+-        if (gSpecialVar_ItemId < ITEM_HM01)
+-            RemoveBagItem(gSpecialVar_ItemId, 1);
++        // [QoL] Infinite TMs: TMs are no longer consumed (was RemoveBagItem for item < ITEM_HM01).
+         SetMainCallback2(gPartyMenu.exitCallback);
+     }
+     else
+@@ -4305,8 +4304,7 @@ static void CB2_UseTMHMAfterForgettingMove(void)
+         SetMonMoveSlot(mon, ItemIdToBattleMoveId(gSpecialVar_ItemId), moveIdx);
+         AdjustFriendship(mon, FRIENDSHIP_EVENT_LEARN_TMHM);
+         ItemUse_SetQuestLogEvent(QL_EVENT_USED_ITEM, mon, gSpecialVar_ItemId, move);
+-        if (gSpecialVar_ItemId < ITEM_HM01)
+-            RemoveBagItem(gSpecialVar_ItemId, 1);
++        // [QoL] Infinite TMs: TMs are no longer consumed (was RemoveBagItem for item < ITEM_HM01).
+         SetMainCallback2(gPartyMenu.exitCallback);
+     }
+     else
+@@ -4804,13 +4802,11 @@ static void Task_LearnedMove(u8 taskId)
+ {
+     struct Pokemon *mon = &gPlayerParty[gPartyMenu.slotId];
+     s16 *data = gPartyMenu.data;
+-    u16 item = gSpecialVar_ItemId;
+ 
+     if (learnMoveMethod == LEARN_VIA_TMHM)
+     {
+         AdjustFriendship(mon, FRIENDSHIP_EVENT_LEARN_TMHM);
+-        if (item < ITEM_HM01)
+-            RemoveBagItem(item, 1);
++        // [QoL] Infinite TMs: TMs are no longer consumed (was RemoveBagItem for item < ITEM_HM01).
+     }
+     GetMonNickname(mon, gStringVar1);
+     StringCopy(gStringVar2, gMoveNames[learnMoveId]);
+@@ -5295,7 +5291,14 @@ void ItemUseCB_EvolutionStone(u8 taskId, TaskFunc func)
+     bool8 noEffect;
+ 
+     PlaySE(SE_SELECT);
+-    noEffect = PokemonItemUseNoEffect(&gPlayerParty[gPartyMenu.slotId], gSpecialVar_ItemId, gPartyMenu.slotId, 0);
++    // [QoL] Solo evolution items: King's Rock, Metal Coat, Dragon Scale, Up-Grade
++    // and the Deep Sea Tooth/Scale are used like evolution stones. They have no
++    // entry in gItemEffectTable (IS_POKEMON_ITEM is FALSE for them), so the
++    // evolution table is checked directly.
++    if (!IS_POKEMON_ITEM(gSpecialVar_ItemId))
++        noEffect = (GetEvolutionTargetSpecies(&gPlayerParty[gPartyMenu.slotId], EVO_MODE_ITEM_USE, gSpecialVar_ItemId) == SPECIES_NONE);
++    else
++        noEffect = PokemonItemUseNoEffect(&gPlayerParty[gPartyMenu.slotId], gSpecialVar_ItemId, gPartyMenu.slotId, 0);
+     if (noEffect)
+     {
+         gPartyMenuUseExitCallback = FALSE;
+@@ -5310,7 +5313,18 @@ void ItemUseCB_EvolutionStone(u8 taskId, TaskFunc func)
+ static void CB2_UseEvolutionStone(void)
+ {
+     gCB2_AfterEvolution = gPartyMenu.exitCallback;
+-    ExecuteTableBasedItemEffect_(gPartyMenu.slotId, gSpecialVar_ItemId, 0);
++    if (!IS_POKEMON_ITEM(gSpecialVar_ItemId))
++    {
++        // [QoL] Solo evolution item (see ItemUseCB_EvolutionStone): start the
++        // evolution directly, the same way the ITEM4_EVO_STONE effect does.
++        struct Pokemon *mon = &gPlayerParty[gPartyMenu.slotId];
++
++        BeginEvolutionScene(mon, GetEvolutionTargetSpecies(mon, EVO_MODE_ITEM_USE, gSpecialVar_ItemId), FALSE, gPartyMenu.slotId);
++    }
++    else
++    {
++        ExecuteTableBasedItemEffect_(gPartyMenu.slotId, gSpecialVar_ItemId, 0);
++    }
+     ItemUse_SetQuestLogEvent(QL_EVENT_USED_ITEM, &gPlayerParty[gPartyMenu.slotId], gSpecialVar_ItemId, 0xFFFF);
+     RemoveBagItem(gSpecialVar_ItemId, 1);
+ }
+diff --git a/src/tm_case.c b/src/tm_case.c
+index 125a589..74997b2 100644
+--- a/src/tm_case.c
++++ b/src/tm_case.c
+@@ -720,16 +720,10 @@ static void List_ItemPrintFunc(u8 windowId, u32 itemIndex, u8 y)
+ {
+     if (itemIndex != LIST_CANCEL)
+     {
+-        if (!IS_HM(BagGetItemIdByPocketPosition(POCKET_TM_CASE, itemIndex)))
+-        {
+-            ConvertIntToDecimalStringN(gStringVar1, BagGetQuantityByPocketPosition(POCKET_TM_CASE, itemIndex), STR_CONV_MODE_RIGHT_ALIGN, 3);
+-            StringExpandPlaceholders(gStringVar4, gText_TimesStrVar1);
+-            TMCase_Print(windowId, FONT_SMALL, gStringVar4, 126, y, 0, 0, TEXT_SKIP_DRAW, COLOR_DARK);
+-        }
+-        else
+-        {
++        // [QoL] Infinite TMs: TMs are reusable like HMs, so no "x1" quantity is
++        // drawn for them any more. HMs keep their HM badge.
++        if (IS_HM(BagGetItemIdByPocketPosition(POCKET_TM_CASE, itemIndex)))
+             PlaceHMTileInWindow(windowId, 8, y);
+-        }
+     }
+ }
+ 
+@@ -1040,8 +1034,6 @@ static void Action_Use(u8 taskId)
+ 
+ static void Action_Give(u8 taskId)
+ {
+-    s16 * data = gTasks[taskId].data;
+-    u16 itemId = BagGetItemIdByPocketPosition(POCKET_TM_CASE, tSelection);
+     RemoveContextMenu(&sTMCaseDynamicResources->contextMenuWindowId);
+     ClearStdWindowAndFrameToTransparent(WIN_SELECTED_MSG, FALSE);
+     ClearWindowTilemap(WIN_SELECTED_MSG);
+@@ -1050,22 +1042,9 @@ static void Action_Give(u8 taskId)
+     PutWindowTilemap(WIN_MOVE_INFO);
+     ScheduleBgCopyTilemapToVram(0);
+     ScheduleBgCopyTilemapToVram(1);
+-    if (!IS_HM(itemId))
+-    {
+-        if (CalculatePlayerPartyCount() == 0)
+-        {
+-            PrintError_ThereIsNoPokemon(taskId);
+-        }
+-        else
+-        {
+-            sTMCaseDynamicResources->nextScreenCallback = CB2_ChooseMonToGiveItem;
+-            Task_BeginFadeOutFromTMCase(taskId);
+-        }
+-    }
+-    else
+-    {
+-        PrintError_ItemCantBeHeld(taskId);
+-    }
++    // [QoL] Infinite TMs: TMs are reusable like HMs, so like HMs they can't be
++    // given to a Pokemon to hold (that would take the only copy out of the case).
++    PrintError_ItemCantBeHeld(taskId);
+ }
+ 
+ static void PrintError_ThereIsNoPokemon(u8 taskId)
+@@ -1125,43 +1104,25 @@ static void Action_Exit(u8 taskId)
+ 
+ static void Task_SelectedTMHM_GiveParty(u8 taskId)
+ {
+-    s16 * data = gTasks[taskId].data;
+-
+-    if (!IS_HM(BagGetItemIdByPocketPosition(POCKET_TM_CASE, tSelection)))
+-    {
+-        sTMCaseDynamicResources->nextScreenCallback = CB2_GiveHoldItem;
+-        Task_BeginFadeOutFromTMCase(taskId);
+-    }
+-    else
+-    {
+-        // Can't hold "important" items (e.g. key items)
+-        PrintError_ItemCantBeHeld(taskId);
+-    }
++    // [QoL] Infinite TMs: TMs can't be held, same as HMs.
++    PrintError_ItemCantBeHeld(taskId);
+ }
+ 
+ static void Task_SelectedTMHM_GivePC(u8 taskId)
+ {
+-    s16 * data = gTasks[taskId].data;
+-
+-    if (!IS_HM(BagGetItemIdByPocketPosition(POCKET_TM_CASE, tSelection)))
+-    {
+-        sTMCaseDynamicResources->nextScreenCallback = CB2_ReturnToPokeStorage;
+-        Task_BeginFadeOutFromTMCase(taskId);
+-    }
+-    else
+-    {
+-        // Can't hold "important" items (e.g. key items)
+-        PrintError_ItemCantBeHeld(taskId);
+-    }
++    // [QoL] Infinite TMs: TMs can't be held, same as HMs.
++    PrintError_ItemCantBeHeld(taskId);
+ }
+ 
+ static void Task_SelectedTMHM_Sell(u8 taskId)
+ {
+     s16 * data = gTasks[taskId].data;
+ 
+-    if (ItemId_GetPrice(gSpecialVar_ItemId) == 0)
++    // [QoL] Infinite TMs: a reusable TM is never sold (it would be lost for good),
++    // so every TM/HM is refused here. Vanilla only refused price-0 items (HMs).
++    if (ItemId_GetPocket(gSpecialVar_ItemId) == POCKET_TM_CASE)
+     {
+-        // Can't sell TM/HMs with no price (by default this is just the HMs)
++        // Can't sell TM/HMs
+         CopyItemName(gSpecialVar_ItemId, gStringVar1);
+         StringExpandPlaceholders(gStringVar4, gText_OhNoICantBuyThat);
+         PrintMessageWithFollowupTask(taskId, GetDialogBoxFontId(), gStringVar4, CloseMessageAndReturnToList);
+-- 
+2.43.0
+

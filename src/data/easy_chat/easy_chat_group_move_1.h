@@ -1,6 +1,6 @@
 #include "constants/moves.h"
 
-static const u16 sEasyChatGroup_Move1[] = {
+const u16 gEasyChatGroup_Move1[] = {
     MOVE_ABSORB,
     MOVE_AEROBLAST,
     MOVE_AGILITY,
@@ -121,7 +121,7 @@ static const u16 sEasyChatGroup_Move1[] = {
     MOVE_SKY_ATTACK,
     MOVE_SKY_UPPERCUT,
     MOVE_SLASH,
-    MOVE_SMELLING_SALT,
+    MOVE_SMELLING_SALTS,
     MOVE_SMOG,
     MOVE_SMOKESCREEN,
     MOVE_SNORE,

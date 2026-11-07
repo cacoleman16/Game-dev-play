@@ -1,0 +1,391 @@
+From ac3a2551ebe87be0e0abae3e9203548ddc1e6b64 Mon Sep 17 00:00:00 2001
+From: Claude <noreply@anthropic.com>
+Date: Sat, 7 Nov 2026 19:47:53 +0000
+Subject: [PATCH 3/6] Add modern Exp. Share key item (default ON)
+
+EXP. SHARE becomes a registrable key item given at the start of a new
+game. Using it (from the bag or via SELECT) toggles
+FLAG_SYS_EXP_SHARE_DISABLED (repurposed unused FLAG_0x8E0), so the
+feature is ON by default.
+
+While ON, Cmd_getexp gives every participant the full EXP. yield (no
+splitting) and every other non-egg party member half, with one summary
+message for the bench. While OFF, vanilla Gen 3 distribution applies.
+The Route 15 aide now rewards a LUCKY EGG instead of a second Exp. Share.
+
+Also: running shoes from the start and B-dash allowed in buildings and
+caves (IsRunningDisallowed ignores the map allowRunning flag).
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01EDbdFFZUtxJmCbg3V6KwVM
+---
+ data/maps/Route15_WestEntrance_2F/scripts.inc |  7 ++-
+ data/maps/Route15_WestEntrance_2F/text.inc    |  7 +--
+ include/constants/battle_string_ids.h         |  3 +-
+ include/constants/flags.h                     |  2 +-
+ include/constants/vars.h                      |  2 +-
+ include/item_use.h                            |  1 +
+ include/strings.h                             |  2 +
+ src/battle_message.c                          |  5 +-
+ src/battle_script_commands.c                  | 58 +++++++++++++++++--
+ src/bike.c                                    |  5 +-
+ src/data/items.json                           | 14 ++---
+ src/item_use.c                                | 21 +++++++
+ src/new_game.c                                |  7 +++
+ src/strings.c                                 |  3 +
+ 14 files changed, 113 insertions(+), 24 deletions(-)
+
+diff --git a/data/maps/Route15_WestEntrance_2F/scripts.inc b/data/maps/Route15_WestEntrance_2F/scripts.inc
+index 4606f2f..72a45ce 100644
+--- a/data/maps/Route15_WestEntrance_2F/scripts.inc
++++ b/data/maps/Route15_WestEntrance_2F/scripts.inc
+@@ -32,9 +32,10 @@ Route15_WestEntrance_2F_EventScript_Aide::
+ 	call Route15_WestEntrance_2F_EventScript_GetAideRequestInfo
+ 	goto_if_lt VAR_0x8006, REQUIRED_CAUGHT_MONS, Aide_EventScript_HaventCaughtEnough
+ 	msgbox Route15_WestEntrance_2F_Text_GreatHereYouGo
+-	checkitemspace ITEM_EXP_SHARE
++	@ [QoL] The EXP. SHARE is now a key item you start with, so the aide gives a LUCKY EGG instead.
++	checkitemspace ITEM_LUCKY_EGG
+ 	goto_if_eq VAR_RESULT, FALSE, Aide_EventScript_NoRoomForItem
+-	giveitem_msg Route15_WestEntrance_2F_Text_ReceivedItemFromAide, ITEM_EXP_SHARE
++	giveitem_msg Route15_WestEntrance_2F_Text_ReceivedItemFromAide, ITEM_LUCKY_EGG
+ 	setflag FLAG_GOT_EXP_SHARE_FROM_OAKS_AIDE
+ 	msgbox Route15_WestEntrance_2F_Text_ExplainExpShare
+ 	release
+@@ -47,5 +48,5 @@ Route15_WestEntrance_2F_EventScript_AlreadyGotExpShare::
+ 
+ Route15_WestEntrance_2F_EventScript_GetAideRequestInfo::
+ 	buffernumberstring STR_VAR_1, REQUIRED_CAUGHT_MONS
+-	bufferitemname STR_VAR_2, ITEM_EXP_SHARE
++	bufferitemname STR_VAR_2, ITEM_LUCKY_EGG
+ 	return
+diff --git a/data/maps/Route15_WestEntrance_2F/text.inc b/data/maps/Route15_WestEntrance_2F/text.inc
+index 28561c4..4311774 100644
+--- a/data/maps/Route15_WestEntrance_2F/text.inc
++++ b/data/maps/Route15_WestEntrance_2F/text.inc
+@@ -21,11 +21,10 @@ Route15_WestEntrance_2F_Text_ReceivedItemFromAide::
+     .string "from the AIDE.$"
+ 
+ Route15_WestEntrance_2F_Text_ExplainExpShare::
+-    .string "EXP. SHARE is an item to be held\n"
++    .string "A LUCKY EGG is an item to be held\n"
+     .string "by a POKéMON.\p"
+-    .string "The POKéMON will receive a share\n"
+-    .string "of the EXP. Points without having\l"
+-    .string "to battle.$"
++    .string "The POKéMON holding it will earn\n"
++    .string "extra EXP. Points in battle.$"
+ 
+ Route15_WestEntrance_2F_Text_LargeShiningBird::
+     .string "Let's see what the binoculars have\n"
+diff --git a/include/constants/battle_string_ids.h b/include/constants/battle_string_ids.h
+index 24cc01c..b790c76 100644
+--- a/include/constants/battle_string_ids.h
++++ b/include/constants/battle_string_ids.h
+@@ -384,8 +384,9 @@
+ #define STRINGID_TRAINER1WINTEXT 383
+ #define STRINGID_TRAINER1MON2COMEBACK 384
+ #define STRINGID_TRAINER1MON1AND2COMEBACK 385
++#define STRINGID_TEAMGAINEDEXP 386 // [QoL] Modern Exp. Share summary message
+ 
+-#define BATTLESTRINGS_COUNT     386
++#define BATTLESTRINGS_COUNT     387
+ 
+ // This is the string id that gBattleStringsTable starts with.
+ // String ids before this (e.g. STRINGID_INTROMSG) are not in the table,
+diff --git a/include/constants/flags.h b/include/constants/flags.h
+index d800adf..2c62e09 100644
+--- a/include/constants/flags.h
++++ b/include/constants/flags.h
+@@ -1490,7 +1490,7 @@
+ #define FLAG_0x8DD                                                  (SYS_FLAGS + 0xDD)
+ #define FLAG_0x8DE                                                  (SYS_FLAGS + 0xDE)
+ #define FLAG_0x8DF                                                  (SYS_FLAGS + 0xDF)
+-#define FLAG_0x8E0                                                  (SYS_FLAGS + 0xE0)
++#define FLAG_SYS_EXP_SHARE_DISABLED                                 (SYS_FLAGS + 0xE0) // [QoL] was unused FLAG_0x8E0. Clear = modern Exp. Share ON
+ #define FLAG_0x8E1                                                  (SYS_FLAGS + 0xE1)
+ #define FLAG_0x8E2                                                  (SYS_FLAGS + 0xE2)
+ #define FLAG_0x8E3                                                  (SYS_FLAGS + 0xE3)
+diff --git a/include/constants/vars.h b/include/constants/vars.h
+index 5c7bbf8..f6f0c63 100644
+--- a/include/constants/vars.h
++++ b/include/constants/vars.h
+@@ -211,7 +211,7 @@
+ #define VAR_0x409D                 0x409D
+ #define VAR_0x409E                 0x409E
+ #define VAR_0x409F                 0x409F
+-#define VAR_0x40A0                 0x40A0
++#define VAR_LAST_REPEL_USED        0x40A0 // [QoL] was unused VAR_0x40A0. Item ID of the last Repel used
+ #define VAR_0x40A1                 0x40A1
+ #define VAR_0x40A2                 0x40A2
+ #define VAR_0x40A3                 0x40A3
+diff --git a/include/item_use.h b/include/item_use.h
+index 77aed78..5d119fc 100644
+--- a/include/item_use.h
++++ b/include/item_use.h
+@@ -11,6 +11,7 @@ void FieldUseFunc_Bike(u8 taskId);
+ void FieldUseFunc_Rod(u8 taskId);
+ void FieldUseFunc_CoinCase(u8 taskId);
+ void FieldUseFunc_PowderJar(u8 taskId);
++void FieldUseFunc_ExpShare(u8 taskId); // [QoL]
+ void FieldUseFunc_PokeFlute(u8 taskId);
+ void FieldUseFunc_Medicine(u8 taskId);
+ void FieldUseFunc_Ether(u8 taskId);
+diff --git a/include/strings.h b/include/strings.h
+index 57066f7..c0eb5e5 100644
+--- a/include/strings.h
++++ b/include/strings.h
+@@ -175,6 +175,8 @@ extern const u8 gText_UsedVar2WildLured[];
+ extern const u8 gText_UsedVar2WildRepelled[];
+ extern const u8 gText_BoxFull[];
+ extern const u8 gText_PowderQty[];
++extern const u8 gText_ExpShareOn[];  // [QoL]
++extern const u8 gText_ExpShareOff[]; // [QoL]
+ extern const u8 gText_PlayedPokeFluteCatchy[];
+ extern const u8 gText_PlayedPokeFlute[];
+ extern const u8 gText_PokeFluteAwakenedMon[];
+diff --git a/src/battle_message.c b/src/battle_message.c
+index 8ab5a75..d853516 100644
+--- a/src/battle_message.c
++++ b/src/battle_message.c
+@@ -51,6 +51,8 @@ static const u8 sText_Trainer1RecallPkmn2[] = _("{B_TRAINER1_NAME}: {B_OPPONENT_
+ static const u8 sText_Trainer1RecallBoth[] = _("{B_TRAINER1_NAME}: {B_OPPONENT_MON1_NAME} and\n{B_OPPONENT_MON2_NAME}, come back!");
+ static const u8 sText_Trainer2WinText[] = _("{B_TRAINER2_WIN_TEXT}");
+ static const u8 sText_PkmnGainedEXP[] = _("{B_BUFF1} gained{B_BUFF2}\n{B_BUFF3} EXP. Points!\p");
++// [QoL] Modern Exp. Share: one message for the whole bench instead of one per POKéMON.
++static const u8 sText_TeamGainedEXP[] = _("Your team gained EXP. Points\nfrom the EXP. SHARE!\p");
+ static const u8 sText_EmptyString4[] = _("");
+ static const u8 sText_ABoosted[] = _(" a boosted");
+ static const u8 sText_PkmnGrewToLv[] = _("{B_BUFF1} grew to\nLV. {B_BUFF2}!{WAIT_SE}\p");
+@@ -888,7 +890,8 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT - BATTLESTRINGS_TABLE_ST
+     [STRINGID_TRAINER1MON1COMEBACK - BATTLESTRINGS_TABLE_START]          = sText_Trainer1RecallPkmn1,
+     [STRINGID_TRAINER1WINTEXT - BATTLESTRINGS_TABLE_START]               = sText_Trainer1WinText,
+     [STRINGID_TRAINER1MON2COMEBACK - BATTLESTRINGS_TABLE_START]          = sText_Trainer1RecallPkmn2,
+-    [STRINGID_TRAINER1MON1AND2COMEBACK - BATTLESTRINGS_TABLE_START]      = sText_Trainer1RecallBoth
++    [STRINGID_TRAINER1MON1AND2COMEBACK - BATTLESTRINGS_TABLE_START]      = sText_Trainer1RecallBoth,
++    [STRINGID_TEAMGAINEDEXP - BATTLESTRINGS_TABLE_START]                 = sText_TeamGainedEXP, // [QoL]
+ };
+ 
+ const u16 gMissStringIds[] =
+diff --git a/src/battle_script_commands.c b/src/battle_script_commands.c
+index 960f95a..c0c9451 100644
+--- a/src/battle_script_commands.c
++++ b/src/battle_script_commands.c
+@@ -3106,6 +3106,19 @@ static void Cmd_jumpiftype(void)
+         gBattlescriptCurrInstr += 7;
+ }
+ 
++// [QoL] Modern Exp. Share.
++// The EXP. SHARE key item toggles FLAG_SYS_EXP_SHARE_DISABLED; the flag starts
++// clear, so the feature is ON from a new game.
++//  ON : every Pokemon that battled gets the full EXP. yield (no splitting) and
++//       every other non-egg party member gets half of it.
++//  OFF: vanilla Gen 3 behaviour (participants split the EXP.).
++static EWRAM_DATA bool8 sTeamExpMessageShown = FALSE;
++
++static bool8 IsModernExpShareOn(void)
++{
++    return !FlagGet(FLAG_SYS_EXP_SHARE_DISABLED);
++}
++
+ static void Cmd_getexp(void)
+ {
+     u16 item;
+@@ -3113,6 +3126,7 @@ static void Cmd_getexp(void)
+     u8 holdEffect;
+     s32 sentIn;
+     s32 viaExpShare = 0;
++    bool8 getsShare; // [QoL] TRUE if this party member gets the Exp. Share portion
+     u16 *exp = &gBattleStruct->expValue;
+ 
+     gBattlerFainted = GetBattlerForBattleScript(gBattlescriptCurrInstr[1]);
+@@ -3160,8 +3174,21 @@ static void Cmd_getexp(void)
+             }
+ 
+             calculatedExp = gSpeciesInfo[gBattleMons[gBattlerFainted].species].expYield * gBattleMons[gBattlerFainted].level / 7;
++            sTeamExpMessageShown = FALSE;
++
++            if (IsModernExpShareOn())
++            {
++                // [QoL] Modern Exp. Share: no splitting between participants,
++                // bench members get half.
++                *exp = calculatedExp;
++                if (*exp == 0)
++                    *exp = 1;
+ 
+-            if (viaExpShare) // at least one mon is getting exp via exp share
++                gExpShareExp = calculatedExp / 2;
++                if (gExpShareExp == 0)
++                    gExpShareExp = 1;
++            }
++            else if (viaExpShare) // at least one mon is getting exp via exp share
+             {
+                 *exp = SAFE_DIV(calculatedExp / 2, viaSentIn);
+                 if (*exp == 0)
+@@ -3194,7 +3221,17 @@ static void Cmd_getexp(void)
+             else
+                 holdEffect = ItemId_GetHoldEffect(item);
+ 
+-            if (holdEffect != HOLD_EFFECT_EXP_SHARE && !(gBattleStruct->sentInPokes & 1))
++            // [QoL] Modern Exp. Share: every non-egg party member that did not
++            // battle gets a share. With the toggle OFF only a (vanilla) held
++            // Exp. Share does.
++            if (IsModernExpShareOn())
++                getsShare = !(gBattleStruct->sentInPokes & 1)
++                         && GetMonData(&gPlayerParty[gBattleStruct->expGetterMonId], MON_DATA_SPECIES) != SPECIES_NONE
++                         && !GetMonData(&gPlayerParty[gBattleStruct->expGetterMonId], MON_DATA_IS_EGG);
++            else
++                getsShare = (holdEffect == HOLD_EFFECT_EXP_SHARE);
++
++            if (!getsShare && !(gBattleStruct->sentInPokes & 1))
+             {
+                 *(&gBattleStruct->sentInPokes) >>= 1;
+                 gBattleScripting.getexpState = 5;
+@@ -3223,7 +3260,7 @@ static void Cmd_getexp(void)
+                     else
+                         gBattleMoveDamage = 0;
+ 
+-                    if (holdEffect == HOLD_EFFECT_EXP_SHARE)
++                    if (getsShare)
+                         gBattleMoveDamage += gExpShareExp;
+                     if (holdEffect == HOLD_EFFECT_LUCKY_EGG)
+                         gBattleMoveDamage = (gBattleMoveDamage * 150) / 100;
+@@ -3263,7 +3300,20 @@ static void Cmd_getexp(void)
+                     PREPARE_STRING_BUFFER(gBattleTextBuff2, i);
+                     PREPARE_WORD_NUMBER_BUFFER(gBattleTextBuff3, 5, gBattleMoveDamage);
+ 
+-                    PrepareStringBattle(STRINGID_PKMNGAINEDEXP, gBattleStruct->expGetterBattlerId);
++                    if (IsModernExpShareOn() && getsShare)
++                    {
++                        // [QoL] Bench members share one summary message
++                        // (level-ups are still announced individually).
++                        if (!sTeamExpMessageShown)
++                        {
++                            PrepareStringBattle(STRINGID_TEAMGAINEDEXP, gBattleStruct->expGetterBattlerId);
++                            sTeamExpMessageShown = TRUE;
++                        }
++                    }
++                    else
++                    {
++                        PrepareStringBattle(STRINGID_PKMNGAINEDEXP, gBattleStruct->expGetterBattlerId);
++                    }
+                     MonGainEVs(&gPlayerParty[gBattleStruct->expGetterMonId], gBattleMons[gBattlerFainted].species);
+                 }
+                 gBattleStruct->sentInPokes >>= 1;
+diff --git a/src/bike.c b/src/bike.c
+index be9cd8e..b95ac8b 100644
+--- a/src/bike.c
++++ b/src/bike.c
+@@ -252,8 +252,9 @@ bool8 RS_IsRunningDisallowed(u8 r0)
+ 
+ bool32 IsRunningDisallowed(u8 metatileBehavior)
+ {
+-    if (!gMapHeader.allowRunning)
+-        return TRUE;
++    // [QoL] Running indoors: the per-map "allowRunning" header flag (FALSE for
++    // buildings and many caves) is ignored so B-dash works everywhere. Only
++    // individual MB_RUNNING_DISALLOWED tiles still block running.
+     if (MetatileBehaviorForbidsBiking(metatileBehavior) != TRUE)
+         return FALSE;
+     else
+diff --git a/src/data/items.json b/src/data/items.json
+index 0a87abb..7c025b1 100644
+--- a/src/data/items.json
++++ b/src/data/items.json
+@@ -2915,15 +2915,15 @@
+     {
+       "english": "EXP. SHARE",
+       "itemId": "ITEM_EXP_SHARE",
+-      "price": 3000,
+-      "holdEffect": "HOLD_EFFECT_EXP_SHARE",
++      "price": 0,
++      "holdEffect": "HOLD_EFFECT_NONE",
+       "holdEffectParam": 0,
+-      "description_english": "An item to be held by a POKéMON.\\nThe holder gets a share of EXP.\\npoints without having to battle.",
+-      "importance": 0,
+-      "registrability": 0,
+-      "pocket": "POCKET_ITEMS",
++      "description_english": "Turns the EXP. SHARE ON or OFF.\\nWhen ON, the whole party gains\\nEXP. Can be registered to SELECT.",
++      "importance": 1,
++      "registrability": 1,
++      "pocket": "POCKET_KEY_ITEMS",
+       "type": "ITEM_TYPE_BAG_MENU",
+-      "fieldUseFunc": "FieldUseFunc_OakStopsYou",
++      "fieldUseFunc": "FieldUseFunc_ExpShare",
+       "battleUsage": 0,
+       "battleUseFunc": "NULL",
+       "secondaryId": 0
+diff --git a/src/item_use.c b/src/item_use.c
+index 954f482..df28614 100644
+--- a/src/item_use.c
++++ b/src/item_use.c
+@@ -356,6 +356,27 @@ void FieldUseFunc_PowderJar(u8 taskId)
+         DisplayItemMessageOnField(taskId, FONT_NORMAL, gStringVar4, Task_ItemUse_CloseMessageBoxAndReturnToField);
+ }
+ 
++// [QoL] Modern Exp. Share: the EXP. SHARE key item toggles the party-wide
++// Exp. Share on or off. Works from the bag and when registered to SELECT.
++void FieldUseFunc_ExpShare(u8 taskId)
++{
++    if (FlagGet(FLAG_SYS_EXP_SHARE_DISABLED))
++    {
++        FlagClear(FLAG_SYS_EXP_SHARE_DISABLED);
++        StringExpandPlaceholders(gStringVar4, gText_ExpShareOn);
++    }
++    else
++    {
++        FlagSet(FLAG_SYS_EXP_SHARE_DISABLED);
++        StringExpandPlaceholders(gStringVar4, gText_ExpShareOff);
++    }
++    PlaySE(SE_EXP_MAX);
++    if (gTasks[taskId].data[3] == 0)
++        DisplayItemMessageInBag(taskId, FONT_NORMAL, gStringVar4, Task_ReturnToBagFromContextMenu);
++    else
++        DisplayItemMessageOnField(taskId, FONT_NORMAL, gStringVar4, Task_ItemUse_CloseMessageBoxAndReturnToField);
++}
++
+ void FieldUseFunc_PokeFlute(u8 taskId)
+ {
+     bool8 wokeSomeoneUp = FALSE;
+diff --git a/src/new_game.c b/src/new_game.c
+index 3768b3c..33ecf50 100644
+--- a/src/new_game.c
++++ b/src/new_game.c
+@@ -29,6 +29,7 @@
+ #include "berry_powder.h"
+ #include "pokemon_jump.h"
+ #include "event_scripts.h"
++#include "constants/items.h"
+ 
+ // this file's functions
+ static void ResetMiniGamesResults(void);
+@@ -149,6 +150,12 @@ void NewGameInitData(void)
+     RunScriptImmediately(EventScript_ResetAllMapFlags);
+     StringCopy(gSaveBlock1Ptr->rivalName, rivalName);
+     ResetTrainerTowerResults();
++
++    // [QoL] Running Shoes from the very start (the Pewter City aide normally gives them).
++    FlagSet(FLAG_SYS_B_DASH);
++    // [QoL] Modern Exp. Share: start with the EXP. SHARE key item. The feature
++    // itself defaults to ON (FLAG_SYS_EXP_SHARE_DISABLED is clear).
++    AddBagItem(ITEM_EXP_SHARE, 1);
+ }
+ 
+ static void ResetMiniGamesResults(void)
+diff --git a/src/strings.c b/src/strings.c
+index c099555..42315f2 100644
+--- a/src/strings.c
++++ b/src/strings.c
+@@ -200,6 +200,9 @@ const u8 gText_UsedVar2WildLured[] = _("{PLAYER} used the\n{STR_VAR_2}.\pWild PO
+ const u8 gText_UsedVar2WildRepelled[] = _("{PLAYER} used the\n{STR_VAR_2}.\pWild POKéMON will be repelled.{PAUSE_UNTIL_PRESS}");
+ const u8 gText_BoxFull[] = _("The BOX is full.{PAUSE_UNTIL_PRESS}");
+ const u8 gText_PowderQty[] = _("POWDER QTY: {STR_VAR_1}{PAUSE_UNTIL_PRESS}");
++// [QoL] Modern Exp. Share toggle
++const u8 gText_ExpShareOn[] = _("The EXP. SHARE was turned ON.\nYour whole party will gain EXP.{PAUSE_UNTIL_PRESS}");
++const u8 gText_ExpShareOff[] = _("The EXP. SHARE was turned OFF.\nOnly battlers will gain EXP.{PAUSE_UNTIL_PRESS}");
+ const u8 gOtherText_Powder[] = _("POWDER");
+ const u8 gText_PlayedPokeFluteCatchy[] = _("Played the POKé FLUTE.\pNow, that's a catchy tune!{PAUSE_UNTIL_PRESS}");
+ const u8 gText_PlayedPokeFlute[] = _("Played the POKé FLUTE.");
+-- 
+2.43.0
+

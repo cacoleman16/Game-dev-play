@@ -1,17 +1,23 @@
 #include "global.h"
-#include "gflib.h"
-#include "scanline_effect.h"
-#include "trainer_pokemon_sprites.h"
-#include "text_window.h"
-#include "task.h"
-#include "help_system.h"
-#include "overworld.h"
+#include "bg.h"
 #include "event_data.h"
-#include "field_fadetransition.h"
+#include "field_screen_effect.h"
 #include "field_weather.h"
-#include "constants/songs.h"
+#include "gpu_regs.h"
+#include "main.h"
+#include "malloc.h"
+#include "overworld.h"
+#include "palette.h"
+#include "scanline_effect.h"
+#include "sound.h"
+#include "task.h"
+#include "text_window.h"
+#include "trainer_pokemon_sprites.h"
+#include "window.h"
 #include "constants/maps.h"
+#include "constants/rgb.h"
 #include "constants/seagallop.h"
+#include "constants/songs.h"
 
 #define TILESTAG_FERRY 3000
 #define TILESTAG_WAKE  4000
@@ -39,13 +45,13 @@ static void CreateWakeSprite(s16 x);
 static void SpriteCB_Wake(struct Sprite *sprite);
 static bool8 GetDirectionOfTravel(void);
 
-static const u16 sWaterTiles[] = INCBIN_U16("graphics/seagallop/water.4bpp");
-static const u16 sWaterPal[] = INCBIN_U16("graphics/seagallop/water.gbapal");
+static const u16 sWaterTiles[] = INCGFX_U16("graphics/seagallop/water.png", ".4bpp");
+static const u16 sWaterPal[] = INCGFX_U16("graphics/seagallop/water.png", ".gbapal");
 static const u16 sWaterTilemap_WB[] = INCBIN_U16("graphics/seagallop/wb_tilemap.bin");
 static const u16 sWaterTilemap_EB[] = INCBIN_U16("graphics/seagallop/eb_tilemap.bin");
-static const u16 sFerrySpriteTiles[] = INCBIN_U16("graphics/seagallop/ferry_sprite.4bpp");
-static const u16 sFerryAndWakePal[] = INCBIN_U16("graphics/seagallop/ferry_and_wake.gbapal");
-static const u16 sWakeSpriteTiles[] = INCBIN_U16("graphics/seagallop/wake.4bpp");
+static const u16 sFerrySpriteTiles[] = INCGFX_U16("graphics/seagallop/ferry_sprite.png", ".4bpp");
+static const u16 sFerryAndWakePal[] = INCGFX_U16("graphics/seagallop/ferry_and_wake.pal", ".gbapal");
+static const u16 sWakeSpriteTiles[] = INCGFX_U16("graphics/seagallop/wake.png", ".4bpp");
 
 static const struct BgTemplate sBGTemplates[] = {
     {
@@ -60,18 +66,17 @@ static const struct BgTemplate sBGTemplates[] = {
 };
 
 static const s8 sSeag[][4] = {
-                                   // Map                     X     Y
-    [SEAGALLOP_VERMILION_CITY]  = {MAP(MAP_VERMILION_CITY),      0x17, 0x20},
-    [SEAGALLOP_ONE_ISLAND]      = {MAP(MAP_ONE_ISLAND_HARBOR),   0x08, 0x05},
-    [SEAGALLOP_TWO_ISLAND]      = {MAP(MAP_TWO_ISLAND_HARBOR),   0x08, 0x05},
-    [SEAGALLOP_THREE_ISLAND]    = {MAP(MAP_THREE_ISLAND_HARBOR), 0x08, 0x05},
-    [SEAGALLOP_FOUR_ISLAND]     = {MAP(MAP_FOUR_ISLAND_HARBOR),  0x08, 0x05},
-    [SEAGALLOP_FIVE_ISLAND]     = {MAP(MAP_FIVE_ISLAND_HARBOR),  0x08, 0x05},
-    [SEAGALLOP_SIX_ISLAND]      = {MAP(MAP_SIX_ISLAND_HARBOR),   0x08, 0x05},
-    [SEAGALLOP_SEVEN_ISLAND]    = {MAP(MAP_SEVEN_ISLAND_HARBOR), 0x08, 0x05},
-    [SEAGALLOP_CINNABAR_ISLAND] = {MAP(MAP_CINNABAR_ISLAND),     0x15, 0x07},
-    [SEAGALLOP_NAVEL_ROCK]      = {MAP(MAP_NAVEL_ROCK_HARBOR),   0x08, 0x05},
-    [SEAGALLOP_BIRTH_ISLAND]    = {MAP(MAP_BIRTH_ISLAND_HARBOR), 0x08, 0x05}
+    [SEAGALLOP_VERMILION_CITY]  = {MAP_GROUP(MAP_VERMILION_CITY), MAP_NUM(MAP_VERMILION_CITY),      0x17, 0x20},
+    [SEAGALLOP_ONE_ISLAND]      = {MAP_GROUP(MAP_ONE_ISLAND_HARBOR), MAP_NUM(MAP_ONE_ISLAND_HARBOR),   0x08, 0x05},
+    [SEAGALLOP_TWO_ISLAND]      = {MAP_GROUP(MAP_TWO_ISLAND_HARBOR), MAP_NUM(MAP_TWO_ISLAND_HARBOR),   0x08, 0x05},
+    [SEAGALLOP_THREE_ISLAND]    = {MAP_GROUP(MAP_THREE_ISLAND_HARBOR), MAP_NUM(MAP_THREE_ISLAND_HARBOR), 0x08, 0x05},
+    [SEAGALLOP_FOUR_ISLAND]     = {MAP_GROUP(MAP_FOUR_ISLAND_HARBOR), MAP_NUM(MAP_FOUR_ISLAND_HARBOR),  0x08, 0x05},
+    [SEAGALLOP_FIVE_ISLAND]     = {MAP_GROUP(MAP_FIVE_ISLAND_HARBOR), MAP_NUM(MAP_FIVE_ISLAND_HARBOR),  0x08, 0x05},
+    [SEAGALLOP_SIX_ISLAND]      = {MAP_GROUP(MAP_SIX_ISLAND_HARBOR), MAP_NUM(MAP_SIX_ISLAND_HARBOR),   0x08, 0x05},
+    [SEAGALLOP_SEVEN_ISLAND]    = {MAP_GROUP(MAP_SEVEN_ISLAND_HARBOR), MAP_NUM(MAP_SEVEN_ISLAND_HARBOR), 0x08, 0x05},
+    [SEAGALLOP_CINNABAR_ISLAND] = {MAP_GROUP(MAP_CINNABAR_ISLAND), MAP_NUM(MAP_CINNABAR_ISLAND),     0x15, 0x07},
+    [SEAGALLOP_NAVEL_ROCK]      = {MAP_GROUP(MAP_NAVEL_ROCK_HARBOR_FRLG), MAP_NUM(MAP_NAVEL_ROCK_HARBOR_FRLG),   0x08, 0x05},
+    [SEAGALLOP_BIRTH_ISLAND]    = {MAP_GROUP(MAP_BIRTH_ISLAND_HARBOR_FRLG), MAP_NUM(MAP_BIRTH_ISLAND_HARBOR_FRLG), 0x08, 0x05}
 };
 
 // Bitpacked array.  In the commented section, right-most bit is the
@@ -174,7 +179,6 @@ static const struct SpriteTemplate sWakeSpriteTemplate = {
 void DoSeagallopFerryScene(void)
 {
     SetVBlankCallback(NULL);
-    HelpSystem_Disable();
     SetMainCallback2(CB2_SetUpSeagallopScene);
 }
 
@@ -297,7 +301,6 @@ static void Task_Seagallop_2(u8 taskId)
     if (BGMusicStopped() && !gPaletteFade.active)
     {
         Task_Seagallop_3();
-        HelpSystem_Enable();
         DestroyTask(taskId);
     }
 }
@@ -423,7 +426,7 @@ static void SpriteCB_Ferry(struct Sprite *sprite)
 
 static void CreateWakeSprite(s16 x)
 {
-    u8 spriteId = CreateSprite(&sWakeSpriteTemplate, x, 92, 8);
+    u8 spriteId = CreateSpriteUnchecked(&sWakeSpriteTemplate, x, 92, 8);
     if (spriteId != MAX_SPRITES)
     {
         if (GetDirectionOfTravel() == DIRN_EASTBOUND)

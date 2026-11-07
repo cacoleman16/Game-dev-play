@@ -1,104 +1,62 @@
 #include "global.h"
-#include "gflib.h"
+#include "malloc.h"
 #include "battle.h"
 #include "data.h"
 #include "graphics.h"
+#include "trainer_pools.h"
+#include "battle_transition.h"
+#include "constants/abilities.h"
 #include "constants/items.h"
 #include "constants/moves.h"
-#include "constants/battle_ai.h"
+#include "constants/songs.h"
 #include "constants/trainers.h"
+#include "constants/battle_ai.h"
+
+const u16 gMinigameDigits_Pal[] = INCGFX_U16("graphics/link/minigame_digits.png", ".gbapal");
+const u32 gMinigameDigits_Gfx[] = INCGFX_U32("graphics/link/minigame_digits.png", ".4bpp.smol");
+static const u32 sMinigameDigitsThin_Gfx[] = INCGFX_U32("graphics/link/minigame_digits2.png", ".4bpp.smol"); // Unused
 
 #define BATTLER_OFFSET(i) (gHeap + 0x8000 + MON_PIC_SIZE * (i))
 
 const struct SpriteFrameImage gBattlerPicTable_PlayerLeft[] =
 {
-    BATTLER_OFFSET(0), MON_PIC_SIZE,
-    BATTLER_OFFSET(1), MON_PIC_SIZE,
-    BATTLER_OFFSET(2), MON_PIC_SIZE,
-    BATTLER_OFFSET(3), MON_PIC_SIZE,
+    {BATTLER_OFFSET(0), MON_PIC_SIZE},
+    {BATTLER_OFFSET(1), MON_PIC_SIZE},
+    {BATTLER_OFFSET(2), MON_PIC_SIZE},
+    {BATTLER_OFFSET(3), MON_PIC_SIZE},
 };
 
 const struct SpriteFrameImage gBattlerPicTable_OpponentLeft[] =
 {
-    BATTLER_OFFSET(4), MON_PIC_SIZE,
-    BATTLER_OFFSET(5), MON_PIC_SIZE,
-    BATTLER_OFFSET(6), MON_PIC_SIZE,
-    BATTLER_OFFSET(7), MON_PIC_SIZE,
+    {BATTLER_OFFSET(4), MON_PIC_SIZE},
+    {BATTLER_OFFSET(5), MON_PIC_SIZE},
+    {BATTLER_OFFSET(6), MON_PIC_SIZE},
+    {BATTLER_OFFSET(7), MON_PIC_SIZE},
 };
 
 const struct SpriteFrameImage gBattlerPicTable_PlayerRight[] =
 {
-    BATTLER_OFFSET(8),  MON_PIC_SIZE,
-    BATTLER_OFFSET(9),  MON_PIC_SIZE,
-    BATTLER_OFFSET(10), MON_PIC_SIZE,
-    BATTLER_OFFSET(11), MON_PIC_SIZE,
+    {BATTLER_OFFSET(8),  MON_PIC_SIZE},
+    {BATTLER_OFFSET(9),  MON_PIC_SIZE},
+    {BATTLER_OFFSET(10), MON_PIC_SIZE},
+    {BATTLER_OFFSET(11), MON_PIC_SIZE},
 };
 
 const struct SpriteFrameImage gBattlerPicTable_OpponentRight[] =
 {
-    BATTLER_OFFSET(12), MON_PIC_SIZE,
-    BATTLER_OFFSET(13), MON_PIC_SIZE,
-    BATTLER_OFFSET(14), MON_PIC_SIZE,
-    BATTLER_OFFSET(15), MON_PIC_SIZE,
+    {BATTLER_OFFSET(12), MON_PIC_SIZE},
+    {BATTLER_OFFSET(13), MON_PIC_SIZE},
+    {BATTLER_OFFSET(14), MON_PIC_SIZE},
+    {BATTLER_OFFSET(15), MON_PIC_SIZE},
 };
 
-const struct SpriteFrameImage gTrainerBackPicTable_Red[] =
-{
-    gTrainerBackPic_Red, 0x0800,
-    gTrainerBackPic_Red + 0x0800, 0x0800,
-    gTrainerBackPic_Red + 0x1000, 0x0800,
-    gTrainerBackPic_Red + 0x1800, 0x0800,
-    gTrainerBackPic_Red + 0x2000, 0x0800,
-};
-
-const struct SpriteFrameImage gTrainerBackPicTable_Leaf[] =
-{
-    gTrainerBackPic_Leaf, 0x0800,
-    gTrainerBackPic_Leaf + 0x0800, 0x0800,
-    gTrainerBackPic_Leaf + 0x1000, 0x0800,
-    gTrainerBackPic_Leaf + 0x1800, 0x0800,
-    gTrainerBackPic_Leaf + 0x2000, 0x0800,
-};
-
-const struct SpriteFrameImage gTrainerBackPicTable_Pokedude[] =
-{
-    gTrainerBackPic_Pokedude, 0x0800,
-    gTrainerBackPic_Pokedude + 0x0800, 0x0800,
-    gTrainerBackPic_Pokedude + 0x1000, 0x0800,
-    gTrainerBackPic_Pokedude + 0x1800, 0x0800,
-};
-
-const struct SpriteFrameImage gTrainerBackPicTable_OldMan[] =
-{
-    gTrainerBackPic_OldMan, 0x0800,
-    gTrainerBackPic_OldMan + 0x0800, 0x0800,
-    gTrainerBackPic_OldMan + 0x1000, 0x0800,
-    gTrainerBackPic_OldMan + 0x1800, 0x0800,
-};
-
-const struct SpriteFrameImage gTrainerBackPicTable_RSBrendan[] =
-{
-    gTrainerBackPic_RSBrendan, 0x0800,
-    gTrainerBackPic_RSBrendan + 0x0800, 0x0800,
-    gTrainerBackPic_RSBrendan + 0x1000, 0x0800,
-    gTrainerBackPic_RSBrendan + 0x1800, 0x0800,
-};
-
-const struct SpriteFrameImage gTrainerBackPicTable_RSMay[] =
-{
-    gTrainerBackPic_RSMay, 0x0800,
-    gTrainerBackPic_RSMay + 0x0800, 0x0800,
-    gTrainerBackPic_RSMay + 0x1000, 0x0800,
-    gTrainerBackPic_RSMay + 0x1800, 0x0800,
-};
-
-static const union AnimCmd sAnim_GeneralFrame0[] =
+const union AnimCmd sAnim_GeneralFrame0[] =
 {
     ANIMCMD_FRAME(0, 0),
     ANIMCMD_END,
 };
 
-static const union AnimCmd sAnim_GeneralFrame3[] =
+const union AnimCmd sAnim_GeneralFrame3[] =
 {
     ANIMCMD_FRAME(3, 0),
     ANIMCMD_END,
@@ -117,7 +75,7 @@ static const union AffineAnimCmd sAffineAnim_Battler_Normal[] =
 
 static const union AffineAnimCmd sAffineAnim_Battler_Flipped[] =
 {
-    AFFINEANIMCMD_FRAME(-0x100, 0x0100, 0, 0),
+    AFFINEANIMCMD_FRAME(-0x100, 0x100, 0, 0),
     AFFINEANIMCMD_END,
 };
 
@@ -130,7 +88,7 @@ static const union AffineAnimCmd sAffineAnim_Battler_Emerge[] =
 
 static const union AffineAnimCmd sAffineAnim_Battler_Return[] =
 {
-    AFFINEANIMCMD_FRAME(-0x2, -0x2, 0, 18),
+    AFFINEANIMCMD_FRAME( -0x2,  -0x2, 0, 18),
     AFFINEANIMCMD_FRAME(-0x10, -0x10, 0, 15),
     AFFINEANIMCMD_END,
 };
@@ -245,6 +203,7 @@ const union AffineAnimCmd *const gAffineAnims_BattleSpriteContest[] =
     sAffineAnim_Battler_Spin,
 };
 
+
 static const union AnimCmd sAnim_MonPic_0[] =
 {
     ANIMCMD_FRAME(0, 0),
@@ -257,49 +216,28 @@ static const union AnimCmd sAnim_MonPic_1[] =
     ANIMCMD_END,
 };
 
-static const union AnimCmd sAnim_MonPic_2[] =
-{
-    ANIMCMD_FRAME(2, 0),
-    ANIMCMD_END,
-};
-
-static const union AnimCmd sAnim_MonPic_3[] =
-{
-    ANIMCMD_FRAME(3, 0),
-    ANIMCMD_END,
-};
-
-const union AnimCmd *const gAnims_MonPic[] =
+const union AnimCmd *const gAnims_MonPic[MAX_MON_PIC_FRAMES] =
 {
     sAnim_MonPic_0,
     sAnim_MonPic_1,
-    sAnim_MonPic_2,
-    sAnim_MonPic_3,
 };
 
-#define SPECIES_SPRITE(species, sprite) [SPECIES_##species] = {sprite, 0x800, SPECIES_##species}
-#define SPECIES_PAL(species, pal) [SPECIES_##species] = {pal, SPECIES_##species}
-#define SPECIES_SHINY_PAL(species, pal) [SPECIES_##species] = {pal, SPECIES_##species + SPECIES_SHINY_TAG}
+const union AnimCmd *const gAnims_Trainer[] ={
+    sAnim_GeneralFrame0,
+    sAnim_GeneralFrame0,
+};
 
-#define TRAINER_SPRITE(trainerPic, sprite, size) [TRAINER_PIC_##trainerPic] = {sprite, size, TRAINER_PIC_##trainerPic}
-#define TRAINER_PAL(trainerPic, pal) [TRAINER_PIC_##trainerPic] = {pal, TRAINER_PIC_##trainerPic}
-
-#include "data/pokemon_graphics/front_pic_coordinates.h"
-#include "data/pokemon_graphics/front_pic_table.h"
-#include "data/pokemon_graphics/back_pic_coordinates.h"
-#include "data/pokemon_graphics/back_pic_table.h"
-#include "data/pokemon_graphics/palette_table.h"
-#include "data/pokemon_graphics/shiny_palette_table.h"
-
-#include "data/trainer_graphics/front_pic_anims.h"
-#include "data/trainer_graphics/front_pic_tables.h"
-#include "data/trainer_graphics/back_pic_anims.h"
-#include "data/trainer_graphics/back_pic_tables.h"
-
-#include "data/pokemon_graphics/enemy_mon_elevation.h"
-
-#include "data/trainer_parties.h"
-#include "data/text/trainer_class_names.h"
+#if !TESTING
+const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] =
+{
+#if IS_FRLG
+#include "data/trainers_frlg.h"
+#else
 #include "data/trainers.h"
-#include "data/text/species_names.h"
-#include "data/text/move_names.h"
+#endif
+};
+#endif
+
+#include "data/trainer_approach_music.h"
+
+#include "data/text/follower_messages.h"

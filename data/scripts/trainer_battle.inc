@@ -1,35 +1,41 @@
-EventScript_DoTrainerBattleFromApproach::
-	lock
+@ As of 04.06.26 event Script are superseded by Event Snippets (see below).
+@ Kept for backwards compatability.
+
+EventScript_StartTrainerApproach::
+	selectapproachingtrainer
+	lockfortrainer
+EventScript_TrainerApproach::
 	special PlayTrainerEncounterMusic
-	special EndTrainerApproach
-	waitstate
-	goto EventScript_DoTrainerBattle
+	special DoTrainerApproach
+	goto EventScript_ShowTrainerIntroMsg
 
 EventScript_TryDoNormalTrainerBattle::
 	lock
 	faceplayer
+	setflag FLAG_SAFE_FOLLOWER_MOVEMENT
 	applymovement VAR_LAST_TALKED, Movement_RevealTrainer
 	waitmovement 0
-	specialvar VAR_RESULT, Script_HasTrainerBeenFought
-	goto_if_ne VAR_RESULT, FALSE, EventScript_NoTrainerBattle
+	clearflag FLAG_SAFE_FOLLOWER_MOVEMENT
+	specialvar VAR_RESULT, GetTrainerFlag
+	goto_if_ne VAR_RESULT, FALSE, EventScript_NoNormalTrainerBattle
 	special PlayTrainerEncounterMusic
-	special SetUpTrainerMovement
-	goto EventScript_DoTrainerBattle
+	special SetTrainerFacingDirection
+	goto EventScript_ShowTrainerIntroMsg
 
-EventScript_NoTrainerBattle::
+EventScript_NoNormalTrainerBattle::
 	gotopostbattlescript
 
 EventScript_TryDoDoubleTrainerBattle::
 	lock
 	faceplayer
 	call EventScript_RevealTrainer
-	specialvar VAR_RESULT, Script_HasTrainerBeenFought
+	specialvar VAR_RESULT, GetTrainerFlag
 	goto_if_ne VAR_RESULT, FALSE, EventScript_NoDoubleTrainerBattle
 	special HasEnoughMonsForDoubleBattle
 	goto_if_ne VAR_RESULT, PLAYER_HAS_TWO_USABLE_MONS, EventScript_NotEnoughMonsForDoubleBattle
 	special PlayTrainerEncounterMusic
-	special SetUpTrainerMovement
-	goto EventScript_DoTrainerBattle
+	special SetTrainerFacingDirection
+	goto EventScript_ShowTrainerIntroMsg
 
 EventScript_NotEnoughMonsForDoubleBattle::
 	special ShowTrainerCantBattleSpeech
@@ -42,48 +48,45 @@ EventScript_NoDoubleTrainerBattle::
 	gotopostbattlescript
 
 EventScript_DoNoIntroTrainerBattle::
+	setflag FLAG_SAFE_FOLLOWER_MOVEMENT
 	applymovement VAR_LAST_TALKED, Movement_RevealTrainer
 	waitmovement 0
+	clearflag FLAG_SAFE_FOLLOWER_MOVEMENT
 	special PlayTrainerEncounterMusic
-	goto_if_questlog EventScript_EndQuestLogBattle
 	dotrainerbattle
 	gotopostbattlescript
 
 EventScript_TryDoRematchBattle::
 	call EventScript_RevealTrainer
 	specialvar VAR_RESULT, IsTrainerReadyForRematch
-	goto_if_eq VAR_RESULT, FALSE, EventScript_NoRematchBattle
+	goto_if_eq VAR_RESULT, FALSE, EventScript_NoRematchTrainerBattle
 	special PlayTrainerEncounterMusic
-	special SetUpTrainerMovement
+	special SetTrainerFacingDirection
 	special ShowTrainerIntroSpeech
 	waitmessage
 	waitbuttonpress
-	goto_if_questlog EventScript_EndQuestLogRematch
-	special StartRematchBattle
-	waitstate
+	special BattleSetup_StartRematchBattle
 	releaseall
 	end
 
-EventScript_NoRematchBattle::
+EventScript_NoRematchTrainerBattle::
 	gotopostbattlescript
 
 EventScript_TryDoDoubleRematchBattle::
 	specialvar VAR_RESULT, IsTrainerReadyForRematch
-	goto_if_eq VAR_RESULT, FALSE, EventScript_NoDoubleRematchBattle
+	goto_if_eq VAR_RESULT, FALSE, EventScript_NoDoubleRematchTrainerBattle
 	special HasEnoughMonsForDoubleBattle
 	goto_if_ne VAR_RESULT, PLAYER_HAS_TWO_USABLE_MONS, EventScript_NotEnoughMonsForDoubleRematchBattle
 	special PlayTrainerEncounterMusic
-	special SetUpTrainerMovement
+	special SetTrainerFacingDirection
 	special ShowTrainerIntroSpeech
 	waitmessage
 	waitbuttonpress
-	goto_if_questlog EventScript_EndQuestLogRematch
-	special StartRematchBattle
-	waitstate
+	special BattleSetup_StartRematchBattle
 	releaseall
 	end
 
-EventScript_NoDoubleRematchBattle::
+EventScript_NoDoubleRematchTrainerBattle::
 	gotopostbattlescript
 
 EventScript_NotEnoughMonsForDoubleRematchBattle::
@@ -93,46 +96,102 @@ EventScript_NotEnoughMonsForDoubleRematchBattle::
 	release
 	end
 
-EventScript_EndQuestLogRematch::
-	releaseall
-	end
-
 EventScript_RevealTrainer::
+	setflag FLAG_SAFE_FOLLOWER_MOVEMENT
 	applymovement VAR_LAST_TALKED, Movement_RevealTrainer
 	waitmovement 0
+	clearflag FLAG_SAFE_FOLLOWER_MOVEMENT
 	return
 
-Movement_RevealTrainer::
+Movement_RevealTrainer:
 	reveal_trainer
 	step_end
 
-EventScript_DoTrainerBattle::
-	special ShowTrainerIntroSpeech
-	waitmessage
-	waitbuttonpress
-	goto_if_questlog EventScript_EndQuestLogBattle
-	dotrainerbattle
-	specialvar VAR_RESULT, GetTrainerBattleMode
-	goto_if_eq VAR_RESULT, TRAINER_BATTLE_SINGLE, EventScript_EndTrainerBattle
-	goto_if_eq VAR_RESULT, TRAINER_BATTLE_CONTINUE_SCRIPT, EventScript_EndTrainerBattleContinueScript
-	goto_if_eq VAR_RESULT, TRAINER_BATTLE_CONTINUE_SCRIPT_NO_MUSIC, EventScript_EndTrainerBattleContinueScript
-	goto_if_eq VAR_RESULT, TRAINER_BATTLE_CONTINUE_SCRIPT_DOUBLE, EventScript_EndTrainerBattleContinueScript
-	goto_if_eq VAR_RESULT, TRAINER_BATTLE_CONTINUE_SCRIPT_DOUBLE_NO_MUSIC, EventScript_EndTrainerBattleContinueScript
-EventScript_EndTrainerBattle::
-	releaseall
-	end
-
-EventScript_EndTrainerBattleContinueScript::
-	gotobeatenscript
-
-EventScript_EndQuestLogBattle::
-	special SetBattledTrainerFlag
-	releaseall
-	end
-
 Std_MsgboxAutoclose::
-	message 0x0
+	message NULL
 	waitmessage
 	waitbuttonpress
 	release
 	return
+
+EventScript_ShowTrainerIntroMsg::
+	special ShowTrainerIntroSpeech
+	waitmessage
+	waitbuttonpress
+	special TryPrepareSecondApproachingTrainer
+	goto_if_eq VAR_RESULT, TRUE, EventScript_TrainerApproach
+	goto EventScript_DoTrainerBattle
+
+EventScript_DoTrainerBattle::
+	dotrainerbattle
+EventScript_EndTrainerBattle::
+	gotobeatenscript
+	releaseall
+	end
+
+@ Event Snippets for dynamic trainer battle scripting
+EventSnippet_Lock::
+	lock
+	setflag FLAG_SAFE_FOLLOWER_MOVEMENT
+	return
+
+EventSnippet_FacePlayer::
+	faceplayer
+	return
+
+EventSnippet_StartTrainerApproach::
+	selectapproachingtrainer
+	lockfortrainer
+	return
+
+EventSnippet_TrainerApproach::
+	special DoTrainerApproach
+	return
+
+EventSnippet_RevealTrainer::
+	applymovement VAR_LAST_TALKED, Movement_RevealTrainer
+	waitmovement 0
+	clearflag FLAG_SAFE_FOLLOWER_MOVEMENT
+	return
+
+EventSnippet_PlayTrainerEncounterMusic::
+	special PlayTrainerEncounterMusic
+	return
+
+EventSnippet_SetTrainerFacingDirection::
+	special SetTrainerFacingDirection
+	return
+
+EventSnippet_ShowTrainerIntroMsg::
+	special ShowTrainerIntroSpeech
+	waitmessage
+	waitbuttonpress
+	return 
+
+EventSnippet_PrepareSecondTrainerApproach::
+	special PrepareSecondApproachingTrainer
+	return
+
+EventSnippet_GotoPostBattleScript::
+	gotopostbattlescript
+	return
+
+EventSnippet_DoTrainerBattle::
+	dotrainerbattle
+	return
+
+EventSnippet_DoRematchTrainerBattle::
+	special BattleSetup_StartRematchBattle
+	return
+
+EventSnippet_EndTrainerBattle::
+	gotobeatenscript
+	releaseall
+	end
+
+EventSnippet_NotEnoughMonsForDoubleBattle::
+	special ShowTrainerCantBattleSpeech
+	waitmessage
+	waitbuttonpress
+	release
+	end

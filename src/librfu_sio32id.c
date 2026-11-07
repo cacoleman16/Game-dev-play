@@ -24,7 +24,7 @@ s32 AgbRFU_checkID(u8 maxTries)
 {
     u16 ieBak;
     vu16 *regTMCNTL;
-    s32 id;
+    s32 id = 0;
 
     // Interrupts must be enabled
     if (REG_IME == 0)
@@ -124,7 +124,6 @@ static void Sio32IDIntr(void)
     u32 regSIODATA32;
     u16 delay;
     u32 rfuSIO32IdUnk0_times_16;
-    u16 negRfuSIO32IdUnk6;
 
     regSIODATA32 = REG_SIODATA32;
     if (gRfuSIO32Id.MS_mode != AGB_CLK_MASTER)
@@ -146,7 +145,9 @@ static void Sio32IDIntr(void)
                 }
             }
             else
+            {
                 gRfuSIO32Id.lastId = regSIODATA32;
+            }
         }
         else
         {

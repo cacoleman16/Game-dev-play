@@ -1,56 +1,60 @@
 #ifndef GUARD_FLDEFF_H
 #define GUARD_FLDEFF_H
 
-#define FLDEFF_CALL_FUNC_IN_DATA() ((void (*)(void))(((u16)gTasks[taskId].data[8] << 16) | (u16)gTasks[taskId].data[9]))();
+// cut
+bool32 SetUpFieldMove_Cut(void);
+bool8 FldEff_UseCutOnGrass(void);
+bool8 FldEff_UseCutOnTree(void);
+bool8 FldEff_CutGrass(void);
+void FixLongGrassMetatilesWindowTop(s16 x, s16 y);
+void FixLongGrassMetatilesWindowBottom(s16 x, s16 y);
 
-#define FLDEFF_SET_FUNC_TO_DATA(func)                     \
-gTasks[taskId].data[8] = (u32)func >> 16;                 \
-gTasks[taskId].data[9] = (u32)func;
-
+extern const struct SpritePalette gSpritePalette_CutGrass;
 extern struct MapPosition gPlayerFacingPosition;
 
-bool8 CheckObjectGraphicsInFrontOfPlayer(u8 graphicsId);
-u8 CreateFieldEffectShowMon(void);
+// escalator
+void StartEscalator(bool8 goingUp);
+void StopEscalator(void);
+bool8 IsEscalatorMoving(void);
+
+// soft-boiled
+bool32 SetUpFieldMove_SoftBoiled(void);
+void Task_TryUseSoftboiledOnPartyMon(u8 taskId);
+void ChooseMonForSoftboiled(u8 taskId);
 
 // flash
-u8 MapTransitionIsExit(u8 lightLevel, u8 mapType);
-u8 MapTransitionIsEnter(u8 mapType1, u8 mapType2);
-bool8 SetUpFieldMove_Flash(void);
+bool32 SetUpFieldMove_Flash(void);
 void CB2_DoChangeMap(void);
-
-// cut
-bool8 SetUpFieldMove_Cut(void);
-
-// dig
-bool8 SetUpFieldMove_Dig(void);
-bool8 FldEff_UseDig(void);
-
-// rocksmash
-bool8 SetUpFieldMove_RockSmash(void);
-bool8 FldEff_UseRockSmash(void);
-
-// berrytree
-void nullsub_56(void);
-
-// poison
-void FldEffPoison_Start(void);
-bool32 FldEffPoison_IsActive(void);
+bool8 GetMapPairFadeToType(u8 _fromType, u8 _toType);
+bool8 GetMapPairFadeFromType(u8 _fromType, u8 _toType);
 
 // strength
-bool8 SetUpFieldMove_Strength(void);
+bool32 SetUpFieldMove_Strength(void);
 bool8 FldEff_UseStrength(void);
 
+// sweet scent
+bool32 SetUpFieldMove_SweetScent(void);
+bool8 FldEff_SweetScent(void);
+void StartSweetScentFieldEffect(void);
+
 // teleport
-bool8 SetUpFieldMove_Teleport(void);
+bool32 SetUpFieldMove_Teleport(void);
 bool8 FldEff_UseTeleport(void);
 
-// softboiled
-bool8 SetUpFieldMove_SoftBoiled(void);
-void ChooseMonForSoftboiled(u8 taskId);
-void Task_TryUseSoftboiledOnPartyMon(u8 taskId);
+// dig
+bool32 SetUpFieldMove_Dig(void);
+bool8 FldEff_UseDig(void);
 
-// sweetscent
-bool8 SetUpFieldMove_SweetScent(void);
-bool8 FldEff_SweetScent(void);
+// rock smash
+bool8 CheckObjectGraphicsInFrontOfPlayer(u16 graphicsId);
+u8 CreateFieldMoveTask(void);
+bool32 SetUpFieldMove_RockSmash(void);
+bool8 FldEff_UseRockSmash(void);
+
+// defog
+bool32 SetUpFieldMove_Defog(void);
+bool8 FldEff_Defog(void);
+
+void Task_EnterCaveTransition2(u8 taskId);
 
 #endif // GUARD_FLDEFF_H

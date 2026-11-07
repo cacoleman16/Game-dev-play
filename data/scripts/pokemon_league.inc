@@ -1,7 +1,7 @@
 PokemonLeague_EventScript_OpenDoor::
 	applymovement LOCALID_PLAYER, Common_Movement_Delay32
 	waitmovement 0
-	playse SE_RS_DOOR
+	playse SE_DOOR
 	call PokemonLeague_EventScript_SetDoorOpen
 	special DrawWholeMapView
 	setflag FLAG_TEMP_4
@@ -34,7 +34,7 @@ PokemonLeague_EventScript_PreventExit::
 PokemonLeague_EventScript_OpenDoorLance::
 	applymovement LOCALID_PLAYER, Common_Movement_Delay32
 	waitmovement 0
-	playse SE_RS_DOOR
+	playse SE_DOOR
 	setmetatile 6, 4, METATILE_PokemonLeague_Door_Top_Open, 1
 	setmetatile 6, 5, METATILE_PokemonLeague_Door_Mid_Open, 0
 	special DrawWholeMapView
@@ -62,3 +62,7 @@ PokemonLeague_Movement_ForcePlayerIn::
 PokemonLeague_EventScript_DoLightingEffect::
 	special DoPokemonLeagueLightingEffect
 	return
+
+Text_VoiceRangOutDontRunAway::
+	.string "Someone's voice rang out,\n"
+	.string "“Don't run away!”$"

@@ -1,30 +1,24 @@
 #include "global.h"
-#include "gflib.h"
 #include "hall_of_fame.h"
+#include "hall_of_fame_frlg.h"
+#include "main.h"
+#include "palette.h"
 #include "overworld.h"
 #include "script.h"
 #include "script_menu.h"
 #include "task.h"
+#include "constants/rgb.h"
 
 static void ReshowPCMenuAfterHallOfFamePC(void);
-static void Task_WaitForPaletteFade(u8 taskId);
+static void Task_WaitForPaletteFade(u8);
 
-static void Task_WaitFadeAndSetCallback(u8 taskId)
+void AccessHallOfFamePC(void)
 {
-    if (!gPaletteFade.active)
-    {
-        FreeAllWindowBuffers();
-        ResetBgsAndClearDma3BusyFlags(0);
-        DestroyTask(taskId);
+    if (IS_FRLG)
         SetMainCallback2(CB2_InitHofPC);
-    }
-}
-
-void HallOfFamePCBeginFade(void)
-{
-    BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 0x10, RGB_BLACK);
+    else
+        SetMainCallback2(CB2_DoHallOfFamePC);
     LockPlayerFieldControls();
-    CreateTask(Task_WaitFadeAndSetCallback, 0);
 }
 
 void ReturnFromHallOfFamePC(void)
@@ -37,7 +31,7 @@ static void ReshowPCMenuAfterHallOfFamePC(void)
 {
     LockPlayerFieldControls();
     Overworld_PlaySpecialMapMusic();
-    CreatePCMenu();
+    ScriptMenu_CreatePCMultichoice();
     ScriptMenu_DisplayPCStartupPrompt();
     BeginNormalPaletteFade(PALETTES_ALL, 0, 0x10, 0, RGB_BLACK);
     CreateTask(Task_WaitForPaletteFade, 10);

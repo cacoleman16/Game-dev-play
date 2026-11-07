@@ -12,31 +12,23 @@
 #include "task.h"
 #include "strings.h"
 #include "util.h"
-#include "cereader_tool.h"
-#include "help_system.h"
 #include "constants/songs.h"
 
+// Equivalent to MysteryGiftTaskData
 struct EReaderTaskData
 {
     u16 timer;
-    u16 unused1;
-    u16 unused2;
-    u16 unused3;
     u8 state;
     u8 textState;
-    u8 unused4;
-    u8 unused5;
-    u8 unused6;
-    u8 unused7;
     u8 status;
-    u8 *unusedBuffer;
+    u8 *buffer;
 };
 
 struct EReaderData
 {
     u16 status;
-    size_t size;
-    const void *data;
+    u32 size;
+    u32 *data;
 };
 
 static void Task_EReader(u8);
@@ -46,16 +38,16 @@ COMMON_DATA struct EReaderData gEReaderData = {0};
 extern const u8 gMultiBootProgram_EReader_Start[];
 extern const u8 gMultiBootProgram_EReader_End[];
 
-static void EReader_Load(struct EReaderData *eReader, size_t size, const void *data)
+static void EReader_Load(struct EReaderData *eReader, int size, u32 *data)
 {
-    vu16 imeBak = REG_IME;
+    volatile u16 backupIME = REG_IME;
     REG_IME = 0;
     gIntrTable[1] = EReaderHelper_SerialCallback;
     gIntrTable[2] = EReaderHelper_Timer3Callback;
     EReaderHelper_SaveRegsState();
-    EReaderHelper_ClearsSendRecvMgr();
+    EReaderHelper_ClearSendRecvMgr();
     REG_IE |= INTR_FLAG_VCOUNT;
-    REG_IME = imeBak;
+    REG_IME = backupIME;
     eReader->status = 0;
     eReader->size = size;
     eReader->data = data;
@@ -63,12 +55,12 @@ static void EReader_Load(struct EReaderData *eReader, size_t size, const void *d
 
 static void EReader_Reset(struct EReaderData *eReader)
 {
-    vu16 imeBak = REG_IME;
+    volatile u16 backupIME = REG_IME;
     REG_IME = 0;
-    EReaderHelper_ClearsSendRecvMgr();
+    EReaderHelper_ClearSendRecvMgr();
     EReaderHelper_RestoreRegsState();
     RestoreSerialTimer3IntrHandlers();
-    REG_IME = imeBak;
+    REG_IME = backupIME;
 }
 
 // Return values for EReader_Transfer
@@ -99,35 +91,37 @@ static u8 EReader_Transfer(struct EReaderData *eReader)
 
 static void OpenEReaderLink(void)
 {
-    memset(gDecompressionBuffer, 0, 0x2000);
-    gLinkType = LINKTYPE_EREADER_FRLG;
+    gLinkType = LINKTYPE_EREADER_EM;
     OpenLink();
     SetSuppressLinkErrorMessage(TRUE);
 }
 
 static bool32 ValidateEReaderConnection(void)
 {
-    vu16 imeBak = REG_IME;
+    volatile u16 backupIME;
     u16 handshakes[MAX_LINK_PLAYERS];
 
+    backupIME = REG_IME;
     REG_IME = 0;
-    *(u64 *)handshakes = *(u64 *)gLink.tempRecvBuffer;
-    REG_IME = imeBak;
+    *(u64 *)handshakes = *(u64 *)gLink.handshakeBuffer;
+    REG_IME = backupIME;
 
     // Validate that we are player 1, the EReader is player 2,
     // and that players 3 and 4 are empty.
-    if (handshakes[0] == SLAVE_HANDSHAKE
-     && handshakes[1] == EREADER_HANDSHAKE
-     && handshakes[2] == 0xFFFF
-     && handshakes[3] == 0xFFFF)
+    if (handshakes[0] == SLAVE_HANDSHAKE && handshakes[1] == EREADER_HANDSHAKE
+     && handshakes[2] == 0xFFFF && handshakes[3] == 0xFFFF)
+    {
         return TRUE;
+    }
+
     return FALSE;
 }
 
-static bool32 IsEReaderConnectionSane(void)
+static bool32 IsChildConnected(void)
 {
     if (IsLinkMaster() && GetLinkPlayerCount_2() == 2)
         return TRUE;
+
     return FALSE;
 }
 
@@ -151,12 +145,11 @@ enum {
     RECV_TIMEOUT,
 };
 
-static u32 TryReceiveCard(u8 * state, u16 * timer)
+static u32 TryReceiveCard(u8 *state, u16 *timer)
 {
-    if ((*state == RECV_STATE_EXCHANGE
-      || *state == RECV_STATE_START_DISCONNECT
-      || *state == RECV_STATE_WAIT_DISCONNECT)
-        && HasLinkErrorOccurred())
+    if (*state >= RECV_STATE_EXCHANGE
+     && *state <= RECV_STATE_WAIT_DISCONNECT
+     && HasLinkErrorOccurred())
     {
         // Return error status if an error occurs
         // during the link exchange.
@@ -204,7 +197,7 @@ static u32 TryReceiveCard(u8 * state, u16 * timer)
             *state = 0;
             return RECV_TIMEOUT;
         }
-        
+
         if (IsLinkConnectionEstablished())
         {
             if (gReceivedRemoteLinkPlayers)
@@ -215,10 +208,14 @@ static u32 TryReceiveCard(u8 * state, u16 * timer)
                     return RECV_SUCCESS;
                 }
                 else
+                {
                     *state = RECV_STATE_START_DISCONNECT;
+                }
             }
             else
+            {
                 *state = RECV_STATE_EXCHANGE;
+            }
         }
         break;
     case RECV_STATE_START_DISCONNECT:
@@ -232,26 +229,23 @@ static u32 TryReceiveCard(u8 * state, u16 * timer)
             return RECV_DISCONNECTED;
         }
         break;
+    default:
+        return RECV_ACTIVE;
     }
+
     return RECV_ACTIVE;
 }
 
 void CreateEReaderTask(void)
 {
+    struct EReaderTaskData *data;
     u8 taskId = CreateTask(Task_EReader, 0);
-    struct EReaderTaskData *data = (struct EReaderTaskData *)gTasks[taskId].data;
+    data = (struct EReaderTaskData *)gTasks[taskId].data;
     data->state = 0;
     data->textState = 0;
-    data->unused4 = 0;
-    data->unused5 = 0;
-    data->unused6 = 0;
-    data->unused7 = 0;
     data->timer = 0;
-    data->unused1 = 0;
-    data->unused2 = 0;
-    data->unused3 = 0;
     data->status = 0;
-    data->unusedBuffer = AllocZeroed(CLIENT_MAX_MSG_SIZE);
+    data->buffer = AllocZeroed(0x2000);
 }
 
 static void ResetTimer(u16 *timer)
@@ -259,7 +253,7 @@ static void ResetTimer(u16 *timer)
     *timer = 0;
 }
 
-static bool32 UpdateTimer(u16 * timer, u16 time)
+static bool32 UpdateTimer(u16 *timer, u16 time)
 {
     if (++(*timer) > time)
     {
@@ -267,6 +261,7 @@ static bool32 UpdateTimer(u16 * timer, u16 time)
         *timer = 0;
         return TRUE;
     }
+
     return FALSE;
 }
 
@@ -320,18 +315,20 @@ static void Task_EReader(u8 taskId)
             data->state = ER_STATE_INIT_LINK_CHECK;
         break;
     case ER_STATE_INIT_LINK_CHECK:
-        if (!IsEReaderConnectionSane())
+        if (!IsChildConnected())
         {
             CloseLink();
             data->state = ER_STATE_MSG_SELECT_CONNECT;
         }
         else
+        {
             data->state = ER_STATE_LOAD_CARD;
+        }
         break;
     case ER_STATE_MSG_SELECT_CONNECT:
         if (PrintMysteryGiftMenuMessage(&data->textState, gJPText_SelectConnectFromEReaderMenu))
         {
-            AddTextPrinterToWindow1(gJPText_SelectConnectWithGBA);
+            MG_AddMessageTextPrinter(gJPText_SelectConnectWithGBA);
             ResetTimer(&data->timer);
             data->state = ER_STATE_MSG_SELECT_CONNECT_WAIT;
         }
@@ -385,8 +382,9 @@ static void Task_EReader(u8 taskId)
             data->state = ER_STATE_MSG_SELECT_CONNECT;
         break;
     case ER_STATE_CONNECTING:
-        AddTextPrinterToWindow1(gJPText_Connecting);
-        EReader_Load(&gEReaderData, gMultiBootProgram_EReader_End - gMultiBootProgram_EReader_Start, gMultiBootProgram_EReader_Start);
+        MG_AddMessageTextPrinter(gJPText_Connecting);
+        // XXX: This (u32 *) cast is discarding the const qualifier from gMultiBootProgram_EReader_Start
+        EReader_Load(&gEReaderData, gMultiBootProgram_EReader_End - gMultiBootProgram_EReader_Start, (u32 *)gMultiBootProgram_EReader_Start);
         data->state = ER_STATE_TRANSFER;
         break;
     case ER_STATE_TRANSFER:
@@ -403,7 +401,7 @@ static void Task_EReader(u8 taskId)
         else if (data->status == TRANSFER_SUCCESS)
         {
             ResetTimer(&data->timer);
-            AddTextPrinterToWindow1(gJPText_PleaseWaitAMoment);
+            MG_AddMessageTextPrinter(gJPText_PleaseWaitAMoment);
             data->state = ER_STATE_TRANSFER_SUCCESS;
         }
         else // TRANSFER_CANCELED
@@ -417,17 +415,16 @@ static void Task_EReader(u8 taskId)
         break;
     case ER_STATE_LOAD_CARD_START:
         OpenEReaderLink();
-        AddTextPrinterToWindow1(gJPText_AllowEReaderToLoadCard);
+        MG_AddMessageTextPrinter(gJPText_AllowEReaderToLoadCard);
         data->state = ER_STATE_LOAD_CARD;
         break;
     case ER_STATE_LOAD_CARD:
         switch (TryReceiveCard(&data->textState, &data->timer))
         {
         case RECV_ACTIVE:
-            // Running
             break;
         case RECV_SUCCESS:
-            AddTextPrinterToWindow1(gJPText_Connecting);
+            MG_AddMessageTextPrinter(gJPText_Connecting);
             data->state = ER_STATE_WAIT_RECV_CARD;
             break;
         case RECV_CANCELED:
@@ -459,7 +456,7 @@ static void Task_EReader(u8 taskId)
         }
         break;
     case ER_STATE_VALIDATE_CARD:
-        data->status = ValidateTrainerTowerData((struct EReaderTrainerTowerSet *)gDecompressionBuffer);
+        data->status = ValidateTrainerHillData((struct EReaderTrainerHillSet *)data->buffer);
         SetCloseLinkCallbackAndType(data->status);
         data->state = ER_STATE_WAIT_DISCONNECT;
         break;
@@ -473,25 +470,27 @@ static void Task_EReader(u8 taskId)
         }
         break;
     case ER_STATE_SAVE:
-        if (CEReaderTool_SaveTrainerTower((struct EReaderTrainerTowerSet *)gDecompressionBuffer))
+        if (TryWriteTrainerHill((struct EReaderTrainerHillSet *)data->buffer))
         {
-            AddTextPrinterToWindow1(gJPText_ConnectionComplete);
+            MG_AddMessageTextPrinter(gJPText_ConnectionComplete);
             ResetTimer(&data->timer);
             data->state = ER_STATE_SUCCESS_MSG;
         }
         else
+        {
             data->state = ER_STATE_SAVE_FAILED;
+        }
         break;
     case ER_STATE_SUCCESS_MSG:
         if (UpdateTimer(&data->timer, 120))
         {
-            AddTextPrinterToWindow1(gJPText_NewTrainerHasComeToSevii);
+            MG_AddMessageTextPrinter(gJPText_NewTrainerHasComeToHoenn);
             PlayFanfare(MUS_OBTAIN_ITEM);
             data->state = ER_STATE_SUCCESS_END;
         }
         break;
     case ER_STATE_SUCCESS_END:
-        if (IsFanfareTaskInactive() && JOY_NEW(A_BUTTON | B_BUTTON))
+        if (IsFanfareTaskInactive() && (JOY_NEW(A_BUTTON | B_BUTTON)))
             data->state = ER_STATE_END;
         break;
     case ER_STATE_CANCELED_CARD_READ:
@@ -511,8 +510,7 @@ static void Task_EReader(u8 taskId)
             data->state = ER_STATE_START;
         break;
     case ER_STATE_END:
-        HelpSystem_Enable();
-        Free(data->unusedBuffer);
+        Free(data->buffer);
         DestroyTask(taskId);
         SetMainCallback2(MainCB_FreeAllBuffersAndReturnToInitTitleScreen);
         break;

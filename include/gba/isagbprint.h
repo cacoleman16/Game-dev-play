@@ -9,7 +9,7 @@
 #define MGBA_LOG_INFO   (3)
 #define MGBA_LOG_DEBUG  (4)
 
-#if defined(NDEBUG) && !(REVISION >= 0xA)
+#ifdef NDEBUG
 #define DebugPrintf(pBuf, ...)
 #define DebugPrintfLevel(level, pBuf, ...)
 #define MgbaOpen()
@@ -30,7 +30,7 @@ void AGBPrintInit(void);
 
 #if (LOG_HANDLER == LOG_HANDLER_MGBA_PRINT)
 
-#define DebugPrintf(pBuf, ...) MgbaPrintf(MGBA_LOG_INFO, pBuf, ## __VA_ARGS__)
+#define DebugPrintf(pBuf, ...) MgbaPrintf(MGBA_LOG_WARN, pBuf, ## __VA_ARGS__)
 #define DebugAssert(pFile, nLine, pExpression, nStopProgram) MgbaAssert(pFile, nLine, pExpression, nStopProgram)
 #define DebugPrintfLevel(level, pBuf, ...) MgbaPrintf(level, pBuf, ## __VA_ARGS__)
 
@@ -63,7 +63,6 @@ void AGBPrintInit(void);
 
 #define AGB_WARNING_EX(exp, file, line) (exp) ? ((void *)0) : DebugAssert(file, line, #exp, FALSE);
 #define AGB_ASSERT_EX(exp, file, line) (exp) ? ((void *)0) : DebugAssert(file, line, #exp, TRUE);
-
 #endif
 
 #endif // GUARD_GBA_ISAGBPRINT_H

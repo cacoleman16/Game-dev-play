@@ -1,32 +1,28 @@
 #include "global.h"
-#include "gflib.h"
-#include "util.h"
-#include "event_data.h"
-#include "cereader_tool.h"
-#include "easy_chat.h"
-#include "battle_setup.h"
-#include "battle_transition.h"
 #include "battle.h"
 #include "battle_main.h"
-#include "overworld.h"
+#include "battle_setup.h"
+#include "battle_transition.h"
+#include "easy_chat.h"
+#include "event_data.h"
 #include "item.h"
+#include "malloc.h"
 #include "menu.h"
-#include "new_menu_helpers.h"
-#include "constants/items.h"
-#include "constants/songs.h"
-#include "constants/layouts.h"
-#include "constants/trainers.h"
+#include "overworld.h"
+#include "sound.h"
+#include "strings.h"
+#include "string_util.h"
+#include "trainer_tower.h"
+#include "util.h"
 #include "constants/event_objects.h"
+#include "constants/items.h"
+#include "constants/layouts.h"
+#include "constants/songs.h"
+#include "constants/trainers.h"
 #include "constants/trainer_tower.h"
 
 #define CURR_FLOOR sTrainerTowerState->data.floors[sTrainerTowerState->floorIdx]
 #define TRAINER_TOWER gSaveBlock1Ptr->trainerTower[gSaveBlock1Ptr->towerChallengeId]
-
-struct TrainerTowerState
-{
-    /* 0x0000 */ u8 floorIdx;
-    /* 0x0004 */ struct EReaderTrainerTowerSet data;
-};
 
 struct TrainerTowerOpponent
 {
@@ -42,15 +38,15 @@ struct TrainerTowerOpponent
 
 struct SinglesTrainerInfo
 {
-    u8 objGfx;
+    u16 objGfx;
     u8 facilityClass;
     bool8 gender;
 };
 
 struct DoublesTrainerInfo
 {
-    u8 objGfx1;
-    u8 objGfx2;
+    u16 objGfx1;
+    u16 objGfx2;
     u8 facilityClass;
     bool8 gender1;
     bool8 gender2;
@@ -64,7 +60,6 @@ struct TrainerEncounterMusicPairs
 
 static EWRAM_DATA struct TrainerTowerState * sTrainerTowerState = NULL;
 static EWRAM_DATA struct TrainerTowerOpponent * sTrainerTowerOpponent = NULL;
-static EWRAM_DATA u8 sUnused = 0;
 
 static void SetUpTrainerTowerDataStruct(void);
 static void FreeTrainerTowerDataStruct(void);
@@ -95,217 +90,140 @@ static void HasSpokenToOwner(void);
 static void BuildEnemyParty(void);
 static s32 GetPartyMaxLevel(void);
 static void ValidateOrResetCurTrainerTowerRecord(void);
+#if FREE_TRAINER_TOWER == FALSE && IS_FRLG
 static u32 GetTrainerTowerRecordTime(u32 *);
 static void SetTrainerTowerRecordTime(u32 *, u32);
+#endif //FREE_TRAINER_TOWER
+
+const u8 gText_XMinYZSec[] = _("{STR_VAR_1}MIN. {STR_VAR_2}.{STR_VAR_3}SEC.");
 
 extern const u8 gText_TimeBoard[];
-extern const u8 gText_XMinYZSec[];
-extern const u8 *const gTrainerTowerChallengeTypeTexts[];
+
+
+const u8 *const gTrainerTowerChallengeTypeTexts[NUM_TOWER_CHALLENGE_TYPES] =
+{
+    gText_Single,
+    gText_Double,
+    gText_Knockout,
+    gText_Mixed
+};
 
 static const struct SinglesTrainerInfo sSingleBattleTrainerInfo[] = {
-    {OBJ_EVENT_GFX_WOMAN_2,        FACILITY_CLASS_RS_AROMA_LADY,     FEMALE},
-    {OBJ_EVENT_GFX_HIKER,          FACILITY_CLASS_RS_RUIN_MANIAC,      MALE},
-    {OBJ_EVENT_GFX_TUBER_F,        FACILITY_CLASS_RS_TUBER_F,        FEMALE},
-    {OBJ_EVENT_GFX_TUBER_M_LAND,   FACILITY_CLASS_RS_TUBER_M,          MALE},
-    {OBJ_EVENT_GFX_COOLTRAINER_M,  FACILITY_CLASS_RS_COOLTRAINER_M,    MALE},
-    {OBJ_EVENT_GFX_COOLTRAINER_F,  FACILITY_CLASS_RS_COOLTRAINER_F,  FEMALE},
-    {OBJ_EVENT_GFX_POKE_MANIAC,    FACILITY_CLASS_HEX_MANIAC,          MALE},
-    {OBJ_EVENT_GFX_WOMAN_2,        FACILITY_CLASS_RS_LADY,           FEMALE},
-    {OBJ_EVENT_GFX_BEAUTY,         FACILITY_CLASS_RS_BEAUTY,         FEMALE},
-    {OBJ_EVENT_GFX_BOY,            FACILITY_CLASS_RICH_BOY,            MALE},
-    {OBJ_EVENT_GFX_POKE_MANIAC,    FACILITY_CLASS_RS_POKEMANIAC,       MALE},
-    {OBJ_EVENT_GFX_SWIMMER_M_LAND, FACILITY_CLASS_RS_SWIMMER_M,        MALE},
-    {OBJ_EVENT_GFX_BLACK_BELT,     FACILITY_CLASS_RS_BLACK_BELT,       MALE},
-    {OBJ_EVENT_GFX_ROCKER,         FACILITY_CLASS_GUITARIST,           MALE},
-    {OBJ_EVENT_GFX_ROCKER,         FACILITY_CLASS_KINDLER,             MALE},
-    {OBJ_EVENT_GFX_CAMPER,         FACILITY_CLASS_RS_CAMPER,           MALE},
-    {OBJ_EVENT_GFX_POKE_MANIAC,    FACILITY_CLASS_BUG_MANIAC,          MALE},
-    {OBJ_EVENT_GFX_BOY,            FACILITY_CLASS_RS_PSYCHIC_M,        MALE},
-    {OBJ_EVENT_GFX_WOMAN_1,        FACILITY_CLASS_RS_PSYCHIC_F,      FEMALE},
-    {OBJ_EVENT_GFX_GENTLEMAN,      FACILITY_CLASS_RS_GENTLEMAN,        MALE},
-    {OBJ_EVENT_GFX_BOY,            FACILITY_CLASS_SCHOOL_KID_M,        MALE},
-    {OBJ_EVENT_GFX_WOMAN_1,        FACILITY_CLASS_SCHOOL_KID_F,      FEMALE},
-    {OBJ_EVENT_GFX_BALDING_MAN,    FACILITY_CLASS_POKEFAN_M,           MALE},
-    {OBJ_EVENT_GFX_WOMAN_3,        FACILITY_CLASS_POKEFAN_F,         FEMALE},
-    {OBJ_EVENT_GFX_OLD_MAN_1,      FACILITY_CLASS_EXPERT_M,            MALE},
-    {OBJ_EVENT_GFX_OLD_WOMAN,      FACILITY_CLASS_EXPERT_F,          FEMALE},
-    {OBJ_EVENT_GFX_YOUNGSTER,      FACILITY_CLASS_RS_YOUNGSTER,        MALE},
-    {OBJ_EVENT_GFX_FISHER,         FACILITY_CLASS_RS_FISHERMAN,        MALE},
-    {OBJ_EVENT_GFX_COOLTRAINER_M,  FACILITY_CLASS_DRAGON_TAMER,        MALE},
-    {OBJ_EVENT_GFX_ROCKER,         FACILITY_CLASS_RS_BIRD_KEEPER,      MALE},
-    {OBJ_EVENT_GFX_LITTLE_BOY,     FACILITY_CLASS_NINJA_BOY,           MALE},
-    {OBJ_EVENT_GFX_CRUSH_GIRL,     FACILITY_CLASS_BATTLE_GIRL,       FEMALE},
-    {OBJ_EVENT_GFX_BEAUTY,         FACILITY_CLASS_PARASOL_LADY,      FEMALE},
-    {OBJ_EVENT_GFX_SWIMMER_F_LAND, FACILITY_CLASS_RS_SWIMMER_F,      FEMALE},
-    {OBJ_EVENT_GFX_PICNICKER,      FACILITY_CLASS_RS_PICNICKER,      FEMALE},
-    {OBJ_EVENT_GFX_SAILOR,         FACILITY_CLASS_RS_SAILOR,           MALE},
-    {OBJ_EVENT_GFX_FAT_MAN,        FACILITY_CLASS_COLLECTOR,           MALE},
-    {OBJ_EVENT_GFX_MAN,            FACILITY_CLASS_RS_PKMN_BREEDER_M,   MALE},
-    {OBJ_EVENT_GFX_WOMAN_2,        FACILITY_CLASS_RS_PKMN_BREEDER_F, FEMALE},
-    {OBJ_EVENT_GFX_CAMPER,         FACILITY_CLASS_RS_PKMN_RANGER_M,    MALE},
-    {OBJ_EVENT_GFX_PICNICKER,      FACILITY_CLASS_RS_PKMN_RANGER_F,  FEMALE},
-    {OBJ_EVENT_GFX_LASS,           FACILITY_CLASS_RS_LASS,           FEMALE},
-    {OBJ_EVENT_GFX_BUG_CATCHER,    FACILITY_CLASS_RS_BUG_CATCHER,      MALE},
-    {OBJ_EVENT_GFX_HIKER,          FACILITY_CLASS_RS_HIKER,            MALE},
-    {OBJ_EVENT_GFX_YOUNGSTER,      FACILITY_CLASS_YOUNGSTER,           MALE},
-    {OBJ_EVENT_GFX_BUG_CATCHER,    FACILITY_CLASS_BUG_CATCHER,         MALE},
-    {OBJ_EVENT_GFX_LASS,           FACILITY_CLASS_LASS,              FEMALE},
-    {OBJ_EVENT_GFX_SAILOR,         FACILITY_CLASS_SAILOR,              MALE},
-    {OBJ_EVENT_GFX_CAMPER,         FACILITY_CLASS_CAMPER,              MALE},
-    {OBJ_EVENT_GFX_PICNICKER,      FACILITY_CLASS_PICNICKER,         FEMALE},
-    {OBJ_EVENT_GFX_POKE_MANIAC,    FACILITY_CLASS_POKEMANIAC,          MALE},
-    {OBJ_EVENT_GFX_POKE_MANIAC,    FACILITY_CLASS_SUPER_NERD,          MALE},
-    {OBJ_EVENT_GFX_HIKER,          FACILITY_CLASS_HIKER,               MALE},
-    {OBJ_EVENT_GFX_BIKER,          FACILITY_CLASS_BIKER,               MALE},
-    {OBJ_EVENT_GFX_POKE_MANIAC,    FACILITY_CLASS_BURGLAR,             MALE},
-    {OBJ_EVENT_GFX_BALDING_MAN,    FACILITY_CLASS_ENGINEER,            MALE},
-    {OBJ_EVENT_GFX_FISHER,         FACILITY_CLASS_FISHERMAN,           MALE},
-    {OBJ_EVENT_GFX_SWIMMER_M_LAND, FACILITY_CLASS_SWIMMER_M,           MALE},
-    {OBJ_EVENT_GFX_BIKER,          FACILITY_CLASS_CUE_BALL,            MALE},
-    {OBJ_EVENT_GFX_OLD_MAN_1,      FACILITY_CLASS_GAMER,               MALE},
-    {OBJ_EVENT_GFX_BEAUTY,         FACILITY_CLASS_BEAUTY,            FEMALE},
-    {OBJ_EVENT_GFX_SWIMMER_F_LAND, FACILITY_CLASS_SWIMMER_F,         FEMALE},
-    {OBJ_EVENT_GFX_BOY,            FACILITY_CLASS_PSYCHIC_M,           MALE},
-    {OBJ_EVENT_GFX_ROCKER,         FACILITY_CLASS_ROCKER,              MALE},
-    {OBJ_EVENT_GFX_ROCKER,         FACILITY_CLASS_JUGGLER,             MALE},
-    {OBJ_EVENT_GFX_MAN,            FACILITY_CLASS_TAMER,               MALE},
-    {OBJ_EVENT_GFX_ROCKER,         FACILITY_CLASS_BIRD_KEEPER,         MALE},
-    {OBJ_EVENT_GFX_BLACK_BELT,     FACILITY_CLASS_BLACK_BELT,          MALE},
-    {OBJ_EVENT_GFX_SCIENTIST,      FACILITY_CLASS_SCIENTIST,           MALE},
-    {OBJ_EVENT_GFX_COOLTRAINER_M,  FACILITY_CLASS_COOLTRAINER_M,       MALE},
-    {OBJ_EVENT_GFX_COOLTRAINER_F,  FACILITY_CLASS_COOLTRAINER_F,     FEMALE},
-    {OBJ_EVENT_GFX_GENTLEMAN,      FACILITY_CLASS_GENTLEMAN,           MALE},
-    {OBJ_EVENT_GFX_CHANNELER,      FACILITY_CLASS_CHANNELER,         FEMALE},
-    {OBJ_EVENT_GFX_WOMAN_1,        FACILITY_CLASS_PSYCHIC_F,         FEMALE},
-    {OBJ_EVENT_GFX_CRUSH_GIRL,     FACILITY_CLASS_CRUSH_GIRL,        FEMALE},
-    {OBJ_EVENT_GFX_TUBER_F,        FACILITY_CLASS_TUBER,             FEMALE},
-    {OBJ_EVENT_GFX_WOMAN_2,        FACILITY_CLASS_PKMN_BREEDER,      FEMALE},
-    {OBJ_EVENT_GFX_CAMPER,         FACILITY_CLASS_PKMN_RANGER_M,       MALE},
-    {OBJ_EVENT_GFX_PICNICKER,      FACILITY_CLASS_PKMN_RANGER_F,     FEMALE},
-    {OBJ_EVENT_GFX_WOMAN_2,        FACILITY_CLASS_AROMA_LADY,        FEMALE},
-    {OBJ_EVENT_GFX_HIKER,          FACILITY_CLASS_RUIN_MANIAC,         MALE},
-    {OBJ_EVENT_GFX_WOMAN_2,        FACILITY_CLASS_LADY,              FEMALE},
-    {OBJ_EVENT_GFX_LASS,           FACILITY_CLASS_PAINTER,           FEMALE}
+    {OBJ_EVENT_GFX_POKE_MANIAC_FRLG, FACILITY_CLASS_HEX_MANIAC,         MALE},
+    {OBJ_EVENT_GFX_BOY,              FACILITY_CLASS_RICH_BOY,           MALE},
+    {OBJ_EVENT_GFX_ROCKER,           FACILITY_CLASS_GUITARIST,          MALE},
+    {OBJ_EVENT_GFX_ROCKER,           FACILITY_CLASS_KINDLER,            MALE},
+    {OBJ_EVENT_GFX_POKE_MANIAC_FRLG, FACILITY_CLASS_BUG_MANIAC,         MALE},
+    {OBJ_EVENT_GFX_BOY,              FACILITY_CLASS_SCHOOL_KID_M,       MALE},
+    {OBJ_EVENT_GFX_WOMAN_1_FRLG,     FACILITY_CLASS_SCHOOL_KID_F,       FEMALE},
+    {OBJ_EVENT_GFX_BALDING_MAN,      FACILITY_CLASS_POKEFAN_M,          MALE},
+    {OBJ_EVENT_GFX_WOMAN_3_FRLG,     FACILITY_CLASS_POKEFAN_F,          FEMALE},
+    {OBJ_EVENT_GFX_OLD_MAN_1,        FACILITY_CLASS_EXPERT_M,           MALE},
+    {OBJ_EVENT_GFX_OLD_WOMAN_FRLG,   FACILITY_CLASS_EXPERT_F,           FEMALE},
+    {OBJ_EVENT_GFX_COOLTRAINER_M,    FACILITY_CLASS_DRAGON_TAMER,       MALE},
+    {OBJ_EVENT_GFX_LITTLE_BOY_FRLG,  FACILITY_CLASS_NINJA_BOY,          MALE},
+    {OBJ_EVENT_GFX_CRUSH_GIRL,       FACILITY_CLASS_BATTLE_GIRL,        FEMALE},
+    {OBJ_EVENT_GFX_BEAUTY_FRLG,      FACILITY_CLASS_PARASOL_LADY,       FEMALE},
+    {OBJ_EVENT_GFX_FAT_MAN_FRLG,     FACILITY_CLASS_COLLECTOR,          MALE},
+    {OBJ_EVENT_GFX_YOUNGSTER_FRLG,   FACILITY_CLASS_YOUNGSTER_FRLG,     MALE},
+    {OBJ_EVENT_GFX_BUG_CATCHER_FRLG, FACILITY_CLASS_BUG_CATCHER_FRLG,   MALE},
+    {OBJ_EVENT_GFX_LASS_FRLG,        FACILITY_CLASS_LASS_FRLG,          FEMALE},
+    {OBJ_EVENT_GFX_SAILOR_FRLG,      FACILITY_CLASS_SAILOR_FRLG,        MALE},
+    {OBJ_EVENT_GFX_CAMPER_FRLG,      FACILITY_CLASS_CAMPER_FRLG,        MALE},
+    {OBJ_EVENT_GFX_PICNICKER_FRLG,   FACILITY_CLASS_PICNICKER_FRLG,     FEMALE},
+    {OBJ_EVENT_GFX_POKE_MANIAC_FRLG, FACILITY_CLASS_POKEMANIAC,         MALE},
+    {OBJ_EVENT_GFX_POKE_MANIAC_FRLG, FACILITY_CLASS_SUPER_NERD_FRLG,    MALE},
+    {OBJ_EVENT_GFX_HIKER_FRLG,       FACILITY_CLASS_HIKER_FRLG,         MALE},
+    {OBJ_EVENT_GFX_BIKER,            FACILITY_CLASS_BIKER_FRLG,         MALE},
+    {OBJ_EVENT_GFX_POKE_MANIAC_FRLG, FACILITY_CLASS_BURGLAR_FRLG,       MALE},
+    {OBJ_EVENT_GFX_BALDING_MAN,      FACILITY_CLASS_ENGINEER_FRLG,      MALE},
+    {OBJ_EVENT_GFX_FISHER,           FACILITY_CLASS_FISHERMAN_FRLG,     MALE},
+    {OBJ_EVENT_GFX_SWIMMER_M_LAND,   FACILITY_CLASS_SWIMMER_M_FRLG,     MALE},
+    {OBJ_EVENT_GFX_BIKER,            FACILITY_CLASS_CUE_BALL_FRLG,      MALE},
+    {OBJ_EVENT_GFX_BEAUTY_FRLG,      FACILITY_CLASS_BEAUTY_FRLG,        FEMALE},
+    {OBJ_EVENT_GFX_SWIMMER_F_LAND,   FACILITY_CLASS_SWIMMER_F_FRLG,     FEMALE},
+    {OBJ_EVENT_GFX_BOY,              FACILITY_CLASS_PSYCHIC_M_FRLG,     MALE},
+    {OBJ_EVENT_GFX_ROCKER,           FACILITY_CLASS_ROCKER_FRLG,        MALE},
+    {OBJ_EVENT_GFX_ROCKER,           FACILITY_CLASS_JUGGLER_FRLG,       MALE},
+    {OBJ_EVENT_GFX_ROCKER,           FACILITY_CLASS_BIRD_KEEPER,        MALE},
+    {OBJ_EVENT_GFX_BLACK_BELT_FRLG,  FACILITY_CLASS_BLACK_BELT_FRLG,    MALE},
+    {OBJ_EVENT_GFX_SCIENTIST,        FACILITY_CLASS_SCIENTIST_FRLG,     MALE},
+    {OBJ_EVENT_GFX_COOLTRAINER_M,    FACILITY_CLASS_COOLTRAINER_M_FRLG, MALE},
+    {OBJ_EVENT_GFX_COOLTRAINER_F,    FACILITY_CLASS_COOLTRAINER_F_FRLG, FEMALE},
+    {OBJ_EVENT_GFX_GENTLEMAN,        FACILITY_CLASS_GENTLEMAN_FRLG,     MALE},
+    {OBJ_EVENT_GFX_WOMAN_1_FRLG,     FACILITY_CLASS_PSYCHIC_F_FRLG,     FEMALE},
+    {OBJ_EVENT_GFX_CRUSH_GIRL,       FACILITY_CLASS_CRUSH_GIRL_FRLG,    FEMALE},
+    {OBJ_EVENT_GFX_TUBER_F_FRLG,     FACILITY_CLASS_TUBER_FRLG,         FEMALE},
+    {OBJ_EVENT_GFX_WOMAN_2_FRLG,     FACILITY_CLASS_PKMN_BREEDER_FRLG,  FEMALE},
+    {OBJ_EVENT_GFX_CAMPER_FRLG,      FACILITY_CLASS_PKMN_RANGER_M_FRLG, MALE},
+    {OBJ_EVENT_GFX_PICNICKER_FRLG,   FACILITY_CLASS_PKMN_RANGER_F_FRLG, FEMALE},
+    {OBJ_EVENT_GFX_WOMAN_2_FRLG,     FACILITY_CLASS_AROMA_LADY_FRLG,    FEMALE},
+    {OBJ_EVENT_GFX_HIKER_FRLG,       FACILITY_CLASS_RUIN_MANIAC,        MALE},
+    {OBJ_EVENT_GFX_WOMAN_2_FRLG,     FACILITY_CLASS_LADY_FRLG,          FEMALE}
 };
 
 static const struct DoublesTrainerInfo sDoubleBattleTrainerInfo[] = {
-    {OBJ_EVENT_GFX_BEAUTY,         OBJ_EVENT_GFX_WOMAN_1,        FACILITY_CLASS_SR_AND_JR,       FEMALE, FEMALE},
-    {OBJ_EVENT_GFX_LITTLE_GIRL,    OBJ_EVENT_GFX_LITTLE_GIRL,    FACILITY_CLASS_RS_TWINS,        FEMALE, FEMALE},
-    {OBJ_EVENT_GFX_BEAUTY,         OBJ_EVENT_GFX_MAN,            FACILITY_CLASS_RS_YOUNG_COUPLE, FEMALE,   MALE},
-    {OBJ_EVENT_GFX_OLD_MAN_1,      OBJ_EVENT_GFX_OLD_WOMAN,      FACILITY_CLASS_OLD_COUPLE,        MALE, FEMALE},
-    {OBJ_EVENT_GFX_TUBER_M_LAND,   OBJ_EVENT_GFX_SWIMMER_F_LAND, FACILITY_CLASS_RS_SIS_AND_BRO,    MALE, FEMALE},
-    {OBJ_EVENT_GFX_LITTLE_GIRL,    OBJ_EVENT_GFX_LITTLE_GIRL,    FACILITY_CLASS_TWINS,           FEMALE, FEMALE},
-    {OBJ_EVENT_GFX_COOLTRAINER_M,  OBJ_EVENT_GFX_COOLTRAINER_F,  FACILITY_CLASS_COOL_COUPLE,       MALE, FEMALE},
-    {OBJ_EVENT_GFX_BEAUTY,         OBJ_EVENT_GFX_MAN,            FACILITY_CLASS_YOUNG_COUPLE,    FEMALE,   MALE},
-    {OBJ_EVENT_GFX_CRUSH_GIRL,     OBJ_EVENT_GFX_BLACK_BELT,     FACILITY_CLASS_CRUSH_KIN,       FEMALE,   MALE},
-    {OBJ_EVENT_GFX_SWIMMER_F_LAND, OBJ_EVENT_GFX_TUBER_M_LAND,   FACILITY_CLASS_SIS_AND_BRO,     FEMALE,   MALE}
+    {OBJ_EVENT_GFX_BEAUTY_FRLG,      OBJ_EVENT_GFX_WOMAN_1_FRLG,     FACILITY_CLASS_SR_AND_JR,         FEMALE, FEMALE},
+    {OBJ_EVENT_GFX_OLD_MAN_1,        OBJ_EVENT_GFX_OLD_WOMAN_FRLG,   FACILITY_CLASS_OLD_COUPLE,        MALE,   FEMALE},
+    {OBJ_EVENT_GFX_LITTLE_GIRL_FRLG, OBJ_EVENT_GFX_LITTLE_GIRL_FRLG, FACILITY_CLASS_TWINS_FRLG,        FEMALE, FEMALE},
+    {OBJ_EVENT_GFX_COOLTRAINER_M,    OBJ_EVENT_GFX_COOLTRAINER_F,    FACILITY_CLASS_COOL_COUPLE_FRLG,  MALE,   FEMALE},
+    {OBJ_EVENT_GFX_BEAUTY_FRLG,      OBJ_EVENT_GFX_MAN,              FACILITY_CLASS_YOUNG_COUPLE_FRLG, FEMALE, MALE},
+    {OBJ_EVENT_GFX_CRUSH_GIRL,       OBJ_EVENT_GFX_BLACK_BELT_FRLG,  FACILITY_CLASS_CRUSH_KIN_FRLG,    FEMALE, MALE},
+    {OBJ_EVENT_GFX_SWIMMER_F_LAND,   OBJ_EVENT_GFX_TUBER_M_LAND,     FACILITY_CLASS_SIS_AND_BRO_FRLG,  FEMALE, MALE}
 };
 
-static const struct TrainerEncounterMusicPairs sTrainerEncounterMusicLUT[105] = {
-    {FACILITY_CLASS_RS_AROMA_LADY,          TRAINER_ENCOUNTER_MUSIC_AQUA},
-    {FACILITY_CLASS_BOARDER_F,              TRAINER_ENCOUNTER_MUSIC_AQUA},
+static const struct TrainerEncounterMusicPairs sTrainerEncounterMusicLUT[] = {
     {FACILITY_CLASS_AQUA_GRUNT_F,           TRAINER_ENCOUNTER_MUSIC_AQUA},
-    {FACILITY_CLASS_GAMER,                  TRAINER_ENCOUNTER_MUSIC_FEMALE},
-    {FACILITY_CLASS_RS_RUIN_MANIAC,         TRAINER_ENCOUNTER_MUSIC_FEMALE},
-    {FACILITY_CLASS_RS_YOUNGSTER,           TRAINER_ENCOUNTER_MUSIC_INTENSE},
-    {FACILITY_CLASS_RS_YOUNG_COUPLE,        TRAINER_ENCOUNTER_MUSIC_FEMALE},
-    {FACILITY_CLASS_RS_FISHERMAN,           TRAINER_ENCOUNTER_MUSIC_FEMALE},
     {FACILITY_CLASS_RUNNING_TRIATHLETE_F,   TRAINER_ENCOUNTER_MUSIC_MALE},
-    {FACILITY_CLASS_RS_PKMN_RANGER_M,       TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS},
     {FACILITY_CLASS_LEADER_BRAWLY,          TRAINER_ENCOUNTER_MUSIC_TWINS},
-    {FACILITY_CLASS_RS_SIS_AND_BRO,         TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS},
     {FACILITY_CLASS_MAGMA_LEADER_MAXIE,     TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS},
     {FACILITY_CLASS_POKEFAN_F,              TRAINER_ENCOUNTER_MUSIC_INTENSE},
-    {FACILITY_CLASS_RS_PKMN_RANGER_F,       TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS},
-    {FACILITY_CLASS_PSYCHIC_M,              TRAINER_ENCOUNTER_MUSIC_FEMALE},
-    {FACILITY_CLASS_PICNICKER,              TRAINER_ENCOUNTER_MUSIC_COOL},
-    {FACILITY_CLASS_ELITE_FOUR_GLACIA,      TRAINER_ENCOUNTER_MUSIC_COOL},
-    {FACILITY_CLASS_RS_COOLTRAINER_F,       TRAINER_ENCOUNTER_MUSIC_COOL},
+    {FACILITY_CLASS_PSYCHIC_M_FRLG,         TRAINER_ENCOUNTER_MUSIC_FEMALE},
+    {FACILITY_CLASS_PICNICKER_FRLG,         TRAINER_ENCOUNTER_MUSIC_COOL},
     {FACILITY_CLASS_GUITARIST,              TRAINER_ENCOUNTER_MUSIC_INTENSE},
-    {FACILITY_CLASS_RS_BUG_CATCHER,         TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS},
-    {FACILITY_CLASS_PKMN_TRAINER_BRENDAN_3, TRAINER_ENCOUNTER_MUSIC_MALE},
     {FACILITY_CLASS_RUNNING_TRIATHLETE_M,   TRAINER_ENCOUNTER_MUSIC_MALE},
-    {FACILITY_CLASS_CAMPER,                 TRAINER_ENCOUNTER_MUSIC_TWINS},
+    {FACILITY_CLASS_CAMPER_FRLG,            TRAINER_ENCOUNTER_MUSIC_TWINS},
     {FACILITY_CLASS_CYCLING_TRIATHLETE_F,   TRAINER_ENCOUNTER_MUSIC_TWINS},
-    {FACILITY_CLASS_RS_TUBER_F,             TRAINER_ENCOUNTER_MUSIC_INTERVIEWER},
-    {FACILITY_CLASS_BEAUTY,                 TRAINER_ENCOUNTER_MUSIC_HIKER},
+    {FACILITY_CLASS_BEAUTY_FRLG,            TRAINER_ENCOUNTER_MUSIC_HIKER},
     {FACILITY_CLASS_INTERVIEWER,            TRAINER_ENCOUNTER_MUSIC_HIKER},
-    {FACILITY_CLASS_YOUNGSTER,              TRAINER_ENCOUNTER_MUSIC_RICH},
-    {FACILITY_CLASS_RS_PSYCHIC_F,           TRAINER_ENCOUNTER_MUSIC_RICH},
+    {FACILITY_CLASS_YOUNGSTER_FRLG,         TRAINER_ENCOUNTER_MUSIC_RICH},
     {FACILITY_CLASS_MAGMA_GRUNT_F,          TRAINER_ENCOUNTER_MUSIC_SWIMMER},
-    {FACILITY_CLASS_RS_SWIMMER_M,           TRAINER_ENCOUNTER_MUSIC_FEMALE},
-    {FACILITY_CLASS_PKMN_TRAINER_MAY_3,     TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS},
-    {FACILITY_CLASS_RS_POKEMANIAC,          TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS},
-    {FACILITY_CLASS_SUPER_NERD,             TRAINER_ENCOUNTER_MUSIC_INTENSE},
-    {FACILITY_CLASS_ENGINEER,               TRAINER_ENCOUNTER_MUSIC_INTENSE},
-    {FACILITY_CLASS_MAGMA_ADMIN_F,          TRAINER_ENCOUNTER_MUSIC_INTENSE},
-    {FACILITY_CLASS_RS_BLACK_BELT,          TRAINER_ENCOUNTER_MUSIC_INTENSE},
-    {FACILITY_CLASS_LEADER_FLANNERY,        TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS},
-    {FACILITY_CLASS_RS_SAILOR,              TRAINER_ENCOUNTER_MUSIC_INTENSE},
-    {FACILITY_CLASS_SAILOR,                 TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS},
+    {FACILITY_CLASS_SUPER_NERD_FRLG,        TRAINER_ENCOUNTER_MUSIC_INTENSE},
+    {FACILITY_CLASS_ENGINEER_FRLG,          TRAINER_ENCOUNTER_MUSIC_INTENSE},
+    {FACILITY_CLASS_SAILOR_FRLG,            TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS},
     {FACILITY_CLASS_BUG_MANIAC,             TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS},
-    {FACILITY_CLASS_PKMN_TRAINER_MAY,       TRAINER_ENCOUNTER_MUSIC_MALE},
-    {FACILITY_CLASS_RS_CAMPER,              TRAINER_ENCOUNTER_MUSIC_MALE},
     {FACILITY_CLASS_KINDLER,                TRAINER_ENCOUNTER_MUSIC_HIKER},
     {FACILITY_CLASS_BATTLE_GIRL,            TRAINER_ENCOUNTER_MUSIC_MAGMA},
     {FACILITY_CLASS_COLLECTOR,              TRAINER_ENCOUNTER_MUSIC_MAGMA},
     {FACILITY_CLASS_NINJA_BOY,              TRAINER_ENCOUNTER_MUSIC_MAGMA},
-    {FACILITY_CLASS_PKMN_TRAINER_BRENDAN_2, TRAINER_ENCOUNTER_MUSIC_FEMALE},
     {FACILITY_CLASS_PARASOL_LADY,           TRAINER_ENCOUNTER_MUSIC_FEMALE},
-    {FACILITY_CLASS_AQUA_ADMIN_F,           TRAINER_ENCOUNTER_MUSIC_HIKER},
-    {FACILITY_CLASS_PKMN_TRAINER_BRENDAN,   TRAINER_ENCOUNTER_MUSIC_MALE},
-    {FACILITY_CLASS_RS_SWIMMER_F,           TRAINER_ENCOUNTER_MUSIC_MALE},
     {FACILITY_CLASS_EXPERT_F,               TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS},
     {FACILITY_CLASS_RICH_BOY,               TRAINER_ENCOUNTER_MUSIC_RICH},
     {FACILITY_CLASS_HEX_MANIAC,             TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS},
-    {FACILITY_CLASS_RS_HIKER,               TRAINER_ENCOUNTER_MUSIC_FEMALE},
-    {FACILITY_CLASS_RS_BEAUTY,              TRAINER_ENCOUNTER_MUSIC_FEMALE},
-    {FACILITY_CLASS_SWIMMER_F,              TRAINER_ENCOUNTER_MUSIC_FEMALE},
-    {FACILITY_CLASS_RS_LADY,                TRAINER_ENCOUNTER_MUSIC_FEMALE},
-    {FACILITY_CLASS_CHAMPION_STEVEN,        TRAINER_ENCOUNTER_MUSIC_FEMALE},
-    {FACILITY_CLASS_PKMN_TRAINER_MAY_2,     TRAINER_ENCOUNTER_MUSIC_GIRL},
+    {FACILITY_CLASS_SWIMMER_F_FRLG,         TRAINER_ENCOUNTER_MUSIC_FEMALE},
     {FACILITY_CLASS_CYCLING_TRIATHLETE_M,   TRAINER_ENCOUNTER_MUSIC_GIRL},
-    {FACILITY_CLASS_SWIMMER_M,              TRAINER_ENCOUNTER_MUSIC_FEMALE},
+    {FACILITY_CLASS_SWIMMER_M_FRLG,         TRAINER_ENCOUNTER_MUSIC_FEMALE},
     {FACILITY_CLASS_DRAGON_TAMER,           TRAINER_ENCOUNTER_MUSIC_FEMALE},
-    {FACILITY_CLASS_BIKER,                  TRAINER_ENCOUNTER_MUSIC_FEMALE},
+    {FACILITY_CLASS_BIKER_FRLG,             TRAINER_ENCOUNTER_MUSIC_FEMALE},
     {FACILITY_CLASS_SWIMMING_TRIATHLETE_M,  TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS},
-    {FACILITY_CLASS_CUE_BALL,               TRAINER_ENCOUNTER_MUSIC_COOL},
-    {FACILITY_CLASS_RS_BIRD_KEEPER,         TRAINER_ENCOUNTER_MUSIC_COOL},
+    {FACILITY_CLASS_CUE_BALL_FRLG,          TRAINER_ENCOUNTER_MUSIC_COOL},
     {FACILITY_CLASS_SWIMMING_TRIATHLETE_F,  TRAINER_ENCOUNTER_MUSIC_MALE},
     {FACILITY_CLASS_POKEMANIAC,             TRAINER_ENCOUNTER_MUSIC_GIRL},
-    {FACILITY_CLASS_RS_TWINS,               TRAINER_ENCOUNTER_MUSIC_GIRL},
-    {FACILITY_CLASS_LEADER_WATTSON,         TRAINER_ENCOUNTER_MUSIC_MALE},
-    {FACILITY_CLASS_BUG_CATCHER,            TRAINER_ENCOUNTER_MUSIC_MALE},
-    {FACILITY_CLASS_RS_PKMN_BREEDER_M,      TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS},
-    {FACILITY_CLASS_LEADER_WALLACE,         TRAINER_ENCOUNTER_MUSIC_AQUA},
-    {FACILITY_CLASS_LEADER_NORMAN,          TRAINER_ENCOUNTER_MUSIC_AQUA},
+    {FACILITY_CLASS_BUG_CATCHER_FRLG,       TRAINER_ENCOUNTER_MUSIC_MALE},
     {FACILITY_CLASS_OLD_COUPLE,             TRAINER_ENCOUNTER_MUSIC_INTENSE},
-    {FACILITY_CLASS_RS_PSYCHIC_M,           TRAINER_ENCOUNTER_MUSIC_INTENSE},
     {FACILITY_CLASS_LEADER_ROXANNE,         TRAINER_ENCOUNTER_MUSIC_TWINS},
-    {FACILITY_CLASS_ELITE_FOUR_DRAKE,       TRAINER_ENCOUNTER_MUSIC_ELITE_FOUR},
-    {FACILITY_CLASS_RS_GENTLEMAN,           TRAINER_ENCOUNTER_MUSIC_FEMALE},
-    {FACILITY_CLASS_RS_LASS,                TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS},
-    {FACILITY_CLASS_BURGLAR,                TRAINER_ENCOUNTER_MUSIC_FEMALE},
-    {FACILITY_CLASS_PKMN_TRAINER_WALLY,     TRAINER_ENCOUNTER_MUSIC_MALE},
+    {FACILITY_CLASS_BURGLAR_FRLG,           TRAINER_ENCOUNTER_MUSIC_FEMALE},
     {FACILITY_CLASS_SCHOOL_KID_M,           TRAINER_ENCOUNTER_MUSIC_MALE},
     {FACILITY_CLASS_LEADER_TATE_AND_LIZA,   TRAINER_ENCOUNTER_MUSIC_INTENSE},
     {FACILITY_CLASS_POKEFAN_M,              TRAINER_ENCOUNTER_MUSIC_MALE},
-    {FACILITY_CLASS_MAGMA_ADMIN_M,          TRAINER_ENCOUNTER_MUSIC_COOL},
     {FACILITY_CLASS_EXPERT_M,               TRAINER_ENCOUNTER_MUSIC_COOL},
     {FACILITY_CLASS_MAGMA_GRUNT_M,          TRAINER_ENCOUNTER_MUSIC_HIKER},
     {FACILITY_CLASS_SR_AND_JR,              TRAINER_ENCOUNTER_MUSIC_HIKER},
-    {FACILITY_CLASS_LASS,                   TRAINER_ENCOUNTER_MUSIC_MALE},
+    {FACILITY_CLASS_LASS_FRLG,              TRAINER_ENCOUNTER_MUSIC_MALE},
     {FACILITY_CLASS_SCHOOL_KID_F,           TRAINER_ENCOUNTER_MUSIC_MALE},
-    {FACILITY_CLASS_RS_COOLTRAINER_M,       TRAINER_ENCOUNTER_MUSIC_MALE},
-    {FACILITY_CLASS_FISHERMAN,              TRAINER_ENCOUNTER_MUSIC_GIRL},
-    {FACILITY_CLASS_RS_TUBER_M,             TRAINER_ENCOUNTER_MUSIC_GIRL},
-    {FACILITY_CLASS_HIKER,                  TRAINER_ENCOUNTER_MUSIC_SWIMMER},
-    {FACILITY_CLASS_BOARDER_M,              TRAINER_ENCOUNTER_MUSIC_SWIMMER},
-    {FACILITY_CLASS_RS_PKMN_BREEDER_F,      TRAINER_ENCOUNTER_MUSIC_HIKER},
-    {FACILITY_CLASS_RS_PICNICKER,           TRAINER_ENCOUNTER_MUSIC_HIKER},
-    {FACILITY_CLASS_LEADER_WINONA,          TRAINER_ENCOUNTER_MUSIC_MALE},
+    {FACILITY_CLASS_FISHERMAN_FRLG,         TRAINER_ENCOUNTER_MUSIC_GIRL},
+    {FACILITY_CLASS_HIKER_FRLG,             TRAINER_ENCOUNTER_MUSIC_SWIMMER},
     {FACILITY_CLASS_ELITE_FOUR_SIDNEY,      TRAINER_ENCOUNTER_MUSIC_FEMALE},
-    {FACILITY_CLASS_AQUA_ADMIN_M,           TRAINER_ENCOUNTER_MUSIC_HIKER},
     {FACILITY_CLASS_ELITE_FOUR_PHOEBE,      TRAINER_ENCOUNTER_MUSIC_MALE}
 };
 
@@ -380,20 +298,20 @@ static const u16 sPrizeList[] = {
 };
 
 static const u16 sTrainerTowerEncounterMusic[] = {
-    [TRAINER_ENCOUNTER_MUSIC_MALE]        = MUS_ENCOUNTER_BOY,
-    [TRAINER_ENCOUNTER_MUSIC_FEMALE]      = MUS_ENCOUNTER_GIRL,
-    [TRAINER_ENCOUNTER_MUSIC_GIRL]        = MUS_ENCOUNTER_GIRL,
-    [TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS]  = MUS_ENCOUNTER_ROCKET,
-    [TRAINER_ENCOUNTER_MUSIC_INTENSE]     = MUS_ENCOUNTER_BOY,
-    [TRAINER_ENCOUNTER_MUSIC_COOL]        = MUS_ENCOUNTER_BOY,
-    [TRAINER_ENCOUNTER_MUSIC_AQUA]        = MUS_ENCOUNTER_ROCKET,
-    [TRAINER_ENCOUNTER_MUSIC_MAGMA]       = MUS_ENCOUNTER_ROCKET,
-    [TRAINER_ENCOUNTER_MUSIC_SWIMMER]     = MUS_ENCOUNTER_BOY,
-    [TRAINER_ENCOUNTER_MUSIC_TWINS]       = MUS_ENCOUNTER_GIRL,
-    [TRAINER_ENCOUNTER_MUSIC_ELITE_FOUR]  = MUS_ENCOUNTER_BOY,
-    [TRAINER_ENCOUNTER_MUSIC_HIKER]       = MUS_ENCOUNTER_BOY,
-    [TRAINER_ENCOUNTER_MUSIC_INTERVIEWER] = MUS_ENCOUNTER_BOY,
-    [TRAINER_ENCOUNTER_MUSIC_RICH]        = MUS_ENCOUNTER_BOY
+    [TRAINER_ENCOUNTER_MUSIC_MALE]        = MUS_RG_ENCOUNTER_BOY,
+    [TRAINER_ENCOUNTER_MUSIC_FEMALE]      = MUS_RG_ENCOUNTER_GIRL,
+    [TRAINER_ENCOUNTER_MUSIC_GIRL]        = MUS_RG_ENCOUNTER_GIRL,
+    [TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS]  = MUS_RG_ENCOUNTER_ROCKET,
+    [TRAINER_ENCOUNTER_MUSIC_INTENSE]     = MUS_RG_ENCOUNTER_BOY,
+    [TRAINER_ENCOUNTER_MUSIC_COOL]        = MUS_RG_ENCOUNTER_BOY,
+    [TRAINER_ENCOUNTER_MUSIC_AQUA]        = MUS_RG_ENCOUNTER_ROCKET,
+    [TRAINER_ENCOUNTER_MUSIC_MAGMA]       = MUS_RG_ENCOUNTER_ROCKET,
+    [TRAINER_ENCOUNTER_MUSIC_SWIMMER]     = MUS_RG_ENCOUNTER_BOY,
+    [TRAINER_ENCOUNTER_MUSIC_TWINS]       = MUS_RG_ENCOUNTER_GIRL,
+    [TRAINER_ENCOUNTER_MUSIC_ELITE_FOUR]  = MUS_RG_ENCOUNTER_BOY,
+    [TRAINER_ENCOUNTER_MUSIC_HIKER]       = MUS_RG_ENCOUNTER_BOY,
+    [TRAINER_ENCOUNTER_MUSIC_INTERVIEWER] = MUS_RG_ENCOUNTER_BOY,
+    [TRAINER_ENCOUNTER_MUSIC_RICH]        = MUS_RG_ENCOUNTER_BOY
 };
 
 // The trainer only uses two Pokemon from the encoded pool, based on the current floor
@@ -482,7 +400,9 @@ void InitTrainerTowerBattleStruct(void)
     sTrainerTowerOpponent->battleType = CURR_FLOOR.challengeType;
     sTrainerTowerOpponent->facilityClass = CURR_FLOOR.trainers[trainerId].facilityClass;
     sTrainerTowerOpponent->textColor = CURR_FLOOR.trainers[trainerId].textColor;
-    SetVBlankCounter1Ptr(&TRAINER_TOWER.timer);
+#if FREE_TRAINER_TOWER == FALSE && IS_FRLG
+    SetTrainerHillVBlankCounter(&TRAINER_TOWER.timer);
+#endif //FREE_TRAINER_TOWER
     FreeTrainerTowerDataStruct();
 }
 
@@ -513,16 +433,20 @@ void GetTrainerTowerOpponentLoseText(u8 *dest, u8 opponentIdx)
 
 static void SetUpTrainerTowerDataStruct(void)
 {
+#if FREE_TRAINER_TOWER == FALSE && IS_FRLG
     u32 challengeType = gSaveBlock1Ptr->towerChallengeId;
+#else
+    u32 challengeType = CHALLENGE_TYPE_SINGLE;
+#endif // FREE_TRAINER_TOWER
     s32 i;
     const struct TrainerTowerFloor *const * floors_p;
 
     sTrainerTowerState = AllocZeroed(sizeof(*sTrainerTowerState));
     sTrainerTowerState->floorIdx = gMapHeader.mapLayoutId - LAYOUT_TRAINER_TOWER_1F;
-    if (ReadTrainerTowerAndValidate() == TRUE)
-        CEReaderTool_LoadTrainerTower(&sTrainerTowerState->data);
-    else
-    {
+    // if (ReadTrainerTowerAndValidate() == TRUE)
+    //     CEReaderTool_LoadTrainerTower(&sTrainerTowerState->data);
+    // else
+    // {
         struct TrainerTowerState * ttstate_p = sTrainerTowerState;
         const struct EReaderTrainerTowerSetSubstruct * header_p = &gTrainerTowerLocalHeader;
         memcpy(&ttstate_p->data, header_p, sizeof(struct EReaderTrainerTowerSetSubstruct));
@@ -533,12 +457,12 @@ static void SetUpTrainerTowerDataStruct(void)
         }
         sTrainerTowerState->data.checksum = CalcByteArraySum((void *)sTrainerTowerState->data.floors, sizeof(sTrainerTowerState->data.floors));
         ValidateOrResetCurTrainerTowerRecord();
-    }
+    // }
 }
 
 static void FreeTrainerTowerDataStruct(void)
 {
-    FREE_AND_SET_NULL(sTrainerTowerState);
+    TRY_FREE_AND_SET_NULL(sTrainerTowerState);
 }
 
 static void InitTrainerTowerFloor(void)
@@ -559,7 +483,7 @@ static void InitTrainerTowerFloor(void)
 static void SetTrainerTowerNPCGraphics(void)
 {
     s32 i, j;
-    u8 trainerGfx1, trainerGfx2, facilityClass;
+    u16 trainerGfx1, trainerGfx2, facilityClass;
     switch (CURR_FLOOR.challengeType)
     {
     case CHALLENGE_TYPE_SINGLE:
@@ -573,7 +497,7 @@ static void SetTrainerTowerNPCGraphics(void)
         if (i != NELEMS(sSingleBattleTrainerInfo))
             trainerGfx1 = sSingleBattleTrainerInfo[i].objGfx;
         else
-            trainerGfx1 = OBJ_EVENT_GFX_YOUNGSTER;
+            trainerGfx1 = OBJ_EVENT_GFX_YOUNGSTER_FRLG;
 
         VarSet(VAR_OBJ_GFX_ID_1, trainerGfx1);
         break;
@@ -591,8 +515,8 @@ static void SetTrainerTowerNPCGraphics(void)
         }
         else
         {
-            trainerGfx1  = OBJ_EVENT_GFX_YOUNGSTER;
-            trainerGfx2 = OBJ_EVENT_GFX_YOUNGSTER;
+            trainerGfx1  = OBJ_EVENT_GFX_YOUNGSTER_FRLG;
+            trainerGfx2 = OBJ_EVENT_GFX_YOUNGSTER_FRLG;
         }
         VarSet(VAR_OBJ_GFX_ID_0, trainerGfx1);
         VarSet(VAR_OBJ_GFX_ID_3, trainerGfx2);
@@ -681,37 +605,37 @@ static void BufferTowerOpponentSpeech(void)
 
 static void TrainerTowerGetOpponentTextColor(u8 challengeType, u8 facilityClass)
 {
-    u16 gender = MALE;
-    int i;
-    switch (challengeType)
-    {
-    case CHALLENGE_TYPE_SINGLE:
-    case CHALLENGE_TYPE_KNOCKOUT:
-        for (i = 0; i < NELEMS(sSingleBattleTrainerInfo); i++)
-        {
-            if (sSingleBattleTrainerInfo[i].facilityClass == facilityClass)
-                break;
-        }
-        if (i != NELEMS(sSingleBattleTrainerInfo))
-            gender = sSingleBattleTrainerInfo[i].gender;
-        break;
-    case CHALLENGE_TYPE_DOUBLE:
-        for (i = 0; i < NELEMS(sDoubleBattleTrainerInfo); i++)
-        {
-            if (sDoubleBattleTrainerInfo[i].facilityClass == facilityClass)
-                break;
-        }
-        if (i != NELEMS(sDoubleBattleTrainerInfo))
-        {
-            if (VarGet(VAR_TEMP_3))
-                gender = sDoubleBattleTrainerInfo[i].gender2;
-            else
-                gender = sDoubleBattleTrainerInfo[i].gender1;
-        }
-        break;
-    }
-    gSpecialVar_PrevTextColor = gSpecialVar_TextColor;
-    gSpecialVar_TextColor = gender;
+    // u16 gender = MALE;
+    // int i;
+    // switch (challengeType)
+    // {
+    // case CHALLENGE_TYPE_SINGLE:
+    // case CHALLENGE_TYPE_KNOCKOUT:
+    //     for (i = 0; i < NELEMS(sSingleBattleTrainerInfo); i++)
+    //     {
+    //         if (sSingleBattleTrainerInfo[i].facilityClass == facilityClass)
+    //             break;
+    //     }
+    //     if (i != NELEMS(sSingleBattleTrainerInfo))
+    //         gender = sSingleBattleTrainerInfo[i].gender;
+    //     break;
+    // case CHALLENGE_TYPE_DOUBLE:
+    //     for (i = 0; i < NELEMS(sDoubleBattleTrainerInfo); i++)
+    //     {
+    //         if (sDoubleBattleTrainerInfo[i].facilityClass == facilityClass)
+    //             break;
+    //     }
+    //     if (i != NELEMS(sDoubleBattleTrainerInfo))
+    //     {
+    //         if (VarGet(VAR_TEMP_3))
+    //             gender = sDoubleBattleTrainerInfo[i].gender2;
+    //         else
+    //             gender = sDoubleBattleTrainerInfo[i].gender1;
+    //     }
+    //     break;
+    // }
+    // gSpecialVar_PrevTextColor = gSpecialVar_TextColor;
+    // gSpecialVar_TextColor = gender;
 }
 
 static void CB2_EndTrainerTowerBattle(void)
@@ -737,11 +661,11 @@ static void DoTrainerTowerBattle(void)
     if (CURR_FLOOR.challengeType == CHALLENGE_TYPE_DOUBLE)
         gBattleTypeFlags |= BATTLE_TYPE_DOUBLE;
 
-    gTrainerBattleOpponent_A = 0;
+    TRAINER_BATTLE_PARAM.opponentA = 0;
     BuildEnemyParty();
     CreateTask(Task_DoTrainerTowerBattle, 1);
     PlayMapChosenOrBattleBGM(0);
-    BattleTransition_StartOnField(BattleSetup_GetBattleTowerBattleTransition());
+    BattleTransition_StartOnField(GetSpecialBattleTransition(B_TRANSITION_GROUP_TRAINER_HILL));
 }
 
 static void TrainerTowerGetChallengeType(void)
@@ -752,40 +676,46 @@ static void TrainerTowerGetChallengeType(void)
 
 static void TrainerTowerAddFloorCleared(void)
 {
+#if FREE_TRAINER_TOWER == FALSE && IS_FRLG
     TRAINER_TOWER.floorsCleared++;
+#endif //FREE_TRAINER_TOWER
 }
 
 // So the player can safely go back through defeated floors to use the Poke Center (or exit challenge)
 static void GetFloorAlreadyCleared(void)
 {
+#if FREE_TRAINER_TOWER == FALSE && IS_FRLG
     u16 mapLayoutId = gMapHeader.mapLayoutId;
     if (mapLayoutId - LAYOUT_TRAINER_TOWER_1F == TRAINER_TOWER.floorsCleared
      && mapLayoutId - LAYOUT_TRAINER_TOWER_LOBBY <= CURR_FLOOR.floorIdx)
         gSpecialVar_Result = FALSE;
     else
         gSpecialVar_Result = TRUE;
+#else
+    gSpecialVar_Result = TRUE;
+#endif //FREE_TRAINER_TOWER
 }
 
 static void StartTrainerTowerChallenge(void)
 {
+#if FREE_TRAINER_TOWER == FALSE && IS_FRLG
     gSaveBlock1Ptr->towerChallengeId = gSpecialVar_0x8005;
     if (gSaveBlock1Ptr->towerChallengeId >= NUM_TOWER_CHALLENGE_TYPES)
         gSaveBlock1Ptr->towerChallengeId = 0;
     ValidateOrResetCurTrainerTowerRecord();
-    if (!ReadTrainerTowerAndValidate())
-        TRAINER_TOWER.validated = TRUE;
-    else
-        TRAINER_TOWER.validated = FALSE;
+    TRAINER_TOWER.validated = TRUE;
     TRAINER_TOWER.floorsCleared = 0;
-    SetVBlankCounter1Ptr(&TRAINER_TOWER.timer);
+    SetTrainerHillVBlankCounter(&TRAINER_TOWER.timer);
     TRAINER_TOWER.timer = 0;
     TRAINER_TOWER.spokeToOwner = FALSE;
     TRAINER_TOWER.checkedFinalTime = FALSE;
+#endif //FREE_TRAINER_TOWER
 }
 
 static void GetOwnerState(void)
 {
-    DisableVBlankCounter1();
+#if FREE_TRAINER_TOWER == FALSE && IS_FRLG
+    ClearTrainerHillVBlankCounter();
     gSpecialVar_Result = 0;
 
     if (TRAINER_TOWER.spokeToOwner)
@@ -794,11 +724,15 @@ static void GetOwnerState(void)
         gSpecialVar_Result++;
 
     TRAINER_TOWER.spokeToOwner = TRUE;
+#else
+    gSpecialVar_Result = 2;
+#endif //FREE_TRAINER_TOWER
 }
 
 static void GiveChallengePrize(void)
 {
-    u16 itemId = sPrizeList[sTrainerTowerState->data.floors->prize];
+#if FREE_TRAINER_TOWER == FALSE && IS_FRLG
+    enum Item itemId = sPrizeList[sTrainerTowerState->data.floors->prize];
 
     if (TRAINER_TOWER.receivedPrize)
     {
@@ -814,10 +748,14 @@ static void GiveChallengePrize(void)
     {
         gSpecialVar_Result = 1;
     }
+#else
+    gSpecialVar_Result = 0;
+#endif //FREE_TRAINER_TOWER
 }
 
 static void CheckFinalTime(void)
 {
+#if FREE_TRAINER_TOWER == FALSE && IS_FRLG
     if (TRAINER_TOWER.checkedFinalTime)
     {
         gSpecialVar_Result = 2;
@@ -833,40 +771,51 @@ static void CheckFinalTime(void)
     }
 
     TRAINER_TOWER.checkedFinalTime = TRUE;
+#else
+    gSpecialVar_Result = 0;
+#endif //FREE_TRAINER_TOWER
 }
 
 static void TrainerTowerResumeTimer(void)
 {
+#if FREE_TRAINER_TOWER == FALSE && IS_FRLG
     if (!TRAINER_TOWER.spokeToOwner)
     {
         if (TRAINER_TOWER.timer >= TRAINER_TOWER_MAX_TIME)
             TRAINER_TOWER.timer = TRAINER_TOWER_MAX_TIME;
         else
-            SetVBlankCounter1Ptr(&TRAINER_TOWER.timer);
+            SetTrainerHillVBlankCounter(&TRAINER_TOWER.timer);
     }
+#endif //FREE_TRAINER_TOWER
 }
 
 static void TrainerTowerSetPlayerLost(void)
 {
+#if FREE_TRAINER_TOWER == FALSE && IS_FRLG
     TRAINER_TOWER.hasLost = TRUE;
+#endif //FREE_TRAINER_TOWER
 }
 
 static void GetTrainerTowerChallengeStatus(void)
 {
+#if FREE_TRAINER_TOWER == FALSE && IS_FRLG
     if (TRAINER_TOWER.hasLost)
     {
         TRAINER_TOWER.hasLost = FALSE;
-        gSpecialVar_Result = CHALLENGE_STATUS_LOST;
+        gSpecialVar_Result = TT_CHALLENGE_STATUS_LOST;
     }
     else if (TRAINER_TOWER.unkA_4)
     {
         TRAINER_TOWER.unkA_4 = FALSE;
-        gSpecialVar_Result = CHALLENGE_STATUS_UNK;
+        gSpecialVar_Result = TT_CHALLENGE_STATUS_UNK;
     }
     else
     {
-        gSpecialVar_Result = CHALLENGE_STATUS_NORMAL;
+        gSpecialVar_Result = TT_CHALLENGE_STATUS_NORMAL;
     }
+#else
+    gSpecialVar_Result = TT_CHALLENGE_STATUS_NORMAL;
+#endif //FREE_TRAINER_TOWER
 }
 
 #define PRINT_TOWER_TIME(src) ({                                                           \
@@ -887,23 +836,30 @@ static void GetTrainerTowerChallengeStatus(void)
 
 static void GetCurrentTime(void)
 {
+#if FREE_TRAINER_TOWER == FALSE && IS_FRLG
     if (TRAINER_TOWER.timer >= TRAINER_TOWER_MAX_TIME)
     {
-        DisableVBlankCounter1();
+        ClearTrainerHillVBlankCounter();
         TRAINER_TOWER.timer = TRAINER_TOWER_MAX_TIME;
     }
 
     PRINT_TOWER_TIME(TRAINER_TOWER.timer);
+#else
+    ConvertIntToDecimalStringN(gStringVar1, 0, STR_CONV_MODE_RIGHT_ALIGN, 2);
+    ConvertIntToDecimalStringN(gStringVar2, 0, STR_CONV_MODE_RIGHT_ALIGN, 2);
+    ConvertIntToDecimalStringN(gStringVar3, 0, STR_CONV_MODE_LEADING_ZEROS, 2);
+#endif //FREE_TRAINER_TOWER
 }
 
 static void ShowResultsBoard(void)
 {
+#if FREE_TRAINER_TOWER == FALSE && IS_FRLG
     u8 windowId;
     s32 i;
 
     ValidateOrResetCurTrainerTowerRecord();
     windowId = AddWindow(sTimeBoardWindowTemplate);
-    LoadStdWindowFrameGfx();
+    LoadMessageBoxAndBorderGfx();
     DrawStdWindowFrame(windowId, FALSE);
     AddTextPrinterParameterized(windowId, FONT_NORMAL, gText_TimeBoard, 74, 0, TEXT_SKIP_DRAW, NULL);
 
@@ -919,13 +875,16 @@ static void ShowResultsBoard(void)
     PutWindowTilemap(windowId);
     CopyWindowToVram(windowId, COPYWIN_FULL);
     VarSet(VAR_TEMP_1, windowId);
+#endif //FREE_TRAINER_TOWER
 }
 
 static void CloseResultsBoard(void)
 {
+#if FREE_TRAINER_TOWER == FALSE && IS_FRLG
     u8 windowId = VarGet(VAR_TEMP_1);
     ClearStdWindowAndFrameToTransparent(windowId, TRUE);
     RemoveWindow(windowId);
+#endif //FREE_TRAINER_TOWER
 }
 
 static void TrainerTowerGetDoublesEligiblity(void)
@@ -963,13 +922,13 @@ static void PlayTrainerTowerEncounterMusic(void)
     u16 idx = VarGet(VAR_TEMP_1);
     u8 facilityClass = CURR_FLOOR.trainers[idx].facilityClass;
 
-    for (i = 0; i < NELEMS(sTrainerEncounterMusicLUT); i++)
+    for (i = 0; i < ARRAY_COUNT(sTrainerEncounterMusicLUT); i++)
     {
         if (sTrainerEncounterMusicLUT[i].facilityClass == gFacilityClassToTrainerClass[facilityClass])
             break;
     }
 
-    if (i != NELEMS(sTrainerEncounterMusicLUT))
+    if (i != ARRAY_COUNT(sTrainerEncounterMusicLUT))
     {
         idx = sTrainerEncounterMusicLUT[i].musicId;
     }
@@ -982,14 +941,20 @@ static void PlayTrainerTowerEncounterMusic(void)
 
 static void HasSpokenToOwner(void)
 {
+#if FREE_TRAINER_TOWER == FALSE && IS_FRLG
     gSpecialVar_Result = TRAINER_TOWER.spokeToOwner;
+#endif //FREE_TRAINER_TOWER
 }
 
 static void BuildEnemyParty(void)
 {
     u16 trainerIdx = VarGet(VAR_TEMP_1);
     s32 level = GetPartyMaxLevel();
+#if FREE_TRAINER_TOWER == FALSE && IS_FRLG
     u8 floorIdx = TRAINER_TOWER.floorsCleared;
+#else
+    u8 floorIdx = gMapHeader.mapLayoutId - LAYOUT_TRAINER_TOWER_1F;
+#endif //FREE_TRAINER_TOWER
     s32 i;
     u8 monIdx;
 
@@ -1003,22 +968,22 @@ static void BuildEnemyParty(void)
         {
             monIdx = sSingleBattleChallengeMonIdxs[floorIdx][i];
             CURR_FLOOR.trainers[trainerIdx].mons[monIdx].level = level;
-            CreateBattleTowerMon(&gEnemyParty[i], &CURR_FLOOR.trainers[trainerIdx].mons[monIdx]);
+            CreateBattleTowerMon(&gParties[B_TRAINER_OPPONENT_A][i], &CURR_FLOOR.trainers[trainerIdx].mons[monIdx]);
         }
         break;
     case CHALLENGE_TYPE_DOUBLE:
         monIdx = sDoubleBattleChallengeMonIdxs[floorIdx][0];
         CURR_FLOOR.trainers[0].mons[monIdx].level = level;
-        CreateBattleTowerMon(&gEnemyParty[0], &CURR_FLOOR.trainers[0].mons[monIdx]);
+        CreateBattleTowerMon(&gParties[B_TRAINER_OPPONENT_A][0], &CURR_FLOOR.trainers[0].mons[monIdx]);
 
         monIdx = sDoubleBattleChallengeMonIdxs[floorIdx][1];
         CURR_FLOOR.trainers[1].mons[monIdx].level = level;
-        CreateBattleTowerMon(&gEnemyParty[1], &CURR_FLOOR.trainers[1].mons[monIdx]);
+        CreateBattleTowerMon(&gParties[B_TRAINER_OPPONENT_A][1], &CURR_FLOOR.trainers[1].mons[monIdx]);
         break;
     case CHALLENGE_TYPE_KNOCKOUT:
         monIdx = sKnockoutChallengeMonIdxs[floorIdx][trainerIdx];
         CURR_FLOOR.trainers[trainerIdx].mons[monIdx].level = level;
-        CreateBattleTowerMon(&gEnemyParty[0], &CURR_FLOOR.trainers[trainerIdx].mons[monIdx]);
+        CreateBattleTowerMon(&gParties[B_TRAINER_OPPONENT_A][0], &CURR_FLOOR.trainers[trainerIdx].mons[monIdx]);
         break;
     }
 }
@@ -1030,9 +995,9 @@ static s32 GetPartyMaxLevel(void)
 
     for (i = 0; i < PARTY_SIZE; i++)
     {
-        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES, NULL) != 0 && GetMonData(&gPlayerParty[i], MON_DATA_SPECIES_OR_EGG, NULL) != SPECIES_EGG)
+        if (GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_SPECIES, NULL) != 0 && GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_SPECIES_OR_EGG, NULL) != SPECIES_EGG)
         {
-            s32 currLevel = GetMonData(&gPlayerParty[i], MON_DATA_LEVEL, NULL);
+            s32 currLevel = GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_LEVEL, NULL);
             if (currLevel > topLevel)
                 topLevel = currLevel;
         }
@@ -1043,16 +1008,19 @@ static s32 GetPartyMaxLevel(void)
 
 static void ValidateOrResetCurTrainerTowerRecord(void)
 {
+#if FREE_TRAINER_TOWER == FALSE && IS_FRLG
     if (TRAINER_TOWER.unk9 != sTrainerTowerState->data.id)
     {
         TRAINER_TOWER.unk9 = sTrainerTowerState->data.id;
         SetTrainerTowerRecordTime(&TRAINER_TOWER.bestTime, TRAINER_TOWER_MAX_TIME);
         TRAINER_TOWER.receivedPrize = FALSE;
     }
+#endif //FREE_TRAINER_TOWER
 }
 
 void PrintTrainerTowerRecords(void)
 {
+#if FREE_TRAINER_TOWER == FALSE && IS_FRLG
     s32 i;
     u8 windowId = 0;
 
@@ -1072,24 +1040,29 @@ void PrintTrainerTowerRecords(void)
     PutWindowTilemap(windowId);
     CopyWindowToVram(windowId, COPYWIN_FULL);
     FreeTrainerTowerDataStruct();
+#endif //FREE_TRAINER_TOWER
 }
 
+#if FREE_TRAINER_TOWER == FALSE && IS_FRLG
 static u32 GetTrainerTowerRecordTime(u32 *counter)
 {
-    return *counter ^ gSaveBlock2Ptr->encryptionKey;
+    return *counter;
 }
 
 static void SetTrainerTowerRecordTime(u32 *counter, u32 value)
 {
-    *counter = value ^ gSaveBlock2Ptr->encryptionKey;
+    *counter = value;
 }
+#endif //FREE_TRAINER_TOWER
 
 void ResetTrainerTowerResults(void)
 {
+#if FREE_TRAINER_TOWER == FALSE && IS_FRLG
     s32 i;
 
     for (i = 0; i < NUM_TOWER_CHALLENGE_TYPES; i++)
     {
         SetTrainerTowerRecordTime(&gSaveBlock1Ptr->trainerTower[i].bestTime, TRAINER_TOWER_MAX_TIME);
     }
+#endif //FREE_TRAINER_TOWER
 }

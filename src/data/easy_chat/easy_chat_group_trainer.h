@@ -1,160 +1,164 @@
-
-static const u8 sEasyChatWord_IChooseYou[] = _("I CHOOSE YOU");
-static const u8 sEasyChatWord_Gotcha[] = _("GOTCHA");
-static const u8 sEasyChatWord_Trade[] = _("TRADE");
-static const u8 sEasyChatWord_Sapphire[] = _("SAPPHIRE");
-static const u8 sEasyChatWord_Evolve[] = _("EVOLVE");
-static const u8 sEasyChatWord_Encyclopedia[] = _("ENCYCLOPEDIA");
-static const u8 sEasyChatWord_Nature[] = _("NATURE");
-static const u8 sEasyChatWord_Center[] = _("CENTER");
-static const u8 sEasyChatWord_Egg[] = _("EGG");
-static const u8 sEasyChatWord_Link[] = _("LINK");
-static const u8 sEasyChatWord_SpAbility[] = _("SP. ABILITY");
-static const u8 sEasyChatWord_Trainer[] = _("TRAINER");
-static const u8 sEasyChatWord_Version[] = _("VERSION");
-static const u8 sEasyChatWord_Pokenav[] = _("POKéNAV");
-static const u8 sEasyChatWord_Pokemon[] = _("POKéMON");
-static const u8 sEasyChatWord_Get[] = _("GET");
-static const u8 sEasyChatWord_Pokedex[] = _("POKéDEX");
-static const u8 sEasyChatWord_Ruby[] = _("RUBY");
-static const u8 sEasyChatWord_Level[] = _("LEVEL");
-static const u8 sEasyChatWord_Red[] = _("RED");
-static const u8 sEasyChatWord_Green[] = _("GREEN");
-static const u8 sEasyChatWord_Bag[] = _("BAG");
-static const u8 sEasyChatWord_Flame[] = _("FLAME");
-static const u8 sEasyChatWord_Gold[] = _("GOLD");
-static const u8 sEasyChatWord_Leaf[] = _("LEAF");
-static const u8 sEasyChatWord_Silver[] = _("SILVER");
-
-static const struct EasyChatWordInfo sEasyChatGroup_Trainer[] = {
+const struct EasyChatWordInfo gEasyChatGroup_Trainer[] = {
+    [EC_INDEX(EC_WORD_I_CHOOSE_YOU)] =
     {
-        .text = sEasyChatWord_IChooseYou,
-        .alphabeticalOrder = 21,
-        .enabled = TRUE
+        .text = COMPOUND_STRING("I CHOOSE YOU"),
+        .alphabeticalOrder = EC_INDEX(EC_WORD_BAG),
+        .enabled = TRUE,
     },
+    [EC_INDEX(EC_WORD_GOTCHA)] =
     {
-        .text = sEasyChatWord_Gotcha,
-        .alphabeticalOrder = 7,
-        .enabled = TRUE
+        .text = COMPOUND_STRING("GOTCHA"),
+        .alphabeticalOrder = EC_INDEX(EC_WORD_CENTER),
+        .enabled = TRUE,
     },
+    [EC_INDEX(EC_WORD_TRADE)] =
     {
-        .text = sEasyChatWord_Trade,
-        .alphabeticalOrder = 8,
-        .enabled = TRUE
+        .text = COMPOUND_STRING("TRADE"),
+        .alphabeticalOrder = EC_INDEX(EC_WORD_EGG),
+        .enabled = TRUE,
     },
+    [EC_INDEX(EC_WORD_SAPPHIRE)] =
     {
-        .text = sEasyChatWord_Sapphire,
-        .alphabeticalOrder = 5,
-        .enabled = TRUE
+        .text = COMPOUND_STRING("SAPPHIRE"),
+        .alphabeticalOrder = EC_INDEX(EC_WORD_EMERALD),
+        .enabled = TRUE,
     },
+    [EC_INDEX(EC_WORD_EVOLVE)] =
     {
-        .text = sEasyChatWord_Evolve,
-        .alphabeticalOrder = 4,
-        .enabled = TRUE
+        .text = COMPOUND_STRING("EVOLVE"),
+        .alphabeticalOrder = EC_INDEX(EC_WORD_ENCYCLOPEDIA),
+        .enabled = TRUE,
     },
+    [EC_INDEX(EC_WORD_ENCYCLOPEDIA)] =
     {
-        .text = sEasyChatWord_Encyclopedia,
-        .alphabeticalOrder = 22,
-        .enabled = TRUE
+        .text = COMPOUND_STRING("ENCYCLOPEDIA"),
+        .alphabeticalOrder = EC_INDEX(EC_WORD_EVOLVE),
+        .enabled = TRUE,
     },
+    [EC_INDEX(EC_WORD_NATURE)] =
     {
-        .text = sEasyChatWord_Nature,
-        .alphabeticalOrder = 15,
-        .enabled = TRUE
+        .text = COMPOUND_STRING("NATURE"),
+        .alphabeticalOrder = EC_INDEX(EC_WORD_FLAME),
+        .enabled = TRUE,
     },
+    [EC_INDEX(EC_WORD_CENTER)] =
     {
-        .text = sEasyChatWord_Center,
-        .alphabeticalOrder = 23,
-        .enabled = TRUE
+        .text = COMPOUND_STRING("CENTER"),
+        .alphabeticalOrder = EC_INDEX(EC_WORD_GET),
+        .enabled = TRUE,
     },
+    [EC_INDEX(EC_WORD_EGG)] =
     {
-        .text = sEasyChatWord_Egg,
-        .alphabeticalOrder = 1,
-        .enabled = TRUE
+        .text = COMPOUND_STRING("EGG"),
+        .alphabeticalOrder = EC_INDEX(EC_WORD_GOLD),
+        .enabled = TRUE,
     },
+    [EC_INDEX(EC_WORD_LINK)] =
     {
-        .text = sEasyChatWord_Link,
-        .alphabeticalOrder = 20,
-        .enabled = TRUE
+        .text = COMPOUND_STRING("LINK"),
+        .alphabeticalOrder = EC_INDEX(EC_WORD_GOTCHA),
+        .enabled = TRUE,
     },
+    [EC_INDEX(EC_WORD_SP_ABILITY)] =
     {
-        .text = sEasyChatWord_SpAbility,
-        .alphabeticalOrder = 0,
-        .enabled = TRUE
+        .text = COMPOUND_STRING("SP. ABILITY"),
+        .alphabeticalOrder = EC_INDEX(EC_WORD_GREEN),
+        .enabled = TRUE,
     },
+    [EC_INDEX(EC_WORD_TRAINER)] =
     {
-        .text = sEasyChatWord_Trainer,
-        .alphabeticalOrder = 24,
-        .enabled = TRUE
+        .text = COMPOUND_STRING("TRAINER"),
+        .alphabeticalOrder = EC_INDEX(EC_WORD_I_CHOOSE_YOU),
+        .enabled = TRUE,
     },
+    [EC_INDEX(EC_WORD_VERSION)] =
     {
-        .text = sEasyChatWord_Version,
-        .alphabeticalOrder = 18,
-        .enabled = TRUE
+        .text = COMPOUND_STRING("VERSION"),
+        .alphabeticalOrder = EC_INDEX(EC_WORD_LEAF),
+        .enabled = TRUE,
     },
+    [EC_INDEX(EC_WORD_POKENAV)] =
     {
-        .text = sEasyChatWord_Pokenav,
-        .alphabeticalOrder = 9,
-        .enabled = FALSE
+        .text = COMPOUND_STRING("POKéNAV"),
+        .alphabeticalOrder = EC_INDEX(EC_WORD_LEVEL),
+        .enabled = TRUE,
     },
+    [EC_INDEX(EC_WORD_POKEMON)] =
     {
-        .text = sEasyChatWord_Pokemon,
-        .alphabeticalOrder = 6,
-        .enabled = TRUE
+        .text = COMPOUND_STRING("POKéMON"),
+        .alphabeticalOrder = EC_INDEX(EC_WORD_LINK),
+        .enabled = TRUE,
     },
+    [EC_INDEX(EC_WORD_GET)] =
     {
-        .text = sEasyChatWord_Get,
-        .alphabeticalOrder = 16,
-        .enabled = TRUE
+        .text = COMPOUND_STRING("GET"),
+        .alphabeticalOrder = EC_INDEX(EC_WORD_NATURE),
+        .enabled = TRUE,
     },
+    [EC_INDEX(EC_WORD_POKEDEX)] =
     {
-        .text = sEasyChatWord_Pokedex,
-        .alphabeticalOrder = 14,
-        .enabled = TRUE
+        .text = COMPOUND_STRING("POKéDEX"),
+        .alphabeticalOrder = EC_INDEX(EC_WORD_POKEDEX),
+        .enabled = TRUE,
     },
+    [EC_INDEX(EC_WORD_RUBY)] =
     {
-        .text = sEasyChatWord_Ruby,
-        .alphabeticalOrder = 13,
-        .enabled = TRUE
+        .text = COMPOUND_STRING("RUBY"),
+        .alphabeticalOrder = EC_INDEX(EC_WORD_POKEMON),
+        .enabled = TRUE,
     },
+    [EC_INDEX(EC_WORD_LEVEL)] =
     {
-        .text = sEasyChatWord_Level,
-        .alphabeticalOrder = 19,
-        .enabled = TRUE
+        .text = COMPOUND_STRING("LEVEL"),
+        .alphabeticalOrder = EC_INDEX(EC_WORD_POKENAV),
+        .enabled = TRUE,
     },
+    [EC_INDEX(EC_WORD_RED)] =
     {
-        .text = sEasyChatWord_Red,
-        .alphabeticalOrder = 17,
-        .enabled = TRUE
+        .text = COMPOUND_STRING("RED"),
+        .alphabeticalOrder = EC_INDEX(EC_WORD_RED),
+        .enabled = FALSE,
     },
+    [EC_INDEX(EC_WORD_GREEN)] =
     {
-        .text = sEasyChatWord_Green,
-        .alphabeticalOrder = 3,
-        .enabled = TRUE
+        .text = COMPOUND_STRING("GREEN"),
+        .alphabeticalOrder = EC_INDEX(EC_WORD_RUBY),
+        .enabled = FALSE,
     },
+    [EC_INDEX(EC_WORD_BAG)] =
     {
-        .text = sEasyChatWord_Bag,
-        .alphabeticalOrder = 25,
-        .enabled = TRUE
+        .text = COMPOUND_STRING("BAG"),
+        .alphabeticalOrder = EC_INDEX(EC_WORD_SAPPHIRE),
+        .enabled = TRUE,
     },
+    [EC_INDEX(EC_WORD_FLAME)] =
     {
-        .text = sEasyChatWord_Flame,
-        .alphabeticalOrder = 10,
-        .enabled = TRUE
+        .text = COMPOUND_STRING("FLAME"),
+        .alphabeticalOrder = EC_INDEX(EC_WORD_SILVER),
+        .enabled = FALSE,
     },
+    [EC_INDEX(EC_WORD_GOLD)] =
     {
-        .text = sEasyChatWord_Gold,
-        .alphabeticalOrder = 2,
-        .enabled = TRUE
+        .text = COMPOUND_STRING("GOLD"),
+        .alphabeticalOrder = EC_INDEX(EC_WORD_SP_ABILITY),
+        .enabled = FALSE,
     },
+    [EC_INDEX(EC_WORD_LEAF)] =
     {
-        .text = sEasyChatWord_Leaf,
-        .alphabeticalOrder = 11,
-        .enabled = TRUE
+        .text = COMPOUND_STRING("LEAF"),
+        .alphabeticalOrder = EC_INDEX(EC_WORD_TRADE),
+        .enabled = FALSE,
     },
+    [EC_INDEX(EC_WORD_SILVER)] =
     {
-        .text = sEasyChatWord_Silver,
-        .alphabeticalOrder = 12,
-        .enabled = TRUE
-    }
+        .text = COMPOUND_STRING("SILVER"),
+        .alphabeticalOrder = EC_INDEX(EC_WORD_TRAINER),
+        .enabled = FALSE,
+    },
+    [EC_INDEX(EC_WORD_EMERALD)] =
+    {
+        .text = COMPOUND_STRING("EMERALD"),
+        .alphabeticalOrder = EC_INDEX(EC_WORD_VERSION),
+        .enabled = TRUE,
+    },
 };

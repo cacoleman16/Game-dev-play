@@ -1,0 +1,1337 @@
+From 92630bf10acb06c0fd260b0a6ef0b37115e78f9b Mon Sep 17 00:00:00 2001
+From: Claude <noreply@anthropic.com>
+Date: Sat, 7 Nov 2026 19:43:27 +0000
+Subject: [PATCH 2/6] Add the Fairy type with Gen 6 typings and six Fairy moves
+
+- TYPE_FAIRY (18) with a Gen 6 type chart; Steel no longer resists
+  Ghost/Dark, matching the chart that introduced Fairy.
+- Type name, "a FAIRY move" text, union room trade list, TM disc
+  palette and a FAIRY badge drawn into the free slot of menu_info.png
+  (unused type palette entry 10 recoloured pink).
+- Clefairy/Cleffa/Togepi/Snubbull lines, Jigglypuff line, Mr. Mime,
+  Marill line, Ralts line and Mawile get their Gen 6 Fairy typing.
+- Charm, Sweet Kiss and Moonlight become Fairy-type.
+- New moves: Fairy Wind, Disarming Voice, Draining Kiss, Dazzling
+  Gleam, Moonblast, Play Rough (reusing existing animations), added to
+  the Fairy lines' level-up learnsets.
+- Hidden Power keeps its 16 possible types (never Fairy, like Gen 6).
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01EDbdFFZUtxJmCbg3V6KwVM
+---
+ data/battle_anim_scripts.s            |   8 ++-
+ graphics/interface/menu_info.png      | Bin 20869 -> 1896 bytes
+ graphics/interface/pokemon_types.pal  |   2 +-
+ graphics/tm_case/disc_types_2.pal     |  18 ++++-
+ include/battle_main.h                 |   2 +-
+ include/constants/moves.h             |  10 ++-
+ include/constants/pokemon.h           |   3 +-
+ src/battle_main.c                     |  20 +++++-
+ src/battle_message.c                  |   4 +-
+ src/battle_script_commands.c          |   4 +-
+ src/battle_util.c                     |   4 +-
+ src/data/battle_moves.h               |  92 +++++++++++++++++++++++++-
+ src/data/pokemon/level_up_learnsets.h |  30 +++++++++
+ src/data/pokemon/pokedex_orders.h     |  17 ++---
+ src/data/pokemon/species_info.h       |  36 +++++-----
+ src/data/text/move_names.h            |   9 ++-
+ src/data/union_room.h                 |   1 +
+ src/list_menu.c                       |   1 +
+ src/move_descriptions.c               |  14 ++++
+ src/tm_case.c                         |   5 +-
+ 20 files changed, 236 insertions(+), 44 deletions(-)
+
+diff --git a/data/battle_anim_scripts.s b/data/battle_anim_scripts.s
+index 9ae0ed9..a8517a1 100644
+--- a/data/battle_anim_scripts.s
++++ b/data/battle_anim_scripts.s
+@@ -375,7 +375,13 @@ gBattleAnims_Moves::
+ 	.4byte Move_WATER_PULSE
+ 	.4byte Move_DOOM_DESIRE
+ 	.4byte Move_PSYCHO_BOOST
+-	.4byte Move_COUNT @ cannot be reached, because last move is Psycho Boost
++	.4byte Move_GUST @ [QoL] MOVE_FAIRY_WIND reuses this animation
++	.4byte Move_HYPER_VOICE @ [QoL] MOVE_DISARMING_VOICE reuses this animation
++	.4byte Move_ABSORB @ [QoL] MOVE_DRAINING_KISS reuses this animation
++	.4byte Move_LUSTER_PURGE @ [QoL] MOVE_DAZZLING_GLEAM reuses this animation
++	.4byte Move_MIST_BALL @ [QoL] MOVE_MOONBLAST reuses this animation
++	.4byte Move_DIZZY_PUNCH @ [QoL] MOVE_PLAY_ROUGH reuses this animation
++	.4byte Move_COUNT @ cannot be reached, because last move is Play Rough
+ 
+ 	.align 2
+ gBattleAnims_StatusConditions::
+diff --git a/graphics/interface/menu_info.png b/graphics/interface/menu_info.png
+index a6a7efed395aa536cb328037e099b3d756bcc459..0d60fc22f9078eea1a58066080f87c2c0340f880 100644
+GIT binary patch
+delta 1778
+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
+Ugn)kac>n+a07*qoM6N<$f+4U!-v9sr
+
+literal 20869
+zcmV(%K;plNP)<h;3K|Lk000e1NJLTq004jh004jp0{{R3^x%>C002rfdQ@0+Qek%>
+zaB^>EX>4U6ba`-PAZ2)IW&i+q+O3^gmfX0uWdAveHv|G88V&~p!L@1zHT>EebcI4n
+zW!~o1)y<F;@^B}C13PA?<2L{A|9Q6m`Jev@^{o4L<l4$v%Fh3e^EhMY4{d+{_x>LC
+zV}1Sht@Za`zQ29_L*!eD-_!foGC!~Hd_VvEfqHztfBpLXt&Y$8w9gxbuQy)*OMbF{
+z{=BYz-YCWQ`{DEV?fm>)Kfc}0=f5~UZ~J-k-~WD87URymUy56tDWsjR%}+`Gms02V
+zvc3jh6jEM)-uW6*{qx#wUw`~<@xK1_+uH5@^ZoSeQfzzqyrBHHMxXD8{M+}_*T=+P
+zt|<Kc<X`?FTu0u&|L@z{J<r{qXTEpWkHSio?Q>H<Ze{(67hWu7T0d6!RrxRT=emBK
+z{A%3dV8?ED^WxXo!Wkl~{e&ajp@%2T_4^2eOFZI?mEU6=F|F^lRO1<k+mH@_g(uc@
+zrh7|`eH!dq;@k1-TEhC=bA8?jjZeM<uZ)2=3;e`ier<pH=700+>y4gA(+y#7Uu(s6
+zMQxhPaOeEWtJsk6eAYCt^<BTVZ+5eP+t|bo=C#a?8|?e_zQvWpPuogspA)ak`?2ls
+z(Fpbaya7wZXJ;-ZBz9mg7<MROuQApTSjWcxbgn$6BVO!4$T{9&d)S+l3Y*iSpUuzI
+zuwEN;e7_B}uo0O<Q`wp`bvElbGWJuCh7I+c^0DQdORl-)Gxw6pQF1Az7BQ;VRF9f#
+zskJu1tGCpSmRo7HwRX0C#xnt7`7CGM&UT(>?|f+Itvf&6c}4G6ywY`C`6^ev+I3!i
+zU_Rp*d6ZE{8|UbEywlC`zsp^>yWQvAXPB7MJZ7F{*4gGc`-81L={cVKl&3!JIiLQu
+zYoA^Hb=SggJNM7K7CyV?jvecD_2;hf?OK1lMG#K1d&Z8%Be3Ju9l)TYd$zZ59MPR~
+z&-POQ%aL6R+0D6wJH`$kGsOIauf6-ZbN{$+TR#4yeT#p$bDLZD|6}Jix9+oZf8Dn~
+z?AqOzM@eggJcX|5o}O*(L}7Vq$YX#OyytnPGVjC(PL|;TbB;c1<aYbvwTD(mZ)2wY
+z<U&h&I7Qpdy*%Juz3P3;y`FcSckQ)~dzNb+N99s#o4A!aAO4}Up3jW^PUVi}PJ27S
+zy|z6-0<ZP!S?_s`+)obUU2{CSn2W_=3HDLve#Hm8<^NC0cf79qdiHxh*L9`m+*tmz
+zOm4p&PrUEFm69%&<Va(`ueKjg3F9uja|-ohdqcsf<{iQu_jB@Q;K@14meQT(m09}A
+zolWrfa3Ai#y0gNp-qCRsy@YuWwsGE9X~$oeb^9;Y^^eQC{TJ){JTB_Hq*z<t`;+fY
+z^Tw#I!2SK}CH?yq-Tt#B{reT&{$WW2YYL&uC(b#qzx>1R+rN6jpMS?2&vwn2k2}RN
+z@^x*T$Y<0i@U_%4RxXrlug@hy<m-H{d>rS+IlS0LPy{}8r@&dvBi#W90va_Attb2_
+zSLs)019;ES`(R@^xhDp~nJrK0<Lt5Za%Q08IEVl8+cj<1^}oEP<Lm`k+4_w;0sXF=
+zZ#>-t2fTAh_jT1Y<{Xc9cja>MBRL&?955oRe!@)FRq|o3+xDL?^q+tK_D12#z1=QH
+zE)C%99Xr3SW0w1Q3O7~pL!~}vi@k<{VGmYx?A-Dl($-oWyu)3}U3?j5ARXreXL_#t
+zW{sY^^qK2C!gzArYdD|Gu{p5ae6Ur=wLklq8|KalX6M3nv#j;LX1ZAgXd<q{6MJ)F
+z0ov<oPvsprjUzp?^aI=-Q6zgx?zn8I*wG{K%I=jo0PDElKz<kZ8yCq-A&W<<ym@@^
+zaqByc!^SQG^J(;QZ*apWd4_OH>FPI7GC-E6UOi{7>%x*2OkREZ6W9(n&}QTa^D+5h
+znFNguS9bP$EU*QV^0P?oIMVYRJBtJKlyFVHeLwe|v7YeU09Cx*i^)l>ti-st2VA@3
+z<fzy5uqYP}w&0go_;4==%ld*Pbq7bT*q*^#oT*%(4?7&nxb}mE-SR!>%xM;|BeFLl
+zC1jbKDtN>@J^Vm|y&qS)Ayl0$nd55xsVvz!DyoK?Jg+UZ4r1N`tZB3FKw`lb+}0M$
+z(<Vm`d(jp1{;>|$>*StlzTg&ZJ|mZX;$AnMEPgybgOvcPGrp7~iwR;4$(8H*Y-wEM
+zXfS{SwteoEE#PExEhXWJf#RJ*8*$}%95==g%N5`Z*a4@h2Qd5Owe5=cgu?*r!Y12P
+zj~K4zIfTlDlVf^p9cJI)t$#MNvtOY<dt-$MC%dzphia39ab~WMpMIt+qHlrgPu%(g
+zU3wBbc=M`=3z;Dw^D1@3%eRGN-Mzx<pVvSOyMK3FvL~~jWn(=s|Gke#tU8ml=$N;5
+z#`T@-4xZvp$9<OS9&!Y$_L55G4`)2u#a=hW@hox4%vhhj<EKFX2?!idgT_5B*qw0(
+z=Yx;AAK(Ymo)A@BOYmwDM;9k~8ys}ZA>_s@du!Z>9%zns!$38Iad_`Q$-(_UV+;??
+zK-(&|?u27zpYi?U;Jl;}*5ND<2Z0;U6?7OK_Na0g9n-`*PJR11@mzQ7@ZG~@!jw-o
+z8_TXNTaPXX-^l>ld0ah}^ZD`CIA^xxSW6D=<8Gj74;Jy9Diu6#^@=#~5oB*6fQxJv
+zfb(=t$XW1{>?P-kmElXef@Jb|M(QnK{eV`Sd%j`d72gl)zz{~7gVS);6AsCVoVA{u
+z(y&iH_-f@jVV9^-J{-H;OZ4u6)@KLk;4pH?8L&A%>B19Tyx+}bvwM;K2&~Tor<sLa
+z_f!OU#j~eYJ@EOySonEfxIW*AUBd@)eYmZfI2~D<axF7Fxj?{i4n8Wg35}&XF$Q3y
+za1?Q9xTTYOn5gXZpa;%?TmzH`NTw1QfivLM1CJGKI^@W{bz=cR5RNKnf!(nB`Qj99
+z<w^}_ec!SqjN2Cnd~Ju{;44mCa?zh)l+TgjMj5CpV&j8b07epj1SvLG<ppyV<_4J)
+z?^Q7@j$7_yV(IV%4m7j}iNckzVHpM;x=b(6abCFoxm7d}FDw8pGJy|#u%|e$qc?D{
+zB}oQY1y$pY08f|%`wjTB%zSdn4;178MxOjGE9=Q7>vGryPT9gw;S<Q8Ae-=6ywJk~
+z38Fy3bSyw2EM`1_f0-9Psqwa)b9NhYGf^ENOGVgeI2bLi3O7~|Gn}RX>w~P!51cOa
+z+E^!C6zkA|<VVASV*<m6_@DTaVN(qtf`qc-z?gxWGlf2(qDehCIf&1ujm!#HY4`|k
+zsFxC1hFIFY&f1L|=Yu-tH4$tusKEOGD%|JfZzq4}PZ%U%FreBG_Jb?pkmrJa#9kq%
+zC`i_bjfIkPN?^|T#);uoK5d4fq%3tm>Rz{oK^5o(4geDYSYgSWl><@&PQnOr0~qC#
+zn&&>H3vQG2$@>JZ1F$}K{M@y1G#>~HM23}sB)AUn08a0S`977K!Wzc}e8X?tnG+Wp
+zuIYjK<0wH6q+{K#9b-U!g6wbxPEEne#yW}YFX&vBN4eNB^}!?WA1Z)vT;jt2Z==TK
+zI<{GwDk5bztUd@5d<=GpVZVsmz>LUo$3CwEwgsn$u;94{OOTFju?Fny2GUdCxn++a
+z>&5{=<=;n@(cq#V&UFTR%6=yh5WGb}<FX3A_>6NKN7zvfSOzDBZ3e>&qycz>_oWKR
+zO8#*7d&TJ|xdGQX`gN5VBP^}~h!_`Mqyx*n_&xU76#!P)6_|_+3KYdbp{vTs6$cwo
+zs5nQ6a)p`jN#!2-h`1wz12J+$kyFBP<fL#bw{8ZU{NOguNZhU*l3UE_^+R5`zZ+gw
+zHb~*ZF2q0w*mZ<>zj<9;4o>{$I6+Hpspxf`Y6HM)=imp(EJE_Y|FHUb^YCDPMWZ{T
+zCb-ZR$Y<$xNeqSqR-h;^ul)#JXD!#g1vGxH=ayJ(OanW>XYgJip!UDx)4&HwH7|Y=
+zuIIXD&xn&OQ^a3!Q4nkSU%-MxxHen@W_MtaictJ)$6sTaV=8AZ`CCf~Yw5DQeuNJR
+z?!5jx2j2cO61+Gt6nvnGPH>&mfMdI3+_yy+@Nir)B#J{(d?!}tocWUG?I;FeqmShj
+z!2<Vp;?~*4mn{_({Kkhbjt#Mf*lGEA*#!1o&nctlpdQeb>FH-vGqeJp!y(5%g86v0
+z%39QCI|Gnf@M&eTH!QjD6{g_JeXdus^_T$m4Ctd6z$HC1P<<9|xjbsBh-L5M{En;`
+zhB^IO@fe1pVz~o$mQU=1_t`;iE{c1?N`|1#Ucv|Pw(Ob*EZm3p(&3Jv9Tw9e%n~}@
+zX`gJBEQA9D>)^iNdfW~m7bc$vNZmEgxFLA4_dO%#u;9mYfnX}~sDW3mPj&^l;Anh|
+zOTbh{!Kjo=FwwKR6KsEZBG-(!RJ!m2Y?os&0Lh@q0T5Un_YgU$7r<T@4OyReaAhsu
+zZ3z!<4Z^`SVZ$Ba4R-SHg_}9UeF9#iRlWD*{<Oc2iw4IRvJ|C+{)ErW8@dQ3cY^9N
+zsYNidNC{Vl-6S2wkzn)(?Cf5*30>N`AkG$ql=ECWb~3m9>1c!VF}4I)AgV6xtHFKl
+z08?>u)j21-g>y&68Vl6l0Wf%Zqffx#ghbpwZti;hG8e+mV9fZI-o12@R%hT&4(|YS
+zfw-&y4)&Uc7qW3B11Yv}FoB9lIlu&u6&J~X`R5&Rbg<l$zd-+c<Xr9oqV~gbq_Gdq
+z8k7qMwsg^rjlyfVBOu_u_KfKwf%yT>)lBG~pm1+|E|_9uqJYy!jR>Iao<|;LLf||w
+zSIHWTi*@8<^?rCZ<PzqA4#JSwm*YY4fd!-Rxd9T~xutW1PoiZe?^k&#Z-ehsvl|VY
+zi#hFkE$GK2bLv9dxyS=33LyY%U<@l$^PulI)F8Erw<C778jtP69U6#v8dxKbsb2Zg
+zym^lpWG-0N4rMq8Uc@*x&Ur$1a>C1`?8#?U02od;CUJUGp${CGbp9nM%M?z0g>13p
+z1L22Y;|SK}(~KUT&{t?HYkT4ypw#lfr9^_3%dV7KINL>_2`A(On2#HFnQ)vDnh^%x
+z1TY2x&luSzfbfnmJe)ggheK~t&@Op2zE?$)i<h%_bHnrxp##^tLO7uE6FWM;Ww`tu
+z0iTeyIzt>P3cgf$z#VqBM0|+CN7;ZI^G|#*Hw~cj73Ia1;mlCa4|`jX3b#rXYBM71
+z&aM1B4<N#YNo@w1k1@I#pr>F-&?XQDO~rzP?pJIXD1h9C2y5CoH@K7g`?(oyzpky0
+zfxDPxudG--0e;jJr@KI3a)i|4cR4_}WV*Z>0e_bwES2L?mP5y0fRS}v6C|!>LHvYD
+z^79}Dy!cdXP9%bM!JF43Tsv!D5ggeV$qg%1CdIUIlE)cQ>3AGh7yrzC1WqK!?-Ex9
+zCq!7f=HxF*13U@K!qQ>IfJ-wwxizFbbUhqUfvZE<Q5-mP;A|QrI`ST5m!nQ#3y4C!
+z)xljMSQo<SLC>pI4lN(cnPyoyYGShKk!Vn?sDNtS+1&Cd+>Al)tmu`pD**iCi$G5!
+zf|~~mH~_2JI4H_;!IdjSuW$gscqJc10D*EQyz;n*nG&F4NW<`J6H`Cn+4Y!$-rmE0
+z9^sx5u-DW;DUeUD&V_M&IP*wvd^lEd8Q{h`pEN(ay>Z4`grcxePd<%9@CTi!KlsQ(
+zMY@+AAano_jzIz)jMm<5;7(6`&$VUr7b~1ICkrs-nBqM5N9NN{)|9i9jjI?;?lMa-
+zb6pljXslGPy&oZMXWRn_B~{I9y*hxn0<F(nsiNT0u~tE!Sh(838lFdFz4&nci_-0|
+z@gs=fE*pX}aajB42ap1AU_@*<93>jDd5k2pOMqh11aaQ%J7&entLU}!g6kVW?7Y>@
+zFHjap+mD_1RxH*%aiUYKsAfnSK%Kb&Jg0_+y(h`f5jXBBN0W93^ab%&*voEg8yM#t
+z;o*ky0uy7}C;Xv+Hal;7U<#AB<w8&!8)OrBhQf1vV#>Ru8)O;yKd58O-({Xln;Pc{
+zRUUQmkWBnbG=aClRM$4+@CGCV*E-<>3H!hTo2m)QAngki5)9omXpr@=a1E&S4yVRi
+z%Vv-xokfkOdw5L0PGj*L7_NDmlHMWs=gm<`U|43sIal>G0*MDf>E=gIYltv&p`}JV
+zsX$VcAV6enxCO&WMe(%5kpabQI0$`ugGZs2m{8j;>h>6cjmF41{Km3$YU{+EuxL;K
+zdi21q0}ca40qBKr@2$gXuqWs#M;f+M<dB*_P7R0;P_~r#=Xk&lZxtub0x()kQ>}Q^
+zdE*|ghA+WmaI(S3(VwtA`pL-Z?0SrbE;~amD<%R|!_hmh!&glhDnOd6#9yibpj^9W
+zidESA*e>HbsELJ_*X@2GLoiNIkXzzS!DQGv-0;{nUA}Rcv#p%-vU|<v!1r#aDu$aw
+zv2zx=Ee^_}50a3jAD$(et077(81b>N0G8%o`(Q^OmL3vu91o1ytg-0-xJ&A302S{l
+zQLG343PU_Zb+*Y2UI3?oU5ph^k9+8dnrH+HvjPH4{lP#LJ!o{84Gsg9hZz^I{P%cC
+z_!ckOrlC%mRT=~Kbivk*mZWei_>hyxha1*c8$3k{fGCuMfZ_b$imrlQvu*>X1X`38
+zBZR@{ta$nnDG4m^2^(5;?S7L$l5cKOARl4p$B=R(C`AWU<bH5j5Kw>#L<Vv>IXG(-
+zB@_}4iZ5pWc0~J*xU1@C$OP^P{J!^GHY@^zWtm}K__looBe4`YM@7&*NC71#Ky)0*
+zA`#TZ&N0EF=P5k3fbMUbN;=@gSxfw=K}rcR3u8FCa-`3TQ^InX-7#96n%SsfZUtyV
+zYrm_oHGJXo%QD<9r(qunH$VQh4DTu=tB){v4-<aBrYJor8zv+x23f{OYllbEHH@@K
+zk#WUjcx^|$NRGiWl-!TKG5-pGJGX{EMQ$HTo_Sl{^zVx88%X7jJN67q+Tbu;<&Lw8
+z5_E7Dl)h?ni#Y7@#};vTB-VHrm>_7zxr#^T02_;V!_aJ1xs+lji=4Qhb`5lmViq$#
+zhRG&Q-!KNjh7E|=(+@+?#%s?VdV_s$*WTwuXBehf<Z%2{(YT6xIkg^cv%_pkkY)><
+zH@h@lGho4h@@A~3bOU_NAk2dR0LZerSLkwH!lAlhGc;6eiHnN?9T{n>vOvB(dpocr
+zPCE=`(V1ZkubXFk%px8q;`qMtNb=5fEi*os`iWyV9doLYIBwqBldovJ2<ezlD^7q#
+zZoWql2vUu+o9o20a@ZJ)Z8%A6naV>ru?06JV2~-|`?EPH&atc$g!6n=bWl^+Kzs!U
+z;PcdyU}Vs=6Mq%BLALOTZ1^@|4H!v{ynh1=QQOuU!e$Vwb>Q+aEaZ;KSJ1^64<te~
+z<3u+TSb+Z-+7<_px2hge=4TG0&2qKd=p)<7okU}f_<Qynx~$CS<QyejF)0COG7tl;
+zX>1fe!UCFW?rwPU+_`idxlnF%B=x%B_q@U!Bh-mCUQh)!LQz4yH$3T*P+%<%0WXCl
+zIMtG8Pov_;0p6)o$0k>d&Gg7&&I{j^^danh@5fdQqTqfFqJf|sRk(VpYHU0(Y`wJw
+zD{8FUgJX{DUe=X_W+*t;e?6Ny5o2fN3u?I!vm*yf2!5@+*SvwSd%2;ZWfdcw97*n%
+z-(9YAGrlL6zZDSBJ$`N?eb$MFUcs0y`F43T=4~0nZVU*E4Mz4cS77PfP5{25N4xpv
+zGJ4h5?r?x}H?+F=2Sx*opDU|$re<aah(e)4>@n&~s=Hauq<wY4=DzQ9EqzgrSYj2X
+z6&Bz`ymUhY_%^L9;$w0NPJ|o6Pt^_X1u9g|L(g0<M2R09-pFA*X?`N;%`z4RG=8fY
+zJnL8L`FH?;!N-JsLq3^Ka2w8HeB(M3W^d$o<^Sg1A0r6A)EDsbulj;Bh5~ACIb7>4
+zAIP%oFb|k8{D|XdU=g#t)%AEK1XScy2U9NnlVoHGcJwxjwRu7hcY&M0*>Jbd$$MdK
+ztMC_=4L*SV2bT!Vfz&+#vY>2MuCJejg^$gghYo`CQ<p`JA0-KD6fYJNh)~@5=1sjq
+zs2ze}SrukJkehXGd}B#o55{#jKr)AB{KZ6{2^Bd6Zu2z2V+Mb3z`>0NQXS2hTjz}T
+zw&A!7K02-np&JEl&>t3h2W2EMjbUfOoO`%*#o3Vl^=3W8i0EZ*fHi{3qsh<85s7UD
+zFi;V_>wm=SW&srhNM!=ogICH14G*(YE6d6OO|LsT(JSo9v+|d-&D>Wu+4Sxz?AY^5
+zu6PL=F<!{ETUs#UiEZzh^W76(#44&=2z)`U2x^aJSnrj-=lh5cUF}?P##vazA{PMB
+zP>{(b9FPb!tpdLQsGQjt_1xCd2-BP_z3w$I3{HC8tqb5r&1yq%Rsq_M;=+4v5A6An
+z!W`xjy22W0Gl+GY4~NE}K?iO%qQy<tadx4A$h(xA5r!3CKtYPCdp7qhn_UWLWwDHu
+z58mJ$3m<McB>u(-B_zy{a5m1vp*8Mw?_;Yb|BlQj08nzCwp8<N05BM6&g@f9Div4?
+zoa~Y=N$)+>74x2IF%~;@<OZ<vTP%b#_&pW^i){l#M0{Kv8*nFBR)>Uy0+{jN_9O*V
+zH?$?z%itjC{$U(?c1{f*d>T>(Inb*I;^OxJA%1lGiV%8^5-T{&b}p(1ZBjDvgN@yq
+zO~nHHVv|}n9QkA<7*}jmer`u^V2!tJbe-=Y7cLW-EJ}M!Iq*6wQ><E%p1q0j)3__A
+z`h?z?&m7y)vJo}|<Jb+#B*Sj9oV_JwW;Og};v`(g_u+QzBDc=L=g@V&+<eGvcv{@W
+zJ_@V?H+Gb<xW|t6esGKrHk{qAfGFlN&Nm~;D(v^<wB1PNdYB>JpsQRXYizdfvErS}
+zMHho+y+(k2wu<USp5ZSfoLnGcAFh?H#)7WRl|yCM5W3U)I#J<ceg>KjtK){XQCurJ
+z5bX=AEJ}jv`Q^fl2R-clWcM}<)JQffVzCY~)bejWpVNLDe@s7wp1J~0VvXbj;A8fH
+zf3kAI>V>q)I$=go^>A8g0$IYQ%|Cj)qX(ijVcx1;J~F{ZxuSDgt=!8B0`YU!AAOGk
+zeG3AyspeXB=_;FP(EVo&==miEG-}^i2#r;XX3LS|XGQ=;K&fREIBQ>Zg2w@eONRA6
+zfuQOxSp#P*uIrA@RmS)R<1FRi5^gmF>;Wt0uqBJ5!I9^H&$Bef?@@rDLsi9@A%jY6
+zZ?YSs-mTU@K&e|-iBzeppn8WFa?h&niQ6oT*m09zvFPWGMQ<w@{Ua8={~C+tf`Z*3
+zV+SF)d#UYwgVE{KfH-xQsvafg?QG>(395RoN(3Npju5k{Zb%#c11^cngH1u0fSw`H
+zYH9cmh$#dXZo?X-2p@jMk+x&C&SAO6!z(NutCrB<G|*z%LSiLk?S^DAM=SNN1MPpM
+zEkIBJ=opRq=|V^5i+gRruz+~igA>k3W%$j_c2AG(epr}=rs$dX1N*jK-*}->3{A~a
+z=M|zdJy5{+`K%0SvS<~b<c>sl#9UbZ><DJHl@7HwjsYPATA!TY%Q$b&zd`YspsDRP
+z$I09J38-h8vKj2JsBN5<Rma<6%5LF1P735QU~?7rXIIvq&3GGb?tF7sCmK=<-o>oN
+zGH(rd!-9>aanIJSG^7zOX#SSUs{bOD1=HK|fdzBwq;`*9K~+}nRg!?Q16IMpW)^x{
+zDOOi?-p%?V3QtS3L3!xpxq)W!h`voOy(@4|t_iiJ!-M(bFm!mW1|8mId8q=}vO;}o
+zmQI6vC%QjESFPhbEgpElJlOgbb-)890U_rIuB;Bfo`9=E>Wx%aF1HLY;AXM<W*R^m
+zwW{!O+ACHGyaVXD*ujJs;e=!LxI^5wq3Dj}=KWZ&GoA<!)*);YzUxty)mX07CDq+J
+z$cgx3k7H-?>)g#;!D(Z_zQ4RqZUK%ADa&{fDRo!|`79p+44Q`1AQKds4}xaT{OXk2
+zbFs!)^#c>I!i61TLANTIU};U%Spi(w4o+C$2uH|7U&{&@tW~`%#>Dqs@+kBr|HBOA
+z+`ve!9C6F<A&s`az}GDa;GC6wVp!(607Kj@Hq4Ezf`xB|L=ta^+;-V)H*MoG85~6X
+zU~v61X&Vp_cLDVdwe3~(m0aISO$`26;O8=Hj`H@Skm#uG&}|*d(;8?-972U*RyT;n
+zDK=G)fM$=M-5en>%hktYR~wJ*j@WUq9xios6N(%RwJxkyPk247gzyqznqJvBt*%v#
+zf?uBqGTX6lCiT)?Ks@~Fxwyu0z9C-gG_lb5pwRH**8tzJSL<M}RhAjjU{i4EFo5l?
+zC+_!c1<dJhHY(i67@)Nya>4Y&kcbFu0Zu5E;vJGrxDiT!SebHfbHYv<EPteCBZd0H
+zsB5_`D-7sRv#8~S?4T5pkMXzC)TQ5eBdd`SZ_!$z#PtJX)|t0en)+3l+8Yv%#SS=|
+zZli~y0<Ft|yjQ&tZ)9Q{%$V7FwDK6^V;ihDQB2(*F?A`Xl2H+3%M!xfYEJ`$tCIbK
+zuyZ69sT6?Nu(&w8>l;mnG}Ghuo=7W^db|ZF1P&Li%Dfa<fhBFjQZU@$8CQbwwj1Me
+z2gmW&Fs;sziI7<(gq1yR2HO;N>Atu&{KXC)Sq8kDutIYit>6RE7^hCi%HFg>1gpj-
+znD@lF4lA*N23!$Fow$pJU2IkepVGdj;exq_n=B$Tc{VL07Gp7SNCOuRy$)t3P48i0
+z5_I+xgV;`!tJS;2+Bp;8+KG&?z$gO<W-iVK-9~R2bc8bD35L~P`1*7A6lGq2v)IpS
+z?%ePF^00~*VSh7`YC&8A%kpT&kgjljLDQ<ywPbi0K?$6-X|1HTXPM8cT+X^#W5Mh;
+z2xE^_Q}LOPu&=0EiT7A)Y;Fg`%XkqJ*d1e?D}V@dh57SQ`9LY`ExMTOUd%c)E9-*|
+zbe!bCDM7qgw<AbhTWu|^TC77=P*(Nj6Co;~bg;WA1u>hw%y##nWPuSVr2*yxB?N0S
+zK#FCXi+u}k{LXzB6M+^yAz3Gw${FI~EK7y$0ygQ@2B3w$e`%AGyWZw07v=8=M_hG(
+zlP8wMTSd>>W+3X$sFN)3Xg6x5+JbfPK>^uX-VFR^yad+<bOT(y^C?#?d4`o?9tYgs
+z3%>1i!0E)rFtQlLz8g_EBA5wGgGZ-D<g1nwjf-}$;K0(Uy+Z`F&(mt)pp2Y0{}?9?
+zqkn7`HXe|%Y2$z)@R4vR5*$DV<w0Lh%*E$hw+DTJsl(<(JgC()MSd7g;nbRxfNWh4
+z2FZ;Wjp1mm>h}&sx}s{)Y9@={#azxoLOHGSeAoscg0RE+S|?>ZF>NSiFc3S-!{UlD
+z5X}{1&ZQa(LCL=A2VxJPz2*~F3>T(&Us}(q-QRu|@0ahz`^UMeX25k1e@8BM`}dDv
+z2^VYH12pJ<-dve^aN|dx_{j)pExRCbKmbQuwXFyMti@z6yU>U2R+7zX7ZZL%`N6-I
+zh^9T^o85Z5_aNsBh-;=Xj|5@PbH1hDsN`r7AV;|whb{c#=2n-bQf;$zl>fycH2~RC
+zz^rU#JG;F@(Go$c;@8ftEHW>`^;outwt(HV;Z<)X#(s3mTkR8%4+P}&JM58MeeN6>
+zNQT`71~%}A5ko21n5+r1G!1x<4y(P42Lgq*q~O19Z!B8gc_ZTZ@JHB8)^4B`^xxAm
+z&C@qi=E5Cdhh>YloIIu{6#AxMU~;?lNf0)y_6@ko4k0t6FOBkc#vtKtRXLKD!@aFq
+zZc7{%Dk5H20=TM(F*hJ^np)_VvrK~}(Z8Heh36)PFk5PUQ|E{vOV+y29zJ@SGqp!c
+zELfbRA7RtYVS$Z9mw;gvUd^H0@yt+R)?PgF;(Hc;F;Y1g_-(?nh8-^vtabib>I_>&
+z52_h$;9wEhBVEbH8p5<W+i0A9aq8=(T9?)S_iForpIQvUhVW)U0zNja{0=<8E)|=L
+zwqC5^Jq%pJ+H7qTUje;lJRGKM-vD2V&eK2!%WR__G`JxKSFH@Dmp4G;`t=;X<tFBl
+z@(O3$29c@-5YRw;&58e$g5b^VK?1)HZhSkAi4TH}>Wx|FxM~YeeqeRS*c)Rvl<`|m
+z64Za@$S;{;vEnh@!-Q#v)<D%ug0<UdkBuN4;KT*}c1V!W1?K^BK5c&54eh|WRR_J7
+z{?$CQt?rp*F)1Y0a2zIgu3n<u0)YXy*+(oU47>u4Kf8+}J|jxPS}VA_)NNA)+^2QL
+zr%{8sw-x)bcCB$SHB?)1?eW7vxXSznE*}dX`AD{POmGE$bXXMsAhZ^hQrp=z11g&M
+zR7XG;g(CwX=u4AR2##SiQfk%#V<Zq>gfr1B)VD{SJArb!DhTJDpF}UP)!9Af)RtLT
+zC)_K%E1PM?qur2F1pKu@ZLqIHu55UD2MAD4W@D{N_}2KSw=q+VS1sXa>JVW1%?YnI
+z4`6<9*zjLz#r$nNzJjtFqyBTu|FJUM_eHa=?8UhP<M(-5q_~20I8ONHG;vu~unoll
+zzurAMYQ1yZaTN1mR=i7x*-1lPc|*x{PAVGcG9wRZVH58iGH-{;J;o|cgZYPRwN=A^
+z)W;YVun_F^<8Xl%+#1J+#Sx>CaE7N^wZ_-cC<ZuiP04T#sxw=1(|rHSN|MAfV`n%}
+zfX9k)v>kr}iDi&$Ls_U~FB1D{BW-><TpVEyJqfG*W5CXPUnMUVU9j-mYO;pe!GbN9
+z3;2;0YPbx^3~@9;s(}DFh^0*{+k=tbMi)#7J=Q|QkKS77Tjl@O3$4mssJ$(I3BEhp
+zr*7B!W9x@3iCGa!2s#>P)ilPrz12Jcn@lZQ&6D;DV?D0_Rqb)H9X5Lz*Xmy!7bi>N
+zpvW~gFu(~rB>}T>#WyDj?jlS!BM;Na0~7%_I(KMmGYSt}-73c;ajbJ*ZAIqt;blkh
+zCz_>X;o}SP7IL(8BXUMd3#+nws)`}rr@;}sfXpczthS|OH;|ZZYZ%`ayIo_ucE!}h
+zu2$@LYP@x2q=4`p1<sWmCJ&P#n;SpY?5I+GvLV;i!2205!2hyppas*$ILto8^cC7D
+zCXnuR=cfCw6VY7pbIl0tS2<_jv(l^@_Sud9;_yxzcvGke`-eJ+fA$LKmzw5gY7h@%
+zl06&K<2*qUPRZEASxbmcw#y8Rg%tD6Z0kcb;~Ay4c&xw@05P!cDcNe5ol0EYX>tvx
+zvKa^%wywZ158MOGjqU~xvMTmH%{JYrjtpL~GJps-%$aj^0}G0CNOe1+5p9!t`*Q}9
+zgitSg;Nad(<`vN)##J~ou=&5;xy`Nn)6NByx#|w98btwVAjqzF|F)yYf%R%e0Sq>4
+z1o)%+4%;v+U>{aEa@w=7`mj03O3QX@WE&*2M(hj>=Yo#gXM+eed|0g8WiBGN8dk`Y
+zWxnm{sJanR_*nt<04yHRzj)gGtMooC1nceVJLh)t2^Y{1F5{D?&`(tV>U85ovTjLd
+zWDC?MFxmxsfV;7Yk8Qq(@k4H{-0w~*-|D-S*2X+RoIukU=$or~6~`3}IbX->;&?1#
+zvW*iI?YN`PdvpgMylj!H!+#kUHP-}vNG6w9j5;~F0Pb3#hrKwL3+IAhDI5{a$Y^y2
+zd^yxe(8<|thU&c<-fY+_4*ehe2<Jqb11i-p%b`1X0qV8k1*;K=@=5M-G=`Xorm{xl
+zN743ifWq*a5cby?GKxHKi72<o(wKv^3?`p!W3O10VHDPL9yYbrwD(`awPK~+aQ5WE
+zHtPNWl&7sWn>g&pN-NlSmET``2gbMFfyI0K&&*(4?F055nF{eZAUe2m19AYVWpgHJ
+zpBiy+>n|LH+!pJDEY+m|9m<g_oNPb01`1}w&}9t*cx)1FFiBhjOrYL&$7gm;XCN~`
+zVw}mKHS%%Qon@N_j<BhaizOJx$-BU!d4&Nt3<*}6)@YJjNe0ej^Wj*igAXRo+_aC4
+z0A}>IhT*NML?ElOVa2rYc|=sNb!mE2JoH$(pJB!--K+@A8L$IfRtGj-{@QNcAfjiu
+zn<Iy5-Ux6)$)0b=QN_T`MxY=4b=-!~EVo&8!C~dUEv;IKqk&);XEt$EyV1Yi4P9Ot
+z7cID!^`>m}YKi(%EYr9qLJQZn88$R;K3;xhtkCY&ZjTcj0R|GYrGO~5sa&#5yRKS5
+z&cD6<an(fb+gsCN2n_d>IYyU*SthI)x2Cvh_Q-*8mw{{JJoc_Uyp+#*+HMrg3IJea
+z?B+6%3CV(H$osT#x!9Nr89z!xT>vp>UK5O135UZxaaCQ(BRS!)!cE2}y=wASH2lSu
+zf_|!UL%8EoXexHmLdh;IK9#FQeht%y_zKH5O5N_S80!V{*<(E_m*{AnUzJNa!;7JK
+zH0~S=ooQ8KzEwrrs!UjIE_qsIe6GqAVeUs^%JoV^Yf}z*8|Y`R@M*B!(i3b4ORt;7
+zVM5+v^SaSm{XPW7I_hC>2Ih|+VTJaN5&r1Wvr`hnYkUQ-Z3-HXW9aPG#4_YyRY=_T
+ztJG|9vt(-;xq>oXqfb+m25o|tnX0W^0L`<tvZ!1IL#hcY>t7944HVPJPYMFS1uS3f
+z?cD1a(6!>SXIoWJwrI?K!yH~BZ1JK+8GQb(<5de;CXHQlw9bj+xlT)*aND*+X3HC@
+zjo_Er=?$H0BA-*x&)s-kdXK+|4U%-=@N9O#D*SDGNoLnqD~}qdbz9YTIAq^tK<#05
+z(yF1#E7W1>js>i(P6IgoUY~{#HG+$R<H*3GVlh*Q(7w;j4#m3-2P`=%U^b_7)Hdva
+z<i`!I8+yToR|72;v_Yt{RgQY(XXPSsV%r@v1nxqEa7@*CMwoVZK(&_IYzcg8TD#Xm
+z`3EG~R(<ooizGjB<aZRY*6()|sqlbihWgpF<!#^l&pn2Zg^fY|T#m6X=Ldjn3qhbX
+zj!uh`p6E~^PPVlHh7OkQhgqP$ICiX;$&<%uq(>1~Hcc<4&EiI`MF$cbtAM_-=@Ut7
+zzq8#u@q)A(%3#G+^gp}N<Ek998@=4yKeVHN>qfT?Dz55JgUIoC&TpwDld*NPsO9Mk
+zGAtLt8+iy!hx;S!fYj9v;L&w$DsAU)wbfRR<~L-8*FU#aR9QPj7}&uVfuddf<Mr{A
+z8ccHGH}|xh3M$32TPHBtNB$<Cwy*3{fo}lK>JRSP5QyEts3@DyB?V`VtgC#~m}J>4
+z#dipey}&rgV!zy1r@PjH!Pg~Pu>z3ODr*#yVMA;yp%<nhIyjEAee&uD<~_Gz|Drv<
+zmz6@pvYx{#!RTNM*w35Tuu{fsy%SN*YwFq!q#nHPPL?=t!6s5O(3gFYD-c{P8G~u#
+z<5w1A*0&1p=_Q)CjaV|&-hh<RZS_Isto5~1tkexvhYBI;qs0^Gr%Sw!ay`h^X?fb?
+z00YOFRp$_R!C>)<WN!U&Y5>UGWCmb-(HS}i#`yGpIpKy?NeGeo{20Hq`V{O}v#R$U
+z!Lz-^Qfms&>iOol7<@k+B6Xb#SYd>lfl$AG1(9!t9uEt<Pb<^K=4`<spP&z<+njYi
+z&WI=xDYESu=3|3k`uog--$x#7|JKZd+}@^YzG?pH9Rp=y-(`)d0}uOV6KRDNo%R$?
+zmNuIVSnc@i`s2B8FaaA(@;VL}H#F3~W)t;kXUjm#umusUJAx&!?-O-Y;o2szv;EVy
+z`E%r9b0)%B)n+wRv_&`DTzxc;&_s&zkt&GQBZOiB%@G#!%_zP3f75{PWFU3F{Sp-*
+zRXwg0TW};;#IG$;0#@6gZYuJ~LfQp#oU9CdXIl5_ZgJ`qxQ`PcXUj9#g5GaSnvb$g
+z3qc%90U)<~Up)_dxVmYeBiKI<B%s1nr4Svb{^i?_Cc)p9DWR?OxtZFtVqOBYW}&Rc
+zqc=ljo$f5}fTFLNB+|g&hm!PF#rl0J$^EzOYQ5XIa7BxbxV^);1K4}rt2pvGH}B?N
+zJz(eQNT(B93C$w@+mTeJp4l6FU(x<meqmU%EW2_{=V?wcq9Bz%%M%q#&2ecSewTFB
+zie-!aUsw5d9CbF<Iw?QexkR>WR(0OCpM3P5RyAql4NeDRp(IZO0aMptIigdOqS=~T
+ztv}QVhuRsZIigdGj_qyYh95qTNs;i}9x~uIIAaNP8s_0y(y?L)VZwYNxWKD<UkDCo
+zob}%v`}(r9_QQMc9`$*2R?6^+LvT1R36W|11~{u|qlFbXOgOH`{X{}!C`jG!=v>Bw
+zwLVuGv)QT>`8L>PpB^9jtOg*<k*wd1W7T5w)63;=Uq1g>rOt+gpc{5nm^z&Is&27e
+zr*IHL-xqy|dZp+v9vtdh+`oD8);=F^#&w5!CfP<a?+4)WA41G_reL^IVx11jRTs|}
+zcU~#R?T<M|h#8&$MgWE#PSdeb+kpuAm-$$$i~SSgw{QS4xSF1JRP;oi-YxCtDJEa<
+z@ixG2<=g2X3ls%-Zo%ewthl=09-WQN8gj+r=tP$|;ubE;z8<XB!5*vs^0qG75j5s=
+z*IX=wjmHj|Hq4J%?%^sy`}1vwAjevNXH@E5JzvuiB8y?cyzE-QwK?1fg3FDV-Njt%
+z+@@iM%4P2>S$3arF)VZGdz4*k^D_=`Wy3AWt<Nf|!AR$^8&`F-X4}MX_N7}q)ZWA?
+zrh6N-2iV7j7h7|KjAz*f0Z3hr0lS@l_E@|41`(ism-AULbL5^ajme65xNBmukU7S}
+zCRo+PD7zok!nXg|L8#uqn9}Y1?1xKe2Ebxz67{i$tt1=gkhfRpYj%wD{7~vpq7$#d
+z!oA<v(~mgN_Lo4=Kg5Bqv^XY*<P%n3QS~+A%&IZ={1NZV&%nvP0w)fhG&>;<PxTy*
+z)zbNQkYqbsSVffVY=a&j`@yvoNq)Cp@G#nGD9JvvPo?4=PYI&=tJ=VB$J(rpreL?0
+zf4}c74(YB<=l3JXS`s=9ubS#!(X6_nS-3ms*<BwCt&!&a;8+61Hac^cWqWG2D)e3>
+z*EsKvI6PrK9Bux^?%^J$(RTxoj*mhD-K)oOV(dmU7B#CIB<x2Z%-t8a`IzuV*9LBM
+ze}ikbg*|n3J^(2(tcIy!JCThGDoAG~vOI73>jCZA4VD>)u)=a(Qnl?LGJil9_9O<E
+zXAPUke((s^J#Ez>4eGG=<iv&DyPwVWUvp)a?qN$Ay(sm3f&*z?uBpIz8mAB<ZZi`{
+z#0KTBLRHO$Pe067Rj0f-@Z)<b1-NT#s*LCMTP9`eh2_96M@Jks<3=o+tmrWSjYYuH
+zI{$t<-ek8Nw<+qOsKs$VtE?pBwYE>F_qY01Z3G^|TZ{BS?-4$g(8(Zic`KnmEM;xd
+zX7HM&f%iC_Wq5Va8NlnbEpiQo#_if2S)f~uJ<AZ(feo>SS=JvNEsZ*Q?4Y@zaM!*f
+z6`%1nYsQUz(2#HEF4*E_k`_u|9XV{@;8{G6GX7&tt|+@Lgq(4yc01QKRaSy!Kg_+@
+zkgOLOKoC0PUKnB8B^o@G??1=BB`8(xtCREy)<4Z72Dii#@_Nso3ul3s#SK?y6YwYw
+zuEIB2&C6yW*Fl@Z81?C7*uF+Rpw1j)yh^LHUOYLoqd8`@m`*ST3lkhxTo~+TdA4hn
+z{}_kD2S3*vE{@4BxEw>naEV}cAHRHBGjN+0*ukX^sW-)X;MqB}#SDer(T7o<qX`Pl
+zlKlNx4;NUHsC|AE9voMLV|7DSgVsh{ZMpfQU!5syd>#y~I3EzFX5;+mRzN+N!zCQG
+zzu=?Y$2P%#@G<_5kI?v-;Nw3-;n#U&n{T+m=D1;~Ml1yeoRC)=R#<|yG}hn<-Ni1n
+z1ZR>y7?3`>F^HedYYW4}Q=4s-aS2IukVXB+#tOkF^UA|PjYC)?#~eL5FPp-qaa_9#
+z2IPRXdsaGejUnW#S*NONL>&c#P!3KqJjbeY(49{0c-PpR&+y#_)=UxuJcp?`L*Ccw
+zW={djw!ROC2bLNpR_jg$+5Ka3FRIufGv9M<h++sYNDVgL7N|aH!?}#Kj`aY%_iXiz
+zLC^SAv(D;9%MtO$TtRdo5+cGv*y7BLd#Q?jTSL26jhbzhHkapyxPti|HY&ZD70^qm
+zFrq{i_>=WD-iH;<*iWmWZV^^7G_2d=2rHc}q`obqdrZ<^UT&1-^~YF%`6Lv!p6M<s
+za+vbz=u6X^mbqDSrlVN%I~}UD?)J8+$mya^m>jlvTR<{bv)~HIrnglvKijufK?mBK
+z|KO~mZC|!nhbQM-i~NdBehpRh*(vW##qBdx(Hhw9AR(Ll*8r#6%52jghUiyV*l6|2
+zZ}r<YnrZA0I`YQgwoec)eFfqAuR*xK#^6H!%alb&U;fK6i{Ii}7sm(ODwZ-Q#~?nS
+znxn(G+iitaga&@c#f`Ur9!R$+{Lx$B84OyWXp`iiWkb`P;(?jlR2cm1YcoT1uXbF=
+zR$Pb41ay-{8{MLnX~3=vRkxk_W(8xNHWNiVHxH*U;MDsDRdNc$(Xfg3he*}m2dWO4
+z{5)+2x=o4)tA8#>Qs?WfAk_NiV~v8d0<3yFZLN2l#VQ76Bh8%Hzh}>xeK-ieu{tKJ
+zlf4Y<_=pr&IU3OAVDhKKiZ|@g-Y?mVvpX*!$${3kPCH5qaXby_onv<#x~l5z2aXFT
+z_jJ9Wu4%Ul3P4U_4WV)Tu|4cV8R=jtOSIb-P<EkP$UIH&g3(S0#CO{(hkJLziQ(nN
+zlA!e=9{R-|IQGHTJZBInA$FUJzlZPM=pB0AQt;bI6kBew;HsQjgIa9cnFAw+50qm^
+zC)vDQkLb8;1qB4FIE*&HFovV^O!BM()IB+2-ubauzblH|F7|Ss`4x<HlWFLMoz&CT
+z{NAI7!-^o+dbJrpzjyO~HS=0jG^|hiU9KPX^L?XD{KNXTor4+Ahd$3-!(MQ9HUXN2
+zpG9ofJ~urk=K+yop&f^4cbY9{vN@7)zB8B4aQ&RQoYn`TG(&0lJm)U<2CXsZWEcH4
+z7Tl`==8D_kT9-ZU`<loBqWCfg!&u!7C3KF<>F`zOlHmI-5UZELjx~m}*-m>mIoue#
+z^F_LZ=h&@cDrRt<M<)}5+uZV7H*rmg88#fq6;X1&p8*>uIKxjQ0+zG$A1Ymvs|3$$
+zGy!*D*6Fe$`GJjePP{#q_!7LdD%Jr!Wlg`g%-E8rRW_cFRr~vM-YDV`ti19XT)E*=
+zZc{26ukd(TFy|ysJMbbN-sX(2arXF~H3khw`cB5b-jT~QZpcCD%87D;+l}*`QvoU8
+zFNY+;ks4>n@=~^Y)l;>W>k<LeVL#_8t8A>1IZ19Muhx9~!dlxMvEBBuD!kqSHq9|K
+zd0(sKXe*q~=xea!JTB`foDc`oVU_SZzZ9CqYn8&z@K#86r;oskR$Qy}^t}JDzO8|5
+z{L8(74J$Uff$OMm=>+~1#<+vHK4rjpznoAht8JpEJUBUJu&D+^-{x*BQUo2%lCyN?
+z{w!rg=kTtzzyY14;8+`<=<yjg=^Y1qVb(C1)2G5b7OSl)AG@nO&^oolG~3F!>cY8&
+z9N)OM;{^15u#>lao_l2DPDn(W??m$pQujEI-<?U<`-p|x5IHxG?Vf!{ahZ*>DaDq$
+z-GL9WJMS?;v>eHTX6Y-o>w^VsDl?I((B?e8STA*5Flu|AK2Iu^Qu|TUxjAH2D7FAv
+z;_L9fXgt|Ix62Ml6AyC@k1Z~qB`KCw9aa|I)!DnJqro{+E7ADQu5y&06Jy|>kXOX;
+z&H4KTqqzrXTVMmyPoE~hiL<6-hf*Bda^$EBtlkXm;Yj?&J)&~}aekocZhhdI<!`CB
+ze&7P)d&4dbPuM9^w;w#-2hZ?wZ)a5xqEFu2v3fAN{8kTIDWpS-_BJ{X;E2OQfSSD`
+z%l&3Ci044ybowX)^X!Kz;dY{vwwq2s@h#+;dhpY_;8jEWAQ8s4=1TiuBA^O?Y9xF$
+zaB)W9n0Q%d!hwc1KGw5Y+hubzyzyu#FHd5CyVVUkwa<iukmos2YyiEnn_F3r3(3lj
+z^>`SckoW#x>=}hIj~vh;He}vx|7vP-(7~(Pk~0jdW9Xb$Yu*)~SsW6Re#BJF2mTUL
+zF+;W)Q#s$5%4*eKE#{6WSLck@E%r1N05oumG1+E&`SdDBkQEjl2aZhUihQ_^_TrTG
+zD!$uORXrF>7O#;d4y~~J8Hyc(K(xjT3P5Iw@xeK7srADyi#s^&=4x?T`FlGo!Y1JJ
+zz2a<u_vaOZ$T0six7r7iwflULtLTAYm{4(t=_!J%anJ{+o$vD2)H%YbJGXwC+1VpT
+zci~kemb!RO*XA5wOUq4fRxtfEEtfc&#(151gY{XW*QAyH9Xlz8Jba47^dSMm=OiH^
+zIvS-pz6;T}lFP+j?mi7>ml3kT?d||X^Uk>&61Pa!wwb=3d%?ki{%qCqjcWgmb*T=p
+zHc5T2n!j&>F~g4r#@48{WQVX#<15f|Lb@6X@+}wqIbc}v%Ldp{T(WsZM**8x#hTJ-
+z51q5Cb_Wk6?m0PEXR7<HO{wyMwnir2Xu1Lh8vlgM_#Cfw)|`pKd0zo4YY7~UwgxSH
+zr0Z6iZIHW14(9o@WD*D{2-4NJX%58VtlP&p)lZo+KHaHIt4^8q-YlL7I5b<xV4<M&
+zwW2*fZOFy~bc6MW20*So+x>m5xwn^35rODBT+|AHEjj%)UH566W2`EN^$4BYN6!t1
+z(m7PpGLO=1XStI+TyY$5dIk)OBapAn?3AR9i@uE`2;0CKk`|~?#`*B5HPV8^Z_yD4
+z_~QfTmlMQI;QJdCVc2P~N`k6qSyuTh7u~E@^l@WcuLDBTxm3QhCHiG0vuSToQVEgl
+z9FQ0ZnU2#|?l~Q5`aBt61l>?<aRssEY>x&0bFf&PgW#lB56+e?p!e3(8|Yn6zPTW0
+zKG2}4nYxXpJ~GNDyS+~-xC{hE?#tN-s@>AJhU}<_`<7*(26z4ZPhV}7`?a~c7S}th
+z_86t8Bh@_5jvEHH!?`)g`+?0o@73()XimK4l-RzjwmQ+04J_}YOY9#`Zm17_;8s>!
+z&*tck!Sy_2U$d<`jQ>XEyum9r#2(x={)NSetleC*ZBDkxfb);Q$6V#G0Qx)zYkH>R
+z%`Ofw)d`Tp=i3?2fak9;FQ*4Q*w^^b>kVExwgJobY}@w_1{>D6KTomRkKbK~I(<!H
+zn=7u&i&tuO%|DL?U`xg%<7XOmThHui@3YrVi;RbTgy}7<d)5HV)b`i-uzkEw1SFm4
+zZQUf4t$8#SOIp)#0K_$PF0SPO$JVn3bTqqi4xca~ufahwGkI9iA`ABW3T1IVfArO2
+zWq_BI#0S-4a+y_u3a#QgY?uEVK1&KA$2F8q)4(y|bG$!^%*v_E6_Z<e7hL{oH;7I-
+zbIfUYyKuVGhWnZ}#^U&JDIct3D0w_wSL1$H<-bogfT{y-kB_Cmj|>M2SqXwU9qWlF
+zfT0vGK6!4&lc%jqP0r%uOo~0{ww7|Vrh}H}V|RS>xwg1SAHIMYq#q-E4F6%D8|-w=
+z@L8i9(qcsKJmUqHPAEKvLNDy*FfSNXGjL$~(Sly{j%I8oQnZw}0ca7I?rSq-8BJSH
+zwA)RN9G2+J*Txmv`#WC5K&%mNtIn+W^Py~|tOwqx)onI%R$znRMQ_|T@Mf#E^Oiau
+zg$saF8(~*VIe*AU?C`OdIm!(p41^jbo)IFgbkP-=GqJ}-Nxqw;b3}m=4~IvgWo27w
+z%@XYWMm=0xUG-r$q~KpZ)eoM`Y$^V^u6z}U?M8d@axsohht6FV@2^7O&X=u!hJBUW
+zyw4gtabN4_&DnV;$+Bsfw!_#RN4<E^X_aMkl(LWZs1D-(2VVFWT6p|DE!=+mVad#}
+zFyej_sbEAo<}OA^rHaHvWObzD8Xas^LpQ!}$P-cXz@Tl`wXJ47GuDDg_?H8D{#k&D
+zy<Ymwf!@q;f#c0b=9*t!1M;SXaatc8)2=z723wJX&$J%6W&PqAtx}0rdqO9+9-V~E
+zZd=4+FnHyxY}GRHCY)NGl=zRUe6mk_Qlw8ktnG)^=6h_nynfb#u4N{><gC7lghh`~
+zq##Fh9OZaH_^2~}W^Uj?eGsuN#+yx0$e`eO+G~Y|Yys88ITf02dMl5DZM4?pDdxpM
+zs|Rj;+WDyM;`Xem%k?sJ3FJ8*#V5Uas!#FDQ8KulVwKhBj5=Ss$~N2ka5Jvtz>5Gg
+z)*<Qw`YJ^A!CLcPt;&`x*fO@J?o|uK9n}M5kLW0?x`Ga?U-jHpyJ~&$+WExmhGx6p
+z8}iY8*DBn(rMK&5p3@o7rVrocSo3DnX6nv@=btxa0k`StW;!71%Z7pAlHQ?nAw4ga
+zkF}?V&p5y(Y`7|o`cFHWKgRI4+i6PaV~>6NX^(8}ziE**EyR2uOB29V3%&2vqHPuB
+zdcu?AD+IJDnYANUmjc)FsP7BtuRq5cd_L`0xWNIhe-m)1tHigg=FrFr`25o&MCTkm
+zcAbxH4S#nax}nO5o*u?Fx&IZNs5UZM4^h~0#9&1C1E9&-%GQjJU_R=&Lh_NRVGc+H
+zauHeLIDSb)OJVPePwYQ_k8rWlEGB)q!2LxAuDg|uokL1En;^pNPzc>YaXtgkk;+a_
+zS;LZJe$w!PSU4{El*0>9YSlrBK09a`qz^1E&UzJSlMPkyB_HIsAYoAfr||8Ne}nMJ
+z(qiOQ^sxhmv)1sh%?D-qTx1*lP(IFPuulD4v5ACwwWt4Hg?^3+mfj#8&fN3M6;pQl
+zdTtv;;dJH&lFjy~P<=!q$Pkaq8m4Ahu5;MNZ6~%$0}!=F*vE@F?aybHVLls6w<cKH
+zGh}PB*}GNa<vdE~l<mPGg>j8PUW01vxV2DmwGi7S=U|(>9V%!X{Q0Sra|F@cU*KB(
+zbWV1Ui@h38w{!t#e65i!dYmy0y8<JPOYq5{)9U&)^2*0TI9l3lf|WqQ`l4dlrj;Ib
+z>43|}8E{yAo^4qKcKdG_>^B12eh}F0j|{emjXkYm3M&;%l{&<w_~5k&6$Qh6x|G^D
+z8|%w?ThCOpP+FGHUE88_t;wR6wK<Z@GT(ZwX+(y_*}dC_pTp-G!b7`L(QG<(ewD@7
+zj%jpGn_fv)>s)E}yh%4X>fq^U$t{E#uTi4T_IH4Tt*86ktOB$*516&rUV;eFkCjaW
+zaKOl2CovsVSoZflE+<@GOTX&3`v8G9v*yifv>_rli<@?5X!|gryrv$6HR0R`F9NKG
+zUGN8#-Fkx+RMuTUinig?d#{y!_yp;W6`z4V4}rztwqu2Hvt<=p3gHfd__qBHm*3VS
+zfom>blaHKCXW+~yd;5TlycWx1X5hvr$pv|cj~9QwukZFBFYqb_NGj<oqb<+`*+(>N
+zoa5a#oy!65=<QzCBu_k6ZR@dk?RG9`T2ECJU6jgyFxKsNYlX1D^14Zg_i@1oy!bb)
+z<abl}zp$t6Px0&SV1{dTG0yY;XPx##rfq-HX;(I_yj!&veQZ~*4dwfp%^r$z!t{-+
+zM^16tej)2V-ehU8!-*S<(VXEUO`k;r*2oZhA_d~^yq8Zu=j;2|p#1#buyqfrB}K#1
+za}-?5PTpE`fb!kfbAB$Xajq4#^}L{`ZN77!jSX}+yTcpC%e)3FAGYfVqFT?ND&luW
+zgiLr<;M#L-@X6Mx)1INaikvR%*nM_`oZJ%But7UeUe9`zk~3N70nUB)>z~8C-{?F<
+zd@JZ*-xB=$IN39$zc^V(+&f)wx5aS2jITInNPltyb9pnOYgzlRi4LDr@hlh6mg)Qp
+z*$$K0o^V*k6c$b<pZdUhtdxL{gaHtmop`SiT+T|m-+DeDck&#LWz0@Dk6Sv<X!%`v
+z2MrgK(-=%%V=mLmVpu^e7roy4#M8X&8u<zv`x3X?m%9Bo#qC%0{zvTo6S?1h3*G-s
+z<Q{qTBX;p?=;AAIvHerz;s?=%ZmlW1>Bn%zajo_oZek5rv=Mik?_Ipp6;C^}ovvt)
+zrgP_?A5W^vZ~N4)9w@7-Z&;M@KBvmQ`|X{+XHsg9*IxzhzawvLovz#3`#wI8a%G>L
+zJYIbE?(M;L-F!p_>xELRhRA)kt)T6V*X0dThaRUVpFd)0n$rGCpmx5IEv?E?8fJ0V
+z^Bg~qdbO}>1qI$#;M_OU_%qB;FYpT&*ZUkX9~nBW*D~c8j?c)Kg--K)AN^`gp^q6k
+zaoKe}^VGEC?d-WXd%wmSUT+2RZrI_lAlrwwyz}9Y14rw0hj&kb)a`T{L_cos@b&>r
+zaHQpz>g8x+lPBQm-PjW&mEAT{?)Cl)ENp+qg&b`y!FzFn-VW@g^YJ*pGa$^exm#N_
+zr|nd->L3V<%B(%YNu|qy0m8z1M(G-gtPFKpgpVHdecpEYn&OY=9RKO17L8<^=1-rP
+z&I)8*s3EI!J)-l_g}$^97iwAcnSAQCj}gwcog{pu4+M>e2w-%&9c9gjG-Mzvx2$?~
+zWS~e6gSG=Ezu`s~OV!?tu);EHU86M3l)TLXrd-}Ey2TsDn%7L*=riE#+Jq$xhfKd!
+z{NL~Ib9bVdkJ8B&Q+$drKtM1x3&GPtvUa)&D%*ETySj;%!}~XBt&^Go7ayfyv}TXL
+zgFW|@&o$EhYPRL??rCj4SiaU(C5&YA`OV#`+T?`J%_i8R|3C?r-U$bDp#*3H%8oU4
+zU|%B`)&Tim`0OY84?@})Vk4quYG##vjI_m9M*rVvAeS+Bn<kGP);~-8qq5uneQEa?
+zOD`wxdYIB(1uvWvP}O2uADXxV4HjlN`*4^KxH;T41|Q7$7E-Fv^0V^FNan|<urD_g
+zd~%0_mdj?NhSj+eoxQ!#=lr6!b{X#*z{O~}cv}-*7Cms*<I+!Z*LQ%{24D8Utv)v5
+zv3b(4pY#9TqT%iUJ~MZAqkHLDS!Sr!c)aaO=(5s4;0=-KBjBtCWMv?x_sYwJF<wRI
+zz~UR^vk=M0RM;>5mRy=vG||?zgS7dKt?oldFJ$E%_Y8SG7Ic4msF)8yi(TTmn-iNK
+z4Eb(<+iQUK-Eg1(4_6XBMw|4`iU0rrU{Fj{MSGls?(XgY007n1y{x2r|ATw(F#z5%
+z5XCVm00000000000000000000000000DGK+?lA!NgE9ZK5Z>l7d(Bdu-rj1I_M}0i
+ztgL(9-o?G7IsaOVQhSR*K|%lj|J!3_TL1t60b)x>L;#2d9Y_EG010qNS#tmYE+YT{
+zE+YYWr9XB6000McNliru=LP{201<?_E`$I825U(~K~#9!?ON$_;~)&C)Aab8I)^<;
+z#QVSHf-WTN7^hihXJ@Qp1%YjSNCt5<ghXG7f}vVonLa)~K0iOdzVFFv(--Rd{1T0|
+zygq<WBC&ccze4}}`%ar&%dY_N{`QtM7649Oosuf2u$I>ckhEomyWRKql>8b5yWLyz
+z`?UND0Eyl$04J|cyWM+Mx4S351cFyr%NuR9E)BC3!p|&)aGs?Qj<eL#KMX$&IydOp
+zpfE(hgcs*o1Op)EO1VfX03u+*3-6%Y3V<XWa|z`PLjdXS^rs9TC(#0cOcC@>r~$-M
+zEq4k4^LEcHfI*oNEdb`2r1>7eS<_j6833_-6EPshE{LL0UBG7WE&u`$h1CGi>g<NI
+za{;MfKjao>?ZpKJfNA`c3)lkef}bfDP!^Egb-}SP0#LbNc-#eKusIhL>nC;;R(b)T
+zWhwyZ5(|Lz{BV`E09XJ84g=t~3jh?6ApihM@?%*3WdLY$D&ijlAelTDoF#!s(hZY%
+z#H7Deh5-KcK=jXt;*B;6-7JN0nWYd8vlPN<mRkC|?$V$`gH8=f0C?o;IM>ld(L(^_
+zeCEt3F@RKX$n~7di5QltrYxT5%G?5=_}yvFCIL_f^8#R0b>Q%ZVgcYM6COZUF@Ve|
+z34jZ$O^hKZfP-td0dTMYPPy@L$`6lS0G+sia~-?Exj+E0FBAZ~%b|$(0I)A=7j)`^
+z()I}#6f+bAm1Cq{{8R%V7kB_&?SeS(0@ioAQ+074$`pXfUZ4yE^(252$IVB0DFszM
+zzU<<90aez$06b+m7jj}PKnX6$C<y{B@b!RV=>^&HeEDAR+(6W#=0NoHP~56->ECFh
+z=0~!hr4agAdUn2WI_(?OH>fpV2&WUz2XL_DJpdXsu?)57l7Ej^PACb0l<zsEi$u&7
+z03}@Ew7~(OSpWk78ZbF40IJ=AJ!J&|m-cpEkdp&YCJQ)EZ~#uqwC$KJ769fcu?4t{
+z0rYGEVSus+U}g+Zy8tQxY=dF}v^SfcqKOBf;S74RU_Sz2W(?K`X=Rq}OB+JjI<iAS
+zmKp|i0Rs>ddjMrhfac)eMJ^afH*E%F&dYV+ZK{zA_#3EPP^_OAm)v*36ad|yk^K^k
+z-4;Lz=rsT??d_Cc$_1v{0syo=m>q($WxxRNgU{uAx;SY!Or^af=!H1|`Dx_L41jrB
+zeIRP?53D^DZ?sXk&QiO+^%37@srCLgwYu@GK?y(}qcR7|6$z882d?Lo%TbG*Hkd^g
+zH~_gQbD$h01>j=1JvjgZU_y;%uAIA42&s+=U<9DvMDPH(X_9~yC;+M#2wI<W3}BEj
+zI=J9w0NhwDGtn<DC;&iBj1brb0OA5E;v53VmBXNiKIOcp0w5DR^o0PxXs$Cl3?dp@
+z^TYyOkW>{bU#%am_!a<hEGToI8n@f}(gKi>j;ZhM{0;%+HeavCOU7&Xde%T{3mX9_
+zOc4kGS-HDKeqR7!iMWV#QxO^<=Wg_g+pb^$&{GbD0-(T6A>BrFO4<0?*X#$%NJ=8R
+z05ZE(TMY#ON_>L~0$`q61JUhCYRB`|P~3WdtA3-6nuktnZ!)!x-P+r1&jK)K&7M&*
+zJDp%z1waR%;D(|_0PY>`(*bPR>2;MO0FfhP;7tx1jF$nB!+&8Q=kXqZtlniY&j7Tw
+zQLl0?vA_^|_^+qVQK3Ww006gAgt;x?0>I3z;zC!*io0^bo&oI3sGDP-VN8<%G_*bd
+zV2XhQ0G>?)P)9sq0bTO*4oH~~>?;d6CedgKfVpo#mi_j3Z?*w!TOHGIsQmz#V{UOT
+zXs!QS^ML{Y8_FYr3=H9E1nv32MjLJPSI9;3@L)g>((&zs!M<q08=@J21DJ&@EYe>h
+zF>nxb@`Bd8XehBX>VV#OJ~sZKslNpP=AV!HTn$Fv)dmpDJR+J&6)Xb~D*(}!EdyZ8
+z5PxZbJLZoIeCPnkamio$23iI%v0QqA|KHjry+9SI>7y-M+K~hI--l=R(@O#~9&EJH
+zM*rKqVEH^?^wcyx@~RSq9(*do)PID<CCeiR)*N0eZ3Fmo3Kv-9Ma%7X2S76#-eF6k
+zSp{IUvR^tM7_nah7_ID|ut0>R@w^FO&2M00UJxG)pfY<1c4q*4!Nc#8mHqEVk6?EO
+g;CJuZXrtHDAJ6e!YL4qJX#fBK07*qoM6N<$f^3?yq5uE@
+
+diff --git a/graphics/interface/pokemon_types.pal b/graphics/interface/pokemon_types.pal
+index 16a03be..73d26eb 100644
+--- a/graphics/interface/pokemon_types.pal
++++ b/graphics/interface/pokemon_types.pal
+@@ -11,7 +11,7 @@ JASC-PAL
+ 106 148 246
+ 164 65 164
+ 172 172 123
+-222 222 197
++238 153 172
+ 189 164 57
+ 255 90 139
+ 82 123 139
+diff --git a/graphics/tm_case/disc_types_2.pal b/graphics/tm_case/disc_types_2.pal
+index 9e3e5e6..15961aa 100644
+--- a/graphics/tm_case/disc_types_2.pal
++++ b/graphics/tm_case/disc_types_2.pal
+@@ -1,6 +1,6 @@
+ JASC-PAL
+ 0100
+-16
++32
+ 0 0 0
+ 74 74 98
+ 205 230 255
+@@ -17,3 +17,19 @@ JASC-PAL
+ 189 189 189
+ 230 246 255
+ 205 164 238
++0 0 0
++74 74 98
++255 230 230
++255 214 236
++255 198 226
++252 182 216
++248 166 206
++244 150 196
++238 134 186
++232 118 176
++0 0 0
++0 0 0
++255 255 255
++189 189 189
++255 248 252
++205 164 238
+diff --git a/include/battle_main.h b/include/battle_main.h
+index d5866c5..262a521 100644
+--- a/include/battle_main.h
++++ b/include/battle_main.h
+@@ -57,7 +57,7 @@ extern const u8 gStatusConditionString_IceJpn[8];
+ extern const u8 gStatusConditionString_ConfusionJpn[8];
+ extern const u8 gStatusConditionString_LoveJpn[8];
+ extern const u8 *const gStatusConditionStringsTable[7][2];
+-extern const u8 gTypeEffectiveness[336];
++extern const u8 gTypeEffectiveness[366];
+ extern const struct TrainerMoney gTrainerMoneyTable[];
+ extern const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT];
+ extern const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1];
+diff --git a/include/constants/moves.h b/include/constants/moves.h
+index 14738f1..1e3aae4 100644
+--- a/include/constants/moves.h
++++ b/include/constants/moves.h
+@@ -357,7 +357,15 @@
+ #define MOVE_DOOM_DESIRE 353
+ #define MOVE_PSYCHO_BOOST 354
+ 
+-#define MOVES_COUNT 355
++// [QoL] Fairy type moves added by this hack.
++#define MOVE_FAIRY_WIND 355
++#define MOVE_DISARMING_VOICE 356
++#define MOVE_DRAINING_KISS 357
++#define MOVE_DAZZLING_GLEAM 358
++#define MOVE_MOONBLAST 359
++#define MOVE_PLAY_ROUGH 360
++
++#define MOVES_COUNT 361
+ 
+ // Used for checks for moves affected by Disable, Mimic, etc.
+ #define MOVE_UNAVAILABLE 0xFFFF
+diff --git a/include/constants/pokemon.h b/include/constants/pokemon.h
+index 523a9e2..8b20000 100644
+--- a/include/constants/pokemon.h
++++ b/include/constants/pokemon.h
+@@ -112,7 +112,8 @@
+ #define TYPE_ICE            15
+ #define TYPE_DRAGON         16
+ #define TYPE_DARK           17
+-#define NUMBER_OF_MON_TYPES 18
++#define TYPE_FAIRY          18 // [QoL] Fairy type
++#define NUMBER_OF_MON_TYPES 19
+ 
+ // [QoL] Physical/Special split.
+ // Each move now carries its own damage category (gBattleMoves[move].category)
+diff --git a/src/battle_main.c b/src/battle_main.c
+index 64c9e59..d6034eb 100644
+--- a/src/battle_main.c
++++ b/src/battle_main.c
+@@ -309,7 +309,8 @@ static const s8 sPlayerThrowXTranslation[] = { -32, -16, -16, -32, -32, 0, 0, 0
+ // 10 is ×1.0 TYPE_MUL_NORMAL
+ // 05 is ×0.5 TYPE_MUL_NOT_EFFECTIVE
+ // 00 is ×0.0 TYPE_MUL_NO_EFFECT
+-const u8 gTypeEffectiveness[336] =
++// [QoL] Gen 6 type chart: Fairy added, and Steel no longer resists Ghost or Dark.
++const u8 gTypeEffectiveness[366] =
+ {
+     TYPE_NORMAL, TYPE_ROCK, TYPE_MUL_NOT_EFFECTIVE,
+     TYPE_NORMAL, TYPE_STEEL, TYPE_MUL_NOT_EFFECTIVE,
+@@ -404,7 +405,6 @@ const u8 gTypeEffectiveness[336] =
+     TYPE_GHOST, TYPE_NORMAL, TYPE_MUL_NO_EFFECT,
+     TYPE_GHOST, TYPE_PSYCHIC, TYPE_MUL_SUPER_EFFECTIVE,
+     TYPE_GHOST, TYPE_DARK, TYPE_MUL_NOT_EFFECTIVE,
+-    TYPE_GHOST, TYPE_STEEL, TYPE_MUL_NOT_EFFECTIVE,
+     TYPE_GHOST, TYPE_GHOST, TYPE_MUL_SUPER_EFFECTIVE,
+     TYPE_DRAGON, TYPE_DRAGON, TYPE_MUL_SUPER_EFFECTIVE,
+     TYPE_DRAGON, TYPE_STEEL, TYPE_MUL_NOT_EFFECTIVE,
+@@ -412,13 +412,26 @@ const u8 gTypeEffectiveness[336] =
+     TYPE_DARK, TYPE_PSYCHIC, TYPE_MUL_SUPER_EFFECTIVE,
+     TYPE_DARK, TYPE_GHOST, TYPE_MUL_SUPER_EFFECTIVE,
+     TYPE_DARK, TYPE_DARK, TYPE_MUL_NOT_EFFECTIVE,
+-    TYPE_DARK, TYPE_STEEL, TYPE_MUL_NOT_EFFECTIVE,
+     TYPE_STEEL, TYPE_FIRE, TYPE_MUL_NOT_EFFECTIVE,
+     TYPE_STEEL, TYPE_WATER, TYPE_MUL_NOT_EFFECTIVE,
+     TYPE_STEEL, TYPE_ELECTRIC, TYPE_MUL_NOT_EFFECTIVE,
+     TYPE_STEEL, TYPE_ICE, TYPE_MUL_SUPER_EFFECTIVE,
+     TYPE_STEEL, TYPE_ROCK, TYPE_MUL_SUPER_EFFECTIVE,
+     TYPE_STEEL, TYPE_STEEL, TYPE_MUL_NOT_EFFECTIVE,
++    // [QoL] Fairy type (Gen 6 chart). Must stay above the TYPE_FORESIGHT
++    // separator so Foresight/Odor Sleuth never skip these entries.
++    TYPE_FAIRY, TYPE_FIGHTING, TYPE_MUL_SUPER_EFFECTIVE,
++    TYPE_FAIRY, TYPE_DRAGON, TYPE_MUL_SUPER_EFFECTIVE,
++    TYPE_FAIRY, TYPE_DARK, TYPE_MUL_SUPER_EFFECTIVE,
++    TYPE_FAIRY, TYPE_FIRE, TYPE_MUL_NOT_EFFECTIVE,
++    TYPE_FAIRY, TYPE_POISON, TYPE_MUL_NOT_EFFECTIVE,
++    TYPE_FAIRY, TYPE_STEEL, TYPE_MUL_NOT_EFFECTIVE,
++    TYPE_POISON, TYPE_FAIRY, TYPE_MUL_SUPER_EFFECTIVE,
++    TYPE_STEEL, TYPE_FAIRY, TYPE_MUL_SUPER_EFFECTIVE,
++    TYPE_FIGHTING, TYPE_FAIRY, TYPE_MUL_NOT_EFFECTIVE,
++    TYPE_BUG, TYPE_FAIRY, TYPE_MUL_NOT_EFFECTIVE,
++    TYPE_DARK, TYPE_FAIRY, TYPE_MUL_NOT_EFFECTIVE,
++    TYPE_DRAGON, TYPE_FAIRY, TYPE_MUL_NO_EFFECT,
+     TYPE_FORESIGHT, TYPE_FORESIGHT, TYPE_MUL_NO_EFFECT,
+     TYPE_NORMAL, TYPE_GHOST, TYPE_MUL_NO_EFFECT,
+     TYPE_FIGHTING, TYPE_GHOST, TYPE_MUL_NO_EFFECT,
+@@ -445,6 +458,7 @@ const u8 gTypeNames[NUMBER_OF_MON_TYPES][TYPE_NAME_LENGTH + 1] =
+     [TYPE_ICE] = _("ICE"),
+     [TYPE_DRAGON] = _("DRAGON"),
+     [TYPE_DARK] = _("DARK"),
++    [TYPE_FAIRY] = _("FAIRY"), // [QoL] Fairy type
+ };
+ 
+ // This is a factor in how much money you get for beating a trainer.
+diff --git a/src/battle_message.c b/src/battle_message.c
+index a6392be..8ab5a75 100644
+--- a/src/battle_message.c
++++ b/src/battle_message.c
+@@ -1349,6 +1349,7 @@ const u8 gText_APsychicMove[] = _("a PSYCHIC move");
+ const u8 gText_AnIceMove[] = _("an ICE move");
+ const u8 gText_ADragonMove[] = _("a DRAGON move");
+ const u8 gText_ADarkMove[] = _("a DARK move");
++const u8 gText_AFairyMove[] = _("a FAIRY move"); // [QoL] Fairy type
+ const u8 gText_TimeBoard[] = _("TIME BOARD");
+ const u8 gText_ClearTime[] = _("CLEAR TIME"); // Unused
+ const u8 gText_XMinYZSec[] = _("{STR_VAR_1}MIN. {STR_VAR_2}.{STR_VAR_3}SEC.");
+@@ -1392,7 +1393,8 @@ static const u8 *const sATypeMove_Table[NUMBER_OF_MON_TYPES] =
+     [TYPE_PSYCHIC]  = gText_APsychicMove,
+     [TYPE_ICE]      = gText_AnIceMove,
+     [TYPE_DRAGON]   = gText_ADragonMove,
+-    [TYPE_DARK]     = gText_ADarkMove
++    [TYPE_DARK]     = gText_ADarkMove,
++    [TYPE_FAIRY]    = gText_AFairyMove, // [QoL] Fairy type
+ };
+ 
+ static const u16 sGrammarMoveUsedTable[] =
+diff --git a/src/battle_script_commands.c b/src/battle_script_commands.c
+index 10fb029..960f95a 100644
+--- a/src/battle_script_commands.c
++++ b/src/battle_script_commands.c
+@@ -8517,7 +8517,9 @@ static void Cmd_hiddenpowercalc(void)
+ 
+     // Subtract 3 instead of 1 below because 2 types are excluded (TYPE_NORMAL and TYPE_MYSTERY)
+     // The final + 1 skips past Normal, and the following conditional skips TYPE_MYSTERY
+-    gBattleStruct->dynamicMoveType = ((NUMBER_OF_MON_TYPES - 3) * typeBits) / 63 + 1;
++    // [QoL] Fairy type: like Gen 6+, Hidden Power can never be Fairy, so the
++    // type count is pinned to the 18 original types (TYPE_FAIRY is excluded too).
++    gBattleStruct->dynamicMoveType = (((NUMBER_OF_MON_TYPES - 1) - 3) * typeBits) / 63 + 1;
+     if (gBattleStruct->dynamicMoveType >= TYPE_MYSTERY)
+         gBattleStruct->dynamicMoveType++;
+     gBattleStruct->dynamicMoveType |= F_DYNAMIC_TYPE_1 | F_DYNAMIC_TYPE_2;
+diff --git a/src/battle_util.c b/src/battle_util.c
+index bb66a01..f8cbf5f 100644
+--- a/src/battle_util.c
++++ b/src/battle_util.c
+@@ -31,7 +31,9 @@
+ static const u16 sSoundMovesTable[] =
+ {
+     MOVE_GROWL, MOVE_ROAR, MOVE_SING, MOVE_SUPERSONIC, MOVE_SCREECH, MOVE_SNORE,
+-    MOVE_UPROAR, MOVE_METAL_SOUND, MOVE_GRASS_WHISTLE, MOVE_HYPER_VOICE, SOUND_MOVES_END
++    MOVE_UPROAR, MOVE_METAL_SOUND, MOVE_GRASS_WHISTLE, MOVE_HYPER_VOICE,
++    MOVE_DISARMING_VOICE, // [QoL] Fairy move
++    SOUND_MOVES_END
+ };
+ 
+ u8 GetBattlerForBattleScript(u8 caseId)
+diff --git a/src/data/battle_moves.h b/src/data/battle_moves.h
+index 25c3646..b37073a 100644
+--- a/src/data/battle_moves.h
++++ b/src/data/battle_moves.h
+@@ -2608,7 +2608,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
+     {
+         .effect = EFFECT_CONFUSE,
+         .power = 0,
+-        .type = TYPE_NORMAL,
++        .type = TYPE_FAIRY, // [QoL] Gen 6 retype (was NORMAL)
+         .category = DAMAGE_CATEGORY_STATUS,
+         .accuracy = 75,
+         .pp = 10,
+@@ -2860,7 +2860,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
+     {
+         .effect = EFFECT_ATTACK_DOWN_2,
+         .power = 0,
+-        .type = TYPE_NORMAL,
++        .type = TYPE_FAIRY, // [QoL] Gen 6 retype (was NORMAL)
+         .category = DAMAGE_CATEGORY_STATUS,
+         .accuracy = 100,
+         .pp = 20,
+@@ -3308,7 +3308,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
+     {
+         .effect = EFFECT_MOONLIGHT,
+         .power = 0,
+-        .type = TYPE_NORMAL,
++        .type = TYPE_FAIRY, // [QoL] Gen 6 retype (was NORMAL)
+         .category = DAMAGE_CATEGORY_STATUS,
+         .accuracy = 0,
+         .pp = 5,
+@@ -4969,4 +4969,90 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
+         .priority = 0,
+         .flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED | FLAG_KINGS_ROCK_AFFECTED,
+     },
++
++    // [QoL] New Fairy-type moves (Gen 6 data adapted to Gen 3 effects).
++
++    [MOVE_FAIRY_WIND] =
++    {
++        .effect = EFFECT_HIT,
++        .power = 40,
++        .type = TYPE_FAIRY,
++        .category = DAMAGE_CATEGORY_SPECIAL,
++        .accuracy = 100,
++        .pp = 30,
++        .secondaryEffectChance = 0,
++        .target = MOVE_TARGET_SELECTED,
++        .priority = 0,
++        .flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED | FLAG_KINGS_ROCK_AFFECTED,
++    },
++
++    [MOVE_DISARMING_VOICE] =
++    {
++        .effect = EFFECT_ALWAYS_HIT,
++        .power = 40,
++        .type = TYPE_FAIRY,
++        .category = DAMAGE_CATEGORY_SPECIAL,
++        .accuracy = 0,
++        .pp = 15,
++        .secondaryEffectChance = 0,
++        .target = MOVE_TARGET_BOTH,
++        .priority = 0,
++        .flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED | FLAG_KINGS_ROCK_AFFECTED,
++    },
++
++    [MOVE_DRAINING_KISS] =
++    {
++        .effect = EFFECT_ABSORB,
++        .power = 50,
++        .type = TYPE_FAIRY,
++        .category = DAMAGE_CATEGORY_SPECIAL,
++        .accuracy = 100,
++        .pp = 10,
++        .secondaryEffectChance = 0,
++        .target = MOVE_TARGET_SELECTED,
++        .priority = 0,
++        .flags = FLAG_MAKES_CONTACT | FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED,
++    },
++
++    [MOVE_DAZZLING_GLEAM] =
++    {
++        .effect = EFFECT_HIT,
++        .power = 80,
++        .type = TYPE_FAIRY,
++        .category = DAMAGE_CATEGORY_SPECIAL,
++        .accuracy = 100,
++        .pp = 10,
++        .secondaryEffectChance = 0,
++        .target = MOVE_TARGET_BOTH,
++        .priority = 0,
++        .flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED,
++    },
++
++    [MOVE_MOONBLAST] =
++    {
++        .effect = EFFECT_SPECIAL_ATTACK_DOWN_HIT,
++        .power = 95,
++        .type = TYPE_FAIRY,
++        .category = DAMAGE_CATEGORY_SPECIAL,
++        .accuracy = 100,
++        .pp = 15,
++        .secondaryEffectChance = 30,
++        .target = MOVE_TARGET_SELECTED,
++        .priority = 0,
++        .flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED,
++    },
++
++    [MOVE_PLAY_ROUGH] =
++    {
++        .effect = EFFECT_ATTACK_DOWN_HIT,
++        .power = 90,
++        .type = TYPE_FAIRY,
++        .category = DAMAGE_CATEGORY_PHYSICAL,
++        .accuracy = 90,
++        .pp = 10,
++        .secondaryEffectChance = 10,
++        .target = MOVE_TARGET_SELECTED,
++        .priority = 0,
++        .flags = FLAG_MAKES_CONTACT | FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED,
++    },
+ };
+diff --git a/src/data/pokemon/level_up_learnsets.h b/src/data/pokemon/level_up_learnsets.h
+index bdf1f9f..e982c06 100644
+--- a/src/data/pokemon/level_up_learnsets.h
++++ b/src/data/pokemon/level_up_learnsets.h
+@@ -460,6 +460,7 @@ static const u16 sClefairyLevelUpLearnset[] = {
+     LEVEL_UP_MOVE(1, MOVE_GROWL),
+     LEVEL_UP_MOVE(5, MOVE_ENCORE),
+     LEVEL_UP_MOVE(9, MOVE_SING),
++    LEVEL_UP_MOVE(11, MOVE_DISARMING_VOICE), // [QoL] Fairy move
+     LEVEL_UP_MOVE(13, MOVE_DOUBLE_SLAP),
+     LEVEL_UP_MOVE(17, MOVE_FOLLOW_ME),
+     LEVEL_UP_MOVE(21, MOVE_MINIMIZE),
+@@ -469,6 +470,7 @@ static const u16 sClefairyLevelUpLearnset[] = {
+     LEVEL_UP_MOVE(37, MOVE_MOONLIGHT),
+     LEVEL_UP_MOVE(41, MOVE_LIGHT_SCREEN),
+     LEVEL_UP_MOVE(45, MOVE_METEOR_MASH),
++    LEVEL_UP_MOVE(49, MOVE_MOONBLAST), // [QoL] Fairy move
+     LEVEL_UP_END
+ };
+ 
+@@ -477,6 +479,8 @@ static const u16 sClefableLevelUpLearnset[] = {
+     LEVEL_UP_MOVE(1, MOVE_DOUBLE_SLAP),
+     LEVEL_UP_MOVE(1, MOVE_MINIMIZE),
+     LEVEL_UP_MOVE(1, MOVE_METRONOME),
++    LEVEL_UP_MOVE(1, MOVE_DISARMING_VOICE), // [QoL] Fairy move
++    LEVEL_UP_MOVE(1, MOVE_MOONBLAST), // [QoL] Fairy move
+     LEVEL_UP_END
+ };
+ 
+@@ -508,11 +512,13 @@ static const u16 sJigglypuffLevelUpLearnset[] = {
+     LEVEL_UP_MOVE(1, MOVE_SING),
+     LEVEL_UP_MOVE(4, MOVE_DEFENSE_CURL),
+     LEVEL_UP_MOVE(9, MOVE_POUND),
++    LEVEL_UP_MOVE(11, MOVE_DISARMING_VOICE), // [QoL] Fairy move
+     LEVEL_UP_MOVE(14, MOVE_DISABLE),
+     LEVEL_UP_MOVE(19, MOVE_ROLLOUT),
+     LEVEL_UP_MOVE(24, MOVE_DOUBLE_SLAP),
+     LEVEL_UP_MOVE(29, MOVE_REST),
+     LEVEL_UP_MOVE(34, MOVE_BODY_SLAM),
++    LEVEL_UP_MOVE(37, MOVE_PLAY_ROUGH), // [QoL] Fairy move
+     LEVEL_UP_MOVE(39, MOVE_MIMIC),
+     LEVEL_UP_MOVE(44, MOVE_HYPER_VOICE),
+     LEVEL_UP_MOVE(49, MOVE_DOUBLE_EDGE),
+@@ -524,6 +530,8 @@ static const u16 sWigglytuffLevelUpLearnset[] = {
+     LEVEL_UP_MOVE(1, MOVE_DISABLE),
+     LEVEL_UP_MOVE(1, MOVE_DEFENSE_CURL),
+     LEVEL_UP_MOVE(1, MOVE_DOUBLE_SLAP),
++    LEVEL_UP_MOVE(1, MOVE_PLAY_ROUGH), // [QoL] Fairy move
++    LEVEL_UP_MOVE(1, MOVE_DAZZLING_GLEAM), // [QoL] Fairy move
+     LEVEL_UP_END
+ };
+ 
+@@ -1725,6 +1733,7 @@ static const u16 sMrMimeLevelUpLearnset[] = {
+     LEVEL_UP_MOVE(8, MOVE_SUBSTITUTE),
+     LEVEL_UP_MOVE(12, MOVE_MEDITATE),
+     LEVEL_UP_MOVE(15, MOVE_DOUBLE_SLAP),
++    LEVEL_UP_MOVE(16, MOVE_FAIRY_WIND), // [QoL] Fairy move
+     LEVEL_UP_MOVE(19, MOVE_LIGHT_SCREEN),
+     LEVEL_UP_MOVE(19, MOVE_REFLECT),
+     LEVEL_UP_MOVE(22, MOVE_MAGICAL_LEAF),
+@@ -1734,6 +1743,7 @@ static const u16 sMrMimeLevelUpLearnset[] = {
+     LEVEL_UP_MOVE(36, MOVE_TRICK),
+     LEVEL_UP_MOVE(40, MOVE_ROLE_PLAY),
+     LEVEL_UP_MOVE(43, MOVE_PSYCHIC),
++    LEVEL_UP_MOVE(46, MOVE_DAZZLING_GLEAM), // [QoL] Fairy move
+     LEVEL_UP_MOVE(47, MOVE_BATON_PASS),
+     LEVEL_UP_MOVE(50, MOVE_SAFEGUARD),
+     LEVEL_UP_END
+@@ -2466,15 +2476,18 @@ static const u16 sTogepiLevelUpLearnset[] = {
+     LEVEL_UP_MOVE(1, MOVE_GROWL),
+     LEVEL_UP_MOVE(1, MOVE_CHARM),
+     LEVEL_UP_MOVE(4, MOVE_METRONOME),
++    LEVEL_UP_MOVE(7, MOVE_FAIRY_WIND), // [QoL] Fairy move
+     LEVEL_UP_MOVE(9, MOVE_SWEET_KISS),
+     LEVEL_UP_MOVE(13, MOVE_YAWN),
+     LEVEL_UP_MOVE(17, MOVE_ENCORE),
+     LEVEL_UP_MOVE(21, MOVE_ANCIENT_POWER),
++    LEVEL_UP_MOVE(23, MOVE_DRAINING_KISS), // [QoL] Fairy move
+     LEVEL_UP_MOVE(25, MOVE_FOLLOW_ME),
+     LEVEL_UP_MOVE(29, MOVE_WISH),
+     LEVEL_UP_MOVE(33, MOVE_SAFEGUARD),
+     LEVEL_UP_MOVE(37, MOVE_DOUBLE_EDGE),
+     LEVEL_UP_MOVE(41, MOVE_BATON_PASS),
++    LEVEL_UP_MOVE(45, MOVE_DAZZLING_GLEAM), // [QoL] Fairy move
+     LEVEL_UP_END
+ };
+ 
+@@ -2485,15 +2498,18 @@ static const u16 sTogeticLevelUpLearnset[] = {
+     LEVEL_UP_MOVE(1, MOVE_METRONOME),
+     LEVEL_UP_MOVE(1, MOVE_SWEET_KISS),
+     LEVEL_UP_MOVE(4, MOVE_METRONOME),
++    LEVEL_UP_MOVE(7, MOVE_FAIRY_WIND), // [QoL] Fairy move
+     LEVEL_UP_MOVE(9, MOVE_SWEET_KISS),
+     LEVEL_UP_MOVE(13, MOVE_YAWN),
+     LEVEL_UP_MOVE(17, MOVE_ENCORE),
+     LEVEL_UP_MOVE(21, MOVE_ANCIENT_POWER),
++    LEVEL_UP_MOVE(23, MOVE_DRAINING_KISS), // [QoL] Fairy move
+     LEVEL_UP_MOVE(25, MOVE_FOLLOW_ME),
+     LEVEL_UP_MOVE(29, MOVE_WISH),
+     LEVEL_UP_MOVE(33, MOVE_SAFEGUARD),
+     LEVEL_UP_MOVE(37, MOVE_DOUBLE_EDGE),
+     LEVEL_UP_MOVE(41, MOVE_BATON_PASS),
++    LEVEL_UP_MOVE(45, MOVE_DAZZLING_GLEAM), // [QoL] Fairy move
+     LEVEL_UP_END
+ };
+ 
+@@ -2576,6 +2592,7 @@ static const u16 sMarillLevelUpLearnset[] = {
+     LEVEL_UP_MOVE(15, MOVE_ROLLOUT),
+     LEVEL_UP_MOVE(21, MOVE_BUBBLE_BEAM),
+     LEVEL_UP_MOVE(28, MOVE_DOUBLE_EDGE),
++    LEVEL_UP_MOVE(32, MOVE_PLAY_ROUGH), // [QoL] Fairy move
+     LEVEL_UP_MOVE(36, MOVE_RAIN_DANCE),
+     LEVEL_UP_MOVE(45, MOVE_HYDRO_PUMP),
+     LEVEL_UP_END
+@@ -2592,6 +2609,7 @@ static const u16 sAzumarillLevelUpLearnset[] = {
+     LEVEL_UP_MOVE(15, MOVE_ROLLOUT),
+     LEVEL_UP_MOVE(24, MOVE_BUBBLE_BEAM),
+     LEVEL_UP_MOVE(34, MOVE_DOUBLE_EDGE),
++    LEVEL_UP_MOVE(38, MOVE_PLAY_ROUGH), // [QoL] Fairy move
+     LEVEL_UP_MOVE(45, MOVE_RAIN_DANCE),
+     LEVEL_UP_MOVE(57, MOVE_HYDRO_PUMP),
+     LEVEL_UP_END
+@@ -2927,6 +2945,7 @@ static const u16 sSnubbullLevelUpLearnset[] = {
+     LEVEL_UP_MOVE(13, MOVE_BITE),
+     LEVEL_UP_MOVE(19, MOVE_LICK),
+     LEVEL_UP_MOVE(26, MOVE_ROAR),
++    LEVEL_UP_MOVE(31, MOVE_PLAY_ROUGH), // [QoL] Fairy move
+     LEVEL_UP_MOVE(34, MOVE_RAGE),
+     LEVEL_UP_MOVE(43, MOVE_TAKE_DOWN),
+     LEVEL_UP_MOVE(53, MOVE_CRUNCH),
+@@ -2941,6 +2960,7 @@ static const u16 sGranbullLevelUpLearnset[] = {
+     LEVEL_UP_MOVE(13, MOVE_BITE),
+     LEVEL_UP_MOVE(19, MOVE_LICK),
+     LEVEL_UP_MOVE(28, MOVE_ROAR),
++    LEVEL_UP_MOVE(33, MOVE_PLAY_ROUGH), // [QoL] Fairy move
+     LEVEL_UP_MOVE(38, MOVE_RAGE),
+     LEVEL_UP_MOVE(49, MOVE_TAKE_DOWN),
+     LEVEL_UP_MOVE(61, MOVE_CRUNCH),
+@@ -4818,6 +4838,7 @@ static const u16 sMawileLevelUpLearnset[] = {
+     LEVEL_UP_MOVE(26, MOVE_FAINT_ATTACK),
+     LEVEL_UP_MOVE(31, MOVE_BATON_PASS),
+     LEVEL_UP_MOVE(36, MOVE_CRUNCH),
++    LEVEL_UP_MOVE(38, MOVE_PLAY_ROUGH), // [QoL] Fairy move
+     LEVEL_UP_MOVE(41, MOVE_IRON_DEFENSE),
+     LEVEL_UP_MOVE(46, MOVE_STOCKPILE),
+     LEVEL_UP_MOVE(46, MOVE_SWALLOW),
+@@ -5387,9 +5408,11 @@ static const u16 sArmaldoLevelUpLearnset[] = {
+ static const u16 sRaltsLevelUpLearnset[] = {
+     LEVEL_UP_MOVE(1, MOVE_GROWL),
+     LEVEL_UP_MOVE(6, MOVE_CONFUSION),
++    LEVEL_UP_MOVE(9, MOVE_DISARMING_VOICE), // [QoL] Fairy move
+     LEVEL_UP_MOVE(11, MOVE_DOUBLE_TEAM),
+     LEVEL_UP_MOVE(16, MOVE_TELEPORT),
+     LEVEL_UP_MOVE(21, MOVE_CALM_MIND),
++    LEVEL_UP_MOVE(24, MOVE_DRAINING_KISS), // [QoL] Fairy move
+     LEVEL_UP_MOVE(26, MOVE_PSYCHIC),
+     LEVEL_UP_MOVE(31, MOVE_IMPRISON),
+     LEVEL_UP_MOVE(36, MOVE_FUTURE_SIGHT),
+@@ -5405,12 +5428,15 @@ static const u16 sKirliaLevelUpLearnset[] = {
+     LEVEL_UP_MOVE(1, MOVE_DOUBLE_TEAM),
+     LEVEL_UP_MOVE(1, MOVE_TELEPORT),
+     LEVEL_UP_MOVE(6, MOVE_CONFUSION),
++    LEVEL_UP_MOVE(9, MOVE_DISARMING_VOICE), // [QoL] Fairy move
+     LEVEL_UP_MOVE(11, MOVE_DOUBLE_TEAM),
+     LEVEL_UP_MOVE(16, MOVE_TELEPORT),
+     LEVEL_UP_MOVE(21, MOVE_CALM_MIND),
++    LEVEL_UP_MOVE(24, MOVE_DRAINING_KISS), // [QoL] Fairy move
+     LEVEL_UP_MOVE(26, MOVE_PSYCHIC),
+     LEVEL_UP_MOVE(33, MOVE_IMPRISON),
+     LEVEL_UP_MOVE(40, MOVE_FUTURE_SIGHT),
++    LEVEL_UP_MOVE(44, MOVE_DAZZLING_GLEAM), // [QoL] Fairy move
+     LEVEL_UP_MOVE(47, MOVE_HYPNOSIS),
+     LEVEL_UP_MOVE(54, MOVE_DREAM_EATER),
+     LEVEL_UP_END
+@@ -5422,13 +5448,17 @@ static const u16 sGardevoirLevelUpLearnset[] = {
+     LEVEL_UP_MOVE(1, MOVE_DOUBLE_TEAM),
+     LEVEL_UP_MOVE(1, MOVE_TELEPORT),
+     LEVEL_UP_MOVE(6, MOVE_CONFUSION),
++    LEVEL_UP_MOVE(9, MOVE_DISARMING_VOICE), // [QoL] Fairy move
+     LEVEL_UP_MOVE(11, MOVE_DOUBLE_TEAM),
+     LEVEL_UP_MOVE(16, MOVE_TELEPORT),
+     LEVEL_UP_MOVE(21, MOVE_CALM_MIND),
++    LEVEL_UP_MOVE(24, MOVE_DRAINING_KISS), // [QoL] Fairy move
+     LEVEL_UP_MOVE(26, MOVE_PSYCHIC),
+     LEVEL_UP_MOVE(33, MOVE_IMPRISON),
+     LEVEL_UP_MOVE(42, MOVE_FUTURE_SIGHT),
++    LEVEL_UP_MOVE(46, MOVE_DAZZLING_GLEAM), // [QoL] Fairy move
+     LEVEL_UP_MOVE(51, MOVE_HYPNOSIS),
++    LEVEL_UP_MOVE(56, MOVE_MOONBLAST), // [QoL] Fairy move
+     LEVEL_UP_MOVE(60, MOVE_DREAM_EATER),
+     LEVEL_UP_END
+ };
+diff --git a/src/data/pokemon/pokedex_orders.h b/src/data/pokemon/pokedex_orders.h
+index a8cfa22..08281fd 100644
+--- a/src/data/pokemon/pokedex_orders.h
++++ b/src/data/pokemon/pokedex_orders.h
+@@ -1198,8 +1198,6 @@ const u16 gPokedexOrder_Type[] =
+ {
+     SPECIES_RATTATA,
+     SPECIES_RATICATE,
+-    SPECIES_CLEFAIRY,
+-    SPECIES_CLEFABLE,
+     SPECIES_JIGGLYPUFF,
+     SPECIES_WIGGLYTUFF,
+     SPECIES_MEOWTH,
+@@ -1214,13 +1212,9 @@ const u16 gPokedexOrder_Type[] =
+     SPECIES_SNORLAX,
+     SPECIES_SENTRET,
+     SPECIES_FURRET,
+-    SPECIES_CLEFFA,
+     SPECIES_IGGLYBUFF,
+-    SPECIES_TOGEPI,
+     SPECIES_AIPOM,
+     SPECIES_DUNSPARCE,
+-    SPECIES_SNUBBULL,
+-    SPECIES_GRANBULL,
+     SPECIES_TEDDIURSA,
+     SPECIES_URSARING,
+     SPECIES_PORYGON2,
+@@ -1278,7 +1272,6 @@ const u16 gPokedexOrder_Type[] =
+     SPECIES_DODRIO,
+     SPECIES_HOOTHOOT,
+     SPECIES_NOCTOWL,
+-    SPECIES_TOGETIC,
+     SPECIES_TAILLOW,
+     SPECIES_SWELLOW,
+     SPECIES_SWABLU,
+@@ -1606,5 +1599,13 @@ const u16 gPokedexOrder_Type[] =
+     SPECIES_SABLEYE,
+     SPECIES_HOUNDOUR,
+     SPECIES_HOUNDOOM,
+-    SPECIES_SNEASEL
++    SPECIES_SNEASEL,
++    // [QoL] Pure/primary Fairy types are listed last in TYPE order.
++    SPECIES_CLEFFA,
++    SPECIES_CLEFAIRY,
++    SPECIES_CLEFABLE,
++    SPECIES_TOGEPI,
++    SPECIES_TOGETIC,
++    SPECIES_SNUBBULL,
++    SPECIES_GRANBULL
+ };
+diff --git a/src/data/pokemon/species_info.h b/src/data/pokemon/species_info.h
+index 3e36c08..f8ba26a 100644
+--- a/src/data/pokemon/species_info.h
++++ b/src/data/pokemon/species_info.h
+@@ -1029,7 +1029,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
+         .baseSpeed = 35,
+         .baseSpAttack = 60,
+         .baseSpDefense = 65,
+-        .types = {TYPE_NORMAL, TYPE_NORMAL},
++        .types = {TYPE_FAIRY, TYPE_FAIRY}, // [QoL] Gen 6 Fairy retype (was NORMAL/NORMAL)
+         .catchRate = 150,
+         .expYield = 68,
+         .evYield_HP = 2,
+@@ -1058,7 +1058,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
+         .baseSpeed = 60,
+         .baseSpAttack = 85,
+         .baseSpDefense = 90,
+-        .types = {TYPE_NORMAL, TYPE_NORMAL},
++        .types = {TYPE_FAIRY, TYPE_FAIRY}, // [QoL] Gen 6 Fairy retype (was NORMAL/NORMAL)
+         .catchRate = 25,
+         .expYield = 129,
+         .evYield_HP = 3,
+@@ -1145,7 +1145,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
+         .baseSpeed = 20,
+         .baseSpAttack = 45,
+         .baseSpDefense = 25,
+-        .types = {TYPE_NORMAL, TYPE_NORMAL},
++        .types = {TYPE_NORMAL, TYPE_FAIRY}, // [QoL] Gen 6 Fairy retype (was NORMAL/NORMAL)
+         .catchRate = 170,
+         .expYield = 76,
+         .evYield_HP = 2,
+@@ -1174,7 +1174,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
+         .baseSpeed = 45,
+         .baseSpAttack = 75,
+         .baseSpDefense = 50,
+-        .types = {TYPE_NORMAL, TYPE_NORMAL},
++        .types = {TYPE_NORMAL, TYPE_FAIRY}, // [QoL] Gen 6 Fairy retype (was NORMAL/NORMAL)
+         .catchRate = 50,
+         .expYield = 109,
+         .evYield_HP = 3,
+@@ -3552,7 +3552,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
+         .baseSpeed = 90,
+         .baseSpAttack = 100,
+         .baseSpDefense = 120,
+-        .types = {TYPE_PSYCHIC, TYPE_PSYCHIC},
++        .types = {TYPE_PSYCHIC, TYPE_FAIRY}, // [QoL] Gen 6 Fairy retype (was PSYCHIC/PSYCHIC)
+         .catchRate = 45,
+         .expYield = 136,
+         .evYield_HP = 0,
+@@ -5031,7 +5031,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
+         .baseSpeed = 15,
+         .baseSpAttack = 45,
+         .baseSpDefense = 55,
+-        .types = {TYPE_NORMAL, TYPE_NORMAL},
++        .types = {TYPE_FAIRY, TYPE_FAIRY}, // [QoL] Gen 6 Fairy retype (was NORMAL/NORMAL)
+         .catchRate = 150,
+         .expYield = 37,
+         .evYield_HP = 0,
+@@ -5060,7 +5060,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
+         .baseSpeed = 15,
+         .baseSpAttack = 40,
+         .baseSpDefense = 20,
+-        .types = {TYPE_NORMAL, TYPE_NORMAL},
++        .types = {TYPE_NORMAL, TYPE_FAIRY}, // [QoL] Gen 6 Fairy retype (was NORMAL/NORMAL)
+         .catchRate = 170,
+         .expYield = 39,
+         .evYield_HP = 1,
+@@ -5089,7 +5089,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
+         .baseSpeed = 20,
+         .baseSpAttack = 40,
+         .baseSpDefense = 65,
+-        .types = {TYPE_NORMAL, TYPE_NORMAL},
++        .types = {TYPE_FAIRY, TYPE_FAIRY}, // [QoL] Gen 6 Fairy retype (was NORMAL/NORMAL)
+         .catchRate = 190,
+         .expYield = 74,
+         .evYield_HP = 0,
+@@ -5118,7 +5118,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
+         .baseSpeed = 40,
+         .baseSpAttack = 80,
+         .baseSpDefense = 105,
+-        .types = {TYPE_NORMAL, TYPE_FLYING},
++        .types = {TYPE_FAIRY, TYPE_FLYING}, // [QoL] Gen 6 Fairy retype (was NORMAL/FLYING)
+         .catchRate = 75,
+         .expYield = 114,
+         .evYield_HP = 0,
+@@ -5321,7 +5321,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
+         .baseSpeed = 40,
+         .baseSpAttack = 20,
+         .baseSpDefense = 50,
+-        .types = {TYPE_WATER, TYPE_WATER},
++        .types = {TYPE_WATER, TYPE_FAIRY}, // [QoL] Gen 6 Fairy retype (was WATER/WATER)
+         .catchRate = 190,
+         .expYield = 58,
+         .evYield_HP = 2,
+@@ -5350,7 +5350,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
+         .baseSpeed = 50,
+         .baseSpAttack = 50,
+         .baseSpDefense = 80,
+-        .types = {TYPE_WATER, TYPE_WATER},
++        .types = {TYPE_WATER, TYPE_FAIRY}, // [QoL] Gen 6 Fairy retype (was WATER/WATER)
+         .catchRate = 75,
+         .expYield = 153,
+         .evYield_HP = 3,
+@@ -6075,7 +6075,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
+         .baseSpeed = 30,
+         .baseSpAttack = 40,
+         .baseSpDefense = 40,
+-        .types = {TYPE_NORMAL, TYPE_NORMAL},
++        .types = {TYPE_FAIRY, TYPE_FAIRY}, // [QoL] Gen 6 Fairy retype (was NORMAL/NORMAL)
+         .catchRate = 190,
+         .expYield = 63,
+         .evYield_HP = 0,
+@@ -6104,7 +6104,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
+         .baseSpeed = 45,
+         .baseSpAttack = 60,
+         .baseSpDefense = 60,
+-        .types = {TYPE_NORMAL, TYPE_NORMAL},
++        .types = {TYPE_FAIRY, TYPE_FAIRY}, // [QoL] Gen 6 Fairy retype (was NORMAL/NORMAL)
+         .catchRate = 75,
+         .expYield = 178,
+         .evYield_HP = 0,
+@@ -9464,7 +9464,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
+         .baseSpeed = 20,
+         .baseSpAttack = 20,
+         .baseSpDefense = 40,
+-        .types = {TYPE_NORMAL, TYPE_NORMAL},
++        .types = {TYPE_NORMAL, TYPE_FAIRY}, // [QoL] Gen 6 Fairy retype (was NORMAL/NORMAL)
+         .catchRate = 150,
+         .expYield = 33,
+         .evYield_HP = 1,
+@@ -9609,7 +9609,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
+         .baseSpeed = 50,
+         .baseSpAttack = 55,
+         .baseSpDefense = 55,
+-        .types = {TYPE_STEEL, TYPE_STEEL},
++        .types = {TYPE_STEEL, TYPE_FAIRY}, // [QoL] Gen 6 Fairy retype (was STEEL/STEEL)
+         .catchRate = 45,
+         .expYield = 98,
+         .evYield_HP = 0,
+@@ -10682,7 +10682,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
+         .baseSpeed = 40,
+         .baseSpAttack = 45,
+         .baseSpDefense = 35,
+-        .types = {TYPE_PSYCHIC, TYPE_PSYCHIC},
++        .types = {TYPE_PSYCHIC, TYPE_FAIRY}, // [QoL] Gen 6 Fairy retype (was PSYCHIC/PSYCHIC)
+         .catchRate = 235,
+         .expYield = 70,
+         .evYield_HP = 0,
+@@ -10711,7 +10711,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
+         .baseSpeed = 50,
+         .baseSpAttack = 65,
+         .baseSpDefense = 55,
+-        .types = {TYPE_PSYCHIC, TYPE_PSYCHIC},
++        .types = {TYPE_PSYCHIC, TYPE_FAIRY}, // [QoL] Gen 6 Fairy retype (was PSYCHIC/PSYCHIC)
+         .catchRate = 120,
+         .expYield = 140,
+         .evYield_HP = 0,
+@@ -10740,7 +10740,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
+         .baseSpeed = 80,
+         .baseSpAttack = 125,
+         .baseSpDefense = 115,
+-        .types = {TYPE_PSYCHIC, TYPE_PSYCHIC},
++        .types = {TYPE_PSYCHIC, TYPE_FAIRY}, // [QoL] Gen 6 Fairy retype (was PSYCHIC/PSYCHIC)
+         .catchRate = 45,
+         .expYield = 208,
+         .evYield_HP = 0,
+diff --git a/src/data/text/move_names.h b/src/data/text/move_names.h
+index d63ddb8..1de7dea 100644
+--- a/src/data/text/move_names.h
++++ b/src/data/text/move_names.h
+@@ -353,5 +353,12 @@ const u8 gMoveNames[MOVES_COUNT][MOVE_NAME_LENGTH + 1] = {
+     [MOVE_SHOCK_WAVE]    = _("SHOCK WAVE"),
+     [MOVE_WATER_PULSE]   = _("WATER PULSE"),
+     [MOVE_DOOM_DESIRE]   = _("DOOM DESIRE"),
+-    [MOVE_PSYCHO_BOOST]  = _("PSYCHO BOOST")
++    [MOVE_PSYCHO_BOOST]  = _("PSYCHO BOOST"),
++    // [QoL] Fairy moves
++    [MOVE_FAIRY_WIND]      = _("FAIRY WIND"),
++    [MOVE_DISARMING_VOICE] = _("DISARM VOICE"),
++    [MOVE_DRAINING_KISS]   = _("DRAININGKISS"),
++    [MOVE_DAZZLING_GLEAM]  = _("DAZZLNGGLEAM"),
++    [MOVE_MOONBLAST]       = _("MOONBLAST"),
++    [MOVE_PLAY_ROUGH]      = _("PLAY ROUGH"),
+ };
+diff --git a/src/data/union_room.h b/src/data/union_room.h
+index 0bbeadb..9eb6f01 100644
+--- a/src/data/union_room.h
++++ b/src/data/union_room.h
+@@ -265,6 +265,7 @@ static const struct ListMenuItem sListMenuItems_TypeNames[NUMBER_OF_MON_TYPES] =
+     { gTypeNames[TYPE_DRAGON],   TYPE_DRAGON         },
+     { gTypeNames[TYPE_STEEL],    TYPE_STEEL          },
+     { gTypeNames[TYPE_DARK],     TYPE_DARK           },
++    { gTypeNames[TYPE_FAIRY],    TYPE_FAIRY          }, // [QoL] Fairy type
+     { gText_UR_Exit,             NUMBER_OF_MON_TYPES }
+ };
+ 
+diff --git a/src/list_menu.c b/src/list_menu.c
+index 36b81fa..5e4c56b 100644
+--- a/src/list_menu.c
++++ b/src/list_menu.c
+@@ -70,6 +70,7 @@ static const struct MoveMenuInfoIcon sMenuInfoIcons[] =
+     [TYPE_ICE + 1]      = { 32, 12, 0x4C },
+     [TYPE_DRAGON + 1]   = { 32, 12, 0xA0 },
+     [TYPE_DARK + 1]     = { 32, 12, 0x8C },
++    [TYPE_FAIRY + 1]    = { 32, 12, 0x04 }, // [QoL] Fairy icon drawn into the free slot at the top of menu_info.png
+     [MENU_INFO_ICON_TYPE]      = { 40, 12, 0xA8 },
+     [MENU_INFO_ICON_POWER]     = { 40, 12, 0xC0 },
+     [MENU_INFO_ICON_ACCURACY]  = { 40, 12, 0xC8 },
+diff --git a/src/move_descriptions.c b/src/move_descriptions.c
+index 8ece0e1..c340b72 100644
+--- a/src/move_descriptions.c
++++ b/src/move_descriptions.c
+@@ -356,6 +356,14 @@ const u8 gMoveDescription_WaterPulse[] = _("An attack with a\npulsing blast of\n
+ const u8 gMoveDescription_DoomDesire[] = _("A move that attacks\nthe foe with a\nblast of light two\nturns after use.");
+ const u8 gMoveDescription_PsychoBoost[] = _("An intense attack\nthat also sharply\nreduces the user's\nSP. ATK stat.");
+ 
++// [QoL] Fairy moves
++const u8 gMoveDescription_FairyWind[] = _("The user stirs up\na fairy wind and\nstrikes the foe\nwith it.");
++const u8 gMoveDescription_DisarmingVoice[] = _("Letting out a\ncharming cry, the\nuser hits both foes.\nIt never misses.");
++const u8 gMoveDescription_DrainingKiss[] = _("A kiss that steals\nthe foe's HP. Half\nthe damage restores\nthe user's HP.");
++const u8 gMoveDescription_DazzlingGleam[] = _("The user damages\nboth foes by\nemitting a\npowerful flash.");
++const u8 gMoveDescription_Moonblast[] = _("Borrowing the power\nof the moon, it may\nlower the foe's\nSP. ATK stat.");
++const u8 gMoveDescription_PlayRough[] = _("The user plays\nrough with the foe.\nIt may lower the\nfoe's ATTACK stat.");
++
+ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] = {
+     [MOVE_POUND         - 1] = gMoveDescription_Pound,
+     [MOVE_KARATE_CHOP   - 1] = gMoveDescription_KarateChop,
+@@ -711,4 +719,10 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] = {
+     [MOVE_WATER_PULSE   - 1] = gMoveDescription_WaterPulse,
+     [MOVE_DOOM_DESIRE   - 1] = gMoveDescription_DoomDesire,
+     [MOVE_PSYCHO_BOOST  - 1] = gMoveDescription_PsychoBoost,
++    [MOVE_FAIRY_WIND      - 1] = gMoveDescription_FairyWind,
++    [MOVE_DISARMING_VOICE - 1] = gMoveDescription_DisarmingVoice,
++    [MOVE_DRAINING_KISS   - 1] = gMoveDescription_DrainingKiss,
++    [MOVE_DAZZLING_GLEAM  - 1] = gMoveDescription_DazzlingGleam,
++    [MOVE_MOONBLAST       - 1] = gMoveDescription_Moonblast,
++    [MOVE_PLAY_ROUGH      - 1] = gMoveDescription_PlayRough,
+ };
+diff --git a/src/tm_case.c b/src/tm_case.c
+index 8975761..125a589 100644
+--- a/src/tm_case.c
++++ b/src/tm_case.c
+@@ -410,7 +410,8 @@ static const u16 sTMSpritePaletteOffsetByType[NUMBER_OF_MON_TYPES] = {
+     [TYPE_PSYCHIC]  = 0x0d0,
+     [TYPE_STEEL]    = 0x0e0,
+     [TYPE_DARK]     = 0x0f0,
+-    [TYPE_DRAGON]   = 0x100
++    [TYPE_DRAGON]   = 0x100,
++    [TYPE_FAIRY]    = 0x110, // [QoL] Fairy type: 2nd palette in disc_types_2.pal
+ };
+ 
+ void InitTMCase(u8 type, void (* exitCallback)(void), bool8 allowSelectClose)
+@@ -1730,7 +1731,7 @@ static void LoadDiscTypePalettes(void)
+ 
+     sTMSpritePaletteBuffer = Alloc(NUM_DISC_COLORS * sizeof(u16));
+     LZDecompressWram(gTMCaseDiscTypes1_Pal, sTMSpritePaletteBuffer); // Decompress the first 16
+-    LZDecompressWram(gTMCaseDiscTypes2_Pal, sTMSpritePaletteBuffer + 0x100); // Decompress the rest (Only 17 total, this is just Dragon type)
++    LZDecompressWram(gTMCaseDiscTypes2_Pal, sTMSpritePaletteBuffer + 0x100); // Decompress the rest (Dragon, plus Fairy in this hack)
+     spritePalette.data = sTMSpritePaletteBuffer + NUM_DISC_COLORS;
+     spritePalette.tag = TAG_DISC;
+     LoadSpritePalette(&spritePalette);
+-- 
+2.43.0
+

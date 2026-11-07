@@ -1,3 +1,4 @@
+#include "global.h"
 #include "librfu.h"
 
 static void sio32intr_clock_master(void);
@@ -136,7 +137,7 @@ static void sio32intr_clock_master(void)
                 gSTWIStatus->state = 4; // error
             }
         }
-        gSTWIStatus->sending = 0;
+        gSTWIStatus->sending = FALSE;
         if (gSTWIStatus->callbackM != NULL)
 #if __STDC_VERSION__ < 202311L
             Callback_Dummy_M(gSTWIStatus->reqActiveCommand, gSTWIStatus->error, gSTWIStatus->callbackM);
@@ -172,9 +173,9 @@ static void sio32intr_clock_slave(void)
         reqLen = (regSIODATA32 >> 16);
         if (reqLen == (r0 >> 16))
         {
-            // only reqLen = regSIODATA32 >> 8 is required to match, but it looks a bit
+            // only reqLen = regSIODATA32 >> 8 is needed to match, but it looks a bit
             // more consistent when both lines update the variables. Might have been a macro?
-            gSTWIStatus->reqLength = reqLen = regSIODATA32 >> 8;
+            gSTWIStatus->reqLength = reqLen = (regSIODATA32 >> 8);
             gSTWIStatus->reqActiveCommand = reqLen = (regSIODATA32 >> 0);
             if (gSTWIStatus->reqLength == 0)
             {
@@ -343,8 +344,8 @@ static u16 handshake_wait(u16 slot)
 
 static void STWI_set_timer_in_RAM(u8 count)
 {
-    vu16* regTMCNTL = (vu16*)(REG_ADDR_TMCNT_L + gSTWIStatus->timerSelect * 4);
-    vu16* regTMCNTH = (vu16*)(REG_ADDR_TMCNT_H + gSTWIStatus->timerSelect * 4);
+    vu16 *regTMCNTL = &REG_TMCNT_L(gSTWIStatus->timerSelect);
+    vu16 *regTMCNTH = &REG_TMCNT_H(gSTWIStatus->timerSelect);
     REG_IME = 0;
     switch (count)
     {

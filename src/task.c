@@ -1,13 +1,10 @@
 #include "global.h"
 #include "task.h"
 
-#define HEAD_SENTINEL 0xFE
-#define TAIL_SENTINEL 0xFF
-
 COMMON_DATA struct Task gTasks[NUM_TASKS] = {0};
 
 static void InsertTask(u8 newTaskId);
-static u8 FindFirstActiveTask();
+static u8 FindFirstActiveTask(void);
 
 void ResetTasks(void)
 {
@@ -86,10 +83,6 @@ static void InsertTask(u8 newTaskId)
 
 void DestroyTask(u8 taskId)
 {
-#if REVISION >= 0xA
-    // Bounds check on the task ID.
-    if (taskId >= NUM_TASKS) return;
-#endif
     if (gTasks[taskId].isActive)
     {
         gTasks[taskId].isActive = FALSE;
@@ -128,7 +121,7 @@ void RunTasks(void)
     }
 }
 
-static u8 FindFirstActiveTask()
+static u8 FindFirstActiveTask(void)
 {
     u8 taskId;
 
@@ -178,24 +171,12 @@ u8 FindTaskIdByFunc(TaskFunc func)
         if (gTasks[i].isActive == TRUE && gTasks[i].func == func)
             return (u8)i;
 
-    return -1;
+    return TASK_NONE; // No task was found.
 }
 
-u8 GetTaskCount(void)
+void SetWordTaskArg(u8 taskId, u8 dataElem, u32 value)
 {
-    u8 i;
-    u8 count = 0;
-
-    for (i = 0; i < NUM_TASKS; i++)
-        if (gTasks[i].isActive == TRUE)
-            count++;
-
-    return count;
-}
-
-void SetWordTaskArg(u8 taskId, u8 dataElem, unsigned long value)
-{
-    if (dataElem <= 14)
+    if (dataElem < NUM_TASK_DATA - 1)
     {
         gTasks[taskId].data[dataElem] = value;
         gTasks[taskId].data[dataElem + 1] = value >> 16;
@@ -204,7 +185,7 @@ void SetWordTaskArg(u8 taskId, u8 dataElem, unsigned long value)
 
 u32 GetWordTaskArg(u8 taskId, u8 dataElem)
 {
-    if (dataElem <= 14)
+    if (dataElem < NUM_TASK_DATA - 1)
         return (u16)gTasks[taskId].data[dataElem] | (gTasks[taskId].data[dataElem + 1] << 16);
     else
         return 0;

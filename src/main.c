@@ -1,23 +1,30 @@
 #include "global.h"
-#include "gflib.h"
+#include "crt0.h"
+#include "malloc.h"
 #include "link.h"
 #include "link_rfu.h"
-#include "load_save.h"
+#include "librfu.h"
 #include "m4a.h"
-#include "random.h"
-#include "gba/flash_internal.h"
-#include "help_system.h"
-#include "new_menu_helpers.h"
+#include "bg.h"
+#include "rtc.h"
+#include "scanline_effect.h"
 #include "overworld.h"
 #include "play_time.h"
-#include "intro.h"
+#include "random.h"
+#include "dma3.h"
+#include "gba/flash_internal.h"
+#include "load_save.h"
+#include "gpu_regs.h"
+#include "agb_flash.h"
+#include "sound.h"
+#include "battle.h"
 #include "battle_controllers.h"
-#include "scanline_effect.h"
-#include "save_failed_screen.h"
-#include "quest_log.h"
-#include "sloopsvc.h"
-
-extern u32 intr_main[];
+#include "text.h"
+#include "intro.h"
+#include "main.h"
+#include "trainer_hill.h"
+#include "test_runner.h"
+#include "constants/rgb.h"
 
 static void VBlankIntr(void);
 static void HBlankIntr(void);
@@ -25,29 +32,15 @@ static void VCountIntr(void);
 static void SerialIntr(void);
 static void IntrDummy(void);
 
-#if REVISION >= 0xA && !MODERN
-const char OtherBuildDateTime[] = "2025 12 19 16:01";
-#endif
+// Defined in the linker script so that the test build can override it.
+extern void gInitialMainCB2(void);
+extern void CB2_FlashNotDetectedScreen(void);
 
-#if REVISION >= 0xA
-// OtherBuildDateTime is probably in some other file?
-__attribute__((aligned(4)))
-#endif
-const u8 gGameVersion = GAME_VERSION;
+const enum GameVersion gGameVersion = GAME_VERSION;
 
-const u8 gGameLanguage = GAME_LANGUAGE;
+const enum Language gGameLanguage = GAME_LANGUAGE; // English
 
-#if MODERN
-const char BuildDateTime[] = __DATE__ " " __TIME__;
-#else
-#if REVISION == 0
-const char BuildDateTime[] = "2004 04 26 11:20";
-#elif REVISION == 1
-const char BuildDateTime[] = "2004 07 20 09:30";
-#elif REVISION == 0xA
-const char BuildDateTime[] = "2025 12 19 15:38 22afedd9";
-#endif //REVISION
-#endif //MODERN
+const char BuildDateTime[] = "2005 02 21 11:10";
 
 const IntrFunc gIntrTableTemplate[] =
 {
@@ -70,26 +63,25 @@ const IntrFunc gIntrTableTemplate[] =
 #define INTR_COUNT ((int)(sizeof(gIntrTableTemplate)/sizeof(IntrFunc)))
 
 COMMON_DATA u16 gKeyRepeatStartDelay = 0;
-COMMON_DATA u8 gLinkTransferringData = 0;
+COMMON_DATA bool8 gLinkTransferringData = 0;
 COMMON_DATA struct Main gMain = {0};
 COMMON_DATA u16 gKeyRepeatContinueDelay = 0;
-COMMON_DATA u8 gSoftResetDisabled = 0;
+COMMON_DATA bool8 gSoftResetDisabled = 0;
 COMMON_DATA IntrFunc gIntrTable[INTR_COUNT] = {0};
-COMMON_DATA u8 sVcountAfterSound = 0;
-COMMON_DATA bool8 gLinkVSyncDisabled = 0;
-COMMON_DATA u32 IntrMain_Buffer[0x200] = {0};
-COMMON_DATA u8 sVcountAtIntr = 0;
-COMMON_DATA u8 sVcountBeforeSound = 0;
-COMMON_DATA u8 gPcmDmaCounter = 0;
+COMMON_DATA u8 gLinkVSyncDisabled = 0;
+COMMON_DATA s8 gPcmDmaCounter = 0;
+COMMON_DATA void *gAgbMainLoop_sp = NULL;
 
-static IntrFunc * const sTimerIntrFunc = gIntrTable + 0x7;
+static EWRAM_DATA u16 sTrainerId = 0;
 
-EWRAM_DATA u8 gDecompressionBuffer[0x4000] = {0};
-EWRAM_DATA u16 gTrainerId = 0;
+//EWRAM_DATA void (**gFlashTimerIntrFunc)(void) = NULL;
 
 static void UpdateLinkAndCallCallbacks(void);
 static void InitMainCallbacks(void);
 static void CallCallbacks(void);
+#ifdef BUGFIX
+static void SeedRngWithRtc(void);
+#endif
 static void ReadKeys(void);
 void InitIntrHandlers(void);
 static void WaitForVBlank(void);
@@ -97,96 +89,60 @@ void EnableVCountIntrAtLine150(void);
 
 #define B_START_SELECT (B_BUTTON | START_BUTTON | SELECT_BUTTON)
 
-void AgbMain()
+void AgbMain(void)
 {
-#if REVISION >= 0xA
-    svc_stubbed();
-#endif
-#if MODERN
-    // Modern compilers are liberal with the stack on entry to this function,
-    // so RegisterRamReset may crash if it resets IWRAM.
-    RegisterRamReset(RESET_ALL & ~RESET_IWRAM);
-    asm("mov\tr1, #0xC0\n"
-        "\tlsl\tr1, r1, #0x12\n"
-        "\tmov\tr2, #0xFC\n"
-        "\tlsl\tr2, r2, #0x7\n"
-        "\tadd\tr2, r1, r2\n"
-        "\tmov\tr0, #0\n"
-        "\tmov\tr3, r0\n"
-        "\tmov\tr4, r0\n"
-        "\tmov\tr5, r0\n"
-        ".LCU%=:\n"
-        "\tstmia\tr1!, {r0, r3, r4, r5}\n"
-        "\tstmia\tr1!, {r0, r3, r4, r5}\n"
-        "\tstmia\tr1!, {r0, r3, r4, r5}\n"
-        "\tstmia\tr1!, {r0, r3, r4, r5}\n"
-        "\tstmia\tr1!, {r0, r3, r4, r5}\n"
-        "\tstmia\tr1!, {r0, r3, r4, r5}\n"
-        "\tstmia\tr1!, {r0, r3, r4, r5}\n"
-        "\tstmia\tr1!, {r0, r3, r4, r5}\n"
-        "\tcmp\tr1, r2\n"
-        "\tbcc\t.LCU%=\n"
-        :
-        :
-        : "r0", "r1", "r2", "r3", "r4", "r5", "memory"
-    );
-#else
-    RegisterRamReset(RESET_ALL);
-#endif //MODERN
-
-#if REVISION >= 0xA
-    *(vu16 *)BG_PLTT = RGB_BLACK;
-#else
-    *(vu16 *)BG_PLTT = RGB_WHITE;
-#endif
+    *(vu16 *)BG_PLTT = RGB_WHITE; // Set the backdrop to white on startup
     InitGpuRegManager();
-    REG_WAITCNT = WAITCNT_PREFETCH_ENABLE | WAITCNT_WS0_S_1 | WAITCNT_WS0_N_3;
+    REG_WAITCNT = WAITCNT_PREFETCH_ENABLE
+            | WAITCNT_WS0_S_1 | WAITCNT_WS0_N_3
+            | WAITCNT_WS1_S_1 | WAITCNT_WS1_N_3;
     InitKeys();
     InitIntrHandlers();
     m4aSoundInit();
     EnableVCountIntrAtLine150();
     InitRFU();
+    RtcInit();
     CheckForFlashMemory();
     InitMainCallbacks();
     InitMapMusic();
+#ifdef BUGFIX
+    SeedRngWithRtc(); // see comment at SeedRngWithRtc definition below
+#endif
     ClearDma3Requests();
     ResetBgs();
-    InitHeap(gHeap, HEAP_SIZE);
     SetDefaultFontsPointer();
+    InitHeap(gHeap, HEAP_SIZE);
 
     gSoftResetDisabled = FALSE;
-    gHelpSystemEnabled = FALSE;
 
-    SetNotInSaveFailedScreen();
+    if (gFlashMemoryPresent != TRUE)
+        SetMainCallback2(CB2_FlashNotDetectedScreen);
 
-    // Revision 10 has no calls into libisagbprn except this one.
-#if !defined(NDEBUG) || REVISION >= 0xA
+    gLinkTransferringData = FALSE;
+
+#ifndef NDEBUG
 #if (LOG_HANDLER == LOG_HANDLER_MGBA_PRINT)
     (void) MgbaOpen();
 #elif (LOG_HANDLER == LOG_HANDLER_AGB_PRINT)
     AGBPrintInit();
 #endif
 #endif
+    gAgbMainLoop_sp = __builtin_frame_address(0);
+    AgbMainLoop();
+}
 
-#if REVISION >= 1
-    if (gFlashMemoryPresent != TRUE)
-        SetMainCallback2(NULL);
-#endif
-
-    gLinkTransferringData = FALSE;
-
+void AgbMainLoop(void)
+{
     for (;;)
     {
         ReadKeys();
 
         if (gSoftResetDisabled == FALSE
-         && (gMain.heldKeysRaw & A_BUTTON)
-         && (gMain.heldKeysRaw & B_START_SELECT) == B_START_SELECT)
+         && JOY_HELD_RAW(A_BUTTON)
+         && JOY_HELD_RAW(B_START_SELECT) == B_START_SELECT)
         {
             rfu_REQ_stopMode();
-#if REVISION < 0xA
             rfu_waitREQComplete();
-#endif
             DoSoftReset();
         }
 
@@ -201,7 +157,7 @@ void AgbMain()
             gLinkTransferringData = FALSE;
             UpdateLinkAndCallCallbacks();
 
-            if (Overworld_RecvKeysFromLinkIsRunning() == 1)
+            if (Overworld_RecvKeysFromLinkIsRunning() == TRUE)
             {
                 gMain.newKeys = 0;
                 ClearSpriteCopyRequests();
@@ -226,28 +182,21 @@ static void UpdateLinkAndCallCallbacks(void)
 static void InitMainCallbacks(void)
 {
     gMain.vblankCounter1 = 0;
+    gTrainerHillVBlankCounter = NULL;
     gMain.vblankCounter2 = 0;
     gMain.callback1 = NULL;
-    SetMainCallback2(CB2_InitCopyrightScreenAfterBootup);
-    gSaveBlock2Ptr = &gSaveBlock2;
-    gSaveBlock1Ptr = &gSaveBlock1;
-    gSaveBlock2.encryptionKey = 0;
-    gQuestLogPlaybackState = QL_PLAYBACK_STATE_STOPPED;
-#if REVISION >= 0xA
-    svc_SetSaveBlock2(&gSaveBlock2);
-#endif
+    SetMainCallback2(gInitialMainCB2);
+    gSaveBlock2Ptr = &gSaveblock2.block;
+    gPokemonStoragePtr = &gPokemonStorage.block;
 }
 
 static void CallCallbacks(void)
 {
-    if (!RunSaveFailedScreen() && !RunHelpSystemCallback())
-    {
-        if (gMain.callback1)
-            gMain.callback1();
+    if (gMain.callback1)
+        gMain.callback1();
 
-        if (gMain.callback2)
-            gMain.callback2();
-    }
+    if (gMain.callback2)
+        gMain.callback2();
 }
 
 void SetMainCallback2(MainCallback callback)
@@ -258,20 +207,27 @@ void SetMainCallback2(MainCallback callback)
 
 void StartTimer1(void)
 {
-    REG_TM1CNT_H = 0x80;
+
+    REG_TM2CNT_L = 0;
+    REG_TM2CNT_H = TIMER_ENABLE | TIMER_COUNTUP;
+    REG_TM1CNT_H = TIMER_ENABLE;
 }
 
 void SeedRngAndSetTrainerId(void)
 {
-    u16 val = REG_TM1CNT_L;
-    SeedRng(val);
+    u32 val;
+
     REG_TM1CNT_H = 0;
-    gTrainerId = val;
+    REG_TM2CNT_H = 0;
+    val = ((u32)REG_TM2CNT_L) << 16;
+    val |= REG_TM1CNT_L;
+    SeedRng(val);
+    sTrainerId = Random();
 }
 
 u16 GetGeneratedTrainerIdLower(void)
 {
-    return gTrainerId;
+    return sTrainerId;
 }
 
 void EnableVCountIntrAtLine150(void)
@@ -280,6 +236,23 @@ void EnableVCountIntrAtLine150(void)
     SetGpuReg(REG_OFFSET_DISPSTAT, gpuReg | DISPSTAT_VCOUNT_INTR);
     EnableInterrupts(INTR_FLAG_VCOUNT);
 }
+
+// FRLG commented this out to remove RTC, however Emerald didn't undo this!
+#ifdef BUGFIX
+static void SeedRngWithRtc(void)
+{
+    #define BCD8(x) ((((x) >> 4) & 0xF) * 10 + ((x) & 0xF))
+    u32 seconds;
+    struct SiiRtcInfo rtc;
+    RtcGetInfo(&rtc);
+    seconds =
+        ((HOURS_PER_DAY * RtcGetDayCount(&rtc) + BCD8(rtc.hour))
+        * MINUTES_PER_HOUR + BCD8(rtc.minute))
+        * SECONDS_PER_MINUTE + BCD8(rtc.second);
+    SeedRng(seconds);
+    #undef BCD8
+}
+#endif
 
 void InitKeys(void)
 {
@@ -344,9 +317,7 @@ void InitIntrHandlers(void)
     for (i = 0; i < INTR_COUNT; i++)
         gIntrTable[i] = gIntrTableTemplate[i];
 
-    DmaCopy32(3, intr_main, IntrMain_Buffer, sizeof(IntrMain_Buffer));
-
-    INTR_VECTOR = IntrMain_Buffer;
+    INTR_VECTOR = IntrMain;
 
     SetVBlankCallback(NULL);
     SetHBlankCallback(NULL);
@@ -367,9 +338,10 @@ void SetHBlankCallback(IntrCallback callback)
     gMain.hblankCallback = callback;
 }
 
-void SetVCountCallback(IntrCallback callback)
+void RestoreSerialTimer3IntrHandlers(void)
 {
-    gMain.vcountCallback = callback;
+    gIntrTable[1] = SerialIntr;
+    gIntrTable[2] = Timer3Intr;
 }
 
 void SetSerialCallback(IntrCallback callback)
@@ -377,18 +349,17 @@ void SetSerialCallback(IntrCallback callback)
     gMain.serialCallback = callback;
 }
 
-extern void CopyBufferedValuesToGpuRegs(void);
-extern void ProcessDma3Requests(void);
-
 static void VBlankIntr(void)
 {
-    if (gWirelessCommType)
+    if (gWirelessCommType != 0)
         RfuVSync();
-    else if (!gLinkVSyncDisabled)
+    else if (gLinkVSyncDisabled == FALSE)
         LinkVSync();
 
-    if (gMain.vblankCounter1)
-        (*gMain.vblankCounter1)++;
+    gMain.vblankCounter1++;
+
+    if (gTrainerHillVBlankCounter && *gTrainerHillVBlankCounter < 0xFFFFFFFF)
+        (*gTrainerHillVBlankCounter)++;
 
     if (gMain.vblankCallback)
         gMain.vblankCallback();
@@ -400,16 +371,12 @@ static void VBlankIntr(void)
 
     gPcmDmaCounter = gSoundInfo.pcmDmaCounter;
 
-#if !defined(NDEBUG) || REVISION >= 0xA
-    sVcountBeforeSound = REG_VCOUNT;
-#endif
     m4aSoundMain();
-#if !defined(NDEBUG) || REVISION >= 0xA
-    sVcountAfterSound = REG_VCOUNT;
-#endif
-
     TryReceiveLinkBattleData();
-    Random();
+
+    if (!gTestRunnerEnabled && (!gMain.inBattle || !(gBattleTypeFlags & (BATTLE_TYPE_LINK | BATTLE_TYPE_FRONTIER | BATTLE_TYPE_RECORDED))))
+        AdvanceRandom();
+
     UpdateWirelessStatusIndicatorSprite();
 
     INTR_CHECK |= INTR_FLAG_VBLANK;
@@ -418,8 +385,7 @@ static void VBlankIntr(void)
 
 void InitFlashTimer(void)
 {
-    IntrFunc **func = (IntrFunc **)&sTimerIntrFunc;
-    SetFlashTimerIntr(2, *func);
+    SetFlashTimerIntr(2, gIntrTable + 0x7);
 }
 
 static void HBlankIntr(void)
@@ -433,9 +399,9 @@ static void HBlankIntr(void)
 
 static void VCountIntr(void)
 {
-#if !defined(NDEBUG) || REVISION >= 0xA
-    sVcountAtIntr = REG_VCOUNT;
-#endif
+    if (gMain.vcountCallback)
+        gMain.vcountCallback();
+
     m4aSoundVSync();
     INTR_CHECK |= INTR_FLAG_VCOUNT;
     gMain.intrCheck |= INTR_FLAG_VCOUNT;
@@ -450,12 +416,6 @@ static void SerialIntr(void)
     gMain.intrCheck |= INTR_FLAG_SERIAL;
 }
 
-void RestoreSerialTimer3IntrHandlers(void)
-{
-    gIntrTable[1] = SerialIntr;
-    gIntrTable[2] = Timer3Intr;
-}
-
 static void IntrDummy(void)
 {}
 
@@ -463,18 +423,27 @@ static void WaitForVBlank(void)
 {
     gMain.intrCheck &= ~INTR_FLAG_VBLANK;
 
-    while (!(gMain.intrCheck & INTR_FLAG_VBLANK))
-        ;
+    if (gWirelessCommType != 0)
+    {
+        // Desynchronization may occur if wireless adapter is connected
+        // and we call VBlankIntrWait();
+        while (!(gMain.intrCheck & INTR_FLAG_VBLANK))
+            ;
+    }
+    else
+    {
+        VBlankIntrWait();
+    }
 }
 
-void SetVBlankCounter1Ptr(u32 *ptr)
+void SetTrainerHillVBlankCounter(u32 *counter)
 {
-    gMain.vblankCounter1 = ptr;
+    gTrainerHillVBlankCounter = counter;
 }
 
-void DisableVBlankCounter1(void)
+void ClearTrainerHillVBlankCounter(void)
 {
-    gMain.vblankCounter1 = NULL;
+    gTrainerHillVBlankCounter = NULL;
 }
 
 void DoSoftReset(void)
@@ -485,7 +454,8 @@ void DoSoftReset(void)
     DmaStop(1);
     DmaStop(2);
     DmaStop(3);
-    SoftReset(RESET_ALL & ~RESET_SIO_REGS);
+    SiiRtcProtect();
+    SoftReset(RESET_ALL);
 }
 
 void ClearPokemonCrySongs(void)

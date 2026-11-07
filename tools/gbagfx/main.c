@@ -291,7 +291,7 @@ void HandlePngToGbaCommand(char *inputPath, char *outputPath, int argc, char **a
 
 void HandlePngToJascPaletteCommand(char *inputPath, char *outputPath, int argc UNUSED, char **argv UNUSED)
 {
-    struct Palette palette = {};
+    struct Palette palette = {0};
 
     ReadPngPalette(inputPath, &palette);
     WriteJascPalette(outputPath, &palette);
@@ -299,7 +299,7 @@ void HandlePngToJascPaletteCommand(char *inputPath, char *outputPath, int argc U
 
 void HandlePngToGbaPaletteCommand(char *inputPath, char *outputPath, int argc UNUSED, char **argv UNUSED)
 {
-    struct Palette palette = {};
+    struct Palette palette = {0};
 
     ReadPngPalette(inputPath, &palette);
     WriteGbaPalette(outputPath, &palette);
@@ -307,7 +307,7 @@ void HandlePngToGbaPaletteCommand(char *inputPath, char *outputPath, int argc UN
 
 void HandleGbaToJascPaletteCommand(char *inputPath, char *outputPath, int argc UNUSED, char **argv UNUSED)
 {
-    struct Palette palette = {};
+    struct Palette palette = {0};
 
     ReadGbaPalette(inputPath, &palette);
     WriteJascPalette(outputPath, &palette);
@@ -333,6 +333,9 @@ void HandleJascToGbaPaletteCommand(char *inputPath, char *outputPath, int argc, 
 
             if (numColors < 1)
                 FATAL_ERROR("Number of colors must be positive.\n");
+
+            if (numColors > 255)
+                FATAL_ERROR("Number of colors must be less than 256.\n");
         }
         else
         {
@@ -340,7 +343,7 @@ void HandleJascToGbaPaletteCommand(char *inputPath, char *outputPath, int argc, 
         }
     }
 
-    struct Palette palette = {};
+    struct Palette palette = {0};
 
     ReadJascPalette(inputPath, &palette);
 
@@ -350,18 +353,18 @@ void HandleJascToGbaPaletteCommand(char *inputPath, char *outputPath, int argc, 
     WriteGbaPalette(outputPath, &palette);
 }
 
-void HandleHalfWidthLatinFontToPngCommand(char *inputPath, char *outputPath, int argc UNUSED, char **argv UNUSED)
+void HandleLatinFontToPngCommand(char *inputPath, char *outputPath, int argc UNUSED, char **argv UNUSED)
 {
     struct Image image;
     image.tilemap.data.affine = NULL; // initialize to NULL to avoid issues in FreeImage
 
-    ReadHalfWidthLatinFont(inputPath, &image);
+    ReadLatinFont(inputPath, &image);
     WritePng(outputPath, &image);
 
     FreeImage(&image);
 }
 
-void HandlePngToHalfWidthLatinFontCommand(char *inputPath, char *outputPath, int argc UNUSED, char **argv UNUSED)
+void HandlePngToLatinFontCommand(char *inputPath, char *outputPath, int argc UNUSED, char **argv UNUSED)
 {
     struct Image image;
     image.tilemap.data.affine = NULL; // initialize to NULL to avoid issues in FreeImage
@@ -369,31 +372,7 @@ void HandlePngToHalfWidthLatinFontCommand(char *inputPath, char *outputPath, int
     image.bitDepth = 2;
 
     ReadPng(inputPath, &image);
-    WriteHalfWidthLatinFont(outputPath, &image);
-
-    FreeImage(&image);
-}
-
-void HandleFullWidthLatinFontToPngCommand(char *inputPath, char *outputPath, int argc UNUSED, char **argv UNUSED)
-{
-    struct Image image;
-    image.tilemap.data.affine = NULL; // initialize to NULL to avoid issues in FreeImage
-
-    ReadFullWidthLatinFont(inputPath, &image);
-    WritePng(outputPath, &image);
-
-    FreeImage(&image);
-}
-
-void HandlePngToFullWidthLatinFontCommand(char *inputPath, char *outputPath, int argc UNUSED, char **argv UNUSED)
-{
-    struct Image image;
-    image.tilemap.data.affine = NULL; // initialize to NULL to avoid issues in FreeImage
-
-    image.bitDepth = 2;
-
-    ReadPng(inputPath, &image);
-    WriteFullWidthLatinFont(outputPath, &image);
+    WriteLatinFont(outputPath, &image);
 
     FreeImage(&image);
 }
@@ -629,10 +608,8 @@ int main(int argc, char **argv)
         { "png", "pal", HandlePngToJascPaletteCommand },
         { "gbapal", "pal", HandleGbaToJascPaletteCommand },
         { "pal", "gbapal", HandleJascToGbaPaletteCommand },
-        { "hwlatfont", "png", HandleHalfWidthLatinFontToPngCommand },
-        { "png", "hwlatfont", HandlePngToHalfWidthLatinFontCommand },
-        { "fwlatfont", "png", HandleFullWidthLatinFontToPngCommand },
-        { "png", "fwlatfont", HandlePngToFullWidthLatinFontCommand },
+        { "latfont", "png", HandleLatinFontToPngCommand },
+        { "png", "latfont", HandlePngToLatinFontCommand },
         { "hwjpnfont", "png", HandleHalfwidthJapaneseFontToPngCommand },
         { "png", "hwjpnfont", HandlePngToHalfwidthJapaneseFontCommand },
         { "fwjpnfont", "png", HandleFullwidthJapaneseFontToPngCommand },

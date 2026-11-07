@@ -1,11 +1,18 @@
 #ifndef GUARD_SCRIPT_POKEMON_UTIL_H
 #define GUARD_SCRIPT_POKEMON_UTIL_H
 
-bool8 ScriptGiveMon(u16 species, u8 level, u16 item, u32 unk1, u32 unk2, u8 unk3);
-bool8 ScriptGiveEgg(u16 species);
-void ScriptSetMonMoveSlot(u8 partyIdx, u16 move, u8 slot);
+u32 ScriptGiveMon(enum Species species, u8 level, enum Item item);
+u8 ScriptGiveEgg(enum Species species);
+void CreateScriptedWildMon(enum Species species, u8 level, enum Item item);
+void CreateScriptedDoubleWildMon(enum Species species, u8 level, enum Item item, enum Species species2, u8 level2, enum Item item2);
+void ScriptSetMonMoveSlot(u8 monIndex, enum Move move, u8 slot);
+void ReducePlayerPartyToSelectedMons(void);
 void HealPlayerParty(void);
-void ReducePlayerPartyToThree(void);
-void CreateScriptedWildMon(u16 species, u8 level, u16 item);
+void Script_GetChosenMonOffensiveEVs(void);
+void Script_GetChosenMonDefensiveEVs(void);
+void Script_GetChosenMonOffensiveIVs(void);
+void Script_GetChosenMonDefensiveIVs(void);
+u32 ScriptGiveMonParameterized(u8 side, u8 slot, struct PokemonTemplate *monTemplate);
+u8 HasEnoughMonsForDoubleBattle2(void);
 
-#endif //GUARD_SCRIPT_POKEMON_UTIL_H
+#endif // GUARD_SCRIPT_POKEMON_UTIL_H

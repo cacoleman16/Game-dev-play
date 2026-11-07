@@ -284,17 +284,17 @@ TrainerTower_Roof_EventScript_ReceivePrize:
 	msgbox TrainerTower_Roof_Text_ThisIsForYou
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	playfanfare MUS_LEVEL_UP
-	message Text_ObtainedTheX
+	message gText_ObtainedTheItem
 	waitfanfare
 	waitmessage
-	bufferstdstring STR_VAR_3, STDSTRING_ITEMS_POCKET
-	msgbox Text_PutItemAway
+	bufferstdstring STR_VAR_3, STDSTRING_ITEMS
+	msgbox gText_PutItemInPocket
 	call EventScript_RestorePrevTextColor
 	goto TrainerTower_Roof_EventScript_CheckFinalTime
 
 TrainerTower_Roof_EventScript_NoRoomForPrize::
 	msgbox TrainerTower_Roof_Text_ThisIsForYou
-	msgbox Text_BagIsFull
+	msgbox gText_TheBagIsFull
 	goto TrainerTower_Roof_EventScript_CheckFinalTime
 
 TrainerTower_Roof_EventScript_CheckFinalTime::

@@ -1,32 +1,38 @@
 #ifndef GUARD_CONSTANTS_TRADE_H
 #define GUARD_CONSTANTS_TRADE_H
 
-// TODO: document trade.c and trade_scene.c with corresponding macros
-// and examine if these are correct
-
 #define TRADE_PLAYER  0
 #define TRADE_PARTNER 1
 
-#define LINK_TRADE_TIMEOUT 300
-
 // In-game Trade IDs
-#define INGAME_TRADE_MR_MIME   0
-#define INGAME_TRADE_JYNX      1
-#define INGAME_TRADE_NIDORAN   2  // M or F depending on version
-#define INGAME_TRADE_FARFETCHD 3
-#define INGAME_TRADE_NIDORINOA 4  // Nidorino or Nidorina depending on version
-#define INGAME_TRADE_LICKITUNG 5
-#define INGAME_TRADE_ELECTRODE 6
-#define INGAME_TRADE_TANGELA   7
-#define INGAME_TRADE_SEEL      8
+enum InGameTradeID
+{
+    INGAME_TRADE_SEEDOT,
+    INGAME_TRADE_PLUSLE,
+    INGAME_TRADE_HORSEA,
+    INGAME_TRADE_MEOWTH,
+    // FRLG
+    INGAME_TRADE_MR_MIME,
+    INGAME_TRADE_JYNX,
+    INGAME_TRADE_NIDORAN,
+    INGAME_TRADE_FARFETCHD,
+    INGAME_TRADE_NIDORINOA,
+    INGAME_TRADE_LICKITUNG,
+    INGAME_TRADE_ELECTRODE,
+    INGAME_TRADE_TANGELA,
+    INGAME_TRADE_SEEL,
+};
 
 // Return values for CanTradeSelectedMon and CanSpinTradeMon
-#define CAN_TRADE_MON              0
-#define CANT_TRADE_LAST_MON        1
-#define CANT_TRADE_NATIONAL        2
-#define CANT_TRADE_EGG_YET         3
-#define CANT_TRADE_INVALID_MON     4
-#define CANT_TRADE_PARTNER_EGG_YET 5
+enum CanTradeMon
+{
+    CAN_TRADE_MON,
+    CANT_TRADE_LAST_MON,
+    CANT_TRADE_NATIONAL,
+    CANT_TRADE_EGG_YET,
+    CANT_TRADE_INVALID_MON,
+    CANT_TRADE_PARTNER_EGG_YET
+};
 
 // Return values for CheckValidityOfTradeMons
 #define PLAYER_MON_INVALID   0
@@ -42,8 +48,8 @@
 #define UR_TRADE_MSG_NONE                         0
 #define UR_TRADE_MSG_NOT_MON_PARTNER_WANTS        1
 #define UR_TRADE_MSG_NOT_EGG                      2
-#define UR_TRADE_MSG_MON_CANT_BE_TRADED_1         3
-#define UR_TRADE_MSG_MON_CANT_BE_TRADED_2         4
+#define UR_TRADE_MSG_MON_CANT_BE_TRADED_NOW       3
+#define UR_TRADE_MSG_MON_CANT_BE_TRADED           4
 #define UR_TRADE_MSG_PARTNERS_MON_CANT_BE_TRADED  5
 #define UR_TRADE_MSG_EGG_CANT_BE_TRADED           6
 #define UR_TRADE_MSG_PARTNER_CANT_ACCEPT_MON      7
@@ -51,8 +57,10 @@
 #define UR_TRADE_MSG_CANT_TRADE_WITH_PARTNER_2    9
 
 // Return values for CanRegisterMonForTradingBoard
-#define CAN_REGISTER_MON   0
-#define CANT_REGISTER_MON  1
-#define CANT_REGISTER_EGG  2
+#define CAN_REGISTER_MON      0
+#define CANT_REGISTER_MON_NOW 1
+#define CANT_REGISTER_MON     2
+#define CANT_REGISTER_EGG     3
 
-#endif // GUARD_CONSTANTS_TRADE_H
+
+#endif //GUARD_CONSTANTS_TRADE_H
