@@ -2460,6 +2460,7 @@
 #define FLAG_QOL_DEXNAV_SEARCHING   FLAG_0x8E5 // DexNav: searching for a Pokemon
 #define FLAG_QOL_DEXNAV_DETECTOR    FLAG_0x8E6 // DexNav: detector mode (hidden Pokemon)
 #define FLAG_QOL_AUTO_RUN           FLAG_0x8E7 // Set = auto-run ON (toggled with L on the overworld)
+#define FLAG_QOL_LEVEL_CAPS         FLAG_0x8E8 // Set = Kanto level caps ON (toggled at the NES in your bedroom)
 #else
 #define FLAG_QOL_EXP_SHARE          0
 #define FLAG_QOL_FOLLOWERS_OFF      0
@@ -2469,6 +2470,7 @@
 #define FLAG_QOL_DEXNAV_SEARCHING   0
 #define FLAG_QOL_DEXNAV_DETECTOR    0
 #define FLAG_QOL_AUTO_RUN           0
+#define FLAG_QOL_LEVEL_CAPS         0
 #endif
 
 #endif // GUARD_CONSTANTS_FLAGS_H

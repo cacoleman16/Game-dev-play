@@ -22,6 +22,11 @@
 #define I_REPEL_INCLUDE_FAINTED         GEN_LATEST  // In Gen1 and Gen6+, Repels use the level of the first party member to check which wild Pokémon to prevent encounters with, even if that member is fainted. In Gens2-5, they use the level of the first non-fainted Pokémon.
 #define I_LAX_INCENSE_BOOST             GEN_LATEST  // In Gen4+, Lax Incense lowers accuracy by 10% instead of 5%.
 
+// [QoL] Shop prices for items that are not sold in the official games
+// (they are 0 there). Used by Celadon Dept. Store 4F in the FRLG build.
+#define QOL_MEGA_STONE_PRICE    10000
+#define QOL_Z_CRYSTAL_PRICE     8000
+
 // TM config
 #define I_REUSABLE_TMS          TRUE        // [QoL] Reusable TMs. In Gens5-8, TMs are reusable. Setting this to TRUE will make all vanilla TMs reusable, though they can also be cherry-picked by setting their importance to 1.
 

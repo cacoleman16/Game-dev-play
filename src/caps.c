@@ -7,6 +7,34 @@
 
 u32 GetCurrentLevelCap(void)
 {
+#if IS_FRLG
+    // [QoL] Optional Kanto level caps: the level of each gym leader's
+    // strongest Pokémon, then the Champion's. Off unless FLAG_QOL_LEVEL_CAPS
+    // is set (toggled at the NES in the player's bedroom).
+    static const u32 sLevelCapFlagMapFrlg[][2] =
+    {
+        {FLAG_BADGE01_GET, 14}, // Brock
+        {FLAG_BADGE02_GET, 21}, // Misty
+        {FLAG_BADGE03_GET, 24}, // Lt. Surge
+        {FLAG_BADGE04_GET, 29}, // Erika
+        {FLAG_BADGE05_GET, 43}, // Koga
+        {FLAG_BADGE06_GET, 43}, // Sabrina
+        {FLAG_BADGE07_GET, 47}, // Blaine
+        {FLAG_BADGE08_GET, 50}, // Giovanni
+        {FLAG_SYS_GAME_CLEAR, 63}, // Champion
+    };
+    u32 j;
+
+    if (FLAG_QOL_LEVEL_CAPS == 0 || !FlagGet(FLAG_QOL_LEVEL_CAPS))
+        return MAX_LEVEL;
+    for (j = 0; j < ARRAY_COUNT(sLevelCapFlagMapFrlg); j++)
+    {
+        if (!FlagGet(sLevelCapFlagMapFrlg[j][0]))
+            return sLevelCapFlagMapFrlg[j][1];
+    }
+    return MAX_LEVEL;
+#endif
+
     static const u32 sLevelCapFlagMap[][2] =
     {
         {FLAG_BADGE01_GET, 15},
