@@ -310,3 +310,26 @@ The bigger goals from the original brief still need their own passes:
   include kana. The usual approach is a language flag plus dual string tables
   (or a JP build) for each text bank. It touches every text file, so it works
   best as its own pass.
+
+---
+
+## Review findings (after the switch to pokeemerald-expansion)
+
+These patches are kept for reference only; the live hack now runs on
+pokeemerald-expansion, which has its own battle engine. An independent review
+of the patches found two real bugs, both in the physical/special split patch:
+
+1. **Thick Fat** (`src/pokemon.c`, `CalculateBaseDamage`) still halves only
+   Sp. Atk, so physical Fire/Ice moves (Fire Punch, Ice Punch, Blaze Kick...)
+   ignore it. Fix: halve `attack` when `IS_MOVE_PHYSICAL(move)`.
+2. **Pain Split** (`src/battle_script_commands.c`, `Cmd_datahpupdate`) is now
+   recorded as special damage because the second branch tests
+   `!IS_MOVE_PHYSICAL`. It can feed Mirror Coat or break Focus Punch. Fix: test
+   `IS_MOVE_SPECIAL(gCurrentMove)` instead.
+
+Lower-risk notes from the same review: the follower permanently uses one of
+the 16 object slots (two camera-object spawns don't check for a full table),
+and the old battle AI scripts still guess physical/special from type.
+
+The pokefirered build of these patches compiled and linked with agbcc in
+GitHub Actions (run #1 of "Build ROM").
