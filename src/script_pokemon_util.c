@@ -30,6 +30,7 @@
 #include "constants/abilities.h"
 #include "constants/items.h"
 #include "constants/battle_frontier.h"
+#include "qol_nuzlocke.h"
 
 static void CB2_ReturnFromChooseHalfParty(void);
 static void CB2_ReturnFromChooseBattleFrontierParty(void);
@@ -39,7 +40,11 @@ void HealPlayerParty(void)
 {
     u32 i;
     for (i = 0; i < gPartiesCount[B_TRAINER_PLAYER]; i++)
+    {
+        if (QoL_NuzlockeIsDead(&gParties[B_TRAINER_PLAYER][i]))
+            continue; // [QoL] Nuzlocke: fainted Pokemon stay fainted
         HealPokemon(&gParties[B_TRAINER_PLAYER][i]);
+    }
     if (OW_PC_HEAL >= GEN_8)
         HealPlayerBoxes();
 
@@ -58,7 +63,8 @@ static void HealPlayerBoxes(void)
         for (boxPosition = 0; boxPosition < IN_BOX_COUNT; boxPosition++)
         {
             boxMon = &gPokemonStoragePtr->boxes[boxId][boxPosition];
-            if (GetBoxMonData(boxMon, MON_DATA_SANITY_HAS_SPECIES))
+            if (GetBoxMonData(boxMon, MON_DATA_SANITY_HAS_SPECIES)
+             && !QoL_NuzlockeIsBoxMonDead(boxMon)) // [QoL] Nuzlocke
                 HealBoxPokemon(boxMon);
         }
     }

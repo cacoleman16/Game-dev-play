@@ -110,6 +110,7 @@ struct Pokemon (*const gEnemyPartyPtr)[6] = &gParties[B_TRAINER_OPPONENT_A];
 u8 (*const gEnemyPartyCountPtr) = &gPartiesCount[B_TRAINER_OPPONENT_A];
 
 #include "data/abilities.h"
+#include "qol_nuzlocke.h"
 
 // Used in an unreferenced function in RS.
 // Unreferenced here and in FRLG.
@@ -3662,7 +3663,8 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, enum Item item, u8 partyIndex, 
                         }
                         // Check use validity.
                         if ((effectFlags & (ITEM4_REVIVE >> 2) && currentHP != 0)
-                              || (!(effectFlags & (ITEM4_REVIVE >> 2)) && currentHP == 0))
+                              || (!(effectFlags & (ITEM4_REVIVE >> 2)) && currentHP == 0)
+                              || (currentHP == 0 && QoL_NuzlockeIsDead(mon))) // [QoL] Nuzlocke: no reviving
                         {
                             itemEffectParam++;
                             break;

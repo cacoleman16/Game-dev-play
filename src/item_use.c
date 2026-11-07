@@ -48,6 +48,7 @@
 #include "constants/item_effects.h"
 #include "constants/items.h"
 #include "constants/songs.h"
+#include "qol_nuzlocke.h"
 
 static void SetUpItemUseCallback(u8);
 static void FieldCB_UseItemOnField(void);
@@ -1142,6 +1143,7 @@ bool32 CanThrowBall(void)
 static const u8 sText_CantThrowPokeBall_TwoMons[] = _("Cannot throw a ball!\nThere are two Pokémon out there!\p");
 static const u8 sText_CantThrowPokeBall_SemiInvulnerable[] = _("Cannot throw a ball!\nThere's no Pokémon in sight!\p");
 static const u8 sText_CantThrowPokeBall_Disabled[] = _("POKé BALLS cannot be used\nright now!\p");
+static const u8 sText_CantThrowPokeBall_Nuzlocke[] = _("NUZLOCKE rules: this POKéMON\ncan't be caught!\p"); // [QoL]
 
 static void ItemUseInBattle_ShowPartyMenu(u8 taskId)
 {
@@ -1254,6 +1256,8 @@ bool32 CannotUseItemsInBattle(enum Item itemId, struct Pokemon *mon)
             break;
         case BALL_THROW_UNABLE_DISABLED_FLAG:
             failStr = sText_CantThrowPokeBall_Disabled;
+            if (QoL_NuzlockeActive() && FlagGet(FLAG_QOL_NO_CATCHING))
+                failStr = sText_CantThrowPokeBall_Nuzlocke; // [QoL]
             cannotUse = TRUE;
             break;
         }
@@ -1293,7 +1297,7 @@ bool32 CannotUseItemsInBattle(enum Item itemId, struct Pokemon *mon)
             cannotUse = TRUE;
         break;
     case EFFECT_ITEM_REVIVE:
-        if (hp != 0)
+        if (hp != 0 || QoL_NuzlockeIsDead(mon)) // [QoL] Nuzlocke: no reviving
             cannotUse = TRUE;
         break;
     case EFFECT_ITEM_RESTORE_PP:

@@ -76,6 +76,7 @@
 #include "test/battle.h"
 #include "follower_npc.h"
 #include "load_save.h"
+#include "qol_nuzlocke.h"
 
 // Helper for accessing command arguments and advancing gBattlescriptCurrInstr.
 //
@@ -9923,7 +9924,8 @@ void BS_TryRevivalBlessing(void)
     u8 index = GetFirstFaintedPartyIndex(gBattlerAttacker);
 
     // Move fails if there are no battlers to revive.
-    if (index == PARTY_SIZE)
+    // [QoL] Under Nuzlocke rules it also fails for the player's Pokemon.
+    if (index == PARTY_SIZE || (IsOnPlayerSide(gBattlerAttacker) && QoL_NuzlockeActive()))
     {
         gBattlescriptCurrInstr = cmd->failInstr;
         return;

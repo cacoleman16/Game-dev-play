@@ -63,6 +63,7 @@ EWRAM_DATA bool8 gIsSurfingEncounter = 0;
 EWRAM_DATA u8 gChainFishingDexNavStreak = 0;
 
 #include "data/wild_encounters.h"
+#include "qol_nuzlocke.h"
 
 const struct WildPokemon gWildFeebas = {20, 25, SPECIES_FEEBAS};
 
@@ -668,7 +669,7 @@ bool8 StandardWildEncounter(u16 curMetatileBehavior, u16 prevMetatileBehavior)
     enum TimeOfDay timeOfDay;
     struct Roamer *roamer;
 
-    if (sWildEncountersDisabled == TRUE)
+    if (sWildEncountersDisabled == TRUE || QoL_NuzlockePartyWiped()) // [QoL] Nuzlocke: whole party dead
         return FALSE;
 
     headerId = GetCurrentMapWildMonHeaderId();
@@ -813,7 +814,7 @@ void RockSmashWildEncounter(void)
     u32 headerId = GetCurrentMapWildMonHeaderId();
     enum TimeOfDay timeOfDay;
 
-    if (headerId != HEADER_NONE)
+    if (headerId != HEADER_NONE && !QoL_NuzlockePartyWiped()) // [QoL] Nuzlocke
     {
         timeOfDay = GetTimeOfDayForEncounters(headerId, WILD_AREA_ROCKS);
 
@@ -857,6 +858,8 @@ bool8 SweetScentWildEncounter(void)
     enum TimeOfDay timeOfDay;
 
     PlayerGetDestCoords(&x, &y);
+    if (QoL_NuzlockePartyWiped()) // [QoL] Nuzlocke: whole party dead
+        return FALSE;
     headerId = GetCurrentMapWildMonHeaderId();
     if (headerId == HEADER_NONE)
     {
@@ -937,6 +940,8 @@ bool8 DoesCurrentMapHaveFishingMons(void)
     u32 headerId = GetCurrentMapWildMonHeaderId();
     enum TimeOfDay timeOfDay = GetTimeOfDayForEncounters(headerId, WILD_AREA_FISHING);
 
+    if (QoL_NuzlockePartyWiped()) // [QoL] Nuzlocke: nothing bites while the whole party is dead
+        return FALSE;
     if (headerId != HEADER_NONE && gWildMonHeaders[headerId].encounterTypes[timeOfDay].fishingMonsInfo != NULL)
         return TRUE;
     else

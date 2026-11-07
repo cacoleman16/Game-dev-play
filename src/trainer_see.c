@@ -21,6 +21,7 @@
 #include "constants/field_effects.h"
 #include "constants/script_commands.h"
 #include "constants/trainer_types.h"
+#include "qol_nuzlocke.h"
 
 // this file's functions
 static u8 CheckTrainer(u8 objectEventId);
@@ -439,7 +440,7 @@ bool8 CheckForTrainersWantingBattle(void)
     u8 trainerObjects[OBJECT_EVENTS_COUNT] = {0};
     u8 trainerObjectsCount = 0;
 
-    if (FlagGet(OW_FLAG_NO_TRAINER_SEE))
+    if (FlagGet(OW_FLAG_NO_TRAINER_SEE) || QoL_NuzlockePartyWiped()) // [QoL] Nuzlocke: whole party dead
         return FALSE;
 
     gNoOfApproachingTrainers = 0;

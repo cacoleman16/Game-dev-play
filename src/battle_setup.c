@@ -59,6 +59,7 @@
 #include "constants/trainers.h"
 #include "constants/trainer_hill.h"
 #include "constants/weather.h"
+#include "qol_nuzlocke.h"
 
 enum TransitionType
 {
@@ -394,6 +395,7 @@ void BattleSetup_StartBattlePikeWildBattle(void)
 
 static void DoStandardWildBattle(bool32 isDouble)
 {
+    QoL_NuzlockeOnWildEncounter(); // [QoL] Nuzlocke: first encounter per area
     LockPlayerFieldControls();
     FreezeObjectEvents();
     StopPlayerAvatar();
@@ -691,6 +693,7 @@ static void DowngradeBadPoison(void)
 
 static void CB2_EndWildBattle(void)
 {
+    QoL_NuzlockeEndWildBattle(); // [QoL]
     CpuFill16(0, (void *)(BG_PLTT), BG_PLTT_SIZE);
     ResetOamRange(0, 128);
 
@@ -717,6 +720,7 @@ static void CB2_EndWildBattle(void)
 
 static void CB2_EndScriptedWildBattle(void)
 {
+    QoL_NuzlockeEndWildBattle(); // [QoL] DexNav battles are scripted wild battles
     CpuFill16(0, (void *)(BG_PLTT), BG_PLTT_SIZE);
     ResetOamRange(0, 128);
 

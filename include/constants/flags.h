@@ -2449,7 +2449,7 @@
 #endif // TESTING
 
 // [QoL] Flags used by this hack's FireRed/LeafGreen build. They repurpose FRLG
-// system flags 0x8E0-0x8E7, which nothing in the game uses. In Emerald builds
+// system flags 0x8E0-0x8EB, which nothing in the game uses. In Emerald builds
 // (different flag map) they are 0, which disables the matching features.
 #if IS_FRLG
 #define FLAG_QOL_EXP_SHARE          FLAG_0x8E0 // Set = party-wide Exp. Share ON (set at new game, toggled by the EXP. SHARE key item)
@@ -2461,6 +2461,12 @@
 #define FLAG_QOL_DEXNAV_DETECTOR    FLAG_0x8E6 // DexNav: detector mode (hidden Pokemon)
 #define FLAG_QOL_AUTO_RUN           FLAG_0x8E7 // Set = auto-run ON (toggled with L on the overworld)
 #define FLAG_QOL_LEVEL_CAPS         FLAG_0x8E8 // Set = Kanto level caps ON (toggled at the NES in your bedroom)
+#define FLAG_QOL_NUZLOCKE           FLAG_0x8E9 // Set = Nuzlocke mode ON (toggled at the NES in your bedroom)
+#define FLAG_QOL_NO_CATCHING        FLAG_0x8EA // Set during a wild battle whose Pokemon Nuzlocke rules forbid catching
+#define FLAG_QOL_RANDOMIZER         FLAG_0x8EB // Set = species randomizer ON (toggled at the NES in your bedroom)
+// Nuzlocke: one "area used" flag per Kanto/Sevii map section, starting here.
+// Script flags 0x35D-0x3D7 are unused in FRLG; 105 map sections need 0x35D-0x3C5.
+#define FLAG_QOL_NUZLOCKE_AREAS_START FLAG_0x35D
 #else
 #define FLAG_QOL_EXP_SHARE          0
 #define FLAG_QOL_FOLLOWERS_OFF      0
@@ -2471,6 +2477,10 @@
 #define FLAG_QOL_DEXNAV_DETECTOR    0
 #define FLAG_QOL_AUTO_RUN           0
 #define FLAG_QOL_LEVEL_CAPS         0
+#define FLAG_QOL_NUZLOCKE           0
+#define FLAG_QOL_NO_CATCHING        0
+#define FLAG_QOL_RANDOMIZER         0
+#define FLAG_QOL_NUZLOCKE_AREAS_START 0
 #endif
 
 #endif // GUARD_CONSTANTS_FLAGS_H

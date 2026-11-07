@@ -20,65 +20,88 @@ PalletTown_PlayersHouse_2F_FirstWarpIn::
 	setvar VAR_MAP_SCENE_PALLET_TOWN_PLAYERS_HOUSE_2F, 1
 	end
 
-@ [QoL] Challenge settings: the NES in your bedroom toggles the optional
-@ Kanto level caps and the following Pokémon. Come back any time (Fly to Pallet).
+@ [QoL] Challenge settings: the NES in your bedroom opens a menu that switches
+@ the optional rules on and off. Each entry shows its current state; pick one
+@ to flip it, or DONE / B to leave. Come back any time (Fly to Pallet).
 PalletTown_PlayersHouse_2F_EventScript_NES::
 	lockall
 	msgbox PalletTown_PlayersHouse_2F_Text_PlayedWithNES, MSGBOX_DEFAULT
-	msgbox PalletTown_PlayersHouse_2F_Text_ChangeSettings, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, PalletTown_PlayersHouse_2F_EventScript_NESDone
-	setvar VAR_0x8005, 0
-	setvar VAR_0x8006, 0
-	call_if_unset FLAG_QOL_LEVEL_CAPS, PalletTown_PlayersHouse_2F_EventScript_AskCapsOn
-	call_if_set FLAG_QOL_LEVEL_CAPS, PalletTown_PlayersHouse_2F_EventScript_AskCapsOff
-	call_if_unset FLAG_QOL_FOLLOWERS_OFF, PalletTown_PlayersHouse_2F_EventScript_AskFollowersOff
-	call_if_set FLAG_QOL_FOLLOWERS_OFF, PalletTown_PlayersHouse_2F_EventScript_AskFollowersOn
+PalletTown_PlayersHouse_2F_EventScript_NESMenu::
+	message PalletTown_PlayersHouse_2F_Text_PickSetting
+	waitmessage
+	call_if_set FLAG_QOL_NUZLOCKE, PalletTown_PlayersHouse_2F_EventScript_PushNuzlockeOn
+	call_if_unset FLAG_QOL_NUZLOCKE, PalletTown_PlayersHouse_2F_EventScript_PushNuzlockeOff
+	call_if_set FLAG_QOL_LEVEL_CAPS, PalletTown_PlayersHouse_2F_EventScript_PushCapsOn
+	call_if_unset FLAG_QOL_LEVEL_CAPS, PalletTown_PlayersHouse_2F_EventScript_PushCapsOff
+	call_if_unset FLAG_QOL_FOLLOWERS_OFF, PalletTown_PlayersHouse_2F_EventScript_PushFollowersOn
+	call_if_set FLAG_QOL_FOLLOWERS_OFF, PalletTown_PlayersHouse_2F_EventScript_PushFollowersOff
+	dynmultipush PalletTown_PlayersHouse_2F_Text_Done, 9
+	dynmultistack 0, 0, FALSE, 6, FALSE, 0, DYN_MULTICHOICE_CB_NONE
+	switch VAR_RESULT
+	case 0, PalletTown_PlayersHouse_2F_EventScript_ToggleNuzlocke
+	case 1, PalletTown_PlayersHouse_2F_EventScript_ToggleCaps
+	case 2, PalletTown_PlayersHouse_2F_EventScript_ToggleFollowers
 	msgbox PalletTown_PlayersHouse_2F_Text_SettingsSaved, MSGBOX_DEFAULT
-PalletTown_PlayersHouse_2F_EventScript_NESDone::
 	releaseall
 	end
 
-@ Each question flips its flag only on YES. VAR_0x8005 marks a flag already
-@ handled, so the matching "set" check right after doesn't ask again.
-PalletTown_PlayersHouse_2F_EventScript_AskCapsOn::
-	msgbox PalletTown_PlayersHouse_2F_Text_CapsOffTurnOn, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, PalletTown_PlayersHouse_2F_EventScript_SkipCaps
+PalletTown_PlayersHouse_2F_EventScript_PushNuzlockeOn::
+	dynmultipush PalletTown_PlayersHouse_2F_Text_NuzlockeOn, 0
+	return
+
+PalletTown_PlayersHouse_2F_EventScript_PushNuzlockeOff::
+	dynmultipush PalletTown_PlayersHouse_2F_Text_NuzlockeOff, 0
+	return
+
+PalletTown_PlayersHouse_2F_EventScript_PushCapsOn::
+	dynmultipush PalletTown_PlayersHouse_2F_Text_CapsOn, 1
+	return
+
+PalletTown_PlayersHouse_2F_EventScript_PushCapsOff::
+	dynmultipush PalletTown_PlayersHouse_2F_Text_CapsOff, 1
+	return
+
+PalletTown_PlayersHouse_2F_EventScript_PushFollowersOn::
+	dynmultipush PalletTown_PlayersHouse_2F_Text_FollowersOn, 2
+	return
+
+PalletTown_PlayersHouse_2F_EventScript_PushFollowersOff::
+	dynmultipush PalletTown_PlayersHouse_2F_Text_FollowersOff, 2
+	return
+
+@ Nuzlocke: explain the rules before turning it on.
+PalletTown_PlayersHouse_2F_EventScript_ToggleNuzlocke::
+	goto_if_set FLAG_QOL_NUZLOCKE, PalletTown_PlayersHouse_2F_EventScript_NuzlockeOff
+	msgbox PalletTown_PlayersHouse_2F_Text_NuzlockeRules, MSGBOX_DEFAULT
+	msgbox PalletTown_PlayersHouse_2F_Text_TurnNuzlockeOn, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, PalletTown_PlayersHouse_2F_EventScript_NESMenu
+	setflag FLAG_QOL_NUZLOCKE
+	goto PalletTown_PlayersHouse_2F_EventScript_NESMenu
+
+PalletTown_PlayersHouse_2F_EventScript_NuzlockeOff::
+	msgbox PalletTown_PlayersHouse_2F_Text_TurnNuzlockeOff, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, PalletTown_PlayersHouse_2F_EventScript_NESMenu
+	clearflag FLAG_QOL_NUZLOCKE
+	goto PalletTown_PlayersHouse_2F_EventScript_NESMenu
+
+PalletTown_PlayersHouse_2F_EventScript_ToggleCaps::
+	goto_if_set FLAG_QOL_LEVEL_CAPS, PalletTown_PlayersHouse_2F_EventScript_CapsOff
+	msgbox PalletTown_PlayersHouse_2F_Text_CapsExplain, MSGBOX_DEFAULT
 	setflag FLAG_QOL_LEVEL_CAPS
-	setvar VAR_0x8005, 1
-	return
+	goto PalletTown_PlayersHouse_2F_EventScript_NESMenu
 
-PalletTown_PlayersHouse_2F_EventScript_AskCapsOff::
-	goto_if_eq VAR_0x8005, 1, PalletTown_PlayersHouse_2F_EventScript_CapsDone
-	msgbox PalletTown_PlayersHouse_2F_Text_CapsOnTurnOff, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, PalletTown_PlayersHouse_2F_EventScript_CapsDone
+PalletTown_PlayersHouse_2F_EventScript_CapsOff::
 	clearflag FLAG_QOL_LEVEL_CAPS
-PalletTown_PlayersHouse_2F_EventScript_CapsDone::
-	setvar VAR_0x8005, 0
-	return
+	goto PalletTown_PlayersHouse_2F_EventScript_NESMenu
 
-PalletTown_PlayersHouse_2F_EventScript_SkipCaps::
-	setvar VAR_0x8005, 1
-	return
-
-PalletTown_PlayersHouse_2F_EventScript_AskFollowersOff::
-	msgbox PalletTown_PlayersHouse_2F_Text_FollowersOnTurnOff, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, PalletTown_PlayersHouse_2F_EventScript_SkipFollowers
+PalletTown_PlayersHouse_2F_EventScript_ToggleFollowers::
+	goto_if_set FLAG_QOL_FOLLOWERS_OFF, PalletTown_PlayersHouse_2F_EventScript_FollowersOn
 	setflag FLAG_QOL_FOLLOWERS_OFF
-	setvar VAR_0x8006, 1
-	return
+	goto PalletTown_PlayersHouse_2F_EventScript_NESMenu
 
-PalletTown_PlayersHouse_2F_EventScript_AskFollowersOn::
-	goto_if_eq VAR_0x8006, 1, PalletTown_PlayersHouse_2F_EventScript_FollowersDone
-	msgbox PalletTown_PlayersHouse_2F_Text_FollowersOffTurnOn, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, PalletTown_PlayersHouse_2F_EventScript_FollowersDone
+PalletTown_PlayersHouse_2F_EventScript_FollowersOn::
 	clearflag FLAG_QOL_FOLLOWERS_OFF
-PalletTown_PlayersHouse_2F_EventScript_FollowersDone::
-	setvar VAR_0x8006, 0
-	return
-
-PalletTown_PlayersHouse_2F_EventScript_SkipFollowers::
-	setvar VAR_0x8006, 1
-	return
+	goto PalletTown_PlayersHouse_2F_EventScript_NESMenu
 
 PalletTown_PlayersHouse_2F_EventScript_Sign::
 	msgbox PalletTown_PlayersHouse_2F_Text_PressLRForHelp, MSGBOX_SIGN
@@ -95,27 +118,54 @@ PalletTown_PlayersHouse_2F_Text_PressLRForHelp::
 	.string "R Button: DexNav search.\p"
 	.string "Challenge settings are on the NES.$"
 
-PalletTown_PlayersHouse_2F_Text_ChangeSettings::
-	.string "Change the challenge settings?$"
+PalletTown_PlayersHouse_2F_Text_PickSetting::
+	.string "Challenge settings.\n"
+	.string "Pick one to switch it ON or OFF.$"
 
-PalletTown_PlayersHouse_2F_Text_CapsOffTurnOn::
-	.string "LEVEL CAPS are OFF.\p"
-	.string "With them ON, POKéMON stop gaining\n"
-	.string "EXP. at the next GYM LEADER's top\l"
-	.string "level. Turn LEVEL CAPS ON?$"
+PalletTown_PlayersHouse_2F_Text_NuzlockeOn::
+	.string "NUZLOCKE: ON$"
 
-PalletTown_PlayersHouse_2F_Text_CapsOnTurnOff::
-	.string "LEVEL CAPS are ON.\n"
-	.string "Turn them OFF?$"
+PalletTown_PlayersHouse_2F_Text_NuzlockeOff::
+	.string "NUZLOCKE: OFF$"
 
-PalletTown_PlayersHouse_2F_Text_FollowersOnTurnOff::
-	.string "Your lead POKéMON follows you.\n"
-	.string "Turn following POKéMON OFF?$"
+PalletTown_PlayersHouse_2F_Text_CapsOn::
+	.string "LEVEL CAPS: ON$"
 
-PalletTown_PlayersHouse_2F_Text_FollowersOffTurnOn::
-	.string "Following POKéMON are OFF.\n"
-	.string "Turn them back ON?$"
+PalletTown_PlayersHouse_2F_Text_CapsOff::
+	.string "LEVEL CAPS: OFF$"
+
+PalletTown_PlayersHouse_2F_Text_FollowersOn::
+	.string "FOLLOWERS: ON$"
+
+PalletTown_PlayersHouse_2F_Text_FollowersOff::
+	.string "FOLLOWERS: OFF$"
+
+PalletTown_PlayersHouse_2F_Text_Done::
+	.string "DONE$"
+
+PalletTown_PlayersHouse_2F_Text_NuzlockeRules::
+	.string "NUZLOCKE rules start once PROF.\n"
+	.string "OAK gives you POKé BALLS.\p"
+	.string "You may catch only the first wild\n"
+	.string "POKéMON you meet in each area.\p"
+	.string "Species you already caught and\n"
+	.string "shiny POKéMON don't count, and\l"
+	.string "special encounters are free.\p"
+	.string "A POKéMON that faints is gone:\n"
+	.string "it can't be healed or revived.\l"
+	.string "Put it in a BOX to say goodbye.$"
+
+PalletTown_PlayersHouse_2F_Text_TurnNuzlockeOn::
+	.string "Turn NUZLOCKE ON?$"
+
+PalletTown_PlayersHouse_2F_Text_TurnNuzlockeOff::
+	.string "Turn NUZLOCKE OFF?\n"
+	.string "Fainted POKéMON can heal again.$"
+
+PalletTown_PlayersHouse_2F_Text_CapsExplain::
+	.string "With LEVEL CAPS ON, POKéMON stop\n"
+	.string "gaining EXP. at the next GYM\l"
+	.string "LEADER's top level.$"
 
 PalletTown_PlayersHouse_2F_Text_SettingsSaved::
 	.string "Settings updated. Have fun!$"
-
