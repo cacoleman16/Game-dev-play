@@ -1,0 +1,50 @@
+# Builds the FireRed hack (pokeemerald-expansion FRLG build) on every push so
+# compile errors show up right away. The ROM itself is not uploaded anywhere.
+name: Build ROM
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+env:
+  COMPARE: 0
+  UNUSED_ERROR: 1
+
+jobs:
+  build-firered:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install toolchain
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends binutils-arm-none-eabi gcc-arm-none-eabi libnewlib-arm-none-eabi libpng-dev python3
+
+      - name: Cache build tools
+        uses: actions/cache@v4
+        with:
+          path: |
+            tools/bin2c/bin2c
+            tools/gbafix/gbafix
+            tools/gbagfx/gbagfx
+            tools/jsonproc/jsonproc
+            tools/mapjson/mapjson
+            tools/mid2agb/mid2agb
+            tools/preproc/preproc
+            tools/ramscrgen/ramscrgen
+            tools/rsfont/rsfont
+            tools/scaninc/scaninc
+            tools/trainerproc/trainerproc
+            tools/compresSmol/compresSmol
+            tools/compresSmol/compresSmolTilemap
+            tools/wav2agb/wav2agb
+          key: tools-${{ runner.os }}-${{ hashFiles('tools/*/Makefile', 'tools/**/*.c', 'tools/**/*.cpp', 'tools/**/*.h') }}
+
+      - name: Build FireRed
+        run: make firered -j"$(nproc)" -O
+
+      - name: ROM size
+        run: ls -l *.gba
