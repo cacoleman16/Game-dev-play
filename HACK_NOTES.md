@@ -121,10 +121,20 @@ A browser player built on EmulatorJS 4.2.3 with the mGBA core, vendored into
   works offline after the first visit. Bump `CACHE` in `sw.js` whenever `web/`
   changes, so installed copies update.
 
-**Put it online (one time):** GitHub repo → **Settings → Pages → Build and
-deployment → Source: GitHub Actions**, then re-run the **Web player** workflow
-(Actions tab). It will be at `https://cacoleman16.github.io/Game-dev-play/`.
-The page holds no game data, so it being public is fine.
+**Put it online with Vercel (one time, about a minute):**
+1. Sign in at [vercel.com](https://vercel.com) with your GitHub account.
+2. **Add New → Project → Import** `cacoleman16/Game-dev-play`.
+3. Leave every setting as it is (`vercel.json` already says: no build, serve
+   the `web/` folder) and press **Deploy**.
+
+You'll get a URL like `https://game-dev-play.vercel.app`. From then on every
+push that touches `web/` redeploys automatically. Pushes that only change
+the ROM source are skipped (`ignoreCommand` in `vercel.json`). The page holds
+no game data and is marked `noindex`, so search engines won't list it. For
+extra privacy, turn on Vercel's Deployment Protection in the project settings.
+
+Command-line alternative: `npx vercel --prod` from the repo root
+(`.vercelignore` uploads only `web/`).
 
 **Or run it locally:** `cd web && python3 -m http.server 8000`, then open
 http://localhost:8000.

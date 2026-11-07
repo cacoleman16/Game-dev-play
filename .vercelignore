@@ -1,0 +1,4 @@
+# Only the web player is deployed to Vercel; skip the ROM source tree.
+/*
+!/web
+!/vercel.json
