@@ -29,6 +29,7 @@
 #include "berry_powder.h"
 #include "pokemon_jump.h"
 #include "event_scripts.h"
+#include "constants/items.h"
 
 // this file's functions
 static void ResetMiniGamesResults(void);
@@ -149,6 +150,12 @@ void NewGameInitData(void)
     RunScriptImmediately(EventScript_ResetAllMapFlags);
     StringCopy(gSaveBlock1Ptr->rivalName, rivalName);
     ResetTrainerTowerResults();
+
+    // [QoL] Running Shoes from the very start (the Pewter City aide normally gives them).
+    FlagSet(FLAG_SYS_B_DASH);
+    // [QoL] Modern Exp. Share: start with the EXP. SHARE key item. The feature
+    // itself defaults to ON (FLAG_SYS_EXP_SHARE_DISABLED is clear).
+    AddBagItem(ITEM_EXP_SHARE, 1);
 }
 
 static void ResetMiniGamesResults(void)

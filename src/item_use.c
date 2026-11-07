@@ -356,6 +356,27 @@ void FieldUseFunc_PowderJar(u8 taskId)
         DisplayItemMessageOnField(taskId, FONT_NORMAL, gStringVar4, Task_ItemUse_CloseMessageBoxAndReturnToField);
 }
 
+// [QoL] Modern Exp. Share: the EXP. SHARE key item toggles the party-wide
+// Exp. Share on or off. Works from the bag and when registered to SELECT.
+void FieldUseFunc_ExpShare(u8 taskId)
+{
+    if (FlagGet(FLAG_SYS_EXP_SHARE_DISABLED))
+    {
+        FlagClear(FLAG_SYS_EXP_SHARE_DISABLED);
+        StringExpandPlaceholders(gStringVar4, gText_ExpShareOn);
+    }
+    else
+    {
+        FlagSet(FLAG_SYS_EXP_SHARE_DISABLED);
+        StringExpandPlaceholders(gStringVar4, gText_ExpShareOff);
+    }
+    PlaySE(SE_EXP_MAX);
+    if (gTasks[taskId].data[3] == 0)
+        DisplayItemMessageInBag(taskId, FONT_NORMAL, gStringVar4, Task_ReturnToBagFromContextMenu);
+    else
+        DisplayItemMessageOnField(taskId, FONT_NORMAL, gStringVar4, Task_ItemUse_CloseMessageBoxAndReturnToField);
+}
+
 void FieldUseFunc_PokeFlute(u8 taskId)
 {
     bool8 wokeSomeoneUp = FALSE;

@@ -252,8 +252,9 @@ bool8 RS_IsRunningDisallowed(u8 r0)
 
 bool32 IsRunningDisallowed(u8 metatileBehavior)
 {
-    if (!gMapHeader.allowRunning)
-        return TRUE;
+    // [QoL] Running indoors: the per-map "allowRunning" header flag (FALSE for
+    // buildings and many caves) is ignored so B-dash works everywhere. Only
+    // individual MB_RUNNING_DISALLOWED tiles still block running.
     if (MetatileBehaviorForbidsBiking(metatileBehavior) != TRUE)
         return FALSE;
     else

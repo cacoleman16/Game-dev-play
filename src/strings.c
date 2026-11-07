@@ -200,6 +200,9 @@ const u8 gText_UsedVar2WildLured[] = _("{PLAYER} used the\n{STR_VAR_2}.\pWild PO
 const u8 gText_UsedVar2WildRepelled[] = _("{PLAYER} used the\n{STR_VAR_2}.\pWild POKéMON will be repelled.{PAUSE_UNTIL_PRESS}");
 const u8 gText_BoxFull[] = _("The BOX is full.{PAUSE_UNTIL_PRESS}");
 const u8 gText_PowderQty[] = _("POWDER QTY: {STR_VAR_1}{PAUSE_UNTIL_PRESS}");
+// [QoL] Modern Exp. Share toggle
+const u8 gText_ExpShareOn[] = _("The EXP. SHARE was turned ON.\nYour whole party will gain EXP.{PAUSE_UNTIL_PRESS}");
+const u8 gText_ExpShareOff[] = _("The EXP. SHARE was turned OFF.\nOnly battlers will gain EXP.{PAUSE_UNTIL_PRESS}");
 const u8 gOtherText_Powder[] = _("POWDER");
 const u8 gText_PlayedPokeFluteCatchy[] = _("Played the POKé FLUTE.\pNow, that's a catchy tune!{PAUSE_UNTIL_PRESS}");
 const u8 gText_PlayedPokeFlute[] = _("Played the POKé FLUTE.");

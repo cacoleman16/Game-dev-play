@@ -3106,6 +3106,19 @@ static void Cmd_jumpiftype(void)
         gBattlescriptCurrInstr += 7;
 }
 
+// [QoL] Modern Exp. Share.
+// The EXP. SHARE key item toggles FLAG_SYS_EXP_SHARE_DISABLED; the flag starts
+// clear, so the feature is ON from a new game.
+//  ON : every Pokemon that battled gets the full EXP. yield (no splitting) and
+//       every other non-egg party member gets half of it.
+//  OFF: vanilla Gen 3 behaviour (participants split the EXP.).
+static EWRAM_DATA bool8 sTeamExpMessageShown = FALSE;
+
+static bool8 IsModernExpShareOn(void)
+{
+    return !FlagGet(FLAG_SYS_EXP_SHARE_DISABLED);
+}
+
 static void Cmd_getexp(void)
 {
     u16 item;
@@ -3113,6 +3126,7 @@ static void Cmd_getexp(void)
     u8 holdEffect;
     s32 sentIn;
     s32 viaExpShare = 0;
+    bool8 getsShare; // [QoL] TRUE if this party member gets the Exp. Share portion
     u16 *exp = &gBattleStruct->expValue;
 
     gBattlerFainted = GetBattlerForBattleScript(gBattlescriptCurrInstr[1]);
@@ -3160,8 +3174,21 @@ static void Cmd_getexp(void)
             }
 
             calculatedExp = gSpeciesInfo[gBattleMons[gBattlerFainted].species].expYield * gBattleMons[gBattlerFainted].level / 7;
+            sTeamExpMessageShown = FALSE;
 
-            if (viaExpShare) // at least one mon is getting exp via exp share
+            if (IsModernExpShareOn())
+            {
+                // [QoL] Modern Exp. Share: no splitting between participants,
+                // bench members get half.
+                *exp = calculatedExp;
+                if (*exp == 0)
+                    *exp = 1;
+
+                gExpShareExp = calculatedExp / 2;
+                if (gExpShareExp == 0)
+                    gExpShareExp = 1;
+            }
+            else if (viaExpShare) // at least one mon is getting exp via exp share
             {
                 *exp = SAFE_DIV(calculatedExp / 2, viaSentIn);
                 if (*exp == 0)
@@ -3194,7 +3221,17 @@ static void Cmd_getexp(void)
             else
                 holdEffect = ItemId_GetHoldEffect(item);
 
-            if (holdEffect != HOLD_EFFECT_EXP_SHARE && !(gBattleStruct->sentInPokes & 1))
+            // [QoL] Modern Exp. Share: every non-egg party member that did not
+            // battle gets a share. With the toggle OFF only a (vanilla) held
+            // Exp. Share does.
+            if (IsModernExpShareOn())
+                getsShare = !(gBattleStruct->sentInPokes & 1)
+                         && GetMonData(&gPlayerParty[gBattleStruct->expGetterMonId], MON_DATA_SPECIES) != SPECIES_NONE
+                         && !GetMonData(&gPlayerParty[gBattleStruct->expGetterMonId], MON_DATA_IS_EGG);
+            else
+                getsShare = (holdEffect == HOLD_EFFECT_EXP_SHARE);
+
+            if (!getsShare && !(gBattleStruct->sentInPokes & 1))
             {
                 *(&gBattleStruct->sentInPokes) >>= 1;
                 gBattleScripting.getexpState = 5;
@@ -3223,7 +3260,7 @@ static void Cmd_getexp(void)
                     else
                         gBattleMoveDamage = 0;
 
-                    if (holdEffect == HOLD_EFFECT_EXP_SHARE)
+                    if (getsShare)
                         gBattleMoveDamage += gExpShareExp;
                     if (holdEffect == HOLD_EFFECT_LUCKY_EGG)
                         gBattleMoveDamage = (gBattleMoveDamage * 150) / 100;
@@ -3263,7 +3300,20 @@ static void Cmd_getexp(void)
                     PREPARE_STRING_BUFFER(gBattleTextBuff2, i);
                     PREPARE_WORD_NUMBER_BUFFER(gBattleTextBuff3, 5, gBattleMoveDamage);
 
-                    PrepareStringBattle(STRINGID_PKMNGAINEDEXP, gBattleStruct->expGetterBattlerId);
+                    if (IsModernExpShareOn() && getsShare)
+                    {
+                        // [QoL] Bench members share one summary message
+                        // (level-ups are still announced individually).
+                        if (!sTeamExpMessageShown)
+                        {
+                            PrepareStringBattle(STRINGID_TEAMGAINEDEXP, gBattleStruct->expGetterBattlerId);
+                            sTeamExpMessageShown = TRUE;
+                        }
+                    }
+                    else
+                    {
+                        PrepareStringBattle(STRINGID_PKMNGAINEDEXP, gBattleStruct->expGetterBattlerId);
+                    }
                     MonGainEVs(&gPlayerParty[gBattleStruct->expGetterMonId], gBattleMons[gBattlerFainted].species);
                 }
                 gBattleStruct->sentInPokes >>= 1;
