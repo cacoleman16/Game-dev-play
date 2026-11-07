@@ -454,4 +454,5 @@ gSpecials::
 	def_special CreateEnemyEventMon
 	def_special GetRepelToReuse @ [QoL] Smart Repel loop
 	def_special UseRepelToReuse @ [QoL] Smart Repel loop
+	def_special FollowerPokemon_BufferInfo @ [QoL] Following Pokemon
 gSpecialsEnd::

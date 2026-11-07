@@ -1491,7 +1491,7 @@
 #define FLAG_0x8DE                                                  (SYS_FLAGS + 0xDE)
 #define FLAG_0x8DF                                                  (SYS_FLAGS + 0xDF)
 #define FLAG_SYS_EXP_SHARE_DISABLED                                 (SYS_FLAGS + 0xE0) // [QoL] was unused FLAG_0x8E0. Clear = modern Exp. Share ON
-#define FLAG_0x8E1                                                  (SYS_FLAGS + 0xE1)
+#define FLAG_SYS_HIDE_FOLLOWER                                      (SYS_FLAGS + 0xE1) // [QoL] was unused FLAG_0x8E1. Set = no following Pokemon
 #define FLAG_0x8E2                                                  (SYS_FLAGS + 0xE2)
 #define FLAG_0x8E3                                                  (SYS_FLAGS + 0xE3)
 #define FLAG_0x8E4                                                  (SYS_FLAGS + 0xE4)

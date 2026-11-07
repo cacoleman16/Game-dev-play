@@ -1,4 +1,5 @@
 #include "global.h"
+#include "follower_pokemon.h"
 #include "gflib.h"
 #include "event_data.h"
 #include "event_object_movement.h"
@@ -1517,6 +1518,13 @@ static void RemoveObjectEvent(struct ObjectEvent *objectEvent)
     RemoveObjectEventInternal(objectEvent);
 }
 
+// [QoL] Following Pokemon: removes an object event that has no map template.
+// (RemoveObjectEventByLocalIdAndMap would look up the template to set its flag.)
+void RemoveObjectEventWithoutTemplate(struct ObjectEvent *objectEvent)
+{
+    RemoveObjectEvent(objectEvent);
+}
+
 void RemoveObjectEventByLocalIdAndMap(u8 localId, u8 mapNum, u8 mapGroup)
 {
     u8 objectEventId;
@@ -2318,6 +2326,7 @@ void UpdateObjectEventCoordsForCameraUpdate(void)
                 gObjectEvents[i].previousCoords.y -= dy;
             }
         }
+        FollowerPokemon_OnCameraShift(dx, dy); // [QoL] Following Pokemon
     }
 }
 
@@ -4904,7 +4913,8 @@ static bool8 DoesObjectCollideWithObjectAt(struct ObjectEvent *objectEvent, s16 
     for (i = 0; i < OBJECT_EVENTS_COUNT; i++)
     {
         curObject = &gObjectEvents[i];
-        if (curObject->active && curObject != objectEvent)
+        if (curObject->active && curObject != objectEvent
+         && !FollowerPokemon_ShouldIgnoreCollision(objectEvent, curObject)) // [QoL] Following Pokemon
         {
             if ((curObject->currentCoords.x == x && curObject->currentCoords.y == y) || (curObject->previousCoords.x == x && curObject->previousCoords.y == y))
             {

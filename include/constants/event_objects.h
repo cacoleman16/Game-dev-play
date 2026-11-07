@@ -203,9 +203,17 @@
 #define LOCALID_CAMERA                     127
 #define LOCALID_BERRY_BLENDER_PLAYER_END   240 // This will use 5 (MAX_RFU_PLAYERS) IDs ending at 240, i.e. 236-240
 #define LOCALID_PLAYER                     255
+#define LOCALID_FOLLOWER                   254 // [QoL] Following Pokemon (never used by map templates)
 
 // Aliases for old names. "object event id" normally refers to an index into gObjectEvents, which these are not.
 #define OBJ_EVENT_ID_CAMERA LOCALID_CAMERA
 #define OBJ_EVENT_ID_PLAYER LOCALID_PLAYER
+#define OBJ_EVENT_ID_FOLLOWER LOCALID_FOLLOWER // [QoL] Following Pokemon
+
+// [QoL] Following Pokemon: VAR_RESULT values of the FollowerPokemon_BufferInfo special
+#define FOLLOWER_MOOD_NONE      0
+#define FOLLOWER_MOOD_NEUTRAL   1
+#define FOLLOWER_MOOD_HAPPY     2
+#define FOLLOWER_MOOD_OVERJOYED 3
 
 #endif // GUARD_CONSTANTS_EVENT_OBJECTS_H

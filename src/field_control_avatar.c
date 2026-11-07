@@ -1,4 +1,5 @@
 #include "global.h"
+#include "follower_pokemon.h"
 #include "gflib.h"
 #include "bike.h"
 #include "coord_event_weather.h"
@@ -448,6 +449,18 @@ static const u8 *GetInteractedObjectEventScript(struct MapPosition *position, u8
 
     if (InUnionRoom() == TRUE && !ObjectEventCheckHeldMovementStatus(&gObjectEvents[objectEventId]))
         return NULL;
+
+    // [QoL] Following Pokemon: the follower has no map template, so it gets its own script.
+    if (FollowerPokemon_IsFollowerObject(&gObjectEvents[objectEventId]))
+    {
+        script = FollowerPokemon_GetInteractionScript(objectEventId);
+        if (script == NULL)
+            return NULL; // hidden follower: nothing to talk to
+        gSelectedObjectEvent = objectEventId;
+        gSpecialVar_LastTalked = gObjectEvents[objectEventId].localId;
+        gSpecialVar_Facing = direction;
+        return script;
+    }
 
     gSelectedObjectEvent = objectEventId;
     gSpecialVar_LastTalked = gObjectEvents[objectEventId].localId;

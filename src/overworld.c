@@ -1,4 +1,5 @@
 #include "global.h"
+#include "follower_pokemon.h"
 #include "gflib.h"
 #include "bg_regs.h"
 #include "cable_club.h"
@@ -1482,6 +1483,7 @@ static void CB2_Overworld(void)
     bool32 fading = !!gPaletteFade.active;
     if (fading)
         SetVBlankCallback(NULL);
+    FollowerPokemon_Update(); // [QoL] Following Pokemon
     OverworldBasic();
     if (fading)
         SetFieldVBlankCallback();
@@ -2145,12 +2147,14 @@ static void InitObjectEventsLocal(void)
     SetPlayerAvatarTransitionFlags(player->transitionFlags);
     ResetInitialPlayerAvatarState();
     TrySpawnObjectEvents(0, 0);
+    FollowerPokemon_OnMapLoad(); // [QoL] Following Pokemon
     TryRunOnWarpIntoMapScript();
 }
 
 static void ReloadObjectsAndRunReturnToFieldMapScript(void)
 {
     SpawnObjectEventsOnReturnToField(0, 0);
+    FollowerPokemon_OnReturnToField(); // [QoL] Following Pokemon
     RunOnReturnToFieldMapScript();
 }
 
