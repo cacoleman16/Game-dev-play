@@ -9,6 +9,7 @@
 
 #include "constants/battle_ai.h"
 #include "constants/pokeball.h"
+#include "qol_randomizer.h"
 
 rng_value_t GeneratePartySeed(const struct Trainer *trainer)
 {
@@ -123,6 +124,21 @@ void MakePartnerGenerator(struct TrainerGenerator *trainerGen, const struct Trai
 void GenerateMonFromTrainerMon(struct Pokemon *mon, const struct TrainerMon *trainerMon, struct TrainerGenerator *trainer)
 {
     u32 data;
+    // [QoL] Randomizer: swap the species. Custom moves and abilities belong to
+    // the old species, so the new one gets its own level-up moves instead.
+    struct TrainerMon randomizedMon;
+    if (QoL_RandomizerActive())
+    {
+        enum Species species = QoL_RandomizeSpecies(trainerMon->species);
+        if (species != trainerMon->species)
+        {
+            randomizedMon = *trainerMon;
+            randomizedMon.species = species;
+            memset(randomizedMon.moves, 0, sizeof(randomizedMon.moves));
+            randomizedMon.ability = ABILITY_NONE;
+            trainerMon = &randomizedMon;
+        }
+    }
     u32 personality = (LocalRandom32(&trainer->localRngState) & 0xFFFFDF00) + 0x1000;
     u32 genderValue = LocalRandom32(&trainer->localRngState);
     if (trainerMon->gender == TRAINER_MON_RANDOM_GENDER)

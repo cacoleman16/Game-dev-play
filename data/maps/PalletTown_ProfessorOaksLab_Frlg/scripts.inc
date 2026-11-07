@@ -1078,13 +1078,34 @@ PalletTown_ProfessorOaksLab_EventScript_BulbasaurBall::
 	end
 
 PalletTown_ProfessorOaksLab_EventScript_ConfirmStarterChoice::
+	call_if_set FLAG_QOL_RANDOMIZER, PalletTown_ProfessorOaksLab_EventScript_RandomizeStarters
 	applymovement LOCALID_OAKS_LAB_PROF_OAK, Common_Movement_FaceRight
 	waitmovement 0
 	showmonpic PLAYER_STARTER_SPECIES, 10, 3
 	textcolor NPC_TEXT_COLOR_MALE
+	goto_if_set FLAG_QOL_RANDOMIZER, PalletTown_ProfessorOaksLab_EventScript_ConfirmRandomStarter
 	goto_if_eq PLAYER_STARTER_NUM, 0, PalletTown_ProfessorOaksLab_EventScript_ConfirmBulbasaur
 	goto_if_eq PLAYER_STARTER_NUM, 1, PalletTown_ProfessorOaksLab_EventScript_ConfirmSquirtle
 	goto_if_eq PLAYER_STARTER_NUM, 2, PalletTown_ProfessorOaksLab_EventScript_ConfirmCharmander
+	end
+
+@ [QoL] Randomizer: the balls hold the randomized forms of the starters, and
+@ the rival's ball the randomized form of the rival's starter. Each ball's
+@ script resets these vars first, so they are never randomized twice.
+PalletTown_ProfessorOaksLab_EventScript_RandomizeStarters::
+	copyvar VAR_0x8004, PLAYER_STARTER_SPECIES
+	special QoL_RandomizeSpecialVar
+	copyvar PLAYER_STARTER_SPECIES, VAR_RESULT
+	copyvar VAR_0x8004, RIVAL_STARTER_SPECIES
+	special QoL_RandomizeSpecialVar
+	copyvar RIVAL_STARTER_SPECIES, VAR_RESULT
+	return
+
+PalletTown_ProfessorOaksLab_EventScript_ConfirmRandomStarter::
+	bufferspeciesname STR_VAR_1, PLAYER_STARTER_SPECIES
+	msgbox PalletTown_ProfessorOaksLab_Text_OakChoosingRandomStarter, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, PalletTown_ProfessorOaksLab_EventScript_ChoseStarter
+	goto_if_eq VAR_RESULT, NO, PalletTown_ProfessorOaksLab_EventScript_DeclinedStarter
 	end
 
 PalletTown_ProfessorOaksLab_EventScript_ConfirmBulbasaur::
@@ -1399,6 +1420,12 @@ PalletTown_ProfessorOaksLab_Text_OakWhichOneWillYouChoose::
 PalletTown_ProfessorOaksLab_Text_OakHeyDontGoAwayYet::
 	.string "OAK: Hey!\n"
 	.string "Don't go away yet!$"
+
+PalletTown_ProfessorOaksLab_Text_OakChoosingRandomStarter::
+	.string "Oh? This BALL holds {STR_VAR_1}!\n"
+	.string "What a surprise!\p"
+	.string "So, {PLAYER}, you want to go with\n"
+	.string "{STR_VAR_1}?$"
 
 PalletTown_ProfessorOaksLab_Text_OakChoosingCharmander::
 	.string "Ah! CHARMANDER is your choice.\n"

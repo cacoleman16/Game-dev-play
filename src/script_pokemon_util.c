@@ -31,6 +31,7 @@
 #include "constants/items.h"
 #include "constants/battle_frontier.h"
 #include "qol_nuzlocke.h"
+#include "qol_randomizer.h"
 
 static void CB2_ReturnFromChooseHalfParty(void);
 static void CB2_ReturnFromChooseBattleFrontierParty(void);
@@ -130,6 +131,10 @@ void CreateScriptedWildMon(enum Species species, u8 level, enum Item item)
 {
     u8 heldItem[2];
 
+    // [QoL] Randomizer: static encounters change too, except Pokemon Tower's
+    // ghost Marowak, whose story depends on it.
+    if (species != SPECIES_MAROWAK)
+        species = QoL_RandomizeSpecies(species);
     ZeroEnemyPartyMons();
     u32 personality = GetMonPersonality(species,
         GetSynchronizedGender(STATIC_WILDMON_ORIGIN, species),

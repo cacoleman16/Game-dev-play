@@ -31,6 +31,8 @@ PalletTown_PlayersHouse_2F_EventScript_NESMenu::
 	waitmessage
 	call_if_set FLAG_QOL_NUZLOCKE, PalletTown_PlayersHouse_2F_EventScript_PushNuzlockeOn
 	call_if_unset FLAG_QOL_NUZLOCKE, PalletTown_PlayersHouse_2F_EventScript_PushNuzlockeOff
+	call_if_set FLAG_QOL_RANDOMIZER, PalletTown_PlayersHouse_2F_EventScript_PushRandomizerOn
+	call_if_unset FLAG_QOL_RANDOMIZER, PalletTown_PlayersHouse_2F_EventScript_PushRandomizerOff
 	call_if_set FLAG_QOL_LEVEL_CAPS, PalletTown_PlayersHouse_2F_EventScript_PushCapsOn
 	call_if_unset FLAG_QOL_LEVEL_CAPS, PalletTown_PlayersHouse_2F_EventScript_PushCapsOff
 	call_if_unset FLAG_QOL_FOLLOWERS_OFF, PalletTown_PlayersHouse_2F_EventScript_PushFollowersOn
@@ -41,6 +43,7 @@ PalletTown_PlayersHouse_2F_EventScript_NESMenu::
 	case 0, PalletTown_PlayersHouse_2F_EventScript_ToggleNuzlocke
 	case 1, PalletTown_PlayersHouse_2F_EventScript_ToggleCaps
 	case 2, PalletTown_PlayersHouse_2F_EventScript_ToggleFollowers
+	case 3, PalletTown_PlayersHouse_2F_EventScript_ToggleRandomizer
 	msgbox PalletTown_PlayersHouse_2F_Text_SettingsSaved, MSGBOX_DEFAULT
 	releaseall
 	end
@@ -51,6 +54,14 @@ PalletTown_PlayersHouse_2F_EventScript_PushNuzlockeOn::
 
 PalletTown_PlayersHouse_2F_EventScript_PushNuzlockeOff::
 	dynmultipush PalletTown_PlayersHouse_2F_Text_NuzlockeOff, 0
+	return
+
+PalletTown_PlayersHouse_2F_EventScript_PushRandomizerOn::
+	dynmultipush PalletTown_PlayersHouse_2F_Text_RandomizerOn, 3
+	return
+
+PalletTown_PlayersHouse_2F_EventScript_PushRandomizerOff::
+	dynmultipush PalletTown_PlayersHouse_2F_Text_RandomizerOff, 3
 	return
 
 PalletTown_PlayersHouse_2F_EventScript_PushCapsOn::
@@ -82,6 +93,21 @@ PalletTown_PlayersHouse_2F_EventScript_NuzlockeOff::
 	msgbox PalletTown_PlayersHouse_2F_Text_TurnNuzlockeOff, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, PalletTown_PlayersHouse_2F_EventScript_NESMenu
 	clearflag FLAG_QOL_NUZLOCKE
+	goto PalletTown_PlayersHouse_2F_EventScript_NESMenu
+
+@ Randomizer: best switched on before choosing a starter.
+PalletTown_PlayersHouse_2F_EventScript_ToggleRandomizer::
+	goto_if_set FLAG_QOL_RANDOMIZER, PalletTown_PlayersHouse_2F_EventScript_RandomizerOff
+	msgbox PalletTown_PlayersHouse_2F_Text_RandomizerRules, MSGBOX_DEFAULT
+	msgbox PalletTown_PlayersHouse_2F_Text_TurnRandomizerOn, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, PalletTown_PlayersHouse_2F_EventScript_NESMenu
+	setflag FLAG_QOL_RANDOMIZER
+	goto PalletTown_PlayersHouse_2F_EventScript_NESMenu
+
+PalletTown_PlayersHouse_2F_EventScript_RandomizerOff::
+	msgbox PalletTown_PlayersHouse_2F_Text_TurnRandomizerOff, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, PalletTown_PlayersHouse_2F_EventScript_NESMenu
+	clearflag FLAG_QOL_RANDOMIZER
 	goto PalletTown_PlayersHouse_2F_EventScript_NESMenu
 
 PalletTown_PlayersHouse_2F_EventScript_ToggleCaps::
@@ -128,6 +154,12 @@ PalletTown_PlayersHouse_2F_Text_NuzlockeOn::
 PalletTown_PlayersHouse_2F_Text_NuzlockeOff::
 	.string "NUZLOCKE: OFF$"
 
+PalletTown_PlayersHouse_2F_Text_RandomizerOn::
+	.string "RANDOMIZER: ON$"
+
+PalletTown_PlayersHouse_2F_Text_RandomizerOff::
+	.string "RANDOMIZER: OFF$"
+
 PalletTown_PlayersHouse_2F_Text_CapsOn::
 	.string "LEVEL CAPS: ON$"
 
@@ -161,6 +193,23 @@ PalletTown_PlayersHouse_2F_Text_TurnNuzlockeOn::
 PalletTown_PlayersHouse_2F_Text_TurnNuzlockeOff::
 	.string "Turn NUZLOCKE OFF?\n"
 	.string "Fainted POKéMON can heal again.$"
+
+PalletTown_PlayersHouse_2F_Text_RandomizerRules::
+	.string "The RANDOMIZER swaps every species\n"
+	.string "for another of similar strength.\p"
+	.string "Wild POKéMON, trainers' teams,\n"
+	.string "special encounters and the\l"
+	.string "starters all change.\p"
+	.string "Each save file has its own mix.\n"
+	.string "Turn it on before picking your\l"
+	.string "first POKéMON for the full effect.$"
+
+PalletTown_PlayersHouse_2F_Text_TurnRandomizerOn::
+	.string "Turn the RANDOMIZER ON?$"
+
+PalletTown_PlayersHouse_2F_Text_TurnRandomizerOff::
+	.string "Turn the RANDOMIZER OFF?\n"
+	.string "Everything goes back to normal.$"
 
 PalletTown_PlayersHouse_2F_Text_CapsExplain::
 	.string "With LEVEL CAPS ON, POKéMON stop\n"
