@@ -72,6 +72,8 @@ button[aria-pressed="true"] { background: var(--gold); border-color: var(--gold)
   .screen { aspect-ratio: auto; height: min(78vh, 640px); border-width: 6px; }
 }
 #game { position: absolute; inset: 0; }
+/* The hidden attribute must win over the display rules below (.slot is a grid). */
+[hidden] { display: none !important; }
 .slot {
   position: absolute; inset: 0; display: grid; place-content: center; gap: 14px;
   text-align: center; padding: 20px;

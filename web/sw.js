@@ -1,7 +1,7 @@
 // [QoL] Offline support for the FireRed QoL Player.
 // Caches the page and the vendored emulator so it works without a connection
 // after the first visit. Bump CACHE when web/ changes so phones pick it up.
-const CACHE = "frqol-player-v1";
+const CACHE = "frqol-player-v2";
 const PRECACHE = [
   "./",
   "apple-touch-icon.png",
