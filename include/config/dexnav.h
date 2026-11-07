@@ -1,15 +1,20 @@
 #ifndef GUARD_CONFIG_DEXNAV_H
 #define GUARD_CONFIG_DEXNAV_H
 
+// [QoL] DexNav is on for FireRed/LeafGreen (START menu entry from a new game).
+#if defined(FIRERED) || defined(LEAFGREEN)
+#define DEXNAV_ENABLED                TRUE
+#else
 #define DEXNAV_ENABLED                FALSE  // Whether or not DexNav is enabled. If TRUE, flags/vars below must all be non-zero
+#endif
 #define USE_DEXNAV_SEARCH_LEVELS      FALSE  /* WARNING: POSSIBLY EXCEEDS SAVEBLOCK SPACE! REQUIRES 1 BYTE PER SPECIES */
 
 // Flag/var defines
-#define DN_FLAG_SEARCHING             0 // Searching for mon
-#define DN_FLAG_DEXNAV_GET            0 // DexNav shows in start menu
-#define DN_FLAG_DETECTOR_MODE         0 // Allow player to find hidden mons
-#define DN_VAR_SPECIES                0 // Registered DexNav species
-#define DN_VAR_STEP_COUNTER           0 // Steps for finding hidden Pokémon
+#define DN_FLAG_SEARCHING             FLAG_QOL_DEXNAV_SEARCHING // Searching for mon
+#define DN_FLAG_DEXNAV_GET            FLAG_QOL_DEXNAV_GET       // DexNav shows in start menu
+#define DN_FLAG_DETECTOR_MODE         FLAG_QOL_DEXNAV_DETECTOR  // Allow player to find hidden mons
+#define DN_VAR_SPECIES                VAR_QOL_DEXNAV_SPECIES    // Registered DexNav species
+#define DN_VAR_STEP_COUNTER           VAR_QOL_DEXNAV_STEPS      // Steps for finding hidden Pokémon
 
 // Search parameters
 #define DEXNAV_TIMEOUT                  15  // 15 seconds is the time out. Max of 1092 seconds allowed

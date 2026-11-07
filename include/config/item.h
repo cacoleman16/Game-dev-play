@@ -11,7 +11,7 @@
 #define I_BERRY_EV_JUMP                 GEN_LATEST  // In Gen4 only, EV-lowering Berries lower a stat's EVs to 100 if they are above 100.
 #define I_GRISEOUS_ORB_FORM_CHANGE      GEN_LATEST  // In Gen9+, the Griseous Orb no longer changes Giratina's form when held.
 #define I_GEM_BOOST_POWER               GEN_LATEST  // In Gen6+, the power multiplier of Gems is 1.3x instead of 1.5x.
-#define I_USE_EVO_HELD_ITEMS_FROM_BAG   FALSE       // If set to TRUE, items such as the Electirizer can be used from the bag to evolve a Pokémon like in PLA.
+#define I_USE_EVO_HELD_ITEMS_FROM_BAG   TRUE        // [QoL] Solo evolutions: King's Rock, Metal Coat, Up-Grade... are used from the bag. If set to TRUE, items such as the Electirizer can be used from the bag to evolve a Pokémon like in PLA.
 #define I_TYPE_BOOST_POWER              GEN_LATEST  // In Gen4+, type-enhancing held items increase the power of moves by 1.2x instead of 1.1x (1.05x in the case of Sea Incense).
 #define I_SELL_VALUE_FRACTION           GEN_LATEST  // In Gen9+, items sell for 1/4 of their value instead of 1/2.
 #define I_PRICE                         GEN_LATEST  // Some items have varied in value across generations. See src/data/items.h for values.
@@ -23,18 +23,26 @@
 #define I_LAX_INCENSE_BOOST             GEN_LATEST  // In Gen4+, Lax Incense lowers accuracy by 10% instead of 5%.
 
 // TM config
-#define I_REUSABLE_TMS          FALSE       // In Gens5-8, TMs are reusable. Setting this to TRUE will make all vanilla TMs reusable, though they can also be cherry-picked by setting their importance to 1.
+#define I_REUSABLE_TMS          TRUE        // [QoL] Reusable TMs. In Gens5-8, TMs are reusable. Setting this to TRUE will make all vanilla TMs reusable, though they can also be cherry-picked by setting their importance to 1.
 
 // Exp. Share config
 // To use this feature, replace the 0 with the flag ID you're assigning it to.
 // Eg: Replace with FLAG_UNUSED_0x264 so you can use that flag to toggle the feature.
+// [QoL] Modern Exp. Share: ON from the start of a new game (FLAG_QOL_EXP_SHARE is set in
+// NewGameInitData) and toggled with the EXP. SHARE key item. FireRed/LeafGreen only.
+#if defined(FIRERED) || defined(LEAFGREEN)
+#define I_EXP_SHARE_FLAG        FLAG_QOL_EXP_SHARE
+#define I_EXP_SHARE_ITEM        GEN_LATEST
+#else
 #define I_EXP_SHARE_FLAG        0           // If this flag is set, every Pokémon in the party will gain experience, regardless if they participated in the battle or not.
 #define I_EXP_SHARE_ITEM        GEN_5       // In Gen6+, the Exp. Share is a Key item that toggles the effect described above.
+#endif
 
 // Repel/Lure config
 // These two settings are both independent and complementary.
-#define VAR_LAST_REPEL_LURE_USED    0       // If this var has been assigned, the last Repel/Lure used will be saved and the player will be prompted with the vanilla repel YES/NO option, unless I_REPEL_LURE_MENU is set to TRUE.
-#define I_REPEL_LURE_MENU           TRUE    // If set to TRUE, the player is able to choose which Repel/Lure to use once the previous one runs out. Cursor position is saved by VAR_LAST_REPEL_LURE_USED if not 0.
+// [QoL] Smart Repel loop: when a Repel wears off you're asked "Would you like to use another?" (YES/NO).
+#define VAR_LAST_REPEL_LURE_USED    VAR_QOL_LAST_REPEL // If this var has been assigned, the last Repel/Lure used will be saved and the player will be prompted with the vanilla repel YES/NO option, unless I_REPEL_LURE_MENU is set to TRUE.
+#define I_REPEL_LURE_MENU           FALSE   // [QoL] FALSE = plain YES/NO prompt. If set to TRUE, the player is able to choose which Repel/Lure to use once the previous one runs out. Cursor position is saved by VAR_LAST_REPEL_LURE_USED if not 0.
 
 // Vs. Seeker
 #define I_VS_SEEKER_CHARGING        0                     // If this flag is assigned, the Vs. Seeker functionality will be enabled. When the player has the Vs. Seeker, Match Call rematch functions will stop working. Documentation for the Vs. Seeker can be found in docs/tutorials/vs_seeker.md.

@@ -844,6 +844,17 @@ static void PlayerNotOnBikeTurningInPlace(enum Direction direction, u16 heldKeys
     PlayerTurnInPlace(direction);
 }
 
+// [QoL] Auto-run: with QOL_AUTO_RUN_FLAG set (toggled with L), the player runs
+// without holding B, and holding B walks instead.
+static bool32 IsRunButtonActive(u16 heldKeys)
+{
+    bool32 holdingB = (heldKeys & B_BUTTON) != 0;
+
+    if (QOL_AUTO_RUN_FLAG != 0 && FlagGet(QOL_AUTO_RUN_FLAG))
+        return !holdingB;
+    return holdingB;
+}
+
 static void PlayerNotOnBikeMoving(enum Direction direction, u16 heldKeys)
 {
     enum Collision collision = CheckForPlayerAvatarCollision(direction);
@@ -909,7 +920,7 @@ static void PlayerNotOnBikeMoving(enum Direction direction, u16 heldKeys)
     }
 
     if (!(gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_UNDERWATER)
-     && (heldKeys & B_BUTTON)
+     && IsRunButtonActive(heldKeys) // [QoL] B, or auto-run (was: heldKeys & B_BUTTON)
      && FlagGet(FLAG_SYS_B_DASH)
      && IsRunningDisallowed(gObjectEvents[gPlayerAvatar.objectEventId].currentMetatileBehavior) == 0
      && !FollowerNPCComingThroughDoor()
@@ -1624,7 +1635,7 @@ bool8 PartyHasMonWithSurf(void)
         {
             if (GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_SPECIES) == SPECIES_NONE)
                 break;
-            if (MonKnowsMove(&gParties[B_TRAINER_PLAYER][i], MOVE_SURF))
+            if (MonCanUseFieldMove(&gParties[B_TRAINER_PLAYER][i], MOVE_SURF)) // [QoL] HMs without HM slaves (was MonKnowsMove)
                 return TRUE;
         }
     }

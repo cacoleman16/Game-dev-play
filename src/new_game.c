@@ -59,6 +59,9 @@ extern const u8 EventScript_ResetAllMapFlagsFrlg[];
 static void ClearFrontierRecord(void);
 static void WarpToTruck(void);
 static void ResetMiniGamesRecords(void);
+#if IS_FRLG
+static void SetupQoLNewGame(void); // [QoL]
+#endif
 static void ResetItemFlags(void);
 static void ResetDexNav(void);
 
@@ -234,7 +237,29 @@ void NewGameInitData(void)
     ResetItemFlags();
     ResetDexNav();
     ClearFollowerNPCData();
+#if IS_FRLG
+    SetupQoLNewGame();
+#endif
 }
+
+#if IS_FRLG
+// [QoL] Starting setup for this hack's FireRed/LeafGreen build.
+static void SetupQoLNewGame(void)
+{
+    FlagSet(FLAG_SYS_B_DASH);           // Running Shoes from the start (normally given in Pewter City)
+    FlagSet(FLAG_QOL_EXP_SHARE);        // Modern Exp. Share starts ON...
+    AddBagItem(ITEM_EXP_SHARE, 1);      // ...and the key item toggles it
+    FlagSet(FLAG_QOL_DEXNAV_GET);       // DexNav in the START menu
+    // Battle gimmicks: the key items unlock Mega Evolution, Z-Moves,
+    // Dynamax and Terastallization for the player.
+    AddBagItem(ITEM_MEGA_RING, 1);
+    AddBagItem(ITEM_Z_POWER_RING, 1);
+    AddBagItem(ITEM_DYNAMAX_BAND, 1);
+    AddBagItem(ITEM_TERA_ORB, 1);
+    FlagSet(FLAG_QOL_DYNAMAX_BATTLES);
+    FlagSet(FLAG_QOL_TERA_ORB_CHARGED);
+}
+#endif
 
 static void ResetMiniGamesRecords(void)
 {

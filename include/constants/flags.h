@@ -2448,5 +2448,27 @@
 #define TESTING_FLAG_UNUSED_7                   (TESTING_FLAGS_START + 0x7)
 #endif // TESTING
 
+// [QoL] Flags used by this hack's FireRed/LeafGreen build. They repurpose FRLG
+// system flags 0x8E0-0x8E7, which nothing in the game uses. In Emerald builds
+// (different flag map) they are 0, which disables the matching features.
+#if IS_FRLG
+#define FLAG_QOL_EXP_SHARE          FLAG_0x8E0 // Set = party-wide Exp. Share ON (set at new game, toggled by the EXP. SHARE key item)
+#define FLAG_QOL_FOLLOWERS_OFF      FLAG_0x8E1 // Set = no following Pokemon
+#define FLAG_QOL_TERA_ORB_CHARGED   FLAG_0x8E2 // Tera Orb charge (recharged by healing)
+#define FLAG_QOL_DYNAMAX_BATTLES    FLAG_0x8E3 // Set = Dynamax allowed in battle
+#define FLAG_QOL_DEXNAV_GET         FLAG_0x8E4 // Set = DexNav in the START menu
+#define FLAG_QOL_DEXNAV_SEARCHING   FLAG_0x8E5 // DexNav: searching for a Pokemon
+#define FLAG_QOL_DEXNAV_DETECTOR    FLAG_0x8E6 // DexNav: detector mode (hidden Pokemon)
+#define FLAG_QOL_AUTO_RUN           FLAG_0x8E7 // Set = auto-run ON (toggled with L on the overworld)
+#else
+#define FLAG_QOL_EXP_SHARE          0
+#define FLAG_QOL_FOLLOWERS_OFF      0
+#define FLAG_QOL_TERA_ORB_CHARGED   0
+#define FLAG_QOL_DYNAMAX_BATTLES    0
+#define FLAG_QOL_DEXNAV_GET         0
+#define FLAG_QOL_DEXNAV_SEARCHING   0
+#define FLAG_QOL_DEXNAV_DETECTOR    0
+#define FLAG_QOL_AUTO_RUN           0
+#endif
 
 #endif // GUARD_CONSTANTS_FLAGS_H

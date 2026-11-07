@@ -338,4 +338,16 @@
 #define TESTING_VAR_UNUSED_7                (TESTING_VARS_START + 0x7)
 #endif // TESTING
 
+// [QoL] Vars used by this hack's FireRed/LeafGreen build. These numbers are
+// unused in both the Emerald and the FRLG var maps. 0 (disabled) in Emerald builds.
+#if IS_FRLG
+#define VAR_QOL_LAST_REPEL          0x40A1 // Last Repel used (Smart Repel prompt)
+#define VAR_QOL_DEXNAV_SPECIES      0x40F7 // DexNav registered species
+#define VAR_QOL_DEXNAV_STEPS        0x40F8 // DexNav hidden-Pokemon step counter
+#else
+#define VAR_QOL_LAST_REPEL          0
+#define VAR_QOL_DEXNAV_SPECIES      0
+#define VAR_QOL_DEXNAV_STEPS        0
+#endif
+
 #endif // GUARD_CONSTANTS_VARS_H

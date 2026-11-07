@@ -371,6 +371,7 @@ static void Task_FieldMoveExitAreaYesNo(u8);
 static void Task_HandleFieldMoveExitAreaYesNoInput(u8);
 static void Task_FieldMoveWaitForFade(u8);
 static enum Species GetFieldMoveMonSpecies(void);
+static bool8 CanUseHMMoveWithoutKnowingIt(struct Pokemon *mon, enum Move move); // [QoL]
 static void UpdatePartyMonHPBar(u8, struct Pokemon *);
 static void SpriteCB_UpdatePartyMonIcon(struct Sprite *);
 static void SpriteCB_BouncePartyMonIcon(struct Sprite *);
@@ -2970,6 +2971,16 @@ static void SetPartyMonFieldSelectionActions(struct Pokemon *mons, u8 slotId)
         }
     }
 
+    // [QoL] HMs without HM slaves: also list HM field moves this Pokémon could
+    // learn (and you own the HM for). Room is kept for SWITCH, ITEM and CANCEL.
+    for (j = 0; j != FIELD_MOVES_COUNT && sPartyMenuInternal->numActions < ARRAY_COUNT(sPartyMenuInternal->actions) - 3; j++)
+    {
+        if (!FieldMove_IsVisible(j) || MonKnowsMove(&mons[slotId], FieldMove_GetMoveId(j)))
+            continue;
+        if (CanUseHMMoveWithoutKnowingIt(&mons[slotId], FieldMove_GetMoveId(j)))
+            AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, j + MENU_FIELD_MOVES);
+    }
+
     if (!InBattlePike())
     {
         if (GetMonData(&mons[1], MON_DATA_SPECIES) != SPECIES_NONE)
@@ -5532,6 +5543,32 @@ bool8 MonKnowsMove(struct Pokemon *mon, enum Move move)
             return TRUE;
     }
     return FALSE;
+}
+
+// [QoL] HMs without HM slaves.
+// TRUE if `move` is an HM move the player owns and this Pokémon could learn
+// (TM/HM learnset), so it may use the move in the field without knowing it.
+static bool8 CanUseHMMoveWithoutKnowingIt(struct Pokemon *mon, enum Move move)
+{
+#if QOL_FIELD_MOVES_WITHOUT_HMS
+    enum Item hm = GetTMHMItemIdFromMoveId(move);
+
+    if (hm == ITEM_NONE || GetItemTMHMIndex(hm) <= NUM_TECHNICAL_MACHINES)
+        return FALSE; // not an HM move
+    if (!CheckBagHasItem(hm, 1))
+        return FALSE;
+    if (GetMonData(mon, MON_DATA_IS_EGG))
+        return FALSE;
+    return CanLearnTeachableMove(GetMonData(mon, MON_DATA_SPECIES), move);
+#else
+    return FALSE;
+#endif
+}
+
+// [QoL] HMs without HM slaves: knows the move, or can use it per CanUseHMMoveWithoutKnowingIt.
+bool8 MonCanUseFieldMove(struct Pokemon *mon, enum Move move)
+{
+    return MonKnowsMove(mon, move) || CanUseHMMoveWithoutKnowingIt(mon, move);
 }
 
 bool8 BoxMonKnowsMove(struct BoxPokemon *boxMon, enum Move move)
