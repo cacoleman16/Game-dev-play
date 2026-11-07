@@ -5296,7 +5296,8 @@ void ItemUseCB_EvolutionStone(u8 taskId, TaskFunc func)
     // entry in gItemEffectTable (IS_POKEMON_ITEM is FALSE for them), so the
     // evolution table is checked directly.
     if (!IS_POKEMON_ITEM(gSpecialVar_ItemId))
-        noEffect = (GetEvolutionTargetSpecies(&gPlayerParty[gPartyMenu.slotId], EVO_MODE_ITEM_USE, gSpecialVar_ItemId) == SPECIES_NONE);
+        noEffect = GetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_IS_EGG)
+                || GetEvolutionTargetSpecies(&gPlayerParty[gPartyMenu.slotId], EVO_MODE_ITEM_USE, gSpecialVar_ItemId) == SPECIES_NONE;
     else
         noEffect = PokemonItemUseNoEffect(&gPlayerParty[gPartyMenu.slotId], gSpecialVar_ItemId, gPartyMenu.slotId, 0);
     if (noEffect)

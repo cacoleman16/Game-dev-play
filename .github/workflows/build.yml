@@ -1,0 +1,39 @@
+# Builds the hacked FireRed ROM on every push so compile errors show up right
+# away. This is a non-matching build (the hack intentionally differs from the
+# retail ROM), and the ROM itself is not uploaded anywhere.
+name: Build ROM
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Checkout agbcc
+        uses: actions/checkout@v4
+        with:
+          repository: pret/agbcc
+          path: agbcc
+
+      - name: Install binutils and libpng
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y binutils-arm-none-eabi libpng-dev
+
+      - name: Build and install agbcc
+        working-directory: ./agbcc
+        run: |
+          ./build.sh
+          ./install.sh ../
+
+      - name: Build FireRed
+        run: make -j"$(nproc)" firered
+
+      - name: ROM size
+        run: ls -l *.gba
