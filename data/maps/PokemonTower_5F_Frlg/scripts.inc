@@ -45,50 +45,68 @@ PokemonTower_5F_Text_RestHereInPurifiedSpace::
 	.string "Come, child!\n"
 	.string "I have purified this space.\l"
 	.string "You can rest here.$"
+	.string "{JPN}{JPN}さあ　こちらへ！　ここは　わたしが　きよめた\n"
+	.string "ばしょです。　ここで　やすんで　いきなさい。$"
 
 PokemonTower_5F_Text_TammyIntro::
 	.string "Give…me…\n"
 	.string "your…all…$"
+	.string "{JPN}{JPN}あなたの‥　すべてを‥　よこし‥なさい‥$"
 
 PokemonTower_5F_Text_TammyDefeat::
 	.string "Gasp!$"
+	.string "{JPN}{JPN}はっ！$"
 
 PokemonTower_5F_Text_TammyPostBattle::
 	.string "I was under possession.$"
+	.string "{JPN}{JPN}なにかに　とりつかれて　いたみたい。$"
 
 PokemonTower_5F_Text_RuthIntro::
 	.string "You…shall…\n"
 	.string "join…us…$"
+	.string "{JPN}{JPN}あなたも‥　なかまに‥　なるのよ‥$"
 
 PokemonTower_5F_Text_RuthDefeat::
 	.string "What a nightmare!$"
+	.string "{JPN}{JPN}なんて　わるい　ゆめ！$"
 
 PokemonTower_5F_Text_RuthPostBattle::
 	.string "I was possessed.$"
+	.string "{JPN}{JPN}わたし　とりつかれて　いたのね。$"
 
 PokemonTower_5F_Text_KarinaIntro::
 	.string "Zombies!$"
+	.string "{JPN}{JPN}ゾンビー！$"
 
 PokemonTower_5F_Text_KarinaDefeat::
 	.string "Ha?$"
+	.string "{JPN}{JPN}はっ？$"
 
 PokemonTower_5F_Text_KarinaPostBattle::
 	.string "I regained my senses.$"
+	.string "{JPN}{JPN}しょうきに　もどったわ。$"
 
 PokemonTower_5F_Text_JanaeIntro::
 	.string "Urgah…\n"
 	.string "Urff…$"
+	.string "{JPN}{JPN}うがあ‥　うふぅ‥$"
 
 PokemonTower_5F_Text_JanaeDefeat::
 	.string "Whoo!$"
+	.string "{JPN}{JPN}ふうっ！$"
 
 PokemonTower_5F_Text_JanaePostBattle::
 	.string "I fell to evil spirits despite my\n"
 	.string "training in the mountains…$"
+	.string "{JPN}{JPN}やまで　しゅぎょう　したのに　あくりょうに\n"
+	.string "とりつかれる　なんて‥$"
 
 PokemonTower_5F_Text_PurifiedZoneMonsFullyHealed::
 	.string "Entered the purified and protected\n"
 	.string "zone.\p"
 	.string "{PLAYER}'s POKéMON were fully\n"
 	.string "healed.$"
+	.string "{JPN}{JPN}きよめられた　けっかいに　はいった！\p"
+	.string "{PLAYER}の　ポケモンは　すっかり　げんきに\n"
+	.string "なった！$"
 

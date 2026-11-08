@@ -1,0 +1,23 @@
+{
+ "TrainerTower_Lobby_Text_WelcomeToTrainerTower": "こんにちは！\\pせかいじゅうから　トレーナーが　あつまる　トレーナータワーへ　ようこそ！",
+ "TrainerTower_Lobby_Text_TrainersUpToFloorNum": "ここには　せかいじゅうの　トレーナーが　しょうぶを　しに　あつまって　きます\\pえーと‥\\pいまは　{STR_VAR_1}かいまで　しか　トレーナーが　いません",
+ "TrainerTower_Lobby_Text_TrainersUpEighthFloor": "8かいまで　トレーナーが　ちょうせんを　まって　います",
+ "TrainerTower_Lobby_Text_LikeToChallengeTrainers": "まって　いる　トレーナーたちに　ちょうせん　しますか？",
+ "TrainerTower_Lobby_Text_StartClockGetSetGo": "では　タイムを　はかり　はじめます！　ぜんりょくで　がんばって　ください\\pいちについて‥\\pよーい‥\\pスタート！",
+ "TrainerTower_Lobby_Text_PleaseVisitUsAgain": "また　ぜひ　おこし　ください！",
+ "TrainerTower_Lobby_Text_TooBadComeBackTryAgain": "ざんねん　でしたね\\pでも　とても　すばらしい　たたかいぶり　だったと　おもいます\\pまた　ちょうせんしに　きて　くださいね！",
+ "TrainerTower_Lobby_Text_GiveItYourBest": "がんばって　くださいね",
+ "TrainerTower_Lobby_Text_MoveCounterHereWhenTrainersSwitch": "トレーナーが　いれかわる　ときは　とても　さわがしく　なります\\pまきこまれない　ように　うけつけを　ここへ　うつしました\\pごめいわくを　おかけ　します",
+ "TrainerTower_Roof_Text_ImOwnerBattledPerfectly": "こんにちは‥\\pわたしは　この　タワーの　オーナー‥\\pこの　おくじょうから　みる　そらの　たかさ‥\\pふきぬける　かぜの　ここちよさ‥\\pすべてが　かんぺき‥\\pそして　きみの　たたかいぶりも‥　また　かんぺき　だった‥",
+ "TrainerTower_Roof_Text_ThisIsForYou": "これを　きみに‥",
+ "TrainerTower_Roof_Text_DoneItInRecordTime": "おお！　すばらしい！\\pこんなに　はやく　ここまで　くるとは　みごとだ\\pじつは　きみの　タイムは　しんきろく　なのだ‥\\pきみの　きろくを　うけつけに　はりだして　おこう",
+ "TrainerTower_Roof_Text_TookSweetTimeGettingHere": "ここまで　くるのに　ずいぶん　のんびり　して　きたようだね‥",
+ "TrainerTower_Roof_Text_IdLikeToSeeBetterTime": "つぎは　もっと　よい　タイムを　みせて　もらいたい‥\\pきたい　して　いるよ\\pでは　また　あう　ひまで‥",
+ "TrainerTower_Text_XMinYZSec": "{STR_VAR_1}ふん　{STR_VAR_2}.{STR_VAR_3}びょう",
+ "TrainerTower_Lobby_Text_HereAreTheResults": "せいせきひょうです",
+ "TrainerTower_Lobby_Text_NeedTwoMonsForDouble": "ここは　2たい2の　ダブルバトルです\\pポケモンを　2ひき　いじょう　もって　いないと　たたかえません",
+ "TrainerTower_Lobby_Text_ExplainTrainerTower": "トレーナータワーでは　タイムアタック　という　イベントを　おこなって　います\\pうけつけから　おくじょうの　オーナーの　ところまで　どれだけ　はやく　いけるかを　はかります\\pいちばん　はやい　タイムは　せいせきひょうに　きろく　されます\\pともだちと　だれが　いちばん　はやいか　きそって　みてください\\pなお　ここで　トレーナーに　かっても　けいけんちや　おかねは　もらえません",
+ "TrainerTower_Lobby_Text_ThanksForCompeting": "ちょうせん　ありがとう　ございました！",
+ "TrainerTower_Lobby_Text_WonderWhatKindsOfTrainers": "じぶんの　じつりょくを　ためしに　きたんだ\\pどんな　トレーナーが　まって　いるのかな？\\pドキドキ　するよ！",
+ "TrainerTower_Lobby_Text_StairsTougherThanAnyBattle": "ハァ　ハァ‥　ハァ‥\\pバトル　どころじゃ　ない！　この　かいだん‥　どんな　バトルより　きつい‥"
+}

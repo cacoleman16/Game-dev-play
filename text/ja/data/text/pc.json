@@ -1,0 +1,9 @@
+{
+ "gText_WhichPCShouldBeAccessed": "どの　パソコンに　アクセス　しますか？",
+ "gText_AccessedSomeonesPC": "だれかの　パソコンに　アクセス　した",
+ "gText_StorageSystemOpened": "ポケモン　あずかり　システムを　よびだした！",
+ "gText_AccessedPlayersPC": "{PLAYER}の　パソコンに　アクセス　した",
+ "gText_AccessedLanettesPC": "マユミの　パソコンに　アクセス　した",
+ "gText_AccessedBillsPC": "マサキの　パソコンに　アクセス　した",
+ "Text_BootUpPC": "{PLAYER}は　パソコンの　スイッチを　いれた！"
+}

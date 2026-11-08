@@ -1,0 +1,10 @@
+{
+ "Would you like to change {STR_VAR_1}'s\\nability to {STR_VAR_2}?": "{STR_VAR_1}の とくせいを\\n{STR_VAR_2}に かえますか？",
+ "{STR_VAR_1}'s ability became\\n{STR_VAR_2}!{PAUSE_UNTIL_PRESS}": "{STR_VAR_1}の とくせいが\\n{STR_VAR_2}に なった！{PAUSE_UNTIL_PRESS}",
+ "{STR_VAR_1}'s base points\\nwere all reset to zero!{PAUSE_UNTIL_PRESS}": "{STR_VAR_1}の どりょくちが\\nすべて 0に なった！{PAUSE_UNTIL_PRESS}",
+ "Cannot send that mon to the box,\\nbecause it knows a HM move.{PAUSE_UNTIL_PRESS}": "ひでんわざを おぼえている ポケモンは\\nボックスに おくれません。{PAUSE_UNTIL_PRESS}",
+ "Cannot send a mon that doesn't\\nbelong to you to the box.{PAUSE_UNTIL_PRESS}": "ひとから あずかった ポケモンは\\nボックスに おくれません。{PAUSE_UNTIL_PRESS}",
+ "It might affect {STR_VAR_1}'s stats.\\nAre you sure you want to use it?": "{STR_VAR_1}の のうりょくが\\nかわるかも しれないけど つかいますか？",
+ "{STR_VAR_1}'s stats may have changed due\\nto the effects of the {STR_VAR_2}!{PAUSE_UNTIL_PRESS}": "{STR_VAR_2}の こうかで\\n{STR_VAR_1}の つよさが かわった！{PAUSE_UNTIL_PRESS}",
+ "{STR_VAR_1}'s Dynamax Level\\nincreased by 1!{PAUSE_UNTIL_PRESS}": "{STR_VAR_1}の ダイマックスレベルが\\n1 あがった！{PAUSE_UNTIL_PRESS}"
+}

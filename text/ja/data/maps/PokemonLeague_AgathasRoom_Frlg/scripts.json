@@ -1,0 +1,6 @@
+{
+ "PokemonLeague_AgathasRoom_Text_Intro": "わたしは　してんのうの　キクコ！\\pオーキドが　あんたに　ずいぶん　めを　かけて　いるそうだね。\\pあの　じじいも　むかしは　つよくて　いいおとこ　だったんだよ。\\pでも　それも　なんじゅうねんも　まえの　はなし。　いまじゃ　みるかげも　ないね。\\pいまは　ずかんなんかに　かまけて　ばかり。\\pまちがってるよ！　ポケモンは　たたかわせる　ものさ！\\p{PLAYER}！　ほんものの　トレーナーの　たたかいを　みせて　あげるよ！{PLAY_BGM}{MUS_RG_ENCOUNTER_GYM_LEADER}",
+ "PokemonLeague_AgathasRoom_Text_RematchIntro": "わたしは　してんのうの　キクコ！\\pあんたが　オーキドの　かわいがってる　こだね？\\pあの　じじいも　むかしは　つよくて　いいおとこ　だったんだよ。\\pでも　それも　なんじゅうねんも　まえの　はなし。　いまじゃ　みるかげも　ないね。\\pいまは　ずかんなんかに　かまけて　ばかり。\\pまちがってるよ！　ポケモンは　たたかわせる　ものさ！\\p{PLAYER}！　ほんものの　トレーナーの　たたかいを　みせて　あげるよ！{PLAY_BGM}{MUS_RG_ENCOUNTER_GYM_LEADER}",
+ "PokemonLeague_AgathasRoom_Text_Defeat": "おや　まあ！　あんた　たいした　こだね！",
+ "PokemonLeague_AgathasRoom_Text_PostBattle": "あんたの　かちだよ！\\pオーキドが　あんたに　めを　かける　わけが　わかったよ。\\pもう　いう　ことは　ないね。　さあ　おいき！"
+}

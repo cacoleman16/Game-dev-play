@@ -1,0 +1,10 @@
+{
+ "FuchsiaCity_House3_Text_WouldYouLikeToForgetMove": "あー‥　そうそう　わしは　わざわすれオヤジ　じゃ。\\pポケモンに　わざを　わすれさせる　ことが　できる。\\pわすれさせて　みるかね？",
+ "FuchsiaCity_House3_Text_WhichMonShouldForgetMove": "どの　ポケモンの　わざを　わすれさせる？",
+ "FuchsiaCity_House3_Text_WhichMoveShouldBeForgotten": "どの　わざを　わすれさせる？",
+ "FuchsiaCity_House3_Text_MonOnlyKnowsOneMove": "{STR_VAR_1}は　わざを　ひとつしか　おぼえて　おらん　ようじゃ‥",
+ "FuchsiaCity_House3_Text_MonsMoveShouldBeForgotten": "ふむ！　{STR_VAR_1}の　{STR_VAR_2}じゃな？　その　わざを　わすれさせるのか？",
+ "FuchsiaCity_House3_Text_MonHasForgottenMoveCompletely": "かんぺきに　うまく　いったぞ！\\p{STR_VAR_1}は　{STR_VAR_2}を　きれいさっぱり　わすれた！",
+ "FuchsiaCity_House3_Text_ComeAgainToForgetOtherMoves": "ほかにも　わすれさせたい　わざが　あったら　また　おいで。",
+ "FuchsiaCity_House3_Text_NoEggShouldKnowMoves": "なんと？　タマゴは　わざを　おぼえて　おらんぞ。"
+}

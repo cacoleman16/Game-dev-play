@@ -42,14 +42,25 @@ Route1_Text_WorkAtPokeMartTakeSample::
 	.string "Please, visit us in VIRIDIAN CITY.\p"
 	.string "I know, I'll give you a sample.\n"
 	.string "Here you go!$"
+	.string "{JPN}{JPN}こんにちは！　わたし　フレンドリィショップの\n"
+	.string "てんいん　です。\p"
+	.string "いろんな　どうぐを　うっている　べんりな　おみせ\n"
+	.string "なんですよ。\p"
+	.string "トキワシティの　おみせに　ぜひ　きてくださいね。\p"
+	.string "そうだ！　おためしに　これを　どうぞ！$"
 
 Route1_Text_ComeSeeUsIfYouNeedPokeBalls::
 	.string "Please come see us if you need\n"
 	.string "POKé BALLS for catching POKéMON.$"
+	.string "{JPN}{JPN}ポケモンを　つかまえる　モンスターボールが\n"
+	.string "ひつような　ときは　ぜひ　おみせに\l"
+	.string "きてくださいね。$"
 
 Route1_Text_PutPotionAway::
 	.string "{PLAYER} put the POTION away in\n"
 	.string "the BAG's ITEMS POCKET.$"
+	.string "{JPN}{JPN}{PLAYER}は　キズぐすりを　バッグの\n"
+	.string "どうぐポケットに　しまった。$"
 
 Route1_Text_CanJumpFromLedges::
 	.string "See those ledges along the road?\p"
@@ -57,8 +68,14 @@ Route1_Text_CanJumpFromLedges::
 	.string "from them.\p"
 	.string "You can get back to PALLET TOWN\n"
 	.string "quicker that way.$"
+	.string "{JPN}{JPN}みちに　だんさが　あるでしょ？\p"
+	.string "ちょっと　こわいけど　とびおりる　ことが\n"
+	.string "できるんだ。\p"
+	.string "そうすれば　マサラタウンに　はやく　もどれるよ。$"
 
 Route1_Text_RouteSign::
 	.string "ROUTE 1\n"
 	.string "PALLET TOWN - VIRIDIAN CITY$"
+	.string "{JPN}{JPN}1ばんどうろ\n"
+	.string "マサラタウン　ー　トキワシティ$"
 

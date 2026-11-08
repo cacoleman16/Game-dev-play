@@ -36,6 +36,12 @@ FourIsland_Mart_Text_LoreleiGrewUpOnThisIsland::
 	.string "It's LORELEI of the ELITE FOUR!\p"
 	.string "When LORELEI was just a tyke,\n"
 	.string "I taught her about POKéMON.$"
+	.string "{JPN}{JPN}この　しまで　すごく　つよい　トレーナーが\n"
+	.string "そだったんだよ。\p"
+	.string "きみでも　しってる　はずさ。　してんのうの\n"
+	.string "カンナだよ！\p"
+	.string "カンナが　ちいさい　ころ　ポケモンの　ことを\n"
+	.string "おしえたのは　わたし　なんだ。$"
 
 FourIsland_Mart_Text_IcefallCaveIsFrigid::
 	.string "The SEVII ISLANDS are in a warm\n"
@@ -44,4 +50,10 @@ FourIsland_Mart_Text_IcefallCaveIsFrigid::
 	.string "need to know about.\p"
 	.string "The ICEFALL CAVE is frigid because\n"
 	.string "of the POKéMON that live in it.$"
+	.string "{JPN}{JPN}ナナシマは　ぜんたいてきに　あたたかい　ちいき\n"
+	.string "なんだ。\p"
+	.string "でも　ひとつだけ　しって　おいて　ほしい\n"
+	.string "れいがいが　ある。\p"
+	.string "いてだきのどうくつは　すんでいる　ポケモンの\n"
+	.string "せいで　とても　さむいんだ。$"
 

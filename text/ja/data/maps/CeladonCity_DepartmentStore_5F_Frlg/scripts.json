@@ -1,0 +1,22 @@
+{
+ "CeladonCity_DepartmentStore_5F_Text_HyperTrainingIntro": "わたしは　すごいとっくんの　コーチだ\\pぎんのおうかんを　もってくれば　のうりょくを　ひとつ　さいこうまで　きたえて　やろう　きんのおうかんなら　ぜんぶだ\\pきみの　ポケモンを　きたえて　みるか？",
+ "CeladonCity_DepartmentStore_5F_Text_HyperTrainNoCaps": "おうかんを　もって　いないようだな　ここの　てんいんが　うっているぞ",
+ "CeladonCity_DepartmentStore_5F_Text_HyperTrainWhichMon": "どの　ポケモンを　きたえる？",
+ "CeladonCity_DepartmentStore_5F_Text_HyperTrainWhichStat": "どの　のうりょく？",
+ "CeladonCity_DepartmentStore_5F_Text_HyperTrainDone": "かんりょう！　さいこうまで　きたえたぞ！　これからも　がんばれよ！",
+ "CeladonCity_DepartmentStore_5F_Text_HyperTrainAlreadyMax": "そこは　もう　さいこうだ　おうかんを　つかう　ひつようは　ないぞ",
+ "CeladonCity_DepartmentStore_5F_Text_HyperTrainNeedCap": "それには　ぎんのおうかんが　いるぞ",
+ "CeladonCity_DepartmentStore_5F_Text_HyperTrainNeedGoldCap": "ぜんぶを　いっきに　きたえるには　きんのおうかんが　いるぞ",
+ "CeladonCity_DepartmentStore_5F_Text_HyperTrainEgg": "タマゴは　まだ　きたえられないぞ",
+ "CeladonCity_DepartmentStore_5F_Text_StatHP": "HP",
+ "CeladonCity_DepartmentStore_5F_Text_StatAtk": "こうげき",
+ "CeladonCity_DepartmentStore_5F_Text_StatDef": "ぼうぎょ",
+ "CeladonCity_DepartmentStore_5F_Text_StatSpe": "すばやさ",
+ "CeladonCity_DepartmentStore_5F_Text_StatSpA": "とくこう",
+ "CeladonCity_DepartmentStore_5F_Text_StatSpD": "とくぼう",
+ "CeladonCity_DepartmentStore_5F_Text_StatAll": "ぜんぶ　きんのおうかん",
+ "CeladonCity_DepartmentStore_5F_Text_StatCancel": "やめる",
+ "CeladonCity_DepartmentStore_5F_Text_ExplainStatEnhancers": "ポケモンの　のうりょくを　あげる　くすりは　ここでしか　かえません\\pマックスアップは　ポケモンの　HPを　あげます\\pリゾチウムは　ポケモンの　とくこうを　あげます\\pキトサンは　ポケモンの　とくぼうを　あげます\\pインドメタシンは　すばやさを　あげます",
+ "CeladonCity_DepartmentStore_5F_Text_HereForStatEnhancers": "ぼくは　ポケモンの　のうりょくを　あげる　くすりを　かいに　きたんだ\\pタウリンは　こうげきを　あげるんだ\\pブロムヘキシンは　ぼうぎょを　あげるよ",
+ "CeladonCity_DepartmentStore_5F_Text_Drugstore": "5F:　ドラッグストア"
+}

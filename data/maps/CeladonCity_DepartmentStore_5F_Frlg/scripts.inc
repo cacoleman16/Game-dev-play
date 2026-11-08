@@ -189,58 +189,83 @@ CeladonCity_DepartmentStore_5F_Text_HyperTrainingIntro::
 	.string "out one stat's potential. A GOLD\l"
 	.string "BOTTLE CAP maxes all of them.\p"
 	.string "Shall I train one of your POKéMON?$"
+	.string "{JPN}{JPN}わたしは　すごいとっくんの　コーチだ\p"
+	.string "ぎんのおうかんを　もってくれば　のうりょくを\n"
+	.string "ひとつ　さいこうまで　きたえて　やろう\l"
+	.string "きんのおうかんなら　ぜんぶだ\p"
+	.string "きみの　ポケモンを　きたえて　みるか？$"
 
 CeladonCity_DepartmentStore_5F_Text_HyperTrainNoCaps::
 	.string "You don't have any BOTTLE CAPS.\n"
 	.string "The clerk here sells them.$"
+	.string "{JPN}{JPN}おうかんを　もって　いないようだな　ここの\n"
+	.string "てんいんが　うっているぞ$"
 
 CeladonCity_DepartmentStore_5F_Text_HyperTrainWhichMon::
 	.string "Which POKéMON should I train?$"
+	.string "{JPN}{JPN}どの　ポケモンを　きたえる？$"
 
 CeladonCity_DepartmentStore_5F_Text_HyperTrainWhichStat::
 	.string "Which stat?$"
+	.string "{JPN}{JPN}どの　のうりょく？$"
 
 CeladonCity_DepartmentStore_5F_Text_HyperTrainDone::
 	.string "Done! Its potential is maxed out.\n"
 	.string "Keep training hard!$"
+	.string "{JPN}{JPN}かんりょう！　さいこうまで　きたえたぞ！\n"
+	.string "これからも　がんばれよ！$"
 
 CeladonCity_DepartmentStore_5F_Text_HyperTrainAlreadyMax::
 	.string "That's already at its best.\n"
 	.string "No need to spend a cap on it.$"
+	.string "{JPN}{JPN}そこは　もう　さいこうだ　おうかんを　つかう\n"
+	.string "ひつようは　ないぞ$"
 
 CeladonCity_DepartmentStore_5F_Text_HyperTrainNeedCap::
 	.string "That needs a BOTTLE CAP.$"
+	.string "{JPN}{JPN}それには　ぎんのおうかんが　いるぞ$"
 
 CeladonCity_DepartmentStore_5F_Text_HyperTrainNeedGoldCap::
 	.string "Training every stat at once needs\n"
 	.string "a GOLD BOTTLE CAP.$"
+	.string "{JPN}{JPN}ぜんぶを　いっきに　きたえるには\n"
+	.string "きんのおうかんが　いるぞ$"
 
 CeladonCity_DepartmentStore_5F_Text_HyperTrainEgg::
 	.string "An EGG can't be trained yet.$"
+	.string "{JPN}{JPN}タマゴは　まだ　きたえられないぞ$"
 
 CeladonCity_DepartmentStore_5F_Text_StatHP::
 	.string "HP$"
+	.string "{JPN}{JPN}HP$"
 
 CeladonCity_DepartmentStore_5F_Text_StatAtk::
 	.string "ATTACK$"
+	.string "{JPN}{JPN}こうげき$"
 
 CeladonCity_DepartmentStore_5F_Text_StatDef::
 	.string "DEFENSE$"
+	.string "{JPN}{JPN}ぼうぎょ$"
 
 CeladonCity_DepartmentStore_5F_Text_StatSpe::
 	.string "SPEED$"
+	.string "{JPN}{JPN}すばやさ$"
 
 CeladonCity_DepartmentStore_5F_Text_StatSpA::
 	.string "SP. ATK$"
+	.string "{JPN}{JPN}とくこう$"
 
 CeladonCity_DepartmentStore_5F_Text_StatSpD::
 	.string "SP. DEF$"
+	.string "{JPN}{JPN}とくぼう$"
 
 CeladonCity_DepartmentStore_5F_Text_StatAll::
 	.string "All (GOLD CAP)$"
+	.string "{JPN}{JPN}ぜんぶ　きんのおうかん$"
 
 CeladonCity_DepartmentStore_5F_Text_StatCancel::
 	.string "Cancel$"
+	.string "{JPN}{JPN}やめる$"
 
 
 CeladonCity_DepartmentStore_5F_EventScript_Sailor::
@@ -341,6 +366,12 @@ CeladonCity_DepartmentStore_5F_Text_ExplainStatEnhancers::
 	.string "of one POKéMON.\p"
 	.string "CARBOS enhances the base SPEED\n"
 	.string "stat.$"
+	.string "{JPN}{JPN}ポケモンの　のうりょくを　あげる　くすりは\n"
+	.string "ここでしか　かえません\p"
+	.string "マックスアップは　ポケモンの　HPを　あげます\p"
+	.string "リゾチウムは　ポケモンの　とくこうを　あげます\p"
+	.string "キトサンは　ポケモンの　とくぼうを　あげます\p"
+	.string "インドメタシンは　すばやさを　あげます$"
 
 CeladonCity_DepartmentStore_5F_Text_HereForStatEnhancers::
 	.string "I'm here for POKéMON stat\n"
@@ -349,7 +380,12 @@ CeladonCity_DepartmentStore_5F_Text_HereForStatEnhancers::
 	.string "power.\p"
 	.string "IRON increases the base DEFENSE\n"
 	.string "stat.$"
+	.string "{JPN}{JPN}ぼくは　ポケモンの　のうりょくを　あげる\n"
+	.string "くすりを　かいに　きたんだ\p"
+	.string "タウリンは　こうげきを　あげるんだ\p"
+	.string "ブロムヘキシンは　ぼうぎょを　あげるよ$"
 
 CeladonCity_DepartmentStore_5F_Text_Drugstore::
 	.string "5F: DRUGSTORE$"
+	.string "{JPN}{JPN}5F:　ドラッグストア$"
 

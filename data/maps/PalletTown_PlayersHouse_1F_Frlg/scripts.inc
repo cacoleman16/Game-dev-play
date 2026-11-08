@@ -59,6 +59,11 @@ PalletTown_PlayersHouse_1F_Text_AllBoysLeaveOakLookingForYou::
 	.string "It said so on TV.\p"
 	.string "Oh, yes. PROF. OAK, next door, was\n"
 	.string "looking for you.$"
+	.string "{JPN}{JPN}ママ『‥そうね。　おとこのこは　いつか　いえを\n"
+	.string "でて　いく　ものよね。　テレビでも　そう\l"
+	.string "いってたわ。\p"
+	.string "そうそう！　となりの　オーキドはかせが　あなたを\n"
+	.string "さがしてたわよ。』$"
 
 PalletTown_PlayersHouse_1F_Text_AllGirlsLeaveOakLookingForYou::
 	.string "MOM: …Right.\n"
@@ -66,27 +71,44 @@ PalletTown_PlayersHouse_1F_Text_AllGirlsLeaveOakLookingForYou::
 	.string "It said so on TV.\p"
 	.string "Oh, yes. PROF. OAK, next door, was\n"
 	.string "looking for you.$"
+	.string "{JPN}{JPN}ママ『‥そうね。　おんなのこは　みんな　たびに\n"
+	.string "あこがれる　ものよね。　テレビでも　そう\l"
+	.string "いってたわ。\p"
+	.string "そうそう！　となりの　オーキドはかせが　あなたを\n"
+	.string "さがしてたわよ。』$"
 
 PalletTown_PlayersHouse_1F_Text_YouShouldTakeQuickRest::
 	.string "MOM: {PLAYER}!\n"
 	.string "You should take a quick rest.$"
+	.string "{JPN}{JPN}ママ『{PLAYER}！　すこし　やすんで\n"
+	.string "いきなさい。』$"
 
 PalletTown_PlayersHouse_1F_Text_LookingGreatTakeCare::
 	.string "MOM: Oh, good! You and your\n"
 	.string "POKéMON are looking great.\l"
 	.string "Take care now!$"
+	.string "{JPN}{JPN}ママ『まあ　よかった！　あなたも　ポケモンも\n"
+	.string "げんき　いっぱいね。　きを　つけて\l"
+	.string "いってらっしゃい！』$"
 
 PalletTown_PlayersHouse_1F_Text_MovieOnTVFourBoysOnRailroad::
 	.string "There's a movie on TV.\n"
 	.string "Four boys are walking on railroad\l"
 	.string "tracks.\p"
 	.string "…I better go, too.$"
+	.string "{JPN}{JPN}テレビで　えいがを　やってる！　4にんの\n"
+	.string "おとこのこが　せんろの　うえを　あるいてる‥\p"
+	.string "‥ぼくも　そろそろ　いかなくちゃ！$"
 
 PalletTown_PlayersHouse_1F_Text_MovieOnTVGirlOnBrickRoad::
 	.string "There's a movie on TV.\n"
 	.string "A girl with her hair in pigtails is\l"
 	.string "walking up a brick road.\p"
 	.string "…I better go, too.$"
+	.string "{JPN}{JPN}テレビで　えいがを　やってる！　おさげの\n"
+	.string "おんなのこが　レンガの　みちを　あるいてる‥\p"
+	.string "‥わたしも　そろそろ　いかなくちゃ！$"
 
 PalletTown_PlayersHouse_1F_Text_OopsWrongSide::
 	.string "Oops, wrong side…$"
+	.string "{JPN}{JPN}おっと　うらがわ　だった‥$"

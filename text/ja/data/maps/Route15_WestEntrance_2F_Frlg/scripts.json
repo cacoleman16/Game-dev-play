@@ -1,0 +1,8 @@
+{
+ "Route15_WestEntrance_2F_Text_GiveItemIfCaughtEnough": "やあ！　おぼえてますか？　オーキドはかせの　じょしゅです。\\pずかんに　{STR_VAR_1}しゅるいの　ポケモンが　とうろく　されていたら　ごほうびを　わたすように　いわれて　いるんです。\\pはかせから　{STR_VAR_2}を　あずかって　います。\\pでは　{PLAYER}さん　おききします。\\pポケモンを　{STR_VAR_1}しゅるい　いじょう　つかまえましたか？",
+ "Route15_WestEntrance_2F_Text_GreatHereYouGo": "すばらしい！　{STR_VAR_3}しゅるいの　ポケモンを　つかまえて　いますね！\\pおめでとう　ございます！　どうぞ！",
+ "Route15_WestEntrance_2F_Text_ReceivedItemFromAide": "{PLAYER}は　じょしゅから　{STR_VAR_2}を　もらった！",
+ "Route15_WestEntrance_2F_Text_ExplainExpShare": "がくしゅうそうちは　ポケモンに　もたせる　どうぐです。\\pもたせた　ポケモンは　たたかわなくても　けいけんちを　わけて　もらえるんです。",
+ "Route15_WestEntrance_2F_Text_LargeShiningBird": "そうがんきょうを　のぞいて　みよう‥\\pおおきな　かがやく　とりが　うみの　ほうへ　とんで　いく。",
+ "Route15_WestEntrance_2F_Text_SmallIslandOnHorizon": "そうがんきょうを　のぞいて　みよう‥\\pすいへいせんの　むこうに　ちいさな　しまが　みえる！"
+}

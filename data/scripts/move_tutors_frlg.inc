@@ -577,3 +577,5 @@ Movement_JumpInPlaceRight:
 Text_MoveCanOnlyBeLearnedOnce::
 	.string "This move can be learned only\n"
 	.string "once. Is that okay?$"
+	.string "{JPN}{JPN}この　わざは　1かいしか　おぼえられないよ\n"
+	.string "それでも　いい？$"

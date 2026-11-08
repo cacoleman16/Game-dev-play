@@ -51,6 +51,7 @@
 #include "constants/region_map_sections.h"
 #include "constants/rgb.h"
 #include "constants/songs.h"
+#include "qol_language.h"
 
 // Screen titles (upper left)
 #define PSS_LABEL_WINDOW_POKEMON_INFO_TITLE 0
@@ -767,7 +768,7 @@ static const TaskFunc sTextPrinterTasks[] =
     [PSS_PAGE_CONTEST_MOVES] = Task_PrintContestMoves
 };
 
-static const u8 sText_Relearn[] = _("{START_BUTTON} RELEARN"); // future note: don't decap this, because it mimics the summary screen BG graphics which will not get decapped
+static const u8 sText_Relearn[] = _("{START_BUTTON} RELEARN${JPN}{JPN}{START_BUTTON} おもいだす"); // future note: don't decap this, because it mimics the summary screen BG graphics which will not get decapped
 
 static const u8 sMemoNatureTextColor[] = _("{COLOR LIGHT_RED}{SHADOW GREEN}");
 static const u8 sMemoMiscTextColor[] = _("{COLOR WHITE}{SHADOW DARK_GRAY}"); // This is also affected by palettes, apparently
@@ -3533,7 +3534,7 @@ static void PrintMonAbilityName(void)
 static void PrintMonAbilityDescription(void)
 {
     enum Ability ability = GetAbilityBySpecies(sMonSummaryScreen->summary.species, sMonSummaryScreen->summary.abilityNum);
-    PrintTextOnWindowToFit(AddWindowFromTemplateList(sPageInfoTemplate, PSS_DATA_WINDOW_INFO_ABILITY), gAbilitiesInfo[ability].description, 0, 17, 0, 0);
+    PrintTextOnWindowToFit(AddWindowFromTemplateList(sPageInfoTemplate, PSS_DATA_WINDOW_INFO_ABILITY), QoL_LangAbilityDescription(ability, gAbilitiesInfo[ability].description), 0, 17, 0, 0); // [QoL]
 }
 
 static void BufferMonTrainerMemo(void)
@@ -4775,10 +4776,10 @@ static inline bool32 ShouldShowIvEvPrompt(void)
 static inline void ShowUtilityPrompt(s16 mode)
 {
     const u8* promptText = NULL;
-    const u8* gText_SkillPageIvs = COMPOUND_STRING("IVs");
-    const u8* gText_SkillPageEvs = COMPOUND_STRING("EVs");
-    const u8* gText_SkillPageStats = COMPOUND_STRING("STATS");
-    const u8* gText_Rename = COMPOUND_STRING("RENAME");
+    const u8* gText_SkillPageIvs = COMPOUND_STRING("IVs${JPN}{JPN}こたいち");
+    const u8* gText_SkillPageEvs = COMPOUND_STRING("EVs${JPN}{JPN}どりょくち");
+    const u8* gText_SkillPageStats = COMPOUND_STRING("STATS${JPN}{JPN}のうりょく");
+    const u8* gText_Rename = COMPOUND_STRING("RENAME${JPN}{JPN}なまえ");
 
     if (sMonSummaryScreen->currPageIndex == PSS_PAGE_INFO)
     {

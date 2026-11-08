@@ -58,32 +58,50 @@ FuchsiaCity_House3_Text_WouldYouLikeToForgetMove::
 	.string "I can make POKéMON forget their\n"
 	.string "moves.\p"
 	.string "Would you like me to do that?$"
+	.string "{JPN}{JPN}あー‥　そうそう　わしは　わざわすれオヤジ\n"
+	.string "じゃ。\p"
+	.string "ポケモンに　わざを　わすれさせる　ことが\n"
+	.string "できる。\p"
+	.string "わすれさせて　みるかね？$"
 
 FuchsiaCity_House3_Text_WhichMonShouldForgetMove::
 	.string "Which POKéMON should forget a\n"
 	.string "move?$"
+	.string "{JPN}{JPN}どの　ポケモンの　わざを　わすれさせる？$"
 
 FuchsiaCity_House3_Text_WhichMoveShouldBeForgotten::
 	.string "Which move should be forgotten?$"
+	.string "{JPN}{JPN}どの　わざを　わすれさせる？$"
 
 FuchsiaCity_House3_Text_MonOnlyKnowsOneMove::
 	.string "{STR_VAR_1} seems to know only one\n"
 	.string "move…$"
+	.string "{JPN}{JPN}{STR_VAR_1}は　わざを　ひとつしか\n"
+	.string "おぼえて　おらん　ようじゃ‥$"
 
 FuchsiaCity_House3_Text_MonsMoveShouldBeForgotten::
 	.string "Hm! {STR_VAR_1}'s {STR_VAR_2}?\n"
 	.string "That move should be forgotten?$"
+	.string "{JPN}{JPN}ふむ！　{STR_VAR_1}の\n"
+	.string "{STR_VAR_2}じゃな？　その　わざを\l"
+	.string "わすれさせるのか？$"
 
 FuchsiaCity_House3_Text_MonHasForgottenMoveCompletely::
 	.string "It worked to perfection!\p"
 	.string "{STR_VAR_1} has forgotten\n"
 	.string "{STR_VAR_2} completely.$"
+	.string "{JPN}{JPN}かんぺきに　うまく　いったぞ！\p"
+	.string "{STR_VAR_1}は　{STR_VAR_2}を\n"
+	.string "きれいさっぱり　わすれた！$"
 
 FuchsiaCity_House3_Text_ComeAgainToForgetOtherMoves::
 	.string "Come again if there are other\n"
 	.string "moves to be forgotten.$"
+	.string "{JPN}{JPN}ほかにも　わすれさせたい　わざが　あったら　また\n"
+	.string "おいで。$"
 
 FuchsiaCity_House3_Text_NoEggShouldKnowMoves::
 	.string "What?\n"
 	.string "No EGG should know any moves.$"
+	.string "{JPN}{JPN}なんと？　タマゴは　わざを　おぼえて　おらんぞ。$"
 

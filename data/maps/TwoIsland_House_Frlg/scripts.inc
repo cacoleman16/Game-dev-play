@@ -124,41 +124,66 @@ TwoIsland_House_Text_TeachMonMoveForMushroom::
 	.string "or one BIG MUSHROOM.\p"
 	.string "If you do that for me, I'll teach\n"
 	.string "a move to one POKéMON.$"
+	.string "{JPN}{JPN}わしは　ポケモンの　わざマニア\p"
+	.string "ポケモンが　せいちょうして　おぼえる　わざは\n"
+	.string "ぜんぶ　しっておる\p"
+	.string "それと　わしは　キノコマニア　でもある\p"
+	.string "ちいさなキノコを　2こ　か　おおきなキノコを\n"
+	.string "1こ　もって　きて　くれ\p"
+	.string "そうしたら　ポケモン　1ぴきに　わざを　おしえて\n"
+	.string "やろう$"
 
 TwoIsland_House_Text_WantMeToTeachMove::
 	.string "Sniff, sniff…\n"
 	.string "Hm! You smell of MUSHROOMS!\p"
 	.string "Do you want me to teach a move\n"
 	.string "to a POKéMON of yours?$"
+	.string "{JPN}{JPN}クンクン‥　ほう！　キノコの　においが　するぞ！\p"
+	.string "おまえさんの　ポケモンに　わざを　おしえて\n"
+	.string "ほしいか？$"
 
 TwoIsland_House_Text_TutorWhichMon::
 	.string "Which POKéMON needs tutoring?$"
+	.string "{JPN}{JPN}どの　ポケモンに　おしえるかね？$"
 
 TwoIsland_House_Text_TeachWhichMove::
 	.string "Which move should I teach?$"
+	.string "{JPN}{JPN}どの　わざを　おしえるかね？$"
 
 TwoIsland_House_Text_NoMoveICanTeachThatMon::
 	.string "Sorry…\p"
 	.string "It doesn't appear as if I have a\n"
 	.string "move I can teach that POKéMON.$"
+	.string "{JPN}{JPN}すまんのう‥\p"
+	.string "その　ポケモンに　おしえられる　わざは\n"
+	.string "ないようじゃ$"
 
 TwoIsland_House_Text_IllNeedMushroomOrTwo::
 	.string "Then, I'll need a MUSHROOM or two.\n"
 	.string "What are you going to give me?$"
+	.string "{JPN}{JPN}では　キノコを　もらおうか　なにを　くれるかね？$"
 
 TwoIsland_House_Text_HandedOverTwoTinyMushrooms::
 	.string "{PLAYER} handed over two\n"
 	.string "TINYMUSHROOMS in exchange.$"
+	.string "{JPN}{JPN}{PLAYER}は　ひきかえに　ちいさなキノコを\n"
+	.string "2こ　わたした$"
 
 TwoIsland_House_Text_HandedOverOneBigMushroom::
 	.string "{PLAYER} handed over one\n"
 	.string "BIG MUSHROOM in exchange.$"
+	.string "{JPN}{JPN}{PLAYER}は　ひきかえに　おおきなキノコを\n"
+	.string "1こ　わたした$"
 
 TwoIsland_House_Text_NeedMushroomOrTwoToLearnMove::
 	.string "If your POKéMON need to learn a\n"
 	.string "move, I need a MUSHROOM or two.$"
+	.string "{JPN}{JPN}ポケモンに　わざを　おぼえさせたいなら　キノコを\n"
+	.string "もって　きなさい$"
 
 TwoIsland_House_Text_CantTeachAnEgg::
 	.string "Hunh? There isn't a single move\n"
 	.string "that I can teach an EGG.$"
+	.string "{JPN}{JPN}なんじゃ？　タマゴに　おしえられる　わざなど\n"
+	.string "ひとつも　ないぞ$"
 

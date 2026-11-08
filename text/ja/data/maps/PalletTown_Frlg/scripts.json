@@ -1,0 +1,21 @@
+{
+ "PalletTown_Text_OakDontGoOut": "オーキド『おーい！　まてー！　そとに　でては　いかん！』",
+ "PalletTown_Text_OakGrassUnsafeNeedMon": "オーキド『あぶない　ところじゃった！　くさむらには　やせいの　ポケモンが　おるんじゃ！\\pじぶんの　みを　まもるには　じぶんの　ポケモンが　ひつようじゃ。\\pそうじゃ！　ちょっと　わしに　ついて　きなさい！』",
+ "PalletTown_Text_RaisingMonsToo": "わたしも　ポケモンを　そだてて　いるのよ。\\pつよく　なったら　わたしを　まもって　くれるの。",
+ "PalletTown_Text_CanStoreItemsAndMonsInPC": "かがくの　ちからって　すげー！\\pいまは　パソコンで　どうぐや　ポケモンを　データに　して　あずけたり　ひきだしたり　できるんだ！",
+ "PalletTown_Text_OakPokemonResearchLab": "オーキド　ポケモン　けんきゅうじょ",
+ "PalletTown_Text_PlayersHouse": "{PLAYER}の　いえ",
+ "PalletTown_Text_RivalsHouse": "{RIVAL}の　いえ",
+ "PalletTown_Text_TownSign": "マサラタウン\\nまっさら　はじまりの　いろ",
+ "PalletTown_Text_OakLetMeSeePokedex": "オーキド『おお　{PLAYER}！　もどって　きたのか！\\pポケモンずかんは　どれくらい　うまったかな？\\pちょっと　みせて　くれんか？\\pどれどれ‥』",
+ "PalletTown_Text_CaughtXPuttingInHonestEffort": "つかまえた　ポケモンは　{STR_VAR_2}ひきか‥\\pふむ！　まじめに　がんばって　おるようじゃな。\\pもう　すこし　うまったら　また　みせに　きて　おくれ。",
+ "PalletTown_Text_CaughtXImpressiveFollowMe": "つかまえた　ポケモンが‥　{STR_VAR_2}ひき！？　これは　たいした　ものじゃ！\\p{PLAYER}に　ひとつ　たのみたい　ことが　あるんじゃ。\\pさあ　わしに　ついて　きなさい。",
+ "PalletTown_Text_OakYouEnjoyingTraveling": "オーキド『おお　{PLAYER}！　たびを　たのしんで　おるようじゃな。\\p{PLAYER}の　ことじゃ　もっと　めずらしい　ばしょへも　でかけて　いくんじゃろうな。\\pいいことじゃ　いいことじゃ。　ほっほっほ。』",
+ "PalletTown_Text_HmmIsThatRight": "ふーむ‥　そう　なのか‥",
+ "PalletTown_Text_OhLookLook": "あっ！　みて　みて！",
+ "PalletTown_Text_ReadItReadIt": "よんで　よんで！",
+ "PalletTown_Text_PressStartToOpenMenu": "トレーナー　ワンポイント　アドバイス\\pスタートボタンで　メニューを　ひらこう！",
+ "PalletTown_Text_SignsAreUsefulArentThey": "かんばんって　べんりだよね！",
+ "PalletTown_Text_LookCopiedTrainerTipsSign": "みて　みて！\\pトレーナー　ワンポイント　アドバイスの　かんばんに　かいて　あった　ことを　うつしたんだ！",
+ "PalletTown_Text_PressStartToOpenMenuCopy": "トレーナー　ワンポイント　アドバイス！\\pスタートボタンで　メニューを　ひらこう！"
+}

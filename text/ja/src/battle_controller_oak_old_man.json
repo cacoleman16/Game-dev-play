@@ -1,0 +1,12 @@
+{
+ "OAK: Oh, for Pete's sake…\\nSo pushy, as always.\\p{B_PLAYER_NAME}.\\pYou've never had a POKéMON battle\\nbefore, have you?\\pA POKéMON battle is when TRAINERS\\npit their POKéMON against each\\lother.\\p": "オーキド『やれやれ‥\\nあいかわらず せっかちな やつじゃ。\\p{B_PLAYER_NAME}！\\pおまえは ポケモン しょうぶを するのは はじめてじゃな？\\pポケモン しょうぶとは トレーナー どうしが じぶんの ポケモンを たたかわせる ことじゃ。\\p",
+ "OAK: Hm…\\nHow disappointing…\\pIf you win, you earn prize money,\\nand your POKéMON grow.\\pBut if you lose, {B_PLAYER_NAME}, you end\\nup paying prize money…\\pHowever, since you had no warning\\nthis time, I'll pay for you.\\pBut things won't be this way once\\nyou step outside these doors.\\pThat's why you must strengthen your\\nPOKéMON by battling wild POKéMON.\\p": "オーキド『うーむ‥ ざんねんじゃ‥\\pしょうぶに かつと しょうきんが もらえて ポケモンも せいちょう する。\\pだが まけると {B_PLAYER_NAME}が しょうきんを はらう ことに なるんじゃ‥\\pもっとも こんかいは いきなり だったから わしが はらって おこう。\\pだが いちど そとへ でたら こうは いかんぞ。\\pだから やせいの ポケモンと たたかって ポケモンを きたえるんじゃ！』\\p",
+ "OAK: Inflicting damage on the foe\\nis the key to any battle.\\p": "オーキド『あいてに ダメージを あたえる ことが しょうぶの きほんじゃ！』\\p",
+ "OAK: Keep your eyes on your\\nPOKéMON's HP.\\pIt will faint if the HP drops to\\n“0.”\\p": "オーキド『じぶんの ポケモンの HPに ちゅういするんじゃ。\\pHPが 0に なると ひんしに なって しまうぞ！』\\p",
+ "OAK: Lowering the foe's stats\\nwill put you at an advantage.\\p": "オーキド『あいての のうりょくを さげると たたかいが ゆうりに なるぞ！』\\p",
+ "OAK: No! There's no running away\\nfrom a TRAINER POKéMON battle!\\p": "オーキド『だめじゃ！ トレーナーとの しょうぶから にげることは できん！』\\p",
+ "The TRAINER that makes the other\\nTRAINER's POKéMON faint by lowering\\ltheir HP to “0,” wins.\\p": "あいての ポケモンの HPを 0に して ひんしに させた ほうが かちじゃ。\\p",
+ "But rather than talking about it,\\nyou'll learn more from experience.\\pTry battling and see for yourself.\\p": "まあ はなしを きくより じっさいに やってみるのが いちばんじゃ。\\pじぶんで たたかって みなさい！』\\p",
+ "OAK: Hm! Excellent!\\pIf you win, you earn prize money,\\nand your POKéMON will grow!\\pBattle other TRAINERS and make\\nyour POKéMON strong!\\p": "オーキド『ほう！ みごとじゃ！\\pしょうぶに かつと しょうきんが もらえて ポケモンも せいちょう するぞ！\\pほかの トレーナーと たたかって ポケモンを つよく するんじゃ！』\\p",
+ "What will the\\nold man do?": "おじいさんは\\nどうする？"
+}

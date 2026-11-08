@@ -102,6 +102,14 @@ PokemonLeague_LoreleisRoom_Text_Intro::
 	.string "when they are frozen solid.\p"
 	.string "Hahaha!\n"
 	.string "Are you ready?{PLAY_BGM}{MUS_RG_ENCOUNTER_GYM_LEADER}$"
+	.string "{JPN}{JPN}ポケモンリーグへ　ようこそ。\p"
+	.string "わたしは　してんのうの　カンナ。\p"
+	.string "こおりポケモンを　つかわせたら　わたしの　みぎに\n"
+	.string "でる　ものは　いないわ。\p"
+	.string "こおりの　わざは　きょうりょくよ。\p"
+	.string "こおりづけに　なった　ポケモンは　わたしの\n"
+	.string "おもうがまま。\p"
+	.string "ふふふ！　じゅんびは　いい？{PLAY_BGM}{MUS_RG_ENCOUNTER_GYM_LEADER}$"
 
 PokemonLeague_LoreleisRoom_Text_RematchIntro::
 	.string "Welcome to the POKéMON LEAGUE.\p"
@@ -115,13 +123,28 @@ PokemonLeague_LoreleisRoom_Text_RematchIntro::
 	.string "when they are frozen solid.\p"
 	.string "Hahaha!\n"
 	.string "Are you ready?{PLAY_BGM}{MUS_RG_ENCOUNTER_GYM_LEADER}$"
+	.string "{JPN}{JPN}ポケモンリーグへ　ようこそ。\p"
+	.string "してんのうの　カンナ　ふたたび　もどって\n"
+	.string "きたわ！\p"
+	.string "わかって　いるわね。　こおりポケモンを\n"
+	.string "つかわせたら　わたしの　みぎに　でる　ものは\l"
+	.string "いないわ。\p"
+	.string "こおりの　わざは　きょうりょくよ。\p"
+	.string "こおりづけに　なった　ポケモンは　わたしの\n"
+	.string "おもうがまま。\p"
+	.string "ふふふ！　じゅんびは　いい？{PLAY_BGM}{MUS_RG_ENCOUNTER_GYM_LEADER}$"
 
 PokemonLeague_LoreleisRoom_Text_Defeat::
 	.string "…Things shouldn't be this way!$"
+	.string "{JPN}{JPN}‥こんな　はずでは！$"
 
 PokemonLeague_LoreleisRoom_Text_PostBattle::
 	.string "You're better than I thought.\n"
 	.string "Go on ahead.\p"
 	.string "You only got a taste of the\n"
 	.string "POKéMON LEAGUE's power.$"
+	.string "{JPN}{JPN}おもって　いたより　やるわね。　さきへ\n"
+	.string "すすみなさい。\p"
+	.string "でも　あなたが　あじわったのは　ポケモンリーグの\n"
+	.string "ちからの　ほんの　いちぶ　よ。$"
 

@@ -1,0 +1,9 @@
+{
+ "gText_ConfirmSave": "レポートを　かきますか？",
+ "gText_AlreadySavedFile": "まえに　かいた　レポートが　あります　うわがき　しても　よろしいですか？",
+ "gText_SavingDontTurnOff": "レポートを　かいています　でんげんを　きらないで　ください",
+ "gText_PlayerSavedGame": "{PLAYER}は　レポートに　しっかり　かきのこした！",
+ "gText_DifferentSaveFile": "ちゅうい！\\pべつの　ぼうけんの　レポートが　すでに　かかれています\\pいま　レポートを　かくと　まえの　ぼうけんの　どうぐや　ポケモンが　すべて　きえて　しまいます\\pそれでも　まえの　レポートに　うわがき　しますか？",
+ "gText_SaveError": "レポートが　かけませんでした\\pバックアップ　メモリーを　こうかん　して　ください",
+ "gText_SavingDontTurnOffPower": "レポートを　かいています　でんげんを　きらないで　ください"
+}

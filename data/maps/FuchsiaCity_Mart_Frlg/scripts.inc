@@ -36,8 +36,12 @@ FuchsiaCity_Mart_Text_DontTheyHaveSafariZonePennants::
 	.string "promoting the SAFARI ZONE?\p"
 	.string "How about some paper lanterns?\n"
 	.string "Aren't there even any calendars?$"
+	.string "{JPN}{JPN}サファリゾーンの　ペナントは　おいてないのかな？\p"
+	.string "ちょうちんとかは？　カレンダーすら　ないの？$"
 
 FuchsiaCity_Mart_Text_DidYouTryXSpeed::
 	.string "Did you try X SPEED?\n"
 	.string "It speeds up a POKéMON in battle.$"
+	.string "{JPN}{JPN}スピーダーは　つかって　みた？　バトルで\n"
+	.string "ポケモンの　すばやさが　あがるのよ。$"
 

@@ -10,4 +10,8 @@ SSAnne_3F_Corridor_Text_CaptainTeachesCutToMons::
 	.string "He's awesome at using CUT.\p"
 	.string "They say he even teaches CUT\n"
 	.string "to POKéMON!$"
+	.string "{JPN}{JPN}うちの　せんちょうは　けんの　たつじん。\n"
+	.string "いあいぎりの　うでまえは　ばつぐん　なんだ。\p"
+	.string "ポケモンにも　いあいぎりを　おしえて　くれる\n"
+	.string "らしいよ！$"
 

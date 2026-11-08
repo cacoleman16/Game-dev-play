@@ -115,10 +115,17 @@ Text_IdLoveToHearYourProfile:
 	.string "So, come on, tell me about\n"
 	.string "yourself.\p"
 	.string "I'd love to hear your profile!$"
+	.string "{JPN}{JPN}やあ　はじめまして！\p"
+	.string "‥なんだ　つれないなあ　あいさつ　くらい\n"
+	.string "かえしてよ\p"
+	.string "さあさあ　きみの　ことを　おしえて　くれよ\p"
+	.string "きみの　プロフィールを　ききたいな！$"
 
 Text_TellMeWhatsYourProfile:
 	.string "Tell me something good about\n"
 	.string "yourself. What's your profile?$"
+	.string "{JPN}{JPN}きみの　いい　ところを　おしえてよ　きみの\n"
+	.string "プロフィールは？$"
 
 Text_ExplainProfile:
 	.string "A profile is written using four\n"
@@ -131,34 +138,53 @@ Text_ExplainProfile:
 	.string "a word or phrase.\p"
 	.string "…It's easier than it sounds.\n"
 	.string "Why don't you try it?$"
+	.string "{JPN}{JPN}プロフィールは　4つの　ことばで　つくるんだ\p"
+	.string "プロフィールに　つかえる　ことばは　たくさん\n"
+	.string "あるよ\p"
+	.string "ことばは　いくつかの　グループに　わけられて\n"
+	.string "いるんだ\p"
+	.string "まず　グループを　えらんでから　ことばを\n"
+	.string "えらんでね\p"
+	.string "‥いってみると　かんたんだよ　やって　みたら？$"
 
 Text_WhatsYourProfile:
 	.string "What's your profile?$"
+	.string "{JPN}{JPN}きみの　プロフィールは？$"
 
 Text_DontBeLikeThat:
 	.string "Aww… Don't be like that.\n"
 	.string "You can tell me your profile.$"
+	.string "{JPN}{JPN}ええ‥　そんな　こと　いわないでよ　プロフィール\n"
+	.string "おしえて　くれても　いいじゃない$"
 
 Text_DecidedNotTo:
 	.string "Oh, you've decided not to?\n"
 	.string "You're fickle, aren't you?$"
+	.string "{JPN}{JPN}あれ　やめちゃうの？　きまぐれ　なんだね$"
 
 Text_HiWeMeetAgain:
 	.string "Hi!\n"
 	.string "We meet again!$"
+	.string "{JPN}{JPN}やあ！　また　あったね！$"
 
 Text_ChangeYourProfile:
 	.string "Would you like to change your\n"
 	.string "profile?$"
+	.string "{JPN}{JPN}プロフィールを　かえるかい？$"
 
 Text_WhatAreYouLikeNow:
 	.string "What are you like now?\n"
 	.string "I'd really like to know.$"
+	.string "{JPN}{JPN}いまの　きみは　どんな　かんじ？　ぜひ\n"
+	.string "ききたいな$"
 
 Text_LikeProfileWayItIs:
 	.string "Okay, you like your profile the\n"
 	.string "way it is.\p"
 	.string "I think so, too.$"
+	.string "{JPN}{JPN}そっか　いまの　プロフィールが\n"
+	.string "きにいってるんだね\p"
+	.string "ぼくも　そう　おもうよ$"
 
 Text_ProfileSaysSomethingAboutYou:
 	.string "Hmhm…\p"
@@ -166,12 +192,20 @@ Text_ProfileSaysSomethingAboutYou:
 	.string "about who you are.\p"
 	.string "Now that I know you better, it \n"
 	.string "makes us better friends than ever!$"
+	.string "{JPN}{JPN}ふむふむ‥\p"
+	.string "その　プロフィール　きみらしさが　でてるね\p"
+	.string "きみの　ことが　よく　わかったから　これまで\n"
+	.string "いじょうに　なかよしだね！$"
 
 Text_HeardThatBefore:
 	.string "Oh, I've heard that before…\p"
 	.string "My cousin, who lives far away,\n"
 	.string "always used to say that, I think.$"
+	.string "{JPN}{JPN}あれ　それ　まえにも　きいた　ような‥\p"
+	.string "とおくに　すんでる　いとこが　いつも　そう\n"
+	.string "いってた　きが　するよ$"
 
 Text_TellMoreNextTime:
 	.string "Please tell me more about\n"
 	.string "yourself next time!$"
+	.string "{JPN}{JPN}こんどは　もっと　きみの　ことを　おしえてね！$"

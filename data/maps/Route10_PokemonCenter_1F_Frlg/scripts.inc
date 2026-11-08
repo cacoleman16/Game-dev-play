@@ -65,14 +65,22 @@ Route10_PokemonCenter_1F_Text_EveryTypeStrongerThanOthers::
 	.string "differently with each other.\p"
 	.string "Every type is stronger than some\n"
 	.string "types and weaker than others.$"
+	.string "{JPN}{JPN}ポケモンの　タイプには　それぞれ　あいしょうが\n"
+	.string "あるんだ。\p"
+	.string "どの　タイプにも　つよい　あいてと　よわい\n"
+	.string "あいてが　いるのさ。$"
 
 Route10_PokemonCenter_1F_Text_NuggetUselessSoldFor5000::
 	.string "A NUGGET is totally useless.\n"
 	.string "So I sold it for ¥5000.$"
+	.string "{JPN}{JPN}きんのたまなんて　なんの　やくにも　たたない。\n"
+	.string "だから　5000円で　うっちゃった。$"
 
 Route10_PokemonCenter_1F_Text_HeardGhostsHauntLavender::
 	.string "I heard that ghosts haunt\n"
 	.string "LAVENDER TOWN.$"
+	.string "{JPN}{JPN}シオンタウンには　ゆうれいが　でるって\n"
+	.string "きいたよ。$"
 
 Route10_PokemonCenter_1F_Text_GiveEverstoneIfCaught20Mons::
 	.string "Oh… {PLAYER}!\n"
@@ -87,16 +95,32 @@ Route10_PokemonCenter_1F_Text_GiveEverstoneIfCaught20Mons::
 	.string "So, {PLAYER}, let me ask you.\p"
 	.string "Have you gathered data on at least\n"
 	.string "twenty kinds of POKéMON?$"
+	.string "{JPN}{JPN}あっ‥　{PLAYER}さん！　さがして\n"
+	.string "いたんですよ！\p"
+	.string "わたしです！　オーキドはかせの　じょしゅです。\p"
+	.string "ずかんに　20しゅるいの　ポケモンが　とうろく\n"
+	.string "されていたら　はかせから　ごほうびを\l"
+	.string "わたすように　いわれて　いるんです。\p"
+	.string "はかせから　この　かわらずのいしを　あずかって\n"
+	.string "います。\p"
+	.string "では　{PLAYER}さん　おききします。\p"
+	.string "ポケモンを　20しゅるい　いじょう\n"
+	.string "つかまえましたか？$"
 
 Route10_PokemonCenter_1F_Text_GreatHereYouGo::
 	.string "Great! You have caught or owned\n"
 	.string "{STR_VAR_3} kinds of POKéMON!\p"
 	.string "Congratulations!\n"
 	.string "Here you go!$"
+	.string "{JPN}{JPN}すばらしい！　{STR_VAR_3}しゅるいの\n"
+	.string "ポケモンを　つかまえて　いますね！\p"
+	.string "おめでとう　ございます！　どうぞ！$"
 
 Route10_PokemonCenter_1F_Text_ReceivedEverstoneFromAide::
 	.string "{PLAYER} received the EVERSTONE\n"
 	.string "from the AIDE.$"
+	.string "{JPN}{JPN}{PLAYER}は　じょしゅから　かわらずのいしを\n"
+	.string "もらった！$"
 
 Route10_PokemonCenter_1F_Text_ExplainEverstone::
 	.string "Making POKéMON evolve certainly\n"
@@ -107,4 +131,12 @@ Route10_PokemonCenter_1F_Text_ExplainEverstone::
 	.string "to that POKéMON.\p"
 	.string "It will prevent evolution according\n"
 	.string "to the PROFESSOR.$"
+	.string "{JPN}{JPN}ポケモンを　しんか　させれば　ずかんの　データも\n"
+	.string "ふえますよね。\p"
+	.string "でも　ときには　しんか　させたくない　ポケモンも\n"
+	.string "いるでしょう。\p"
+	.string "そんな　ときは　その　ポケモンに\n"
+	.string "かわらずのいしを　もたせて　ください。\p"
+	.string "はかせに　よると　しんかを　ふせいで　くれる\n"
+	.string "そうです。$"
 

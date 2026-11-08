@@ -1,0 +1,11 @@
+{
+ "PokemonLeague_ChampionsRoom_Text_Intro": "{RIVAL}『よう　{PLAYER}！\\p{PLAYER}が　くるのを　たのしみに　まってたぜ！\\pライバルは　つよく　なくちゃ　おれも　はりあいが　ないからな。\\pおれは　ポケモンずかんを　つくりながら　あちこちで　ポケモンを　さがしまわった。\\pそれだけじゃ　ない。　どんな　タイプの　ポケモンにも　かてる　チームを　そろえたんだ！\\pそして　いま‥\\pおれは　ポケモンリーグの　チャンピオンだ！\\p{PLAYER}！　それが　どういう　いみか　わかるか？\\pおしえて　やるよ。\\pおれが　せかいで　いちばん　つよい　トレーナー　って　ことさ！』",
+ "PokemonLeague_ChampionsRoom_Text_RematchIntro": "{RIVAL}『よう　{PLAYER}！\\pもどって　きたな　{PLAYER}！　はっはっ　そう　こなくっちゃ！\\pライバルは　つよく　なくちゃ　おれも　はりあいが　ないからな。\\pおれは　ポケモンずかんを　つくりながら　あちこちで　ポケモンを　さがしまわった。\\pそれだけじゃ　ない。　どんな　タイプの　ポケモンにも　かてる　チームを　そろえたんだ！\\pそして　いま‥\\pおれは　ポケモンリーグの　チャンピオンだ！\\p{PLAYER}！　それが　どういう　いみか　わかるか？\\pおしえて　やるよ。\\pおれが　せかいで　いちばん　つよい　トレーナー　って　ことさ！』",
+ "PokemonLeague_ChampionsRoom_Text_Defeat": "なにー！？　そんな　ばかな！　おれの　さいこうの　チームが　まけるなんて！\\pリーグチャンピオンに　なるために　あれだけ　がんばったのに？\\pおれの　てんかは　もう　おわり　だって？　そんなの　ありかよ！",
+ "PokemonLeague_ChampionsRoom_Text_Victory": "はーはッ！\\nかった！　かった！　かった！\\p{PLAYER}に　まける　ような\\nおれさま　では　なーい！\\pま！　ポケモンの\\nてんさい　{RIVAL}さま　あいてに\\lここまで　よく　がんばった！\\pほめて　つかわす！\\nはーッ！　はーはッはッ！",
+ "PokemonLeague_ChampionsRoom_Text_PostBattle": "なぜだ？　どうして　おれが　まけたんだ？\\pポケモンの　そだてかたに　まちがいは　なかった　はずなのに‥\\pちくしょう！　おまえが　あたらしい　ポケモンリーグ　チャンピオンだ！\\pみとめたく　ないけどな‥",
+ "PokemonLeague_ChampionsRoom_Text_OakPlayer": "オーキド『{PLAYER}！』",
+ "PokemonLeague_ChampionsRoom_Text_OakCongratulations": "オーキド『そうか　かったのか！　ほんとうに　おめでとう！\\pおまえが　あたらしい　ポケモンリーグ　チャンピオンじゃ！\\p{STR_VAR_1}と　いっしょに　ずかんづくりの　たびに　でた　あの　ときから　ずいぶん　せいちょう　したのう。\\p{PLAYER}　りっぱに　なったな！』",
+ "PokemonLeague_ChampionsRoom_Text_OakImDisappointedRival": "オーキド『{RIVAL}‥　わしは　がっかりじゃ。\\pおまえが　してんのうを　やぶったと　きいて　かけつけたんじゃが‥\\pきて　みれば　もう　まけて　おるとは！\\p{RIVAL}　なぜ　まけたのか　わかるか？\\pおまえは　ポケモンへの　しんらいと　あいじょうを　わすれて　おる。\\pそれでは　もう　にどと　チャンピオンには　なれんぞ！』",
+ "PokemonLeague_ChampionsRoom_Text_OakPlayerComeWithMe": "オーキド『{PLAYER}。\\pこの　しょうりが　おまえ　ひとりの　ちからでは　ない　ことは　わかって　おるな。\\pおまえと　ポケモンとの　きずなは　すばらしい　ものじゃ。\\p{PLAYER}！　わしに　ついて　きなさい！』"
+}

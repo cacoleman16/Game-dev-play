@@ -240,11 +240,14 @@ SixIsland_DottedHole_SapphireRoom_EventScript_BrailleMessage::
 
 SixIsland_DottedHole_SapphireRoom_Text_FoundSapphire::
 	.string "{PLAYER} found a SAPPHIRE!$"
+	.string "{JPN}{JPN}{PLAYER}は　サファイアを　みつけた！$"
 
 SixIsland_DottedHole_SapphireRoom_Text_IWasRightInTailingYou::
 	.string "Fufu… Fufufufu…\n"
 	.string "I guessed right.\p"
 	.string "I was right in tailing you!$"
+	.string "{JPN}{JPN}フフ‥　フフフフ‥　おもった　とおりだ。\p"
+	.string "あとを　つけて　きて　せいかい　だったぜ！$"
 
 SixIsland_DottedHole_SapphireRoom_Text_SellToTeamRocketTellPassword::
 	.string "I knew that there was a SAPPHIRE\n"
@@ -261,4 +264,15 @@ SixIsland_DottedHole_SapphireRoom_Text_SellToTeamRocketTellPassword::
 	.string "“Yes, nah, CHANSEY.”\p"
 	.string "I'm done.\n"
 	.string "Don't think badly of me!$"
+	.string "{JPN}{JPN}ここに　サファイアが　ある　ことは\n"
+	.string "しってたんだ。　だから　これは　おれの　ものだ！\p"
+	.string "ロケットだんに　たかく　うりつけて　やる。\p"
+	.string "‥そ　そんな　こわい　かおで　にらむなよ！\p"
+	.string "とりかえしたけりゃ　おれが　うった　あとで\n"
+	.string "とりに　いけば　いいだろ？\p"
+	.string "ロケットだんの　そうこの　あいことばを　ひとつ\n"
+	.string "おしえて　やるよ。\p"
+	.string "おれが　しってる　そうこの　あいことばは　『うん\n"
+	.string "いや　ラッキー』だ。\p"
+	.string "じゃあな。　わるく　おもうなよ！$"
 

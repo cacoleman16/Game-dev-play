@@ -1,0 +1,15 @@
+{
+ "FiveIsland_Meadow_Text_DoorNeedsTwoPasswords": "とびらを　あけるには　パスワードが　2つ　いるようだ",
+ "FiveIsland_Meadow_Text_EnteredPasswordAnotherNeeded": "{PLAYER}は　パスワードを　にゅうりょく　した\\p『トサキントに　まるたが　ひつよう』\\p‥　‥　‥　‥　‥　‥\\pとびらを　あけるには　もう　ひとつ　パスワードが　いるようだ‥",
+ "FiveIsland_Meadow_Text_EnteredPasswordDoorOpened": "{PLAYER}は　2つの　パスワードを　にゅうりょく　した\\p『トサキントに　まるたが　ひつよう』\\n『うん　いや　ラッキー』\\p‥　‥　‥　‥　‥　‥\\pそうこの　とびらが　ひらいた！",
+ "FiveIsland_Meadow_Text_WarehouseDoorAlreadyOpen": "そうこの　とびらは　もう　ひらいている",
+ "FiveIsland_Meadow_Text_Rocket1Intro": "ここは　たちいり　きんしだ！　でていけ　でていけ！",
+ "FiveIsland_Meadow_Text_Rocket1Defeat": "うそだろ？",
+ "FiveIsland_Meadow_Text_Rocket1PostBattle": "おまえには　ようの　ない　ところだ！　かえれ！",
+ "FiveIsland_Meadow_Text_Rocket2Intro": "この　さきには　おれたちの　そうこしか　ないぞ\\pなにしに　きたんだ？",
+ "FiveIsland_Meadow_Text_Rocket2Defeat": "こんな　はずじゃ‥",
+ "FiveIsland_Meadow_Text_Rocket2PostBattle": "そうこの　なかみが　しりたいのか？\\pしらない　ほうが　いい　おまえの　ためにもな",
+ "FiveIsland_Meadow_Text_Rocket3Intro": "おれを　たおした　ところで　じかんの　むだだぜ",
+ "FiveIsland_Meadow_Text_Rocket3Defeat": "ああ　むかつく！",
+ "FiveIsland_Meadow_Text_Rocket3PostBattle": "どうせ　パスワードが　なけりゃ　なかには　はいれないぜ"
+}

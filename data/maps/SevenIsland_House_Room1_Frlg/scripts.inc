@@ -177,10 +177,17 @@ SevenIsland_House_Room1_Text_OnlyEnjoymentWatchingBattles::
 	.string "Now, my only source of enjoyment\n"
 	.string "is reminiscing about the past while\l"
 	.string "watching battles.$"
+	.string "{JPN}{JPN}いまでは　こんな　じゃが　わかい　ころは‥\p"
+	.string "あちこち　とびまわって　であった　トレーナーに\n"
+	.string "しょうぶを　いどんだ　ものじゃ。\p"
+	.string "いまの　たのしみは　バトルを　みながら　むかしを\n"
+	.string "おもいだす　ことだけ　じゃよ。$"
 
 SevenIsland_House_Room1_Text_SlightBreezeAroundBox::
 	.string "There is a slight breeze blowing\n"
 	.string "around the box.$"
+	.string "{JPN}{JPN}はこの　まわりから　かすかに　かぜが　ふいて\n"
+	.string "いる。$"
 
 SevenIsland_House_Room1_Text_ChallengeVisitingTrainer::
 	.string "Ah!\n"
@@ -191,6 +198,12 @@ SevenIsland_House_Room1_Text_ChallengeVisitingTrainer::
 	.string "waiting there now.\p"
 	.string "Tell me, you did come to challenge\n"
 	.string "{STR_VAR_1}, am I right?$"
+	.string "{JPN}{JPN}おお！　ようこそ　ようこそ！\p"
+	.string "じつはな　ちかに　かくしべやが　あるんじゃ。\p"
+	.string "{STR_VAR_1}と　いう　トレーナーが　いま\n"
+	.string "そこで　まって　おる。\p"
+	.string "おまえさん　{STR_VAR_1}に　しょうぶを\n"
+	.string "いどみに　きたんじゃろ？$"
 
 SevenIsland_House_Room1_Text_OhYouWontBattle::
 	.string "Oh…\n"
@@ -199,6 +212,9 @@ SevenIsland_House_Room1_Text_OhYouWontBattle::
 	.string "… …\p"
 	.string "Well, perhaps if you change your\n"
 	.string "mind, do come back.$"
+	.string "{JPN}{JPN}おや‥　たたかわんのか‥\p"
+	.string "そうか　そうか。　‥　‥\p"
+	.string "まあ　きが　かわったら　また　きなさい。$"
 
 SevenIsland_House_Room1_Text_LimitThreeMonsPerSide::
 	.string "Ah!\n"
@@ -211,14 +227,24 @@ SevenIsland_House_Room1_Text_LimitThreeMonsPerSide::
 	.string "sturdy.\p"
 	.string "Can I get you to limit it to\n"
 	.string "battles of three POKéMON per side?$"
+	.string "{JPN}{JPN}おお！　たたかって　くれるか！\p"
+	.string "はこを　どかした　かいが　あったわい。\p"
+	.string "‥　‥　じゃが　ひとつ　もんだいが　あってな。\p"
+	.string "この　かくしべやは　あまり　がんじょうに　できて\n"
+	.string "おらんのじゃ。\p"
+	.string "おたがい　ポケモン　3びき　までの　しょうぶに\n"
+	.string "して　もらえんかの？$"
 
 SevenIsland_House_Room1_Text_SaveProgressBeforeBattle::
 	.string "Fine! Before your battle, would\n"
 	.string "you like to save your game?$"
+	.string "{JPN}{JPN}よし！　しょうぶの　まえに　レポートを　かいて\n"
+	.string "おくかね？$"
 
 SevenIsland_House_Room1_Text_DontHoldAnythingBack::
 	.string "All right.\n"
 	.string "Don't hold anything back!$"
+	.string "{JPN}{JPN}よし！　えんりょは　いらんぞ！$"
 
 @ Unused
 SevenIsland_House_Room1_Text_StrVar1_1::
@@ -226,6 +252,7 @@ SevenIsland_House_Room1_Text_StrVar1_1::
 
 SevenIsland_House_Room2_Text_MatchEndedUpDraw::
 	.string "The match ended up a draw.$"
+	.string "{JPN}{JPN}しょうぶは　ひきわけに　おわった。$"
 
 SevenIsland_House_Room1_Text_DrawWasIt::
 	.string "A draw, was it?\p"
@@ -233,6 +260,11 @@ SevenIsland_House_Room1_Text_DrawWasIt::
 	.string "a worthy spectacle.\p"
 	.string "I'd say it was a wonderful battle\n"
 	.string "with a real sense of depth!$"
+	.string "{JPN}{JPN}ひきわけ　だったか。\p"
+	.string "じゃが　みごとな　しょうぶ　だったと　いわせて\n"
+	.string "もらおう。\p"
+	.string "じつに　おくの　ふかい　すばらしい　バトル\n"
+	.string "じゃった！$"
 
 @ Unused
 SevenIsland_House_Room1_Text_StrVar1_2::
@@ -249,6 +281,13 @@ SevenIsland_House_Room1_Text_AstoundingBattle::
 	.string "The clash of power upon power!\p"
 	.string "Yes!\n"
 	.string "It was sheer magnificence!$"
+	.string "{JPN}{JPN}ブラボー！\p"
+	.string "いや　じつに　ブラボー！　なんと　すばらしい\n"
+	.string "バトル　じゃ！\p"
+	.string "あまりに　すばらしくて　なみだが　とまらんわい！\p"
+	.string "みごとに　つかいこなされた　わざの　こうぼう！\p"
+	.string "ちからと　ちからの　ぶつかりあい！\p"
+	.string "そう！　まさに　かんどう　じゃった！$"
 
 @ Unused
 SevenIsland_House_Room1_Text_StrVar1_3::
@@ -263,4 +302,11 @@ SevenIsland_House_Room1_Text_FeelYourDisappointment::
 	.string "motivate you to seek greatness.\p"
 	.string "Forget not this disappointment\n"
 	.string "and redouble your training!$"
+	.string "{JPN}{JPN}ざんねん！　くやしい　きもちは　よく　わかるぞ。\p"
+	.string "じゃが　その　くやしさが　おまえさんを　つよく\n"
+	.string "するんじゃ。\p"
+	.string "それを　ばねに　して　まなび　さらなる　たかみを\n"
+	.string "めざしなされ！\p"
+	.string "この　くやしさを　わすれず　もっと\n"
+	.string "きたえるんじゃぞ！$"
 

@@ -1,0 +1,18 @@
+{
+ "CeruleanCity_Gym_Text_MistyIntro": "あら　みない　かおね！\\pポケモンに　たいする　ポリシーを　もった　トレーナーだけが　プロに　なれるのよ\\pあなたは　どんな　やりかたで　ポケモンを　つかまえて　そだててるの？\\pわたしの　ポリシーは‥　みずタイプの　ポケモンで　ガンガン　せめる　ことよ！{PLAY_BGM}{MUS_RG_ENCOUNTER_GYM_LEADER}",
+ "CeruleanCity_Gym_Text_ExplainTM03": "わざマシン03は　みずのはどう\\pみずの　ポケモンに　つかってね！",
+ "CeruleanCity_Gym_Text_ExplainCascadeBadge": "ブルーバッジが　あれば　レベル30までの　ポケモンが　いうことを　きくように　なるわ\\pこうかんで　もらった　ポケモンも　ふくめてね\\pそれに　せんとうの　そとでも　いつでも　いあいぎりが　つかえるの\\pちいさな　きを　いあいぎりで　きれば　あたらしい　みちが　ひらけるわ\\pわたしの　おきにいりの　わざマシンも　あげる",
+ "CeruleanCity_Gym_Text_ReceivedTM03FromMisty": "{PLAYER}は　カスミから　わざマシン03を　もらった！",
+ "CeruleanCity_Gym_Text_BetterMakeRoomForThis": "にもつを　へらして　きなさいよ！",
+ "CeruleanCity_Gym_Text_MistyDefeat": "うそっ！　あなた　つよすぎ！\\pわかったわ！\\pわたしに　かった　しるしに　ブルーバッジを　あげるわ",
+ "CeruleanCity_Gym_Text_DianaIntro": "なに？　あなた？　あなたの　あいては　わたしで　じゅうぶんよ！\\pカスミの　てを　わずらわせる　までも　ないわ",
+ "CeruleanCity_Gym_Text_DianaDefeat": "あっとう　されたわ！",
+ "CeruleanCity_Gym_Text_DianaPostBattle": "ほかの　トレーナーと　たたかって　こそ　じぶんの　ほんとうの　じつりょくが　わかるのよ",
+ "CeruleanCity_Gym_Text_LuisIntro": "ザブーン！\\pまずは　ぼくが　あいてだ！　いくぞ！",
+ "CeruleanCity_Gym_Text_LuisDefeat": "そんな　ばかな！",
+ "CeruleanCity_Gym_Text_LuisPostBattle": "カスミは　これからも　どんどん　つよく　なる　トレーナーなんだ\\pきみなんかに　まける　もんか！",
+ "CeruleanCity_Gym_Text_GymGuyAdvice": "おーす！　みらいの　チャンピオン！\\pちょっと　アドバイス　させてくれ！\\pリーダーの　カスミは　みずタイプの　ポケモンを　つかう　プロだ\\pくさタイプの　ポケモンなら　みずを　すいとって　しまえるぞ\\pでんきタイプの　ポケモンで　しびれさせるのも　ありだ！",
+ "CeruleanCity_Gym_Text_WeMakePrettyGoodTeam": "カスミに　かったな！　ほら　おれの　いった　とおりだろ？\\pおれと　きみ　なかなか　いい　コンビじゃ　ないか！",
+ "CeruleanCity_Gym_Text_GymStatue": "ハナダ　ポケモンジム\\nリーダー　カスミ\\pかったひと:\\n{RIVAL}",
+ "CeruleanCity_Gym_Text_GymStatuePlayerWon": "ハナダ　ポケモンジム\\nリーダー　カスミ\\pかったひと:\\n{RIVAL}　{PLAYER}"
+}

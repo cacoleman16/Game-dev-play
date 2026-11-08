@@ -27,6 +27,9 @@ TwoIsland_PokemonCenter_1F_Text_HaveYouVisitedGameCorner::
 	.string "already?\p"
 	.string "It's no good to go alone.\n"
 	.string "You have to take a friend along.$"
+	.string "{JPN}{JPN}もう　ゲームコーナーには　いって　みた？\p"
+	.string "ひとりで　いっても　だめなのよ　ともだちと\n"
+	.string "いっしょに　いかなくちゃ$"
 
 TwoIsland_PokemonCenter_1F_Text_OldLadyLivesOutOnCape::
 	.string "Not many people live on\n"
@@ -35,4 +38,9 @@ TwoIsland_PokemonCenter_1F_Text_OldLadyLivesOutOnCape::
 	.string "out on the cape.\p"
 	.string "She's been there since I don't know\n"
 	.string "when.$"
+	.string "{JPN}{JPN}2のしまに　すんでる　ひとは　あまり　いないの\p"
+	.string "みさきの　ほうに　おばあさんが　ひとり　すんで\n"
+	.string "いてね\p"
+	.string "いつから　いるのか　わからない　くらい\n"
+	.string "むかしから　いるのよ$"
 

@@ -1,0 +1,13 @@
+{
+ "SaffronCity_CopycatsHouse_2F_Text_MimickingFavoriteHobbyMale": "{PLAYER}『やあ！　ポケモン　すき？』\\p{PLAYER}『いや　ぼくが　きいてるん　だけど。』\\p{PLAYER}『えっ？　へんな　こ　だなあ！』\\pものまねむすめ『ん？　まねを　やめろって？　だって　ものまねが　いちばんの　しゅみ　なんだもん！』",
+ "SaffronCity_CopycatsHouse_2F_Text_MimickingFavoriteHobbyFemale": "{PLAYER}『こんにちは。　ポケモンが　すき　なのね。』\\p{PLAYER}『ちがうわ。　わたしが　あなたに　きいたの。』\\p{PLAYER}『えっ？　へんな　こ！』　ものまねむすめ『ん？　まねを　やめろって？　だって　ものまねが　いちばんの　しゅみ　なんだもん！』",
+ "Text_MimicTeach": "わあ！　ピッピにんぎょう！\\pわたしに　くれるの？　ありがとう！\\pそうだ！　わたし　ものまね　っていう　わざを　おしえて　あげられるの。",
+ "Text_MimicDeclined": "ものまねは　きらい？",
+ "Text_MimicWhichMon": "わたし　ものまねが　だいすき！　だれが　おぼえるの？",
+ "Text_MimicTaughtMale": "{PLAYER}『やあ！　さっきは　ありがとう！』\\p{PLAYER}『えっ？』\\p{PLAYER}『ぼくの　まねを　するのが　そんなに　たのしいの？』\\pものまねむすめ『もちろん！　おもしろくて　たまらないわ！』",
+ "Text_MimicTaughtFemale": "{PLAYER}『こんにちは！　この　まえは　ありがとう。』\\p{PLAYER}『えっ？』\\p{PLAYER}『わたしの　まねを　するのって　ほんとに　そんなに　たのしいの？』\\pものまねむすめ『もちろん！　おもしろくて　たまらないわ！』",
+ "SaffronCity_CopycatsHouse_2F_Text_Doduo": "ドードー『ギーッ！』\\pかがみよ　かがみ　わたしを　みて！　わたしって　こんなに　きれい　でしょ？",
+ "SaffronCity_CopycatsHouse_2F_Text_RareMonOnlyDoll": "めずらしい　ポケモンだ！　あれ？　ただの　にんぎょう　だ！",
+ "SaffronCity_CopycatsHouse_2F_Text_MarioWearingABucket": "バケツを　かぶった　マリオの　ゲームだ！",
+ "SaffronCity_CopycatsHouse_2F_Text_MySecrets": "‥\\pわたしの　ひみつ！\\pとくぎ:　ものまね！\\nしゅみ:　にんぎょう　あつめ！\\nすきな　ポケモン:　ピッピ！"
+}

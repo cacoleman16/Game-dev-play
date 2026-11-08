@@ -3,6 +3,7 @@
 #include "text.h"
 #include "strings.h"
 #include "union_room_chat.h"
+#include "qol_language.h"
 
 EWRAM_DATA u8 gStringVar1[0x100] = {0};
 EWRAM_DATA u8 gStringVar2[0x100] = {0};
@@ -30,6 +31,8 @@ u8 *StringCopy_Nickname(u8 *dest, const u8 *src)
 {
     u8 i;
     u32 limit = POKEMON_NAME_LENGTH;
+
+    src = QoL_LangStr(src); // [QoL] Japanese text in Japanese mode
 
     for (i = 0; i < limit; i++)
     {
@@ -75,6 +78,7 @@ u8 *StringCopy_PlayerName(u8 *dest, const u8 *src)
 
 u8 *StringCopy(u8 *dest, const u8 *src)
 {
+    src = QoL_LangStr(src); // [QoL]
     while (*src != EOS)
     {
         *dest = *src;
@@ -98,6 +102,7 @@ u8 *StringCopyN(u8 *dest, const u8 *src, u8 n)
 {
     u32 i;
 
+    src = QoL_LangStr(src); // [QoL]
     for (i = 0; i < n; i++)
         dest[i] = src[i];
 
@@ -116,6 +121,7 @@ u16 StringLength(const u8 *str)
 {
     u16 length = 0;
 
+    str = QoL_LangStr(str); // [QoL]
     while (str[length] != EOS)
         length++;
 
@@ -345,6 +351,7 @@ u8 *ConvertIntToHexStringN(u8 *dest, s32 value, enum StringConvertMode mode, u8 
 
 u8 *StringExpandPlaceholders(u8 *dest, const u8 *src)
 {
+    src = QoL_LangStr(src); // [QoL] Japanese text in Japanese mode
     for (;;)
     {
         u8 c = *src++;
@@ -563,6 +570,7 @@ u8 *StringFill(u8 *dest, u8 c, u16 n)
 
 u8 *StringCopyPadded(u8 *dest, const u8 *src, u8 c, u16 n)
 {
+    src = QoL_LangStr(src); // [QoL]
     while (*src != EOS)
     {
         *dest++ = *src++;

@@ -162,49 +162,69 @@ PalletTown_PlayersHouse_2F_Text_PlayedWithNES::
 	.string "{PLAYER} played with the NES.\p"
 	.string "…Okay!\n"
 	.string "It's time to go!$"
+	.string "{JPN}{JPN}{PLAYER}は　ファミコンで　あそんだ！\p"
+	.string "‥よし！　そろそろ　でかけよう！$"
 
 PalletTown_PlayersHouse_2F_Text_PressLRForHelp::
 	.string "It's a posted notice…\p"
 	.string "L Button: auto-run on/off.\n"
 	.string "R Button: DexNav search.\p"
 	.string "Challenge settings are on the NES.$"
+	.string "{JPN}{JPN}なにか　はりがみが　してある‥\p"
+	.string "Lボタン:オートダッシュ　オン/オフ\n"
+	.string "Rボタン:ずかんナビで　さがす\p"
+	.string "チャレンジの　せっていは　ファミコンで\n"
+	.string "できます。$"
 
 PalletTown_PlayersHouse_2F_Text_PickSetting::
 	.string "Challenge settings.\n"
 	.string "Pick one to switch it ON or OFF.$"
+	.string "{JPN}{JPN}チャレンジの　せってい。　えらんだ　ものの\n"
+	.string "オンと　オフを　きりかえます。$"
 
 PalletTown_PlayersHouse_2F_Text_NuzlockeOn::
 	.string "NUZLOCKE: ON$"
+	.string "{JPN}{JPN}ナズロック:オン$"
 
 PalletTown_PlayersHouse_2F_Text_NuzlockeOff::
 	.string "NUZLOCKE: OFF$"
+	.string "{JPN}{JPN}ナズロック:オフ$"
 
 PalletTown_PlayersHouse_2F_Text_RandomizerOn::
 	.string "RANDOMIZER: ON$"
+	.string "{JPN}{JPN}ランダマイザー:オン$"
 
 PalletTown_PlayersHouse_2F_Text_RandomizerOff::
 	.string "RANDOMIZER: OFF$"
+	.string "{JPN}{JPN}ランダマイザー:オフ$"
 
 PalletTown_PlayersHouse_2F_Text_HardOn::
 	.string "HARD MODE: ON$"
+	.string "{JPN}{JPN}ハードモード:オン$"
 
 PalletTown_PlayersHouse_2F_Text_HardOff::
 	.string "HARD MODE: OFF$"
+	.string "{JPN}{JPN}ハードモード:オフ$"
 
 PalletTown_PlayersHouse_2F_Text_CapsOn::
 	.string "LEVEL CAPS: ON$"
+	.string "{JPN}{JPN}レベルキャップ:オン$"
 
 PalletTown_PlayersHouse_2F_Text_CapsOff::
 	.string "LEVEL CAPS: OFF$"
+	.string "{JPN}{JPN}レベルキャップ:オフ$"
 
 PalletTown_PlayersHouse_2F_Text_FollowersOn::
 	.string "FOLLOWERS: ON$"
+	.string "{JPN}{JPN}つれあるき:オン$"
 
 PalletTown_PlayersHouse_2F_Text_FollowersOff::
 	.string "FOLLOWERS: OFF$"
+	.string "{JPN}{JPN}つれあるき:オフ$"
 
 PalletTown_PlayersHouse_2F_Text_Done::
 	.string "DONE$"
+	.string "{JPN}{JPN}おわる$"
 
 PalletTown_PlayersHouse_2F_Text_NuzlockeRules::
 	.string "NUZLOCKE rules start once PROF.\n"
@@ -217,13 +237,28 @@ PalletTown_PlayersHouse_2F_Text_NuzlockeRules::
 	.string "A POKéMON that faints is gone:\n"
 	.string "it can't be healed or revived.\l"
 	.string "Put it in a BOX to say goodbye.$"
+	.string "{JPN}{JPN}ナズロックの　ルールは　オーキドはかせから\n"
+	.string "モンスターボールを　もらうと　はじまります。\p"
+	.string "つかまえて　いいのは　それぞれの　ばしょで\n"
+	.string "さいしょに　であった　やせいの　ポケモン　1ぴき\l"
+	.string "だけです。\p"
+	.string "もう　つかまえた　しゅるいと　いろちがいの\n"
+	.string "ポケモンは　かぞえません。　とくべつな　であいも\l"
+	.string "じゆうです。\p"
+	.string "ひんしに　なった　ポケモンは　かいふくも\n"
+	.string "ふっかつも　できません。　ボックスに　あずけて\l"
+	.string "おわかれ　しましょう。$"
 
 PalletTown_PlayersHouse_2F_Text_TurnNuzlockeOn::
 	.string "Turn NUZLOCKE ON?$"
+	.string "{JPN}{JPN}ナズロックを　オンに　しますか？$"
 
 PalletTown_PlayersHouse_2F_Text_TurnNuzlockeOff::
 	.string "Turn NUZLOCKE OFF?\n"
 	.string "Fainted POKéMON can heal again.$"
+	.string "{JPN}{JPN}ナズロックを　オフに　しますか？　ひんしの\n"
+	.string "ポケモンも　また　かいふく　できるように\l"
+	.string "なります。$"
 
 PalletTown_PlayersHouse_2F_Text_RandomizerRules::
 	.string "The RANDOMIZER swaps every species\n"
@@ -234,13 +269,25 @@ PalletTown_PlayersHouse_2F_Text_RandomizerRules::
 	.string "Each save file has its own mix.\n"
 	.string "Turn it on before picking your\l"
 	.string "first POKéMON for the full effect.$"
+	.string "{JPN}{JPN}ランダマイザーは　すべての　ポケモンを\n"
+	.string "おなじくらいの　つよさの　べつの　ポケモンに\l"
+	.string "いれかえます。\p"
+	.string "やせいの　ポケモン　トレーナーの　てもち\n"
+	.string "とくべつな　であい　さいしょの　ポケモンが\l"
+	.string "すべて　かわります。\p"
+	.string "くみあわせは　レポートごとに　ちがいます。\n"
+	.string "さいしょの　ポケモンを　えらぶ　まえに　オンに\l"
+	.string "すると　すべてに　こうかが　あります。$"
 
 PalletTown_PlayersHouse_2F_Text_TurnRandomizerOn::
 	.string "Turn the RANDOMIZER ON?$"
+	.string "{JPN}{JPN}ランダマイザーを　オンに　しますか？$"
 
 PalletTown_PlayersHouse_2F_Text_TurnRandomizerOff::
 	.string "Turn the RANDOMIZER OFF?\n"
 	.string "Everything goes back to normal.$"
+	.string "{JPN}{JPN}ランダマイザーを　オフに　しますか？　すべて\n"
+	.string "もとに　もどります。$"
 
 PalletTown_PlayersHouse_2F_Text_HardRules::
 	.string "In HARD MODE, GYM LEADERS, the\n"
@@ -249,14 +296,26 @@ PalletTown_PlayersHouse_2F_Text_HardRules::
 	.string "Some even MEGA EVOLVE!\n"
 	.string "Their top POKéMON keep the usual\l"
 	.string "levels, so LEVEL CAPS still fit.$"
+	.string "{JPN}{JPN}ハードモードでは　ジムリーダー　してんのう\n"
+	.string "チャンピオンが　どうぐを　もたせた\l"
+	.string "フルメンバーで　いどんで　きます。\p"
+	.string "なかには　メガシンカ　する　ものも！　いちばん\n"
+	.string "つよい　ポケモンの　レベルは　いつもと\l"
+	.string "おなじなので　レベルキャップも　そのまま\l"
+	.string "つかえます。$"
 
 PalletTown_PlayersHouse_2F_Text_TurnHardOn::
 	.string "Turn HARD MODE ON?$"
+	.string "{JPN}{JPN}ハードモードを　オンに　しますか？$"
 
 PalletTown_PlayersHouse_2F_Text_CapsExplain::
 	.string "With LEVEL CAPS ON, POKéMON stop\n"
 	.string "gaining EXP. at the next GYM\l"
 	.string "LEADER's top level.$"
+	.string "{JPN}{JPN}レベルキャップが　オンだと　ポケモンは　つぎの\n"
+	.string "ジムリーダーの　いちばん　たかい　レベルで\l"
+	.string "けいけんちが　もらえなく　なります。$"
 
 PalletTown_PlayersHouse_2F_Text_SettingsSaved::
 	.string "Settings updated. Have fun!$"
+	.string "{JPN}{JPN}せっていを　かえました。　たのしんでね！$"

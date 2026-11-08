@@ -63,20 +63,28 @@ CeladonCity_Condominiums_1F_EventScript_SuiteSign::
 
 CeladonCity_Condominiums_1F_Text_Meowth::
 	.string "MEOWTH: Meow!$"
+	.string "{JPN}{JPN}ニャース『ニャーオ！』$"
 
 CeladonCity_Condominiums_1F_Text_TryThisDrinkInstead::
 	.string "You shouldn't spend all your money\n"
 	.string "on drinks.\p"
 	.string "Try this instead.$"
+	.string "{JPN}{JPN}のみものばかりに　おかねを　つかっちゃ　だめよ\p"
+	.string "かわりに　これを　あげるわ$"
 
 CeladonCity_Condominiums_1F_Text_NothingBeatsThirstLikeTea::
 	.string "Nothing beats thirst like some hot\n"
 	.string "TEA.\p"
 	.string "It really is the best.$"
+	.string "{JPN}{JPN}のどが　かわいたら　あつい　おちゃが　いちばん！\p"
+	.string "ほんとに　さいこうよ$"
 
 CeladonCity_Condominiums_1F_Text_MyDearMonsKeepMeCompany::
 	.string "My dear POKéMON keep me company.\n"
 	.string "MEOWTH even brings money home!$"
+	.string "{JPN}{JPN}かわいい　ポケモンたちが　いつも　そばに\n"
+	.string "いてくれるの　ニャースは　おかねまで\l"
+	.string "ひろってくるのよ！$"
 
 CeladonCity_Condominiums_1F_Text_DaisyComesToBuyTea::
 	.string "Oh, hello, dearie.\n"
@@ -87,14 +95,24 @@ CeladonCity_Condominiums_1F_Text_DaisyComesToBuyTea::
 	.string "she enjoys TEA every day.\p"
 	.string "She visits the CELADON DEPT. STORE\n"
 	.string "to buy some TEA.$"
+	.string "{JPN}{JPN}あら　こんにちは　おちゃは　おいしかった？\p"
+	.string "ところで　あなた　ひょっとして　マサラタウンの\n"
+	.string "ひと？\p"
+	.string "マサラタウンの　ナナミって　おんなのこがね\n"
+	.string "まいにち　おちゃを　たのしんでるの\p"
+	.string "タマムシデパートに　おちゃを　かいに　くるのよ$"
 
 CeladonCity_Condominiums_1F_Text_Clefairy::
 	.string "CLEFAIRY: Pi pippippi!$"
+	.string "{JPN}{JPN}ピッピ『ピッピッピッピー！』$"
 
 CeladonCity_Condominiums_1F_Text_Nidoran::
 	.string "NIDORAN♀: Kya kyaoo!$"
+	.string "{JPN}{JPN}ニドラン♀『キャッ　キャオー！』$"
 
 CeladonCity_Condominiums_1F_Text_ManagersSuite::
 	.string "CELADON MANSION\n"
 	.string "Manager's Suite$"
+	.string "{JPN}{JPN}タマムシマンション\n"
+	.string "かんりにんしつ$"
 

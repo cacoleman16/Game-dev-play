@@ -39,6 +39,9 @@ ThreeIsland_Mart_Text_TrueThatCeldadonDeptStoreBigger::
 	.string "Is it true?\p"
 	.string "CELADON DEPT. STORE is several\n"
 	.string "times bigger than this shop?$"
+	.string "{JPN}{JPN}ほんとう　なの？\p"
+	.string "タマムシデパートって　この　おみせの　なんばいも\n"
+	.string "おおきいって。$"
 
 ThreeIsland_Mart_Text_PeopleHealWithBerriesFromForest::
 	.string "I sometimes buy medicine here.\p"
@@ -46,9 +49,18 @@ ThreeIsland_Mart_Text_PeopleHealWithBerriesFromForest::
 	.string "with BERRIES from BERRY FOREST.\p"
 	.string "After all, BERRIES are free and\n"
 	.string "they never run out.$"
+	.string "{JPN}{JPN}ときどき　ここで　くすりを　かうんだ。\p"
+	.string "でも　きのみのもりの　きのみで　ポケモンを\n"
+	.string "かいふく　させる　ひとも　おおいよ。\p"
+	.string "なにしろ　きのみは　ただだし　なくなる　ことも\n"
+	.string "ないからね。$"
 
 ThreeIsland_Mart_Text_BikersWereAboutToTrashMart::
 	.string "Those BIKERS were about to trash\n"
 	.string "this POKéMON MART.\p"
 	.string "Am I glad they decided to leave!$"
+	.string "{JPN}{JPN}あの　ぼうそうぞくたち　この\n"
+	.string "フレンドリィショップを　めちゃくちゃに　する\l"
+	.string "ところ　だったんだ。\p"
+	.string "でて　いって　くれて　ほんとうに　よかった！$"
 

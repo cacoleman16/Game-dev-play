@@ -1,0 +1,19 @@
+{
+ "PewterCity_Gym_Text_BrockIntro": "よく　きたな！　おれは　タケシ。　ニビの　ジムリーダーだ！\\pおれの　かたい　いしは　おれの　ポケモンにも　あらわれて　いる！\\pおれの　ポケモンは　みんな　いしのように　かたく　ねばりづよい！\\pそう！　おれの　ポケモンは　みんな　いわタイプ　なのだ！\\pふはは！　まけると　わかって　いて　おれに　いどむのか？\\pそれも　トレーナーの　プライドが　そうさせる　のだろう。\\pよし　いいだろう！　おまえの　ちからを　みせて　みろ！{PLAY_BGM}{MUS_RG_ENCOUNTER_GYM_LEADER}",
+ "PewterCity_Gym_Text_BrockDefeat": "おまえを　あまく　みて　いた。　だから　まけたのだ。\\pかった　しるしに　この　ポケモンリーグ　こうにんの　グレーバッジを　わたそう。\\p{FONT_NORMAL}{PLAYER}は　タケシから　グレーバッジを　もらった！{PAUSE_MUSIC}{PLAY_BGM}{MUS_OBTAIN_BADGE}{PAUSE 0xFE}{PAUSE 0x56}{RESUME_MUSIC}\\p{FONT_MALE}グレーバッジを　もって　いるだけで　ポケモンが　つよく　なる。\\pそれに　せんとう　いがいでも　フラッシュが　つかえるように　なるぞ。\\pもちろん　フラッシュを　おぼえた　ポケモンが　ひつよう　だがな。",
+ "PewterCity_Gym_Text_TakeThisWithYou": "まて！　これも　もって　いけ。",
+ "PewterCity_Gym_Text_ReceivedTM39FromBrock": "{PLAYER}は　タケシから　わざマシン39を　もらった！",
+ "PewterCity_Gym_Text_ExplainTM39": "わざマシンには　ポケモンの　わざが　はいって　いる。\\pわざマシンを　つかうと　その　わざを　ポケモンに　おぼえさせられる。\\pわざマシンは　1かい　つかうと　なくなる。\\pだから　つかう　ときは　ポケモンを　よく　えらぶんだぞ。\\pところで‥　わざマシン39の　なかみは　がんせきふうじだ。\\pあいてに　いわを　なげつけて　すばやさを　さげる　わざだ。",
+ "PewterCity_Gym_Text_BrockPostBattle": "この　ひろい　せかいには　いろんな　トレーナーが　いる。\\pおまえには　ポケモントレーナーとしての　すばらしい　さいのうが　あるようだ。\\pそこで　ひとつ　アドバイスだ。\\pハナダの　ジムに　いって　じぶんの　ちからを　ためして　みろ。",
+ "PewterCity_Gym_Text_DontHaveRoomForThis": "これを　しまう　ばしょが　ないようだな。",
+ "PewterCity_Gym_Text_LiamIntro": "ちょっと　まった！\\pタケシに　いどむ　なんて　1まんこうねん　はやいぜ！",
+ "PewterCity_Gym_Text_LiamDefeat": "くそー！\\pこうねんは　じかんじゃ　なくて‥　きょりの　たんい　だった！",
+ "PewterCity_Gym_Text_LiamPostBattle": "なかなか　やるな。　‥でも　タケシは　もっと　すごいぞ！",
+ "PewterCity_Gym_Text_LetMeTakeYouToTheTop": "よう！　でっかい　ゆめを　もってるかい？\\pポケモン　チャンピオンに　なる　ゆめを　みる　ゆうきは　あるかい？\\pおれは　トレーナーじゃ　ないが　かつ　ための　アドバイスなら　できるぜ。\\pおまえを　てっぺんまで　つれてって　やるよ！",
+ "PewterCity_Gym_Text_LetsGetHappening": "よっしゃ！　はじめようぜ！",
+ "PewterCity_Gym_Text_TryDifferentPartyOrders": "しょうぶで　さいしょに　でる　ポケモンは　ポケモンリストの　ひだりに　いる　ポケモンだ。\\pポケモンの　じゅんばんを　かえれば　ゆうりに　たたかえる　ことも　ある。\\pあいての　てもちに　あわせて　いろいろな　じゅんばんを　ためして　みな。",
+ "PewterCity_Gym_Text_ItsFreeLetsGetHappening": "アドバイスは　タダだ！　はじめようぜ！",
+ "PewterCity_Gym_Text_YoureChampMaterial": "おもった　とおりだ！　おまえは　チャンピオンの　うつわだぜ！",
+ "PewterCity_Gym_Text_GymStatue": "ニビ　ポケモンジム\\nリーダー　タケシ\\pしょうりした　トレーナー:\\n{RIVAL}",
+ "PewterCity_Gym_Text_GymStatuePlayerWon": "ニビ　ポケモンジム\\nリーダー　タケシ\\pしょうりした　トレーナー:\\n{RIVAL}　{PLAYER}"
+}

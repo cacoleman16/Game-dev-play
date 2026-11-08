@@ -77,12 +77,21 @@ IndigoPlateau_PokemonCenter_1F_Text_GymGuyAdvice::
 	.string "over again!\p"
 	.string "This is it!\n"
 	.string "Go for it!$"
+	.string "{JPN}{JPN}よう！　みらいの　チャンピオン！\p"
+	.string "ポケモンリーグでは　してんのうと　つづけて\n"
+	.string "たたかう　ことに　なる。\p"
+	.string "まけたら　また　さいしょから　やりなおしだ！\p"
+	.string "いよいよだ！　がんばれよ！$"
 
 IndigoPlateau_PokemonCenter_1F_Text_FaceEliteFourGoodLuck::
 	.string "From here on, you face the\n"
 	.string "ELITE FOUR one by one.\p"
 	.string "If you win, a door opens to the\n"
 	.string "next TRAINER. Good luck!$"
+	.string "{JPN}{JPN}ここから　さきは　してんのうと　ひとりずつ\n"
+	.string "たたかいます。\p"
+	.string "かてば　つぎの　トレーナーへの　とびらが\n"
+	.string "ひらきます。　がんばって　ください！$"
 
 IndigoPlateau_PokemonCenter_1F_Text_LoreleiIsAbsentClosedForTimeBeing::
 	.string "I am so sorry, but you've wasted\n"
@@ -91,6 +100,12 @@ IndigoPlateau_PokemonCenter_1F_Text_LoreleiIsAbsentClosedForTimeBeing::
 	.string "absent, you see.\p"
 	.string "As a result, the POKéMON LEAGUE is\n"
 	.string "closed for the time being.$"
+	.string "{JPN}{JPN}まことに　もうしわけ　ありませんが　せっかく\n"
+	.string "きて　いただいたのに‥\p"
+	.string "じつは　してんのうの　カンナが　るすに　して\n"
+	.string "おりまして。\p"
+	.string "そのため　ポケモンリーグは　しばらく　おやすみ\n"
+	.string "なのです。$"
 
 IndigoPlateau_PokemonCenter_1F_Text_AgathaWhuppedUs::
 	.string "AGATHA's GHOST-type POKéMON are\n"
@@ -103,6 +118,15 @@ IndigoPlateau_PokemonCenter_1F_Text_AgathaWhuppedUs::
 	.string "short fuse, too.\p"
 	.string "It doesn't take anything to get\n"
 	.string "that scary lady hollering.$"
+	.string "{JPN}{JPN}キクコの　ゴーストタイプの　ポケモンは\n"
+	.string "おそろしく　てごわいんだ。\p"
+	.string "おれは　かくとうタイプの　ポケモンを　めいっぱい\n"
+	.string "きたえた。\p"
+	.string "じしん　まんまんで　キクコに　いどんだけど\n"
+	.string "こてんぱんに　やられたよ。\p"
+	.string "あの　ばあさん　すごく　きが　みじかいんだ。\p"
+	.string "ちょっとした　ことで　すぐ　どなりだす　こわい\n"
+	.string "ばあさん　だよ。$"
 
 IndigoPlateau_PokemonCenter_1F_Text_LancesCousinGymLeaderFarAway::
 	.string "Maybe becoming an ELITE FOUR\n"
@@ -110,4 +134,8 @@ IndigoPlateau_PokemonCenter_1F_Text_LancesCousinGymLeaderFarAway::
 	.string "From what I've heard, LANCE has\n"
 	.string "a cousin who's a GYM LEADER\l"
 	.string "somewhere far away.$"
+	.string "{JPN}{JPN}してんのうに　なるのは　ちすじ　なのかもね。\p"
+	.string "きいた　はなしでは　ワタルには　どこか　とおくで\n"
+	.string "ジムリーダーを　している　いとこが\l"
+	.string "いるらしいよ。$"
 

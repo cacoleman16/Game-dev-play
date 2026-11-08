@@ -386,6 +386,7 @@ SaffronCity_PokemonTrainerFanClub_EventScript_BlackBeltOnlyNonFan::
 SaffronCity_PokemonTrainerFanClub_Text_HuhYou::
 	.string "Huh?\n"
 	.string "You…$"
+	.string "{JPN}{JPN}あれ？　きみは‥$"
 
 SaffronCity_PokemonTrainerFanClub_Text_YourePlayerWereYourFansNow::
 	.string "Are you maybe…\n"
@@ -403,16 +404,33 @@ SaffronCity_PokemonTrainerFanClub_Text_YourePlayerWereYourFansNow::
 	.string "and show us how cool you are.\p"
 	.string "That way, maybe other people will\n"
 	.string "become fans just like me.$"
+	.string "{JPN}{JPN}もしかして‥　‥　‥\p"
+	.string "やっぱり！　{PLAYER}だ！\p"
+	.string "ちょうど　きみの　はなしを　してたんだ！\p"
+	.string "すごく　つよい　トレーナーが　あらわれたって\n"
+	.string "はなしを　してたんだよ。\p"
+	.string "それが　きみ　なんだ！　かっこいい！\p"
+	.string "だから　みんなで　きみの　ファンクラブに　なる\n"
+	.string "ことに　したんだ！\p"
+	.string "これからも　バトルを　つづけて　かっこいい\n"
+	.string "ところを　みせてね。\p"
+	.string "そしたら　ぼく　みたいな　ファンが　もっと\n"
+	.string "ふえる　かも　しれない。$"
 
 SaffronCity_PokemonTrainerFanClub_Text_AlwaysCheerForYou::
 	.string "I'll always be cheering for you!\p"
 	.string "Go, {PLAYER}, go!$"
+	.string "{JPN}{JPN}いつでも　おうえん　してるよ！\p"
+	.string "がんばれ　{PLAYER}！$"
 
 SaffronCity_PokemonTrainerFanClub_Text_IllAlwaysBelieveInYou::
 	.string "I'll always believe in you,\n"
 	.string "{PLAYER}.\p"
 	.string "Please show the others what you're\n"
 	.string "like when you battle seriously.$"
+	.string "{JPN}{JPN}{PLAYER}　ずっと　しんじてるよ。\p"
+	.string "ほんきで　たたかう　すがたを　みんなに　みせて\n"
+	.string "あげてね。$"
 
 SaffronCity_PokemonTrainerFanClub_Text_WasYourFanNotAnymore::
 	.string "I'm sorry.\n"
@@ -421,6 +439,11 @@ SaffronCity_PokemonTrainerFanClub_Text_WasYourFanNotAnymore::
 	.string "the drive you had before.\p"
 	.string "Lately, I think {STR_VAR_1} has been\n"
 	.string "a lot cooler.$"
+	.string "{JPN}{JPN}ごめんね。　まえは　きみの　ファン　だったんだ。\p"
+	.string "でも　いまの　きみは　まえの　ような　いきおいが\n"
+	.string "ない　みたい。\p"
+	.string "さいきんは　{STR_VAR_1}の　ほうが\n"
+	.string "ずっと　かっこいいと　おもうんだ。$"
 
 SaffronCity_PokemonTrainerFanClub_Text_EveryonesYourFanButICantBe::
 	.string "Oh!\n"
@@ -432,11 +455,21 @@ SaffronCity_PokemonTrainerFanClub_Text_EveryonesYourFanButICantBe::
 	.string "But, do you know what?\p"
 	.string "Once I became {STR_VAR_1}'s fan,\n"
 	.string "I can't just stop being a fan.$"
+	.string "{JPN}{JPN}あっ！　{PLAYER}！\p"
+	.string "さいきん　みんな　きみに　むちゅう　なんだ。\p"
+	.string "きもちは　わかるよ。　きみが　つよいのは\n"
+	.string "しってる。\p"
+	.string "でもね‥\p"
+	.string "いちど　{STR_VAR_1}の　ファンに\n"
+	.string "なったら　かんたんには　やめられないんだ。$"
 
 SaffronCity_PokemonTrainerFanClub_Text_TrainersCoolWhenBattling::
 	.string "I think TRAINERS are so cool when\n"
 	.string "they're battling.\p"
 	.string "Don't you think so, too?$"
+	.string "{JPN}{JPN}バトルを　してる　ときの　トレーナーって　すごく\n"
+	.string "かっこいいと　おもうの。\p"
+	.string "あなたも　そう　おもわない？$"
 
 SaffronCity_PokemonTrainerFanClub_Text_CanYouAutographShorts::
 	.string "Oh! It's {PLAYER}!\n"
@@ -445,6 +478,10 @@ SaffronCity_PokemonTrainerFanClub_Text_CanYouAutographShorts::
 	.string "Oh, yeah!\p"
 	.string "Can you autograph something?\n"
 	.string "How about my shorts?$"
+	.string "{JPN}{JPN}あっ！　{PLAYER}だ！　かっこいい！\p"
+	.string "あっ！　そうだ！\p"
+	.string "サインして　くれない？　ぼくの　たんパンに\n"
+	.string "なんて　どう？$"
 
 SaffronCity_PokemonTrainerFanClub_Text_CountingOnYou::
 	.string "However hot it's been…\p"
@@ -455,6 +492,13 @@ SaffronCity_PokemonTrainerFanClub_Text_CountingOnYou::
 	.string "winning!\p"
 	.string "I believe in you just as much as\n"
 	.string "I believe in shorts!$"
+	.string "{JPN}{JPN}どんなに　あつい　ひも‥\p"
+	.string "どんなに　さむい　ひも‥\p"
+	.string "ぼくは　たんパンを　しんじて　はきつづけて\n"
+	.string "きた！\p"
+	.string "これからも　かちつづけて　くれよ！\p"
+	.string "たんパンと　おなじ　くらい　きみを　しんじてる\n"
+	.string "からね！$"
 
 SaffronCity_PokemonTrainerFanClub_Text_BrocksMyHero::
 	.string "BROCK's my hero!\n"
@@ -463,6 +507,11 @@ SaffronCity_PokemonTrainerFanClub_Text_BrocksMyHero::
 	.string "something for me.\p"
 	.string "I got her to embroider “BROCK”\n"
 	.string "on my shorts!$"
+	.string "{JPN}{JPN}タケシは　ぼくの　ヒーロー！　おとこの　なかの\n"
+	.string "おとこ　だ！\p"
+	.string "へへっ　ママに　おねがい　したんだ。\p"
+	.string "ぼくの　たんパンに　『タケシ』って　ししゅう\n"
+	.string "してもらったんだ！$"
 
 SaffronCity_PokemonTrainerFanClub_Text_BrocksFanToBitterEnd::
 	.string "…  …\p"
@@ -472,12 +521,20 @@ SaffronCity_PokemonTrainerFanClub_Text_BrocksFanToBitterEnd::
 	.string "I swear it on my rock-hard will,\l"
 	.string "and on my shorts!\p"
 	.string "I'll be his fan to the bitter end!$"
+	.string "{JPN}{JPN}‥　‥\p"
+	.string "‥　‥　ぼくは　タケシの　ファンだ！\p"
+	.string "たとえ　ファンが　ぼく　ひとり　でも　いしの\n"
+	.string "ように　かたい　いしと　たんパンに　ちかって‥\p"
+	.string "さいごの　さいごまで　タケシの　ファンで\n"
+	.string "いるぞ！$"
 
 SaffronCity_PokemonTrainerFanClub_Text_BrocksLastWordOnCool::
 	.string "BROCK's the last word on cool,\n"
 	.string "end of story!\p"
 	.string "Now there's a guy who I want to\n"
 	.string "be like!$"
+	.string "{JPN}{JPN}かっこいいと　いえば　タケシ！　いじょう！\p"
+	.string "ああいう　おとこに　ぼくは　なりたいんだ！$"
 
 SaffronCity_PokemonTrainerFanClub_Text_HadPleasureOfWatchingYouBattle::
 	.string "{PLAYER}, I've had the pleasure of\n"
@@ -486,6 +543,12 @@ SaffronCity_PokemonTrainerFanClub_Text_HadPleasureOfWatchingYouBattle::
 	.string "my own long-lost youth.\p"
 	.string "May you continue to find success.\n"
 	.string "You have a fan in me!$"
+	.string "{JPN}{JPN}{PLAYER}　きみの　バトルを　たのしく\n"
+	.string "みせて　もらったよ。\p"
+	.string "わしの　とおい　わかき　ひの　おもいでが\n"
+	.string "よみがえる　ようじゃ。\p"
+	.string "これからも　かつやく　しておくれ。　わしは\n"
+	.string "きみの　ファン　じゃよ！$"
 
 SaffronCity_PokemonTrainerFanClub_Text_NeverSeenTrainerOfYourMagnificence::
 	.string "I have journeyed far and wide\n"
@@ -496,12 +559,21 @@ SaffronCity_PokemonTrainerFanClub_Text_NeverSeenTrainerOfYourMagnificence::
 	.string "and keep battling on!\p"
 	.string "Make that a promise to me,\n"
 	.string "my young idol!$"
+	.string "{JPN}{JPN}わしは　せかいじゅうを　たびして　きた。\p"
+	.string "だが　きみほど　すばらしい　トレーナーは　みた\n"
+	.string "ことが　ない。\p"
+	.string "じしんを　もって　これからも　たたかい\n"
+	.string "つづけなさい！\p"
+	.string "わしの　わかき　アイドルよ　やくそく　じゃぞ！$"
 
 SaffronCity_PokemonTrainerFanClub_Text_HmmAndYouAre::
 	.string "Hmm…\n"
 	.string "And you are?\p"
 	.string "Were you hoping to sign up for\n"
 	.string "a membership in our FAN CLUB?$"
+	.string "{JPN}{JPN}ふむ‥　きみは？\p"
+	.string "わたしたちの　ファンクラブに　にゅうかい\n"
+	.string "したいのかね？$"
 
 SaffronCity_PokemonTrainerFanClub_Text_YouveStillAWaysToGo::
 	.string "Ah, so you are the much-\n"
@@ -512,6 +584,12 @@ SaffronCity_PokemonTrainerFanClub_Text_YouveStillAWaysToGo::
 	.string "a true POKéMON great…\p"
 	.string "… …\p"
 	.string "You've still a ways to go!$"
+	.string "{JPN}{JPN}ほう　きみが　うわさの　{PLAYER}か。\p"
+	.string "たしかに　しょうしゃの　かおつきを　しているな。\p"
+	.string "だが　わたしが　ほんものの　ポケモン　たつじんと\n"
+	.string "みとめるには‥\p"
+	.string "‥　‥\p"
+	.string "まだまだ　だな！$"
 
 SaffronCity_PokemonTrainerFanClub_Text_YoullBeTalkedAboutIfYouKeepWinning::
 	.string "All of us gathered here are fans\n"
@@ -520,11 +598,19 @@ SaffronCity_PokemonTrainerFanClub_Text_YoullBeTalkedAboutIfYouKeepWinning::
 	.string "They are the picture of coolness.\p"
 	.string "Perhaps you will be talked about\n"
 	.string "here, too, if you keep winning.$"
+	.string "{JPN}{JPN}ここに　あつまっている　のは　みんな\n"
+	.string "ポケモントレーナーの　ファンだ。\p"
+	.string "バトルでの　すがた‥　かっこよさ　そのもの\n"
+	.string "だよ。\p"
+	.string "きみも　かちつづければ　ここで　うわさに　なる\n"
+	.string "かも　しれないね。$"
 
 SaffronCity_PokemonTrainerFanClub_Text_WantToBeLikeYouOneDay::
 	.string "It's {PLAYER}!\n"
 	.string "It's {PLAYER}!\p"
 	.string "I want to be like {PLAYER} one day!$"
+	.string "{JPN}{JPN}{PLAYER}だ！　{PLAYER}だ！\p"
+	.string "いつか　{PLAYER}みたいに　なりたいな！$"
 
 SaffronCity_PokemonTrainerFanClub_Text_EveryoneButMeStoppedBeingYourFan::
 	.string "Everyone stopped being {PLAYER}'s\n"
@@ -533,12 +619,22 @@ SaffronCity_PokemonTrainerFanClub_Text_EveryoneButMeStoppedBeingYourFan::
 	.string "all to myself!\p"
 	.string "Yay! Go for it!\n"
 	.string "My one and only {PLAYER}!$"
+	.string "{JPN}{JPN}みんな　{PLAYER}の　ファンを\n"
+	.string "やめちゃった‥\p"
+	.string "でも　それって　{PLAYER}を　ひとりじめ\n"
+	.string "できるって　こと！\p"
+	.string "わーい！　がんばって！　わたしだけの\n"
+	.string "{PLAYER}！$"
 
 SaffronCity_PokemonTrainerFanClub_Text_WantToBeLikeSabrina::
 	.string "Do you know what?\n"
 	.string "I want to be like SABRINA!\p"
 	.string "I want to be a psychic girl just\n"
 	.string "like her!$"
+	.string "{JPN}{JPN}ねえ　しってる？　わたし　ナツメさん　みたいに\n"
+	.string "なりたいの！\p"
+	.string "ナツメさん　みたいな　エスパーしょうじょに\n"
+	.string "なりたいの！$"
 
 SaffronCity_PokemonTrainerFanClub_Text_WontStopBeingSabrinasFan::
 	.string "Even if I'm the only one, I won't\n"
@@ -547,10 +643,18 @@ SaffronCity_PokemonTrainerFanClub_Text_WontStopBeingSabrinasFan::
 	.string "cute, but cool.\p"
 	.string "I want to be a psychic girl just\n"
 	.string "like her!$"
+	.string "{JPN}{JPN}たとえ　わたし　ひとりに　なっても　ナツメさんの\n"
+	.string "ファンは　やめないわ。\p"
+	.string "わたしの　ゆめは　ナツメさん　みたいに\n"
+	.string "かわいくて　かっこいい　ひとに　なること。\p"
+	.string "ナツメさん　みたいな　エスパーしょうじょに\n"
+	.string "なりたいの！$"
 
 SaffronCity_PokemonTrainerFanClub_Text_CanIBecomeCoolTrainerOneDay::
 	.string "I wonder if I can become a cool\n"
 	.string "TRAINER one day?$"
+	.string "{JPN}{JPN}わたしも　いつか　かっこいい　トレーナーに\n"
+	.string "なれる　かしら？$"
 
 SaffronCity_PokemonTrainerFanClub_Text_TheWayYouBattleIsCool::
 	.string "Oh, man, oh, man!\n"
@@ -559,6 +663,11 @@ SaffronCity_PokemonTrainerFanClub_Text_TheWayYouBattleIsCool::
 	.string "No, not you.\p"
 	.string "Just the way you battle.\n"
 	.string "That's cool.$"
+	.string "{JPN}{JPN}うわあ　うわあ！　かっこいい！　かっこよすぎ！\p"
+	.string "‥えっ？　ちがう　ちがう　きみの　ことじゃ\n"
+	.string "ないよ。\p"
+	.string "きみの　たたかいかたの　ことさ。　あれは\n"
+	.string "かっこいい。$"
 
 SaffronCity_PokemonTrainerFanClub_Text_ImOnlyOneLeftOfYourFans::
 	.string "Yo, {PLAYER}!\p"
@@ -567,12 +676,21 @@ SaffronCity_PokemonTrainerFanClub_Text_ImOnlyOneLeftOfYourFans::
 	.string "But, you know, I like being an only\n"
 	.string "fan… It's less stressful.\p"
 	.string "Keep up and at it!$"
+	.string "{JPN}{JPN}よう　{PLAYER}！\p"
+	.string "きみの　ファンは　おれ　ひとりに　なっちまった\n"
+	.string "みたいだな。\p"
+	.string "でも　ひとりだけの　ファンって　わるくないぜ‥\n"
+	.string "きらくで　いい。\p"
+	.string "その　ちょうしで　がんばれよ！$"
 
 SaffronCity_PokemonTrainerFanClub_Text_LoveWayTrainerTalks::
 	.string "{STR_VAR_1}'s cool, huh?\n"
 	.string "I love the way he talks.\p"
 	.string "I'd really relish a chance to meet\n"
 	.string "him in person once.$"
+	.string "{JPN}{JPN}{STR_VAR_1}って　かっこいいよな？　あの\n"
+	.string "しゃべりかたが　たまらないんだ。\p"
+	.string "いちど　じかに　あって　みたいなあ。$"
 
 SaffronCity_PokemonTrainerFanClub_Text_ImLoneTrainerFan::
 	.string "Huh, can you believe it?\n"
@@ -581,6 +699,12 @@ SaffronCity_PokemonTrainerFanClub_Text_ImLoneTrainerFan::
 	.string "I'm the lone {STR_VAR_1} fan?\p"
 	.string "Eh, being the one and only\n"
 	.string "{STR_VAR_1} fan's my style, anyway.$"
+	.string "{JPN}{JPN}まいったな　みんな　きみの　ファンに\n"
+	.string "なっちまった。\p"
+	.string "いろいろ　あったのに　{STR_VAR_1}の\n"
+	.string "ファンは　おれ　ひとり　だけか？\p"
+	.string "ま　{STR_VAR_1}の　ただ　ひとりの\n"
+	.string "ファンって　いうのも　おれらしくて　いいけどな。$"
 
 SaffronCity_PokemonTrainerFanClub_Text_AdoreWayYouBattle::
 	.string "Oh, my goodness!\n"
@@ -589,6 +713,10 @@ SaffronCity_PokemonTrainerFanClub_Text_AdoreWayYouBattle::
 	.string "way you battle.\p"
 	.string "I hope you'll keep at it.\n"
 	.string "I'll be your number one fan!$"
+	.string "{JPN}{JPN}まあ！　ほんとうに　{PLAYER}さん　なの？\p"
+	.string "あなたの　たたかいかたが　だいすき　なのよ。\p"
+	.string "これからも　がんばってね。　わたしが　ファン\n"
+	.string "だいいちごう　よ！$"
 
 SaffronCity_PokemonTrainerFanClub_Text_ImYourNumberOneFan::
 	.string "Oh, my goodness!\n"
@@ -598,12 +726,22 @@ SaffronCity_PokemonTrainerFanClub_Text_ImYourNumberOneFan::
 	.string "Well, it can't be helped!\n"
 	.string "Let me cheer you on, at least!\p"
 	.string "Hurray, hurray, {PLAYER}!$"
+	.string "{JPN}{JPN}まあ！　{PLAYER}さん　じゃないの！\p"
+	.string "ざんねんだわ‥　あなたの　ファンは　わたし\n"
+	.string "ひとり　だけに　なって　しまったの！\p"
+	.string "でも　しかたないわね！　せめて　おうえん　させて\n"
+	.string "ちょうだい！\p"
+	.string "フレー　フレー　{PLAYER}！$"
 
 SaffronCity_PokemonTrainerFanClub_Text_TrainerHasBeenOnFire::
 	.string "Recently, {STR_VAR_1} has been on\n"
 	.string "fire.\p"
 	.string "The way he battles… It's just \n"
 	.string "the way that I like it!$"
+	.string "{JPN}{JPN}さいきん　{STR_VAR_1}が　のりに\n"
+	.string "のってるのよ。\p"
+	.string "あの　たたかいかた‥　まさに　わたし　ごのみ\n"
+	.string "なの！$"
 
 SaffronCity_PokemonTrainerFanClub_Text_EveryoneTalksAboutYou::
 	.string "Oh, hello!\n"
@@ -612,24 +750,41 @@ SaffronCity_PokemonTrainerFanClub_Text_EveryoneTalksAboutYou::
 	.string "is you.\p"
 	.string "I'm feeling lonesome because I\n"
 	.string "prefer {STR_VAR_1}.$"
+	.string "{JPN}{JPN}あら　こんにちは！　{PLAYER}さん\n"
+	.string "じゃないの！\p"
+	.string "さいきん　みんな　あなたの　はなし　ばかり。\p"
+	.string "わたしは　{STR_VAR_1}の　ほうが\n"
+	.string "すきだから　さみしいわ。$"
 
 SaffronCity_PokemonTrainerFanClub_Text_YouReallyAreAmazing::
 	.string "Amazing!\n"
 	.string "{PLAYER}, you really are amazing!\p"
 	.string "Instead of just watching, maybe\n"
 	.string "I should become a TRAINER, too.$"
+	.string "{JPN}{JPN}すごい！　{PLAYER}　あなた　ほんとうに\n"
+	.string "すごいわ！\p"
+	.string "みてる　だけじゃ　なくて　わたしも　トレーナーに\n"
+	.string "なろうかしら。$"
 
 SaffronCity_PokemonTrainerFanClub_Text_ImYourOnlyFan::
 	.string "I'm your only fan…\n"
 	.string "Sigh… This is lonely…\p"
 	.string "Can't you try harder and make the\n"
 	.string "others take notice of you?$"
+	.string "{JPN}{JPN}あなたの　ファンは　わたし　だけ‥　はあ‥\n"
+	.string "さみしいわ‥\p"
+	.string "もっと　がんばって　みんなに　ちゅうもく　されて\n"
+	.string "ちょうだい？$"
 
 SaffronCity_PokemonTrainerFanClub_Text_WhyCantOthersSeeMastersDignity::
 	.string "Master {STR_VAR_1} is so dignified…\n"
 	.string "He is so my type.\p"
 	.string "Why can't the others see the\n"
 	.string "dignity he simply oozes?$"
+	.string "{JPN}{JPN}{STR_VAR_1}さまは　とても　いげんが\n"
+	.string "あって‥　わたしの　このみ　なの。\p"
+	.string "あの　にじみでる　いげんが　どうして　みんなには\n"
+	.string "わからないの　かしら？$"
 
 SaffronCity_PokemonTrainerFanClub_Text_BelieveInMasterWithAllMyHeart::
 	.string "I believe in Master {STR_VAR_1}\n"
@@ -639,6 +794,13 @@ SaffronCity_PokemonTrainerFanClub_Text_BelieveInMasterWithAllMyHeart::
 	.string "I won't ever feel lonesome, though.\p"
 	.string "Not if I keep thinking about Master\n"
 	.string "{STR_VAR_1}.$"
+	.string "{JPN}{JPN}わたしは　こころから　{STR_VAR_1}さまを\n"
+	.string "しんじて　いるわ。\p"
+	.string "たとえ　しんじて　いるのが　わたし　ひとり　だけ\n"
+	.string "でも。\p"
+	.string "でも　さみしく　なんか　ないわ。\p"
+	.string "{STR_VAR_1}さまの　ことを　おもって\n"
+	.string "いれば。$"
 
 SaffronCity_PokemonTrainerFanClub_Text_YourBattleStyleIsEducational::
 	.string "Hiyah!\p"
@@ -646,6 +808,11 @@ SaffronCity_PokemonTrainerFanClub_Text_YourBattleStyleIsEducational::
 	.string "educational.\p"
 	.string "I hope that you will keep plugging\n"
 	.string "away at success, hiyah!$"
+	.string "{JPN}{JPN}ハイヤー！\p"
+	.string "きみの　たたかいかたは　たいへん　べんきょうに\n"
+	.string "なる。\p"
+	.string "これからも　しょうりを　めざして　がんばって\n"
+	.string "くれ！　ハイヤー！$"
 
 SaffronCity_PokemonTrainerFanClub_Text_WontStopBeingYourFan::
 	.string "Instead of just watching others\n"
@@ -655,6 +822,12 @@ SaffronCity_PokemonTrainerFanClub_Text_WontStopBeingYourFan::
 	.string "But I won't let that stop me from\n"
 	.string "being your fan!\p"
 	.string "I can't stop being your fan!$"
+	.string "{JPN}{JPN}ひとの　バトルを　みてないで　じぶんで\n"
+	.string "たたかえ！\p"
+	.string "‥と　どうじょうの　だいおうに　しかられて\n"
+	.string "しまった‥\p"
+	.string "だが　それでも　きみの　ファンは　やめないぞ！\p"
+	.string "きみの　ファンは　やめられないんだ！$"
 
 SaffronCity_PokemonTrainerFanClub_Text_OnlyMasterHasMyRespect::
 	.string "Hiyah! There is but one TRAINER\n"
@@ -663,6 +836,11 @@ SaffronCity_PokemonTrainerFanClub_Text_OnlyMasterHasMyRespect::
 	.string "MASTER at the FIGHTING DOJO.\p"
 	.string "You should become a fan of my\n"
 	.string "MASTER like me! Hiyah!$"
+	.string "{JPN}{JPN}ハイヤー！　おれが　そんけい　する　トレーナーは\n"
+	.string "ただ　ひとり。\p"
+	.string "それは　かくとう　どうじょうの　だいおう　だ！\p"
+	.string "きみも　おれと　いっしょに　だいおうの　ファンに\n"
+	.string "なれ！　ハイヤー！$"
 
 SaffronCity_PokemonTrainerFanClub_Text_NeverBeFanOfAnyoneButMaster::
 	.string "Hiyah! I respect my MASTER at the\n"
@@ -672,4 +850,11 @@ SaffronCity_PokemonTrainerFanClub_Text_NeverBeFanOfAnyoneButMaster::
 	.string "I will even sneak out of the DOJO\n"
 	.string "to spread word of his greatness.\p"
 	.string "Hiyah!$"
+	.string "{JPN}{JPN}ハイヤー！　おれは　かくとう　どうじょうの\n"
+	.string "だいおうを　そんけい　している。\p"
+	.string "だいおう　いがいの　ファンには　ぜったいに\n"
+	.string "ならない！\p"
+	.string "どうじょうを　ぬけだして　でも　だいおうの\n"
+	.string "すばらしさを　ひろめるのだ！\p"
+	.string "ハイヤー！$"
 

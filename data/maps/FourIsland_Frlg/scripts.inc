@@ -161,11 +161,15 @@ FourIsland_EventScript_LoreleisHouseSign::
 FourIsland_Text_IslandSign::
 	.string "FOUR ISLAND\n"
 	.string "The Warm, Blue, Floe Island$"
+	.string "{JPN}{JPN}4のしま\n"
+	.string "あたたかくて　あおい　りゅうひょうの　しま$"
 
 FourIsland_Text_LoreleiHasReturned::
 	.string "LORELEI has returned.\p"
 	.string "Did she find the city life too\n"
 	.string "stressful, I wonder?$"
+	.string "{JPN}{JPN}カンナが　かえって　きているよ。\p"
+	.string "とかいの　くらしに　つかれたのかねえ？$"
 
 FourIsland_Text_LoreleiMetLaprasAsChild::
 	.string "LORELEI has gone back.\p"
@@ -175,6 +179,12 @@ FourIsland_Text_LoreleiMetLaprasAsChild::
 	.string "that she caught it.\p"
 	.string "Perhaps that POKéMON has been with\n"
 	.string "her ever since.$"
+	.string "{JPN}{JPN}カンナは　また　でかけて　いったよ。\p"
+	.string "あの　こが　つれている　ラプラスは　こどもの\n"
+	.string "ころに　であった　ラプラス　だろうね。\p"
+	.string "たしか　いてだきのどうくつで　つかまえたんだと\n"
+	.string "おもうよ。\p"
+	.string "それから　ずっと　いっしょに　いるんだろうね。$"
 
 FourIsland_Text_RivalAlreadyGotEggBeSmellingYa::
 	.string "{RIVAL}: Hey!\n"
@@ -196,6 +206,21 @@ FourIsland_Text_RivalAlreadyGotEggBeSmellingYa::
 	.string "Me, I don't have the time to\n"
 	.string "waste.\p"
 	.string "Be smelling ya!$"
+	.string "{JPN}{JPN}{RIVAL}:　よう！　{PLAYER}！\p"
+	.string "ナナシマで　なにを　してるんだ？\p"
+	.string "おれの　まねばっかり　するなよな。\p"
+	.string "まあ　おれは　もう　ポケモンの　タマゴを\n"
+	.string "もらったから　この　しまに　ようは　ないぜ。\p"
+	.string "へへ　おまえ　ポケモンの　タマゴの　ことなんて\n"
+	.string "しらないだろ。\p"
+	.string "そんなんじゃ　ぜんこくずかんは　いつまで\n"
+	.string "たっても　うまらないぜ。\p"
+	.string "ところで　この　しまで　おれたちの　しりあいを\n"
+	.string "みかけたぜ。\p"
+	.string "きに　なるなら　さがして　みたら　どうだ？\p"
+	.string "おれは　そんな　ことに　つかう　ひまは\n"
+	.string "ないけどな。\p"
+	.string "あばよ！$"
 
 FourIsland_Text_LoreleiHasLotsOfStuffedDolls::
 	.string "Oh, you found me!\n"
@@ -204,13 +229,24 @@ FourIsland_Text_LoreleiHasLotsOfStuffedDolls::
 	.string "and lots of stuffed dolls?\p"
 	.string "Every time she comes back to\n"
 	.string "FOUR ISLAND, her collection grows!$"
+	.string "{JPN}{JPN}あっ　みつかっちゃった！　カンナには　ないしょに\n"
+	.string "してね。\p"
+	.string "カンナって　ぬいぐるみを　たくさん　もってるの\n"
+	.string "しってた？\p"
+	.string "カンナが　4のしまに　かえって　くるたびに\n"
+	.string "コレクションが　ふえて　いくんだよ！$"
 
 FourIsland_Text_MadeSlushieUsingIcefallCaveIce::
 	.string "Ooh, chilly!\p"
 	.string "I made a slushie using ice I\n"
 	.string "shaved inside ICEFALL CAVE.\p"
 	.string "It's chilly and tasty!$"
+	.string "{JPN}{JPN}うー　つめたい！\p"
+	.string "いてだきのどうくつの　なかで　けずった　こおりで\n"
+	.string "かきごおりを　つくったの。\p"
+	.string "つめたくて　おいしいよ！$"
 
 FourIsland_Text_LoreleisHouse::
 	.string "LORELEI'S HOUSE$"
+	.string "{JPN}{JPN}カンナの　いえ$"
 

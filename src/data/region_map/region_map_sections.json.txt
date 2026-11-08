@@ -25,7 +25,9 @@ const struct RegionMapLocation gRegionMapEntries[] = {
 {% else %}
         .height = 1,
 {% endif %}
-{% if existsIn(map_section, "name") %}
+{% if existsIn(map_section, "name_ja") %}
+        .name = COMPOUND_STRING("{{ map_section.name }}${JPN}{JPN}{{ map_section.name_ja }}"), // [QoL] Japanese name after the English one
+{% else if existsIn(map_section, "name") %}
         .name = COMPOUND_STRING("{{ map_section.name }}"),
 {% else %}
         .name = (const u8[])_(""),

@@ -124,6 +124,16 @@ PokemonLeague_BrunosRoom_Text_Intro::
 	.string "We will grind you down with our\n"
 	.string "superior power!\p"
 	.string "Hoo hah!{PLAY_BGM}{MUS_RG_ENCOUNTER_GYM_LEADER}$"
+	.string "{JPN}{JPN}おれは　してんのうの　シバ！\p"
+	.string "きびしい　トレーニングを　つめば　ひとも\n"
+	.string "ポケモンも　どこまでも　つよく　なれる！\p"
+	.string "おれは　かくとうポケモンと　ともに　いきて\n"
+	.string "きたえて　きた！　それは　これからも\l"
+	.string "かわらない！\p"
+	.string "{PLAYER}！\p"
+	.string "おれたちの　ちからで　おまえを　たたきのめして\n"
+	.string "やる！\p"
+	.string "ウー！　ハーッ！{PLAY_BGM}{MUS_RG_ENCOUNTER_GYM_LEADER}$"
 
 PokemonLeague_BrunosRoom_Text_RematchIntro::
 	.string "I am BRUNO of the ELITE FOUR!\p"
@@ -137,12 +147,25 @@ PokemonLeague_BrunosRoom_Text_RematchIntro::
 	.string "We will grind you down with our\n"
 	.string "superior power!\p"
 	.string "Hoo hah!{PLAY_BGM}{MUS_RG_ENCOUNTER_GYM_LEADER}$"
+	.string "{JPN}{JPN}おれは　してんのうの　シバ！\p"
+	.string "きびしい　トレーニングを　つめば　ひとも\n"
+	.string "ポケモンも　どこまでも　つよく　なれる！\p"
+	.string "おれは　かくとうポケモンと　ともに　いきて\n"
+	.string "きたえて　きた！　それは　これからも\l"
+	.string "かわらない！\p"
+	.string "{PLAYER}！\p"
+	.string "おれたちの　ちからで　おまえを　たたきのめして\n"
+	.string "やる！\p"
+	.string "ウー！　ハーッ！{PLAY_BGM}{MUS_RG_ENCOUNTER_GYM_LEADER}$"
 
 PokemonLeague_BrunosRoom_Text_Defeat::
 	.string "Why?\n"
 	.string "How could I lose?$"
+	.string "{JPN}{JPN}なぜだ？　どうして　おれが　まけるのだ？$"
 
 PokemonLeague_BrunosRoom_Text_PostBattle::
 	.string "My job is done.\n"
 	.string "Go face your next challenge.$"
+	.string "{JPN}{JPN}おれの　やくめは　おわった。　つぎの　あいてに\n"
+	.string "いどむが　いい。$"
 

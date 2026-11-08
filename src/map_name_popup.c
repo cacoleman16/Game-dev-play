@@ -563,7 +563,7 @@ static bool32 IsCeladonDeptStore(const struct MapHeader *mapHeader)
 u8 *GetPopUpMapName(u8 *dest, const struct MapHeader *mapHeader)
 {
     if (IsCeladonDeptStore(mapHeader))
-        StringCopy(dest, COMPOUND_STRING("CELADON DEPT."));
+        StringCopy(dest, COMPOUND_STRING("CELADON DEPT.${JPN}{JPN}タマムシデパート"));
     else
         GetMapName(dest, mapHeader->regionMapSectionId, 0);
     if (mapHeader->floorNumber == 0)

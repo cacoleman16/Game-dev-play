@@ -12,7 +12,10 @@ Route2_EventScript_DiglettsCaveSign::
 Route2_Text_RouteSign::
 	.string "ROUTE 2\n"
 	.string "VIRIDIAN CITY - PEWTER CITY$"
+	.string "{JPN}{JPN}2ばんどうろ\n"
+	.string "トキワシティ　ー　ニビシティ$"
 
 Route2_Text_DiglettsCave::
 	.string "DIGLETT'S CAVE$"
+	.string "{JPN}{JPN}ディグダのあな$"
 

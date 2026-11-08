@@ -27,16 +27,22 @@ SSAnne_1F_Room6_EventScript_DeclineHealMale::
 SSAnne_1F_Room6_Text_TakeAShortRest::
 	.string "You look tired. Would you like to\n"
 	.string "take a short rest?$"
+	.string "{JPN}{JPN}つかれてる　みたいね。　すこし　やすんで　いく？$"
 
 SSAnne_1F_Room6_Text_GladEveryoneIsRefreshed::
 	.string "I'm glad to see that everyone is\n"
 	.string "looking refreshed and chipper.$"
+	.string "{JPN}{JPN}みんな　げんきに　なって　くれて　よかったわ。$"
 
 SSAnne_1F_Room6_Text_SorryYouLookLikeMyBrother::
 	.string "Oh, I'm sorry for fussing over you.\n"
 	.string "You look like my little brother…$"
+	.string "{JPN}{JPN}あら　ごめんなさい　せわを　やいちゃって。\n"
+	.string "わたしの　おとうとに　にてるのよ‥$"
 
 SSAnne_1F_Room6_Text_SorryYouLookLikeMySister::
 	.string "Oh, I'm sorry for fussing over you.\n"
 	.string "You look like my little sister…$"
+	.string "{JPN}{JPN}あら　ごめんなさい　せわを　やいちゃって。\n"
+	.string "わたしの　いもうとに　にてるのよ‥$"
 

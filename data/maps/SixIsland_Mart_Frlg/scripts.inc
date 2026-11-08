@@ -36,8 +36,16 @@ SixIsland_Mart_Text_AgathaOldestEverEliteFourMember::
 	.string "She set a record for being the\n"
 	.string "oldest-ever ELITE FOUR member.\p"
 	.string "She spurs me to do bigger things.$"
+	.string "{JPN}{JPN}ポケモンと　たくさん　あそんで　ながいき\n"
+	.string "しなさい！\p"
+	.string "たとえば　キクコさんを　ごらん。\p"
+	.string "あの　ひとは　してんのう　しじょう\n"
+	.string "さいこうれいの　きろくを　つくったのよ。\p"
+	.string "わたしも　もっと　がんばろうって　おもえるわ。$"
 
 SixIsland_Mart_Text_ShouldBuyMailAndWriteLetter::
 	.string "I should buy some MAIL and write\n"
 	.string "him a letter…$"
+	.string "{JPN}{JPN}メールを　かって　あの　ひとに　てがみを\n"
+	.string "かこうかしら‥$"
 

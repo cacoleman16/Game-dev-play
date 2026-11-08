@@ -1,0 +1,23 @@
+{
+ "Text_WantToCut": "この　きは　いあいぎりで　きれそうだ！\\pいあいぎりを　つかいますか？",
+ "Text_MonUsedFieldMove": "{STR_VAR_1}は　{STR_VAR_2}を　つかった！",
+ "Text_CantCut": "この　きは　いあいぎりで　きれそうだ！",
+ "Text_WantToSmash": "この　いわは　われそうだ　いわくだきを　つかいますか？",
+ "Text_CantSmash": "ごつごつした　いわだ　ポケモンの　わざで　くだけるかも　しれない",
+ "Text_WantToStrength": "おおきな　いわだ　ポケモンの　わざで　うごかせるかも　しれない\\pかいりきを　つかいますか？",
+ "Text_MonUsedStrength": "{STR_VAR_1}は　かいりきを　つかった！\\p{STR_VAR_1}の　かいりきで　いわを　うごかせる　ように　なった！",
+ "Text_CantStrength": "おおきな　いわだ　ポケモンの　わざで　うごかせるかも　しれない",
+ "Text_StrengthActivated": "かいりきで　いわを　うごかせる　ように　なった",
+ "Text_CantWaterfall": "ものすごい　いきおいで　みずが　ながれおちている",
+ "Text_WantToWaterfall": "おおきな　たきだ　たきのぼりを　つかいますか？",
+ "Text_MonUsedWaterfall": "{STR_VAR_1}は　たきのぼりを　つかった",
+ "Text_CantDive": "ここは　うみが　ふかい　ポケモンの　わざで　もぐれるかも　しれない",
+ "Text_WantToDive": "ここは　うみが　ふかい　ダイビングを　つかいますか？",
+ "Text_MonUsedDive": "{STR_VAR_1}は　ダイビングを　つかった",
+ "Text_CantSurface": "うえから　ひかりが　さしこんでいる　ポケモンの　わざで　うきあがれるかも　しれない",
+ "Text_WantToSurface": "うえから　ひかりが　さしこんでいる　ダイビングを　つかいますか？",
+ "Text_FailSweetScent": "ここには　なにも　いない　ようだ‥",
+ "Text_WantToRockClimb": "けわしい　がけだ　ロッククライムを　つかいますか？",
+ "Text_MonUsedRockClimb": "{STR_VAR_1}は　ロッククライムを　つかった！",
+ "Text_CantRockClimb": "けわしい　がけだ　ポケモンの　わざで　のぼれるかも　しれない"
+}

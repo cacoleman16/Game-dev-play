@@ -1,0 +1,11 @@
+{
+ "Text_UltimateMoveThatMon": "わたしは　ある　タイプの　きゅうきょくの　わざを　あみだした‥\\pだが　だれも　うけついで　くれぬのか‥\\p‥ん？　んんっ！\\pそ　そなたの‥　そ　その　{STR_VAR_1}‥",
+ "Text_JustMistaken": "‥いや‥　わたしの　かんちがい　じゃった",
+ "Text_AllowMeToTeachMonUltimateMove": "おお！　これじゃ！　この　ポケモンじゃ！\\pこの　{STR_VAR_1}こそ　わたしの　きゅうきょくの　わざを　おぼえるに　ふさわしい！\\pゆるして　くれるか？\\pそなたの　{STR_VAR_1}に　{STR_VAR_2}を　おしえても　よいか？",
+ "Text_YouRejectIt": "ぐぬぬ！　ことわると　いうのか？　いや　わたしは　あきらめんぞ！",
+ "Text_LetMeConferUltimateMove": "ゆるして　くれるのか？\\pでは　そなたの　{STR_VAR_1}に　きゅうきょくの　{STR_VAR_2}を　さずけよう\\pぐぐぐ‥　がおおおーっ！",
+ "Text_TaughtMove": "ハァ　ハァ　ハァ‥\\pいきて　いる　うちに　この　わざを　おしえられるとは　おもわなんだ‥",
+ "Text_MakeBestUseOfMove": "どうか　その　わざを　うまく　つかって　ちからを　つけて　おくれ！",
+ "Text_PassedOnEverythingIKnow": "ハァ　ハァ　ハァ‥\\pもう　おもいのこす　ことは　ない　わたしの　すべてを　つたえた\\pこれで　やりとげたと　おもいながら　くらして　いける",
+ "Text_FeelRejuvenated": "そなたに　わざを　つたえたら　すっかり　きが　らくに　なってのう\\pそれどころか　まるで　わかがえった　ような　きぶんじゃ！"
+}

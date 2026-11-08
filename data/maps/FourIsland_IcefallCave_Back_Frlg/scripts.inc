@@ -195,12 +195,17 @@ FourIsland_IcefallCave_Back_Text_LoreleiKeepHandsOffMons::
 	.string "off the POKéMON in the cave!\p"
 	.string "Do as I say, or you'll have me to\n"
 	.string "answer to!$"
+	.string "{JPN}{JPN}カンナ:　どうくつの　ポケモンに　きたない　てを\n"
+	.string "ださないで！\p"
+	.string "いうことを　きかないなら　わたしが　あいてよ！$"
 
 FourIsland_IcefallCave_Back_Text_ShutItLadyLeaveUsBe::
 	.string "Aww, shut it, lady, and leave\n"
 	.string "us be.\p"
 	.string "Don't let your glasses get all\n"
 	.string "steamed up!$"
+	.string "{JPN}{JPN}うるせえな　ねえちゃん　ほっといて　くれよ。\p"
+	.string "めがねが　くもっちまうぜ！$"
 
 FourIsland_IcefallCave_Back_Text_LoreleiPlayerHelpMeKickPoachersOut::
 	.string "LORELEI: {PLAYER}?!\n"
@@ -213,14 +218,27 @@ FourIsland_IcefallCave_Back_Text_LoreleiPlayerHelpMeKickPoachersOut::
 	.string "here, then selling them off!\p"
 	.string "Are you ready?\n"
 	.string "You take that one, please!$"
+	.string "{JPN}{JPN}カンナ:　{PLAYER}！？　どうして　ここに？\p"
+	.string "いいえ　はなしは　あとね。　いまは　あなたの\n"
+	.string "ちからが　ひつようなの。\p"
+	.string "この　みつりょうしゃたちを　おいだすのを\n"
+	.string "てつだって。\p"
+	.string "ここで　ポケモンを　つかまえては　うりとばして\n"
+	.string "いるのよ！\p"
+	.string "じゅんびは　いい？　あなたは　そっちを\n"
+	.string "おねがい！$"
 
 FourIsland_IcefallCave_Back_Text_GruntIntro::
 	.string "W-what?!\p"
 	.string "Who says we can't do what we want\n"
 	.string "with the POKéMON we catch?$"
+	.string "{JPN}{JPN}な　なんだ！？\p"
+	.string "つかまえた　ポケモンを　どうしようが　おれたちの\n"
+	.string "かってだろ？$"
 
 FourIsland_IcefallCave_Back_Text_GruntDefeat::
 	.string "We didn't plan on this!$"
+	.string "{JPN}{JPN}こんな　はずじゃ　なかった！$"
 
 FourIsland_IcefallCave_Back_Text_LoreleiWhereHaveYouTakenMons::
 	.string "LORELEI: Humph.\n"
@@ -231,10 +249,16 @@ FourIsland_IcefallCave_Back_Text_LoreleiWhereHaveYouTakenMons::
 	.string "POKéMON?\p"
 	.string "I'm smashing your ring once and\n"
 	.string "for all!$"
+	.string "{JPN}{JPN}カンナ:　ふん。　なさけないほど　よわいわね。\p"
+	.string "あなた！　こたえなさい！\p"
+	.string "つかまえた　ポケモンを　どこへ　つれていったの？\p"
+	.string "あなたたちの　なかまごと　いっきに\n"
+	.string "たたきつぶして　あげるわ！$"
 
 FourIsland_IcefallCave_Back_Text_NotTellingYouThat::
 	.string "N-no way!\n"
 	.string "I'm not telling you that!$"
+	.string "{JPN}{JPN}い　いやだ！　そんなこと　いえるか！$"
 
 FourIsland_IcefallCave_Back_Text_LoreleiWellDeepFreezeYou::
 	.string "LORELEI: If you won't confess,\n"
@@ -243,6 +267,10 @@ FourIsland_IcefallCave_Back_Text_LoreleiWellDeepFreezeYou::
 	.string "you've done to its friends.\p"
 	.string "Go, LAPRAS!\n"
 	.string "ICE BEAM…$"
+	.string "{JPN}{JPN}カンナ:　はかないなら　こおりづけに　するわよ。\p"
+	.string "わたしの　ラプラスも　なかまに　ひどい　ことを\n"
+	.string "されて　おこって　いるわ。\p"
+	.string "いきなさい　ラプラス！　れいとうビーム‥$"
 
 FourIsland_IcefallCave_Back_Text_OkayRocketWareHouseFiveIsland::
 	.string "Wawaah! Okay!\n"
@@ -254,6 +282,14 @@ FourIsland_IcefallCave_Back_Text_OkayRocketWareHouseFiveIsland::
 	.string "…But I doubt you'll ever make it\n"
 	.string "into the ROCKET WAREHOUSE!\p"
 	.string "Heheheheh!$"
+	.string "{JPN}{JPN}うわわわっ！　わかった！　はなすよ！\p"
+	.string "ポケモンは　5のしまの　ロケットだんの　そうこに\n"
+	.string "いる！\p"
+	.string "ほら！　いったぞ！　おれたちは　もう\n"
+	.string "いくからな！\p"
+	.string "‥でも　おまえらが　ロケットだんの　そうこに\n"
+	.string "はいれる　わけ　ないけどな！\p"
+	.string "へへへへへ！$"
 
 FourIsland_IcefallCave_Back_Text_ThankYouThisIsAwful::
 	.string "{PLAYER}, thank you.\n"
@@ -262,4 +298,9 @@ FourIsland_IcefallCave_Back_Text_ThankYouThisIsAwful::
 	.string "these islands.\p"
 	.string "I had no idea that those horrible\n"
 	.string "criminals were loose here…$"
+	.string "{JPN}{JPN}{PLAYER}　ありがとう。　でも　ひどい\n"
+	.string "はなしね‥\p"
+	.string "わたしは　この　しまで　うまれ　そだったの。\p"
+	.string "あんな　ひどい　はんざいしゃたちが　うろついて\n"
+	.string "いたなんて　しらなかったわ‥$"
 

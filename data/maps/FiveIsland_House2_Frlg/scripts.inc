@@ -12,4 +12,10 @@ FiveIsland_House2_Text_MeadowBelongedToFamily::
 	.string "built on it.\p"
 	.string "It would be preferable to having\n"
 	.string "those thugs run wild on it!$"
+	.string "{JPN}{JPN}めぐみのはらは　だいだい　わが　いえの\n"
+	.string "とちなんじゃ\p"
+	.string "いっそ　おおきな　やしきでも　たてて　おけば\n"
+	.string "よかった\p"
+	.string "あんな　ならずものたちに　あらされるより　ずっと\n"
+	.string "ましじゃ！$"
 

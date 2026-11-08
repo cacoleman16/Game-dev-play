@@ -77,20 +77,33 @@ CeruleanCity_House1_Text_BadgesHaveAmazingSecrets::
 	.string "I see you have at least one.\p"
 	.string "Those BADGES have amazing secrets,\n"
 	.string "did you know?$"
+	.string "{JPN}{JPN}うでの　いい　トレーナー　だけが\n"
+	.string "ポケモンバッジを　あつめられる\p"
+	.string "おぬしも　ひとつは　もっておる　ようじゃな\p"
+	.string "バッジには　すごい　ひみつが　あるのを\n"
+	.string "しっておるかな？$"
 
 CeruleanCity_House1_Text_DescribeWhichBadge::
 	.string "Now then…\p"
 	.string "Which of the eight BADGES should\n"
 	.string "I describe?$"
+	.string "{JPN}{JPN}さて‥\p"
+	.string "8つの　バッジの　うち　どれの　はなしを\n"
+	.string "しようかの？$"
 
 CeruleanCity_House1_Text_ComeVisitAnytime::
 	.string "Come visit me anytime you wish.$"
+	.string "{JPN}{JPN}いつでも　あそびに　きなさい$"
 
 CeruleanCity_House1_Text_AttackStatFlash::
 	.string "The ATTACK stat of all your\n"
 	.string "POKéMON increases a little bit.\p"
 	.string "It also lets you use the move\n"
 	.string "FLASH outside of battle.$"
+	.string "{JPN}{JPN}てもちの　ポケモン　みんなの　こうげきが　すこし\n"
+	.string "あがる\p"
+	.string "それに　せんとうの　そとで　フラッシュが\n"
+	.string "つかえるように　なるぞ$"
 
 CeruleanCity_House1_Text_ObeyLv30Cut::
 	.string "POKéMON up to Lv. 30 will obey\n"
@@ -101,12 +114,23 @@ CeruleanCity_House1_Text_ObeyLv30Cut::
 	.string "be unruly in battle, however.\p"
 	.string "It also lets you use the move\n"
 	.string "CUT outside of battle.$"
+	.string "{JPN}{JPN}レベル30までの　ポケモンが　いうことを\n"
+	.string "きくように　なる\p"
+	.string "こうかんで　もらった　ポケモンも　ふくめてじゃ\p"
+	.string "それより　レベルが　たかいと　せんとうで\n"
+	.string "いうことを　きかない　ことが　あるがの\p"
+	.string "それに　せんとうの　そとで　いあいぎりが\n"
+	.string "つかえるように　なるぞ$"
 
 CeruleanCity_House1_Text_SpeedStatFly::
 	.string "The SPEED stat of all your\n"
 	.string "POKéMON increases a little bit.\p"
 	.string "It also lets you use the move\n"
 	.string "FLY outside of battle.$"
+	.string "{JPN}{JPN}てもちの　ポケモン　みんなの　すばやさが　すこし\n"
+	.string "あがる\p"
+	.string "それに　せんとうの　そとで　そらをとぶが\n"
+	.string "つかえるように　なるぞ$"
 
 CeruleanCity_House1_Text_ObeyLv50Strength::
 	.string "POKéMON up to Lv. 50 will obey\n"
@@ -117,12 +141,23 @@ CeruleanCity_House1_Text_ObeyLv50Strength::
 	.string "be unruly in battle, however.\p"
 	.string "It also lets you use the move\n"
 	.string "STRENGTH outside of battle.$"
+	.string "{JPN}{JPN}レベル50までの　ポケモンが　いうことを\n"
+	.string "きくように　なる\p"
+	.string "こうかんで　もらった　ポケモンも　ふくめてじゃ\p"
+	.string "それより　レベルが　たかいと　せんとうで\n"
+	.string "いうことを　きかない　ことが　あるがの\p"
+	.string "それに　せんとうの　そとで　かいりきが\n"
+	.string "つかえるように　なるぞ$"
 
 CeruleanCity_House1_Text_DefenseStatSurf::
 	.string "The DEFENSE stat of all your\n"
 	.string "POKéMON increases a little bit.\p"
 	.string "It also lets you use the move\n"
 	.string "SURF outside of battle.$"
+	.string "{JPN}{JPN}てもちの　ポケモン　みんなの　ぼうぎょが　すこし\n"
+	.string "あがる\p"
+	.string "それに　せんとうの　そとで　なみのりが\n"
+	.string "つかえるように　なるぞ$"
 
 CeruleanCity_House1_Text_ObeyLv70RockSmash::
 	.string "POKéMON up to Lv. 70 will obey\n"
@@ -133,13 +168,26 @@ CeruleanCity_House1_Text_ObeyLv70RockSmash::
 	.string "be unruly in battle, however.\p"
 	.string "It also lets you use the move\n"
 	.string "ROCK SMASH outside of battle.$"
+	.string "{JPN}{JPN}レベル70までの　ポケモンが　いうことを\n"
+	.string "きくように　なる\p"
+	.string "こうかんで　もらった　ポケモンも　ふくめてじゃ\p"
+	.string "それより　レベルが　たかいと　せんとうで\n"
+	.string "いうことを　きかない　ことが　あるがの\p"
+	.string "それに　せんとうの　そとで　いわくだきが\n"
+	.string "つかえるように　なるぞ$"
 
 CeruleanCity_House1_Text_SpStatsWaterfall::
 	.string "The SP. ATK and SP. DEF stats of\n"
 	.string "all your POKéMON rise a little bit.\p"
 	.string "It also lets you use the move\n"
 	.string "WATERFALL outside of battle.$"
+	.string "{JPN}{JPN}てもちの　ポケモン　みんなの　とくこうと\n"
+	.string "とくぼうが　すこし　あがる\p"
+	.string "それに　せんとうの　そとで　たきのぼりが\n"
+	.string "つかえるように　なるぞ$"
 
 CeruleanCity_House1_Text_AllMonsWillObeyYou::
 	.string "All POKéMON will obey you!$"
+	.string "{JPN}{JPN}すべての　ポケモンが　いうことを　きくように\n"
+	.string "なるぞ！$"
 

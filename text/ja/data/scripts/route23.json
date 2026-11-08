@@ -1,0 +1,7 @@
+{
+ "Text_OnlySkilledTrainersAllowedThrough": "ここを　とおれるのは　ほんとうに　つよい　トレーナー　だけだ！\\pきみは　まだ　{STR_VAR_1}を　もって　いない！",
+ "Text_CantLetYouPass": "きまりは　きまりだ　とおす　わけには　いかない",
+ "Text_OhThatsBadgeGoRightAhead": "おっ！　それは　{STR_VAR_1}！　どうぞ　おとおり　ください",
+ "Text_OnlyPassWithBadgeDontHaveYet": "ここは　{STR_VAR_1}を　もって　いないと　とおれない\\pきみは　まだ　{STR_VAR_1}を　もって　いないね\\pポケモンリーグに　いくには　それが　ひつよう　なんだ",
+ "Text_OnlyPassWithBadgeOhGoAhead": "ここは　{STR_VAR_1}を　もって　いないと　とおれない\\pおっ！　それは　{STR_VAR_1}！{PAUSE_MUSIC}{PLAY_BGM}{MUS_LEVEL_UP}{PAUSE 0x60}{RESUME_MUSIC}\\pよし　それでは　どうぞ　おとおり　ください"
+}

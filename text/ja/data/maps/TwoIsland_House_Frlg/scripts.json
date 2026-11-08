@@ -1,0 +1,12 @@
+{
+ "TwoIsland_House_Text_TeachMonMoveForMushroom": "わしは　ポケモンの　わざマニア\\pポケモンが　せいちょうして　おぼえる　わざは　ぜんぶ　しっておる\\pそれと　わしは　キノコマニア　でもある\\pちいさなキノコを　2こ　か　おおきなキノコを　1こ　もって　きて　くれ\\pそうしたら　ポケモン　1ぴきに　わざを　おしえて　やろう",
+ "TwoIsland_House_Text_WantMeToTeachMove": "クンクン‥　ほう！　キノコの　においが　するぞ！\\pおまえさんの　ポケモンに　わざを　おしえて　ほしいか？",
+ "TwoIsland_House_Text_TutorWhichMon": "どの　ポケモンに　おしえるかね？",
+ "TwoIsland_House_Text_TeachWhichMove": "どの　わざを　おしえるかね？",
+ "TwoIsland_House_Text_NoMoveICanTeachThatMon": "すまんのう‥\\pその　ポケモンに　おしえられる　わざは　ないようじゃ",
+ "TwoIsland_House_Text_IllNeedMushroomOrTwo": "では　キノコを　もらおうか　なにを　くれるかね？",
+ "TwoIsland_House_Text_HandedOverTwoTinyMushrooms": "{PLAYER}は　ひきかえに　ちいさなキノコを　2こ　わたした",
+ "TwoIsland_House_Text_HandedOverOneBigMushroom": "{PLAYER}は　ひきかえに　おおきなキノコを　1こ　わたした",
+ "TwoIsland_House_Text_NeedMushroomOrTwoToLearnMove": "ポケモンに　わざを　おぼえさせたいなら　キノコを　もって　きなさい",
+ "TwoIsland_House_Text_CantTeachAnEgg": "なんじゃ？　タマゴに　おしえられる　わざなど　ひとつも　ないぞ"
+}

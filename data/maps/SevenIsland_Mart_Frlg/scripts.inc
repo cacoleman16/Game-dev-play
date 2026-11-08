@@ -43,10 +43,16 @@ SevenIsland_Mart_Text_MonHavePersonalitiesOfTheirOwn::
 	.string "own, just like people.\p"
 	.string "My PIKACHU has a HASTY nature,\n"
 	.string "so it grew to be a speedy POKéMON.$"
+	.string "{JPN}{JPN}ポケモンにも　ひとと　おなじように　せいかくが\n"
+	.string "あるのよ。\p"
+	.string "わたしの　ピカチュウは　せっかちな　せいかく\n"
+	.string "だから　すばやい　ポケモンに　そだったの。$"
 
 SevenIsland_Mart_Text_PreparationsCompleteForRuins::
 	.string "Okay, preparations are complete\n"
 	.string "for me to explore the RUINS.$"
+	.string "{JPN}{JPN}よし　いせきを　たんけん　する　じゅんびは\n"
+	.string "かんりょうだ。$"
 
 SevenIsland_Mart_Text_NeedToFishOnSevenIsland::
 	.string "I need to fish on SEVEN ISLAND.\p"
@@ -54,4 +60,9 @@ SevenIsland_Mart_Text_NeedToFishOnSevenIsland::
 	.string "of the SEVII ISLANDS.\p"
 	.string "I'd better stock up on some\n"
 	.string "POKé BALLS first, though.$"
+	.string "{JPN}{JPN}7のしまで　つりを　しないと。\p"
+	.string "それで　ナナシマ　つりの　たびは　かんせい\n"
+	.string "なんだ。\p"
+	.string "でも　その　まえに　モンスターボールを\n"
+	.string "かいこんで　おかなきゃ。$"
 

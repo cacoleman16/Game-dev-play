@@ -1,0 +1,5 @@
+{
+ "Aide_Text_HaventCaughtEnoughMonsForItem": "どれどれ‥　あらら！　つかまえた　ポケモンは　まだ　{STR_VAR_3}しゅるい　だけですね！\\p{STR_VAR_2}が　ほしいなら　{STR_VAR_1}しゅるい　ひつよう　ですよ",
+ "Aide_Text_GetEnoughMonsComeBackForItem": "‥あ　そうですか\\pポケモンを　{STR_VAR_1}しゅるい　つかまえたら　{STR_VAR_2}を　とりに　きて　ください",
+ "Aide_Text_DontHaveAnyRoomForItem": "あれ！　{STR_VAR_2}を　いれる　ばしょが　ない　みたいですね"
+}

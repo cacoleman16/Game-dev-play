@@ -1,0 +1,17 @@
+{
+ "Route12_FishingHouse_Text_DoYouLikeToFish": "わたしは　つりおやじの　おとうと　です。\\pつりが　だいだいだーいすき！　つりなしでは　いきられない！\\pところで　きみは　つりが　すきかね？",
+ "Route12_FishingHouse_Text_TakeThisAndFish": "すばらしい！　きにいったよ。　きみとは　なかよく　なれそうだ。\\pこれで　つりを　したまえ　わかき　ともよ！",
+ "Route12_FishingHouse_Text_ReceivedSuperRod": "{PLAYER}は　つりおやじの　おとうとから　すごいつりざおを　もらった！",
+ "Route12_FishingHouse_Text_IfYouCatchBigMagikarpShowMe": "つりは　じんせい　そのもの！　さいこうの　しの　ような　ものだ。\\pうみでも　かわでも　でかけて　いって　おおものを　つりあげたまえ。\\pそこで　ひとつ　たのみが　ある。\\pその　つりざおで　おおきな　コイキングを　つったら　ぜひ　みせて　ほしいのだ。\\pわたしは　つりも　すきだが　きょだいな　コイキングを　みるのも　だいすき　なのだ。",
+ "Route12_FishingHouse_Text_OhThatsDisappointing": "そうか‥　ざんねん　だなあ‥",
+ "Route12_FishingHouse_Text_TryFishingBringMeMagikarp": "やあ　{PLAYER}！　つりは　してるかね？\\pすごいつりざおで　いろんな　みずべで　つりを　してごらん。\\pばしょに　よって　ちがう　ポケモンが　つれるぞ。\\pおっと　きょだいな　コイキングを　もってくるのも　わすれずにな。",
+ "Route12_FishingHouse_Text_OhMagikarpAllowMeToSee": "おや？　{PLAYER}？　なんと　コイキング　じゃないか！\\pはやく　みせて　おくれ！",
+ "Route12_FishingHouse_Text_WhoaXSizeTakeThis": "‥　‥　‥おおっ！　{STR_VAR_2}！\\pきみは　つりの　おくぶかい　みりょくを　よく　わかって　いるね！\\pこれを　うけとって　くれ。　えんりょは　いらんよ！",
+ "Route12_FishingHouse_Text_LookForwardToGreaterRecords": "もっと　すごい　きろくを　たのしみに　しているよ！",
+ "Route12_FishingHouse_Text_HuhXSizeSameSizeAsLast": "おや？　{STR_VAR_2}？\\pまえに　みたのと　おなじ　おおきさ　だね。",
+ "Route12_FishingHouse_Text_HmmXSizeDoesntMeasureUp": "うーん‥　これは　{STR_VAR_2}か。\\pまえに　もってきた　{STR_VAR_3}の　コイキングには　かなわないな。",
+ "Route12_FishingHouse_Text_DoesntLookLikeMagikarp": "うーん‥　それは　コイキングには　みえないなあ。",
+ "Route12_FishingHouse_Text_NoRoomForGift": "おや　こまった！\\pプレゼントが　あるのに　きみの　にもつが　いっぱいだ。",
+ "Route12_FishingHouse_Text_MostGiganticMagikarpXSize": "わたしが　これまで　みた　なかで　いちばん　おおきな　コイキングは‥\\p{STR_VAR_3}！",
+ "Route12_FishingHouse_Text_BlankChartOfSomeSort": "なにかの　ひょうの　ようだ。　まだ　なにも　かかれて　いない。\\pなにかの　きろくを　かきこむ　らんが　ある。"
+}

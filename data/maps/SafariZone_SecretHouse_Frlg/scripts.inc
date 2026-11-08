@@ -34,10 +34,20 @@ SafariZone_SecretHouse_Text_CongratsYouveWon::
 	.string "would win our campaign prize.\p"
 	.string "Congratulations!\n"
 	.string "You have won!$"
+	.string "{JPN}{JPN}おお！　ついに！\p"
+	.string "ひみつの　いえに　たどりついた　のは　あなたが\n"
+	.string "はじめて　です！\p"
+	.string "グランドオープンを　きねんして　キャンペーンを\n"
+	.string "はじめた　ものの‥\p"
+	.string "だれも　しょうひんを　もらえないんじゃ　ないかと\n"
+	.string "しんぱい　していました。\p"
+	.string "おめでとう　ございます！　あなたの　かちです！$"
 
 SafariZone_SecretHouse_Text_ReceivedHM03FromAttendant::
 	.string "{PLAYER} received HM03\n"
 	.string "from the attendant!$"
+	.string "{JPN}{JPN}{PLAYER}は　かかりいんから\n"
+	.string "ひでんマシン03を　もらった！$"
 
 SafariZone_SecretHouse_Text_ExplainSurf::
 	.string "HM03 is SURF.\p"
@@ -47,8 +57,17 @@ SafariZone_SecretHouse_Text_ExplainSurf::
 	.string "you can use it over and over.\p"
 	.string "You're super lucky for winning this\n"
 	.string "fabulous prize!$"
+	.string "{JPN}{JPN}ひでんマシン03は　なみのり　です。\p"
+	.string "この　わざを　つかえば　ポケモンが　あなたを\n"
+	.string "のせて　みずの　うえを　わたって　くれます。\p"
+	.string "しかも　ひでんマシンは　なくならないので　なんど\n"
+	.string "でも　つかえます。\p"
+	.string "こんな　すてきな　しょうひんが　あたる　なんて\n"
+	.string "ほんとうに　ラッキー　ですね！$"
 
 SafariZone_SecretHouse_Text_DontHaveRoomForPrize::
 	.string "You don't have room for this\n"
 	.string "fabulous prize!$"
+	.string "{JPN}{JPN}せっかくの　すてきな　しょうひんが　もちきれない\n"
+	.string "ようですね！$"
 

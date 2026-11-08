@@ -332,6 +332,15 @@ TALL_PLUS   = FC 0C FB
 '。' = AD
 'ー' = AE
 '⋯' = B0
+@ [QoL] More Japanese punctuation. These codes print as the listed character in
+@ the Japanese font ({JPN} mode) and as English punctuation otherwise.
+'・' = AF
+'‥' = B0
+'『' = B1
+'』' = B2
+'「' = B3
+'」' = B4
+'円' = B7
 
 STRING = FD
 

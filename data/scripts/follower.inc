@@ -1,14 +1,21 @@
 gText_FollowerLovesYou::
 	.string "{STR_VAR_1} is regarding you with\nadoration!$"
+	.string "{JPN}{JPN}{STR_VAR_1}は　うっとりした　めで\n"
+	.string "こちらを　みつめている！$"
 
 gText_FollowerLostInThought::
 	.string "{STR_VAR_1} seems lost in thought.$"
+	.string "{JPN}{JPN}{STR_VAR_1}は　なにか　かんがえごとを\n"
+	.string "している　ようだ$"
 
 gText_FollowerDefault::
 	.string "ERROR 404: Script not found.$"
 
 gText_WantsToFly::
 	.string "{STR_VAR_1} looks up at the\nsky restlessly.\pWould you like to use FLY?$"
+	.string "{JPN}{JPN}{STR_VAR_1}は　そわそわと　そらを\n"
+	.string "みあげている\p"
+	.string "そらをとぶを　つかいますか？$"
 
 EventScript_Follower::
 	lock

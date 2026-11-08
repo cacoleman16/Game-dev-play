@@ -50,9 +50,13 @@ PewterCity_PokemonCenter_1F_Text_TeamRocketMtMoonImOnPhone::
 	.string "Huh?\p"
 	.string "I'm on the phone!\n"
 	.string "Scram!$"
+	.string "{JPN}{JPN}なんだと！？\p"
+	.string "ロケットだんが　おつきみやまに？　ん？\p"
+	.string "いま　でんわちゅう　なんだ！　あっちへ　いけ！$"
 
 PewterCity_PokemonCenter_1F_Text_Jigglypuff::
 	.string "JIGGLYPUFF: Puu pupuu!$"
+	.string "{JPN}{JPN}プリン『プー　ププー！』$"
 
 PewterCity_PokemonCenter_1F_Text_WhenJiggylypuffSingsMonsGetDrowsy::
 	.string "Yawn!\p"
@@ -60,14 +64,23 @@ PewterCity_PokemonCenter_1F_Text_WhenJiggylypuffSingsMonsGetDrowsy::
 	.string "drowsy…\p"
 	.string "…Me, too…\n"
 	.string "Snore…$"
+	.string "{JPN}{JPN}ふわーあ！\p"
+	.string "プリンが　うたうと　ポケモンは　ねむく\n"
+	.string "なるんだ‥\p"
+	.string "‥ぼくも‥　ぐうぐう‥$"
 
 PewterCity_PokemonCenter_1F_Text_TradingMyClefairyForPikachu::
 	.string "I really want a PIKACHU, so I'm\n"
 	.string "trading my CLEFAIRY for one.$"
+	.string "{JPN}{JPN}どうしても　ピカチュウが　ほしいから　ぼくの\n"
+	.string "ピッピと　こうかん　するんだ。$"
 
 PewterCity_PokemonCenter_1F_Text_TradingPikachuWithKid::
 	.string "I'm trading POKéMON with that kid\n"
 	.string "there.\p"
 	.string "I had two PIKACHU, so I figured\n"
 	.string "I might as well trade one.$"
+	.string "{JPN}{JPN}あそこの　こと　ポケモンを　こうかん　するんだ。\p"
+	.string "ピカチュウが　2ひき　いたから　1ぴき　こうかん\n"
+	.string "しても　いいかなって。$"
 

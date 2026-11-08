@@ -1,0 +1,6 @@
+{
+ "Text_SprayWoreOff": "{STR_VAR_1}の　こうかが　きれた‥",
+ "Text_SprayWoreOffAskUseAnother": "{STR_VAR_1}の　こうかが　きれた！　もう　1こ　つかいますか？",
+ "Text_SprayWoreOffAskUseX": "{STR_VAR_1}の　こうかが　きれた‥　{STR_VAR_2}を　つかいますか？",
+ "Text_SprayWoreOffUseX": "{PLAYER}は　{STR_VAR_2}を　つかった"
+}

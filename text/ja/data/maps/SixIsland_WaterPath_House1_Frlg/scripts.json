@@ -1,0 +1,12 @@
+{
+ "SixIsland_WaterPath_House1_Text_LoveItNeedItHeracross": "ヘラ　ヘラ　ヘラクロス！　おおきくて　ピカピカ　むしの　ボス！　だいすき　ほしい　ヘラクロス！",
+ "SixIsland_WaterPath_House1_Text_MayIMeasureHeracross": "キャー！　ヘラクロス　じゃない！\\pおねがい　おねがい！　おおきさを　はからせて！",
+ "SixIsland_WaterPath_House1_Text_ItsXSizeDeserveReward": "キャー　{STR_VAR_2}も　ある！　こんなの　みた　こと　ない！　ごほうびを　あげなくちゃ！",
+ "SixIsland_WaterPath_House1_Text_WantToSeeBiggerOne": "それより　もっと　もっと　おおきい　ヘラクロスが　みたいの。\\pああ　おおきい　ヘラクロスって　ほんと　すてき！",
+ "SixIsland_WaterPath_House1_Text_ItsXSizeSameAsBefore": "あれ？　この　{STR_VAR_2}って‥　もう！　まえと　おなじ　じゃない。",
+ "SixIsland_WaterPath_House1_Text_ItsXSizeYSizeWasBiggest": "あら　{STR_VAR_2}しか　ないわ。　まえの　ヘラクロスの　ほうが　おおきかった。\\pあなたが　つれて　きた　なかで　いちばん　おおきい　ヘラクロスは　{STR_VAR_3}　だったわ。",
+ "SixIsland_WaterPath_House1_Text_ThisWontDo": "だめ！　これじゃ　だめよ！\\pヘラクロスは　もっと　たくましくて　かっこよくて　すてきな　ツノが　あるの！",
+ "SixIsland_WaterPath_House1_Text_YourBagIsFull": "バッグが　いっぱいね。　ごほうびが　はいらないわ。",
+ "SixIsland_WaterPath_House1_Text_BiggestHeracrossIsXSize": "わたしが　これまでに　はかった　いちばん　おおきい　ヘラクロスは‥\\p{STR_VAR_3}！",
+ "SixIsland_WaterPath_House1_Text_BlankChartOfSomeSort": "なにかの　ひょうだ。　なにも　かかれて　いない。\\pなにかの　きろくを　かきこむ　らんが　ある。"
+}

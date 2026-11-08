@@ -86,4 +86,8 @@ CinnabarIsland_PokemonLab_Lounge_Text_FoundFossilInMtMoon::
 	.string "inside MT. MOON.\p"
 	.string "I think it's of a rare, prehistoric\n"
 	.string "POKéMON.$"
+	.string "{JPN}{JPN}おつきみやまで　この　めずらしい　かせきを\n"
+	.string "みつけたんだ\p"
+	.string "たぶん　めずらしい　こだいの　ポケモンの\n"
+	.string "かせきだと　おもうよ$"
 

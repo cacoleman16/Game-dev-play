@@ -83,6 +83,10 @@ SixIsland_PokemonCenter_1F_Text_SomethingHiddenOnThisIsland::
 	.string "No, make that twenty years.\p"
 	.string "I get this feeling that there's\n"
 	.string "something hidden on this island.$"
+	.string "{JPN}{JPN}10ねん　いせきを　さがして　きた。\p"
+	.string "いや　20ねんだな。\p"
+	.string "この　しまには　なにかが　かくされて　いる　きが\n"
+	.string "するんだ。$"
 
 SixIsland_PokemonCenter_1F_Text_SomeMonsEvolveByTradingWithHeldItem::
 	.string "You know of POKéMON that evolve\n"
@@ -91,6 +95,11 @@ SixIsland_PokemonCenter_1F_Text_SomeMonsEvolveByTradingWithHeldItem::
 	.string "still others?\p"
 	.string "Some POKéMON evolve only when\n"
 	.string "traded while holding specific items.$"
+	.string "{JPN}{JPN}こうかん　すると　しんか　する　ポケモンは\n"
+	.string "しってるよね？\p"
+	.string "でも　それだけじゃ　ないって　しってた？\p"
+	.string "とくていの　どうぐを　もたせて　こうかん　すると\n"
+	.string "しんか　する　ポケモンも　いるんだよ。$"
 
 SixIsland_PokemonCenter_1F_Text_RivalImpossibleToGetAllMonsAroundHere::
 	.string "{RIVAL}: Hey, {PLAYER}!\n"
@@ -112,4 +121,20 @@ SixIsland_PokemonCenter_1F_Text_RivalImpossibleToGetAllMonsAroundHere::
 	.string "I may as well leave for home.\p"
 	.string "That's that, then!\n"
 	.string "Smell ya later!$"
+	.string "{JPN}{JPN}{RIVAL}『よう　{PLAYER}！　ずかんの\n"
+	.string "ほうは　どうだ？\p"
+	.string "この　あたりを　うろうろ　してる　だけじゃ\n"
+	.string "ポケモンを　ぜんぶ　あつめるのは　むり\l"
+	.string "みたいだな。\p"
+	.string "どこか　とおくに　おれたちの　しらない\n"
+	.string "ポケモンが　いるのかもな‥\p"
+	.string "‥　‥　‥　‥　‥　‥　‥　‥　‥\p"
+	.string "ま　おれに　できない　ことが　おまえに　できる\n"
+	.string "わけ　ないけどな。\p"
+	.string "こんな　ことで　ムキに　なる　つもりは　ないぜ。\p"
+	.string "ポケモンを　きたえながら　じぶんの　ペースで\n"
+	.string "あつめて　いくさ。\p"
+	.string "そういう　ことだ。　ここに　いても　しかたないし\n"
+	.string "いったん　いえに　かえるか。\p"
+	.string "じゃ　そういう　ことで！　あばよ！』$"
 

@@ -90,4 +90,5 @@ RocketHideout_Elevator_EventScript_NeedKey::
 
 RocketHideout_Elevator_Text_AppearsToNeedAKey::
 	.string "It appears to need a key.$"
+	.string "{JPN}{JPN}かぎが　ひつような　ようだ。$"
 

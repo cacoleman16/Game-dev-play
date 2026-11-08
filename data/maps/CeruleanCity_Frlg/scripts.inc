@@ -365,11 +365,18 @@ CeruleanCity_Text_RivalIntro::
 	.string "of strong and smart POKéMON!\p"
 	.string "Here, let me see what you caught,\n"
 	.string "{PLAYER}!$"
+	.string "{JPN}{JPN}{RIVAL}『よう！　{PLAYER}！\p"
+	.string "まだ　こんな　ところで　もたもた　してんのか？\p"
+	.string "おれは　ばっちりだぜ！　つよくて　かしこい\n"
+	.string "ポケモンを　たくさん　つかまえたからな！\p"
+	.string "どれ　おまえが　つかまえた　ポケモン　みせて\n"
+	.string "みろよ　{PLAYER}！』$"
 
 CeruleanCity_Text_RivalDefeat::
 	.string "Hey!\n"
 	.string "Take it easy!\l"
 	.string "You won already!$"
+	.string "{JPN}{JPN}おい！　もう　いいだろ！　おまえの　かちだよ！$"
 
 CeruleanCity_Text_RivalPostBattle::
 	.string "{RIVAL}: Hey, guess what?\p"
@@ -385,6 +392,17 @@ CeruleanCity_Text_RivalPostBattle::
 	.string "you should go thank him.\p"
 	.string "Well, I better get rolling!\n"
 	.string "Smell ya later!$"
+	.string "{JPN}{JPN}{RIVAL}『なあ　きいて　くれよ\p"
+	.string "マサキの　ところに　いって　めずらしい\n"
+	.string "ポケモンを　みせて　もらったんだ\p"
+	.string "おかげで　ずかんの　ページが　ぐっと　ふえたぜ！\p"
+	.string "なにしろ　マサキは　せかいてきに　ゆうめいな\n"
+	.string "ポケモンマニアだからな\p"
+	.string "パソコンの　ポケモン　あずかり　システムを\n"
+	.string "つくったのも　あいつなんだ\p"
+	.string "おまえも　その　システムを　つかってるんだから\n"
+	.string "おれいを　いいに　いけよ\p"
+	.string "さてと　おれは　そろそろ　いくぜ！　あばよ！』$"
 
 CeruleanCity_Text_OhRightLittlePresentAsFavor::
 	.string "Oh, yeah, right.\p"
@@ -392,6 +410,10 @@ CeruleanCity_Text_OhRightLittlePresentAsFavor::
 	.string "You're always plodding behind me.\p"
 	.string "So here, I'll give you a little\n"
 	.string "present as a favor.$"
+	.string "{JPN}{JPN}あ　そうそう\p"
+	.string "おまえ　かわいそうだよな　ほんとに　いつも\n"
+	.string "おれの　うしろを　とぼとぼ　ついて　くるだけでさ\p"
+	.string "だから　ちょっとした　プレゼントを　やるよ$"
 
 CeruleanCity_Text_ExplainFameCheckerSmellYa::
 	.string "A chatty gossip like you…\n"
@@ -400,6 +422,11 @@ CeruleanCity_Text_ExplainFameCheckerSmellYa::
 	.string "give a hoot about others.\p"
 	.string "All right, this time I really am\n"
 	.string "gone. Smell ya!$"
+	.string "{JPN}{JPN}おまえみたいな　うわさずきには　ぴったりの\n"
+	.string "どうぐだろ\p"
+	.string "おれは　ひとの　ことなんか　きょうみ　ないから\n"
+	.string "いらないんだ\p"
+	.string "よし　こんどこそ　ほんとに　いくぜ！　あばよ！$"
 
 CeruleanCity_Text_GruntIntro::
 	.string "Hey! Stay out!\n"
@@ -408,31 +435,46 @@ CeruleanCity_Text_GruntIntro::
 	.string "Me?\p"
 	.string "I'm an innocent bystander!\n"
 	.string "Don't you believe me?{PLAY_BGM}{MUS_RG_ENCOUNTER_ROCKET}$"
+	.string "{JPN}{JPN}おい！　はいって　くるな！　ここは　おまえの\n"
+	.string "にわじゃ　ないぞ！\p"
+	.string "‥え？　おれ？\p"
+	.string "おれは　ただの　とおりすがりだよ！　しんじて\n"
+	.string "くれないのか？{PLAY_BGM}{MUS_RG_ENCOUNTER_ROCKET}$"
 
 CeruleanCity_Text_GruntDefeat::
 	.string "GRUNT: Stop! I give up!\n"
 	.string "I'll leave quietly!$"
+	.string "{JPN}{JPN}したっぱ『まった！　まいった！　おとなしく\n"
+	.string "でていくよ！』$"
 
 CeruleanCity_Text_OkayIllReturnStolenTM::
 	.string "…Okay.\n"
 	.string "I'll return the TM I stole.$"
+	.string "{JPN}{JPN}‥わかったよ　ぬすんだ　わざマシンは　かえすよ$"
 
 CeruleanCity_Text_RecoveredTM28FromGrunt::
 	.string "{PLAYER} recovered TM28 from\n"
 	.string "the TEAM ROCKET GRUNT.$"
+	.string "{JPN}{JPN}{PLAYER}は　ロケットだんの　したっぱから\n"
+	.string "わざマシン28を　とりもどした！$"
 
 CeruleanCity_Text_BetterGetMovingBye::
 	.string "I better get moving!\n"
 	.string "Bye!$"
+	.string "{JPN}{JPN}さっさと　ずらかるぜ！　じゃあな！$"
 
 CeruleanCity_Text_MakeRoomForThisCantRun::
 	.string "Make room for this!\n"
 	.string "I can't run until I give it to you!$"
+	.string "{JPN}{JPN}にもつを　へらせよ！　これを　わたさないと\n"
+	.string "にげられないだろ！$"
 
 CeruleanCity_Text_TrainerLifeIsToughIsntIt::
 	.string "You're a TRAINER, too?\p"
 	.string "Collecting, battling…\n"
 	.string "It's a tough life, isn't it?$"
+	.string "{JPN}{JPN}きみも　トレーナー？\p"
+	.string "あつめたり　たたかったり‥　たいへんだよね$"
 
 CeruleanCity_Text_YouCanCutDownSmallTrees::
 	.string "Did you know that you can CUT down\n"
@@ -441,6 +483,12 @@ CeruleanCity_Text_YouCanCutDownSmallTrees::
 	.string "the shop can be CUT down.\p"
 	.string "I think there's a way around it,\n"
 	.string "though.$"
+	.string "{JPN}{JPN}ちいさな　きは　いあいぎりで　きれるって\n"
+	.string "しってた？\p"
+	.string "おみせの　まえの　ちいさな　きも　いあいぎりで\n"
+	.string "きれるよ\p"
+	.string "でも　まわりみち　できる　ところも　あると\n"
+	.string "おもうけどね$"
 
 CeruleanCity_Text_IfSlowbroWasntThereCouldCutTree::
 	.string "If that SLOWBRO wasn't there, you\n"
@@ -449,10 +497,17 @@ CeruleanCity_Text_IfSlowbroWasntThereCouldCutTree::
 	.string "other side.\p"
 	.string "I think there's a way around it,\n"
 	.string "though.$"
+	.string "{JPN}{JPN}あの　ヤドランが　いなければ　ちいさな　きを\n"
+	.string "いあいぎりで　きれるのに\p"
+	.string "そうすれば　むこうがわに　いけるよ\p"
+	.string "でも　まわりみち　できる　ところも　あると\n"
+	.string "おもうけどね$"
 
 CeruleanCity_Text_PokemonEncyclopediaAmusing::
 	.string "You're making an encyclopedia on\n"
 	.string "POKéMON? That sounds amusing.$"
+	.string "{JPN}{JPN}ポケモンの　ずかんを　つくってるの？\n"
+	.string "おもしろそうね$"
 
 CeruleanCity_Text_PeopleHereWereRobbed::
 	.string "The people here were robbed.\p"
@@ -460,46 +515,66 @@ CeruleanCity_Text_PeopleHereWereRobbed::
 	.string "behind this most heinous crime!\p"
 	.string "Even our POLICE FORCE has\n"
 	.string "trouble with the ROCKETS!$"
+	.string "{JPN}{JPN}この　いえの　ひとが　どろぼうに　はいられたんだ\p"
+	.string "こんな　ひどい　はんざいは　ロケットだんの\n"
+	.string "しわざに　ちがいない！\p"
+	.string "けいさつも　ロケットだんには　てを　やいて\n"
+	.string "いるんだ！$"
 
 CeruleanCity_Text_SlowbroUseSonicboom::
 	.string "Okay! SLOWBRO!\n"
 	.string "Use SONICBOOM!$"
+	.string "{JPN}{JPN}よし！　ヤドラン！　ソニックブーム！$"
 
 CeruleanCity_Text_SlowbroPayAttention::
 	.string "Come on, SLOWBRO, pay attention!$"
+	.string "{JPN}{JPN}ほら　ヤドラン　ちゃんと　きいて！$"
 
 CeruleanCity_Text_SlowbroPunch::
 	.string "SLOWBRO, punch!$"
+	.string "{JPN}{JPN}ヤドラン　パンチ！$"
 
 CeruleanCity_Text_NoYouBlewItAgain::
 	.string "No!\n"
 	.string "You blew it again!$"
+	.string "{JPN}{JPN}ああ！　また　しっぱい！$"
 
 CeruleanCity_Text_SlowbroWithdraw::
 	.string "SLOWBRO, WITHDRAW!$"
+	.string "{JPN}{JPN}ヤドラン　からにこもる！$"
 
 CeruleanCity_Text_HardToControlMonsObedience::
 	.string "No! That's wrong!\n"
 	.string "It's so hard to control POKéMON!\p"
 	.string "Your POKéMON's obedience depends\n"
 	.string "on your abilities as a TRAINER.$"
+	.string "{JPN}{JPN}ちがう！　そうじゃない！　ポケモンを\n"
+	.string "あやつるのって　むずかしい！\p"
+	.string "ポケモンが　いうことを　きくかは　トレーナーの\n"
+	.string "うでしだい　なのよ$"
 
 CeruleanCity_Text_SlowbroTookSnooze::
 	.string "SLOWBRO took a snooze…$"
+	.string "{JPN}{JPN}ヤドランは　いねむり　している‥$"
 
 CeruleanCity_Text_SlowbroLoafingAround::
 	.string "SLOWBRO is loafing around…$"
+	.string "{JPN}{JPN}ヤドランは　ぼーっと　している‥$"
 
 CeruleanCity_Text_SlowbroTurnedAway::
 	.string "SLOWBRO turned away…$"
+	.string "{JPN}{JPN}ヤドランは　そっぽを　むいた‥$"
 
 CeruleanCity_Text_SlowbroIgnoredOrders::
 	.string "SLOWBRO ignored orders…$"
+	.string "{JPN}{JPN}ヤドランは　めいれいを　むしした‥$"
 
 CeruleanCity_Text_WantBrightRedBicycle::
 	.string "I want a bright red bicycle.\p"
 	.string "I'll keep it at home, so it won't\n"
 	.string "get dirty.$"
+	.string "{JPN}{JPN}まっかな　じてんしゃが　ほしいな\p"
+	.string "よごれないように　いえに　かざって　おくんだ$"
 
 CeruleanCity_Text_ThisIsCeruleanCave::
 	.string "This is CERULEAN CAVE.\p"
@@ -512,11 +587,22 @@ CeruleanCity_Text_ThisIsCeruleanCave::
 	.string "CHAMPION for starters.\p"
 	.string "And, you would have to have\n"
 	.string "made a great achievement.$"
+	.string "{JPN}{JPN}ここは　ハナダの　どうくつ\p"
+	.string "なかには　おそろしく　つよい　ポケモンが\n"
+	.string "すんでいる\p"
+	.string "ここに　はいれるのは　とくべつな　トレーナー\n"
+	.string "だけだ\p"
+	.string "まずは　ポケモンリーグの　チャンピオンに　なれる\n"
+	.string "くらい　つよく　なければ　ならない\p"
+	.string "そして　なにか　おおきな　ことを　なしとげて\n"
+	.string "いなければ　ならないのだ$"
 
 CeruleanCity_Text_CitySign::
 	.string "CERULEAN CITY\n"
 	.string "A Mysterious, Blue Aura Surrounds\l"
 	.string "It$"
+	.string "{JPN}{JPN}ハナダシティ\n"
+	.string "ハナダは　みずいろ　しんぴの　いろ$"
 
 CeruleanCity_Text_TrainerTipsHeldItems::
 	.string "TRAINER TIPS\p"
@@ -524,13 +610,23 @@ CeruleanCity_Text_TrainerTipsHeldItems::
 	.string "an item.\p"
 	.string "Some items can even be used by\n"
 	.string "the holding POKéMON in battle.$"
+	.string "{JPN}{JPN}トレーナー　ワンポイント\p"
+	.string "ポケモンには　どうぐを　もたせる　ことが\n"
+	.string "できる！\p"
+	.string "せんとうちゅうに　もっている　ポケモンが　つかう\n"
+	.string "どうぐも　あるぞ！$"
 
 CeruleanCity_Text_BikeShopSign::
 	.string "Grass and caves handled easily!\n"
 	.string "BIKE SHOP$"
+	.string "{JPN}{JPN}くさむらも　どうくつも　らくらく！\n"
+	.string "じてんしゃや$"
 
 CeruleanCity_Text_GymSign::
 	.string "CERULEAN CITY POKéMON GYM\n"
 	.string "LEADER: MISTY\l"
 	.string "The Tomboyish Mermaid!$"
+	.string "{JPN}{JPN}ハナダシティ　ポケモンジム\n"
+	.string "リーダー　カスミ\l"
+	.string "おてんば　にんぎょ！$"
 

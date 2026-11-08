@@ -65,10 +65,16 @@ LavenderTown_House2_Text_WantMeToRateNicknames::
 	.string "I am the official NAME RATER!\p"
 	.string "Want me to rate the nicknames of\n"
 	.string "your POKéMON?$"
+	.string "{JPN}{JPN}はい　はい！　わたしは　こうにんの\n"
+	.string "せいめいはんだんし　です！\p"
+	.string "あなたの　ポケモンの　ニックネームを　はんだん\n"
+	.string "して　あげましょうか？$"
 
 LavenderTown_House2_Text_CritiqueWhichMonsNickname::
 	.string "Which POKéMON's nickname should\n"
 	.string "I critique?$"
+	.string "{JPN}{JPN}どの　ポケモンの　ニックネームを　はんだん\n"
+	.string "しましょう？$"
 
 LavenderTown_House2_Text_GiveItANicerName::
 	.string "{STR_VAR_1}, is it?\n"
@@ -76,20 +82,32 @@ LavenderTown_House2_Text_GiveItANicerName::
 	.string "But, would you like me to give it\n"
 	.string "a nicer name?\p"
 	.string "How about it?$"
+	.string "{JPN}{JPN}{STR_VAR_1}‥　ですか。　なかなか　よい\n"
+	.string "ニックネーム　ですね！\p"
+	.string "ですが　もっと　よい　なまえを　つけて\n"
+	.string "あげましょうか？\p"
+	.string "いかが　ですか？$"
 
 LavenderTown_House2_Text_WhatShallNewNicknameBe::
 	.string "Ah, good. Then, what shall the new\n"
 	.string "nickname be?$"
+	.string "{JPN}{JPN}よろしい。　では　あたらしい　ニックネームは\n"
+	.string "どう　しますか？$"
 
 LavenderTown_House2_Text_FromNowOnShallBeKnownAsName::
 	.string "Done! From now on, this POKéMON\n"
 	.string "shall be known as {STR_VAR_1}!\p"
 	.string "It is a better name than before!\n"
 	.string "How fortunate for you!$"
+	.string "{JPN}{JPN}できました！　これから　この　ポケモンは\n"
+	.string "{STR_VAR_1}と　なのります！\p"
+	.string "まえよりも　よい　なまえ　です！　よかった\n"
+	.string "ですね！$"
 
 LavenderTown_House2_Text_ISeeComeVisitAgain::
 	.string "I see.\n"
 	.string "Do come visit again.$"
+	.string "{JPN}{JPN}そうですか。　また　いらして　くださいね。$"
 
 LavenderTown_House2_Text_FromNowOnShallBeKnownAsSameName::
 	.string "Done! From now on, this POKéMON\n"
@@ -97,13 +115,23 @@ LavenderTown_House2_Text_FromNowOnShallBeKnownAsSameName::
 	.string "It looks no different from before,\n"
 	.string "and yet, this is vastly superior!\p"
 	.string "How fortunate for you!$"
+	.string "{JPN}{JPN}できました！　これから　この　ポケモンは\n"
+	.string "{STR_VAR_1}と　なのります！\p"
+	.string "みためは　まえと　おなじ　ですが　はるかに　よく\n"
+	.string "なりました！\p"
+	.string "よかった　ですね！$"
 
 LavenderTown_House2_Text_TrulyImpeccableName::
 	.string "{STR_VAR_1}, is it?\n"
 	.string "That is a truly impeccable name!\p"
 	.string "Take good care of {STR_VAR_1}!$"
+	.string "{JPN}{JPN}{STR_VAR_1}‥　ですか。　まさに\n"
+	.string "かんぺきな　なまえ　です！\p"
+	.string "{STR_VAR_1}を　だいじに　して\n"
+	.string "くださいね！$"
 
 LavenderTown_House2_Text_ThatIsMerelyAnEgg::
 	.string "Now, now.\n"
 	.string "That is merely an EGG!$"
+	.string "{JPN}{JPN}まあまあ。　それは　ただの　タマゴ　ですよ！$"
 

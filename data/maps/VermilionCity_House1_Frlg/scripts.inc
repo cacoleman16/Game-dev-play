@@ -37,32 +37,50 @@ VermilionCity_House1_Text_ImFishingGuruDoYouLikeToFish::
 	.string "I simply looove fishing!\n"
 	.string "I can't bear to go without.\p"
 	.string "Tell me, do you like to fish?$"
+	.string "{JPN}{JPN}わしは　つりの　めいじん！\p"
+	.string "つりが　だーいすき　なんじゃ！　つりなしでは\n"
+	.string "いられん\p"
+	.string "ところで　おまえさんも　つりは　すきか？$"
 
 VermilionCity_House1_Text_TakeThisAndFish::
 	.string "Grand! I like your style.\n"
 	.string "I think we can be friends.\p"
 	.string "Take this and fish, young friend!$"
+	.string "{JPN}{JPN}そうか！　きにいった！　わしらは　なかま　じゃな\p"
+	.string "これで　つりを　するが　よい！$"
 
 VermilionCity_House1_Text_ReceivedOldRodFromFishingGuru::
 	.string "{PLAYER} received an OLD ROD from\n"
 	.string "the FISHING GURU.$"
+	.string "{JPN}{JPN}{PLAYER}は　つりの　めいじんから\n"
+	.string "ボロのつりざおを　もらった$"
 
 VermilionCity_House1_Text_FishingIsAWayOfLife::
 	.string "Fishing is a way of life!\n"
 	.string "It is like the finest poetry.\p"
 	.string "From the seas to rivers, go out\n"
 	.string "and land the big one, my friend.$"
+	.string "{JPN}{JPN}つりは　じんせい！　さいこうの　しの　ような\n"
+	.string "ものじゃ\p"
+	.string "うみでも　かわでも　でかけて　いって　おおものを\n"
+	.string "つりあげるのじゃ$"
 
 VermilionCity_House1_Text_OhThatsSoDisappointing::
 	.string "Oh…\n"
 	.string "That's so disappointing…$"
+	.string "{JPN}{JPN}そうか‥　ざんねんじゃのう‥$"
 
 VermilionCity_House1_Text_HowAreTheFishBiting::
 	.string "Hello there, {PLAYER}!\p"
 	.string "How are the fish biting?$"
+	.string "{JPN}{JPN}おお　{PLAYER}！\p"
+	.string "つりの　ちょうしは　どうじゃ？$"
 
 VermilionCity_House1_Text_NoRoomForNiceGift::
 	.string "Oh, no!\p"
 	.string "I had a nice gift for you, but you\n"
 	.string "have no room for it!$"
+	.string "{JPN}{JPN}なんと！\p"
+	.string "いい　プレゼントが　あるのに　もちものが\n"
+	.string "いっぱいでは　ないか！$"
 

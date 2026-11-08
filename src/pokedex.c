@@ -686,24 +686,24 @@ static const u8 sText_UnkHeight[] = _("{CLEAR_TO 12}??'??”");
 static const u8 sText_UnkHeightMetric[] = _("???.? m");
 static const u8 sText_UnkWeight[] = _("????.? lbs.");
 static const u8 sText_UnkWeightMetric[] = _("???.? kg.");
-static const u8 sText_PokedexRegistration[] = _("POKéDEX registration completed.");
-static const u8 sText_HTHeight[] = _("HT");
-static const u8 sText_WTWeight[] = _("WT");
-static const u8 sText_SearchingPleaseWait[] = _("Searching…\nPlease wait.");
-static const u8 sText_SearchCompleted[] = _("Search completed.");
-static const u8 sText_NoMatchingPkmnWereFound[] = _("No matching POKéMON were found.");
-static const u8 sText_SearchForPkmnBasedOnParameters[] = _("Search for POKéMON based on\nselected parameters.");
-static const u8 sText_SwitchPokedexListings[] = _("Switch POKéDEX listings.");
-static const u8 sText_ReturnToPokedex[] = _("Return to the POKéDEX.");
-static const u8 sText_SelectPokedexMode[] = _("Select the POKéDEX mode.");
-static const u8 sText_SelectPokedexListingMode[] = _("Select the POKéDEX listing mode.");
-static const u8 sText_ListByFirstLetter[] = _("List by the first letter in the name.\nSpotted POKéMON only.");
-static const u8 sText_ListByBodyColor[] = _("List by body color.\nSpotted POKéMON only.");
-static const u8 sText_ListByType[] = _("List by type.\nOwned POKéMON only.");
-static const u8 sText_ExecuteSearchSwitch[] = _("Execute search/switch.");
+static const u8 sText_PokedexRegistration[] = _("POKéDEX registration completed.${JPN}{JPN}ずかんに とうろく されました！");
+static const u8 sText_HTHeight[] = _("HT${JPN}{JPN}たかさ");
+static const u8 sText_WTWeight[] = _("WT${JPN}{JPN}おもさ");
+static const u8 sText_SearchingPleaseWait[] = _("Searching…\nPlease wait.${JPN}{JPN}けんさくちゅう‥\nしばらく　おまちください。");
+static const u8 sText_SearchCompleted[] = _("Search completed.${JPN}{JPN}けんさくが おわりました。");
+static const u8 sText_NoMatchingPkmnWereFound[] = _("No matching POKéMON were found.${JPN}{JPN}あてはまる ポケモンは いませんでした。");
+static const u8 sText_SearchForPkmnBasedOnParameters[] = _("Search for POKéMON based on\nselected parameters.${JPN}{JPN}えらんだ　じょうけんで\nポケモンを　けんさくします。");
+static const u8 sText_SwitchPokedexListings[] = _("Switch POKéDEX listings.${JPN}{JPN}ずかんの ならびかたを かえます。");
+static const u8 sText_ReturnToPokedex[] = _("Return to the POKéDEX.${JPN}{JPN}ずかんに もどります。");
+static const u8 sText_SelectPokedexMode[] = _("Select the POKéDEX mode.${JPN}{JPN}ずかんの モードを えらびます。");
+static const u8 sText_SelectPokedexListingMode[] = _("Select the POKéDEX listing mode.${JPN}{JPN}ずかんの ならびかたを えらびます。");
+static const u8 sText_ListByFirstLetter[] = _("List by the first letter in the name.\nSpotted POKéMON only.${JPN}{JPN}なまえの　さいしょの　もじで　さがします。\nみつけた　ポケモン　のみ。");
+static const u8 sText_ListByBodyColor[] = _("List by body color.\nSpotted POKéMON only.${JPN}{JPN}からだの　いろで　さがします。\nみつけた　ポケモン　のみ。");
+static const u8 sText_ListByType[] = _("List by type.\nOwned POKéMON only.${JPN}{JPN}タイプで　さがします。\nつかまえた　ポケモン　のみ。");
+static const u8 sText_ExecuteSearchSwitch[] = _("Execute search/switch.${JPN}{JPN}けんさく/ならびかえを します。");
 static const u8 sText_DexEmptyString[] = _("");
-static const u8 sText_DexSearchDontSpecify[] = _("DON'T SPECIFY.");
-static const u8 sText_DexSearchTypeNone[] = _("NONE");
+static const u8 sText_DexSearchDontSpecify[] = _("DON'T SPECIFY.${JPN}{JPN}してい しない");
+static const u8 sText_DexSearchTypeNone[] = _("NONE${JPN}{JPN}なし");
 
 ALIGNED(4) static const u8 sExpandedPlaceholder_PokedexDescription[] = _("");
 
@@ -1181,19 +1181,19 @@ static const u8 sSearchMovementMap_ShiftHoennDex[SEARCH_COUNT][4] =
 
 static const struct SearchOptionText sDexModeOptions[] =
 {
-    [DEX_MODE_HOENN]    = {COMPOUND_STRING("HOENN region's POKéDEX"),   COMPOUND_STRING("HOENN DEX")},
-    [DEX_MODE_NATIONAL] = {COMPOUND_STRING("National edition POKéDEX"), COMPOUND_STRING("NATIONAL DEX")},
+    [DEX_MODE_HOENN]    = {COMPOUND_STRING("HOENN region's POKéDEX${JPN}{JPN}ホウエン ちほうの ずかん"),   COMPOUND_STRING("HOENN DEX${JPN}{JPN}ホウエンずかん")},
+    [DEX_MODE_NATIONAL] = {COMPOUND_STRING("National edition POKéDEX${JPN}{JPN}ぜんこくばんの ずかん"), COMPOUND_STRING("NATIONAL DEX${JPN}{JPN}ぜんこくずかん")},
     {},
 };
 
 static const struct SearchOptionText sDexOrderOptions[] =
 {
-    [ORDER_NUMERICAL]    = {COMPOUND_STRING("POKéMON are listed according to their\nnumber."),               COMPOUND_STRING("NUMERICAL MODE")},
-    [ORDER_ALPHABETICAL] = {COMPOUND_STRING("Spotted and owned POKéMON are listed\nalphabetically."),        COMPOUND_STRING("A TO Z MODE")},
-    [ORDER_HEAVIEST]     = {COMPOUND_STRING("Owned POKéMON are listed from the\nheaviest to the lightest."), COMPOUND_STRING("HEAVIEST MODE")},
-    [ORDER_LIGHTEST]     = {COMPOUND_STRING("Owned POKéMON are listed from the\nlightest to the heaviest."), COMPOUND_STRING("LIGHTEST MODE")},
-    [ORDER_TALLEST]      = {COMPOUND_STRING("Owned POKéMON are listed from the\ntallest to the smallest."),  COMPOUND_STRING("TALLEST MODE")},
-    [ORDER_SMALLEST]     = {COMPOUND_STRING("Owned POKéMON are listed from the\nsmallest to the tallest."),  COMPOUND_STRING("SMALLEST MODE")},
+    [ORDER_NUMERICAL]    = {COMPOUND_STRING("POKéMON are listed according to their\nnumber.${JPN}{JPN}ポケモンを　ばんごうの\nじゅんばんに　ならべます。"),               COMPOUND_STRING("NUMERICAL MODE${JPN}{JPN}ばんごうじゅん")},
+    [ORDER_ALPHABETICAL] = {COMPOUND_STRING("Spotted and owned POKéMON are listed\nalphabetically.${JPN}{JPN}みつけた　ポケモンと　つかまえた　ポケモンを\nなまえの　じゅんに　ならべます。"),        COMPOUND_STRING("A TO Z MODE${JPN}{JPN}なまえじゅん")},
+    [ORDER_HEAVIEST]     = {COMPOUND_STRING("Owned POKéMON are listed from the\nheaviest to the lightest.${JPN}{JPN}つかまえた　ポケモンを\nおもい　じゅんに　ならべます。"), COMPOUND_STRING("HEAVIEST MODE${JPN}{JPN}おもい じゅん")},
+    [ORDER_LIGHTEST]     = {COMPOUND_STRING("Owned POKéMON are listed from the\nlightest to the heaviest.${JPN}{JPN}つかまえた　ポケモンを\nかるい　じゅんに　ならべます。"), COMPOUND_STRING("LIGHTEST MODE${JPN}{JPN}かるい じゅん")},
+    [ORDER_TALLEST]      = {COMPOUND_STRING("Owned POKéMON are listed from the\ntallest to the smallest.${JPN}{JPN}つかまえた　ポケモンを\nたかい　じゅんに　ならべます。"),  COMPOUND_STRING("TALLEST MODE${JPN}{JPN}たかい じゅん")},
+    [ORDER_SMALLEST]     = {COMPOUND_STRING("Owned POKéMON are listed from the\nsmallest to the tallest.${JPN}{JPN}つかまえた　ポケモンを\nひくい　じゅんに　ならべます。"),  COMPOUND_STRING("SMALLEST MODE${JPN}{JPN}ひくい じゅん")},
     {},
 };
 
@@ -1215,16 +1215,16 @@ static const struct SearchOptionText sDexSearchNameOptions[] =
 static const struct SearchOptionText sDexSearchColorOptions[] =
 {
     {sText_DexEmptyString, sText_DexSearchDontSpecify},
-    [BODY_COLOR_RED + 1]    = {sText_DexEmptyString, COMPOUND_STRING("RED")},
-    [BODY_COLOR_BLUE + 1]   = {sText_DexEmptyString, COMPOUND_STRING("BLUE")},
-    [BODY_COLOR_YELLOW + 1] = {sText_DexEmptyString, COMPOUND_STRING("YELLOW")},
-    [BODY_COLOR_GREEN + 1]  = {sText_DexEmptyString, COMPOUND_STRING("GREEN")},
-    [BODY_COLOR_BLACK + 1]  = {sText_DexEmptyString, COMPOUND_STRING("BLACK")},
-    [BODY_COLOR_BROWN + 1]  = {sText_DexEmptyString, COMPOUND_STRING("BROWN")},
-    [BODY_COLOR_PURPLE + 1] = {sText_DexEmptyString, COMPOUND_STRING("PURPLE")},
-    [BODY_COLOR_GRAY + 1]   = {sText_DexEmptyString, COMPOUND_STRING("GRAY")},
-    [BODY_COLOR_WHITE + 1]  = {sText_DexEmptyString, COMPOUND_STRING("WHITE")},
-    [BODY_COLOR_PINK + 1]   = {sText_DexEmptyString, COMPOUND_STRING("PINK")},
+    [BODY_COLOR_RED + 1]    = {sText_DexEmptyString, COMPOUND_STRING("RED${JPN}{JPN}あか")},
+    [BODY_COLOR_BLUE + 1]   = {sText_DexEmptyString, COMPOUND_STRING("BLUE${JPN}{JPN}あお")},
+    [BODY_COLOR_YELLOW + 1] = {sText_DexEmptyString, COMPOUND_STRING("YELLOW${JPN}{JPN}きいろ")},
+    [BODY_COLOR_GREEN + 1]  = {sText_DexEmptyString, COMPOUND_STRING("GREEN${JPN}{JPN}みどり")},
+    [BODY_COLOR_BLACK + 1]  = {sText_DexEmptyString, COMPOUND_STRING("BLACK${JPN}{JPN}くろ")},
+    [BODY_COLOR_BROWN + 1]  = {sText_DexEmptyString, COMPOUND_STRING("BROWN${JPN}{JPN}ちゃいろ")},
+    [BODY_COLOR_PURPLE + 1] = {sText_DexEmptyString, COMPOUND_STRING("PURPLE${JPN}{JPN}むらさき")},
+    [BODY_COLOR_GRAY + 1]   = {sText_DexEmptyString, COMPOUND_STRING("GRAY${JPN}{JPN}はいいろ")},
+    [BODY_COLOR_WHITE + 1]  = {sText_DexEmptyString, COMPOUND_STRING("WHITE${JPN}{JPN}しろ")},
+    [BODY_COLOR_PINK + 1]   = {sText_DexEmptyString, COMPOUND_STRING("PINK${JPN}{JPN}ピンク")},
     {},
 };
 

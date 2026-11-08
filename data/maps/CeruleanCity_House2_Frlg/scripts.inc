@@ -31,16 +31,29 @@ CeruleanCity_House2_Text_RocketsStoleTMForDig::
 	.string "I was going to use it on a\n"
 	.string "MANKEY or a SANDSHREW…\p"
 	.string "That cost me a bundle, it did!$"
+	.string "{JPN}{JPN}ロケットだんの　やつらめ！\p"
+	.string "わしの　いえを　こんなに　しおって！\p"
+	.string "あなをほるを　おしえる　わざマシンを　ぬすんで\n"
+	.string "いきおった！\p"
+	.string "マンキーか　サンドに　つかおうと　おもって\n"
+	.string "おったのに‥\p"
+	.string "たかかったんじゃぞ　あれは！$"
 
 CeruleanCity_House2_Text_TeachDiglettDigWithoutTM::
 	.string "I figure what's lost is lost.\p"
 	.string "I decided to teach DIGLETT how to\n"
 	.string "DIG without a TM.$"
+	.string "{JPN}{JPN}なくした　ものは　しかたない\p"
+	.string "わざマシン　なしで　ディグダに　あなをほるを\n"
+	.string "おしえる　ことに　したわい$"
 
 CeruleanCity_House2_Text_TeamRocketTryingToDigIntoNoGood::
 	.string "TEAM ROCKET must be trying to DIG\n"
 	.string "their way into no good!$"
+	.string "{JPN}{JPN}ロケットだんの　やつら　あなを　ほって　わるさを\n"
+	.string "する　つもりに　ちがいない！$"
 
 CeruleanCity_House2_Text_TeamRocketLeftWayOut::
 	.string "TEAM ROCKET left a way out!$"
+	.string "{JPN}{JPN}ロケットだんが　ぬけみちを　のこして　いった！$"
 

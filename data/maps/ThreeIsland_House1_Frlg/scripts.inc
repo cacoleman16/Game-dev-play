@@ -18,7 +18,12 @@ ThreeIsland_House1_Text_YoureAlwaysSoCool::
 	.string "You're always so cool!\p"
 	.string "I'll make lunch for you, too, one\n"
 	.string "day, {PLAYER}.$"
+	.string "{JPN}{JPN}ユウコ『こんにちは　{PLAYER}！　いつも\n"
+	.string "かっこいいね！\p"
+	.string "いつか　{PLAYER}にも　おべんとう　つくって\n"
+	.string "あげるね。』$"
 
 ThreeIsland_House1_Text_RareRocksGemsDisplayed::
 	.string "Rare rocks and gems are displayed.$"
+	.string "{JPN}{JPN}めずらしい　いしや　ほうせきが　かざって　ある。$"
 

@@ -1,0 +1,20 @@
+{
+ "You can't dismount your BIKE here.{PAUSE_UNTIL_PRESS}": "ここでは じてんしゃから おりられません。{PAUSE_UNTIL_PRESS}",
+ "Huh?\\nThe ITEMFINDER's responding!\\pThere's an item buried around here!{PAUSE_UNTIL_PRESS}": "おや？\\nダウジングマシンが はんのう している！\\pこの あたりに どうぐが うまっている！{PAUSE_UNTIL_PRESS}",
+ "Oh!\\nThe ITEMFINDER's shaking wildly!{PAUSE_UNTIL_PRESS}": "おっ！\\nダウジングマシンが はげしく ゆれている！{PAUSE_UNTIL_PRESS}",
+ "… … … …Nope!\\nThere's no response.{PAUSE_UNTIL_PRESS}": "‥　‥　‥　‥　だめだ！\\nなにも はんのうが ない。{PAUSE_UNTIL_PRESS}",
+ "Your COINS:\\n{STR_VAR_1}{PAUSE_UNTIL_PRESS}": "もっている コイン:\\n{STR_VAR_1}まい{PAUSE_UNTIL_PRESS}",
+ "POWDER QTY: {STR_VAR_1}{PAUSE_UNTIL_PRESS}": "パウダーの かず: {STR_VAR_1}{PAUSE_UNTIL_PRESS}",
+ "Booted up a TM.": "わざマシンを きどうした！",
+ "Booted up an HM.": "ひでんマシンを きどうした！",
+ "It contained\\n{STR_VAR_1}.\\pTeach {STR_VAR_1}\\nto a POKéMON?": "なかには {STR_VAR_1}が\\nきろく されていた！\\p{STR_VAR_1}を\\nポケモンに おぼえさせますか？",
+ "{PLAYER} used the\\n{STR_VAR_2}.\\pWild POKéMON will be lured.{PAUSE_UNTIL_PRESS}": "{PLAYER}は\\n{STR_VAR_2}を つかった！\\pやせいの ポケモンが よってくる！{PAUSE_UNTIL_PRESS}",
+ "{PLAYER} used the\\n{STR_VAR_2}.\\pWild POKéMON will be repelled.{PAUSE_UNTIL_PRESS}": "{PLAYER}は\\n{STR_VAR_2}を つかった！\\pやせいの ポケモンが よりつかなく なった！{PAUSE_UNTIL_PRESS}",
+ "Played the POKé FLUTE.\\pNow, that's a catchy tune!{PAUSE_UNTIL_PRESS}": "ポケモンのふえを ふいた！\\pなかなか いい きょくだ！{PAUSE_UNTIL_PRESS}",
+ "Played the POKé FLUTE.": "ポケモンのふえを ふいた！",
+ "The POKé FLUTE awakened sleeping\\nPOKéMON.{PAUSE_UNTIL_PRESS}": "ポケモンのふえの ねいろで\\nねむっていた ポケモンが めをさました！{PAUSE_UNTIL_PRESS}",
+ "Cannot throw a ball!\\nThere are two Pokémon out there!\\p": "ボールを なげられない！\\nあいての ポケモンが 2ひき いる！\\p",
+ "Cannot throw a ball!\\nThere's no Pokémon in sight!\\p": "ボールを なげられない！\\nあいての ポケモンが いない！\\p",
+ "POKé BALLS cannot be used\\nright now!\\p": "いまは モンスターボールを\\nつかうことが できない！\\p",
+ "NUZLOCKE rules: this POKéMON\\ncan't be caught!\\p": "ナズロックの ルールで\\nこの ポケモンは つかまえられない！\\p"
+}

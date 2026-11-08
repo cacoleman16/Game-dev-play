@@ -95,6 +95,9 @@ CeruleanCity_House4_Text_NothingEntertaining::
 	.string "Too much time, too little to do…\p"
 	.string "Is nothing entertaining happening\n"
 	.string "anywhere?$"
+	.string "{JPN}{JPN}はあ‥　ひまは　あるのに　する　ことが　ない‥\p"
+	.string "どこかで　なにか　おもしろい　ことは　おきて\n"
+	.string "おらんかのう？$"
 
 CeruleanCity_House4_Text_NewNewsInformativeHaveThis::
 	.string "Ah!\n"
@@ -106,6 +109,13 @@ CeruleanCity_House4_Text_NewNewsInformativeHaveThis::
 	.string "in the news at your young age.\p"
 	.string "As my thanks for sharing the news\n"
 	.string "with me, I want you to have this.$"
+	.string "{JPN}{JPN}おお！　あたらしい　ニュースじゃな！\p"
+	.string "ふむ‥\p"
+	.string "なるほど！　これは　ためになった！\p"
+	.string "わかいのに　ニュースに　きょうみを　もつとは\n"
+	.string "かんしんじゃ\p"
+	.string "ニュースを　おしえて　くれた　おれいに　これを\n"
+	.string "あげよう$"
 
 CeruleanCity_House4_Text_IncredibleNewsHaveBerries::
 	.string "Oh, oh!\n"
@@ -117,12 +127,22 @@ CeruleanCity_House4_Text_IncredibleNewsHaveBerries::
 	.string "incredible in too long a time!\p"
 	.string "Thanks for sharing this fantastic\n"
 	.string "news. Have a bunch of BERRIES!$"
+	.string "{JPN}{JPN}おお　おお！　こ　この　ニュースは！\p"
+	.string "ふむ‥\p"
+	.string "すごい！　なんと　おどろきの　ニュースじゃ！\p"
+	.string "こんなに　すごい　ニュースは　ひさしく　みて\n"
+	.string "おらなんだ！\p"
+	.string "すばらしい　ニュースを　ありがとう　きのみを\n"
+	.string "どっさり　あげよう！$"
 
 CeruleanCity_House4_Text_WishCouldShareNewsWithOthers::
 	.string "It seems such a shame to not share\n"
 	.string "this news with other folks…\p"
 	.string "I wish I could tell someone…\n"
 	.string "Let others know the news…$"
+	.string "{JPN}{JPN}この　ニュースを　ほかの　ひとに　しらせないのは\n"
+	.string "もったいないのう‥\p"
+	.string "だれかに　はなしたい‥　みんなに　しらせたい‥$"
 
 CeruleanCity_House4_Text_ThanksForSpreadingNewsTakeThis::
 	.string "Ah, you've spread the news for me?\p"
@@ -130,6 +150,12 @@ CeruleanCity_House4_Text_ThanksForSpreadingNewsTakeThis::
 	.string "all sorts of people share it.\p"
 	.string "As my thanks for your spreading\n"
 	.string "the news, take this!$"
+	.string "{JPN}{JPN}おお　わしの　かわりに　ニュースを　ひろめて\n"
+	.string "くれたのか？\p"
+	.string "よい　ニュースは　いろんな　ひとに　ひろまって\n"
+	.string "こそ　かちが　あるのじゃ\p"
+	.string "ひろめて　くれた　おれいに　これを　うけとって\n"
+	.string "くれ！$"
 
 CeruleanCity_House4_Text_MagnificentNewsSpreadHaveBerries::
 	.string "You've spread the news some more?\n"
@@ -141,14 +167,27 @@ CeruleanCity_House4_Text_MagnificentNewsSpreadHaveBerries::
 	.string "appreciation from me and the news.\p"
 	.string "I'll give you more BERRIES than\n"
 	.string "I usually do.$"
+	.string "{JPN}{JPN}さらに　ニュースを　ひろめて　くれたのか？\n"
+	.string "すばらしい！\p"
+	.string "ニュースも　こんなに　ひろまって　さぞ\n"
+	.string "よろこんで　おるじゃろう\p"
+	.string "うむ　うむ！\p"
+	.string "わしと　ニュースからの　かんしゃの　しるしじゃ\p"
+	.string "いつもより　たくさん　きのみを　あげよう$"
 
 CeruleanCity_House4_Text_EnjoyingMyselfWithAllSortsOfNews::
 	.string "I'm quite enjoying myself with all\n"
 	.string "sorts of news.\p"
 	.string "Yes, I am satisfied!\n"
 	.string "I won't be bored for a while.$"
+	.string "{JPN}{JPN}いろんな　ニュースで　すっかり　たのしませて\n"
+	.string "もらっておるよ\p"
+	.string "うむ　まんぞくじゃ！　しばらくは　たいくつ\n"
+	.string "せずに　すみそうじゃ$"
 
 CeruleanCity_House4_Text_YourBerryPouchIsFull::
 	.string "Hm? Your BERRY POUCH is full.\n"
 	.string "My gift remains ungiven, then.$"
+	.string "{JPN}{JPN}ん？　きのみぶくろが　いっぱいじゃな　では\n"
+	.string "おれいは　また　こんどじゃ$"
 

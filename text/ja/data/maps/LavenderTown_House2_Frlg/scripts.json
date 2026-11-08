@@ -1,0 +1,11 @@
+{
+ "LavenderTown_House2_Text_WantMeToRateNicknames": "はい　はい！　わたしは　こうにんの　せいめいはんだんし　です！\\pあなたの　ポケモンの　ニックネームを　はんだん　して　あげましょうか？",
+ "LavenderTown_House2_Text_CritiqueWhichMonsNickname": "どの　ポケモンの　ニックネームを　はんだん　しましょう？",
+ "LavenderTown_House2_Text_GiveItANicerName": "{STR_VAR_1}‥　ですか。　なかなか　よい　ニックネーム　ですね！\\pですが　もっと　よい　なまえを　つけて　あげましょうか？\\pいかが　ですか？",
+ "LavenderTown_House2_Text_WhatShallNewNicknameBe": "よろしい。　では　あたらしい　ニックネームは　どう　しますか？",
+ "LavenderTown_House2_Text_FromNowOnShallBeKnownAsName": "できました！　これから　この　ポケモンは　{STR_VAR_1}と　なのります！\\pまえよりも　よい　なまえ　です！　よかった　ですね！",
+ "LavenderTown_House2_Text_ISeeComeVisitAgain": "そうですか。　また　いらして　くださいね。",
+ "LavenderTown_House2_Text_FromNowOnShallBeKnownAsSameName": "できました！　これから　この　ポケモンは　{STR_VAR_1}と　なのります！\\pみためは　まえと　おなじ　ですが　はるかに　よく　なりました！\\pよかった　ですね！",
+ "LavenderTown_House2_Text_TrulyImpeccableName": "{STR_VAR_1}‥　ですか。　まさに　かんぺきな　なまえ　です！\\p{STR_VAR_1}を　だいじに　して　くださいね！",
+ "LavenderTown_House2_Text_ThatIsMerelyAnEgg": "まあまあ。　それは　ただの　タマゴ　ですよ！"
+}

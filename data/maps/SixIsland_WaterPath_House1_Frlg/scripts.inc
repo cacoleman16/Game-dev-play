@@ -77,49 +77,75 @@ SixIsland_WaterPath_House1_Text_LoveItNeedItHeracross::
 	.string "Hera, hera, HERACROSS!\n"
 	.string "Big and shiny, it's the bug boss!\l"
 	.string "Love it, need it, HERACROSS!$"
+	.string "{JPN}{JPN}ヘラ　ヘラ　ヘラクロス！　おおきくて　ピカピカ\n"
+	.string "むしの　ボス！　だいすき　ほしい　ヘラクロス！$"
 
 SixIsland_WaterPath_House1_Text_MayIMeasureHeracross::
 	.string "Eeeeek!\n"
 	.string "That's a HERACROSS!\p"
 	.string "Please, please, may I measure how\n"
 	.string "big it is?$"
+	.string "{JPN}{JPN}キャー！　ヘラクロス　じゃない！\p"
+	.string "おねがい　おねがい！　おおきさを　はからせて！$"
 
 SixIsland_WaterPath_House1_Text_ItsXSizeDeserveReward::
 	.string "Eeeek, it's {STR_VAR_2}!\n"
 	.string "I've never seen anything like this!\l"
 	.string "You deserve a reward!$"
+	.string "{JPN}{JPN}キャー　{STR_VAR_2}も　ある！　こんなの\n"
+	.string "みた　こと　ない！　ごほうびを　あげなくちゃ！$"
 
 SixIsland_WaterPath_House1_Text_WantToSeeBiggerOne::
 	.string "I want to see a much, much bigger\n"
 	.string "HERACROSS than that one.\p"
 	.string "Oh, how I adore them, big\n"
 	.string "HERACROSS!$"
+	.string "{JPN}{JPN}それより　もっと　もっと　おおきい　ヘラクロスが\n"
+	.string "みたいの。\p"
+	.string "ああ　おおきい　ヘラクロスって　ほんと　すてき！$"
 
 SixIsland_WaterPath_House1_Text_ItsXSizeSameAsBefore::
 	.string "Huh? This {STR_VAR_2} measurement…\n"
 	.string "Oh, boo! It's the same as before.$"
+	.string "{JPN}{JPN}あれ？　この　{STR_VAR_2}って‥　もう！\n"
+	.string "まえと　おなじ　じゃない。$"
 
 SixIsland_WaterPath_House1_Text_ItsXSizeYSizeWasBiggest::
 	.string "Oh, it's just {STR_VAR_2}.\n"
 	.string "The HERACROSS before was bigger.\p"
 	.string "It was {STR_VAR_3}, the biggest\n"
 	.string "HERACROSS you've brought me.$"
+	.string "{JPN}{JPN}あら　{STR_VAR_2}しか　ないわ。　まえの\n"
+	.string "ヘラクロスの　ほうが　おおきかった。\p"
+	.string "あなたが　つれて　きた　なかで　いちばん\n"
+	.string "おおきい　ヘラクロスは　{STR_VAR_3}\l"
+	.string "だったわ。$"
 
 SixIsland_WaterPath_House1_Text_ThisWontDo::
 	.string "Oh, no! This won't do!\p"
 	.string "HERACROSS looks much more macho\n"
 	.string "and cool, and has a lovely horn!$"
+	.string "{JPN}{JPN}だめ！　これじゃ　だめよ！\p"
+	.string "ヘラクロスは　もっと　たくましくて　かっこよくて\n"
+	.string "すてきな　ツノが　あるの！$"
 
 SixIsland_WaterPath_House1_Text_YourBagIsFull::
 	.string "Your BAG is full.\n"
 	.string "My reward won't fit.$"
+	.string "{JPN}{JPN}バッグが　いっぱいね。　ごほうびが\n"
+	.string "はいらないわ。$"
 
 SixIsland_WaterPath_House1_Text_BiggestHeracrossIsXSize::
 	.string "The biggest HERACROSS that I have\n"
 	.string "ever seen measured so far is:\p"
 	.string "{STR_VAR_3}!$"
+	.string "{JPN}{JPN}わたしが　これまでに　はかった　いちばん\n"
+	.string "おおきい　ヘラクロスは‥\p"
+	.string "{STR_VAR_3}！$"
 
 SixIsland_WaterPath_House1_Text_BlankChartOfSomeSort::
 	.string "It's a blank chart of some sort.\p"
 	.string "It has spaces for writing in\n"
 	.string "records of some kind.$"
+	.string "{JPN}{JPN}なにかの　ひょうだ。　なにも　かかれて　いない。\p"
+	.string "なにかの　きろくを　かきこむ　らんが　ある。$"

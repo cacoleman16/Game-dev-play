@@ -1,0 +1,21 @@
+{
+ "CeladonCity_DepartmentStore_Roof_Text_ImThirstyGiveHerDrink": "のど　かわいたー！　なにか　のみたいよー！\\p{FONT_NORMAL}のみものを　あげますか？",
+ "CeladonCity_DepartmentStore_Roof_Text_GiveWhichDrink": "どの　のみものを　あげる？",
+ "CeladonCity_DepartmentStore_Roof_Text_YayFreshWaterHaveThis": "わーい！\\pおいしいみずだ！\\pありがとう！　おれいに　これ　あげる！",
+ "Text_ReceivedItemFromLittleGirl": "{PLAYER}は　おんなのこから　{STR_VAR_2}を　もらった！",
+ "CeladonCity_DepartmentStore_Roof_Text_ExplainTM16": "わざマシン16は　ひかりのかべ！\\pあいての　とくしゅこうげきの　いりょくを　よわめる　わざだよ",
+ "CeladonCity_DepartmentStore_Roof_Text_YaySodaPopHaveThis": "わーい！\\pサイコソーダだ！\\pありがとう！　おれいに　これ　あげる！",
+ "CeladonCity_DepartmentStore_Roof_Text_ExplainTM20": "わざマシン20は　しんぴのまもり！\\pみかたの　ポケモンを　じょうたいいじょうから　まもる　わざだよ",
+ "CeladonCity_DepartmentStore_Roof_Text_YayLemonadeHaveThis": "わーい！\\pミックスオレだ！\\pありがとう！　おれいに　これ　あげる！",
+ "CeladonCity_DepartmentStore_Roof_Text_ExplainTM33": "わざマシン33は　リフレクター！\\pあいての　ぶつりこうげきの　いりょくを　よわめる　わざだよ",
+ "CeladonCity_DepartmentStore_Roof_Text_DontHaveSpaceForThis": "これ　もう　もてないみたい！",
+ "CeladonCity_DepartmentStore_Roof_Text_ImNotThirstyAfterAll": "やっぱり　いらない！　もう　のど　かわいてないもん！",
+ "CeladonCity_DepartmentStore_Roof_Text_MySisterIsImmature": "ぼくの　いもうと　こう　みえても　トレーナーなんだ\\pでも　こどもっぽくて　ほんと　こまっちゃうよ！",
+ "CeladonCity_DepartmentStore_Roof_Text_ImThirstyIWantDrink": "のど　かわいたー！　なにか　のみたいよー！",
+ "CeladonCity_DepartmentStore_Roof_Text_FloorSign": "おくじょう　ひろば:　じどうはんばいき",
+ "CeladonCity_DepartmentStore_Roof_Text_VendingMachineWhatDoesItHave": "じどうはんばいきだ！　なにが　あるかな？",
+ "CeladonCity_DepartmentStore_Roof_Text_NotEnoughMoney": "おっと　おかねが　たりない！",
+ "CeladonCity_DepartmentStore_Roof_Text_DrinkCanPoppedOut": "ガコン！　{STR_VAR_1}が　でてきた！",
+ "CeladonCity_DepartmentStore_Roof_Text_NoMoreRoomForStuff": "もう　もちきれない！",
+ "CeladonCity_DepartmentStore_Roof_Text_NotThirsty": "のど　かわいてない！"
+}

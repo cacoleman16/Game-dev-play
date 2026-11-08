@@ -1,0 +1,7 @@
+{
+ "Route2_EastBuilding_Text_GiveHM05IfSeen10Mons": "やあ！　おぼえてる？　ぼくは　オーキドはかせの　じょしゅ　だよ。\\pポケモンずかんに　10しゅるいの　ポケモンが　とうろく　されていたら　ごほうびを　わたす　ことに　なってるんだ。\\pはかせから　きみに　ひでんマシン05を　あずかってるよ。\\pそれじゃ　{PLAYER}　きいて　みよう。\\pポケモンを　10しゅるい　いじょう　あつめた　かな？",
+ "Route2_EastBuilding_Text_GreatHereYouGo": "すごい！　きみは　{STR_VAR_3}しゅるいの　ポケモンを　つかまえたんだね！\\pおめでとう！　はい　どうぞ！",
+ "Route2_EastBuilding_Text_ReceivedHM05FromAide": "{PLAYER}は　じょしゅから　ひでんマシン05を　もらった！",
+ "Route2_EastBuilding_Text_ExplainHM05": "ひでんマシン05の　なかみは　フラッシュ。\\pフラッシュは　どんなに　くらい　どうくつも　あかるく　てらして　くれるんだ。",
+ "Route2_EastBuilding_Text_CanGetThroughRockTunnel": "ポケモンが　フラッシュを　おぼえれば　イワヤマトンネルを　ぬけられるよ。"
+}

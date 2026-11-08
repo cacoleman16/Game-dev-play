@@ -10,4 +10,8 @@ SixIsland_WaterPath_House2_Text_MyNeighborMeasuredMe::
 	.string "button.\p"
 	.string "I know it is this precisely because\n"
 	.string "my neighbor measured me.$"
+	.string "{JPN}{JPN}ぼくの　しんちょうは　ちょうど　170.2センチ\n"
+	.string "なんだ。\p"
+	.string "となりの　ひとに　はかって　もらったから\n"
+	.string "まちがい　ないよ。$"
 

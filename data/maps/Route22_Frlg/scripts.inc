@@ -243,10 +243,19 @@ Route22_Text_EarlyRivalIntro::
 	.string "without them.\p"
 	.string "By the way, did your POKéMON get\n"
 	.string "any stronger?$"
+	.string "{JPN}{JPN}{RIVAL}『おっ！\n"
+	.string "{PLAYER}じゃないか！\p"
+	.string "ポケモンリーグに　いくのか？　やめとけって！\p"
+	.string "どうせ　バッジ　もってないんだろ？\p"
+	.string "バッジが　なけりゃ　みはりの　ひとが　とおして\n"
+	.string "くれないぜ。\p"
+	.string "ところで　おまえの　ポケモン　すこしは　つよく\n"
+	.string "なったか？$"
 
 Route22_Text_EarlyRivalDefeat::
 	.string "Awww!\n"
 	.string "You just lucked out!$"
+	.string "{JPN}{JPN}なにー！　まぐれ　だろ！$"
 
 Route22_Text_EarlyRivalPostBattle::
 	.string "I heard the POKéMON LEAGUE is\n"
@@ -255,6 +264,12 @@ Route22_Text_EarlyRivalPostBattle::
 	.string "past them.\p"
 	.string "You should quit dawdling and get a\n"
 	.string "move on!$"
+	.string "{JPN}{JPN}ポケモンリーグには　つよい　トレーナーが\n"
+	.string "うじゃうじゃ　いるらしいぜ。\p"
+	.string "そいつらを　どうやって　かちぬくか\n"
+	.string "かんがえないとな。\p"
+	.string "おまえも　ぐずぐず　してないで　さっさと\n"
+	.string "いけよ！$"
 
 @ Translated in RB as "{RIVAL}: What? Why do I have 2 POKéMON? You should catch some more too!"
 Route22_Text_RivalShouldCatchSomeMons::
@@ -263,6 +278,9 @@ Route22_Text_RivalShouldCatchSomeMons::
 	.string "もってるの　なぜか　だって？\p"
 	.string "おまえも\n"
 	.string "つかまえれば　いい　じゃん！$"
+	.string "{JPN}{JPN}{RIVAL}『なんだ？　ポケモン　2ひきも\n"
+	.string "もってるの　なぜか　だって？\p"
+	.string "おまえも　つかまえれば　いい　じゃん！$"
 
 Route22_Text_LateRivalIntro::
 	.string "{RIVAL}: What? {PLAYER}!\n"
@@ -274,10 +292,20 @@ Route22_Text_LateRivalIntro::
 	.string "Then I'll whip you, {PLAYER}, as a\n"
 	.string "warm-up for the POKéMON LEAGUE!\p"
 	.string "Come on!$"
+	.string "{JPN}{JPN}{RIVAL}『なに？　{PLAYER}！　こんな\n"
+	.string "ところで　あうとはな！\p"
+	.string "おまえも　ポケモンリーグに　いくのか？\p"
+	.string "バッジも　ぜんぶ　あつめたのか？　やるじゃん！\p"
+	.string "じゃあ　ポケモンリーグの　まえの　じゅんび\n"
+	.string "うんどうに　{PLAYER}を　やっつけて\l"
+	.string "やるぜ！\p"
+	.string "かかってこい！$"
 
 Route22_Text_LateRivalDefeat::
 	.string "What!?\p"
 	.string "I was just careless, you!$"
+	.string "{JPN}{JPN}なにっ！？\p"
+	.string "ちょっと　ゆだん　した　だけだ！$"
 
 Route22_Text_LateRivalPostBattle::
 	.string "That loosened me up.\n"
@@ -285,6 +313,12 @@ Route22_Text_LateRivalPostBattle::
 	.string "{PLAYER}, you need more practice.\p"
 	.string "But hey, you know that!\n"
 	.string "I'm out of here. Smell ya!$"
+	.string "{JPN}{JPN}おかげで　からだが　ほぐれたぜ。\n"
+	.string "ポケモンリーグの　じゅんびは　ばっちりだ！\p"
+	.string "{PLAYER}　おまえは　もっと　れんしゅう\n"
+	.string "しなきゃな。\p"
+	.string "ま　わかってる　だろうけどな！　おれは　いくぜ！\n"
+	.string "あばよ！$"
 
 @ Translated in RB as "{RIVAL}: Hahaha! {PLAYER}! That's your best? You're nowhere near as good as me, pal! Go train some more! You loser!"
 Route22_Text_LateRivalVictory::
@@ -294,8 +328,14 @@ Route22_Text_LateRivalVictory::
 	.string "{PLAYER}は　まだまだ　だな！\p"
 	.string "もっと　れんしゅう　こいよ！\n"
 	.string "あははーッ！$"
+	.string "{JPN}{JPN}{RIVAL}『ひゃははッ　{PLAYER}ー！\n"
+	.string "それで　がんばってるのかよ！　おれの　さいのうに\l"
+	.string "くらべりゃ　{PLAYER}は　まだまだ　だな！\p"
+	.string "もっと　れんしゅう　こいよ！　あははーッ！$"
 
 Route22_Text_LeagueGateSign::
 	.string "POKéMON LEAGUE\n"
 	.string "Front Gate$"
+	.string "{JPN}{JPN}ポケモンリーグ\n"
+	.string "しょうめん　ゲート$"
 

@@ -31,17 +31,25 @@ EventScript_TooDark::
 sText_NotFoundNearby:
 	.string "It couldn't be found nearby.\n"
 	.string "Try looking in a different area!$"
+	.string "{JPN}{JPN}ちかくには　みつからなかった　ちがう　ばしょを\n"
+	.string "さがして　みよう！$"
 
 sText_TryMovingSlower:
 	.string "The Pokémon got away!\n"
 	.string "Try moving more slowly.$"
+	.string "{JPN}{JPN}ポケモンに　にげられた！　もっと　ゆっくり\n"
+	.string "ちかづいて　みよう$"
 
 sText_PokemonGotAway:
 	.string "The Pokémon got away!$"
+	.string "{JPN}{JPN}ポケモンに　にげられた！$"
 
 sText_LostSignal:
 	.string "There is no reaction.\n"
 	.string "The signal was lost!$"
+	.string "{JPN}{JPN}はんのうが　ない‥　シグナルが　きえて\n"
+	.string "しまった！$"
 
 sText_TooDark:
 	.string "It's too dark to search\nfor a Pokémon!$"
+	.string "{JPN}{JPN}くらすぎて　ポケモンを　さがせない！$"

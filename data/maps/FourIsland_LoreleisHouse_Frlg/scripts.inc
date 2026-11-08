@@ -41,6 +41,13 @@ FourIsland_LoreleisHouse_Text_IfAnythingWereToHappenToIsland::
 	.string "in the POKéMON LEAGUE.\p"
 	.string "I wonder if that would make me\n"
 	.string "irresponsible to my home…$"
+	.string "{JPN}{JPN}カンナ:　ずっと　きに　なっている　ことが\n"
+	.string "あるの。\p"
+	.string "もし　わたしの　うまれた　しまで　なにか\n"
+	.string "おきても‥\p"
+	.string "ポケモンリーグに　いたら　わたしは　きづけない。\p"
+	.string "それって　ふるさとに　たいして　むせきにん\n"
+	.string "なのかしら‥$"
 
 FourIsland_LoreleisHouse_Text_IllReturnToLeagueInShortWhile::
 	.string "LORELEI: So, you managed to solve\n"
@@ -51,13 +58,25 @@ FourIsland_LoreleisHouse_Text_IllReturnToLeagueInShortWhile::
 	.string "Thank you…\p"
 	.string "I'll return to the POKéMON LEAGUE\n"
 	.string "in a short while.$"
+	.string "{JPN}{JPN}カンナ:　ここの　もんだいを　ぜんぶ　かいけつ\n"
+	.string "して　くれたのね？\p"
+	.string "すばらしいわ。\p"
+	.string "それなら　わたしが　ずっと　ここに　いる\n"
+	.string "りゆうも　ないわね。\p"
+	.string "ありがとう‥\p"
+	.string "もう　すこししたら　ポケモンリーグに　もどるわ。$"
 
 FourIsland_LoreleisHouse_Text_WillDoWhatICanHereAndNow::
 	.string "I don't know what will happen in\n"
 	.string "the future, but…\p"
 	.string "I will do what I can here and now.\n"
 	.string "That's all I can do.$"
+	.string "{JPN}{JPN}これから　さき　どう　なるかは　わからない\n"
+	.string "けれど‥\p"
+	.string "いま　ここで　できる　ことを　するわ。　わたしに\n"
+	.string "できるのは　それだけ。$"
 
 FourIsland_LoreleisHouse_Text_StuffedMonDollsGalore::
 	.string "Stuffed POKéMON dolls galore!$"
+	.string "{JPN}{JPN}ポケモンの　ぬいぐるみが　いっぱい！$"
 

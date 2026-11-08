@@ -37,10 +37,17 @@ PewterCity_Mart_Text_BoughtWeirdFishFromShadyGuy::
 	.string "A shady old guy sucked me into\n"
 	.string "buying this weird fish POKéMON!\p"
 	.string "It's totally weak and it cost ¥500!$"
+	.string "{JPN}{JPN}あやしい　おじさんに　のせられて　へんな\n"
+	.string "さかなの　ポケモンを　かっちゃった！\p"
+	.string "すごく　よわいのに　500円も　したんだ！$"
 
 PewterCity_Mart_Text_GoodThingsIfRaiseMonsDiligently::
 	.string "Good things can happen if you raise\n"
 	.string "POKéMON diligently.\p"
 	.string "Even the weak ones can surprise\n"
 	.string "you if you don't give up on them.$"
+	.string "{JPN}{JPN}ポケモンを　こつこつ　そだてれば　いい　ことが\n"
+	.string "あるかもね。\p"
+	.string "よわい　ポケモンでも　あきらめずに　そだてれば\n"
+	.string "びっくり　する　ことが　あるんだ。$"
 

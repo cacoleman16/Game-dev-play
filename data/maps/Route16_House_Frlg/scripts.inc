@@ -39,19 +39,30 @@ Route16_House_Text_FoundMySecretRetreat::
 	.string "You've found my secret retreat.\p"
 	.string "Please don't tell anyone I'm here.\n"
 	.string "I'll make it up to you with this!$"
+	.string "{JPN}{JPN}あら　まあ。　わたしの　ひみつの　かくれがを\n"
+	.string "みつけちゃったのね。\p"
+	.string "わたしが　ここに　いること　だれにも\n"
+	.string "いわないでね。　おれいに　これを　あげるわ！$"
 
 Route16_House_Text_ReceivedHM02FromGirl::
 	.string "{PLAYER} received HM02\n"
 	.string "from the girl.$"
+	.string "{JPN}{JPN}{PLAYER}は　おんなのこから\n"
+	.string "ひでんマシン02を　もらった！$"
 
 Route16_House_Text_ExplainHM02::
 	.string "HM02 is FLY.\n"
 	.string "It's a wonderfully convenient move.\p"
 	.string "Please, put it to good use.$"
+	.string "{JPN}{JPN}ひでんマシン02は　そらをとぶ　よ。　とっても\n"
+	.string "べんりな　わざなの。\p"
+	.string "ぜひ　やくだてて　ちょうだい。$"
 
 Route16_House_Text_DontHaveAnyRoomForThis::
 	.string "You don't have any room for this.$"
+	.string "{JPN}{JPN}にもつが　いっぱいで　もてないみたいね。$"
 
 Route16_House_Text_Fearow::
 	.string "FEAROW: Kyueen!$"
+	.string "{JPN}{JPN}オニドリル『キュエーン！$"
 

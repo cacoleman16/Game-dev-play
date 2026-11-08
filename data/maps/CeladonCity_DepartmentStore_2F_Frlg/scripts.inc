@@ -64,14 +64,21 @@ CeladonCity_DepartmentStore_2F_Text_SuperRepelMorePowerfulRepel::
 	.string "SUPER REPEL keeps weak POKéMON at\n"
 	.string "bay…\p"
 	.string "Hmm, it's a more powerful REPEL.$"
+	.string "{JPN}{JPN}シルバースプレーは　よわい　ポケモンを\n"
+	.string "よせつけない‥\p"
+	.string "ふむ　むしよけスプレーの　つよい　やつか$"
 
 CeladonCity_DepartmentStore_2F_Text_BuyReviveForLongOutings::
 	.string "For long outings, you should buy\n"
 	.string "REVIVE.$"
+	.string "{JPN}{JPN}とおでを　するなら　げんきのかけらを　かって\n"
+	.string "おくと　いいよ$"
 
 CeladonCity_DepartmentStore_2F_Text_FloorSign::
 	.string "Top-Grade Items for TRAINERS!\p"
 	.string "2F: TRAINER'S MARKET$"
+	.string "{JPN}{JPN}トレーナーの　ための　こうきゅう　どうぐ！\p"
+	.string "2F:　トレーナーズマーケット$"
 
 CeladonCity_DepartmentStore_2F_Text_LanceComesToBuyCapes::
 	.string "We have a customer, LANCE, who\n"
@@ -79,3 +86,8 @@ CeladonCity_DepartmentStore_2F_Text_LanceComesToBuyCapes::
 	.string "He always buys capes.\p"
 	.string "I wonder… Does he have many\n"
 	.string "identical capes at home?$"
+	.string "{JPN}{JPN}ときどき　いらっしゃる　ワタルさまと　いう\n"
+	.string "おきゃくさまが　いるのですが\p"
+	.string "いつも　マントを　おかいもとめに　なるんです\p"
+	.string "もしかして　おうちに　おなじ　マントが　たくさん\n"
+	.string "あるのでしょうか‥？$"

@@ -295,12 +295,25 @@ VermilionCity_Gym_Text_LtSurgeIntro::
 	.string "They zapped my enemies into\n"
 	.string "paralysis!\p"
 	.string "The same as I'll do to you!{PLAY_BGM}{MUS_RG_ENCOUNTER_GYM_LEADER}$"
+	.string "{JPN}{JPN}ヘイ　キッド！　ここで　なにを　してるんだ？\p"
+	.string "そんな　ちっぽけな　パワーじゃ　たたかいで\n"
+	.string "いきのこれないぜ！\p"
+	.string "いいか　キッド　せんそうの　とき　おれを\n"
+	.string "すくったのは　でんきポケモン　だった！\p"
+	.string "てきを　ビリビリ　しびれさせて　まひ\n"
+	.string "させたのさ！\p"
+	.string "ユーも　おなじ　めに　あわせて\n"
+	.string "やるぜ！{PLAY_BGM}{MUS_RG_ENCOUNTER_GYM_LEADER}$"
 
 VermilionCity_Gym_Text_LtSurgePostBattle::
 	.string "A little word of advice, kid!\p"
 	.string "Electricity is sure powerful!\p"
 	.string "But, it's useless against GROUND-\n"
 	.string "type POKéMON!$"
+	.string "{JPN}{JPN}ひとつ　アドバイス　してやるぜ　キッド！\p"
+	.string "でんきは　たしかに　パワフルだ！\p"
+	.string "だが　じめんタイプの　ポケモンには　ぜんぜん\n"
+	.string "きかないのさ！$"
 
 VermilionCity_Gym_Text_ExplainThunderBadgeTakeThis::
 	.string "The THUNDERBADGE cranks up your\n"
@@ -309,57 +322,88 @@ VermilionCity_Gym_Text_ExplainThunderBadgeTakeThis::
 	.string "lightning-quick anytime, kid!\p"
 	.string "You're special, kid!\n"
 	.string "Take this!$"
+	.string "{JPN}{JPN}オレンジバッジは　ポケモンの　すばやさを　アップ\n"
+	.string "させる！\p"
+	.string "それに　いつでも　そらをとぶが　つかえる　ように\n"
+	.string "なるぜ　キッド！\p"
+	.string "ユーは　とくべつだ　キッド！　これを　もって\n"
+	.string "いきな！$"
 
 VermilionCity_Gym_Text_ReceivedTM34FromLtSurge::
 	.string "{PLAYER} received TM34\n"
 	.string "from LT. SURGE.$"
+	.string "{JPN}{JPN}{PLAYER}は　マチスから　わざマシン34を\n"
+	.string "もらった$"
 
 VermilionCity_Gym_Text_ExplainTM34::
 	.string "TM34 contains SHOCK WAVE!\p"
 	.string "Teach it to an ELECTRIC POKéMON!$"
+	.string "{JPN}{JPN}わざマシン34は　でんげきはだ！\p"
+	.string "でんきタイプの　ポケモンに　おしえて　やりな！$"
 
 VermilionCity_Gym_Text_MakeRoomInYourBag::
 	.string "Yo, kid, make room in your BAG!$"
+	.string "{JPN}{JPN}ヘイ　キッド　バッグを　あけて　おきな！$"
 
 VermilionCity_Gym_Text_LtSurgeDefeat::
 	.string "Now that's a shocker!\p"
 	.string "You're the real deal, kid!\p"
 	.string "Fine, then, take the THUNDERBADGE!$"
+	.string "{JPN}{JPN}こいつは　ショッキングだ！\p"
+	.string "ユーは　ほんものだぜ　キッド！\p"
+	.string "よし　オレンジバッジを　もって　いきな！$"
 
 VermilionCity_Gym_Text_TuckerIntro::
 	.string "When I was in the Army, LT. SURGE\n"
 	.string "was my strict CO.\p"
 	.string "He was a hard taskmaster.$"
+	.string "{JPN}{JPN}ぐんたいに　いた　ころ　マチスさんは　きびしい\n"
+	.string "じょうかん　だった\p"
+	.string "とても　きびしい　ひと　だったよ$"
 
 VermilionCity_Gym_Text_TuckerDefeat::
 	.string "Stop!\n"
 	.string "You're very good!$"
+	.string "{JPN}{JPN}まいった！　きみは　つよいな！$"
 
 VermilionCity_Gym_Text_TuckerPostBattle::
 	.string "It's not easy opening that door.\p"
 	.string "LT. SURGE was always famous for\n"
 	.string "his cautious nature in the Army.$"
+	.string "{JPN}{JPN}あの　ドアを　あけるのは　かんたん　じゃないぞ\p"
+	.string "マチスさんは　ぐんたいでも　しんちょうな　ことで\n"
+	.string "ゆうめい　だったからな$"
 
 VermilionCity_Gym_Text_BailyIntro::
 	.string "I'm a lightweight, but I'm good\n"
 	.string "with electricity!\p"
 	.string "That's why I joined this GYM.$"
+	.string "{JPN}{JPN}おれは　けいりょうきゅう　だけど　でんきは\n"
+	.string "とくい　なんだ！\p"
+	.string "だから　この　ジムに　はいったのさ！$"
 
 VermilionCity_Gym_Text_BailyDefeat::
 	.string "Fried!$"
+	.string "{JPN}{JPN}こげた！$"
 
 VermilionCity_Gym_Text_BailyPostBattle::
 	.string "Okay, I'll talk!\p"
 	.string "LT. SURGE said he hid door\n"
 	.string "switches inside something.$"
+	.string "{JPN}{JPN}わかった　おしえるよ！\p"
+	.string "マチスさんは　ドアの　スイッチを　なにかの\n"
+	.string "なかに　かくした　って　いってたぜ$"
 
 VermilionCity_Gym_Text_DwayneIntro::
 	.string "This is no place for kids!\n"
 	.string "Not even if you're good!$"
+	.string "{JPN}{JPN}ここは　こどもの　くる　ところ　じゃない！\n"
+	.string "いくら　つよくてもな！$"
 
 VermilionCity_Gym_Text_DwayneDefeat::
 	.string "Wow!\n"
 	.string "Surprised me!$"
+	.string "{JPN}{JPN}わお！　おどろいたぜ！$"
 
 VermilionCity_Gym_Text_DwaynePostBattle::
 	.string "LT. SURGE installed the traps in\n"
@@ -368,6 +412,12 @@ VermilionCity_Gym_Text_DwaynePostBattle::
 	.string "Let me give you a hint.\p"
 	.string "When you open the first lock, the\n"
 	.string "second lock is right next to it.$"
+	.string "{JPN}{JPN}ジムの　しかけは　マチスさんが　じぶんで\n"
+	.string "つくったんだ\p"
+	.string "どこも　ロックが　ふたつ　かかってる　ヒントを\n"
+	.string "やろう\p"
+	.string "ひとつめの　ロックを　あけたら　ふたつめの\n"
+	.string "ロックは　すぐ　となりに　あるぜ$"
 
 VermilionCity_Gym_Text_GymGuyAdvice::
 	.string "Yo!\n"
@@ -383,15 +433,30 @@ VermilionCity_Gym_Text_GymGuyAdvice::
 	.string "LT. SURGE is very cautious.\p"
 	.string "He's locked himself in, so it won't\n"
 	.string "be easy getting to him.$"
+	.string "{JPN}{JPN}オーッス！　みらいの　チャンピオン！\p"
+	.string "マチスには　あだなが　あるんだ\p"
+	.string "みんなは　イナズマ　アメリカンって　よんでる！\p"
+	.string "でんきポケモンの　エキスパートだ\p"
+	.string "ひこうタイプや　みずタイプの　ポケモンは\n"
+	.string "でんきタイプと　あいしょうが　わるいぞ\p"
+	.string "まひにも　きを　つけろ\p"
+	.string "マチスは　とても　しんちょうな　おとこだ\p"
+	.string "じぶんを　とじこめて　いるから　たどりつくのは\n"
+	.string "かんたん　じゃないぞ$"
 
 VermilionCity_Gym_Text_GymGuyPostVictory::
 	.string "Whew!\n"
 	.string "That match was electric!$"
+	.string "{JPN}{JPN}ふう！　しびれる　しょうぶ　だったぜ！$"
 
 VermilionCity_Gym_Text_GymStatue::
 	.string "VERMILION POKéMON GYM\n"
 	.string "LEADER: LT. SURGE\p"
 	.string "WINNING TRAINERS:\n"
+	.string "{RIVAL}$"
+	.string "{JPN}{JPN}クチバ　ポケモンジム\n"
+	.string "リーダー　マチス\p"
+	.string "しょうりした　トレーナー\n"
 	.string "{RIVAL}$"
 
 VermilionCity_Gym_Text_GymStatuePlayerWon::
@@ -399,23 +464,36 @@ VermilionCity_Gym_Text_GymStatuePlayerWon::
 	.string "LEADER: LT. SURGE\p"
 	.string "WINNING TRAINERS:\n"
 	.string "{RIVAL}, {PLAYER}$"
+	.string "{JPN}{JPN}クチバ　ポケモンジム\n"
+	.string "リーダー　マチス\p"
+	.string "しょうりした　トレーナー\n"
+	.string "{RIVAL}　{PLAYER}$"
 
 VermilionCity_Gym_Text_NopeOnlyTrashHere::
 	.string "Nope!\n"
 	.string "There's only trash here.$"
+	.string "{JPN}{JPN}ハズレ！　ゴミしか　はいって　いない$"
 
 VermilionCity_Gym_Text_SwitchUnderTrashFirstLockOpened::
 	.string "Hey! There's a switch under the\n"
 	.string "trash! Turn it on!\p"
 	.string "The first electric lock opened!$"
+	.string "{JPN}{JPN}おや！　ゴミの　したに　スイッチが　ある！\n"
+	.string "おして　みよう！\p"
+	.string "ひとつめの　でんきロックが　はずれた！$"
 
 VermilionCity_Gym_Text_SecondLockOpened::
 	.string "The second electric lock opened!\n"
 	.string "The motorized door opened!$"
+	.string "{JPN}{JPN}ふたつめの　でんきロックが　はずれた！\n"
+	.string "でんどうドアが　ひらいた！$"
 
 VermilionCity_Gym_Text_OnlyTrashLocksWereReset::
 	.string "Nope!\n"
 	.string "There's only trash here.\p"
 	.string "Hey!\n"
 	.string "The electric locks were reset!$"
+	.string "{JPN}{JPN}ハズレ！　ゴミしか　はいって　いない\p"
+	.string "あっ！　でんきロックが　もとに　もどって\n"
+	.string "しまった！$"
 

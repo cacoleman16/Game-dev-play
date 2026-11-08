@@ -64,10 +64,13 @@ FiveIsland_LostCave_Room10_Movement_SelphyApproach::
 FiveIsland_LostCave_Room10_Text_SelphyIntro::
 	.string "W-what do you intend to do with\n"
 	.string "me?$"
+	.string "{JPN}{JPN}な　なにを　なさる　おつもり　ですの？$"
 
 FiveIsland_LostCave_Room10_Text_SelphyDefeat::
 	.string "Oh… I was afraid that you meant to\n"
 	.string "harm me.$"
+	.string "{JPN}{JPN}まあ‥　ひどい　ことを　される　のかと\n"
+	.string "おもいましたわ$"
 
 FiveIsland_LostCave_Room10_Text_MayIAskYouToTakeMeHome::
 	.string "I am so glad that you happened\n"
@@ -76,4 +79,10 @@ FiveIsland_LostCave_Room10_Text_MayIAskYouToTakeMeHome::
 	.string "and I am feeling fatigued.\p"
 	.string "May I ask you to take me home\n"
 	.string "from here?$"
+	.string "{JPN}{JPN}あなたが　きて　くださって　ほんとうに\n"
+	.string "よかったですわ\p"
+	.string "あるくのにも　あきて　しまって　すっかり\n"
+	.string "つかれて　しまいましたの\p"
+	.string "ここから　おうちまで　つれて　かえって\n"
+	.string "いただけます？$"
 

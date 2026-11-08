@@ -1,0 +1,19 @@
+{
+ "SilphCo_11F_Text_ThanksForSavingMeDearBoy": "しゃちょう『おお　ぼうや！　シルフを　すくって　くれて　ありがとう！\\pききいっぱつの　ところを　たすけて　もらった　ことは　けっして　わすれないよ。\\pなにか　おれいを　しなければ。\\pわたしは　おかねもち　だから　なんでも　あげられるぞ。\\pそうだ　これなんか　どうかね。』",
+ "SilphCo_11F_Text_ThanksForSavingMeDearGirl": "しゃちょう『おお　おじょうさん！　シルフを　すくって　くれて　ありがとう！\\pききいっぱつの　ところを　たすけて　もらった　ことは　けっして　わすれないよ。\\pなにか　おれいを　しなければ。\\pわたしは　おかねもち　だから　なんでも　あげられるぞ。\\pそうだ　これなんか　どうかね。』",
+ "SilphCo_11F_Text_ObtainedMasterBallFromPresident": "{PLAYER}は　しゃちょうから　マスターボールを　もらった！",
+ "SilphCo_11F_Text_ThatsOurSecretPrototype": "しゃちょう『それは　どこにも　うって　いない。\\pわが　しゃが　ひそかに　かいはつした　しさくひんの　マスターボール　だ。\\pどんな　ポケモンでも　かならず　つかまえられる！\\pただ　つかう　ときは　ないしょに　して　おいて　くれよ。』",
+ "SilphCo_11F_Text_YouHaveNoRoomForThis": "もう　もちきれない　ようだ。",
+ "SilphCo_11F_Text_ThanksForRescuingUs": "ひしょ『みんなを　たすけて　くださって　ありがとう　ございます。\\pしゃちょうを　はじめ　わたしたち　みんな　あなたに　かんしゃ　して　います。』",
+ "SilphCo_11F_Text_GiovanniIntro": "おお　{PLAYER}！　また　あったな！\\pわたしは　いま　しゃちょうと　だいじな　とりひきの　はなしを　して　いる　ところだ。\\pおとなの　はなしに　くちを　だすな‥\\pさもないと　いたい　めを　みるぞ！",
+ "SilphCo_11F_Text_GiovanniDefeat": "ぐっ！！　また　まけたと　いうのか！？",
+ "SilphCo_11F_Text_GiovanniPostBattle": "くそっ！　シルフでの　けいかくが　だいなしだ！\\pだが　ロケットだんは　けっして　ほろびん！\\p{PLAYER}！　すべての　ポケモンは　ロケットだんの　ために　ある　ことを　わすれるな！\\pいまは　さるが　かならず　もどって　くるぞ！",
+ "SilphCo_11F_Text_Grunt2Intro": "そこまでだ！　うごくんじゃ　ねえ！",
+ "SilphCo_11F_Text_Grunt2Defeat": "やめ‥　やめてくれ！",
+ "SilphCo_11F_Text_Grunt2PostBattle": "なんだ　ボスに　あいたいのか？",
+ "SilphCo_11F_Text_Grunt1Intro": "とまれ！　ボスと　あう　やくそくは　あるのか？",
+ "SilphCo_11F_Text_Grunt1Defeat": "ぐはっ！　やられた！",
+ "SilphCo_11F_Text_Grunt1PostBattle": "きを　つけな‥　ボスは　つよい　ポケモンが　すきなんだ！",
+ "SilphCo_11F_Text_MonitorHasMonsOnIt": "モニターに　ポケモンが　うつって　いる！",
+ "SilphCo_11F_Text_FloorSign": "シルフカンパニー　ほんしゃ\\n11かい"
+}

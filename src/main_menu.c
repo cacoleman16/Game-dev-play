@@ -256,25 +256,25 @@ static const u32 sBirchSpeechShadowGfx[] = INCGFX_U32("graphics/birch_speech/sha
 static const u32 sBirchSpeechBgMap[] = INCGFX_U32("graphics/birch_speech/map.bin", ".smolTM");
 static const u16 sBirchSpeechBgGradientPal[] = INCGFX_U16("graphics/birch_speech/bg2.pal", ".gbapal");
 
-static const u8 gText_SaveFileCorrupted[] = _("The save file is corrupted. The\nprevious save file will be loaded.");
-static const u8 gText_SaveFileErased[] = _("The save file has been erased\ndue to corruption or damage.");
+static const u8 gText_SaveFileCorrupted[] = _("The save file is corrupted. The\nprevious save file will be loaded.${JPN}{JPN}レポートが　こわれているので\nまえの　レポートを　よみこみます。");
+static const u8 gText_SaveFileErased[] = _("The save file has been erased\ndue to corruption or damage.${JPN}{JPN}レポートが　こわれていたので\nけされて　しまいました。");
 static const u8 gJPText_No1MSubCircuit[] = _("1Mサブきばんが ささっていません！");
-static const u8 gText_BatteryRunDry[] = _("The internal battery has run dry.\nThe game can be played.\pHowever, clock-based events will\nno longer occur.");
+static const u8 gText_BatteryRunDry[] = _("The internal battery has run dry.\nThe game can be played.\pHowever, clock-based events will\nno longer occur.${JPN}{JPN}ないぞう　でんちが　きれました。\nゲームは　あそべます。\pただし　じかんに　かんけいする\nイベントは　おこらなく　なります。");
 
-static const u8 gText_MainMenuNewGame[] = _("NEW GAME");
-static const u8 gText_MainMenuContinue[] = _("CONTINUE");
-static const u8 gText_MainMenuOption[] = _("OPTION");
-static const u8 gText_MainMenuMysteryGift[] = _("MYSTERY GIFT");
-static const u8 gText_MainMenuMysteryGift2[] = _("MYSTERY GIFT");
-static const u8 gText_MainMenuMysteryEvents[] = _("MYSTERY EVENTS");
-static const u8 gText_WirelessNotConnected[] = _("The Wireless Adapter is not\nconnected.");
-static const u8 gText_MysteryGiftCantUse[] = _("MYSTERY GIFT can't be used while\nthe Wireless Adapter is attached.");
-static const u8 gText_MysteryEventsCantUse[] = _("MYSTERY EVENTS can't be used while\nthe Wireless Adapter is attached.");
+static const u8 gText_MainMenuNewGame[] = _("NEW GAME${JPN}{JPN}さいしょから はじめる");
+static const u8 gText_MainMenuContinue[] = _("CONTINUE${JPN}{JPN}つづきから はじめる");
+static const u8 gText_MainMenuOption[] = _("OPTION${JPN}{JPN}せっていを かえる");
+static const u8 gText_MainMenuMysteryGift[] = _("MYSTERY GIFT${JPN}{JPN}ふしぎな おくりもの");
+static const u8 gText_MainMenuMysteryGift2[] = _("MYSTERY GIFT${JPN}{JPN}ふしぎな おくりもの");
+static const u8 gText_MainMenuMysteryEvents[] = _("MYSTERY EVENTS${JPN}{JPN}ふしぎな できごと");
+static const u8 gText_WirelessNotConnected[] = _("The Wireless Adapter is not\nconnected.${JPN}{JPN}ワイヤレスアダプタが\nつながっていません。");
+static const u8 gText_MysteryGiftCantUse[] = _("MYSTERY GIFT can't be used while\nthe Wireless Adapter is attached.${JPN}{JPN}ワイヤレスアダプタを　つないだままでは\nふしぎな　おくりものは　つかえません。");
+static const u8 gText_MysteryEventsCantUse[] = _("MYSTERY EVENTS can't be used while\nthe Wireless Adapter is attached.${JPN}{JPN}ワイヤレスアダプタを　つないだままでは\nふしぎな　できごとは　つかえません。");
 
-static const u8 gText_ContinueMenuPlayer[] = _("PLAYER");
-static const u8 gText_ContinueMenuTime[] = _("TIME");
-static const u8 gText_ContinueMenuPokedex[] = _("POKéDEX");
-static const u8 gText_ContinueMenuBadges[] = _("BADGES");
+static const u8 gText_ContinueMenuPlayer[] = _("PLAYER${JPN}{JPN}しゅじんこう");
+static const u8 gText_ContinueMenuTime[] = _("TIME${JPN}{JPN}プレイじかん");
+static const u8 gText_ContinueMenuPokedex[] = _("POKéDEX${JPN}{JPN}ずかん");
+static const u8 gText_ContinueMenuBadges[] = _("BADGES${JPN}{JPN}バッジ");
 
 #define MENU_LEFT 2
 #define MENU_TOP_WIN0 1

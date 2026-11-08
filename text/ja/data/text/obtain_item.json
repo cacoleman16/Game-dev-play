@@ -1,0 +1,18 @@
+{
+ "gText_ObtainedTheItem": "{STR_VAR_2}を　てに　いれた！",
+ "gText_TheBagIsFull": "バッグが　いっぱいだ‥",
+ "gText_PutItemInPocket": "{PLAYER}は　{STR_VAR_2}を　{STR_VAR_3}ポケットに　しまった",
+ "gText_PlayerFoundOneItem": "{PLAYER}は　{STR_VAR_2}を　1こ　みつけた！",
+ "gText_TooBadBagIsFull": "ざんねん！　バッグが　いっぱいだ‥",
+ "gText_PlayerPutItemInBag": "{PLAYER}は　{STR_VAR_2}を　バッグに　しまった",
+ "gText_ObtainedTheDecor": "{STR_VAR_2}を　てに　いれた！",
+ "gText_NoRoomLeftForAnother": "ざんねん！　これいじょう　{STR_VAR_2}を　おく　ばしょが　ない‥",
+ "gText_TheDecorWasTransferredToThePC": "{STR_VAR_2}は　パソコンに　おくられた",
+ "gText_ObtainedTheItems": "{STR_VAR_2}を　{STR_VAR_1}こ　てに　いれた！",
+ "gText_PlayerFoundItems": "{PLAYER}は　{STR_VAR_2}を　{STR_VAR_1}こ　みつけた！",
+ "gText_PutCoinsAwayInCoinCase": "{PLAYER}は　コインを　コインケースに　しまった",
+ "gText_FoundXCoins": "{PLAYER}は　{STR_VAR_2}を　{STR_VAR_1}まい　みつけた！",
+ "gText_FoundXItems": "{PLAYER}は　{STR_VAR_2}を　{STR_VAR_1}こ　みつけた！",
+ "gText_CoinCaseIsFull": "ざんねん！　コインケースが　いっぱいだ‥",
+ "gText_NothingToPutThemIn": "ざんねん！　いれる　ものが　ない‥"
+}

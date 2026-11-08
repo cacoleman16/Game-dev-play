@@ -1,0 +1,11 @@
+{
+ "Route22_Text_EarlyRivalIntro": "{RIVAL}『おっ！　{PLAYER}じゃないか！\\pポケモンリーグに　いくのか？　やめとけって！\\pどうせ　バッジ　もってないんだろ？\\pバッジが　なけりゃ　みはりの　ひとが　とおして　くれないぜ。\\pところで　おまえの　ポケモン　すこしは　つよく　なったか？",
+ "Route22_Text_EarlyRivalDefeat": "なにー！　まぐれ　だろ！",
+ "Route22_Text_EarlyRivalPostBattle": "ポケモンリーグには　つよい　トレーナーが　うじゃうじゃ　いるらしいぜ。\\pそいつらを　どうやって　かちぬくか　かんがえないとな。\\pおまえも　ぐずぐず　してないで　さっさと　いけよ！",
+ "Route22_Text_RivalShouldCatchSomeMons": "{RIVAL}『なんだ？　ポケモン　2ひきも　もってるの　なぜか　だって？\\pおまえも　つかまえれば　いい　じゃん！",
+ "Route22_Text_LateRivalIntro": "{RIVAL}『なに？　{PLAYER}！　こんな　ところで　あうとはな！\\pおまえも　ポケモンリーグに　いくのか？\\pバッジも　ぜんぶ　あつめたのか？　やるじゃん！\\pじゃあ　ポケモンリーグの　まえの　じゅんび　うんどうに　{PLAYER}を　やっつけて　やるぜ！\\pかかってこい！",
+ "Route22_Text_LateRivalDefeat": "なにっ！？\\pちょっと　ゆだん　した　だけだ！",
+ "Route22_Text_LateRivalPostBattle": "おかげで　からだが　ほぐれたぜ。　ポケモンリーグの　じゅんびは　ばっちりだ！\\p{PLAYER}　おまえは　もっと　れんしゅう　しなきゃな。\\pま　わかってる　だろうけどな！　おれは　いくぜ！　あばよ！",
+ "Route22_Text_LateRivalVictory": "{RIVAL}『ひゃははッ　{PLAYER}ー！　それで　がんばってるのかよ！　おれの　さいのうに　くらべりゃ　{PLAYER}は　まだまだ　だな！\\pもっと　れんしゅう　こいよ！　あははーッ！",
+ "Route22_Text_LeagueGateSign": "ポケモンリーグ\\nしょうめん　ゲート"
+}

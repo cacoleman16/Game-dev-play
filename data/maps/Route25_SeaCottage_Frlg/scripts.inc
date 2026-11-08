@@ -307,6 +307,13 @@ Route25_SeaCottage_Text_ImBillHelpMeOutPal::
 	.string "combined with a POKéMON!\p"
 	.string "So, how about it?\n"
 	.string "Help me out here!$"
+	.string "{JPN}{JPN}やあ！　わいは　ポケモン‥　‥ちゃう　ちゃう！\p"
+	.string "わいは　マサキ！　ポケモンマニアの　マサキや！\p"
+	.string "なんや！　その　うたがう　めは！\p"
+	.string "うそや　あらへんで　にいちゃん。\p"
+	.string "じっけんに　しっぱい　して　ポケモンと　がったい\n"
+	.string "してもうたんや！\p"
+	.string "なあ　たのむわ！　たすけて　えな！$"
 
 Route25_SeaCottage_Text_ImBillHelpMeOutLady::
 	.string "Hiya! I'm a POKéMON…\n"
@@ -320,12 +327,21 @@ Route25_SeaCottage_Text_ImBillHelpMeOutLady::
 	.string "combined with a POKéMON!\p"
 	.string "So, how about it?\n"
 	.string "Help me out here!$"
+	.string "{JPN}{JPN}やあ！　わいは　ポケモン‥　‥ちゃう　ちゃう！\p"
+	.string "わいは　マサキ！　ポケモンマニアの　マサキや！\p"
+	.string "なんや！　その　うたがう　めは！\p"
+	.string "うそや　あらへんで　ねえちゃん。\p"
+	.string "じっけんに　しっぱい　して　ポケモンと　がったい\n"
+	.string "してもうたんや！\p"
+	.string "なあ　たのむわ！　たすけて　えな！$"
 
 Route25_SeaCottage_Text_RunCellSeparationOnPC::
 	.string "Wait till I get inside the\n"
 	.string "TELEPORTER.\p"
 	.string "When I do, go to my PC and run\n"
 	.string "the Cell Separation System.$"
+	.string "{JPN}{JPN}わいが　テレポーターに　はいったら　パソコンで\n"
+	.string "ぶんりシステムを　うごかして　くれ。$"
 
 Route25_SeaCottage_Text_NoPleaseChief::
 	.string "No!?\n"
@@ -336,6 +352,11 @@ Route25_SeaCottage_Text_NoPleaseChief::
 	.string "Please?\l"
 	.string "Okay?\l"
 	.string "All right!$"
+	.string "{JPN}{JPN}いやや！？　そんな　つめたい　こと\n"
+	.string "いわんといてえな！\p"
+	.string "ほんまに　こまってる　ひとを　たすけてえな！\p"
+	.string "な　にいちゃん！　たのむわ！　ええやろ？\n"
+	.string "よっしゃ！$"
 
 Route25_SeaCottage_Text_NoPleaseBeautiful::
 	.string "No!?\n"
@@ -346,6 +367,11 @@ Route25_SeaCottage_Text_NoPleaseBeautiful::
 	.string "Please?\l"
 	.string "Okay?\l"
 	.string "All right!$"
+	.string "{JPN}{JPN}いやや！？　そんな　つめたい　こと\n"
+	.string "いわんといてえな！\p"
+	.string "ほんまに　こまってる　ひとを　たすけてえな！\p"
+	.string "な　べっぴんさん！　たのむわ！　ええやろ？\n"
+	.string "よっしゃ！$"
 
 Route25_SeaCottage_Text_ThanksBudTakeThis::
 	.string "BILL: Yeehah!\n"
@@ -356,6 +382,13 @@ Route25_SeaCottage_Text_ThanksBudTakeThis::
 	.string "That's a bummer.\p"
 	.string "I've got to thank you…\n"
 	.string "Oh, here, maybe this'll do.$"
+	.string "{JPN}{JPN}マサキ『やったー！　おおきに　にいちゃん！\n"
+	.string "たすかったわ！\p"
+	.string "で　わいの　ポケモン　コレクション　みに\n"
+	.string "きたんか？\p"
+	.string "ちゃうんか？　そら　ざんねんやな。\p"
+	.string "なんか　おれい　せな　あかんな‥　おっ\n"
+	.string "これなんか　どうや。$"
 
 Route25_SeaCottage_Text_ThanksLadyTakeThis::
 	.string "BILL: Yeehah!\n"
@@ -366,13 +399,23 @@ Route25_SeaCottage_Text_ThanksLadyTakeThis::
 	.string "That's a bummer.\p"
 	.string "I've got to thank you…\n"
 	.string "Oh, here, maybe this'll do.$"
+	.string "{JPN}{JPN}マサキ『やったー！　おおきに　ねえちゃん！\n"
+	.string "たすかったわ！\p"
+	.string "で　わいの　ポケモン　コレクション　みに\n"
+	.string "きたんか？\p"
+	.string "ちゃうんか？　そら　ざんねんやな。\p"
+	.string "なんか　おれい　せな　あかんな‥　おっ\n"
+	.string "これなんか　どうや。$"
 
 Route25_SeaCottage_Text_ReceivedSSTicketFromBill::
 	.string "{PLAYER} received an S.S. TICKET\n"
 	.string "from BILL.$"
+	.string "{JPN}{JPN}{PLAYER}は　マサキから　ふねのチケットを\n"
+	.string "もらった！$"
 
 Route25_SeaCottage_Text_YouveGotTooMuchStuff::
 	.string "You've got too much stuff!$"
+	.string "{JPN}{JPN}にもつが　いっぱいやで！$"
 
 Route25_SeaCottage_Text_SSAnnePartyYouGoInstead::
 	.string "That cruise ship S.S. ANNE is in\n"
@@ -383,23 +426,38 @@ Route25_SeaCottage_Text_SSAnnePartyYouGoInstead::
 	.string "I can't stand fancy do's.\p"
 	.string "Why don't you go instead of me?\n"
 	.string "Go on and have a good time.$"
+	.string "{JPN}{JPN}クチバシティに　ごうかきゃくせん\n"
+	.string "サントアンヌごうが　きとるんや。\p"
+	.string "トレーナーも　ぎょうさん　のっとる　らしいで。\p"
+	.string "パーティーに　しょうたい　されたんやけど　わいは\n"
+	.string "かたくるしいの　にがてでな。\p"
+	.string "かわりに　いって　きたら　ええわ。　たのしんで\n"
+	.string "きいや。$"
 
 Route25_SeaCottage_Text_CheckOutRareMonsOnPC::
 	.string "BILL: Feel like checking out some\n"
 	.string "of my rare POKéMON on my PC?\p"
 	.string "Go on, check out my PC.$"
+	.string "{JPN}{JPN}マサキ『わいの　めずらしい　ポケモン　パソコンで\n"
+	.string "みてみるか？\p"
+	.string "ほれ　パソコン　みてみい。$"
 
 Route25_SeaCottage_Text_TeleporterIsDisplayed::
 	.string "TELEPORTER is displayed on the PC\n"
 	.string "monitor.$"
+	.string "{JPN}{JPN}パソコンの　がめんに　テレポーターと　でている。$"
 
 Route25_SeaCottage_Text_InitiatedTeleportersCellSeparator::
 	.string "{PLAYER} initiated the TELEPORTER's\n"
 	.string "Cell Separator.$"
+	.string "{JPN}{JPN}{PLAYER}は　テレポーターの\n"
+	.string "ぶんりシステムを　うごかした！$"
 
 Route25_SeaCottage_Text_BillsFavoriteMonList::
 	.string "BILL's favorite POKéMON list!$"
+	.string "{JPN}{JPN}マサキの　おきにいり　ポケモン　リスト！$"
 
 Route25_SeaCottage_Text_SeeWhichMon::
 	.string "Which POKéMON do you want to see?$"
+	.string "{JPN}{JPN}どの　ポケモンを　みる？$"
 

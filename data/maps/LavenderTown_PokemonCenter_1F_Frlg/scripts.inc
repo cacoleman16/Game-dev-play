@@ -31,14 +31,23 @@ LavenderTown_PokemonCenter_1F_Text_RocketsDoAnythingForMoney::
 	.string "the sake of money!\p"
 	.string "There is no job too dirty, no deed\n"
 	.string "too heinous, no crime too wicked!$"
+	.string "{JPN}{JPN}ロケットだんは　おかねの　ためなら　なんでも\n"
+	.string "するんだ！\p"
+	.string "どんな　きたない　しごとも　どんな　ひどい\n"
+	.string "はんざいも　へいき　なんだ！$"
 
 LavenderTown_PokemonCenter_1F_Text_CubonesMotherKilledByRockets::
 	.string "I saw CUBONE's mother trying to\n"
 	.string "escape from TEAM ROCKET.\p"
 	.string "She was killed trying to get away…$"
+	.string "{JPN}{JPN}カラカラの　おかあさんが　ロケットだんから\n"
+	.string "にげようと　しているのを　みたの。\p"
+	.string "にげる　とちゅうで　ころされて　しまったの‥$"
 
 LavenderTown_PokemonCenter_1F_Text_PeoplePayForCuboneSkulls::
 	.string "You know how the CUBONE species\n"
 	.string "wears skulls, right?\p"
 	.string "People will pay a lot for one.$"
+	.string "{JPN}{JPN}カラカラって　ほねを　かぶってる　でしょ？\p"
+	.string "あれを　たかく　かう　ひとが　いるんだって。$"
 

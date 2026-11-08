@@ -80,15 +80,22 @@ Text_WelcomeWantToHealPkmn_Frlg::
 	.string "Welcome to our POKéMON CENTER!\p"
 	.string "Would you like me to heal your\n"
 	.string "POKéMON back to perfect health?$"
+	.string "{JPN}{JPN}ポケモンセンターへ　ようこそ！\p"
+	.string "あなたの　ポケモンを　すっかり　げんきに\n"
+	.string "しましょうか？$"
 
 Text_TakeYourPkmnForFewSeconds_Frlg::
 	.string "Okay, I'll take your POKéMON for a\n"
 	.string "few seconds.$"
+	.string "{JPN}{JPN}それでは　あずからせて　いただきます！$"
 
 Text_WeHopeToSeeYouAgain_Frlg::
 	.string "We hope to see you again!$"
+	.string "{JPN}{JPN}またの　ごりようを　おまちしてます！$"
 
 Text_RestoredPkmnToFullHealth_Frlg::
 	.string "Thank you for waiting.\n"
 	.string "We've restored your POKéMON to\l"
 	.string "full health.$"
+	.string "{JPN}{JPN}おまちどうさまでした！　おあずかりした\n"
+	.string "ポケモンは　みんな　げんきに　なりましたよ！$"

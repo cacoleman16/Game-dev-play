@@ -1,0 +1,10 @@
+{
+ "Route16_NorthEntrance_2F_Text_OnBikeRideWithGirlfriend": "あたらしい　じてんしゃで　かのじょと　のんびり　サイクリング　してるんだ。",
+ "Route16_NorthEntrance_2F_Text_RidingTogetherOnNewBikes": "あたらしい　じてんしゃで　いっしょに　サイクリング　するの。",
+ "Route16_NorthEntrance_2F_Text_ItsCeladonDeptStore": "そうがんきょうを　のぞいて　みよう‥\\pタマムシデパートだ！",
+ "Route16_NorthEntrance_2F_Text_LongPathOverWater": "そうがんきょうを　のぞいて　みよう‥\\pとおくに　うみの　うえを　とおる　ながい　みちが　ある。",
+ "Route16_NorthEntrance_2F_Text_GiveAmuletCoinIfCaught40": "やあ！　おぼえてますか？　オーキドはかせの　じょしゅです。\\pずかんに　40しゅるいの　ポケモンが　とうろく　されていたら　ごほうびを　わたすように　いわれて　いるんです。\\pはかせから　おまもりこばんを　あずかって　います。\\pでは　{PLAYER}さん　おききします。\\pポケモンを　40しゅるい　いじょう　つかまえましたか？",
+ "Route16_NorthEntrance_2F_Text_GreatHereYouGo": "すばらしい！　{STR_VAR_3}しゅるいの　ポケモンを　つかまえて　いますね！\\pおめでとう　ございます！　どうぞ！",
+ "Route16_NorthEntrance_2F_Text_ReceivedAmuletCoinFromAide": "{PLAYER}は　じょしゅから　おまもりこばんを　もらった！",
+ "Route16_NorthEntrance_2F_Text_ExplainAmuletCoin": "おまもりこばんは　ポケモンに　もたせる　どうぐです。\\pもたせた　ポケモンが　しょうぶに　でて　かつと　もらえる　おかねが　ふえるんです。"
+}

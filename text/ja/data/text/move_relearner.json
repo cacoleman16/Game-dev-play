@@ -1,0 +1,20 @@
+{
+ "MoveRelearner_Text_LevelUpMoveLWR": "レベルアップわざ",
+ "MoveRelearner_Text_EggMoveLWR": "タマゴわざ",
+ "MoveRelearner_Text_TMMoveLWR": "わざマシンわざ",
+ "MoveRelearner_Text_TutorMoveLWR": "おしえわざ",
+ "MoveRelearner_Text_MoveLWR": "わざ",
+ "MoveRelearner_Text_WouldLearnNewMoves": "やあ！　ぼくは　わざおもいだし　やさん！　あたらしい　わざを　おぼえたいかい？",
+ "MoveRelearner_Text_LevelUpMoves": "レベルアップわざ",
+ "MoveRelearner_Text_EggMoves": "タマゴわざ",
+ "MoveRelearner_Text_TMMoves": "わざマシンわざ",
+ "MoveRelearner_Text_TutormoveMoves": "おしえわざ",
+ "MoveRelearner_Text_SeeYa": "またね！",
+ "MoveRelearner_Text_AnythingElse": "ほかに　なにか　ごようは　あるかい？",
+ "MoveRelearner_Text_ChoosePkmn": "ポケモンを　えらんで　ください",
+ "MoveRelearner_Text_HaveNoPkmn": "ポケモンを　もって　いないね",
+ "MoveRelearner_Text_CantTeachMoveToEgg": "ごめんね‥　タマゴは　わざを　おぼえられないんだ",
+ "MoveRelearner_Text_CantTeachMoveToPkmn": "ごめんね‥\\pその　ポケモンに　おしえられる　わざは　ない　みたいだ",
+ "MoveRelearner_Text_WhichXmoveShouldTeach": "どの　{STR_VAR_3}を　おしえようか？",
+ "MoveRelearner_Text_ThankYouComeAgain": "ごりよう　ありがとう！　また　きてね！"
+}

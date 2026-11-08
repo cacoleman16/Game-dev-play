@@ -41,6 +41,7 @@ EWRAM_DATA struct BagPocket gBagPockets[POCKETS_COUNT] = {0};
 
 #include "data/pokemon/item_effects.h"
 #include "data/items.h"
+#include "qol_language.h"
 
 #define UNPACK_TM_ITEM_ID(_tm) [CAT(ENUM_TM_HM_, _tm) + 1] = { CAT(ITEM_TM_, _tm), CAT(MOVE_, _tm) },
 #define UNPACK_HM_ITEM_ID(_hm) [CAT(ENUM_TM_HM_, _hm) + 1] = { CAT(ITEM_HM_, _hm), CAT(MOVE_, _hm) },
@@ -814,7 +815,9 @@ const u8 *GetItemName(enum Item itemId)
 {
     const u8 *name = gItemsInfo[SanitizeItemId(itemId)].name;
 
-    return name == NULL ? gQuestionMarksItemName : name;
+    if (name == NULL)
+        return gQuestionMarksItemName;
+    return QoL_LangItemName(SanitizeItemId(itemId), name); // [QoL] Japanese name in Japanese mode
 }
 
 u32 GetItemPrice(enum Item itemId)
@@ -863,7 +866,8 @@ u32 GetItemHoldEffectParam(enum Item itemId)
 
 const u8 *GetItemDescription(enum Item itemId)
 {
-    return gItemsInfo[SanitizeItemId(itemId)].description;
+    itemId = SanitizeItemId(itemId);
+    return QoL_LangItemDescription(itemId, gItemsInfo[itemId].description); // [QoL]
 }
 
 u8 GetItemImportance(enum Item itemId)

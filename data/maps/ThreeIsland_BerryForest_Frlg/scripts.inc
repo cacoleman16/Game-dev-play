@@ -68,12 +68,23 @@ ThreeIsland_BerryForest_Text_HelpScaryPokemon::
 	.string "It made LOSTELLE scared.\p"
 	.string "I'm too scared to move!\n"
 	.string "But I want to go home…$"
+	.string "{JPN}{JPN}ユウコ『ひっく‥　ぐすっ‥　あっ！　おねがい\n"
+	.string "たすけて！\p"
+	.string "さっき　あそこに　こわい　ポケモンが　でて\n"
+	.string "きたの。\p"
+	.string "ずっと　おどかして　くるの。　ユウコ\n"
+	.string "こわかった。\p"
+	.string "こわくて　うごけないの！　でも　おうちに\n"
+	.string "かえりたい‥』$"
 
 ThreeIsland_BerryForest_Text_HereItComesAgain::
 	.string "Oh! Here it comes again!\n"
 	.string "No! Go away! It's scaring me!\p"
 	.string "Waaaaaaah!\n"
 	.string "I want my daddy!$"
+	.string "{JPN}{JPN}あっ！　また　きた！　いや！　あっち　いって！\n"
+	.string "こわいよ！\p"
+	.string "うわーん！　パパー！$"
 
 ThreeIsland_BerryForest_Text_ThankYouHaveThis::
 	.string "Ohh! That was so scary!\n"
@@ -81,6 +92,9 @@ ThreeIsland_BerryForest_Text_ThankYouHaveThis::
 	.string "LOSTELLE came to pick some\n"
 	.string "BERRIES.\p"
 	.string "You can have this!$"
+	.string "{JPN}{JPN}ああ！　すごく　こわかった！　ありがとう！\p"
+	.string "ユウコ　きのみを　とりに　きたの。\p"
+	.string "これ　あげる！$"
 
 ThreeIsland_BerryForest_Text_LetsGoHome::
 	.string "What's your name?\p"
@@ -88,17 +102,28 @@ ThreeIsland_BerryForest_Text_LetsGoHome::
 	.string "with you to my daddy's house?\p"
 	.string "Okay!\n"
 	.string "Let's go home!$"
+	.string "{JPN}{JPN}おなまえ　なんて　いうの？\p"
+	.string "ユウコ　こわいから　いっしょに　パパの\n"
+	.string "おうちまで　いっても　いい？\p"
+	.string "わーい！　おうちに　かえろう！$"
 
 ThreeIsland_BerryForest_Text_BerryPouchIsFull::
 	.string "Your BERRY POUCH is full.\n"
 	.string "I guess you don't want this.$"
+	.string "{JPN}{JPN}きのみぶくろが　いっぱい　みたい。　これ\n"
+	.string "いらないよね。$"
 
 ThreeIsland_BerryForest_Text_WelcomeToBerryForest::
 	.string "Welcome to the BERRY FOREST\p"
 	.string "Be friendly and share BERRIES with\n"
 	.string "others and POKéMON.$"
+	.string "{JPN}{JPN}きのみのもりへ　ようこそ\p"
+	.string "きのみは　ひとや　ポケモンと　なかよく\n"
+	.string "わけあいましょう。$"
 
 ThreeIsland_BerryForest_Text_BewareWildBerryLovingMons::
 	.string "Beware of wild, BERRY-loving\n"
 	.string "POKéMON!$"
+	.string "{JPN}{JPN}きのみが　だいすきな　やせいの　ポケモンに\n"
+	.string "ちゅうい！$"
 

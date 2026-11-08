@@ -1,0 +1,23 @@
+{
+ "The {STR_VAR_1} can't be held\\nhere.": "{STR_VAR_1}は ここでは\\nもたせることが できません。",
+ "Deposit how many\\n{STR_VAR_1}?": "{STR_VAR_1}を\\nいくつ あずけますか？",
+ "Deposited {STR_VAR_2}\\n{STR_VAR_1}.": "{STR_VAR_1}を {STR_VAR_2}こ\\nあずけました。",
+ "There's no room to\\nstore items.": "どうぐを あずける\\nばしょが ありません。",
+ "Important items\\ncan't be stored in\\nthe PC!": "だいじな どうぐは\\nパソコンに あずけられません！",
+ "There's nothing to sort!": "ならべかえる どうぐが ありません！",
+ "Sort items how?": "どう ならべかえますか？",
+ "Items sorted by {STR_VAR_1}!": "{STR_VAR_1}じゅんに ならべかえました！",
+ "CHECK": "みる",
+ "WALK": "あるく",
+ "DESELECT": "かいじょ",
+ "CHECK TAG": "タグを みる",
+ "SHOW": "みせる",
+ "Name": "なまえ",
+ "Type": "しゅるい",
+ "Amount": "かず",
+ "Index": "ばんごう",
+ "name": "なまえ",
+ "type": "しゅるい",
+ "amount": "かず",
+ "index": "ばんごう"
+}

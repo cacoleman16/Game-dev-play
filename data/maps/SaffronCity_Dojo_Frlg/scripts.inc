@@ -156,10 +156,17 @@ SaffronCity_Dojo_Text_MasterKoichiIntro::
 	.string "You wish to challenge us?\n"
 	.string "Expect no mercy!\p"
 	.string "Fwaaa!$"
+	.string "{JPN}{JPN}おっす！\p"
+	.string "わしが　カラテ　だいおう！　ここの　リーダー\n"
+	.string "じゃ！\p"
+	.string "わしらに　ちょうせん　するとな？　ようしゃ\n"
+	.string "せんぞ！\p"
+	.string "はああーっ！$"
 
 SaffronCity_Dojo_Text_MasterKoichiDefeat::
 	.string "Hwa!\n"
 	.string "Arrgh! Beaten!$"
+	.string "{JPN}{JPN}ぬおっ！　ぐわあっ！　まけた！$"
 
 SaffronCity_Dojo_Text_ChoosePrizedFightingMon::
 	.string "Indeed, I have lost!\p"
@@ -168,86 +175,123 @@ SaffronCity_Dojo_Text_ChoosePrizedFightingMon::
 	.string "In return, I will give you a prized\n"
 	.string "FIGHTING POKéMON!\p"
 	.string "Choose whichever one you like!$"
+	.string "{JPN}{JPN}うむ　わしの　まけじゃ！\p"
+	.string "だが　たのむ！　どうじょうの　かんばん　だけは\n"
+	.string "もっていかんで　くれ！\p"
+	.string "かわりに　だいじな　かくとうポケモンを\n"
+	.string "ゆずろう！\p"
+	.string "すきな　ほうを　えらぶが　よい！$"
 
 SaffronCity_Dojo_Text_StayAndTrainWithUs::
 	.string "Grunt!\n"
 	.string "Stay and train at karate with us!$"
+	.string "{JPN}{JPN}おっす！　わしらと　いっしょに　カラテの\n"
+	.string "しゅぎょうを　していかんか！$"
 
 SaffronCity_Dojo_Text_MikeIntro::
 	.string "Hoargh!\n"
 	.string "Take your shoes off!$"
+	.string "{JPN}{JPN}おりゃー！　くつを　ぬげ！$"
 
 SaffronCity_Dojo_Text_MikeDefeat::
 	.string "I give up!$"
+	.string "{JPN}{JPN}まいった！$"
 
 SaffronCity_Dojo_Text_MikePostBattle::
 	.string "You wait 'til you see our MASTER!\n"
 	.string "I'm a small fry compared to him!$"
+	.string "{JPN}{JPN}だいおうに　あったら　おどろくぞ！　おれなんか\n"
+	.string "ざこ　みたいな　もんだ！$"
 
 SaffronCity_Dojo_Text_HidekiIntro::
 	.string "I hear you're good!\n"
 	.string "Show me!$"
+	.string "{JPN}{JPN}つよい　らしいな！　みせて　もらおう！$"
 
 SaffronCity_Dojo_Text_HidekiDefeat::
 	.string "Judge!\n"
 	.string "One point!$"
+	.string "{JPN}{JPN}いっぽん！　それまで！$"
 
 SaffronCity_Dojo_Text_HidekiPostBattle::
 	.string "Our MASTER is a pro fighter.\n"
 	.string "Be prepared to lose!$"
+	.string "{JPN}{JPN}だいおうは　かくとうの　プロだ。　まける\n"
+	.string "かくごを　しておけ！$"
 
 SaffronCity_Dojo_Text_AaronIntro::
 	.string "Hiyah!\n"
 	.string "I have no fear for anything tough!\p"
 	.string "I shatter boulders for training\n"
 	.string "every day!$"
+	.string "{JPN}{JPN}ハイヤー！　かたい　ものなど　こわくない！\p"
+	.string "まいにち　いわを　くだいて　しゅぎょう\n"
+	.string "しているのだ！$"
 
 SaffronCity_Dojo_Text_AaronDefeat::
 	.string "Yow!\n"
 	.string "Stubbed fingers!$"
+	.string "{JPN}{JPN}いてっ！　つきゆび　した！$"
 
 SaffronCity_Dojo_Text_AaronPostBattle::
 	.string "The only thing that frightens us is\n"
 	.string "psychic power!$"
+	.string "{JPN}{JPN}おれたちが　こわいのは　エスパーの　ちから\n"
+	.string "だけだ！$"
 
 SaffronCity_Dojo_Text_HitoshiIntro::
 	.string "Hwaah!\p"
 	.string "You're trespassing in our\n"
 	.string "FIGHTING DOJO!$"
+	.string "{JPN}{JPN}ハアーッ！\p"
+	.string "かくとう　どうじょうに　かってに　はいる　とは！$"
 
 SaffronCity_Dojo_Text_HitoshiDefeat::
 	.string "Oof!\n"
 	.string "I give up!$"
+	.string "{JPN}{JPN}うぐっ！　まいった！$"
 
 SaffronCity_Dojo_Text_HitoshiPostBattle::
 	.string "The prime fighters across the land\n"
 	.string "train here.$"
+	.string "{JPN}{JPN}ここでは　くにじゅうの　いちりゅうの\n"
+	.string "かくとうかが　しゅぎょう　しているのだ。$"
 
 SaffronCity_Dojo_Text_YouWantHitmonlee::
 	.string "You want the hard-kicking\n"
 	.string "HITMONLEE?$"
+	.string "{JPN}{JPN}けりの　めいじん　サワムラーが　ほしいのか？$"
 
 SaffronCity_Dojo_Text_ReceivedMonFromKarateMaster::
 	.string "{PLAYER} received the {STR_VAR_1}\n"
 	.string "from the KARATE MASTER.$"
+	.string "{JPN}{JPN}{PLAYER}は　カラテ　だいおう　から\n"
+	.string "{STR_VAR_1}を　もらった！$"
 
 SaffronCity_Dojo_Text_YouWantHitmonchan::
 	.string "You want the piston-punching\n"
 	.string "HITMONCHAN?$"
+	.string "{JPN}{JPN}パンチの　れんだ　エビワラーが　ほしいのか？$"
 
 SaffronCity_Dojo_Text_ReceivedMonFromKarateMaster2::
 	.string "{PLAYER}は　カラテ　だいおう　から\n"
 	.string "{STR_VAR_1}を　もらった！$"
+	.string "{JPN}{JPN}{PLAYER}は　カラテ　だいおう　から\n"
+	.string "{STR_VAR_1}を　もらった！$"
 
 SaffronCity_Dojo_Text_BetterNotGetGreedy::
 	.string "Better not get greedy…$"
+	.string "{JPN}{JPN}よくばりは　いかんぞ‥$"
 
 SaffronCity_Dojo_Text_EnemiesOnEverySide::
 	.string "Enemies on every side!$"
+	.string "{JPN}{JPN}しきいを　またげば　しちにんの　てき　あり！$"
 
 SaffronCity_Dojo_Text_GoesAroundComesAround::
 	.string "What goes around comes around.$"
+	.string "{JPN}{JPN}いんが　おうほう。$"
 
 SaffronCity_Dojo_Text_FightingDojo::
 	.string "FIGHTING DOJO$"
+	.string "{JPN}{JPN}かくとう　どうじょう$"
 

@@ -38,20 +38,31 @@ SaffronCity_PokemonCenter_1F_EventScript_YoungsterRocketsGone::
 SaffronCity_PokemonCenter_1F_Text_GrowthRatesDifferBySpecies::
 	.string "POKéMON growth rates differ from\n"
 	.string "species to species.$"
+	.string "{JPN}{JPN}ポケモンの　せいちょうの　はやさは　しゅるいに\n"
+	.string "よって　ちがうんだ。$"
 
 SaffronCity_PokemonCenter_1F_Text_SilphCoVictimOfFame::
 	.string "SILPH CO. is widely known to all.\p"
 	.string "It's a victim of its own fame - it\n"
 	.string "attracted TEAM ROCKET.$"
+	.string "{JPN}{JPN}シルフカンパニーは　だれでも　しってる\n"
+	.string "ゆうめいな　かいしゃ。\p"
+	.string "でも　ゆうめい　すぎて　ロケットだんに\n"
+	.string "ねらわれて　しまったのね。$"
 
 SaffronCity_PokemonCenter_1F_Text_GreatIfEliteFourCameBeatRockets::
 	.string "Sigh…\n"
 	.string "Wouldn't this be great?\p"
 	.string "If the ELITE FOUR came and\n"
 	.string "stomped TEAM ROCKET?$"
+	.string "{JPN}{JPN}はあ‥　そう　なったら　いいのに。\p"
+	.string "してんのうが　きて　ロケットだんを　やっつけて\n"
+	.string "くれたら‥$"
 
 SaffronCity_PokemonCenter_1F_Text_TeamRocketTookOff::
 	.string "TEAM ROCKET took off!\n"
 	.string "We can go out safely again!\l"
 	.string "That's great!$"
+	.string "{JPN}{JPN}ロケットだんが　いなくなった！　これで　また\n"
+	.string "あんしんして　そとに　でられる！　よかった！$"
 

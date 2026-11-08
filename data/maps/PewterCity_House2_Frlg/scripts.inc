@@ -14,6 +14,10 @@ PewterCity_House2_Text_MonsLearnTechniquesAsTheyGrow::
 	.string "they grow.\p"
 	.string "But some moves must be taught to\n"
 	.string "them by people.$"
+	.string "{JPN}{JPN}ポケモンは　そだつと　あたらしい　わざを\n"
+	.string "おぼえるんだ。\p"
+	.string "でも　ひとから　おしえて　もらわないと\n"
+	.string "おぼえない　わざも　あるのさ。$"
 
 PewterCity_House2_Text_MonsEasierCatchIfStatused::
 	.string "A POKéMON becomes easier to \n"
@@ -22,4 +26,10 @@ PewterCity_House2_Text_MonsEasierCatchIfStatused::
 	.string "Those are all effective.\p"
 	.string "But catching POKéMON is never\n"
 	.string "a sure thing!$"
+	.string "{JPN}{JPN}ポケモンは　じょうたいいじょうに　なって　いると\n"
+	.string "つかまえやすく　なるよ。\p"
+	.string "ねむり　どく　やけど　まひ‥　どれも　こうかが\n"
+	.string "あるんだ。\p"
+	.string "でも　ポケモンを　かならず　つかまえられる\n"
+	.string "わけじゃ　ないからね！$"
 

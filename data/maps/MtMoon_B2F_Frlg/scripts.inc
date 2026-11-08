@@ -137,83 +137,119 @@ MtMoon_B2F_Text_MiguelIntro::
 	.string "Hey, stop!\p"
 	.string "I found these fossils!\n"
 	.string "They're both mine!$"
+	.string "{JPN}{JPN}おい　まて！\p"
+	.string "この　かせきは　おれが　みつけたんだ！\n"
+	.string "ふたつとも　おれの　ものだ！$"
 
 MtMoon_B2F_Text_MiguelDefeat::
 	.string "Okay!\n"
 	.string "I'll share!$"
+	.string "{JPN}{JPN}わかった！　わけるよ！$"
 
 MtMoon_B2F_Text_WellEachTakeAFossil::
 	.string "We'll each take a fossil!\n"
 	.string "No being greedy!$"
+	.string "{JPN}{JPN}かせきは　ひとり　ひとつずつ　だ！\n"
+	.string "よくばるなよ！$"
 
 MtMoon_B2F_Text_ThenThisFossilIsMine::
 	.string "All right.\n"
 	.string "Then this fossil is mine!$"
+	.string "{JPN}{JPN}よし。　じゃあ　こっちの　かせきは　おれの\n"
+	.string "ものだ！$"
 
 MtMoon_B2F_Text_LabOnCinnabarRegeneratesFossils::
 	.string "Far away, on CINNABAR ISLAND,\n"
 	.string "there's a POKéMON LAB.\p"
 	.string "They do research on regenerating\n"
 	.string "fossils.$"
+	.string "{JPN}{JPN}とおくの　グレンじまに　ポケモン\n"
+	.string "けんきゅうじょが　あるんだ。\p"
+	.string "そこでは　かせきを　さいせい　する　けんきゅうを\n"
+	.string "しているんだよ。$"
 
 MtMoon_B2F_Text_Grunt1Intro::
 	.string "We, TEAM ROCKET, shall find the\n"
 	.string "fossils!\p"
 	.string "Reviving POKéMON from them will\n"
 	.string "earn us huge riches!$"
+	.string "{JPN}{JPN}かせきは　おれたち　ロケットだんが　いただく！\p"
+	.string "かせきから　ポケモンを　ふっかつ　させれば\n"
+	.string "おおもうけ　だぜ！$"
 
 MtMoon_B2F_Text_Grunt1Defeat::
 	.string "Urgh!\n"
 	.string "Now I'm mad!$"
+	.string "{JPN}{JPN}ぐっ！　あたまに　きたぜ！$"
 
 MtMoon_B2F_Text_Grunt1PostBattle::
 	.string "You made me mad!\n"
 	.string "TEAM ROCKET will blacklist you!$"
+	.string "{JPN}{JPN}よくも　おこらせたな！　ロケットだんの\n"
+	.string "ブラックリストに　のせてやる！$"
 
 MtMoon_B2F_Text_Grunt2Intro::
 	.string "We, TEAM ROCKET, are POKéMON\n"
 	.string "gangsters!\l"
 	.string "We strike fear with our strength!$"
+	.string "{JPN}{JPN}おれたち　ロケットだんは　ポケモン　ギャングだ！\n"
+	.string "ちからで　きょうふを　あたえるのさ！$"
 
 MtMoon_B2F_Text_Grunt2Defeat::
 	.string "I blew it!$"
+	.string "{JPN}{JPN}しくじった！$"
 
 MtMoon_B2F_Text_Grunt2PostBattle::
 	.string "Darn it all!\n"
 	.string "My associates won't stand for this!$"
+	.string "{JPN}{JPN}くそっ！　なかまが　だまっちゃ　いないぞ！$"
 
 MtMoon_B2F_Text_Grunt3Intro::
 	.string "We're pulling a big job here!\n"
 	.string "Get lost, kid!$"
+	.string "{JPN}{JPN}ここで　でかい　しごとを　してるんだ！　あっちへ\n"
+	.string "いけ　ガキ！$"
 
 MtMoon_B2F_Text_Grunt3Defeat::
 	.string "So, you are good…$"
+	.string "{JPN}{JPN}なかなか　やるな‥$"
 
 MtMoon_B2F_Text_Grunt3PostBattle::
 	.string "If you find a fossil, give it to me\n"
 	.string "and scram!$"
+	.string "{JPN}{JPN}かせきを　みつけたら　おれに　わたして　とっとと\n"
+	.string "うせろ！$"
 
 MtMoon_B2F_Text_Grunt4Intro::
 	.string "Little kids shouldn't be messing\n"
 	.string "around with grown-ups!\p"
 	.string "It could be bad news!$"
+	.string "{JPN}{JPN}ガキが　おとなの　じゃまを　するんじゃ　ない！\p"
+	.string "いたい　めに　あうぞ！$"
 
 MtMoon_B2F_Text_Grunt4Defeat::
 	.string "I'm steamed!$"
+	.string "{JPN}{JPN}むかつくぜ！$"
 
 MtMoon_B2F_Text_Grunt4PostBattle::
 	.string "POKéMON lived here long before\n"
 	.string "people came.$"
+	.string "{JPN}{JPN}ひとが　くる　ずっと　まえから　ポケモンは\n"
+	.string "ここに　すんでいたんだ。$"
 
 MtMoon_B2F_Text_YouWantDomeFossil::
 	.string "Do you want the DOME FOSSIL?$"
+	.string "{JPN}{JPN}こうらのかせきを　とりますか？$"
 
 MtMoon_B2F_Text_YouWantHelixFossil::
 	.string "Do you want the HELIX FOSSIL?$"
+	.string "{JPN}{JPN}かいのかせきを　とりますか？$"
 
 MtMoon_B2F_Text_ObtainedHelixFossil::
 	.string "Obtained the HELIX FOSSIL!$"
+	.string "{JPN}{JPN}かいのかせきを　てに　いれた！$"
 
 MtMoon_B2F_Text_ObtainedDomeFossil::
 	.string "Obtained the DOME FOSSIL!$"
+	.string "{JPN}{JPN}こうらのかせきを　てに　いれた！$"
 

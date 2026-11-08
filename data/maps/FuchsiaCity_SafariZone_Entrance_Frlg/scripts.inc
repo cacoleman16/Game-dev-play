@@ -207,6 +207,7 @@ FuchsiaCity_SafariZone_Entrance_EventScript_ExplainSafariZone::
 
 FuchsiaCity_SafariZone_Entrance_Text_WelcomeToSafariZone::
 	.string "Welcome to the SAFARI ZONE!$"
+	.string "{JPN}{JPN}サファリゾーンへ　ようこそ！$"
 
 FuchsiaCity_SafariZone_Entrance_Text_PlaySafariGameFor500::
 	.string "For just ¥500, you can play the\n"
@@ -214,48 +215,69 @@ FuchsiaCity_SafariZone_Entrance_Text_PlaySafariGameFor500::
 	.string "You can roam the wide-open safari\n"
 	.string "and catch what you like.\p"
 	.string "Would you like to play?$"
+	.string "{JPN}{JPN}たった　500円で　サファリゲームが\n"
+	.string "あそべます。\p"
+	.string "ひろーい　サファリを　あるきまわって　すきな\n"
+	.string "ポケモンを　つかまえられますよ。\p"
+	.string "あそんで　いきますか？$"
 
 FuchsiaCity_SafariZone_Entrance_Text_ThatllBe500WeOnlyUseSpecialBalls::
 	.string "That'll be ¥500, please!\p"
 	.string "We only use a special kind of \n"
 	.string "POKé BALLS here.$"
+	.string "{JPN}{JPN}500円　いただきます！\p"
+	.string "ここでは　とくべつな　モンスターボールだけを\n"
+	.string "つかいます。$"
 
 FuchsiaCity_SafariZone_Entrance_Text_PlayerReceived30SafariBalls::
 	.string "{PLAYER} received 30 SAFARI BALLS\n"
 	.string "from the attendant.$"
+	.string "{JPN}{JPN}{PLAYER}は　かかりいんから\n"
+	.string "サファリボールを　30こ　うけとった！$"
 
 FuchsiaCity_SafariZone_Entrance_Text_CallYouOnPAWhenYouRunOut::
 	.string "We'll call you on the PA when you\n"
 	.string "run out of time or SAFARI BALLS.\p"
 	.string "Well, I'll wish you the best of\n"
 	.string "luck!$"
+	.string "{JPN}{JPN}じかんか　サファリボールが　なくなったら\n"
+	.string "アナウンスで　おしらせ　します。\p"
+	.string "それでは　がんばって　ください！$"
 
 FuchsiaCity_SafariZone_Entrance_Text_OkayPleaseComeAgain::
 	.string "Okay.\n"
 	.string "Please come again!$"
+	.string "{JPN}{JPN}そうですか。　また　きて　くださいね！$"
 
 FuchsiaCity_SafariZone_Entrance_Text_OopsNotEnoughMoney::
 	.string "Oops!\n"
 	.string "Not enough money!$"
+	.string "{JPN}{JPN}おっと！　おかねが　たりません！$"
 
 FuchsiaCity_SafariZone_Entrance_Text_GoingToLeaveSafariZoneEarly::
 	.string "Are you going to leave the\n"
 	.string "SAFARI ZONE early?$"
+	.string "{JPN}{JPN}サファリゾーンを　とちゅうで　でますか？$"
 
 FuchsiaCity_SafariZone_Entrance_Text_PleaseReturnSafariBalls::
 	.string "Please return any SAFARI BALLS\n"
 	.string "you may have left.$"
+	.string "{JPN}{JPN}のこった　サファリボールを　おかえし　ください。$"
 
 FuchsiaCity_SafariZone_Entrance_Text_GoodLuck::
 	.string "Good luck!$"
+	.string "{JPN}{JPN}がんばって　ください！$"
 
 FuchsiaCity_SafariZone_Entrance_Text_CatchFairShareComeAgain::
 	.string "Did you catch your fair share?\n"
 	.string "Come again!$"
+	.string "{JPN}{JPN}たくさん　つかまえられましたか？　また　きて\n"
+	.string "くださいね！$"
 
 FuchsiaCity_SafariZone_Entrance_Text_FirstTimeAtSafariZone::
 	.string "Hi! Is it your first time here at\n"
 	.string "the SAFARI ZONE?$"
+	.string "{JPN}{JPN}やあ！　サファリゾーンは　はじめて　かい？$"
 
 FuchsiaCity_SafariZone_Entrance_Text_ExplainSafariZone::
 	.string "The SAFARI ZONE actually has\n"
@@ -274,7 +296,21 @@ FuchsiaCity_SafariZone_Entrance_Text_ExplainSafariZone::
 	.string "easier to catch.\p"
 	.string "When you run out of time or SAFARI\n"
 	.string "BALLS, it's game over for you!$"
+	.string "{JPN}{JPN}サファリゾーンは　じつは　4つの　エリアに\n"
+	.string "わかれて　いるんだ。\p"
+	.string "エリアごとに　すんでいる　ポケモンが　ちがって\n"
+	.string "めずらしい　ポケモンも　いるよ。\p"
+	.string "わたされた　サファリボールで　つかまえてね。\p"
+	.string "サファリボールの　ほかに　エサや　いしを　なげる\n"
+	.string "ことも　できるよ。\p"
+	.string "エサを　なげると　ポケモンは　にげにくく\n"
+	.string "なるけど　つかまえにくく　なる。\p"
+	.string "いしを　なげると　ポケモンは　にげやすく\n"
+	.string "なるけど　つかまえやすく　なる。\p"
+	.string "じかんか　サファリボールが　なくなったら\n"
+	.string "ゲームオーバー　だよ！$"
 
 FuchsiaCity_SafariZone_Entrance_Text_SorryYoureARegularHere::
 	.string "Sorry, you're a regular here!$"
+	.string "{JPN}{JPN}おっと　しつれい！　じょうれんさん　でしたか！$"
 

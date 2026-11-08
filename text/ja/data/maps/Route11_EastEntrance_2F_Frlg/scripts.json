@@ -1,0 +1,9 @@
+{
+ "Route11_EastEntrance_2F_Text_GiveItemfinderIfCaught30": "やあ！　おぼえてますか？　オーキドはかせの　じょしゅです。\\pずかんに　{STR_VAR_1}しゅるいの　ポケモンが　とうろく　されていたら　ごほうびを　わたすように　いわれて　いるんです。\\pはかせから　{STR_VAR_2}を　あずかって　います。\\pでは　{PLAYER}さん　おききします。\\pポケモンを　{STR_VAR_1}しゅるい　いじょう　つかまえましたか？",
+ "Route11_EastEntrance_2F_Text_GreatHereYouGo": "すばらしい！　{STR_VAR_3}しゅるいの　ポケモンを　つかまえて　いますね！\\pおめでとう　ございます！　どうぞ！",
+ "Route11_EastEntrance_2F_Text_ReceivedItemfinderFromAide": "{PLAYER}は　じょしゅから　{STR_VAR_2}を　もらった！",
+ "Route11_EastEntrance_2F_Text_ExplainItemfinder": "じめんには　めに　みえない　どうぐが　かくれている　ことが　あります。\\pダウジングマシンを　つかえば　ちかくに　かくれた　どうぐを　さがせます。\\pただ　この　きかいには　げんかいが　あって　どうぐの　ばしょまでは　わかりません。\\pわかるのは　どうぐが　ある　ほうこう　だけです。\\pそれで　けんとうを　つけたら　あとは　じぶんで　さがして　ください。",
+ "Route11_EastEntrance_2F_Text_BigMonAsleepOnRoad": "そうがんきょうを　のぞいて　みよう‥\\pおおきな　ポケモンが　みちで　ねむっている！",
+ "Route11_EastEntrance_2F_Text_WhatABreathtakingView": "そうがんきょうを　のぞいて　みよう‥\\pすばらしい　ながめだ！",
+ "Route11_EastEntrance_2F_Text_RockTunnelGoodRouteToLavender": "そうがんきょうを　のぞいて　みよう‥\\pハナダシティから　シオンタウンへ　いくには‥\\pイワヤマトンネルを　とおるのが　よさそうだ。"
+}

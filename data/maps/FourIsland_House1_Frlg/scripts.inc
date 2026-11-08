@@ -8,4 +8,5 @@ FourIsland_House1_EventScript_FatMan::
 FourIsland_House1_Text_YoureAwfullyHeavy::
 	.string "There! Boing!\n"
 	.string "You're awfully heavy!$"
+	.string "{JPN}{JPN}それっ！　ボヨーン！　きみ　すっごく　おもいね！$"
 

@@ -61,16 +61,31 @@ Route15_WestEntrance_2F_Text_GiveItemIfCaughtEnough::
 	.string "So, {PLAYER}, let me ask you.\p"
 	.string "Have you gathered data on at least\n"
 	.string "{STR_VAR_1} kinds of POKéMON?$"
+	.string "{JPN}{JPN}やあ！　おぼえてますか？　オーキドはかせの\n"
+	.string "じょしゅです。\p"
+	.string "ずかんに　{STR_VAR_1}しゅるいの\n"
+	.string "ポケモンが　とうろく　されていたら　ごほうびを\l"
+	.string "わたすように　いわれて　いるんです。\p"
+	.string "はかせから　{STR_VAR_2}を　あずかって\n"
+	.string "います。\p"
+	.string "では　{PLAYER}さん　おききします。\p"
+	.string "ポケモンを　{STR_VAR_1}しゅるい\n"
+	.string "いじょう　つかまえましたか？$"
 
 Route15_WestEntrance_2F_Text_GreatHereYouGo::
 	.string "Great! You have caught or owned\n"
 	.string "{STR_VAR_3} kinds of POKéMON!\p"
 	.string "Congratulations!\n"
 	.string "Here you go!$"
+	.string "{JPN}{JPN}すばらしい！　{STR_VAR_3}しゅるいの\n"
+	.string "ポケモンを　つかまえて　いますね！\p"
+	.string "おめでとう　ございます！　どうぞ！$"
 
 Route15_WestEntrance_2F_Text_ReceivedItemFromAide::
 	.string "{PLAYER} received the {STR_VAR_2}\n"
 	.string "from the AIDE.$"
+	.string "{JPN}{JPN}{PLAYER}は　じょしゅから\n"
+	.string "{STR_VAR_2}を　もらった！$"
 
 Route15_WestEntrance_2F_Text_ExplainExpShare::
 	.string "EXP. SHARE is an item to be held\n"
@@ -78,16 +93,26 @@ Route15_WestEntrance_2F_Text_ExplainExpShare::
 	.string "The POKéMON will receive a share\n"
 	.string "of the EXP. Points without having\l"
 	.string "to battle.$"
+	.string "{JPN}{JPN}がくしゅうそうちは　ポケモンに　もたせる\n"
+	.string "どうぐです。\p"
+	.string "もたせた　ポケモンは　たたかわなくても\n"
+	.string "けいけんちを　わけて　もらえるんです。$"
 
 Route15_WestEntrance_2F_Text_LargeShiningBird::
 	.string "Let's see what the binoculars have\n"
 	.string "to show…\p"
 	.string "A large, shining bird is flying\n"
 	.string "toward the sea.$"
+	.string "{JPN}{JPN}そうがんきょうを　のぞいて　みよう‥\p"
+	.string "おおきな　かがやく　とりが　うみの　ほうへ\n"
+	.string "とんで　いく。$"
 
 Route15_WestEntrance_2F_Text_SmallIslandOnHorizon::
 	.string "Let's see what the binoculars have\n"
 	.string "to show…\p"
 	.string "It looks like a small island on\n"
 	.string "the horizon!$"
+	.string "{JPN}{JPN}そうがんきょうを　のぞいて　みよう‥\p"
+	.string "すいへいせんの　むこうに　ちいさな　しまが\n"
+	.string "みえる！$"
 

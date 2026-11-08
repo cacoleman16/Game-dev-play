@@ -20,6 +20,8 @@ CinnabarIsland_PokemonLab_ResearchRoom_EventScript_AmberPipe::
 CinnabarIsland_PokemonLab_ResearchRoom_Text_EeveeCanEvolveIntroThreeMons::
 	.string "EEVEE can evolve into one of three\n"
 	.string "kinds of POKéMON.$"
+	.string "{JPN}{JPN}イーブイは　3しゅるいの　ポケモンの　どれかに\n"
+	.string "しんか　できるんだ$"
 
 CinnabarIsland_PokemonLab_ResearchRoom_Text_LegendaryBirdEmail::
 	.string "There's an e-mail message.\p"
@@ -32,7 +34,16 @@ CinnabarIsland_PokemonLab_ResearchRoom_Text_LegendaryBirdEmail::
 	.string "We plan to explore the cavern\n"
 	.string "close to CERULEAN.\p"
 	.string "From: POKéMON RESEARCH TEAM…$"
+	.string "{JPN}{JPN}メールが　とどいている\p"
+	.string "‥　‥　‥\p"
+	.string "でんせつの　とりポケモンは　3びき　いる\p"
+	.string "フリーザー　サンダー　ファイヤーだ\p"
+	.string "かれらの　ゆくえは　わかっていない\p"
+	.string "われわれは　ハナダの　ちかくの　どうくつを\n"
+	.string "ちょうさ　する　よていだ\p"
+	.string "ポケモン　けんきゅう　チームより‥$"
 
 CinnabarIsland_PokemonLab_ResearchRoom_Text_AnAmberPipe::
 	.string "An amber pipe!$"
+	.string "{JPN}{JPN}こはくいろの　パイプだ！$"
 

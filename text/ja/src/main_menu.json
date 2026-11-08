@@ -1,0 +1,17 @@
+{
+ "The save file is corrupted. The\\nprevious save file will be loaded.": "レポートが こわれているので\\nまえの レポートを よみこみます。",
+ "The save file has been erased\\ndue to corruption or damage.": "レポートが こわれていたので\\nけされて しまいました。",
+ "The internal battery has run dry.\\nThe game can be played.\\pHowever, clock-based events will\\nno longer occur.": "ないぞう でんちが きれました。\\nゲームは あそべます。\\pただし じかんに かんけいする\\nイベントは おこらなく なります。",
+ "NEW GAME": "さいしょから はじめる",
+ "CONTINUE": "つづきから はじめる",
+ "OPTION": "せっていを かえる",
+ "MYSTERY GIFT": "ふしぎな おくりもの",
+ "MYSTERY EVENTS": "ふしぎな できごと",
+ "The Wireless Adapter is not\\nconnected.": "ワイヤレスアダプタが\\nつながっていません。",
+ "MYSTERY GIFT can't be used while\\nthe Wireless Adapter is attached.": "ワイヤレスアダプタを つないだままでは\\nふしぎな おくりものは つかえません。",
+ "MYSTERY EVENTS can't be used while\\nthe Wireless Adapter is attached.": "ワイヤレスアダプタを つないだままでは\\nふしぎな できごとは つかえません。",
+ "PLAYER": "しゅじんこう",
+ "TIME": "プレイじかん",
+ "POKéDEX": "ずかん",
+ "BADGES": "バッジ"
+}

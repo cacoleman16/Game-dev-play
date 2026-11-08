@@ -12,4 +12,8 @@ FiveIsland_House1_Text_HusbandWentOffFishing::
 	.string "he went off fishing today.\p"
 	.string "I'm not sure if I can count on him\n"
 	.string "to live up to that promise.$"
+	.string "{JPN}{JPN}こんやの　ばんごはんは　かってこなくて　いいぞ！\p"
+	.string "‥って　うちの　ひと　きょう　つりに　でかける\n"
+	.string "ときに　いったのよ\p"
+	.string "ほんとに　あてに　して　いいのかしら$"
 

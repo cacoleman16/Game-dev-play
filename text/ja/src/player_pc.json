@@ -1,0 +1,19 @@
+{
+ "WITHDRAW ITEM": "どうぐを ひきだす",
+ "DEPOSIT ITEM": "どうぐを あずける",
+ "TOSS ITEM": "どうぐを すてる",
+ "MAILBOX": "メールボックス",
+ "Withdraw how many\\n{STR_VAR_1}?": "{STR_VAR_1}を\\nいくつ ひきだしますか？",
+ "Withdrew {STR_VAR_2}\\n{STR_VAR_1}.": "{STR_VAR_1}を {STR_VAR_2}こ\\nひきだしました。",
+ "There is no more\\nroom in the BAG.": "バッグが いっぱいで\\nもう はいりません。",
+ "That's much too\\nimportant to toss\\nout!": "それを すてるなんて\\nとんでもない！",
+ "Take out items from the PC.": "パソコンから どうぐを ひきだします。",
+ "Store items in the PC.": "パソコンに どうぐを あずけます。",
+ "Throw away items stored in the PC.": "パソコンの どうぐを すてます。",
+ "ITEM STORAGE": "どうぐあずかりシステム",
+ "DECORATION": "もようがえ",
+ "TURN OFF": "スイッチを きる",
+ "READ": "よむ",
+ "MOVE TO BAG": "バッグに もどす",
+ "GIVE": "もたせる"
+}

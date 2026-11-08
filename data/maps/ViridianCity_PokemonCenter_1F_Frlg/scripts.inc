@@ -31,16 +31,27 @@ ViridianCity_PokemonCenter_1F_Text_FeelFreeToUsePC::
 	.string "the corner.\p"
 	.string "The receptionist told me so.\n"
 	.string "It's so kind of her!$"
+	.string "{JPN}{JPN}すみの　パソコンは　じゆうに　つかって\n"
+	.string "いいんだって\p"
+	.string "うけつけの　おねえさんが　おしえて　くれたの\n"
+	.string "やさしいよね！$"
 
 ViridianCity_PokemonCenter_1F_Text_PokeCenterInEveryTown::
 	.string "There's a POKéMON CENTER in every\n"
 	.string "town ahead.\p"
 	.string "They charge no money, so don't\n"
 	.string "be shy about healing POKéMON.$"
+	.string "{JPN}{JPN}この　さきの　まちには　どこにも\n"
+	.string "ポケモンセンターが　あるよ\p"
+	.string "おかねは　かからないから　えんりょ　しないで\n"
+	.string "ポケモンを　かいふく　させよう$"
 
 ViridianCity_PokemonCenter_1F_Text_PokeCentersHealMons::
 	.string "POKéMON CENTERS heal your tired,\n"
 	.string "hurt, or fainted POKéMON.\p"
 	.string "They make all POKéMON completely\n"
 	.string "healthy.$"
+	.string "{JPN}{JPN}ポケモンセンターでは　つかれたり　きずついたり\n"
+	.string "ひんしに　なった　ポケモンを　なおして　くれる\p"
+	.string "どんな　ポケモンも　すっかり　げんきに　なるんだ$"
 

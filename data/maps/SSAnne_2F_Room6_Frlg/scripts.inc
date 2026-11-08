@@ -12,7 +12,10 @@ SSAnne_2F_Room6_EventScript_Woman2::
 SSAnne_2F_Room6_Text_CaptainIsAwfullySick::
 	.string "The CAPTAIN said he's awfully sick.\n"
 	.string "He was all pale.$"
+	.string "{JPN}{JPN}せんちょうさん　すごく　きぶんが　わるいん\n"
+	.string "だって。　かおが　まっさお　だったよ。$"
 
 SSAnne_2F_Room6_Text_ManyPeopleGetSeasick::
 	.string "I hear many people get seasick.$"
+	.string "{JPN}{JPN}ふなよい　する　ひとが　おおいん　だって。$"
 

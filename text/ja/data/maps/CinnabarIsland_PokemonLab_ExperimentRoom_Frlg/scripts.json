@@ -1,0 +1,16 @@
+{
+ "Text_MetronomeTeach": "チッ　チッ　チッ！　おもしろい　わざを　おしえて　あげよう\\pポケモンに　おしえたら　たのしい　ことが　おきるよ！\\pゆびをふる　って　わざさ　きに　いったかな？",
+ "Text_MetronomeDeclined": "ほんとに　たのしいんだけどなあ！",
+ "Text_MetronomeWhichMon": "よし！　どの　ポケモンに　おしえる？",
+ "Text_MetronomeTaught": "チッ　チッ　チッ！　ゆびをふる　ときの　おとさ\\pポケモンの　あたまを　しげきして　しらない　わざまで　つかわせるんだ",
+ "CinnabarIsland_PokemonLab_ExperimentRoom_Text_HaveYouAFossilForMe": "ハーイ！\\pワタシ　えらい　はかせ！　そう　とっても　えらいね\\pここで　めずらしい　ポケモンの　かせき　けんきゅう　してる　いつも　けんきゅう　してるよ\\pアナタ！　かせき　もってない？",
+ "CinnabarIsland_PokemonLab_ExperimentRoom_Text_NoIsTooBad": "ない！　ざんねんね！",
+ "CinnabarIsland_PokemonLab_ExperimentRoom_Text_TakesTimeGoForWalkJP": "ちょっと　じかん　かかるよ！\\pそこらへんを　すこし　ブラブラ　してくると　よろしー！",
+ "CinnabarIsland_PokemonLab_ExperimentRoom_Text_FossilMonBackToLife": "おそいよ　アナタ　どこ　いってた？\\pアナタの　かせき　ふっかつ　したよ！　やっぱり　{STR_VAR_1}　だったね！",
+ "CinnabarIsland_PokemonLab_ExperimentRoom_Text_ReceivedMonFromDoctor": "{PLAYER}は　はかせから　{STR_VAR_1}を　うけとった！",
+ "CinnabarIsland_PokemonLab_ExperimentRoom_Text_NoRoomForPokemon": "ポケモン　いっぱいで　もてないね！",
+ "CinnabarIsland_PokemonLab_ExperimentRoom_Text_ThatFossilIsOfMonMakeItLiveAgain": "オー！　それ　{STR_VAR_2}　ね！\\pもう　ぜつめつ　した　ポケモン　{STR_VAR_1}の　かせき　よ！\\pワタシの　ふっかつマシンで　その　ポケモン　よみがえらせるね！",
+ "CinnabarIsland_PokemonLab_ExperimentRoom_Text_HandedFossilToWeirdDoctor": "さあ！　はやく　それ　ワタシに　わたすね！\\p{FONT_NORMAL}{PLAYER}は　へんな　はかせに　{STR_VAR_2}を　わたした！",
+ "CinnabarIsland_PokemonLab_ExperimentRoom_Text_TakesTimeGoForWalk": "ちょっと　じかん　かかるよ！　そこらへんを　すこし　ブラブラ　してくると　よろしー！",
+ "CinnabarIsland_PokemonLab_ExperimentRoom_Text_YouComeAgain": "アイヤー！　また　きてね！"
+}

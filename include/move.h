@@ -251,9 +251,13 @@ static inline enum Move SanitizeMoveId(enum Move moveId)
     return moveId;
 }
 
+const u8 *QoL_LangMoveName(enum Move move, const u8 *english); // [QoL] src/qol_language.c
+const u8 *QoL_LangMoveDescription(enum Move move, const u8 *english);
+
 static inline const u8 *GetMoveName(enum Move moveId)
 {
-    return gMovesInfo[SanitizeMoveId(moveId)].name;
+    moveId = SanitizeMoveId(moveId);
+    return QoL_LangMoveName(moveId, gMovesInfo[moveId].name); // [QoL] Japanese name in Japanese mode
 }
 
 static inline enum BattleMoveEffects GetMoveEffect(enum Move moveId)
@@ -266,7 +270,7 @@ static inline const u8 *GetMoveDescription(enum Move moveId)
     moveId = SanitizeMoveId(moveId);
     if (GetMoveEffect(moveId) == EFFECT_PLACEHOLDER)
         return gNotDoneYetDescription;
-    return gMovesInfo[moveId].description;
+    return QoL_LangMoveDescription(moveId, gMovesInfo[moveId].description); // [QoL]
 }
 
 static inline enum Type GetMoveType(enum Move moveId)

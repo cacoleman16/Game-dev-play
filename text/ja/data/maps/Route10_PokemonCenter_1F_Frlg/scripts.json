@@ -1,0 +1,9 @@
+{
+ "Route10_PokemonCenter_1F_Text_EveryTypeStrongerThanOthers": "ポケモンの　タイプには　それぞれ　あいしょうが　あるんだ。\\pどの　タイプにも　つよい　あいてと　よわい　あいてが　いるのさ。",
+ "Route10_PokemonCenter_1F_Text_NuggetUselessSoldFor5000": "きんのたまなんて　なんの　やくにも　たたない。　だから　5000円で　うっちゃった。",
+ "Route10_PokemonCenter_1F_Text_HeardGhostsHauntLavender": "シオンタウンには　ゆうれいが　でるって　きいたよ。",
+ "Route10_PokemonCenter_1F_Text_GiveEverstoneIfCaught20Mons": "あっ‥　{PLAYER}さん！　さがして　いたんですよ！\\pわたしです！　オーキドはかせの　じょしゅです。\\pずかんに　20しゅるいの　ポケモンが　とうろく　されていたら　はかせから　ごほうびを　わたすように　いわれて　いるんです。\\pはかせから　この　かわらずのいしを　あずかって　います。\\pでは　{PLAYER}さん　おききします。\\pポケモンを　20しゅるい　いじょう　つかまえましたか？",
+ "Route10_PokemonCenter_1F_Text_GreatHereYouGo": "すばらしい！　{STR_VAR_3}しゅるいの　ポケモンを　つかまえて　いますね！\\pおめでとう　ございます！　どうぞ！",
+ "Route10_PokemonCenter_1F_Text_ReceivedEverstoneFromAide": "{PLAYER}は　じょしゅから　かわらずのいしを　もらった！",
+ "Route10_PokemonCenter_1F_Text_ExplainEverstone": "ポケモンを　しんか　させれば　ずかんの　データも　ふえますよね。\\pでも　ときには　しんか　させたくない　ポケモンも　いるでしょう。\\pそんな　ときは　その　ポケモンに　かわらずのいしを　もたせて　ください。\\pはかせに　よると　しんかを　ふせいで　くれる　そうです。"
+}

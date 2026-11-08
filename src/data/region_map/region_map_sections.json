@@ -462,7 +462,8 @@
       "x": 16,
       "y": 2,
       "width": 1,
-      "height": 1
+      "height": 1,
+      "name_ja": "サファリゾーン"
     },
     {
       "id": "MAPSEC_BATTLE_FRONTIER",
@@ -566,7 +567,8 @@
       "x": 27,
       "y": 9,
       "width": 1,
-      "height": 1
+      "height": 1,
+      "name_ja": "チャンピオンロード"
     },
     {
       "id": "MAPSEC_MIRAGE_ISLAND",
@@ -697,7 +699,8 @@
       "x": 4,
       "y": 11,
       "width": 1,
-      "height": 1
+      "height": 1,
+      "name_ja": "マサラタウン"
     },
     {
       "id": "MAPSEC_VIRIDIAN_CITY",
@@ -705,7 +708,8 @@
       "x": 4,
       "y": 8,
       "width": 1,
-      "height": 1
+      "height": 1,
+      "name_ja": "トキワシティ"
     },
     {
       "id": "MAPSEC_PEWTER_CITY",
@@ -713,7 +717,8 @@
       "x": 4,
       "y": 4,
       "width": 1,
-      "height": 1
+      "height": 1,
+      "name_ja": "ニビシティ"
     },
     {
       "id": "MAPSEC_CERULEAN_CITY",
@@ -721,7 +726,8 @@
       "x": 14,
       "y": 3,
       "width": 1,
-      "height": 1
+      "height": 1,
+      "name_ja": "ハナダシティ"
     },
     {
       "id": "MAPSEC_LAVENDER_TOWN",
@@ -729,7 +735,8 @@
       "x": 18,
       "y": 6,
       "width": 1,
-      "height": 1
+      "height": 1,
+      "name_ja": "シオンタウン"
     },
     {
       "id": "MAPSEC_VERMILION_CITY",
@@ -737,7 +744,8 @@
       "x": 14,
       "y": 9,
       "width": 1,
-      "height": 1
+      "height": 1,
+      "name_ja": "クチバシティ"
     },
     {
       "id": "MAPSEC_CELADON_CITY",
@@ -745,7 +753,8 @@
       "x": 11,
       "y": 6,
       "width": 1,
-      "height": 1
+      "height": 1,
+      "name_ja": "タマムシシティ"
     },
     {
       "id": "MAPSEC_FUCHSIA_CITY",
@@ -753,7 +762,8 @@
       "x": 12,
       "y": 12,
       "width": 1,
-      "height": 1
+      "height": 1,
+      "name_ja": "セキチクシティ"
     },
     {
       "id": "MAPSEC_CINNABAR_ISLAND",
@@ -761,7 +771,8 @@
       "x": 4,
       "y": 14,
       "width": 1,
-      "height": 1
+      "height": 1,
+      "name_ja": "グレンじま"
     },
     {
       "id": "MAPSEC_INDIGO_PLATEAU",
@@ -769,7 +780,8 @@
       "x": 2,
       "y": 3,
       "width": 1,
-      "height": 1
+      "height": 1,
+      "name_ja": "セキエイこうげん"
     },
     {
       "id": "MAPSEC_SAFFRON_CITY",
@@ -777,7 +789,8 @@
       "x": 14,
       "y": 6,
       "width": 1,
-      "height": 1
+      "height": 1,
+      "name_ja": "ヤマブキシティ"
     },
     {
       "id": "MAPSEC_ROUTE_4_POKECENTER",
@@ -786,7 +799,8 @@
       "x": 8,
       "y": 3,
       "width": 1,
-      "height": 1
+      "height": 1,
+      "name_ja": "4ばんどうろ"
     },
     {
       "id": "MAPSEC_ROUTE_10_POKECENTER",
@@ -795,7 +809,8 @@
       "x": 18,
       "y": 3,
       "width": 1,
-      "height": 1
+      "height": 1,
+      "name_ja": "10ばんどうろ"
     },
     {
       "id": "MAPSEC_ROUTE_1",
@@ -803,7 +818,8 @@
       "x": 4,
       "y": 9,
       "width": 1,
-      "height": 2
+      "height": 2,
+      "name_ja": "1ばんどうろ"
     },
     {
       "id": "MAPSEC_ROUTE_2",
@@ -811,7 +827,8 @@
       "x": 4,
       "y": 5,
       "width": 1,
-      "height": 3
+      "height": 3,
+      "name_ja": "2ばんどうろ"
     },
     {
       "id": "MAPSEC_ROUTE_3",
@@ -819,7 +836,8 @@
       "x": 5,
       "y": 4,
       "width": 4,
-      "height": 1
+      "height": 1,
+      "name_ja": "3ばんどうろ"
     },
     {
       "id": "MAPSEC_ROUTE_4",
@@ -827,7 +845,8 @@
       "x": 8,
       "y": 3,
       "width": 6,
-      "height": 1
+      "height": 1,
+      "name_ja": "4ばんどうろ"
     },
     {
       "id": "MAPSEC_ROUTE_5",
@@ -835,7 +854,8 @@
       "x": 14,
       "y": 4,
       "width": 1,
-      "height": 2
+      "height": 2,
+      "name_ja": "5ばんどうろ"
     },
     {
       "id": "MAPSEC_ROUTE_6",
@@ -843,7 +863,8 @@
       "x": 14,
       "y": 7,
       "width": 1,
-      "height": 2
+      "height": 2,
+      "name_ja": "6ばんどうろ"
     },
     {
       "id": "MAPSEC_ROUTE_7",
@@ -851,7 +872,8 @@
       "x": 12,
       "y": 6,
       "width": 2,
-      "height": 1
+      "height": 1,
+      "name_ja": "7ばんどうろ"
     },
     {
       "id": "MAPSEC_ROUTE_8",
@@ -859,7 +881,8 @@
       "x": 15,
       "y": 6,
       "width": 3,
-      "height": 1
+      "height": 1,
+      "name_ja": "8ばんどうろ"
     },
     {
       "id": "MAPSEC_ROUTE_9",
@@ -867,7 +890,8 @@
       "x": 15,
       "y": 3,
       "width": 3,
-      "height": 1
+      "height": 1,
+      "name_ja": "9ばんどうろ"
     },
     {
       "id": "MAPSEC_ROUTE_10",
@@ -875,7 +899,8 @@
       "x": 18,
       "y": 3,
       "width": 1,
-      "height": 3
+      "height": 3,
+      "name_ja": "10ばんどうろ"
     },
     {
       "id": "MAPSEC_ROUTE_11",
@@ -883,7 +908,8 @@
       "x": 15,
       "y": 9,
       "width": 3,
-      "height": 1
+      "height": 1,
+      "name_ja": "11ばんどうろ"
     },
     {
       "id": "MAPSEC_ROUTE_12",
@@ -891,7 +917,8 @@
       "x": 18,
       "y": 7,
       "width": 1,
-      "height": 5
+      "height": 5,
+      "name_ja": "12ばんどうろ"
     },
     {
       "id": "MAPSEC_ROUTE_13",
@@ -899,7 +926,8 @@
       "x": 16,
       "y": 11,
       "width": 2,
-      "height": 1
+      "height": 1,
+      "name_ja": "13ばんどうろ"
     },
     {
       "id": "MAPSEC_ROUTE_14",
@@ -907,7 +935,8 @@
       "x": 15,
       "y": 11,
       "width": 1,
-      "height": 2
+      "height": 2,
+      "name_ja": "14ばんどうろ"
     },
     {
       "id": "MAPSEC_ROUTE_15",
@@ -915,7 +944,8 @@
       "x": 13,
       "y": 12,
       "width": 2,
-      "height": 1
+      "height": 1,
+      "name_ja": "15ばんどうろ"
     },
     {
       "id": "MAPSEC_ROUTE_16",
@@ -923,7 +953,8 @@
       "x": 7,
       "y": 6,
       "width": 4,
-      "height": 1
+      "height": 1,
+      "name_ja": "16ばんどうろ"
     },
     {
       "id": "MAPSEC_ROUTE_17",
@@ -931,7 +962,8 @@
       "x": 7,
       "y": 7,
       "width": 1,
-      "height": 5
+      "height": 5,
+      "name_ja": "17ばんどうろ"
     },
     {
       "id": "MAPSEC_ROUTE_18",
@@ -939,7 +971,8 @@
       "x": 7,
       "y": 12,
       "width": 5,
-      "height": 1
+      "height": 1,
+      "name_ja": "18ばんどうろ"
     },
     {
       "id": "MAPSEC_ROUTE_19",
@@ -947,7 +980,8 @@
       "x": 12,
       "y": 13,
       "width": 1,
-      "height": 2
+      "height": 2,
+      "name_ja": "19ばんどうろ"
     },
     {
       "id": "MAPSEC_ROUTE_20",
@@ -955,7 +989,8 @@
       "x": 5,
       "y": 14,
       "width": 7,
-      "height": 1
+      "height": 1,
+      "name_ja": "20ばんどうろ"
     },
     {
       "id": "MAPSEC_ROUTE_21",
@@ -963,7 +998,8 @@
       "x": 4,
       "y": 12,
       "width": 1,
-      "height": 2
+      "height": 2,
+      "name_ja": "21ばんどうろ"
     },
     {
       "id": "MAPSEC_ROUTE_22",
@@ -971,7 +1007,8 @@
       "x": 2,
       "y": 8,
       "width": 2,
-      "height": 1
+      "height": 1,
+      "name_ja": "22ばんどうろ"
     },
     {
       "id": "MAPSEC_ROUTE_23",
@@ -979,7 +1016,8 @@
       "x": 2,
       "y": 4,
       "width": 1,
-      "height": 4
+      "height": 4,
+      "name_ja": "23ばんどうろ"
     },
     {
       "id": "MAPSEC_ROUTE_24",
@@ -987,7 +1025,8 @@
       "x": 14,
       "y": 1,
       "width": 1,
-      "height": 2
+      "height": 2,
+      "name_ja": "24ばんどうろ"
     },
     {
       "id": "MAPSEC_ROUTE_25",
@@ -995,7 +1034,8 @@
       "x": 15,
       "y": 1,
       "width": 2,
-      "height": 1
+      "height": 1,
+      "name_ja": "25ばんどうろ"
     },
     {
       "id": "MAPSEC_VIRIDIAN_FOREST",
@@ -1003,7 +1043,8 @@
       "x": 4,
       "y": 6,
       "width": 1,
-      "height": 1
+      "height": 1,
+      "name_ja": "トキワのもり"
     },
     {
       "id": "MAPSEC_MT_MOON",
@@ -1011,7 +1052,8 @@
       "x": 9,
       "y": 3,
       "width": 1,
-      "height": 1
+      "height": 1,
+      "name_ja": "おつきみやま"
     },
     {
       "id": "MAPSEC_S_S_ANNE",
@@ -1019,7 +1061,8 @@
       "x": 14,
       "y": 9,
       "width": 1,
-      "height": 1
+      "height": 1,
+      "name_ja": "サントアンヌごう"
     },
     {
       "id": "MAPSEC_UNDERGROUND_PATH",
@@ -1027,7 +1070,8 @@
       "x": 14,
       "y": 7,
       "width": 1,
-      "height": 1
+      "height": 1,
+      "name_ja": "ちかつうろ"
     },
     {
       "id": "MAPSEC_UNDERGROUND_PATH_2",
@@ -1036,7 +1080,8 @@
       "x": 12,
       "y": 6,
       "width": 1,
-      "height": 1
+      "height": 1,
+      "name_ja": "ちかつうろ"
     },
     {
       "id": "MAPSEC_DIGLETTS_CAVE",
@@ -1044,7 +1089,8 @@
       "x": 15,
       "y": 9,
       "width": 1,
-      "height": 1
+      "height": 1,
+      "name_ja": "ディグダのあな"
     },
     {
       "id": "MAPSEC_KANTO_VICTORY_ROAD",
@@ -1052,7 +1098,8 @@
       "x": 2,
       "y": 4,
       "width": 1,
-      "height": 1
+      "height": 1,
+      "name_ja": "チャンピオンロード"
     },
     {
       "id": "MAPSEC_ROCKET_HIDEOUT",
@@ -1060,7 +1107,8 @@
       "x": 11,
       "y": 6,
       "width": 1,
-      "height": 1
+      "height": 1,
+      "name_ja": "ロケットだんアジト"
     },
     {
       "id": "MAPSEC_SILPH_CO",
@@ -1068,7 +1116,8 @@
       "x": 14,
       "y": 6,
       "width": 1,
-      "height": 1
+      "height": 1,
+      "name_ja": "シルフカンパニー"
     },
     {
       "id": "MAPSEC_POKEMON_MANSION",
@@ -1076,7 +1125,8 @@
       "x": 4,
       "y": 14,
       "width": 1,
-      "height": 1
+      "height": 1,
+      "name_ja": "ポケモンやしき"
     },
     {
       "id": "MAPSEC_KANTO_SAFARI_ZONE",
@@ -1084,7 +1134,8 @@
       "x": 12,
       "y": 12,
       "width": 1,
-      "height": 1
+      "height": 1,
+      "name_ja": "サファリゾーン"
     },
     {
       "id": "MAPSEC_POKEMON_LEAGUE",
@@ -1092,7 +1143,8 @@
       "x": 2,
       "y": 3,
       "width": 1,
-      "height": 1
+      "height": 1,
+      "name_ja": "ポケモンリーグ"
     },
     {
       "id": "MAPSEC_ROCK_TUNNEL",
@@ -1100,7 +1152,8 @@
       "x": 18,
       "y": 5,
       "width": 1,
-      "height": 1
+      "height": 1,
+      "name_ja": "イワヤマトンネル"
     },
     {
       "id": "MAPSEC_SEAFOAM_ISLANDS",
@@ -1108,7 +1161,8 @@
       "x": 8,
       "y": 14,
       "width": 1,
-      "height": 1
+      "height": 1,
+      "name_ja": "ふたごじま"
     },
     {
       "id": "MAPSEC_POKEMON_TOWER",
@@ -1116,7 +1170,8 @@
       "x": 18,
       "y": 6,
       "width": 1,
-      "height": 1
+      "height": 1,
+      "name_ja": "ポケモンタワー"
     },
     {
       "id": "MAPSEC_CERULEAN_CAVE",
@@ -1124,7 +1179,8 @@
       "x": 13,
       "y": 3,
       "width": 1,
-      "height": 1
+      "height": 1,
+      "name_ja": "ハナダのどうくつ"
     },
     {
       "id": "MAPSEC_POWER_PLANT",
@@ -1132,7 +1188,8 @@
       "x": 18,
       "y": 4,
       "width": 1,
-      "height": 1
+      "height": 1,
+      "name_ja": "むじんはつでんしょ"
     },
     {
       "id": "MAPSEC_ONE_ISLAND",
@@ -1140,7 +1197,8 @@
       "x": 1,
       "y": 8,
       "width": 1,
-      "height": 1
+      "height": 1,
+      "name_ja": "1のしま"
     },
     {
       "id": "MAPSEC_TWO_ISLAND",
@@ -1148,7 +1206,8 @@
       "x": 9,
       "y": 9,
       "width": 1,
-      "height": 1
+      "height": 1,
+      "name_ja": "2のしま"
     },
     {
       "id": "MAPSEC_THREE_ISLAND",
@@ -1156,7 +1215,8 @@
       "x": 18,
       "y": 12,
       "width": 1,
-      "height": 1
+      "height": 1,
+      "name_ja": "3のしま"
     },
     {
       "id": "MAPSEC_FOUR_ISLAND",
@@ -1164,7 +1224,8 @@
       "x": 3,
       "y": 4,
       "width": 1,
-      "height": 1
+      "height": 1,
+      "name_ja": "4のしま"
     },
     {
       "id": "MAPSEC_FIVE_ISLAND",
@@ -1172,7 +1233,8 @@
       "x": 16,
       "y": 11,
       "width": 1,
-      "height": 1
+      "height": 1,
+      "name_ja": "5のしま"
     },
     {
       "id": "MAPSEC_SEVEN_ISLAND",
@@ -1180,7 +1242,8 @@
       "x": 5,
       "y": 8,
       "width": 1,
-      "height": 1
+      "height": 1,
+      "name_ja": "7のしま"
     },
     {
       "id": "MAPSEC_SIX_ISLAND",
@@ -1188,7 +1251,8 @@
       "x": 17,
       "y": 5,
       "width": 1,
-      "height": 1
+      "height": 1,
+      "name_ja": "6のしま"
     },
     {
       "id": "MAPSEC_KINDLE_ROAD",
@@ -1196,7 +1260,8 @@
       "x": 2,
       "y": 3,
       "width": 1,
-      "height": 6
+      "height": 6,
+      "name_ja": "ほてりのみち"
     },
     {
       "id": "MAPSEC_TREASURE_BEACH",
@@ -1204,7 +1269,8 @@
       "x": 1,
       "y": 9,
       "width": 1,
-      "height": 2
+      "height": 2,
+      "name_ja": "たからのはま"
     },
     {
       "id": "MAPSEC_CAPE_BRINK",
@@ -1212,7 +1278,8 @@
       "x": 9,
       "y": 7,
       "width": 1,
-      "height": 2
+      "height": 2,
+      "name_ja": "きわのみさき"
     },
     {
       "id": "MAPSEC_BOND_BRIDGE",
@@ -1220,7 +1287,8 @@
       "x": 13,
       "y": 12,
       "width": 4,
-      "height": 1
+      "height": 1,
+      "name_ja": "きずなばし"
     },
     {
       "id": "MAPSEC_THREE_ISLE_PORT",
@@ -1228,7 +1296,8 @@
       "x": 18,
       "y": 13,
       "width": 2,
-      "height": 1
+      "height": 1,
+      "name_ja": "3のしまの みなと"
     },
     {
       "id": "MAPSEC_RESORT_GORGEOUS",
@@ -1236,7 +1305,8 @@
       "x": 16,
       "y": 9,
       "width": 3,
-      "height": 1
+      "height": 1,
+      "name_ja": "ゴージャスリゾート"
     },
     {
       "id": "MAPSEC_WATER_LABYRINTH",
@@ -1244,7 +1314,8 @@
       "x": 14,
       "y": 10,
       "width": 3,
-      "height": 1
+      "height": 1,
+      "name_ja": "みずのめいろ"
     },
     {
       "id": "MAPSEC_FIVE_ISLE_MEADOW",
@@ -1252,7 +1323,8 @@
       "x": 17,
       "y": 10,
       "width": 1,
-      "height": 3
+      "height": 3,
+      "name_ja": "めぐみのはら"
     },
     {
       "id": "MAPSEC_MEMORIAL_PILLAR",
@@ -1260,7 +1332,8 @@
       "x": 18,
       "y": 12,
       "width": 1,
-      "height": 3
+      "height": 3,
+      "name_ja": "おもいでのとう"
     },
     {
       "id": "MAPSEC_OUTCAST_ISLAND",
@@ -1268,7 +1341,8 @@
       "x": 15,
       "y": 0,
       "width": 1,
-      "height": 3
+      "height": 3,
+      "name_ja": "はなれじま"
     },
     {
       "id": "MAPSEC_GREEN_PATH",
@@ -1276,7 +1350,8 @@
       "x": 15,
       "y": 3,
       "width": 3,
-      "height": 1
+      "height": 1,
+      "name_ja": "みどりのさんぽみち"
     },
     {
       "id": "MAPSEC_WATER_PATH",
@@ -1284,7 +1359,8 @@
       "x": 18,
       "y": 3,
       "width": 1,
-      "height": 5
+      "height": 5,
+      "name_ja": "みずべのこみち"
     },
     {
       "id": "MAPSEC_RUIN_VALLEY",
@@ -1292,7 +1368,8 @@
       "x": 16,
       "y": 7,
       "width": 2,
-      "height": 2
+      "height": 2,
+      "name_ja": "いせきのたに"
     },
     {
       "id": "MAPSEC_TRAINER_TOWER",
@@ -1300,7 +1377,8 @@
       "x": 5,
       "y": 6,
       "width": 1,
-      "height": 2
+      "height": 2,
+      "name_ja": "トレーナータワー"
     },
     {
       "id": "MAPSEC_CANYON_ENTRANCE",
@@ -1308,7 +1386,8 @@
       "x": 5,
       "y": 9,
       "width": 1,
-      "height": 1
+      "height": 1,
+      "name_ja": "けいこくの いりぐち"
     },
     {
       "id": "MAPSEC_SEVAULT_CANYON",
@@ -1316,7 +1395,8 @@
       "x": 6,
       "y": 9,
       "width": 1,
-      "height": 3
+      "height": 3,
+      "name_ja": "しっぽうけいこく"
     },
     {
       "id": "MAPSEC_TANOBY_RUINS",
@@ -1324,7 +1404,8 @@
       "x": 3,
       "y": 12,
       "width": 7,
-      "height": 1
+      "height": 1,
+      "name_ja": "アスカナいせき"
     },
     {
       "id": "MAPSEC_SEVII_ISLE_22",
@@ -1332,7 +1413,8 @@
       "x": 9,
       "y": 12,
       "width": 1,
-      "height": 3
+      "height": 3,
+      "name_ja": "22ばんすいどう"
     },
     {
       "id": "MAPSEC_SEVII_ISLE_23",
@@ -1340,7 +1422,8 @@
       "x": 3,
       "y": 14,
       "width": 6,
-      "height": 1
+      "height": 1,
+      "name_ja": "23ばんすいどう"
     },
     {
       "id": "MAPSEC_SEVII_ISLE_24",
@@ -1348,7 +1431,8 @@
       "x": 2,
       "y": 12,
       "width": 1,
-      "height": 3
+      "height": 3,
+      "name_ja": "24ばんすいどう"
     },
     {
       "id": "MAPSEC_NAVEL_ROCK_FRLG",
@@ -1356,7 +1440,8 @@
       "x": 10,
       "y": 8,
       "width": 1,
-      "height": 1
+      "height": 1,
+      "name_ja": "へそのいわ"
     },
     {
       "id": "MAPSEC_MT_EMBER",
@@ -1364,7 +1449,8 @@
       "x": 2,
       "y": 3,
       "width": 1,
-      "height": 1
+      "height": 1,
+      "name_ja": "ともしびやま"
     },
     {
       "id": "MAPSEC_BERRY_FOREST",
@@ -1372,7 +1458,8 @@
       "x": 14,
       "y": 12,
       "width": 1,
-      "height": 1
+      "height": 1,
+      "name_ja": "きのみのもり"
     },
     {
       "id": "MAPSEC_ICEFALL_CAVE",
@@ -1380,7 +1467,8 @@
       "x": 3,
       "y": 4,
       "width": 1,
-      "height": 1
+      "height": 1,
+      "name_ja": "いてだきのどうくつ"
     },
     {
       "id": "MAPSEC_ROCKET_WAREHOUSE",
@@ -1388,7 +1476,8 @@
       "x": 17,
       "y": 11,
       "width": 1,
-      "height": 1
+      "height": 1,
+      "name_ja": "ロケットだんそうこ"
     },
     {
       "id": "MAPSEC_TRAINER_TOWER_2",
@@ -1397,7 +1486,8 @@
       "x": 5,
       "y": 6,
       "width": 1,
-      "height": 1
+      "height": 1,
+      "name_ja": "トレーナータワー"
     },
     {
       "id": "MAPSEC_DOTTED_HOLE",
@@ -1405,7 +1495,8 @@
       "x": 16,
       "y": 8,
       "width": 1,
-      "height": 1
+      "height": 1,
+      "name_ja": "てんてんのあな"
     },
     {
       "id": "MAPSEC_LOST_CAVE",
@@ -1413,7 +1504,8 @@
       "x": 18,
       "y": 9,
       "width": 1,
-      "height": 1
+      "height": 1,
+      "name_ja": "かえらずのあな"
     },
     {
       "id": "MAPSEC_PATTERN_BUSH",
@@ -1421,7 +1513,8 @@
       "x": 17,
       "y": 3,
       "width": 1,
-      "height": 1
+      "height": 1,
+      "name_ja": "もようのしげみ"
     },
     {
       "id": "MAPSEC_ALTERING_CAVE_FRLG",
@@ -1429,7 +1522,8 @@
       "x": 15,
       "y": 0,
       "width": 1,
-      "height": 1
+      "height": 1,
+      "name_ja": "へんげのどうくつ"
     },
     {
       "id": "MAPSEC_TANOBY_CHAMBERS",
@@ -1437,7 +1531,8 @@
       "x": 9,
       "y": 12,
       "width": 1,
-      "height": 1
+      "height": 1,
+      "name_ja": "アスカナいせき"
     },
     {
       "id": "MAPSEC_THREE_ISLE_PATH",
@@ -1445,7 +1540,8 @@
       "x": 18,
       "y": 13,
       "width": 1,
-      "height": 1
+      "height": 1,
+      "name_ja": "3のしまの みち"
     },
     {
       "id": "MAPSEC_TANOBY_KEY",
@@ -1453,7 +1549,8 @@
       "x": 6,
       "y": 9,
       "width": 1,
-      "height": 1
+      "height": 1,
+      "name_ja": "アスカナいせき"
     },
     {
       "id": "MAPSEC_BIRTH_ISLAND_FRLG",
@@ -1461,7 +1558,8 @@
       "x": 18,
       "y": 13,
       "width": 1,
-      "height": 1
+      "height": 1,
+      "name_ja": "たんじょうのしま"
     },
     {
       "id": "MAPSEC_MONEAN_CHAMBER",
@@ -1469,7 +1567,8 @@
       "x": 9,
       "y": 12,
       "width": 1,
-      "height": 1
+      "height": 1,
+      "name_ja": "モニアンのま"
     },
     {
       "id": "MAPSEC_LIPTOO_CHAMBER",
@@ -1477,7 +1576,8 @@
       "x": 9,
       "y": 12,
       "width": 1,
-      "height": 1
+      "height": 1,
+      "name_ja": "リプトゥのま"
     },
     {
       "id": "MAPSEC_WEEPTH_CHAMBER",
@@ -1485,7 +1585,8 @@
       "x": 9,
       "y": 12,
       "width": 1,
-      "height": 1
+      "height": 1,
+      "name_ja": "ウィープスのま"
     },
     {
       "id": "MAPSEC_DILFORD_CHAMBER",
@@ -1493,7 +1594,8 @@
       "x": 9,
       "y": 12,
       "width": 1,
-      "height": 1
+      "height": 1,
+      "name_ja": "ディルフォードのま"
     },
     {
       "id": "MAPSEC_SCUFIB_CHAMBER",
@@ -1501,7 +1603,8 @@
       "x": 9,
       "y": 12,
       "width": 1,
-      "height": 1
+      "height": 1,
+      "name_ja": "スカフィブのま"
     },
     {
       "id": "MAPSEC_RIXY_CHAMBER",
@@ -1509,7 +1612,8 @@
       "x": 9,
       "y": 12,
       "width": 1,
-      "height": 1
+      "height": 1,
+      "name_ja": "リクシーのま"
     },
     {
       "id": "MAPSEC_VIAPOIS_CHAMBER",
@@ -1517,15 +1621,18 @@
       "x": 9,
       "y": 12,
       "width": 1,
-      "height": 1
+      "height": 1,
+      "name_ja": "ビアポワのま"
     },
     {
       "id": "MAPSEC_EMBER_SPA",
-      "name": "EMBER SPA"
+      "name": "EMBER SPA",
+      "name_ja": "ともしびおんせん"
     },
     {
       "id": "MAPSEC_SPECIAL_AREA",
-      "name": "SPECIAL AREA"
+      "name": "SPECIAL AREA",
+      "name_ja": "とくべつな ばしょ"
     },
     {
       "id": "MAPSEC_AQUA_HIDEOUT",
@@ -1553,7 +1660,8 @@
     },
     {
       "id": "MAPSEC_BIRTH_ISLAND",
-      "name": "BIRTH ISLAND"
+      "name": "BIRTH ISLAND",
+      "name_ja": "たんじょうのしま"
     },
     {
       "id": "MAPSEC_FARAWAY_ISLAND",
@@ -1617,11 +1725,13 @@
       "x": 6,
       "y": 8,
       "width": 1,
-      "height": 1
+      "height": 1,
+      "name_ja": "へんげのどうくつ"
     },
     {
       "id": "MAPSEC_NAVEL_ROCK",
-      "name": "NAVEL ROCK"
+      "name": "NAVEL ROCK",
+      "name_ja": "へそのいわ"
     },
     {
       "id": "MAPSEC_TRAINER_HILL",

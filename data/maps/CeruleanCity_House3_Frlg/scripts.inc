@@ -44,4 +44,8 @@ CeruleanCity_House3_Text_PleaseTradeWithMyHusband::
 	.string "You're collecting POKéMON for your\n"
 	.string "POKéDEX, aren't you?\p"
 	.string "Would you please trade with him?$"
+	.string "{JPN}{JPN}うちの　ひとは　ポケモンの　こうかんが　すきなの\p"
+	.string "あなた　ずかんの　ために　ポケモンを\n"
+	.string "あつめてるんでしょ？\p"
+	.string "よかったら　こうかん　して　あげてくれない？$"
 

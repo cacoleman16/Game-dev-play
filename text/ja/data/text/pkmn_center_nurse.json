@@ -1,0 +1,12 @@
+{
+ "gText_WouldYouLikeToRestYourPkmn": "こんにちは！　ポケモンセンターへ　ようこそ！\\pここでは　ポケモンの　たいりょく　かいふくを　いたします\\pあなたの　ポケモンを　やすませて　あげますか？",
+ "gText_IllTakeYourPkmn": "それでは　あずからせて　いただきます！",
+ "gText_RestoredPkmnToFullHealth": "おまちどうさまでした！\\pおあずかりした　ポケモンは　みんな　げんきに　なりましたよ！",
+ "gText_WeHopeToSeeYouAgain": "またの　ごりようを　おまちしてます！",
+ "gText_WelcomeCutShort": "こんにちは！　ポケモンセンターへ　ようこそ！\\pここでは　ポケモンの　たいりょく　かいふくを　いたします\\pあなたの　ポケモンを‥",
+ "gText_NoticesGoldCard": "そ　その　カードは‥　もしかして‥　ゴールドカード！？\\pああ　まばゆい　きんいろ！　4つの　ほしが　きらきら　かがやいて　います！\\pシルバーカードの　トレーナーさんは　なんにんか　みましたけど　ゴールドカードの　トレーナーさんは　{PLAYER}さんが　はじめてです！\\pでは　{PLAYER}さん！　ポケモンを　やすませる　えいよを　わたしに　ください！",
+ "gText_YouWantTheUsual": "{PLAYER}さん！　ようこそ！　いつもの　ですね？",
+ "gText_IllTakeYourPkmn2": "それでは　あずからせて　いただきます！",
+ "gText_ThankYouForWaiting": "おまちどうさまでした！",
+ "gText_WeHopeToSeeYouAgain2": "またの　ごりようを　おまちしてます！"
+}

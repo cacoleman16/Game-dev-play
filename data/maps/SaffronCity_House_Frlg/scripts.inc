@@ -28,13 +28,19 @@ SaffronCity_House_Text_DontLookAtMyLetter::
 	.string "I hope to see you soon!\p"
 	.string "…Hey!\n"
 	.string "Don't look at my letter!$"
+	.string "{JPN}{JPN}‥おてがみ　ありがとう。　また　あえるのを\n"
+	.string "たのしみに　しています！\p"
+	.string "‥ちょっと！　わたしの　てがみを　みないでよ！$"
 
 SaffronCity_House_Text_Pidgey::
 	.string "PIDGEY: Kurukkoo!$"
+	.string "{JPN}{JPN}ポッポ『クルックー！』$"
 
 SaffronCity_House_Text_GettingCopycatPokeDoll::
 	.string "The COPYCAT is cute!\n"
 	.string "I'm getting her a POKé DOLL.$"
+	.string "{JPN}{JPN}ものまねむすめって　かわいいよね！　あの　こに\n"
+	.string "ピッピにんぎょうを　あげるんだ。$"
 
 SaffronCity_House_Text_ExplainPPUp::
 	.string "I was given a PP UP as a gift.\p"
@@ -42,4 +48,8 @@ SaffronCity_House_Text_ExplainPPUp::
 	.string "a POKéMON's move.\p"
 	.string "I should use it on a powerful move\n"
 	.string "with only a few PP.$"
+	.string "{JPN}{JPN}ポイントアップを　プレゼントで　もらったんだ。\p"
+	.string "ポケモンの　わざの　PPを　ふやす　どうぐ\n"
+	.string "なんだよ。\p"
+	.string "PPが　すくない　つよい　わざに　つかおうかな。$"
 

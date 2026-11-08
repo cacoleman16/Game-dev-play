@@ -49,24 +49,44 @@ Route2_EastBuilding_Text_GiveHM05IfSeen10Mons::
 	.string "So, {PLAYER}, let me ask you.\p"
 	.string "Have you gathered data on at least\n"
 	.string "ten kinds of POKéMON?$"
+	.string "{JPN}{JPN}やあ！　おぼえてる？　ぼくは　オーキドはかせの\n"
+	.string "じょしゅ　だよ。\p"
+	.string "ポケモンずかんに　10しゅるいの　ポケモンが\n"
+	.string "とうろく　されていたら　ごほうびを　わたす\l"
+	.string "ことに　なってるんだ。\p"
+	.string "はかせから　きみに　ひでんマシン05を\n"
+	.string "あずかってるよ。\p"
+	.string "それじゃ　{PLAYER}　きいて　みよう。\p"
+	.string "ポケモンを　10しゅるい　いじょう　あつめた\n"
+	.string "かな？$"
 
 Route2_EastBuilding_Text_GreatHereYouGo::
 	.string "Great! You have caught or owned\n"
 	.string "{STR_VAR_3} kinds of POKéMON!\p"
 	.string "Congratulations!\n"
 	.string "Here you go!$"
+	.string "{JPN}{JPN}すごい！　きみは　{STR_VAR_3}しゅるいの\n"
+	.string "ポケモンを　つかまえたんだね！\p"
+	.string "おめでとう！　はい　どうぞ！$"
 
 Route2_EastBuilding_Text_ReceivedHM05FromAide::
 	.string "{PLAYER} received HM05\n"
 	.string "from the AIDE.$"
+	.string "{JPN}{JPN}{PLAYER}は　じょしゅから\n"
+	.string "ひでんマシン05を　もらった！$"
 
 Route2_EastBuilding_Text_ExplainHM05::
 	.string "HM05 contains the hidden move\n"
 	.string "FLASH.\p"
 	.string "FLASH lights up even the darkest\n"
 	.string "of caves and dungeons.$"
+	.string "{JPN}{JPN}ひでんマシン05の　なかみは　フラッシュ。\p"
+	.string "フラッシュは　どんなに　くらい　どうくつも\n"
+	.string "あかるく　てらして　くれるんだ。$"
 
 Route2_EastBuilding_Text_CanGetThroughRockTunnel::
 	.string "Once a POKéMON learns FLASH, you\n"
 	.string "can get through ROCK TUNNEL.$"
+	.string "{JPN}{JPN}ポケモンが　フラッシュを　おぼえれば\n"
+	.string "イワヤマトンネルを　ぬけられるよ。$"
 

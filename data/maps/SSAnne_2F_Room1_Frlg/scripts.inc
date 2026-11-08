@@ -19,4 +19,7 @@ SSAnne_2F_Room1_Text_SleepingMonLookedLikeThis::
 	.string "all my travels I've never seen\l"
 	.string "any POKéMON sleep like this one!\p"
 	.string "It was something like this!$"
+	.string "{JPN}{JPN}わしは　あちこち　たびを　して　きたが　こんな\n"
+	.string "ふうに　ねむる　ポケモンは　みた　ことが　ない！\p"
+	.string "こんな　かんじ　だったぞ！$"
 

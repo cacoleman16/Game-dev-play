@@ -21,16 +21,25 @@ FiveIsland_EventScript_Fisher::
 FiveIsland_Text_IslandSign::
 	.string "FIVE ISLAND\n"
 	.string "Chrono Island: Where Time Goes$"
+	.string "{JPN}{JPN}5のしま\n"
+	.string "ときの　めぐる　しま$"
 
 FiveIsland_Text_WeirdBuildingInMeadow::
 	.string "Oh, this stinks. I wanted to play in\n"
 	.string "the MEADOW.\p"
 	.string "But they put up a weird building\n"
 	.string "on it, so I can't play there.$"
+	.string "{JPN}{JPN}もう　つまんない　めぐみのはらで\n"
+	.string "あそびたかったのに\p"
+	.string "へんな　たてものが　たっちゃって　あそべなく\n"
+	.string "なったの$"
 
 FiveIsland_Text_BeenGettingBusierAroundHere::
 	.string "It's been getting busier around\n"
 	.string "these parts lately.\p"
 	.string "I haven't been catching many good\n"
 	.string "fish lately, either.$"
+	.string "{JPN}{JPN}さいきん　この　あたりも　さわがしく　なって\n"
+	.string "きたなあ\p"
+	.string "いい　さかなも　あまり　つれなく　なったし$"
 

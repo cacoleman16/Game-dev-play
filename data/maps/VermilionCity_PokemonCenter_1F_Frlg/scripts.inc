@@ -49,10 +49,16 @@ VermilionCity_PokemonCenter_1F_Text_TrainerMonsStrongerThanWild::
 	.string "stats and abilities.\p"
 	.string "A POKéMON raised by a TRAINER is\n"
 	.string "stronger than one in the wild.$"
+	.string "{JPN}{JPN}おなじ　レベルでも　ポケモンの　のうりょくは\n"
+	.string "ずいぶん　ちがう　ことが　あるんだ\p"
+	.string "トレーナーが　そだてた　ポケモンは　やせいの\n"
+	.string "ポケモンより　つよいのさ$"
 
 VermilionCity_PokemonCenter_1F_Text_PoisonedMonFaintedWhileWalking::
 	.string "My POKéMON was poisoned!\n"
 	.string "It fainted while we were walking!$"
+	.string "{JPN}{JPN}ぼくの　ポケモンが　どくを　うけちゃって\n"
+	.string "あるいてる　とちゅうで　ひんしに　なっちゃった！$"
 
 VermilionCity_PokemonCenter_1F_Text_AllMonWeakToSpecificTypes::
 	.string "It is true that a higher-level\n"
@@ -61,6 +67,12 @@ VermilionCity_PokemonCenter_1F_Text_AllMonWeakToSpecificTypes::
 	.string "points against specific types.\p"
 	.string "So, there appears to be no\n"
 	.string "universally strong POKéMON.$"
+	.string "{JPN}{JPN}たしかに　レベルが　たかい　ポケモンほど\n"
+	.string "つよい‥\p"
+	.string "でも　どの　ポケモンにも　にがてな　タイプが\n"
+	.string "あるんだ\p"
+	.string "だから　どんな　あいてにも　つよい　ポケモンは\n"
+	.string "いない　みたいだね$"
 
 VermilionCity_PokemonCenter_1F_Text_UrgeToBattleSomeoneAgain::
 	.string "The urge to battle with someone\n"
@@ -71,12 +83,22 @@ VermilionCity_PokemonCenter_1F_Text_UrgeToBattleSomeoneAgain::
 	.string "again over and over, too.\p"
 	.string "So, I've been giving these away.\n"
 	.string "Please, take one!$"
+	.string "{JPN}{JPN}まえに　たたかった　あいてと　もう　いちど\n"
+	.string "たたかいたい‥\p"
+	.string "そう　おもった　こと　ない？　きっと　あるよね\p"
+	.string "ぼくも　なんども　たたかいたい　あいてが\n"
+	.string "いたんだ\p"
+	.string "だから　これを　くばってるんだ　ひとつ　どうぞ！$"
 
 VermilionCity_PokemonCenter_1F_Text_UseDeviceForRematches::
 	.string "Use that device and you'll find\n"
 	.string "TRAINERS looking for a rematch.\p"
 	.string "You have to charge its battery to\n"
 	.string "use it, though.$"
+	.string "{JPN}{JPN}それを　つかうと　さいせんを　したがってる\n"
+	.string "トレーナーが　みつかるよ\p"
+	.string "でも　つかうには　じゅうでん　しないと\n"
+	.string "だめなんだ$"
 
 VermilionCity_PokemonCenter_1F_Text_ExplainVSSeeker::
 	.string "How do you use the VS SEEKER?\n"
@@ -87,3 +109,9 @@ VermilionCity_PokemonCenter_1F_Text_ExplainVSSeeker::
 	.string "it will let you know immediately.\p"
 	.string "Charge its battery and use it\n"
 	.string "while you're on a road.$"
+	.string "{JPN}{JPN}バトルサーチャーの　つかいかた？　かんたんだよ\p"
+	.string "ピピピッて　つかうと　まわりの　トレーナーが\n"
+	.string "きづくんだ\p"
+	.string "さいせんを　したい　トレーナーが　いたら　すぐに\n"
+	.string "わかるよ\p"
+	.string "じゅうでん　してから　どうろで　つかってね$"

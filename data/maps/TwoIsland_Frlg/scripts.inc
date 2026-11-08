@@ -218,14 +218,20 @@ TwoIsland_EventScript_FastCurrentSign::
 TwoIsland_Text_IslandSign::
 	.string "TWO ISLAND\n"
 	.string "Boon Island for Two$"
+	.string "{JPN}{JPN}2のしま\n"
+	.string "ふたりに　めぐみの　しま$"
 
 TwoIsland_Text_JoyfulGameCornerSign::
 	.string "Skip & Chomp!\n"
 	.string "Joyful GAME CORNER$"
+	.string "{JPN}{JPN}とんで　たべて！\n"
+	.string "うきうき　ゲームコーナー$"
 
 TwoIsland_Text_DangerFastCurrent::
 	.string "DANGER! FAST CURRENT!\n"
 	.string "Fishing and surfing prohibited!$"
+	.string "{JPN}{JPN}きけん！　ながれが　はやい！\n"
+	.string "つりと　なみのりは　きんし！$"
 
 TwoIsland_Text_WelcomeToShopMerchandiseLimited::
 	.string "Oh!\n"
@@ -233,6 +239,12 @@ TwoIsland_Text_WelcomeToShopMerchandiseLimited::
 	.string "We've only opened up recently.\p"
 	.string "Our merchandise is limited, but I\n"
 	.string "hope we can serve your needs.$"
+	.string "{JPN}{JPN}おや！　いらっしゃい！　ようこそ　わたしの\n"
+	.string "みせへ！\p"
+	.string "つい　さいきん　みせを　ひらいた　ばかり\n"
+	.string "なんです\p"
+	.string "しなぞろえは　すくないけど　おやくに　たてれば\n"
+	.string "うれしいです$"
 
 TwoIsland_Text_AddedMerchandiseForLostelle::
 	.string "I can't tell you how grateful I am\n"
@@ -243,10 +255,19 @@ TwoIsland_Text_AddedMerchandiseForLostelle::
 	.string "And, I'm from KANTO, you see.\p"
 	.string "The people of THREE ISLAND\n"
 	.string "helped me add to my merchandise.$"
+	.string "{JPN}{JPN}ユウコちゃんを　たすけて　くれて　ほんとうに\n"
+	.string "ありがとう！\p"
+	.string "きみの　おかげで　3のしまの　ひとたちの\n"
+	.string "カントーの　ひとへの　みかたが　かわったんです\p"
+	.string "じつは　わたしも　カントー　しゅっしん　でしてね\p"
+	.string "3のしまの　ひとたちが　しなぞろえを　ふやすのを\n"
+	.string "てつだって　くれたんです$"
 
 TwoIsland_Text_HopeYouGiveItYourBest::
 	.string "Hi! I'm giving it my best here.\n"
 	.string "I hope you do too, {PLAYER}.$"
+	.string "{JPN}{JPN}やあ！　わたしは　ここで　がんばってるよ\n"
+	.string "{PLAYER}も　がんばってね$"
 
 TwoIsland_Text_BringingItemsFromDistantLands::
 	.string "Oh, hello, {PLAYER}!\n"
@@ -255,6 +276,11 @@ TwoIsland_Text_BringingItemsFromDistantLands::
 	.string "distant lands.\p"
 	.string "I've got some rare items in, too.\n"
 	.string "Please have a look!$"
+	.string "{JPN}{JPN}おや　{PLAYER}さん！　いらっしゃい！\p"
+	.string "とおくの　くにから　しなものを　しいれる　ように\n"
+	.string "なりました\p"
+	.string "めずらしい　どうぐも　ありますよ　ぜひ　みて\n"
+	.string "いって　ください！$"
 
 TwoIsland_Text_FellowMovedFromCeladonCity::
 	.string "That fellow there, he moved here\n"
@@ -263,12 +289,21 @@ TwoIsland_Text_FellowMovedFromCeladonCity::
 	.string "younger brother.\p"
 	.string "You have to wonder if he knew what\n"
 	.string "he was getting into.$"
+	.string "{JPN}{JPN}あそこの　ひとはね　タマムシシティから\n"
+	.string "ひっこして　きたのよ\p"
+	.string "おとうとと　いっしょに　おみせを　はじめたの\p"
+	.string "どんな　くろうが　まってるか\n"
+	.string "わかってたのかしらね$"
 
 TwoIsland_Text_ShopkeepersBrotherWorksGameCorner::
 	.string "The shopkeeper's brother took\n"
 	.string "a job at the GAME CORNER.\p"
 	.string "He's trying to pull together money\n"
 	.string "so they can buy more merchandise.$"
+	.string "{JPN}{JPN}みせの　ひとの　おとうとは　ゲームコーナーで\n"
+	.string "はたらいて　いるんだ\p"
+	.string "しなものを　もっと　しいれる　ために　おかねを\n"
+	.string "ためて　いるんだって$"
 
 TwoIsland_Text_BrunoCameToIslandWhileBack::
 	.string "Listen, listen.\n"
@@ -280,16 +315,27 @@ TwoIsland_Text_BrunoCameToIslandWhileBack::
 	.string "He went away disappointed when he\n"
 	.string "found out that they were all sold\l"
 	.string "out of Rage Candybars.$"
+	.string "{JPN}{JPN}ねえねえ　しってる？\p"
+	.string "ちょっと　まえに　ゆうめいな　トレーナーが　この\n"
+	.string "しまに　きたのよ\p"
+	.string "してんのうの　ひとりで　シバって　いう　ひと\p"
+	.string "いかりまんじゅうが　うりきれだって　わかって\n"
+	.string "がっかりして　かえって　いったわ$"
 
 TwoIsland_Text_BuyRareItemsHere::
 	.string "The discerning TRAINER knows to\n"
 	.string "buy rare items here!$"
+	.string "{JPN}{JPN}めの　こえた　トレーナーは　ここで　めずらしい\n"
+	.string "どうぐを　かうのさ！$"
 
 TwoIsland_Text_OldWomanLivesOutOnCape::
 	.string "There's an old woman who lives in\n"
 	.string "a cottage out on the cape.\p"
 	.string "She gives the eye to POKéMON.\n"
 	.string "It's a bit unnerving.$"
+	.string "{JPN}{JPN}みさきの　こやに　おばあさんが　すんでるんだ\p"
+	.string "ポケモンを　じーっと　みつめて　くるんだよ\n"
+	.string "ちょっと　きみが　わるいよね$"
 
 TwoIsland_Text_HaveYouTriedJumpingGame::
 	.string "Boing! Boing!\n"
@@ -300,4 +346,10 @@ TwoIsland_Text_HaveYouTriedJumpingGame::
 	.string "And some go boooooooing!\p"
 	.string "Did you know that?\n"
 	.string "Boing!$"
+	.string "{JPN}{JPN}ぴょーん！　ぴょーん！　ジャンプの　ゲーム\n"
+	.string "やった　こと　ある？\p"
+	.string "さんか　できる　ポケモンは‥　ぴょーん！\p"
+	.string "ぴょーんって　とぶ　ポケモンも　いれば\p"
+	.string "ぴょーーーーんって　とぶ　ポケモンも　いるの！\p"
+	.string "しってた？　ぴょーん！$"
 

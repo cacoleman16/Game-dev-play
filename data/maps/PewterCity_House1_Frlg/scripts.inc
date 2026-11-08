@@ -32,9 +32,11 @@ PewterCity_House1_EventScript_DoNidoranCry::
 
 PewterCity_House1_Text_Nidoran::
 	.string "NIDORAN♂: Bowbow!$"
+	.string "{JPN}{JPN}ニドラン♂『ニドッ！』$"
 
 PewterCity_House1_Text_NidoranSit::
 	.string "NIDORAN, sit!$"
+	.string "{JPN}{JPN}ニドラン　おすわり！$"
 
 PewterCity_House1_Text_TradeMonsAreFinicky::
 	.string "Our POKéMON's an outsider, so it's\n"
@@ -44,4 +46,12 @@ PewterCity_House1_Text_TradeMonsAreFinicky::
 	.string "It grows fast, but it may ignore an\n"
 	.string "unskilled TRAINER in battle.\p"
 	.string "If only we had some BADGES…$"
+	.string "{JPN}{JPN}うちの　ポケモンは　よそもの　だから\n"
+	.string "きむずかしくて　あつかいにくいんだ。\p"
+	.string "よそものって　いうのは　こうかんで　もらった\n"
+	.string "ポケモンの　ことさ。\p"
+	.string "そだつのは　はやいけど　うでの　ない\n"
+	.string "トレーナーだと　せんとうで　いうことを　きかない\l"
+	.string "ことも　ある。\p"
+	.string "バッジさえ　もってれば　なあ‥$"
 

@@ -252,24 +252,32 @@ CeladonCity_DepartmentStore_4F_ZCrystals::
 
 CeladonCity_DepartmentStore_4F_Text_ChoiceGifts::
 	.string "Gifts & stones$"
+	.string "{JPN}{JPN}おくりもの・いし$"
 
 CeladonCity_DepartmentStore_4F_Text_ChoiceEvolution::
 	.string "Evolution items$"
+	.string "{JPN}{JPN}しんかの　どうぐ$"
 
 CeladonCity_DepartmentStore_4F_Text_ChoiceMegaStones::
 	.string "Mega Stones$"
+	.string "{JPN}{JPN}メガストーン$"
 
 CeladonCity_DepartmentStore_4F_Text_ChoiceZCrystals::
 	.string "Z-Crystals$"
+	.string "{JPN}{JPN}Zクリスタル$"
 
 CeladonCity_DepartmentStore_4F_Text_ChoiceCancel::
 	.string "Cancel$"
+	.string "{JPN}{JPN}やめる$"
 
 CeladonCity_DepartmentStore_4F_Text_GettingPokeDollAsPresent::
 	.string "I'm getting a present for my\n"
 	.string "girlfriend.\p"
 	.string "I guess a POKé DOLL will be it.\n"
 	.string "It's the popular thing.$"
+	.string "{JPN}{JPN}かのじょに　プレゼントを　かうんだ\p"
+	.string "ピッピにんぎょうに　しようかな　いま\n"
+	.string "にんきだしね$"
 
 CeladonCity_DepartmentStore_4F_Text_CanRunAwayWithPokeDoll::
 	.string "I heard something useful.\p"
@@ -277,9 +285,18 @@ CeladonCity_DepartmentStore_4F_Text_CanRunAwayWithPokeDoll::
 	.string "distract it with a POKé DOLL.\p"
 	.string "You can run away while the wild\n"
 	.string "POKéMON is distracted.$"
+	.string "{JPN}{JPN}いいこと　きいちゃった\p"
+	.string "やせいの　ポケモンが　でてきたら\n"
+	.string "ピッピにんぎょうで　きを　そらせるんだって\p"
+	.string "やせいの　ポケモンが　きを　とられてる　すきに\n"
+	.string "にげられるのよ$"
 
 CeladonCity_DepartmentStore_4F_Text_FloorSign::
 	.string "Express yourself with gifts!\n"
 	.string "4F: WISE MAN GIFTS\p"
 	.string "Evolution Special!\n"
 	.string "Element STONES on sale now!$"
+	.string "{JPN}{JPN}おくりもので　きもちを　つたえよう！　4F:\n"
+	.string "かしこい　おくりもの\p"
+	.string "しんか　とくしゅう！　しんかのいし\n"
+	.string "はつばいちゅう！$"

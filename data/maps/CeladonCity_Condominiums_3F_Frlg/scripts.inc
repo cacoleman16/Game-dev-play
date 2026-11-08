@@ -53,16 +53,23 @@ CeladonCity_Condominiums_3F_EventScript_Computer3::
 CeladonCity_Condominiums_3F_Text_ImTheProgrammer::
 	.string "Me?\n"
 	.string "I'm the programmer!$"
+	.string "{JPN}{JPN}ぼく？　ぼくは　プログラマー！$"
 
 CeladonCity_Condominiums_3F_Text_ImTheGraphicArtist::
 	.string "I'm the graphic artist!\n"
 	.string "I drew you!$"
+	.string "{JPN}{JPN}ぼくは　グラフィック　たんとう！　きみを\n"
+	.string "かいたのは　ぼくだよ！$"
 
 CeladonCity_Condominiums_3F_Text_IWroteTheStory::
 	.string "I wrote the story!\n"
 	.string "Isn't ERIKA cute?\p"
 	.string "I like MISTY a lot, too!\n"
 	.string "Oh, and SABRINA, I like her!$"
+	.string "{JPN}{JPN}ぼくは　シナリオを　かいたんだ！　エリカって\n"
+	.string "かわいいでしょ？\p"
+	.string "カスミも　だいすき！　あと　ナツメも\n"
+	.string "すきだなあ！$"
 
 CeladonCity_Condominiums_3F_Text_ImGameDesignerShowMeFinishedPokedex::
 	.string "Is that right?\p"
@@ -70,25 +77,39 @@ CeladonCity_Condominiums_3F_Text_ImGameDesignerShowMeFinishedPokedex::
 	.string "Filling up your POKéDEX is tough,\n"
 	.string "but don't quit!\p"
 	.string "When you finish, come tell me!$"
+	.string "{JPN}{JPN}そうなの？\p"
+	.string "わたしは　ゲームデザイナー！\p"
+	.string "ずかんを　うめるのは　たいへんだけど\n"
+	.string "あきらめないでね！\p"
+	.string "かんせい　したら　おしえに　きてね！$"
 
 CeladonCity_Condominiums_3F_Text_CompletedPokedexCongratulations::
 	.string "Wow! Excellent!\n"
 	.string "You completed your POKéDEX!\l"
 	.string "Congratulations!\l"
 	.string "…$"
+	.string "{JPN}{JPN}すごい！　おみごと！　ずかんを　かんせい\n"
+	.string "させたんだね！　おめでとう！　‥$"
 
 CeladonCity_Condominiums_3F_Text_ItsTheGameProgram::
 	.string "It's the game program! Messing with\n"
 	.string "it could bug out the game!$"
+	.string "{JPN}{JPN}ゲームの　プログラムだ！　へたに　いじると\n"
+	.string "バグって　しまう！$"
 
 CeladonCity_Condominiums_3F_Text_SomeonesPlayingGame::
 	.string "Someone's playing a game instead of\n"
 	.string "working!$"
+	.string "{JPN}{JPN}しごとを　しないで　ゲームで　あそんでる　ひとが\n"
+	.string "いる！$"
 
 CeladonCity_Condominiums_3F_Text_ItsScriptBetterNotLookAtEnding::
 	.string "It's the script!\n"
 	.string "Better not look at the ending!$"
+	.string "{JPN}{JPN}シナリオだ！　エンディングは　みない　ほうが\n"
+	.string "いいな！$"
 
 CeladonCity_Condominiums_3F_Text_GameFreakDevelopmentRoom::
 	.string "GAME FREAK Development Room$"
+	.string "{JPN}{JPN}ゲームフリーク　かいはつしつ$"
 

@@ -17,6 +17,7 @@
 #include "window.h"
 #include "constants/songs.h"
 #include "constants/speaker_names.h"
+#include "qol_language.h"
 
 static u16 RenderText(struct TextPrinter *);
 static u32 RenderFont(struct TextPrinter *);
@@ -476,6 +477,9 @@ bool32 AddTextPrinter(struct TextPrinterTemplate *printerTemplate, u8 speed, voi
     sTempTextPrinter.active = TRUE;
     sTempTextPrinter.state = RENDER_STATE_HANDLE_CHAR;
     sTempTextPrinter.printerTemplate = *printerTemplate;
+    // [QoL] Japanese mode: Japanese font and the Japanese version of the string.
+    sTempTextPrinter.japanese = QoL_IsJapanese();
+    sTempTextPrinter.printerTemplate.currentChar = QoL_LangStr(printerTemplate->currentChar);
     sTempTextPrinter.callback = callback;
     sTempTextPrinter.textSpeed = speed;
 
@@ -1527,7 +1531,7 @@ static u16 RenderText(struct TextPrinter *textPrinter)
                 textPrinter->japanese = TRUE;
                 return RENDER_REPEAT;
             case EXT_CTRL_CODE_ENG:
-                textPrinter->japanese = FALSE;
+                textPrinter->japanese = QoL_IsJapanese(); // [QoL] stays Japanese in Japanese mode
                 return RENDER_REPEAT;
             case EXT_CTRL_CODE_SPEAKER:
                 {
@@ -1827,7 +1831,8 @@ s32 GetStringWidth(u8 fontId, const u8 *str, s16 letterSpacing)
     int glyphWidth;
     s32 width;
 
-    isJapanese = 0;
+    isJapanese = QoL_IsJapanese(); // [QoL]
+    str = QoL_LangStr(str);
     minGlyphWidth = 0;
 
     func = GetFontWidthFunc(fontId);
@@ -1935,7 +1940,7 @@ s32 GetStringWidth(u8 fontId, const u8 *str, s16 letterSpacing)
                 isJapanese = 1;
                 break;
             case EXT_CTRL_CODE_ENG:
-                isJapanese = 0;
+                isJapanese = QoL_IsJapanese(); // [QoL]
                 break;
             case EXT_CTRL_CODE_RESET_FONT:
             case EXT_CTRL_CODE_PAUSE_UNTIL_PRESS:

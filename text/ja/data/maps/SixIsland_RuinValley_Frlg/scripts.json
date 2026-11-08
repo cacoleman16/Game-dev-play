@@ -1,0 +1,23 @@
+{
+ "SixIsland_RuinValley_Text_CantFigureOutHowToGetInside": "どう　やって　なかに　はいれば　いいのか　わからないんだ。",
+ "SixIsland_RuinValley_Text_IFoundThisPlace": "いっとくけど　ここを　みつけたのは　わたし　だからね。\\pそんなに　うらやましそうな　かお　しないでよ。",
+ "SixIsland_RuinValley_Text_CheckDoorMoreThoroughly": "とびらは　びくとも　しない。　もっと　よく　しらべて　みますか？",
+ "SixIsland_RuinValley_Text_LeftDoorAlone": "{PLAYER}は　とびらから　はなれた。",
+ "SixIsland_RuinValley_Text_SeveralDotsOnTheDoor": "よく　みると　とびらに　いくつか　てんてんが　ある‥",
+ "SixIsland_RuinValley_Text_DoorIsOpen": "とびらは　ひらいて　いる。",
+ "SixIsland_RuinValley_Text_StanlyIntro": "この　よのなかには　まだ　とかれて　いない　なぞが　たくさん　ある　ようだ。",
+ "SixIsland_RuinValley_Text_StanlyDefeat": "ふむ‥",
+ "SixIsland_RuinValley_Text_StanlyPostBattle": "きみも　1にち　1かいは　この　せかいの　ひみつや　なぞに　ついて　かんがえて　みると　いい。",
+ "SixIsland_RuinValley_Text_FosterIntro": "きみは　なにに　ひかれて　ここへ　きたのかね？",
+ "SixIsland_RuinValley_Text_FosterDefeat": "ひさしぶりの　バトルで　かんが　にぶって　いたよ。",
+ "SixIsland_RuinValley_Text_FosterPostBattle": "ナナシマには　いくつかの　いせきが　あるんだ。\\pその　ほとんどは　とても　ふるい　じだいの　ものだよ。",
+ "SixIsland_RuinValley_Text_LarryIntro": "この　しまには　ふしぎな　いしが　あると　いわれて　いる。\\pここの　いせきと　なにか　かんけいが　あるに　ちがいない。",
+ "SixIsland_RuinValley_Text_LarryDefeat": "ほう　おもしろい。",
+ "SixIsland_RuinValley_Text_LarryPostBattle": "あそこの　いせき‥\\pどう　すれば　なかに　はいれるのか　まだ　わからないんだ。",
+ "SixIsland_RuinValley_Text_DarylIntro": "こんな　たかい　ところで　きみと　バトルだ！",
+ "SixIsland_RuinValley_Text_DarylDefeat": "あっさり　まけて　しまうとは‥　くやしい！",
+ "SixIsland_RuinValley_Text_DarylPostBattle": "やまのぼりの　よろこびを　あじわおう！",
+ "SixIsland_RuinValley_Text_HectorIntro": "この　あたりの　ちりには　かなり　くわしいんだ。",
+ "SixIsland_RuinValley_Text_HectorDefeat": "そんなに　つよく　でなくても　いいだろう。　よろこんで　おしえるよ。",
+ "SixIsland_RuinValley_Text_HectorPostBattle": "いせきの　とびら‥　そとがわに　ふしぎな　もようが　きざまれて　いるんだ。\\pなにを　いみ　して　いるのかは　わからない　けどね。"
+}

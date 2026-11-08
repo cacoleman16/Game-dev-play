@@ -1,0 +1,17 @@
+{
+ "Route25_SeaCottage_Text_ImBillHelpMeOutPal": "やあ！　わいは　ポケモン‥　‥ちゃう　ちゃう！\\pわいは　マサキ！　ポケモンマニアの　マサキや！\\pなんや！　その　うたがう　めは！\\pうそや　あらへんで　にいちゃん。\\pじっけんに　しっぱい　して　ポケモンと　がったい　してもうたんや！\\pなあ　たのむわ！　たすけて　えな！",
+ "Route25_SeaCottage_Text_ImBillHelpMeOutLady": "やあ！　わいは　ポケモン‥　‥ちゃう　ちゃう！\\pわいは　マサキ！　ポケモンマニアの　マサキや！\\pなんや！　その　うたがう　めは！\\pうそや　あらへんで　ねえちゃん。\\pじっけんに　しっぱい　して　ポケモンと　がったい　してもうたんや！\\pなあ　たのむわ！　たすけて　えな！",
+ "Route25_SeaCottage_Text_RunCellSeparationOnPC": "わいが　テレポーターに　はいったら　パソコンで　ぶんりシステムを　うごかして　くれ。",
+ "Route25_SeaCottage_Text_NoPleaseChief": "いやや！？　そんな　つめたい　こと　いわんといてえな！\\pほんまに　こまってる　ひとを　たすけてえな！\\pな　にいちゃん！　たのむわ！　ええやろ？　よっしゃ！",
+ "Route25_SeaCottage_Text_NoPleaseBeautiful": "いやや！？　そんな　つめたい　こと　いわんといてえな！\\pほんまに　こまってる　ひとを　たすけてえな！\\pな　べっぴんさん！　たのむわ！　ええやろ？　よっしゃ！",
+ "Route25_SeaCottage_Text_ThanksBudTakeThis": "マサキ『やったー！　おおきに　にいちゃん！　たすかったわ！\\pで　わいの　ポケモン　コレクション　みに　きたんか？\\pちゃうんか？　そら　ざんねんやな。\\pなんか　おれい　せな　あかんな‥　おっ　これなんか　どうや。",
+ "Route25_SeaCottage_Text_ThanksLadyTakeThis": "マサキ『やったー！　おおきに　ねえちゃん！　たすかったわ！\\pで　わいの　ポケモン　コレクション　みに　きたんか？\\pちゃうんか？　そら　ざんねんやな。\\pなんか　おれい　せな　あかんな‥　おっ　これなんか　どうや。",
+ "Route25_SeaCottage_Text_ReceivedSSTicketFromBill": "{PLAYER}は　マサキから　ふねのチケットを　もらった！",
+ "Route25_SeaCottage_Text_YouveGotTooMuchStuff": "にもつが　いっぱいやで！",
+ "Route25_SeaCottage_Text_SSAnnePartyYouGoInstead": "クチバシティに　ごうかきゃくせん　サントアンヌごうが　きとるんや。\\pトレーナーも　ぎょうさん　のっとる　らしいで。\\pパーティーに　しょうたい　されたんやけど　わいは　かたくるしいの　にがてでな。\\pかわりに　いって　きたら　ええわ。　たのしんで　きいや。",
+ "Route25_SeaCottage_Text_CheckOutRareMonsOnPC": "マサキ『わいの　めずらしい　ポケモン　パソコンで　みてみるか？\\pほれ　パソコン　みてみい。",
+ "Route25_SeaCottage_Text_TeleporterIsDisplayed": "パソコンの　がめんに　テレポーターと　でている。",
+ "Route25_SeaCottage_Text_InitiatedTeleportersCellSeparator": "{PLAYER}は　テレポーターの　ぶんりシステムを　うごかした！",
+ "Route25_SeaCottage_Text_BillsFavoriteMonList": "マサキの　おきにいり　ポケモン　リスト！",
+ "Route25_SeaCottage_Text_SeeWhichMon": "どの　ポケモンを　みる？"
+}

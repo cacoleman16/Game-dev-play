@@ -44,4 +44,8 @@ Route2_House_Text_FaintedMonsCanUseFieldMoves::
 	.string "energy left to battle.\p"
 	.string "It can still use moves like CUT\n"
 	.string "outside of battle.$"
+	.string "{JPN}{JPN}ひんしの　ポケモンは　たたかう　げんきが\n"
+	.string "のこってない　だけなんだ。\p"
+	.string "バトルの　そとでなら　いあいぎり　みたいな\n"
+	.string "わざは　つかえるんだよ。$"
 

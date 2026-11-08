@@ -116,10 +116,22 @@ OneIsland_Text_BillLetsGoSeeCelio::
 	.string "network by his lonesome.\p"
 	.string "…Why am I telling you this now?\n"
 	.string "Let's just go see CELIO!$"
+	.string "{JPN}{JPN}マサキ:　さあ　ついたで！　ここが　1のしま\n"
+	.string "や。\p"
+	.string "この　あたりには　しまが　いくつか　あって\n"
+	.string "ここは　その　ひとつ　なんや。\p"
+	.string "わいの　ともだちの　ニシキが　むかえの　ふねを\n"
+	.string "よこして　くれたんや。\p"
+	.string "ニシキは　ひとりで　しまの　パソコン\n"
+	.string "ネットワークを　まかされとるんや。\p"
+	.string "‥って　なんで　いま　こんな　はなし\n"
+	.string "しとるんやろ？　とにかく　ニシキに　あいに\l"
+	.string "いこか！$"
 
 Text_WhereDoYouWantToSail::
 	.string "Ahoy, there!\n"
 	.string "Where do you want to sail?$"
+	.string "{JPN}{JPN}おーい！　どこまで　いくんだい？$"
 
 OneIsland_Text_LuckyToHaveCelioHere::
 	.string "Here we are on an island smack in\n"
@@ -132,6 +144,15 @@ OneIsland_Text_LuckyToHaveCelioHere::
 	.string "POKéMANIAC?\p"
 	.string "I'm not sure what that means, but\n"
 	.string "CELIO is quite the man!$"
+	.string "{JPN}{JPN}ここは　なにも　ない　うみの　まんなかに　ある\n"
+	.string "しま　じゃが‥\p"
+	.string "ニシキのような　りっぱな　わかものが　いてくれて\n"
+	.string "ありがたい　ことじゃ。\p"
+	.string "まごむすめが　ニシキの　ともだちの　ことで\n"
+	.string "おおさわぎ　しとってのう。\p"
+	.string "なんでも　ゆうめいな　ポケマニア　なんだとか？\p"
+	.string "よく　わからんが　ニシキは　たいした\n"
+	.string "おとこじゃ！$"
 
 OneIsland_Text_HavePCLinkageWithKanto::
 	.string "My granddaughter was in a tizzy\n"
@@ -140,6 +161,12 @@ OneIsland_Text_HavePCLinkageWithKanto::
 	.string "with people in KANTO.\p"
 	.string "I'm not sure what that means, but\n"
 	.string "CELIO is quite the man!$"
+	.string "{JPN}{JPN}まごむすめが　あたらしい　はつめいの　ことで\n"
+	.string "おおさわぎ　しとってのう。\p"
+	.string "カントーの　ひとたちと　パソコンが\n"
+	.string "つながったんじゃと。\p"
+	.string "よく　わからんが　ニシキは　たいした\n"
+	.string "おとこじゃ！$"
 
 OneIsland_Text_HavePCLinkageWithHoenn::
 	.string "My granddaughter was in a tizzy\n"
@@ -150,20 +177,34 @@ OneIsland_Text_HavePCLinkageWithHoenn::
 	.string "CELIO is quite the man.\p"
 	.string "He would make a fine husband for\n"
 	.string "my granddaughter!$"
+	.string "{JPN}{JPN}まごむすめが　あたらしい　はつめいの　ことで\n"
+	.string "おおさわぎ　しとってのう。\p"
+	.string "ついに　ホウエンの　ひとたちと　パソコンが\n"
+	.string "つながったんじゃと。\p"
+	.string "よく　わからんが　ニシキは　たいした\n"
+	.string "おとこじゃ。\p"
+	.string "まごむすめの　むこに　ぴったりじゃわい！$"
 
 OneIsland_Text_IslandSign::
 	.string "ONE ISLAND\n"
 	.string "Friends Gather at Knot Island$"
+	.string "{JPN}{JPN}1のしま\n"
+	.string "なかまが　つどう　むすびの　しま$"
 
 OneIsland_Text_PokemonNetCenterSign::
 	.string "Expanding the POKéMON World!\n"
 	.string "POKéMON NET CENTER$"
+	.string "{JPN}{JPN}ひろがる　ポケモンの　せかい！\n"
+	.string "ポケモン　ネットセンター$"
 
 @ Unused
 OneIsland_Text_ReturnToCinnabar::
 	.string "グレンタウンに　もどりますか？$"
+	.string "{JPN}{JPN}グレンじまに　もどりますか？$"
 
 OneIsland_Text_IsntWarmClimateHereGreat::
 	.string "Hi, sight-seeing, are you?\n"
 	.string "Isn't the warm climate here great?$"
+	.string "{JPN}{JPN}やあ　かんこう　かい？　ここの　あたたかい\n"
+	.string "きこうは　さいこう　でしょう？$"
 

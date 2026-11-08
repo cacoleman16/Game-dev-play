@@ -94,15 +94,15 @@ static const struct SignatureZMove sSignatureZMoves[] =
     {SPECIES_SNORLAX,                 ITEM_SNORLIUM_Z,           MOVE_GIGA_IMPACT,         MOVE_PULVERIZING_PANCAKE},
 };
 
-static const u8 sText_ResetStats[] = _("Reset Lowered Stats");
-static const u8 sText_StatsPlus[] = _("+ All Stats");
-static const u8 sText_StatsPlus2[] = _("++ All Stats");
-static const u8 sText_CritHitsPlus[] = _("+ Critical Hit Chance");
-static const u8 sText_FollowMe[] = _("Follow Me");
-static const u8 sText_RecoverHP[] = _("Recover HP");
-static const u8 sText_HealAllyHP[] = _("Heal Replacement HP");
-static const u8 sText_PowerColon[] = _("Power: ");
-static const u8 sText_NoAdditionalEffect[] = _("No Additional Effect");
+static const u8 sText_ResetStats[] = _("Reset Lowered Stats${JPN}{JPN}さがった のうりょくを もどす");
+static const u8 sText_StatsPlus[] = _("+ All Stats${JPN}{JPN}ぜんのうりょく アップ");
+static const u8 sText_StatsPlus2[] = _("++ All Stats${JPN}{JPN}ぜんのうりょく ぐーんと アップ");
+static const u8 sText_CritHitsPlus[] = _("+ Critical Hit Chance${JPN}{JPN}きゅうしょに あたりやすく なる");
+static const u8 sText_FollowMe[] = _("Follow Me${JPN}{JPN}ちゅうもくの まと");
+static const u8 sText_RecoverHP[] = _("Recover HP${JPN}{JPN}HPを かいふく");
+static const u8 sText_HealAllyHP[] = _("Heal Replacement HP${JPN}{JPN}でてきた ポケモンを かいふく");
+static const u8 sText_PowerColon[] = _("Power: ${JPN}{JPN}いりょく:");
+static const u8 sText_NoAdditionalEffect[] = _("No Additional Effect${JPN}{JPN}ついかの こうかは なし");
 
 // Functions
 bool32 IsZMove(enum Move move)

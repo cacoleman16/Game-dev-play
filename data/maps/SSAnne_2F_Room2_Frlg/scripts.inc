@@ -14,23 +14,33 @@ SSAnne_2F_Room2_EventScript_Brooks::
 SSAnne_2F_Room2_Text_BrooksIntro::
 	.string "Competing against the young keeps\n"
 	.string "me youthful.$"
+	.string "{JPN}{JPN}わかものと　しょうぶ　すると　わかがえる　きが\n"
+	.string "するんじゃ。$"
 
 SSAnne_2F_Room2_Text_BrooksDefeat::
 	.string "Good match!\n"
 	.string "Ah, I feel young again!$"
+	.string "{JPN}{JPN}いい　しょうぶ　だった！　ああ\n"
+	.string "わかがえったわい！$"
 
 SSAnne_2F_Room2_Text_BrooksPostBattle::
 	.string "Fifteen years ago, I would\n"
 	.string "have won!$"
+	.string "{JPN}{JPN}15ねん　まえ　なら　かっていたのに！$"
 
 SSAnne_2F_Room2_Text_DaleIntro::
 	.string "Check out what I fished up!$"
+	.string "{JPN}{JPN}おれが　つりあげた　ポケモンを　みてくれ！$"
 
 SSAnne_2F_Room2_Text_DaleDefeat::
 	.string "I'm all out!$"
+	.string "{JPN}{JPN}もう　いない！$"
 
 SSAnne_2F_Room2_Text_DalePostBattle::
 	.string "Party?\p"
 	.string "The cruise ship's party should be\n"
 	.string "over by now.$"
+	.string "{JPN}{JPN}パーティー？\p"
+	.string "ふねの　パーティーなら　もう　おわってる\n"
+	.string "ころだぜ。$"
 

@@ -183,16 +183,16 @@ static const u32 sHiddenMonIconGfx[] = INCGFX_U32("graphics/dexnav/hidden.png", 
 
 // strings
 static const u8 sText_DexNav_NoInfo[] = _("--------");
-static const u8 sText_DexNav_CaptureToSee[] = _("Capture first!");
-static const u8 sText_DexNav_PressRToRegister[] = _("R TO REGISTER!");
-static const u8 sText_DexNav_SearchForRegisteredSpecies[] = _("Search {STR_VAR_1}");
-static const u8 sText_DexNav_NotFoundHere[] = _("This Pokémon cannot be found here!");
+static const u8 sText_DexNav_CaptureToSee[] = _("Capture first!${JPN}{JPN}まず つかまえよう！");
+static const u8 sText_DexNav_PressRToRegister[] = _("R TO REGISTER!${JPN}{JPN}Rで とうろく！");
+static const u8 sText_DexNav_SearchForRegisteredSpecies[] = _("Search {STR_VAR_1}${JPN}{JPN}{STR_VAR_1}を さがす");
+static const u8 sText_DexNav_NotFoundHere[] = _("This Pokémon cannot be found here!${JPN}{JPN}この ポケモンは ここには いない！");
 static const u8 sText_ThreeQmarks[] = _("???");
-static const u8 sText_SearchLevel[] = _("SEARCH {LV}. {STR_VAR_1}");
+static const u8 sText_SearchLevel[] = _("SEARCH {LV}. {STR_VAR_1}${JPN}{JPN}サーチ {LV}. {STR_VAR_1}");
 static const u8 sText_MonLevel[] = _("{LV}. {STR_VAR_1}");
-static const u8 sText_EggMove[] = _("MOVE: {STR_VAR_1}");
+static const u8 sText_EggMove[] = _("MOVE: {STR_VAR_1}${JPN}{JPN}わざ: {STR_VAR_1}");
 static const u8 sText_HeldItem[] = _("{STR_VAR_1}");
-static const u8 sText_StartExit[] = _("{START_BUTTON} EXIT");
+static const u8 sText_StartExit[] = _("{START_BUTTON} EXIT${JPN}{JPN}{START_BUTTON} おわる");
 static const u8 sText_DexNavChain[] = _("{NO} {STR_VAR_1}");
 static const u8 sText_DexNavChainLong[] = _("{NO}{STR_VAR_1}");
 

@@ -18,8 +18,10 @@ SSAnne_1F_Room4_EventScript_WomanPlayerMale::
 SSAnne_1F_Room4_Text_WaiterCherryPiePlease::
 	.string "Waiter, I would like a cherry pie,\n"
 	.string "please!$"
+	.string "{JPN}{JPN}ウェイターさん　チェリーパイを　おねがい！$"
 
 SSAnne_1F_Room4_Text_WaitressCherryPiePlease::
 	.string "Waitress, I would like a cherry\n"
 	.string "pie, please!$"
+	.string "{JPN}{JPN}ウェイトレスさん　チェリーパイを　おねがい！$"
 

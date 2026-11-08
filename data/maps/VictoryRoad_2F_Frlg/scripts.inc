@@ -79,58 +79,78 @@ VictoryRoad_2F_EventScript_Vincent::
 VictoryRoad_2F_Text_DawsonIntro::
 	.string "If you can get through here,\n"
 	.string "you can go meet the ELITE FOUR.$"
+	.string "{JPN}{JPN}ここを　ぬければ　してんのうに　あえるぞ$"
 
 VictoryRoad_2F_Text_DawsonDefeat::
 	.string "No!\n"
 	.string "Unbelievable!$"
+	.string "{JPN}{JPN}そんな！　しんじられない！$"
 
 VictoryRoad_2F_Text_DawsonPostBattle::
 	.string "I can beat you when it comes to\n"
 	.string "knowledge about POKéMON!$"
+	.string "{JPN}{JPN}ポケモンの　ちしき　なら　きみには　まけないぞ！$"
 
 VictoryRoad_2F_Text_DaisukeIntro::
 	.string "This here is VICTORY ROAD.\n"
 	.string "It's the final test for TRAINERS!$"
+	.string "{JPN}{JPN}ここは　チャンピオンロード　トレーナーの\n"
+	.string "さいごの　しれんだ！$"
 
 VictoryRoad_2F_Text_DaisukeDefeat::
 	.string "Atcho!$"
+	.string "{JPN}{JPN}あちょー！$"
 
 VictoryRoad_2F_Text_DaisukePostBattle::
 	.string "If you get stuck, try moving some\n"
 	.string "boulders around.$"
+	.string "{JPN}{JPN}すすめなく　なったら　いわを　うごかして　みると\n"
+	.string "いい$"
 
 VictoryRoad_2F_Text_NelsonIntro::
 	.string "Ah, so you wish to challenge the\n"
 	.string "ELITE FOUR?$"
+	.string "{JPN}{JPN}ほう　してんのうに　ちょうせん　するのか？$"
 
 VictoryRoad_2F_Text_NelsonDefeat::
 	.string "You got me!$"
+	.string "{JPN}{JPN}やられた！$"
 
 VictoryRoad_2F_Text_NelsonPostBattle::
 	.string "{RIVAL} also came through here.$"
+	.string "{JPN}{JPN}{RIVAL}も　ここを　とおって　いったよ$"
 
 VictoryRoad_2F_Text_VincentIntro::
 	.string "Come on!\n"
 	.string "I'll whip you!$"
+	.string "{JPN}{JPN}かかって　こい！　けちょんけちょんに　してやる！$"
 
 VictoryRoad_2F_Text_VincentDefeat::
 	.string "I got whipped!$"
+	.string "{JPN}{JPN}けちょんけちょんに　された！$"
 
 VictoryRoad_2F_Text_VincentPostBattle::
 	.string "You earned the right to be on\n"
 	.string "VICTORY ROAD…$"
+	.string "{JPN}{JPN}きみには　チャンピオンロードを　すすむ　しかくが\n"
+	.string "ある‥$"
 
 VictoryRoad_2F_Text_GregoryIntro::
 	.string "Is VICTORY ROAD too tough?$"
+	.string "{JPN}{JPN}チャンピオンロードは　きびしすぎるかい？$"
 
 VictoryRoad_2F_Text_GregoryDefeat::
 	.string "Well done!$"
+	.string "{JPN}{JPN}おみごと！$"
 
 VictoryRoad_2F_Text_GregoryPostBattle::
 	.string "Many TRAINERS give up their\n"
 	.string "challenge here and go home.$"
+	.string "{JPN}{JPN}ここで　ちょうせんを　あきらめて　かえる\n"
+	.string "トレーナーも　おおいんだ$"
 
 @ Unused, old text for Moltres
 VictoryRoad_2F_Text_Gyaoo::
 	.string "ギヤーオ！$"
+	.string "{JPN}{JPN}ギヤーオ！$"
 

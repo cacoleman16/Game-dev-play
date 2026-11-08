@@ -1,0 +1,17 @@
+{
+ "Trade_Text_LookingForMonWannaTradeForMon": "ぼく　{STR_VAR_1}って　ポケモンを　さがしてるんだ！\\pぼくの　{STR_VAR_2}と　こうかん　しない？",
+ "Trade_Text_AwwOhWell": "ちぇっ！　しかたないや‥",
+ "Trade_Text_WhatThatsNoMon": "えっ？　それ　{STR_VAR_1}じゃ　ないよ！",
+ "Trade_Text_HeyThanks": "わーい　ありがとう！",
+ "Trade_Text_IsntMyOldMonGreat": "ぼくの　だった　{STR_VAR_2}　いい　ポケモン　でしょ？",
+ "Trade_Text_DoYouHaveMonWouldYouTradeForMon": "こんにちは！　もしかして　{STR_VAR_1}を　もって　いませんか？\\pわたしの　{STR_VAR_2}と　こうかん　して　もらえませんか？",
+ "Trade_Text_WellIfYouDontWantTo": "そうですか‥　いやなら　しかたないですね‥",
+ "Trade_Text_ThisIsntMon": "あれ？　これは　{STR_VAR_1}じゃ　ないですね\\pてに　はいったら　わたしの　ことを　おもいだしてね",
+ "Trade_Text_Thanks": "ありがとう！",
+ "Trade_Text_HasTradedMonGrownStronger": "こうかんした　{STR_VAR_2}　つよく　なりましたか？",
+ "Trade_Text_DoYouHaveMonWantToTradeForMon": "やあ！　{STR_VAR_1}　もってる？\\pおれの　{STR_VAR_2}と　こうかん　しないか？",
+ "Trade_Text_ThatsTooBad": "そりゃ　ざんねんだ",
+ "Trade_Text_ThisIsNoMon": "‥これは　{STR_VAR_1}じゃ　ないぞ\\pてに　いれたら　おれと　こうかん　してくれよ",
+ "Trade_Text_ThanksYoureAPal": "ありがとう！　おまえ　いいやつだな！",
+ "Trade_Text_HowIsMyOldMon": "おれの　だった　{STR_VAR_2}　げんきに　してるか？　{STR_VAR_1}は　げんき　いっぱいだぜ！"
+}

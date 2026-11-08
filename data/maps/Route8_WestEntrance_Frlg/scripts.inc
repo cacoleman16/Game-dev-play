@@ -99,10 +99,16 @@ Route8_WestEntrance_Text_ThirstyOnGuardDuty::
 	.string "I'm on guard duty.\n"
 	.string "Gee, I'm thirsty, though!\p"
 	.string "Oh, wait there, the road's closed.$"
+	.string "{JPN}{JPN}ぼくは　けいびの　しごと　ちゅう　なんだ。\n"
+	.string "それにしても　のどが　かわいたなあ！\p"
+	.string "あっ　ちょっと　まって！　この　さきは\n"
+	.string "とおれないよ。$"
 
 Route8_WestEntrance_Text_ThatTeaLooksTasty::
 	.string "Oh, that TEA…\n"
 	.string "It looks awfully tasty…$"
+	.string "{JPN}{JPN}あっ　その　おちゃ‥　すごく　おいしそう\n"
+	.string "だなあ‥$"
 
 Route8_WestEntrance_Text_ThanksIllShareTeaWithGuards::
 	.string "Huh? I can have this drink?\n"
@@ -117,7 +123,14 @@ Route8_WestEntrance_Text_ThanksIllShareTeaWithGuards::
 	.string "You can go on through.\p"
 	.string "I'll share this TEA with the other\n"
 	.string "guards!$"
+	.string "{JPN}{JPN}えっ？　これ　のんでも　いいの？　ありがとう！\n"
+	.string "‥　‥　ごくごく‥　‥　‥　ぷはーっ‥\l"
+	.string "ヤマブキシティに　いきたいなら‥　‥　‥\l"
+	.string "とおっても　いいよ。\p"
+	.string "この　おちゃは　ほかの　けいびいんにも　わけて\n"
+	.string "あげよう！$"
 
 Route8_WestEntrance_Text_HiHowsItGoing::
 	.string "Hi, how's it going?$"
+	.string "{JPN}{JPN}やあ　げんき　かい？$"
 

@@ -111,6 +111,7 @@ u8 (*const gEnemyPartyCountPtr) = &gPartiesCount[B_TRAINER_OPPONENT_A];
 
 #include "data/abilities.h"
 #include "qol_nuzlocke.h"
+#include "qol_language.h"
 
 // Used in an unreferenced function in RS.
 // Unreferenced here and in FRLG.
@@ -157,7 +158,7 @@ const struct NatureInfo gNaturesInfo[NUM_NATURES] =
 {
     [NATURE_HARDY] =
     {
-        .name = COMPOUND_STRING("Hardy"),
+        .name = COMPOUND_STRING("Hardy${JPN}{JPN}がんばりや"),
         .statUp = STAT_ATK,
         .statDown = STAT_ATK,
         .backAnim = 0,
@@ -169,7 +170,7 @@ const struct NatureInfo gNaturesInfo[NUM_NATURES] =
     },
     [NATURE_LONELY] =
     {
-        .name = COMPOUND_STRING("Lonely"),
+        .name = COMPOUND_STRING("Lonely${JPN}{JPN}さみしがり"),
         .statUp = STAT_ATK,
         .statDown = STAT_DEF,
         .backAnim = 2,
@@ -181,7 +182,7 @@ const struct NatureInfo gNaturesInfo[NUM_NATURES] =
     },
     [NATURE_BRAVE] =
     {
-        .name = COMPOUND_STRING("Brave"),
+        .name = COMPOUND_STRING("Brave${JPN}{JPN}ゆうかん"),
         .statUp = STAT_ATK,
         .statDown = STAT_SPEED,
         .backAnim = 0,
@@ -193,7 +194,7 @@ const struct NatureInfo gNaturesInfo[NUM_NATURES] =
     },
     [NATURE_ADAMANT] =
     {
-        .name = COMPOUND_STRING("Adamant"),
+        .name = COMPOUND_STRING("Adamant${JPN}{JPN}いじっぱり"),
         .statUp = STAT_ATK,
         .statDown = STAT_SPATK,
         .backAnim = 0,
@@ -205,7 +206,7 @@ const struct NatureInfo gNaturesInfo[NUM_NATURES] =
     },
     [NATURE_NAUGHTY] =
     {
-        .name = COMPOUND_STRING("Naughty"),
+        .name = COMPOUND_STRING("Naughty${JPN}{JPN}やんちゃ"),
         .statUp = STAT_ATK,
         .statDown = STAT_SPDEF,
         .backAnim = 0,
@@ -217,7 +218,7 @@ const struct NatureInfo gNaturesInfo[NUM_NATURES] =
     },
     [NATURE_BOLD] =
     {
-        .name = COMPOUND_STRING("Bold"),
+        .name = COMPOUND_STRING("Bold${JPN}{JPN}ずぶとい"),
         .statUp = STAT_DEF,
         .statDown = STAT_ATK,
         .backAnim = 1,
@@ -229,7 +230,7 @@ const struct NatureInfo gNaturesInfo[NUM_NATURES] =
     },
     [NATURE_DOCILE] =
     {
-        .name = COMPOUND_STRING("Docile"),
+        .name = COMPOUND_STRING("Docile${JPN}{JPN}すなお"),
         .statUp = STAT_DEF,
         .statDown = STAT_DEF,
         .backAnim = 1,
@@ -241,7 +242,7 @@ const struct NatureInfo gNaturesInfo[NUM_NATURES] =
     },
     [NATURE_RELAXED] =
     {
-        .name = COMPOUND_STRING("Relaxed"),
+        .name = COMPOUND_STRING("Relaxed${JPN}{JPN}のんき"),
         .statUp = STAT_DEF,
         .statDown = STAT_SPEED,
         .backAnim = 1,
@@ -253,7 +254,7 @@ const struct NatureInfo gNaturesInfo[NUM_NATURES] =
     },
     [NATURE_IMPISH] =
     {
-        .name = COMPOUND_STRING("Impish"),
+        .name = COMPOUND_STRING("Impish${JPN}{JPN}わんぱく"),
         .statUp = STAT_DEF,
         .statDown = STAT_SPATK,
         .backAnim = 0,
@@ -265,7 +266,7 @@ const struct NatureInfo gNaturesInfo[NUM_NATURES] =
     },
     [NATURE_LAX] =
     {
-        .name = COMPOUND_STRING("Lax"),
+        .name = COMPOUND_STRING("Lax${JPN}{JPN}のうてんき"),
         .statUp = STAT_DEF,
         .statDown = STAT_SPDEF,
         .backAnim = 1,
@@ -277,7 +278,7 @@ const struct NatureInfo gNaturesInfo[NUM_NATURES] =
     },
     [NATURE_TIMID] =
     {
-        .name = COMPOUND_STRING("Timid"),
+        .name = COMPOUND_STRING("Timid${JPN}{JPN}おくびょう"),
         .statUp = STAT_SPEED,
         .statDown = STAT_ATK,
         .backAnim = 2,
@@ -289,7 +290,7 @@ const struct NatureInfo gNaturesInfo[NUM_NATURES] =
     },
     [NATURE_HASTY] =
     {
-        .name = COMPOUND_STRING("Hasty"),
+        .name = COMPOUND_STRING("Hasty${JPN}{JPN}せっかち"),
         .statUp = STAT_SPEED,
         .statDown = STAT_DEF,
         .backAnim = 0,
@@ -301,7 +302,7 @@ const struct NatureInfo gNaturesInfo[NUM_NATURES] =
     },
     [NATURE_SERIOUS] =
     {
-        .name = COMPOUND_STRING("Serious"),
+        .name = COMPOUND_STRING("Serious${JPN}{JPN}まじめ"),
         .statUp = STAT_SPEED,
         .statDown = STAT_SPEED,
         .backAnim = 1,
@@ -313,7 +314,7 @@ const struct NatureInfo gNaturesInfo[NUM_NATURES] =
     },
     [NATURE_JOLLY] =
     {
-        .name = COMPOUND_STRING("Jolly"),
+        .name = COMPOUND_STRING("Jolly${JPN}{JPN}ようき"),
         .statUp = STAT_SPEED,
         .statDown = STAT_SPATK,
         .backAnim = 0,
@@ -325,7 +326,7 @@ const struct NatureInfo gNaturesInfo[NUM_NATURES] =
     },
     [NATURE_NAIVE] =
     {
-        .name = COMPOUND_STRING("Naive"),
+        .name = COMPOUND_STRING("Naive${JPN}{JPN}むじゃき"),
         .statUp = STAT_SPEED,
         .statDown = STAT_SPDEF,
         .backAnim = 0,
@@ -337,7 +338,7 @@ const struct NatureInfo gNaturesInfo[NUM_NATURES] =
     },
     [NATURE_MODEST] =
     {
-        .name = COMPOUND_STRING("Modest"),
+        .name = COMPOUND_STRING("Modest${JPN}{JPN}ひかえめ"),
         .statUp = STAT_SPATK,
         .statDown = STAT_ATK,
         .backAnim = 2,
@@ -349,7 +350,7 @@ const struct NatureInfo gNaturesInfo[NUM_NATURES] =
     },
     [NATURE_MILD] =
     {
-        .name = COMPOUND_STRING("Mild"),
+        .name = COMPOUND_STRING("Mild${JPN}{JPN}おっとり"),
         .statUp = STAT_SPATK,
         .statDown = STAT_DEF,
         .backAnim = 2,
@@ -361,7 +362,7 @@ const struct NatureInfo gNaturesInfo[NUM_NATURES] =
     },
     [NATURE_QUIET] =
     {
-        .name = COMPOUND_STRING("Quiet"),
+        .name = COMPOUND_STRING("Quiet${JPN}{JPN}れいせい"),
         .statUp = STAT_SPATK,
         .statDown = STAT_SPEED,
         .backAnim = 2,
@@ -373,7 +374,7 @@ const struct NatureInfo gNaturesInfo[NUM_NATURES] =
     },
     [NATURE_BASHFUL] =
     {
-        .name = COMPOUND_STRING("Bashful"),
+        .name = COMPOUND_STRING("Bashful${JPN}{JPN}てれや"),
         .statUp = STAT_SPATK,
         .statDown = STAT_SPATK,
         .backAnim = 2,
@@ -385,7 +386,7 @@ const struct NatureInfo gNaturesInfo[NUM_NATURES] =
     },
     [NATURE_RASH] =
     {
-        .name = COMPOUND_STRING("Rash"),
+        .name = COMPOUND_STRING("Rash${JPN}{JPN}うっかりや"),
         .statUp = STAT_SPATK,
         .statDown = STAT_SPDEF,
         .backAnim = 1,
@@ -397,7 +398,7 @@ const struct NatureInfo gNaturesInfo[NUM_NATURES] =
     },
     [NATURE_CALM] =
     {
-        .name = COMPOUND_STRING("Calm"),
+        .name = COMPOUND_STRING("Calm${JPN}{JPN}おだやか"),
         .statUp = STAT_SPDEF,
         .statDown = STAT_ATK,
         .backAnim = 1,
@@ -409,7 +410,7 @@ const struct NatureInfo gNaturesInfo[NUM_NATURES] =
     },
     [NATURE_GENTLE] =
     {
-        .name = COMPOUND_STRING("Gentle"),
+        .name = COMPOUND_STRING("Gentle${JPN}{JPN}おとなしい"),
         .statUp = STAT_SPDEF,
         .statDown = STAT_DEF,
         .backAnim = 2,
@@ -421,7 +422,7 @@ const struct NatureInfo gNaturesInfo[NUM_NATURES] =
     },
     [NATURE_SASSY] =
     {
-        .name = COMPOUND_STRING("Sassy"),
+        .name = COMPOUND_STRING("Sassy${JPN}{JPN}なまいき"),
         .statUp = STAT_SPDEF,
         .statDown = STAT_SPEED,
         .backAnim = 1,
@@ -433,7 +434,7 @@ const struct NatureInfo gNaturesInfo[NUM_NATURES] =
     },
     [NATURE_CAREFUL] =
     {
-        .name = COMPOUND_STRING("Careful"),
+        .name = COMPOUND_STRING("Careful${JPN}{JPN}しんちょう"),
         .statUp = STAT_SPDEF,
         .statDown = STAT_SPATK,
         .backAnim = 2,
@@ -445,7 +446,7 @@ const struct NatureInfo gNaturesInfo[NUM_NATURES] =
     },
     [NATURE_QUIRKY] =
     {
-        .name = COMPOUND_STRING("Quirky"),
+        .name = COMPOUND_STRING("Quirky${JPN}{JPN}きまぐれ"),
         .statUp = STAT_SPDEF,
         .statDown = STAT_SPDEF,
         .backAnim = 1,
@@ -1001,7 +1002,17 @@ void CreateBoxMon(struct BoxPokemon *boxMon, enum Species species, u8 level, u32
     SetBoxMonData(boxMon, MON_DATA_IS_SHINY, &isShiny);
     StringCopy(speciesName, GetSpeciesName(species));
     SetBoxMonData(boxMon, MON_DATA_NICKNAME, speciesName);
-    SetBoxMonData(boxMon, MON_DATA_LANGUAGE, &gGameLanguage);
+    // [QoL] In Japanese mode the default name is the Japanese species name;
+    // marking the Pokemon as Japanese makes English mode show it in kana too.
+    if (QoL_IsJapanese())
+    {
+        u8 japanese = LANGUAGE_JAPANESE;
+        SetBoxMonData(boxMon, MON_DATA_LANGUAGE, &japanese);
+    }
+    else
+    {
+        SetBoxMonData(boxMon, MON_DATA_LANGUAGE, &gGameLanguage);
+    }
     SetBoxMonData(boxMon, MON_DATA_OT_NAME, gSaveBlock2Ptr->playerName);
     SetBoxMonData(boxMon, MON_DATA_SPECIES, &species);
     SetBoxMonData(boxMon, MON_DATA_EXP, &gExperienceTables[gSpeciesInfo[species].growthRate][level]);
@@ -2063,8 +2074,9 @@ u32 GetBoxMonData3(struct BoxPokemon *boxMon, s32 field, u8 *data)
                 data[0] = EXT_CTRL_CODE_BEGIN;
                 data[1] = EXT_CTRL_CODE_JPN;
 
+                // [QoL] Up to the full nickname: modern Japanese names have 6 letters.
                 for (retVal = 2, i = 0;
-                    i < 5 && boxMon->nickname[i] != EOS;
+                    i < sizeof(boxMon->nickname) && boxMon->nickname[i] != EOS;
                     data[retVal] = boxMon->nickname[i], retVal++, i++) {}
 
                 data[retVal++] = EXT_CTRL_CODE_BEGIN;
@@ -3198,7 +3210,7 @@ const u8 *GetSpeciesPokedexDescription(enum Species species)
     species = SanitizeSpeciesId(species);
     if (gSpeciesInfo[species].description == NULL)
         return gSpeciesInfo[SPECIES_NONE].description;
-    return gSpeciesInfo[species].description;
+    return QoL_LangPokedexText(species, gSpeciesInfo[species].description); // [QoL]
 }
 
 u32 GetSpeciesHeight(enum Species species)
@@ -4757,6 +4769,14 @@ void EvolutionRenameMon(struct Pokemon *mon, enum Species oldSpecies, enum Speci
     language = GetMonData(mon, MON_DATA_LANGUAGE, &language);
     if (language == GAME_LANGUAGE && !StringCompare(GetSpeciesName(oldSpecies), gStringVar1))
         SetMonData(mon, MON_DATA_NICKNAME, GetSpeciesName(newSpecies));
+    // [QoL] Pokemon named in Japanese mode carry the Japanese species name.
+    else if (language == LANGUAGE_JAPANESE && QoL_JapaneseSpeciesName(oldSpecies) != NULL
+          && QoL_JapaneseSpeciesName(newSpecies) != NULL)
+    {
+        StripExtCtrlCodes(gStringVar1);
+        if (!StringCompare(QoL_JapaneseSpeciesName(oldSpecies), gStringVar1))
+            SetMonData(mon, MON_DATA_NICKNAME, QoL_JapaneseSpeciesName(newSpecies));
+    }
 }
 
 // The below two functions determine which side of a multi battle the trainer battles on

@@ -1,0 +1,23 @@
+{
+ "Route10_Text_MarkIntro": "わあ　こんな　ところまで　きたの？　きみも　ポケモンマニア？　ぼくの　コレクション　みたい？",
+ "Route10_Text_MarkDefeat": "ふん。　おこって　なんか　ないぞ！",
+ "Route10_Text_MarkPostBattle": "いえには　もっと　めずらしい　ポケモンが　いるんだぞ！",
+ "Route10_Text_ClarkIntro": "はっ　はっ　はははっ！",
+ "Route10_Text_ClarkDefeat": "は‥はは！　わらって　ないぞ！　か‥かふんしょう　なんだ！　はっ‥はっくしょん！",
+ "Route10_Text_ClarkPostBattle": "はっ‥はっくしょん！　はくしょん！　ずずっ！　ぐしゅっ！",
+ "Route10_Text_HermanIntro": "やあ　きみ！　ぼくの　ポケモン　みたい？",
+ "Route10_Text_HermanDefeat": "ああっ！　ぼくの　ポケモンが！",
+ "Route10_Text_HermanPostBattle": "きみなんか　きらいだ。　ぼくより　つよい　やつは　みんな　きらいだ！",
+ "Route10_Text_HeidiIntro": "ポケモンジムには　なんどか　いったことが　あるの。\\p‥でも　いつも　まけちゃうの。",
+ "Route10_Text_HeidiDefeat": "ああっ！　あんなに　とっくん　したのに！",
+ "Route10_Text_HeidiPostBattle": "ポケモンマニアが　うろうろ　してるのを　みかけたわ。\\pしんじられる？　あの　ひとたちが　こんな　やまの　なかに　いるのよ？",
+ "Route10_Text_TrentIntro": "ああ！　やまの　くうきは　うまい！",
+ "Route10_Text_TrentDefeat": "あたまが　すっきり　したぞ！",
+ "Route10_Text_TrentPostBattle": "やまの　くうきで　おなかが　いっぱいだ！",
+ "Route10_Text_CarolIntro": "ちょっと　めまいが　するわ。　ひさしぶりの　ハイキング　だから。",
+ "Route10_Text_CarolDefeat": "つかれちゃった。　ちょうしが　でなかったわ。",
+ "Route10_Text_CarolPostBattle": "この　やまの　ポケモンって　ずんぐり　してるのね‥\\pピンクで　はながらの　ポケモンが　いたら　いいのに！",
+ "Route10_Text_RockTunnelDetourToLavender": "イワヤマトンネル\\nシオンタウンへの　まわりみち",
+ "Route10_Text_RockTunnel": "イワヤマトンネル",
+ "Route10_Text_PowerPlant": "むじんはつでんしょ"
+}

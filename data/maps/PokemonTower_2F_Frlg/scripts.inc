@@ -107,11 +107,19 @@ PokemonTower_2F_Text_RivalIntro::
 	.string "Hey! It's alive!\p"
 	.string "I can at least make them faint!\n"
 	.string "Let's go!$"
+	.string "{JPN}{JPN}{RIVAL}『よう　{PLAYER}！　こんな\n"
+	.string "ところに　なにしに　きたんだ？　おまえの\l"
+	.string "ポケモン　しんだのか？\p"
+	.string "なんだ　いきてるじゃ　ねえか！\p"
+	.string "なら　ひんしに　くらいは　して　やるぜ！\n"
+	.string "いくぞ！』$"
 
 PokemonTower_2F_Text_RivalDefeat::
 	.string "What?\n"
 	.string "You stinker!\p"
 	.string "I took it easy on you, too!$"
+	.string "{JPN}{JPN}なにー！？　この　やろう！\p"
+	.string "せっかく　てかげん　してやったのに！$"
 
 PokemonTower_2F_Text_RivalPostBattle::
 	.string "How's your POKéDEX coming?\n"
@@ -123,10 +131,22 @@ PokemonTower_2F_Text_RivalPostBattle::
 	.string "I've got a lot to accomplish,\l"
 	.string "unlike you.\p"
 	.string "Smell ya later!$"
+	.string "{JPN}{JPN}ずかんは　どうだ？　おれは　カラカラを\n"
+	.string "つかまえたぜ！\p"
+	.string "でも　おおきい　ガラガラが　みつからないんだ。\n"
+	.string "どこに　いるんだろうな？\p"
+	.string "もう　いないのかもな！\p"
+	.string "さて　おれは　もう　いくぜ。　おまえと　ちがって\n"
+	.string "やる　ことが　たくさん　あるからな。\p"
+	.string "あばよ！$"
 
 PokemonTower_2F_Text_SilphScopeCouldUnmaskGhosts::
 	.string "Even we could not identify the\n"
 	.string "wayward ghosts.\p"
 	.string "A SILPH SCOPE might be able to\n"
 	.string "unmask them.$"
+	.string "{JPN}{JPN}わたしたちでも　さまよう　ゆうれいの\n"
+	.string "しょうたいは　わかりませんでした。\p"
+	.string "シルフスコープが　あれば　しょうたいを\n"
+	.string "みやぶれるかも　しれません。$"
 

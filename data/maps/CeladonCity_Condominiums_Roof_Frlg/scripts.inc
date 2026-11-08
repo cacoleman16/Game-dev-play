@@ -7,4 +7,5 @@ CeladonCity_Condominiums_Roof_EventScript_Sign::
 
 CeladonCity_Condominiums_Roof_Text_IKnowEverything::
 	.string "I KNOW EVERYTHING!$"
+	.string "{JPN}{JPN}ぼくは　なんでも　しってるぞ！$"
 

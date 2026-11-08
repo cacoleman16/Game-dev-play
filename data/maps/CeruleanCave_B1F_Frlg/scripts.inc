@@ -56,4 +56,5 @@ CeruleanCave_B1F_EventScript_RanFromMewtwo::
 
 CeruleanCave_B1F_Text_Mew::
 	.string "Mew!$"
+	.string "{JPN}{JPN}ミュウ！$"
 

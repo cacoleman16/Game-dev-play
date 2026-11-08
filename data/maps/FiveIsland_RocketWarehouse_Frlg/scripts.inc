@@ -175,63 +175,93 @@ FiveIsland_RocketWarehouse_Movement_AdminWalkToSwitch::
 FiveIsland_RocketWarehouse_Text_ManyMonsLockedInPen::
 	.string "There are many POKéMON locked\n"
 	.string "away in the pen…$"
+	.string "{JPN}{JPN}おりの　なかに　たくさんの　ポケモンが\n"
+	.string "とじこめられている‥$"
 
 FiveIsland_RocketWarehouse_Text_PenUnlockedMonsFled::
 	.string "The pen door is unlocked.\n"
 	.string "The POKéMON appear to have fled.$"
+	.string "{JPN}{JPN}おりの　とびらが　あいている。　ポケモンたちは\n"
+	.string "にげだした　ようだ。$"
 
 FiveIsland_RocketWarehouse_Text_Grunt2Intro::
 	.string "Did you come here knowing it's\n"
 	.string "TEAM ROCKET's WAREHOUSE?$"
+	.string "{JPN}{JPN}ここが　ロケットだんの　そうこだと　しって\n"
+	.string "きたのか？$"
 
 FiveIsland_RocketWarehouse_Text_Grunt2Defeat::
 	.string "What do you think you're doing?!$"
+	.string "{JPN}{JPN}なにを　しやがる！？$"
 
 FiveIsland_RocketWarehouse_Text_Grunt2PostBattle::
 	.string "TEAM ROCKET broke up?\n"
 	.string "What planet are you from?$"
+	.string "{JPN}{JPN}ロケットだんが　かいさん　した？　おまえ　どこの\n"
+	.string "ほしから　きたんだ？$"
 
 FiveIsland_RocketWarehouse_Text_Grunt1Intro::
 	.string "Oh, now your POKéMON look strong.\n"
 	.string "You're willing to sell them?\p"
 	.string "Oh?\n"
 	.string "You wanted to battle?$"
+	.string "{JPN}{JPN}おや　つよそうな　ポケモンだね。　うって\n"
+	.string "くれるのかい？\p"
+	.string "おや？　バトルが　したかったのかい？$"
 
 FiveIsland_RocketWarehouse_Text_Grunt1Defeat::
 	.string "Oh, but…\n"
 	.string "Too much!$"
+	.string "{JPN}{JPN}そんな‥　つよすぎる！$"
 
 FiveIsland_RocketWarehouse_Text_Grunt1PostBattle::
 	.string "We can give you a great price.\n"
 	.string "Sell us your POKéMON!$"
+	.string "{JPN}{JPN}たかく　かいとるぜ。　ポケモンを　うって\n"
+	.string "くれよ！$"
 
 FiveIsland_RocketWarehouse_Text_Grunt3Intro::
 	.string "I got word about you from the\n"
 	.string "others.\p"
 	.string "But there's no way a kid like you'd\n"
 	.string "know our BOSS GIOVANNI!$"
+	.string "{JPN}{JPN}おまえの　ことは　なかまから　きいてるぜ。\p"
+	.string "だが　おまえみたいな　ガキが　ボスの\n"
+	.string "サカキさまを　しってる　わけが　ない！$"
 
 FiveIsland_RocketWarehouse_Text_Grunt3Defeat::
 	.string "Don't…you…dare…laugh…$"
+	.string "{JPN}{JPN}わ‥ら‥う‥な‥よ‥$"
 
 FiveIsland_RocketWarehouse_Text_Grunt3PostBattle::
 	.string "Don't mess in the doings of adults,\n"
 	.string "you jumped-up pip-squeak!$"
+	.string "{JPN}{JPN}おとなの　する　ことに　くちを　だすな！\n"
+	.string "なまいきな　ガキめ！$"
 
 FiveIsland_RocketWarehouse_Text_Admin1Intro::
 	.string "I don't know or care if what I'm\n"
 	.string "doing is right or wrong…\p"
 	.string "I just put my faith in GIOVANNI\n"
 	.string "and do as I am told.$"
+	.string "{JPN}{JPN}じぶんの　している　ことが　ただしいか\n"
+	.string "まちがって　いるか‥　そんな　ことは　どうでも\l"
+	.string "いい。\p"
+	.string "おれは　サカキさまを　しんじて　めいれいに\n"
+	.string "したがう　だけだ。$"
 
 FiveIsland_RocketWarehouse_Text_Admin1Defeat::
 	.string "I…\n"
 	.string "I'm shattered…$"
+	.string "{JPN}{JPN}おれは‥　うちくだかれた‥$"
 
 FiveIsland_RocketWarehouse_Text_Admin1PostBattle::
 	.string "You're doing things according to\n"
 	.string "your beliefs and morals.\p"
 	.string "I understand now…$"
+	.string "{JPN}{JPN}おまえは　じぶんの　しんねんに　したがって\n"
+	.string "うごいて　いるんだな。\p"
+	.string "いまなら　わかる‥$"
 
 FiveIsland_RocketWarehouse_Text_MadeItSoYouCanComeBackThrough::
 	.string "I've made it so you can come back\n"
@@ -242,6 +272,14 @@ FiveIsland_RocketWarehouse_Text_MadeItSoYouCanComeBackThrough::
 	.string "thoroughly as a TRAINER.\p"
 	.string "You'd better steel yourself for one\n"
 	.string "harsh challenge.$"
+	.string "{JPN}{JPN}そこから　また　はいって　こられるように\n"
+	.string "しておいた。\p"
+	.string "この　さきに　そなえて　いちど　やすんで　きたら\n"
+	.string "どうだ？\p"
+	.string "おれの　あとに　ひかえる　かんぶは\n"
+	.string "トレーナーとして　おれより　はるかに　うえだ。\p"
+	.string "きびしい　たたかいに　なるぞ。　かくごして\n"
+	.string "おけ。$"
 
 FiveIsland_RocketWarehouse_Text_Admin2Intro::
 	.string "That's quite enough of you \n"
@@ -254,6 +292,15 @@ FiveIsland_RocketWarehouse_Text_Admin2Intro::
 	.string "to fall for the lies of a child!\p"
 	.string "And now, I'll show you how scary\n"
 	.string "an angry adult can be!$"
+	.string "{JPN}{JPN}ヒーローごっこは　そこまでだ　ぼうず。\p"
+	.string "ロケットだんが　かいさん　したなどと　うそを\n"
+	.string "いいふらして‥\p"
+	.string "こちらを　こんらん　させようという　みえすいた\n"
+	.string "さくせんだな。\p"
+	.string "ざんねんだが　こどもの　うそに　だまされるほど\n"
+	.string "おれたちは　バカじゃない！\p"
+	.string "さあ　おとなを　おこらせると　どれだけ　こわいか\n"
+	.string "おしえて　やろう！$"
 
 FiveIsland_RocketWarehouse_Text_Admin2Defeat::
 	.string "Urgh…\n"
@@ -262,6 +309,10 @@ FiveIsland_RocketWarehouse_Text_Admin2Defeat::
 	.string "Th-that's GIOVANNI's BADGE!\p"
 	.string "So it's true?\n"
 	.string "TEAM ROCKET really has disbanded?$"
+	.string "{JPN}{JPN}うぐ‥　つよすぎる‥\p"
+	.string "‥　そ　それは　サカキさまの　バッジ！\p"
+	.string "では　ほんとう　なのか？　ロケットだんは\n"
+	.string "ほんとうに　かいさん　したのか？$"
 
 FiveIsland_RocketWarehouse_Text_Admin2PostBattle::
 	.string "We will abandon this WAREHOUSE…\p"
@@ -271,6 +322,13 @@ FiveIsland_RocketWarehouse_Text_Admin2PostBattle::
 	.string "And I will resurrect TEAM ROCKET!\l"
 	.string "I will…\p"
 	.string "Until then, farewell!$"
+	.string "{JPN}{JPN}この　そうこは　すてる‥\p"
+	.string "だが　これで　おわったと　おもうなよ。　このまま\n"
+	.string "おわらせは　しない。\p"
+	.string "おれは　サカキさまを　さがしだす。　そして\n"
+	.string "ロケットだんを　ふっかつ　させて　みせる！\l"
+	.string "かならず‥\p"
+	.string "それまで　さらばだ！$"
 
 FiveIsland_RocketWarehouse_Text_ReportWithGraphsAndText::
 	.string "A report with graphs and text is on\n"
@@ -279,6 +337,12 @@ FiveIsland_RocketWarehouse_Text_ReportWithGraphsAndText::
 	.string "on POKéMON Evolution”…\p"
 	.string "… … … … … …\p"
 	.string "It's too difficult to understand…$"
+	.string "{JPN}{JPN}パソコンの　モニターに　グラフと　ぶんしょうの\n"
+	.string "レポートが　うつっている。\p"
+	.string "『じきの　なみが　ポケモンの　しんかに　あたえる\n"
+	.string "えいきょう』‥\p"
+	.string "‥　‥　‥　‥　‥　‥\p"
+	.string "むずかしすぎて　よく　わからない‥$"
 
 FiveIsland_RocketWarehouse_Text_GideonIntro::
 	.string "I almost managed to sell the\n"
@@ -287,18 +351,28 @@ FiveIsland_RocketWarehouse_Text_GideonIntro::
 	.string "and blow the whole deal apart!\p"
 	.string "Fufu… Fufufufu…\n"
 	.string "There's no forgiveness for you!$"
+	.string "{JPN}{JPN}もうすこしで　サファイアを　たかく　うれる\n"
+	.string "ところ　だったのに‥\p"
+	.string "そこへ　おまえが　やってきて　とりひきを\n"
+	.string "ぶちこわしやがって！\p"
+	.string "フフ‥　フフフフ‥　おまえだけは　ゆるさないぞ！$"
 
 FiveIsland_RocketWarehouse_Text_GideonDefeat::
 	.string "Gah! Darn!\n"
 	.string "Darn! Darn!$"
+	.string "{JPN}{JPN}ぐわっ！　くそっ！　くそっ！　くそっ！$"
 
 FiveIsland_RocketWarehouse_Text_GideonPostBattle::
 	.string "If I can't sell it, it's worthless!\n"
 	.string "Go ahead, take it!$"
+	.string "{JPN}{JPN}うれないなら　こんな　もの　かちは　ない！　ほら\n"
+	.string "もっていけ！$"
 
 FiveIsland_RocketWarehouse_Text_GetLostLeaveMeBe::
 	.string "What do you want now?\n"
 	.string "Go on, get lost, leave me be.$"
+	.string "{JPN}{JPN}まだ　なにか　ようか？　さっさと　あっちへ\n"
+	.string "いけ。　ほっといて　くれ。$"
 
 FiveIsland_RocketWarehouse_Text_GiovannisKidHasRedHair::
 	.string "What, you again?\p"
@@ -308,4 +382,11 @@ FiveIsland_RocketWarehouse_Text_GiovannisKidHasRedHair::
 	.string "GIOVANNI's kid has red hair.\p"
 	.string "You don't have any reasons for\n"
 	.string "bugging me. Leave me alone!$"
+	.string "{JPN}{JPN}なんだ　また　おまえか？\p"
+	.string "おまえ‥　まさか　サカキさまの　むすこ　じゃ\n"
+	.string "ないよな？\p"
+	.string "いや　そんな　はずは　ない！　サカキさまの\n"
+	.string "むすこは　あかい　かみだ。\p"
+	.string "おれに　かまう　りゆうは　ないだろ。　ほっといて\n"
+	.string "くれ！$"
 

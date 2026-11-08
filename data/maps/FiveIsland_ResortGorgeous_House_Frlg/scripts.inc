@@ -146,18 +146,30 @@ FiveIsland_ResortGorgeous_House_Text_PleaseHearMyWish::
 	.string "Oh, but that doesn't matter.\p"
 	.string "I am exquisitely bored.\n"
 	.string "Please, hear my wish.$"
+	.string "{JPN}{JPN}ルリコ:　あら？　どこかで　おあいした　かしら？\p"
+	.string "まあ　そんな　ことは　どうでも　いいわ。\p"
+	.string "わたくし　とっても　たいくつ　なの。　おねがいを\n"
+	.string "きいて　くださる？$"
 
 FiveIsland_ResortGorgeous_House_Text_WishToSeeMonPlease::
 	.string "I wish to see a POKéMON.\n"
 	.string "A darling {STR_VAR_1}.\p"
 	.string "I want to see one right away.\n"
 	.string "Please, make my wish come true.$"
+	.string "{JPN}{JPN}ポケモンが　みたいの。　かわいい\n"
+	.string "{STR_VAR_1}が。\p"
+	.string "いますぐ　みたいわ。　わたくしの　ねがいを\n"
+	.string "かなえて　ちょうだい。$"
 
 FiveIsland_ResortGorgeous_House_Text_OhImTiredOfWaiting::
 	.string "SELPHY: Oh, I'm tired of this.\n"
 	.string "I'm tired of waiting for you.\p"
 	.string "I'll forgive you this time, but\n"
 	.string "please don't fail me next time.$"
+	.string "{JPN}{JPN}ルリコ:　もう　いやに　なっちゃった。　あなたを\n"
+	.string "まつのは　あきたわ。\p"
+	.string "こんかいは　ゆるして　あげるけど　つぎは\n"
+	.string "がっかり　させないでね。$"
 
 FiveIsland_ResortGorgeous_House_Text_MonYouCaughtForMeThankYou::
 	.string "SELPHY: Oh, hello, there.\p"
@@ -173,38 +185,65 @@ FiveIsland_ResortGorgeous_House_Text_MonYouCaughtForMeThankYou::
 	.string "Oh, fine. I understand now.\p"
 	.string "SEBASTIAN!\n"
 	.string "I need you here this instant!$"
+	.string "{JPN}{JPN}ルリコ:　あら　こんにちは。\p"
+	.string "まあ！　それが　わたくしの　ために　つかまえて\n"
+	.string "くれた　{STR_VAR_1}ね。\p"
+	.string "うふふ‥　なんだか　あなたに　にているわ。\p"
+	.string "ほんとうに　ありがとう。\p"
+	.string "‥　‥　‥　‥　‥　‥　どうか　したの？\p"
+	.string "もう　いって　いいわよ。\p"
+	.string "‥　‥　‥　‥　‥　‥　ああ　そういう　ことね。\n"
+	.string "わかったわ。\p"
+	.string "セバスチャン！　いますぐ　きて　ちょうだい！$"
 
 FiveIsland_ResortGorgeous_House_Text_ButlerYesMyLady::
 	.string "Butler: Yes, my lady.$"
+	.string "{JPN}{JPN}しつじ:　はい　おじょうさま。$"
 
 FiveIsland_ResortGorgeous_House_Text_SelphyGiveTokenOfAppreciation::
 	.string "SELPHY: See to it that this person\n"
 	.string "is given a token of appreciation.$"
+	.string "{JPN}{JPN}ルリコ:　この　かたに　おれいの　しなを\n"
+	.string "さしあげて　ちょうだい。$"
 
 FiveIsland_ResortGorgeous_House_Text_ButlerIShallDoAsYouBid::
 	.string "Butler: I shall do as you bid,\n"
 	.string "my lady.$"
+	.string "{JPN}{JPN}しつじ:　かしこまりました　おじょうさま。$"
 
 FiveIsland_ResortGorgeous_House_Text_ButlerPleaseAcceptThisAsHerThanks::
 	.string "Butler: I sincerely thank you for\n"
 	.string "pleasing Lady SELPHY.\p"
 	.string "Please accept this as her thanks…$"
+	.string "{JPN}{JPN}しつじ:　ルリコおじょうさまを　およろこばせ\n"
+	.string "いただき　まことに　ありがとう　ございます。\p"
+	.string "こちらは　おじょうさまからの　おれいで\n"
+	.string "ございます‥$"
 
 FiveIsland_ResortGorgeous_House_Text_ButlerBagAppearsToBeFull::
 	.string "Butler: Your BAG appears to be\n"
 	.string "unfortunately full.$"
+	.string "{JPN}{JPN}しつじ:　あいにく　バッグが　いっぱいの　ようで\n"
+	.string "ございます。$"
 
 FiveIsland_ResortGorgeous_House_Text_OhHowDisappointing::
 	.string "Oh…\n"
 	.string "How disappointing.$"
+	.string "{JPN}{JPN}まあ‥　ざんねんだわ。$"
 
 FiveIsland_ResortGorgeous_House_Text_SelphyWishYouBestOfLuck::
 	.string "SELPHY: I wish you the best of\n"
 	.string "luck.$"
+	.string "{JPN}{JPN}ルリコ:　あなたの　ごかつやくを　いのって\n"
+	.string "いるわ。$"
 
 FiveIsland_ResortGorgeous_House_Text_LadySelphySmileHasBrillianceOfSun::
 	.string "Butler: The smile of Lady SELPHY\n"
 	.string "has the brilliance of the sun.\p"
 	.string "Please, I beg you to bring joy\n"
 	.string "to Lady SELPHY.$"
+	.string "{JPN}{JPN}しつじ:　ルリコおじょうさまの　えがおは\n"
+	.string "たいようの　ように　かがやいて　おられます。\p"
+	.string "どうか　おじょうさまに　よろこびを　とどけて\n"
+	.string "くださいませ。$"
 

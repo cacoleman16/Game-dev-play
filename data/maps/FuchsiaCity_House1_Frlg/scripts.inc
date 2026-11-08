@@ -21,6 +21,9 @@ FuchsiaCity_House1_Text_WardenIsOldHasFalseTeeth::
 	.string "The SAFARI ZONE's WARDEN is old, \n"
 	.string "but he's still very much active.\p"
 	.string "All his teeth are false, though.$"
+	.string "{JPN}{JPN}サファリゾーンの　えんちょうは　としよりだけど\n"
+	.string "まだまだ　げんき　なんだよ。\p"
+	.string "もっとも　はは　ぜんぶ　いればだけどね。$"
 
 FuchsiaCity_House1_Text_BillIsMyGrandson::
 	.string "Hmm?\n"
@@ -28,9 +31,16 @@ FuchsiaCity_House1_Text_BillIsMyGrandson::
 	.string "He's my grandson!\p"
 	.string "He always liked collecting things,\n"
 	.string "even as a child!$"
+	.string "{JPN}{JPN}ん？　マサキに　あったのかい？\p"
+	.string "あの　こは　わしの　まごじゃよ！\p"
+	.string "ちいさい　ころから　ものを　あつめるのが　すきな\n"
+	.string "こでな！$"
 
 FuchsiaCity_House1_Text_BillFilesHisOwnMonData::
 	.string "BILL files his own POKéMON data on\n"
 	.string "his PC.\p"
 	.string "Did he show you?$"
+	.string "{JPN}{JPN}マサキは　じぶんの　ポケモンの　データを\n"
+	.string "パソコンに　まとめて　おるんじゃ。\p"
+	.string "みせて　もらったかい？$"
 

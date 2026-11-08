@@ -41,8 +41,18 @@ VermilionCity_Mart_Text_TeamRocketAreWickedPeople::
 	.string "they consider unpopular or useless.\p"
 	.string "That's the sort of horrid people\n"
 	.string "they are, TEAM ROCKET.$"
+	.string "{JPN}{JPN}ポケモンを　はんざいに　つかう　わるい\n"
+	.string "ひとたちが　いるの\p"
+	.string "たとえば　ロケットだんは　めずらしい　ポケモンを\n"
+	.string "みつばい　してるわ\p"
+	.string "にんきが　ない　ポケモンや　やくに　たたない\n"
+	.string "ポケモンは　すてて　しまうの\p"
+	.string "ロケットだんは　そんな　ひどい　れんちゅう\n"
+	.string "なのよ$"
 
 VermilionCity_Mart_Text_MonsGoodOrBadDependingOnTrainer::
 	.string "I think POKéMON can be good or\n"
 	.string "bad. It depends on the TRAINER.$"
+	.string "{JPN}{JPN}ポケモンが　いい　こに　なるか　わるい　こに\n"
+	.string "なるかは　トレーナー　しだい　だと　おもうな$"
 

@@ -95,16 +95,31 @@ Route11_EastEntrance_2F_Text_GiveItemfinderIfCaught30::
 	.string "So, {PLAYER}, let me ask you.\p"
 	.string "Have you gathered data on at least\n"
 	.string "{STR_VAR_1} kinds of POKéMON?$"
+	.string "{JPN}{JPN}やあ！　おぼえてますか？　オーキドはかせの\n"
+	.string "じょしゅです。\p"
+	.string "ずかんに　{STR_VAR_1}しゅるいの\n"
+	.string "ポケモンが　とうろく　されていたら　ごほうびを\l"
+	.string "わたすように　いわれて　いるんです。\p"
+	.string "はかせから　{STR_VAR_2}を　あずかって\n"
+	.string "います。\p"
+	.string "では　{PLAYER}さん　おききします。\p"
+	.string "ポケモンを　{STR_VAR_1}しゅるい\n"
+	.string "いじょう　つかまえましたか？$"
 
 Route11_EastEntrance_2F_Text_GreatHereYouGo::
 	.string "Great! You have caught or owned\n"
 	.string "{STR_VAR_3} kinds of POKéMON!\p"
 	.string "Congratulations!\n"
 	.string "Here you go!$"
+	.string "{JPN}{JPN}すばらしい！　{STR_VAR_3}しゅるいの\n"
+	.string "ポケモンを　つかまえて　いますね！\p"
+	.string "おめでとう　ございます！　どうぞ！$"
 
 Route11_EastEntrance_2F_Text_ReceivedItemfinderFromAide::
 	.string "{PLAYER} received the {STR_VAR_2}\n"
 	.string "from the AIDE.$"
+	.string "{JPN}{JPN}{PLAYER}は　じょしゅから\n"
+	.string "{STR_VAR_2}を　もらった！$"
 
 Route11_EastEntrance_2F_Text_ExplainItemfinder::
 	.string "There are items on the ground that\n"
@@ -117,16 +132,29 @@ Route11_EastEntrance_2F_Text_ExplainItemfinder::
 	.string "where the item is.\p"
 	.string "Use it to get your bearings, then\n"
 	.string "search the suspect area by hand.$"
+	.string "{JPN}{JPN}じめんには　めに　みえない　どうぐが\n"
+	.string "かくれている　ことが　あります。\p"
+	.string "ダウジングマシンを　つかえば　ちかくに　かくれた\n"
+	.string "どうぐを　さがせます。\p"
+	.string "ただ　この　きかいには　げんかいが　あって\n"
+	.string "どうぐの　ばしょまでは　わかりません。\p"
+	.string "わかるのは　どうぐが　ある　ほうこう　だけです。\p"
+	.string "それで　けんとうを　つけたら　あとは　じぶんで\n"
+	.string "さがして　ください。$"
 
 Route11_EastEntrance_2F_Text_BigMonAsleepOnRoad::
 	.string "Let's see what the binoculars have\n"
 	.string "to show…\p"
 	.string "A big POKéMON is asleep on a road!$"
+	.string "{JPN}{JPN}そうがんきょうを　のぞいて　みよう‥\p"
+	.string "おおきな　ポケモンが　みちで　ねむっている！$"
 
 Route11_EastEntrance_2F_Text_WhatABreathtakingView::
 	.string "Let's see what the binoculars have\n"
 	.string "to show…\p"
 	.string "What a breathtaking view!$"
+	.string "{JPN}{JPN}そうがんきょうを　のぞいて　みよう‥\p"
+	.string "すばらしい　ながめだ！$"
 
 Route11_EastEntrance_2F_Text_RockTunnelGoodRouteToLavender::
 	.string "Let's see what the binoculars have\n"
@@ -135,4 +163,7 @@ Route11_EastEntrance_2F_Text_RockTunnelGoodRouteToLavender::
 	.string "CERULEAN CITY…\p"
 	.string "ROCK TUNNEL appears to be a good\n"
 	.string "route to take.$"
+	.string "{JPN}{JPN}そうがんきょうを　のぞいて　みよう‥\p"
+	.string "ハナダシティから　シオンタウンへ　いくには‥\p"
+	.string "イワヤマトンネルを　とおるのが　よさそうだ。$"
 

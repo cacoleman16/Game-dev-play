@@ -148,6 +148,12 @@ CinnabarIsland_PokemonCenter_1F_Text_CinnabarGymLocked::
 	.string "mansion?\p"
 	.string "The GYM LEADER's friend used to\n"
 	.string "live there, they say.$"
+	.string "{JPN}{JPN}グレンジムに　きたんだけど　ドアに　しっかり\n"
+	.string "かぎが　かかってるんだ\p"
+	.string "どこかに　かぎが　あるはず　なんだけど\p"
+	.string "あの　やけた　やしきの　なかかな？\p"
+	.string "むかし　ジムリーダーの　ともだちが　すんでたって\n"
+	.string "いう　はなしだよ$"
 
 CinnabarIsland_PokemonCenter_1F_Text_VisitUnionRoom::
 	.string "Do you have lots of friends?\p"
@@ -159,21 +165,37 @@ CinnabarIsland_PokemonCenter_1F_Text_VisitUnionRoom::
 	.string "new friends.\p"
 	.string "I think it would be worth your time\n"
 	.string "to check the UNION ROOM.$"
+	.string "{JPN}{JPN}ともだちは　たくさん　いる？\p"
+	.string "いつもの　ともだちと　つうしん　するのも\n"
+	.string "もちろん　たのしいけど\p"
+	.string "たまには　ユニオンルームに　いって　みたら\n"
+	.string "どう？\p"
+	.string "もしかしたら　あたらしい　ともだちが　できるかも\p"
+	.string "ユニオンルームを　のぞいて　みる　かちは　あると\n"
+	.string "おもうよ$"
 
 CinnabarIsland_PokemonCenter_1F_Text_EvolutionCanWaitForNewMoves::
 	.string "POKéMON can still learn techniques\n"
 	.string "after canceling evolution.\p"
 	.string "Evolution can wait until new moves\n"
 	.string "have been learned.$"
+	.string "{JPN}{JPN}しんかを　キャンセル　しても　ポケモンは　わざを\n"
+	.string "おぼえるよ\p"
+	.string "あたらしい　わざを　おぼえるまで　しんかを\n"
+	.string "まっても　いいんだ$"
 
 CinnabarIsland_PokemonCenter_1F_Text_ReadyToSailToOneIsland::
 	.string "BILL: Hey, you kept me waiting!\n"
 	.string "Ready to set sail to ONE ISLAND?$"
+	.string "{JPN}{JPN}マサキ『おそいで！　1のしまへ　しゅっぱつ　する\n"
+	.string "じゅんびは　できたか？』$"
 
 CinnabarIsland_PokemonCenter_1F_Text_OhNotDoneYet::
 	.string "Oh, you're still not done yet?$"
+	.string "{JPN}{JPN}なんや　まだ　ようじ　すんでへんのか？$"
 
 CinnabarIsland_PokemonCenter_1F_Text_LetsGo::
 	.string "Well, that's it.\n"
 	.string "Let's go!$"
+	.string "{JPN}{JPN}ほな　きまりや！　いこか！$"
 

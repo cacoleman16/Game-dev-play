@@ -10,4 +10,7 @@ DiglettsCave_SouthEntrance_Text_DiglettDugThisTunnel::
 	.string "DIGLETT dug this long tunnel!\p"
 	.string "It goes right to VIRIDIAN CITY,\n"
 	.string "they tell me.$"
+	.string "{JPN}{JPN}いやあ　おどろいた！　この　ながい　トンネルは\n"
+	.string "ディグダが　ほったんだ！\p"
+	.string "トキワシティまで　つづいて　いるそうだよ$"
 

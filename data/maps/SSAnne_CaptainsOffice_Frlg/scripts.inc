@@ -50,12 +50,17 @@ SSAnne_CaptainsOffice_Text_CaptainIFeelSeasick::
 	.string "CAPTAIN: Ooargh…\n"
 	.string "I feel hideous…\l"
 	.string "Urrp! Seasick…$"
+	.string "{JPN}{JPN}せんちょう『うぇっぷ‥　きもちわるい‥　うっ！\n"
+	.string "ふなよい　だ‥』$"
 
 SSAnne_CaptainsOffice_Text_RubbedCaptainsBack::
 	.string "{PLAYER} rubbed the CAPTAIN's\n"
 	.string "back!\p"
 	.string "Rub-rub…\n"
 	.string "Rub-rub…$"
+	.string "{JPN}{JPN}{PLAYER}は　せんちょうの　せなかを\n"
+	.string "さすって　あげた！\p"
+	.string "さすり　さすり‥　さすり　さすり‥$"
 
 SSAnne_CaptainsOffice_Text_ThankYouHaveHMForCut::
 	.string "CAPTAIN: Whew! Thank you!\n"
@@ -68,16 +73,31 @@ SSAnne_CaptainsOffice_Text_ThankYouHaveHMForCut::
 	.string "This HIDDEN MACHINE!\p"
 	.string "Teach CUT to your POKéMON, and\n"
 	.string "you can see it CUT anytime!$"
+	.string "{JPN}{JPN}せんちょう『ふう！　ありがとう！　だいぶ　らくに\n"
+	.string "なったよ。\p"
+	.string "わたしの　いあいぎりの　ひでんわざを\n"
+	.string "みたいのかね？\p"
+	.string "こんなに　ぐあいが　わるく　なければ　じまんの\n"
+	.string "いあいぎりを　みせて　あげられる　のだが‥\p"
+	.string "そうだ！　これを　あげよう！　ひでんマシン　だ！\p"
+	.string "ポケモンに　いあいぎりを　おしえれば　いつでも\n"
+	.string "いあいぎりが　みられるぞ！』$"
 
 SSAnne_CaptainsOffice_Text_ObtainedHM01FromCaptain::
 	.string "{PLAYER} obtained HM01\n"
 	.string "from the CAPTAIN!$"
+	.string "{JPN}{JPN}{PLAYER}は　せんちょうから\n"
+	.string "ひでんマシン01を　もらった！$"
 
 SSAnne_CaptainsOffice_Text_ExplainCut::
 	.string "Using CUT, you can chop down\n"
 	.string "small trees.\p"
 	.string "Why not try it with the trees\n"
 	.string "around VERMILION CITY?$"
+	.string "{JPN}{JPN}いあいぎりを　つかえば　ちいさな　きを\n"
+	.string "きりたおせる。\p"
+	.string "クチバシティの　まわりの　きで　ためして　みては\n"
+	.string "どうかね？$"
 
 SSAnne_CaptainsOffice_Text_SSAnneWillSetSailSoon::
 	.string "CAPTAIN: …Whew!\p"
@@ -86,16 +106,25 @@ SSAnne_CaptainsOffice_Text_SSAnneWillSetSailSoon::
 	.string "The S.S. ANNE will set sail soon!\p"
 	.string "Farewell, until our return to\n"
 	.string "VERMILION CITY!$"
+	.string "{JPN}{JPN}せんちょう『‥ふう！\p"
+	.string "ふなよいも　なおったし　そろそろ　じかんだ。\p"
+	.string "サントアンヌごうは　まもなく　しゅっこう　する！\p"
+	.string "また　クチバシティに　もどる　ひまで\n"
+	.string "さらばだ！』$"
 
 SSAnne_CaptainsOffice_Text_YouHaveNoRoomForThis::
 	.string "Oh, no!\n"
 	.string "You have no room for this!$"
+	.string "{JPN}{JPN}おや！　もちものが　いっぱい　じゃないか！$"
 
 SSAnne_CaptainsOffice_Text_YuckShouldntHaveLooked::
 	.string "Yuck!\n"
 	.string "Shouldn't have looked!$"
+	.string "{JPN}{JPN}うえっ！　みなきゃ　よかった！$"
 
 SSAnne_CaptainsOffice_Text_HowToConquerSeasickness::
 	.string "How to Conquer Seasickness…\n"
 	.string "The CAPTAIN's reading this!$"
+	.string "{JPN}{JPN}『ふなよいの　なおしかた』‥　せんちょうが\n"
+	.string "よんでいる　ほんだ！$"
 

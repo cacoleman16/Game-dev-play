@@ -14,9 +14,14 @@ SSAnne_2F_Room5_Text_HaveYouGoneToSafariZone::
 	.string "in FUCHSIA CITY?\p"
 	.string "There are many kinds of rare\n"
 	.string "POKéMON.$"
+	.string "{JPN}{JPN}セキチクシティの　サファリゾーンに　いった\n"
+	.string "ことは　ある？\p"
+	.string "めずらしい　ポケモンが　たくさん　いるのよ。$"
 
 SSAnne_2F_Room5_Text_WeThinkSafariZoneIsAwesome::
 	.string "Me and my daddy think the SAFARI\n"
 	.string "ZONE is awesome!\l"
 	.string "I wish we could go there again.$"
+	.string "{JPN}{JPN}ぼくと　パパは　サファリゾーンが　だいすき！\n"
+	.string "また　いきたいなあ。$"
 

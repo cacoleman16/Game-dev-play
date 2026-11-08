@@ -1,0 +1,19 @@
+{
+ "Route5_PokemonDayCare_Text_WantMeToRaiseMon": "わしは　そだてやを　やっておる。\\pきみの　ポケモンを　1ぴき　そだてて　あげようか？",
+ "Route5_PokemonDayCare_Text_ComeAgain": "また　おいで。",
+ "Route5_PokemonDayCare_Text_WhichMonShouldIRaise": "どの　ポケモンを　そだてるかね？",
+ "Route5_PokemonDayCare_Text_ComeAnytimeYouLike": "そうか。　いつでも　おいで。",
+ "Route5_PokemonDayCare_Text_LookAfterMonForAWhile": "よし　じゃあ　{STR_VAR_1}を　しばらく　あずかろう。",
+ "Route5_PokemonDayCare_Text_ComeSeeMeInAWhile": "しばらく　したら　また　おいで。",
+ "Route5_PokemonDayCare_Text_MonNeedsToSpendMoreTime": "もう　もどって　きたのかね？\\p{STR_VAR_1}は　もう　すこし　わしの　ところに　いた　ほうが　いいな。",
+ "Route5_PokemonDayCare_Text_OweMeXForMonsReturn": "この　ポケモンを　かえすには　{STR_VAR_2}円　いただくよ。",
+ "Route5_PokemonDayCare_Text_ThankYouHeresMon": "ありがとう！　ほれ　きみの　ポケモンだ。",
+ "Route5_PokemonDayCare_Text_PlayerGotMonBack": "{PLAYER}は　そだてやの　おじさんから　{STR_VAR_1}を　ひきとった。",
+ "Route5_PokemonDayCare_Text_OnlyHaveOneMonWithYou": "おや？　てもちの　ポケモンが　1ぴき　だけ　じゃないか。",
+ "Route5_PokemonDayCare_Text_WhatWillYouBattleWith": "その　ポケモンを　あずけたら　なにで　たたかうんだね？",
+ "Route5_PokemonDayCare_Text_MonHasGrownByXLevels": "きみの　{STR_VAR_1}は　ずいぶん　せいちょう　したぞ。　うむ　かなりの　ものだ。\\pどれどれ‥　レベルが　{STR_VAR_2}も　あがっておる。\\pどうじゃ　たいした　もんだろう？",
+ "Route5_PokemonDayCare_Text_YouveGotNoRoomForIt": "てもちに　あきが　ないと　この　ポケモンは　ひきとれないよ。",
+ "Route5_PokemonDayCare_Text_DontHaveEnoughMoney": "おかねが　たりない　ようだね。",
+ "Route5_PokemonDayCare_Text_WantMeToTakeALookAtYours": "きみの　ポケモンを　みてみるかね？",
+ "Route5_PokemonDayCare_Text_CantAcceptMonWithHM": "わるいけど　ひでんわざを　もった　ポケモンは　あずかれないなあ"
+}

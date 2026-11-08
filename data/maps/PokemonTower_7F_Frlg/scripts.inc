@@ -233,12 +233,15 @@ PokemonTower_7F_Movement_Grunt3ExitLeft::
 PokemonTower_7F_Text_Grunt1Intro::
 	.string "What do you want?\n"
 	.string "Why are you here?$"
+	.string "{JPN}{JPN}なんだ　おまえ？　なにしに　きた？$"
 
 PokemonTower_7F_Text_Grunt1Defeat::
 	.string "I give up!$"
+	.string "{JPN}{JPN}まいった！$"
 
 PokemonTower_7F_Text_Grunt1PostBattle::
 	.string "I'm not going to forget this!$"
+	.string "{JPN}{JPN}この　うらみは　わすれないからな！$"
 
 PokemonTower_7F_Text_Grunt2Intro::
 	.string "This old guy marched right up to\n"
@@ -247,24 +250,37 @@ PokemonTower_7F_Text_Grunt2Intro::
 	.string "TEAM ROCKET's abusing POKéMON.\p"
 	.string "So, we're just talking it over as\n"
 	.string "adults.$"
+	.string "{JPN}{JPN}この　じじいが　おれたちの　アジトに　のりこんで\n"
+	.string "きやがってよ。\p"
+	.string "ロケットだんは　ポケモンを　いじめるなって\n"
+	.string "わめきだしたんだ。\p"
+	.string "だから　こうして　おとな　どうしで\n"
+	.string "はなしあってる　ところさ。$"
 
 PokemonTower_7F_Text_Grunt2Defeat::
 	.string "Please!\n"
 	.string "No more!$"
+	.string "{JPN}{JPN}たのむ！　もう　やめてくれ！$"
 
 PokemonTower_7F_Text_Grunt2PostBattle::
 	.string "POKéMON are only good for making\n"
 	.string "money. Why not use them?\p"
 	.string "You stay out of our business!$"
+	.string "{JPN}{JPN}ポケモンなんて　かねもうけの　どうぐさ。\n"
+	.string "つかって　なにが　わるい？\p"
+	.string "ガキは　ひっこんでな！$"
 
 PokemonTower_7F_Text_Grunt3Intro::
 	.string "You're not saving anyone, kid!$"
+	.string "{JPN}{JPN}だれも　たすけさせや　しないぜ！$"
 
 PokemonTower_7F_Text_Grunt3Defeat::
 	.string "Don't fight us ROCKETS!$"
+	.string "{JPN}{JPN}ロケットだんに　さからうな！$"
 
 PokemonTower_7F_Text_Grunt3PostBattle::
 	.string "You're not getting away with this!$"
+	.string "{JPN}{JPN}ただで　すむと　おもうなよ！$"
 
 PokemonTower_7F_Text_MrFujiThankYouFollowMe::
 	.string "MR. FUJI: Heh?\n"
@@ -279,4 +295,15 @@ PokemonTower_7F_Text_MrFujiThankYouFollowMe::
 	.string "concern.\p"
 	.string "Follow me to my home, POKéMON\n"
 	.string "HOUSE, at the foot of this tower.$"
+	.string "{JPN}{JPN}フジろうじん『おや？　わたしを　たすけに　きて\n"
+	.string "くれたのかね？\p"
+	.string "ありがとう。　だが　わたしは　じぶんの　いしで\n"
+	.string "ここへ　きたのだよ。\p"
+	.string "カラカラの　ははおやの　たましいを　しずめに\n"
+	.string "きたのだ。\p"
+	.string "ガラガラの　たましいも　ようやく　てんに\n"
+	.string "のぼった　ようだ。\p"
+	.string "しんぱい　してくれて　ほんとうに　ありがとう。\p"
+	.string "この　とうの　ふもとに　ある　わたしの　いえ‥\n"
+	.string "ポケモンハウスまで　ついて　きなさい。$"
 

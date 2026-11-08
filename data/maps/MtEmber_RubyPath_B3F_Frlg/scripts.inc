@@ -13,4 +13,5 @@ MtEmber_RubyPath_B5F_EventScript_Ruby::
 
 MtEmber_RubyPath_B3F_Text_FoundARuby::
 	.string "{PLAYER} found a RUBY!$"
+	.string "{JPN}{JPN}{PLAYER}は　ルビーを　みつけた！$"
 

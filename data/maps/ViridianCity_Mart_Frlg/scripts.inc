@@ -86,26 +86,38 @@ ViridianCity_Mart_EventScript_Youngster::
 ViridianCity_Mart_Text_YouCameFromPallet::
 	.string "Hey!\n"
 	.string "You came from PALLET TOWN?$"
+	.string "{JPN}{JPN}おや！　きみ　マサラタウンから　きたの？$"
 
 ViridianCity_Mart_Text_TakeThisToProfOak::
 	.string "You know PROF. OAK, right?\p"
 	.string "His order came in.\n"
 	.string "Can I get you to take it to him?$"
+	.string "{JPN}{JPN}オーキドはかせ　しってるよね？\p"
+	.string "はかせが　ちゅうもんした　しなものが\n"
+	.string "とどいたんだ　はかせに　とどけて　くれないかな？$"
 
 ViridianCity_Mart_Text_ReceivedOaksParcelFromClerk::
 	.string "{PLAYER} received OAK'S PARCEL\n"
 	.string "from the POKéMON MART clerk.$"
+	.string "{JPN}{JPN}{PLAYER}は　ショップの　てんいんから\n"
+	.string "オーキドへの　おとどけものを　うけとった$"
 
 ViridianCity_Mart_Text_SayHiToOakForMe::
 	.string "Okay, thanks! Please say hi to\n"
 	.string "PROF. OAK for me, too.$"
+	.string "{JPN}{JPN}ありがとう！　オーキドはかせに　よろしく\n"
+	.string "つたえてね$"
 
 ViridianCity_Mart_Text_ShopDoesGoodBusinessInAntidotes::
 	.string "This shop does good business in\n"
 	.string "ANTIDOTES, I've heard.$"
+	.string "{JPN}{JPN}この　みせは　どくけしが　よく　うれるんだって$"
 
 ViridianCity_Mart_Text_GotToBuySomePotions::
 	.string "I've got to buy some POTIONS.\p"
 	.string "You never know when your POKéMON\n"
 	.string "will need quick healing.$"
+	.string "{JPN}{JPN}キズぐすりを　かって　おかなくちゃ\p"
+	.string "いつ　ポケモンを　かいふく　させる　ことに\n"
+	.string "なるか　わからないからね$"
 

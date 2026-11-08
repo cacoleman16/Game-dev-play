@@ -15,6 +15,7 @@
 #include "window.h"
 #include "gba/m4a_internal.h"
 #include "constants/rgb.h"
+#include "qol_language.h"
 
 #define tMenuSelection data[0]
 #define tTextSpeed data[1]
@@ -23,6 +24,7 @@
 #define tSound data[4]
 #define tButtonMode data[5]
 #define tWindowFrameType data[6]
+#define tLanguage data[7] // [QoL]
 
 enum
 {
@@ -35,6 +37,10 @@ enum
     MENUITEM_CANCEL,
     MENUITEM_COUNT,
 };
+
+// [QoL] LANGUAGE sits on the header row (the list has no room for an 8th row):
+// the cursor moves up from TEXT SPEED onto it.
+#define MENUITEM_LANGUAGE MENUITEM_COUNT
 
 enum
 {
@@ -67,26 +73,30 @@ static void FrameType_DrawChoices(u8 selection);
 static u8 ButtonMode_ProcessInput(u8 selection);
 static void ButtonMode_DrawChoices(u8 selection);
 static void DrawHeaderText(void);
+static void Language_DrawChoices(u8 selection);
+static void RedrawOptionMenu(u8 taskId);
 static void DrawOptionMenuTexts(void);
 static void DrawBgWindowFrames(void);
 
 EWRAM_DATA static bool8 sArrowPressed = FALSE;
 
-static const u8 gText_Option[]             = _("OPTION");
-static const u8 gText_TextSpeedSlow[]      = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}SLOW");
-static const u8 gText_TextSpeedMid[]       = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}MID");
-static const u8 gText_TextSpeedFast[]      = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}FAST");
-static const u8 gText_BattleSceneOn[]      = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}ON");
-static const u8 gText_BattleSceneOff[]     = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}OFF");
-static const u8 gText_BattleStyleShift[]   = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}SHIFT");
-static const u8 gText_BattleStyleSet[]     = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}SET");
-static const u8 gText_SoundMono[]          = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}MONO");
-static const u8 gText_SoundStereo[]        = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}STEREO");
-static const u8 gText_FrameType[]          = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}TYPE");
+static const u8 gText_Option[]             = _("OPTION${JPN}{JPN}せってい");
+static const u8 gText_TextSpeedSlow[]      = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}SLOW${JPN}{JPN}{COLOR GREEN}{SHADOW LIGHT_GREEN}おそい");
+static const u8 gText_TextSpeedMid[]       = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}MID${JPN}{JPN}{COLOR GREEN}{SHADOW LIGHT_GREEN}ふつう");
+static const u8 gText_TextSpeedFast[]      = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}FAST${JPN}{JPN}{COLOR GREEN}{SHADOW LIGHT_GREEN}はやい");
+static const u8 gText_BattleSceneOn[]      = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}ON${JPN}{JPN}{COLOR GREEN}{SHADOW LIGHT_GREEN}みる");
+static const u8 gText_BattleSceneOff[]     = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}OFF${JPN}{JPN}{COLOR GREEN}{SHADOW LIGHT_GREEN}みない");
+static const u8 gText_BattleStyleShift[]   = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}SHIFT${JPN}{JPN}{COLOR GREEN}{SHADOW LIGHT_GREEN}いれかえ");
+static const u8 gText_BattleStyleSet[]     = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}SET${JPN}{JPN}{COLOR GREEN}{SHADOW LIGHT_GREEN}かちぬき");
+static const u8 gText_SoundMono[]          = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}MONO${JPN}{JPN}{COLOR GREEN}{SHADOW LIGHT_GREEN}モノラル");
+static const u8 gText_SoundStereo[]        = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}STEREO${JPN}{JPN}{COLOR GREEN}{SHADOW LIGHT_GREEN}ステレオ");
+static const u8 gText_FrameType[]          = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}TYPE${JPN}{JPN}{COLOR GREEN}{SHADOW LIGHT_GREEN}タイプ");
 static const u8 gText_FrameTypeNumber[]    = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}");
-static const u8 gText_ButtonTypeNormal[]   = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}NORMAL");
+static const u8 gText_ButtonTypeNormal[]   = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}NORMAL${JPN}{JPN}{COLOR GREEN}{SHADOW LIGHT_GREEN}ノーマル");
 static const u8 gText_ButtonTypeLR[]       = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}LR");
-static const u8 gText_ButtonTypeLEqualsA[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}L=A");
+static const u8 gText_ButtonTypeLEqualsA[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}L=A${JPN}{JPN}{COLOR GREEN}{SHADOW LIGHT_GREEN}LはA");
+static const u8 gText_LanguageEnglish[]    = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}ENGLISH"); // [QoL]
+static const u8 gText_LanguageJapanese[]   = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}{JPN}にほんご"); // [QoL]
 
 static const u16 sOptionMenuText_Pal[] = INCGFX_U16("graphics/interface/option_menu_text.pal", ".gbapal");
 // note: this is only used in the Japanese release
@@ -94,13 +104,13 @@ static const u8 sEqualSignGfx[] = INCGFX_U8("graphics/interface/option_menu_equa
 
 static const u8 *const sOptionMenuItemsNames[MENUITEM_COUNT] =
 {
-    [MENUITEM_TEXTSPEED]   = COMPOUND_STRING("TEXT SPEED"),
-    [MENUITEM_BATTLESCENE] = COMPOUND_STRING("BATTLE SCENE"),
-    [MENUITEM_BATTLESTYLE] = COMPOUND_STRING("BATTLE STYLE"),
-    [MENUITEM_SOUND]       = COMPOUND_STRING("SOUND"),
-    [MENUITEM_BUTTONMODE]  = COMPOUND_STRING("BUTTON MODE"),
-    [MENUITEM_FRAMETYPE]   = COMPOUND_STRING("FRAME"),
-    [MENUITEM_CANCEL]      = COMPOUND_STRING("CANCEL"),
+    [MENUITEM_TEXTSPEED]   = COMPOUND_STRING("TEXT SPEED${JPN}{JPN}はなしの はやさ"),
+    [MENUITEM_BATTLESCENE] = COMPOUND_STRING("BATTLE SCENE${JPN}{JPN}せんとう アニメ"),
+    [MENUITEM_BATTLESTYLE] = COMPOUND_STRING("BATTLE STYLE${JPN}{JPN}しあいの ルール"),
+    [MENUITEM_SOUND]       = COMPOUND_STRING("SOUND${JPN}{JPN}サウンド"),
+    [MENUITEM_BUTTONMODE]  = COMPOUND_STRING("BUTTON MODE${JPN}{JPN}ボタン モード"),
+    [MENUITEM_FRAMETYPE]   = COMPOUND_STRING("FRAME${JPN}{JPN}ウインドウ"),
+    [MENUITEM_CANCEL]      = COMPOUND_STRING("CANCEL${JPN}{JPN}おわる"),
 };
 
 static const struct WindowTemplate sOptionMenuWinTemplates[] =
@@ -250,6 +260,8 @@ void CB2_InitOptionMenu(void)
         gTasks[taskId].tSound = gSaveBlock2Ptr->optionsSound;
         gTasks[taskId].tButtonMode = gSaveBlock2Ptr->optionsButtonMode;
         gTasks[taskId].tWindowFrameType = gSaveBlock2Ptr->optionsWindowFrameType;
+        gTasks[taskId].tLanguage = gSaveBlock2Ptr->optionsLanguage;
+        Language_DrawChoices(gTasks[taskId].tLanguage);
 
         TextSpeed_DrawChoices(gTasks[taskId].tTextSpeed);
         BattleScene_DrawChoices(gTasks[taskId].tBattleSceneOff);
@@ -290,19 +302,34 @@ static void Task_OptionMenuProcessInput(u8 taskId)
     }
     else if (JOY_NEW(DPAD_UP))
     {
-        if (gTasks[taskId].tMenuSelection > 0)
+        // [QoL] TEXT SPEED -> LANGUAGE (header) -> CANCEL
+        if (gTasks[taskId].tMenuSelection == MENUITEM_LANGUAGE)
+            gTasks[taskId].tMenuSelection = MENUITEM_CANCEL;
+        else if (gTasks[taskId].tMenuSelection > 0)
             gTasks[taskId].tMenuSelection--;
         else
-            gTasks[taskId].tMenuSelection = MENUITEM_CANCEL;
+            gTasks[taskId].tMenuSelection = MENUITEM_LANGUAGE;
         HighlightOptionMenuItem(gTasks[taskId].tMenuSelection);
     }
     else if (JOY_NEW(DPAD_DOWN))
     {
-        if (gTasks[taskId].tMenuSelection < MENUITEM_CANCEL)
+        if (gTasks[taskId].tMenuSelection == MENUITEM_LANGUAGE)
+            gTasks[taskId].tMenuSelection = 0;
+        else if (gTasks[taskId].tMenuSelection < MENUITEM_CANCEL)
             gTasks[taskId].tMenuSelection++;
         else
-            gTasks[taskId].tMenuSelection = 0;
+            gTasks[taskId].tMenuSelection = MENUITEM_LANGUAGE;
         HighlightOptionMenuItem(gTasks[taskId].tMenuSelection);
+    }
+    else if (gTasks[taskId].tMenuSelection == MENUITEM_LANGUAGE)
+    {
+        // [QoL] Left/right switches the language and redraws the menu in it.
+        if (JOY_NEW(DPAD_LEFT | DPAD_RIGHT))
+        {
+            gTasks[taskId].tLanguage ^= 1;
+            gSaveBlock2Ptr->optionsLanguage = gTasks[taskId].tLanguage;
+            RedrawOptionMenu(taskId);
+        }
     }
     else
     {
@@ -372,6 +399,7 @@ static void Task_OptionMenuSave(u8 taskId)
     gSaveBlock2Ptr->optionsSound = gTasks[taskId].tSound;
     gSaveBlock2Ptr->optionsButtonMode = gTasks[taskId].tButtonMode;
     gSaveBlock2Ptr->optionsWindowFrameType = gTasks[taskId].tWindowFrameType;
+    gSaveBlock2Ptr->optionsLanguage = gTasks[taskId].tLanguage; // [QoL]
 
     BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
     gTasks[taskId].func = Task_OptionMenuFadeOut;
@@ -390,14 +418,28 @@ static void Task_OptionMenuFadeOut(u8 taskId)
 static void HighlightOptionMenuItem(u8 index)
 {
     SetGpuReg(REG_OFFSET_WIN0H, WIN_RANGE(16, DISPLAY_WIDTH - 16));
-    SetGpuReg(REG_OFFSET_WIN0V, WIN_RANGE(index * 16 + 40, index * 16 + 56));
+    if (index == MENUITEM_LANGUAGE)
+    {
+        // [QoL] The header row is on BG1: show it inside the highlight and dim
+        // BG1 (header and frames) outside it while it's selected.
+        SetGpuReg(REG_OFFSET_WININ, WININ_WIN0_BG0 | WININ_WIN0_BG1);
+        SetGpuReg(REG_OFFSET_BLDCNT, BLDCNT_TGT1_BG0 | BLDCNT_TGT1_BG1 | BLDCNT_EFFECT_DARKEN);
+        SetGpuReg(REG_OFFSET_WIN0V, WIN_RANGE(8, 24));
+    }
+    else
+    {
+        SetGpuReg(REG_OFFSET_WININ, WININ_WIN0_BG0);
+        SetGpuReg(REG_OFFSET_BLDCNT, BLDCNT_TGT1_BG0 | BLDCNT_EFFECT_DARKEN);
+        SetGpuReg(REG_OFFSET_WIN0V, WIN_RANGE(index * 16 + 40, index * 16 + 56));
+    }
 }
 
-static void DrawOptionMenuChoice(const u8 *text, u8 x, u8 y, u8 style)
+static void DrawChoiceInWindow(u8 windowId, const u8 *text, u8 x, u8 y, u8 style)
 {
     u8 dst[16];
     u16 i;
 
+    text = QoL_LangStr(text); // [QoL] Japanese label in Japanese mode
     for (i = 0; *text != EOS && i < ARRAY_COUNT(dst) - 1; i++)
         dst[i] = *(text++);
 
@@ -408,7 +450,12 @@ static void DrawOptionMenuChoice(const u8 *text, u8 x, u8 y, u8 style)
     }
 
     dst[i] = EOS;
-    AddTextPrinterParameterized(WIN_OPTIONS, FONT_NORMAL, dst, x, y + 1, TEXT_SKIP_DRAW, NULL);
+    AddTextPrinterParameterized(windowId, FONT_NORMAL, dst, x, y + 1, TEXT_SKIP_DRAW, NULL);
+}
+
+static void DrawOptionMenuChoice(const u8 *text, u8 x, u8 y, u8 style)
+{
+    DrawChoiceInWindow(WIN_OPTIONS, text, x, y, style);
 }
 
 static u8 TextSpeed_ProcessInput(u8 selection)
@@ -575,7 +622,7 @@ static void FrameType_DrawChoices(u8 selection)
     {
         text[i] = n % 10 + CHAR_0;
         i++;
-        text[i] = CHAR_SPACER;
+        text[i] = QoL_IsJapanese() ? CHAR_SPACE : CHAR_SPACER; // [QoL] the spacer is a kana in the Japanese font
         i++;
     }
 
@@ -636,6 +683,29 @@ static void DrawHeaderText(void)
     FillWindowPixelBuffer(WIN_HEADER, PIXEL_FILL(1));
     AddTextPrinterParameterized(WIN_HEADER, FONT_NORMAL, gText_Option, 8, 1, TEXT_SKIP_DRAW, NULL);
     CopyWindowToVram(WIN_HEADER, COPYWIN_FULL);
+}
+
+// [QoL] ENGLISH / にほんご on the right of the header row.
+static void Language_DrawChoices(u8 selection)
+{
+    DrawChoiceInWindow(WIN_HEADER, gText_LanguageEnglish, 104, 0, selection == QOL_LANGUAGE_ENGLISH);
+    DrawChoiceInWindow(WIN_HEADER, gText_LanguageJapanese, 168, 0, selection == QOL_LANGUAGE_JAPANESE);
+    CopyWindowToVram(WIN_HEADER, COPYWIN_FULL);
+}
+
+// [QoL] Redraw every label after a language switch.
+static void RedrawOptionMenu(u8 taskId)
+{
+    DrawHeaderText();
+    Language_DrawChoices(gTasks[taskId].tLanguage);
+    DrawOptionMenuTexts();
+    TextSpeed_DrawChoices(gTasks[taskId].tTextSpeed);
+    BattleScene_DrawChoices(gTasks[taskId].tBattleSceneOff);
+    BattleStyle_DrawChoices(gTasks[taskId].tBattleStyle);
+    Sound_DrawChoices(gTasks[taskId].tSound);
+    ButtonMode_DrawChoices(gTasks[taskId].tButtonMode);
+    FrameType_DrawChoices(gTasks[taskId].tWindowFrameType);
+    CopyWindowToVram(WIN_OPTIONS, COPYWIN_FULL);
 }
 
 static void DrawOptionMenuTexts(void)

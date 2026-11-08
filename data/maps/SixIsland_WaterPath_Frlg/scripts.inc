@@ -12,102 +12,145 @@ SixIsland_WaterPath_EventScript_RouteSign::
 SixIsland_WaterPath_Text_RoseIntro::
 	.string "I let a pleasant breeze lead me\n"
 	.string "all the way here.$"
+	.string "{JPN}{JPN}ここちよい　かぜに　さそわれて　ここまで\n"
+	.string "きちゃった。$"
 
 SixIsland_WaterPath_Text_RoseDefeat::
 	.string "Giggle… You're so cute when you're\n"
 	.string "determined.$"
+	.string "{JPN}{JPN}うふふ‥　いっしょうけんめいな　あなた\n"
+	.string "かわいいわね。$"
 
 SixIsland_WaterPath_Text_RosePostBattle::
 	.string "I want to go to the woods over\n"
 	.string "there, but…\p"
 	.string "There are lots of BUG POKéMON.\n"
 	.string "They scare me a little.$"
+	.string "{JPN}{JPN}むこうの　もりに　いきたいんだけど‥\p"
+	.string "むしポケモンが　いっぱい　いるの。　ちょっと\n"
+	.string "こわいわ。$"
 
 SixIsland_WaterPath_Text_EdwardIntro::
 	.string "I'm practicing in secret so no one\n"
 	.string "can see me.$"
+	.string "{JPN}{JPN}だれにも　みられない　ように　こっそり\n"
+	.string "れんしゅう　してるんだ。$"
 
 SixIsland_WaterPath_Text_EdwardDefeat::
 	.string "Nobody saw me losing, right?$"
+	.string "{JPN}{JPN}まけた　ところ　だれにも　みられて　ないよね？$"
 
 SixIsland_WaterPath_Text_EdwardPostBattle::
 	.string "As a performer, I don't want people\n"
 	.string "to know about the effort I put in.$"
+	.string "{JPN}{JPN}パフォーマーと　して　どりょく　してる　ところは\n"
+	.string "ひとに　しられたく　ないんだ。$"
 
 SixIsland_WaterPath_Text_SamirIntro::
 	.string "What, you're suggesting that you're\n"
 	.string "sick of seeing SWIMMERS like me?\p"
 	.string "Aww, don't be hatin'!$"
+	.string "{JPN}{JPN}なに？　おれみたいな　かいパンやろうは　もう\n"
+	.string "みあきたって？\p"
+	.string "そんなに　きらわないでよ！$"
 
 SixIsland_WaterPath_Text_SamirDefeat::
 	.string "Oh, no, no, no.$"
+	.string "{JPN}{JPN}あーあ　だめだ　だめだ。$"
 
 SixIsland_WaterPath_Text_SamirPostBattle::
 	.string "I couldn't lift the stigma of being\n"
 	.string "a SWIMMER…$"
+	.string "{JPN}{JPN}かいパンやろうの　イメージは　ぬぐえなかった‥$"
 
 SixIsland_WaterPath_Text_DeniseIntro::
 	.string "My boyfriend's always busy, so I\n"
 	.string "come swimming by myself.$"
+	.string "{JPN}{JPN}かれしが　いつも　いそがしいから　ひとりで\n"
+	.string "およぎに　きてるの。$"
 
 SixIsland_WaterPath_Text_DeniseDefeat::
 	.string "Awww, I knew this would happen!$"
+	.string "{JPN}{JPN}あーん　こう　なると　おもった！$"
 
 SixIsland_WaterPath_Text_DenisePostBattle::
 	.string "When I can't be with my boyfriend,\n"
 	.string "I spend time with the POKéMON he\l"
 	.string "gave me.$"
+	.string "{JPN}{JPN}かれと　いっしょに　いられない　ときは　かれに\n"
+	.string "もらった　ポケモンと　すごして　いるの。$"
 
 SixIsland_WaterPath_Text_EarlIntro::
 	.string "Tell me, where are the mountains\n"
 	.string "around these parts?$"
+	.string "{JPN}{JPN}ちょっと　ききたいんだが　この　あたりの　やまは\n"
+	.string "どこに　あるんだ？$"
 
 SixIsland_WaterPath_Text_EarlDefeat::
 	.string "I lost my way while I was busy\n"
 	.string "battling!$"
+	.string "{JPN}{JPN}バトルに　むちゅうで　みちに　まよって\n"
+	.string "しまった！$"
 
 SixIsland_WaterPath_Text_EarlPostBattle::
 	.string "Aren't there any mountains around\n"
 	.string "these parts?$"
+	.string "{JPN}{JPN}この　あたりに　やまは　ないのか？$"
 
 SixIsland_WaterPath_Text_MiuIntro::
 	.string "MIU: Hello, POKéMON!\n"
 	.string "It's time to play!$"
+	.string "{JPN}{JPN}ミウ『ポケモン　こんにちは！　あそぶ\n"
+	.string "じかんだよ！』$"
 
 SixIsland_WaterPath_Text_MiuDefeat::
 	.string "MIU: Oh, no!\n"
 	.string "Mommy!$"
+	.string "{JPN}{JPN}ミウ『そんなあ！　ママー！』$"
 
 SixIsland_WaterPath_Text_MiuPostBattle::
 	.string "MIU: It makes me all sad inside\n"
 	.string "when we lose…$"
+	.string "{JPN}{JPN}ミウ『まけると　すごく　かなしく　なっちゃう‥』$"
 
 SixIsland_WaterPath_Text_MiuNotEnoughMons::
 	.string "MIU: MIA and I are TWINS.\n"
 	.string "We want to battle together.$"
+	.string "{JPN}{JPN}ミウ『ミウと　ミアは　ふたご　なの。　いっしょに\n"
+	.string "たたかいたいの。』$"
 
 SixIsland_WaterPath_Text_MiaIntro::
 	.string "MIA: Hello, POKéMON!\n"
 	.string "It's time to battle!$"
+	.string "{JPN}{JPN}ミア『ポケモン　こんにちは！　バトルの\n"
+	.string "じかんだよ！』$"
 
 SixIsland_WaterPath_Text_MiaDefeat::
 	.string "MIA: You're mean!\n"
 	.string "You're bad for winning!$"
+	.string "{JPN}{JPN}ミア『いじわる！　かつ　なんて　ひどい！』$"
 
 SixIsland_WaterPath_Text_MiaPostBattle::
 	.string "MIA: Ohh…\n"
 	.string "I'm sorry, my POKéMON…$"
+	.string "{JPN}{JPN}ミア『ううっ‥　ごめんね　わたしの　ポケモン‥』$"
 
 SixIsland_WaterPath_Text_MiaNotEnoughMons::
 	.string "MIA: Oh, you only have one\n"
 	.string "POKéMON?\p"
 	.string "Don't you feel lonesome?$"
+	.string "{JPN}{JPN}ミア『ポケモン　1ぴき　しか　いないの？\p"
+	.string "さびしく　ないの？』$"
 
 SixIsland_WaterPath_Text_WantedUltimateHorn::
 	.string "Wanted!\n"
 	.string "The Ultimate Horn!$"
+	.string "{JPN}{JPN}もとむ！\n"
+	.string "さいこうの　ツノ！$"
 
 SixIsland_WaterPath_Text_RouteSign::
 	.string "WATER PATH\n"
 	.string "Leads to RUIN VALLEY$"
+	.string "{JPN}{JPN}みずのさんぽみち\n"
+	.string "このさき　いせきのたに$"
 

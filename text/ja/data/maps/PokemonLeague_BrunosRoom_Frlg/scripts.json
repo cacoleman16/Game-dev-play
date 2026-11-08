@@ -1,0 +1,6 @@
+{
+ "PokemonLeague_BrunosRoom_Text_Intro": "おれは　してんのうの　シバ！\\pきびしい　トレーニングを　つめば　ひとも　ポケモンも　どこまでも　つよく　なれる！\\pおれは　かくとうポケモンと　ともに　いきて　きたえて　きた！　それは　これからも　かわらない！\\p{PLAYER}！\\pおれたちの　ちからで　おまえを　たたきのめして　やる！\\pウー！　ハーッ！{PLAY_BGM}{MUS_RG_ENCOUNTER_GYM_LEADER}",
+ "PokemonLeague_BrunosRoom_Text_RematchIntro": "おれは　してんのうの　シバ！\\pきびしい　トレーニングを　つめば　ひとも　ポケモンも　どこまでも　つよく　なれる！\\pおれは　かくとうポケモンと　ともに　いきて　きたえて　きた！　それは　これからも　かわらない！\\p{PLAYER}！\\pおれたちの　ちからで　おまえを　たたきのめして　やる！\\pウー！　ハーッ！{PLAY_BGM}{MUS_RG_ENCOUNTER_GYM_LEADER}",
+ "PokemonLeague_BrunosRoom_Text_Defeat": "なぜだ？　どうして　おれが　まけるのだ？",
+ "PokemonLeague_BrunosRoom_Text_PostBattle": "おれの　やくめは　おわった。　つぎの　あいてに　いどむが　いい。"
+}

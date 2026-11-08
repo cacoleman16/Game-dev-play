@@ -201,23 +201,39 @@ Text_RockSlideTeach::
 	.string "Total terror!\p"
 	.string "You don't seem to be scared.\n"
 	.string "Want to try using ROCK SLIDE?$"
+	.string "{JPN}{JPN}こんな　いわだらけの　やまに　いると　らくせきが\n"
+	.string "こわいよね。\p"
+	.string "そうぞう　できる？　うえから　いわが　ゴロゴロ\n"
+	.string "おちて　くるんだよ？\p"
+	.string "そんなの　もう‥　うわあああああ！　だよ！\n"
+	.string "こわすぎる！\p"
+	.string "きみは　へいき　みたいだね。　いわなだれを\n"
+	.string "つかって　みたい？$"
 
 Text_RockSlideDeclined::
 	.string "Oh, so you are scared after all.$"
+	.string "{JPN}{JPN}なんだ　やっぱり　こわいんだね。$"
 
 Text_RockSlideWhichMon::
 	.string "Which POKéMON should I teach\n"
 	.string "ROCK SLIDE?$"
+	.string "{JPN}{JPN}どの　ポケモンに　いわなだれを　おしえる？$"
 
 Text_RockSlideTaught::
 	.string "It might be scary to use it in this\n"
 	.string "tunnel…$"
+	.string "{JPN}{JPN}この　トンネルで　つかうのは　ちょっと\n"
+	.string "こわいかもね‥$"
 
 SeafoamIslands_B4F_Text_BouldersMightChangeWaterFlow::
 	.string "Hint: Boulders might change the\n"
 	.string "flow of water.$"
+	.string "{JPN}{JPN}ヒント:　いわを　うごかすと　みずの　ながれが\n"
+	.string "かわる　かも。$"
 
 SeafoamIslands_B4F_Text_DangerFastCurrent::
 	.string "DANGER\n"
 	.string "Fast current!$"
+	.string "{JPN}{JPN}きけん！\n"
+	.string "ながれが　はやいので　ちゅうい！$"
 

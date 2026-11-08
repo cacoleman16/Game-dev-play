@@ -8,4 +8,6 @@ Route12_NorthEntrance_1F_EventScript_Guard::
 Route12_NorthEntrance_1F_Text_LookoutSpotUpstairs::
 	.string "There's a lookout spot upstairs.\n"
 	.string "The view is magnificent.$"
+	.string "{JPN}{JPN}2かいに　てんぼうだいが　あるよ。　ながめは\n"
+	.string "さいこうだよ。$"
 

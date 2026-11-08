@@ -7,4 +7,5 @@ CeladonCity_Condominiums_2F_EventScript_MeetingRoomSign::
 
 CeladonCity_Condominiums_2F_Text_GameFreakMeetingRoom::
 	.string "GAME FREAK Meeting Room$"
+	.string "{JPN}{JPN}ゲームフリーク　かいぎしつ$"
 

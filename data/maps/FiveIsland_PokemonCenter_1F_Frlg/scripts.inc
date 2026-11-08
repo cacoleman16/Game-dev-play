@@ -25,10 +25,16 @@ FiveIsland_PokemonCenter_1F_EventScript_CooltrainerF::
 FiveIsland_PokemonCenter_1F_Text_OnMyWayToPrepareMeal::
 	.string "I'm on my way to prepare a meal\n"
 	.string "for a certain high-society person.$"
+	.string "{JPN}{JPN}さる　おかねもちの　かたの　ために　おりょうりを\n"
+	.string "つくりに　いく　ところ　なんです。$"
 
 FiveIsland_PokemonCenter_1F_Text_YoureOnQuestToCatchEveryMon::
 	.string "You're on a quest to catch every\n"
 	.string "single kind of POKéMON?\p"
 	.string "…How incredible. Please tell me if\n"
 	.string "you catch a strong one!$"
+	.string "{JPN}{JPN}すべての　しゅるいの　ポケモンを　つかまえる\n"
+	.string "たびを　している？\p"
+	.string "‥すばらしいですね。　つよい　ポケモンを\n"
+	.string "つかまえたら　ぜひ　おしえて　くださいね！$"
 

@@ -8,4 +8,6 @@ UndergroundPath_WestEntrance_EventScript_BaldingMan::
 UndergroundPath_WestEntrance_Text_SleepyMonNearCeladon::
 	.string "I heard a sleepy POKéMON appeared\n"
 	.string "out near CELADON CITY, too.$"
+	.string "{JPN}{JPN}タマムシシティの　ちかくにも　ねむって　いる\n"
+	.string "ポケモンが　でたって　きいたよ$"
 

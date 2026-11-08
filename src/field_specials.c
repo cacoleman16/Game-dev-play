@@ -176,10 +176,10 @@ static const u8 sText_BigGuy[] = _("Big guy");
 static const u8 sText_BigGirl[] = _("Big girl");
 static const u8 sText_Son[] = _("son");
 static const u8 sText_Daughter[] = _("daughter");
-static const u8 sText_99TimesPlus[] = _("99 times +");
-static const u8 sText_1MinutePlus[] = _("1 minute +");
-static const u8 sText_SpaceSeconds[] = _(" seconds");
-static const u8 sText_SpaceTimes[] = _(" time(s)");
+static const u8 sText_99TimesPlus[] = _("99 times +${JPN}{JPN}99かい いじょう");
+static const u8 sText_1MinutePlus[] = _("1 minute +${JPN}{JPN}1ぷん いじょう");
+static const u8 sText_SpaceSeconds[] = _(" seconds${JPN}{JPN}びょう");
+static const u8 sText_SpaceTimes[] = _(" time(s)${JPN}{JPN}かい");
 
 static const u8 sText_Wallace[] = _("WALLACE");
 static const u8 sText_Steven[] = _("STEVEN");
@@ -5323,7 +5323,7 @@ static void Task_ElevatorShake(u8 taskId)
     }
 }
 
-static const u8 sText_NowOn[] = _("Now on:");
+static const u8 sText_NowOn[] = _("Now on:${JPN}{JPN}いまの かい");
 
 void DrawElevatorCurrentFloorWindow(void)
 {

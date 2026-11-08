@@ -21,8 +21,14 @@ ThreeIsland_House5_Text_ImNotLostelle::
 	.string "BERRY FOREST, I think.\p"
 	.string "She picks BERRIES there for making\n"
 	.string "lunch.$"
+	.string "{JPN}{JPN}わたし？　わたしは　ユウコじゃ　ないよ。\p"
+	.string "ユウコなら　たぶん　きのみのもりに　いったと\n"
+	.string "おもう。\p"
+	.string "おべんとうを　つくる　ための　きのみを　あそこで\n"
+	.string "とってるの。$"
 
 ThreeIsland_House5_Text_IllGoPlayWithLostelle::
 	.string "I think I'll go play with LOSTELLE\n"
 	.string "today.$"
+	.string "{JPN}{JPN}きょうは　ユウコと　あそぼうかな。$"
 

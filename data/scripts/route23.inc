@@ -216,14 +216,21 @@ Text_OnlySkilledTrainersAllowedThrough::
 	.string "allowed through.\p"
 	.string "You don't have the {STR_VAR_1}\n"
 	.string "yet!$"
+	.string "{JPN}{JPN}ここを　とおれるのは　ほんとうに　つよい\n"
+	.string "トレーナー　だけだ！\p"
+	.string "きみは　まだ　{STR_VAR_1}を　もって\n"
+	.string "いない！$"
 
 Text_CantLetYouPass::
 	.string "Rules are rules.\n"
 	.string "I can't let you pass.$"
+	.string "{JPN}{JPN}きまりは　きまりだ　とおす　わけには　いかない$"
 
 Text_OhThatsBadgeGoRightAhead::
 	.string "Oh! That is the {STR_VAR_1}!\n"
 	.string "Go right ahead.$"
+	.string "{JPN}{JPN}おっ！　それは　{STR_VAR_1}！　どうぞ\n"
+	.string "おとおり　ください$"
 
 Text_OnlyPassWithBadgeDontHaveYet::
 	.string "You can pass here only if you have\n"
@@ -232,6 +239,12 @@ Text_OnlyPassWithBadgeDontHaveYet::
 	.string "yet.\p"
 	.string "You have to have it to get to\n"
 	.string "the POKéMON LEAGUE.$"
+	.string "{JPN}{JPN}ここは　{STR_VAR_1}を　もって　いないと\n"
+	.string "とおれない\p"
+	.string "きみは　まだ　{STR_VAR_1}を　もって\n"
+	.string "いないね\p"
+	.string "ポケモンリーグに　いくには　それが　ひつよう\n"
+	.string "なんだ$"
 
 Text_OnlyPassWithBadgeOhGoAhead::
 	.string "You can pass here only if you have\n"
@@ -239,4 +252,9 @@ Text_OnlyPassWithBadgeOhGoAhead::
 	.string "Oh! That is the {STR_VAR_1}!{PAUSE_MUSIC}{PLAY_BGM}{MUS_LEVEL_UP}{PAUSE 0x60}{RESUME_MUSIC}\p"
 	.string "Okay, then.\n"
 	.string "Please, go right ahead.$"
+	.string "{JPN}{JPN}ここは　{STR_VAR_1}を　もって　いないと\n"
+	.string "とおれない\p"
+	.string "おっ！　それは\n"
+	.string "{STR_VAR_1}！{PAUSE_MUSIC}{PLAY_BGM}{MUS_LEVEL_UP}{PAUSE 0x60}{RESUME_MUSIC}\p"
+	.string "よし　それでは　どうぞ　おとおり　ください$"
 

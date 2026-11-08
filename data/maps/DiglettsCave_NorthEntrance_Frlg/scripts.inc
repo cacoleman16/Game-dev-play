@@ -10,4 +10,8 @@ DiglettsCave_NorthEntrance_RockTunnelPitchBlack::
 	.string "pitch-black and scary in there.\p"
 	.string "If I could get a POKéMON to use\n"
 	.string "FLASH and light it up…$"
+	.string "{JPN}{JPN}イワヤマトンネルに　はいって　みたけど　なかは\n"
+	.string "まっくらで　こわかった\p"
+	.string "ポケモンに　フラッシュを　つかわせて　あかるく\n"
+	.string "できたら　なあ‥$"
 

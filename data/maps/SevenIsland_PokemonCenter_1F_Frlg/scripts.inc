@@ -32,6 +32,10 @@ SevenIsland_PokemonCenter_1F_Text_EventsDependingOnConnections::
 	.string "What are those connections?\p"
 	.string "They are for you to discover on\n"
 	.string "your own.$"
+	.string "{JPN}{JPN}この　しまでは　つながりに　よって　いろんな\n"
+	.string "できごとが　おこるんだ。\p"
+	.string "つながりって　なにかって？\p"
+	.string "それは　じぶんで　みつけて　ごらん。$"
 
 SevenIsland_PokemonCenter_1F_Text_DidYouRideSeagallopHere::
 	.string "Did you ride a SEAGALLOP ferry\n"
@@ -40,8 +44,14 @@ SevenIsland_PokemonCenter_1F_Text_DidYouRideSeagallopHere::
 	.string "high-speed ships.\p"
 	.string "I don't know where they all go,\n"
 	.string "though.$"
+	.string "{JPN}{JPN}シーギャロップごうに　のって　きたの？\p"
+	.string "あの　こうそくせんは　すくなくとも　10せき\n"
+	.string "いじょう　あるんだって。\p"
+	.string "どこに　いくのか　ぜんぶは　しらない　けどね。$"
 
 SevenIsland_PokemonCenter_1F_Text_CheckOutTrainerTower::
 	.string "If you're confident, you should\n"
 	.string "check out TRAINER TOWER.$"
+	.string "{JPN}{JPN}うでに　じしんが　あるなら　トレーナータワーに\n"
+	.string "いって　みると　いいよ。$"
 

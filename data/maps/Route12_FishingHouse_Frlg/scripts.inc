@@ -103,15 +103,24 @@ Route12_FishingHouse_Text_DoYouLikeToFish::
 	.string "I simply looove fishing!\n"
 	.string "I can't bear to go without.\p"
 	.string "Tell me, do you like to fish?$"
+	.string "{JPN}{JPN}わたしは　つりおやじの　おとうと　です。\p"
+	.string "つりが　だいだいだーいすき！　つりなしでは\n"
+	.string "いきられない！\p"
+	.string "ところで　きみは　つりが　すきかね？$"
 
 Route12_FishingHouse_Text_TakeThisAndFish::
 	.string "Grand! I like your style.\n"
 	.string "I think we can be friends.\p"
 	.string "Take this and fish, young friend!$"
+	.string "{JPN}{JPN}すばらしい！　きにいったよ。　きみとは　なかよく\n"
+	.string "なれそうだ。\p"
+	.string "これで　つりを　したまえ　わかき　ともよ！$"
 
 Route12_FishingHouse_Text_ReceivedSuperRod::
 	.string "{PLAYER} received a SUPER ROD from\n"
 	.string "the FISHING GURU's brother.$"
+	.string "{JPN}{JPN}{PLAYER}は　つりおやじの　おとうとから\n"
+	.string "すごいつりざおを　もらった！$"
 
 Route12_FishingHouse_Text_IfYouCatchBigMagikarpShowMe::
 	.string "Fishing is a way of life!\n"
@@ -123,10 +132,20 @@ Route12_FishingHouse_Text_IfYouCatchBigMagikarpShowMe::
 	.string "with that ROD, I want to see it.\p"
 	.string "As much as I love to fish, I also\n"
 	.string "love seeing gigantic MAGIKARP.$"
+	.string "{JPN}{JPN}つりは　じんせい　そのもの！　さいこうの　しの\n"
+	.string "ような　ものだ。\p"
+	.string "うみでも　かわでも　でかけて　いって　おおものを\n"
+	.string "つりあげたまえ。\p"
+	.string "そこで　ひとつ　たのみが　ある。\p"
+	.string "その　つりざおで　おおきな　コイキングを\n"
+	.string "つったら　ぜひ　みせて　ほしいのだ。\p"
+	.string "わたしは　つりも　すきだが　きょだいな\n"
+	.string "コイキングを　みるのも　だいすき　なのだ。$"
 
 Route12_FishingHouse_Text_OhThatsDisappointing::
 	.string "Oh…\n"
 	.string "That's so disappointing…$"
+	.string "{JPN}{JPN}そうか‥　ざんねん　だなあ‥$"
 
 Route12_FishingHouse_Text_TryFishingBringMeMagikarp::
 	.string "Hello there, {PLAYER}!\n"
@@ -137,11 +156,20 @@ Route12_FishingHouse_Text_TryFishingBringMeMagikarp::
 	.string "different places.\p"
 	.string "Oh, and don't forget to bring me\n"
 	.string "gigantic MAGIKARP.$"
+	.string "{JPN}{JPN}やあ　{PLAYER}！　つりは　してるかね？\p"
+	.string "すごいつりざおで　いろんな　みずべで　つりを\n"
+	.string "してごらん。\p"
+	.string "ばしょに　よって　ちがう　ポケモンが　つれるぞ。\p"
+	.string "おっと　きょだいな　コイキングを　もってくるのも\n"
+	.string "わすれずにな。$"
 
 Route12_FishingHouse_Text_OhMagikarpAllowMeToSee::
 	.string "Oh? {PLAYER}?\n"
 	.string "Why, if it isn't a MAGIKARP!\p"
 	.string "Allow me to see it, quick!$"
+	.string "{JPN}{JPN}おや？　{PLAYER}？　なんと　コイキング\n"
+	.string "じゃないか！\p"
+	.string "はやく　みせて　おくれ！$"
 
 Route12_FishingHouse_Text_WhoaXSizeTakeThis::
 	.string "… … …Whoa!\n"
@@ -150,38 +178,60 @@ Route12_FishingHouse_Text_WhoaXSizeTakeThis::
 	.string "the fine, poetic aspects of fishing!\p"
 	.string "You must take this.\n"
 	.string "I insist!$"
+	.string "{JPN}{JPN}‥　‥　‥おおっ！　{STR_VAR_2}！\p"
+	.string "きみは　つりの　おくぶかい　みりょくを　よく\n"
+	.string "わかって　いるね！\p"
+	.string "これを　うけとって　くれ。　えんりょは\n"
+	.string "いらんよ！$"
 
 Route12_FishingHouse_Text_LookForwardToGreaterRecords::
 	.string "I'll look forward to seeing greater\n"
 	.string "records from you!$"
+	.string "{JPN}{JPN}もっと　すごい　きろくを　たのしみに\n"
+	.string "しているよ！$"
 
 Route12_FishingHouse_Text_HuhXSizeSameSizeAsLast::
 	.string "Huh?\n"
 	.string "{STR_VAR_2}?\p"
 	.string "This is the same size as the one\n"
 	.string "I saw before.$"
+	.string "{JPN}{JPN}おや？　{STR_VAR_2}？\p"
+	.string "まえに　みたのと　おなじ　おおきさ　だね。$"
 
 Route12_FishingHouse_Text_HmmXSizeDoesntMeasureUp::
 	.string "Hmm…\n"
 	.string "This one is {STR_VAR_2} long.\p"
 	.string "It doesn't measure up to the\n"
 	.string "{STR_VAR_3} one you brought before.$"
+	.string "{JPN}{JPN}うーん‥　これは　{STR_VAR_2}か。\p"
+	.string "まえに　もってきた　{STR_VAR_3}の\n"
+	.string "コイキングには　かなわないな。$"
 
 Route12_FishingHouse_Text_DoesntLookLikeMagikarp::
 	.string "Uh… That doesn't look much like\n"
 	.string "a MAGIKARP.$"
+	.string "{JPN}{JPN}うーん‥　それは　コイキングには　みえないなあ。$"
 
 Route12_FishingHouse_Text_NoRoomForGift::
 	.string "Oh, no!\p"
 	.string "I had a gift for you, but you have\n"
 	.string "no room for it.$"
+	.string "{JPN}{JPN}おや　こまった！\p"
+	.string "プレゼントが　あるのに　きみの　にもつが\n"
+	.string "いっぱいだ。$"
 
 Route12_FishingHouse_Text_MostGiganticMagikarpXSize::
 	.string "The most gigantic MAGIKARP\n"
 	.string "I have ever witnessed…\p"
 	.string "{STR_VAR_3}!$"
+	.string "{JPN}{JPN}わたしが　これまで　みた　なかで　いちばん\n"
+	.string "おおきな　コイキングは‥\p"
+	.string "{STR_VAR_3}！$"
 
 Route12_FishingHouse_Text_BlankChartOfSomeSort::
 	.string "It's a blank chart of some sort.\p"
 	.string "It has spaces for writing in\n"
 	.string "records of some kind.$"
+	.string "{JPN}{JPN}なにかの　ひょうの　ようだ。　まだ　なにも\n"
+	.string "かかれて　いない。\p"
+	.string "なにかの　きろくを　かきこむ　らんが　ある。$"

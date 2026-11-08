@@ -1,0 +1,6 @@
+{
+ "PokemonLeague_LoreleisRoom_Text_Intro": "ポケモンリーグへ　ようこそ。\\pわたしは　してんのうの　カンナ。\\pこおりポケモンを　つかわせたら　わたしの　みぎに　でる　ものは　いないわ。\\pこおりの　わざは　きょうりょくよ。\\pこおりづけに　なった　ポケモンは　わたしの　おもうがまま。\\pふふふ！　じゅんびは　いい？{PLAY_BGM}{MUS_RG_ENCOUNTER_GYM_LEADER}",
+ "PokemonLeague_LoreleisRoom_Text_RematchIntro": "ポケモンリーグへ　ようこそ。\\pしてんのうの　カンナ　ふたたび　もどって　きたわ！\\pわかって　いるわね。　こおりポケモンを　つかわせたら　わたしの　みぎに　でる　ものは　いないわ。\\pこおりの　わざは　きょうりょくよ。\\pこおりづけに　なった　ポケモンは　わたしの　おもうがまま。\\pふふふ！　じゅんびは　いい？{PLAY_BGM}{MUS_RG_ENCOUNTER_GYM_LEADER}",
+ "PokemonLeague_LoreleisRoom_Text_Defeat": "‥こんな　はずでは！",
+ "PokemonLeague_LoreleisRoom_Text_PostBattle": "おもって　いたより　やるわね。　さきへ　すすみなさい。\\pでも　あなたが　あじわったのは　ポケモンリーグの　ちからの　ほんの　いちぶ　よ。"
+}

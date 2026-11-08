@@ -130,10 +130,19 @@ RocketHideout_B4F_Text_GiovanniIntro::
 	.string "I am the leader, GIOVANNI!\p"
 	.string "For your insolence, you will feel a\n"
 	.string "world of pain!$"
+	.string "{JPN}{JPN}ほう！　よくぞ　ここまで　きたものだ。\p"
+	.string "ロケットだんは　せかいじゅうの　ポケモンを\n"
+	.string "つかまえて　いる。\p"
+	.string "ポケモンは　われわれの　あくじを　ささえる\n"
+	.string "だいじな　どうぐ　なのだ。\p"
+	.string "わたしが　ボスの　サカキだ！\p"
+	.string "なまいきな　こどもには　いたい　めに　あって\n"
+	.string "もらおう！$"
 
 RocketHideout_B4F_Text_GiovanniDefeat::
 	.string "WHAT!\n"
 	.string "This can't be!$"
+	.string "{JPN}{JPN}なにっ！　そんな　ばかな！$"
 
 RocketHideout_B4F_Text_GiovanniPostBattle::
 	.string "I see that you raise POKéMON with\n"
@@ -142,37 +151,56 @@ RocketHideout_B4F_Text_GiovanniPostBattle::
 	.string "understand what I hope to achieve.\p"
 	.string "I shall step aside this time!\p"
 	.string "I hope we meet again…$"
+	.string "{JPN}{JPN}きみは　ポケモンを　じつに　だいじに　そだてて\n"
+	.string "いるな。\p"
+	.string "きみのような　こどもには　わたしの　こころざしは\n"
+	.string "わかるまい。\p"
+	.string "ここは　ひとまず　ひいて　おこう！\p"
+	.string "また　あおう‥$"
 
 RocketHideout_B4F_Text_Grunt2Intro::
 	.string "I know you!\n"
 	.string "You ruined our plans at MT. MOON!$"
+	.string "{JPN}{JPN}おまえ　しってるぞ！　おつきみやまで　おれたちの\n"
+	.string "じゃまを　した　やつだな！$"
 
 RocketHideout_B4F_Text_Grunt2Defeat::
 	.string "Burned again!$"
+	.string "{JPN}{JPN}また　やられた！$"
 
 RocketHideout_B4F_Text_Grunt2PostBattle::
 	.string "Do you have something against TEAM\n"
 	.string "ROCKET?$"
+	.string "{JPN}{JPN}おまえ　ロケットだんに　なにか　うらみでも\n"
+	.string "あるのか？$"
 
 RocketHideout_B4F_Text_Grunt3Intro::
 	.string "How can you not see the beauty of\n"
 	.string "our evil?$"
+	.string "{JPN}{JPN}われわれの　あくの　うつくしさが\n"
+	.string "わからないのか？$"
 
 RocketHideout_B4F_Text_Grunt3Defeat::
 	.string "Ayaya!$"
+	.string "{JPN}{JPN}あややっ！$"
 
 RocketHideout_B4F_Text_Grunt3PostBattle::
 	.string "BOSS!\n"
 	.string "I'm sorry I failed you!$"
+	.string "{JPN}{JPN}ボス！　もうしわけ　ありません！$"
 
 RocketHideout_B4F_Text_Grunt1Intro::
 	.string "The elevator doesn't work?\n"
 	.string "Who has the LIFT KEY?$"
+	.string "{JPN}{JPN}エレベーターが　うごかない？　エレベータのキーは\n"
+	.string "だれが　もってるんだ？$"
 
 RocketHideout_B4F_Text_Grunt1Defeat::
 	.string "No!$"
+	.string "{JPN}{JPN}うそだ！$"
 
 RocketHideout_B4F_Text_Grunt1PostBattle::
 	.string "Oh, no!\n"
 	.string "I dropped the LIFT KEY!$"
+	.string "{JPN}{JPN}しまった！　エレベータのキーを　おとしちまった！$"
 

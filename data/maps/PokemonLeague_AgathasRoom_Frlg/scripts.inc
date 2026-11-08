@@ -102,6 +102,19 @@ PokemonLeague_AgathasRoom_Text_Intro::
 	.string "POKéMON are for battling!\p"
 	.string "{PLAYER}! I'll show you how a real\n"
 	.string "TRAINER battles!{PLAY_BGM}{MUS_RG_ENCOUNTER_GYM_LEADER}$"
+	.string "{JPN}{JPN}わたしは　してんのうの　キクコ！\p"
+	.string "オーキドが　あんたに　ずいぶん　めを　かけて\n"
+	.string "いるそうだね。\p"
+	.string "あの　じじいも　むかしは　つよくて　いいおとこ\n"
+	.string "だったんだよ。\p"
+	.string "でも　それも　なんじゅうねんも　まえの　はなし。\n"
+	.string "いまじゃ　みるかげも　ないね。\p"
+	.string "いまは　ずかんなんかに　かまけて　ばかり。\p"
+	.string "まちがってるよ！　ポケモンは　たたかわせる\n"
+	.string "ものさ！\p"
+	.string "{PLAYER}！　ほんものの　トレーナーの\n"
+	.string "たたかいを　みせて\l"
+	.string "あげるよ！{PLAY_BGM}{MUS_RG_ENCOUNTER_GYM_LEADER}$"
 
 PokemonLeague_AgathasRoom_Text_RematchIntro::
 	.string "I am AGATHA of the ELITE FOUR.\p"
@@ -117,10 +130,23 @@ PokemonLeague_AgathasRoom_Text_RematchIntro::
 	.string "POKéMON are for battling!\p"
 	.string "{PLAYER}! I'll show you how a real\n"
 	.string "TRAINER battles!{PLAY_BGM}{MUS_RG_ENCOUNTER_GYM_LEADER}$"
+	.string "{JPN}{JPN}わたしは　してんのうの　キクコ！\p"
+	.string "あんたが　オーキドの　かわいがってる　こだね？\p"
+	.string "あの　じじいも　むかしは　つよくて　いいおとこ\n"
+	.string "だったんだよ。\p"
+	.string "でも　それも　なんじゅうねんも　まえの　はなし。\n"
+	.string "いまじゃ　みるかげも　ないね。\p"
+	.string "いまは　ずかんなんかに　かまけて　ばかり。\p"
+	.string "まちがってるよ！　ポケモンは　たたかわせる\n"
+	.string "ものさ！\p"
+	.string "{PLAYER}！　ほんものの　トレーナーの\n"
+	.string "たたかいを　みせて\l"
+	.string "あげるよ！{PLAY_BGM}{MUS_RG_ENCOUNTER_GYM_LEADER}$"
 
 PokemonLeague_AgathasRoom_Text_Defeat::
 	.string "Oh, my!\n"
 	.string "You're something special, child!$"
+	.string "{JPN}{JPN}おや　まあ！　あんた　たいした　こだね！$"
 
 PokemonLeague_AgathasRoom_Text_PostBattle::
 	.string "You win!\p"
@@ -128,4 +154,8 @@ PokemonLeague_AgathasRoom_Text_PostBattle::
 	.string "you now.\p"
 	.string "I have nothing else to say.\n"
 	.string "Run along now, child!$"
+	.string "{JPN}{JPN}あんたの　かちだよ！\p"
+	.string "オーキドが　あんたに　めを　かける　わけが\n"
+	.string "わかったよ。\p"
+	.string "もう　いう　ことは　ないね。　さあ　おいき！$"
 

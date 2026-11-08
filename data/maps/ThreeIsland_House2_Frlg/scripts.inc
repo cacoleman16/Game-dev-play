@@ -20,6 +20,10 @@ ThreeIsland_House2_Text_CantMakeThisSpoonBend::
 	.string "spoon bend with my mind.\p"
 	.string "Maybe I really don't have any\n"
 	.string "psychic powers.$"
+	.string "{JPN}{JPN}うーーーーん‥　くわぁーっ！\p"
+	.string "‥だめだ！　ねんりきで　スプーンが　まがらない。\p"
+	.string "やっぱり　ぼくには　ちょうのうりょくが\n"
+	.string "ないのかな。$"
 
 ThreeIsland_House2_Text_IAdmireSabrina::
 	.string "You know about a girl GYM LEADER\n"
@@ -29,4 +33,9 @@ ThreeIsland_House2_Text_IAdmireSabrina::
 	.string "I admire her, I really do.\p"
 	.string "I've heard that she's one cool\n"
 	.string "customer and beautiful, too.$"
+	.string "{JPN}{JPN}ヤマブキシティの　おんなの　ジムリーダーを\n"
+	.string "しってる？\p"
+	.string "エスパータイプの　ポケモンを　つかうんだよね？\p"
+	.string "ぼく　あこがれてるんだ　ほんとに。\p"
+	.string "クールで　しかも　きれいな　ひと　なんだって。$"
 
