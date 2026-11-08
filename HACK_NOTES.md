@@ -47,6 +47,11 @@ every CI run attaches the ROM: Actions → "Build ROM" → the run → Artifacts
 | Run indoors, from the start | ✅ on | `OW_RUNNING_INDOORS` (Gen 4+) + Running Shoes at new game |
 | Auto-run | ✅ new | **L** toggles auto-run; hold **B** to walk while it's on |
 | Turbo speed | ✅ new | Turbo ×2–×8 button in the web player; faster battle text; fast HP/EXP bars |
+| Skip through text | ✅ new | **Hold B** in any dialogue (after pressing it once in that text box) and the pages turn on their own, in the field and in battle; it stops at YES/NO and other choices. **OPTION → TEXT SPEED** is now **MID / FAST / MAX** (MAX prints each page at once); new games start on FAST |
+| Faster battles | ✅ new | No opening slide-in at the start of battles (`B_FAST_INTRO_NO_SLIDE`) |
+| Fast surf | ✅ new | Hold **B** (or turn on auto-run) while surfing to go at bike speed |
+| Less waiting | ✅ new | The location pop-up only shows when you enter a new area (`OW_HIDE_REPEAT_MAP_POPUP`); Pokémon Centers skip the Union Room check |
+| Fly between regions | ✅ new | On the **Fly** map, **L/R** switch between Kanto, the Sevii Islands and Hoenn (each once you've been there), so you can fly straight from Kanto to a Hoenn town and back |
 | HMs without HM slaves | ✅ new | Own the HM + have the badge, and any party member that *can learn* it can use it (party menu, Surf prompt, scripts). HM moves can also be forgotten. |
 | Solo evolutions | ✅ | Kadabra/Machoke/Graveler/Haunter (and later-gen plain trades) also evolve at **level 40**; Linking Cord works; King's Rock, Metal Coat, Up-Grade etc. are **used from the bag** |
 | Nature Mints | ✅ | sold at Celadon Dept. Store **5F** (vitamin clerk) |
@@ -102,6 +107,9 @@ every CI run attaches the ROM: Actions → "Build ROM" → the run → Artifacts
 | `include/constants/flags_frlg.h`, `vars.h`, `opponents.h` | Hoenn's own flags, vars and trainer IDs (rewritten by `dev_scripts/qol_hoenn_constants.py`) |
 | `src/qol_hoenn.c`, `include/qol_hoenn.h`, `src/event_data.c` | Hoenn flag/var storage (SaveBlock3), first-trip setup, badges from either region |
 | `data/scripts/qol_regions.inc` | S.S. TIDAL sailor (Vermilion), Littleroot shuttle driver, "sail to Kanto?" at Hoenn's ferry desks |
+| `src/region_map.c` | Fly map: L/R switch regions |
+| `src/text.c`, `src/scrcmd.c`, `src/option_menu.c` | hold B to fast-forward text; MID/FAST/MAX text speed |
+| `src/field_player_avatar.c` | fast surf |
 
 ## New flags and vars (FireRed/LeafGreen)
 
@@ -180,6 +188,8 @@ Anne's dock) runs the **S.S. TIDAL**. Show the **S.S. TICKET** to board.
   you've been there.
 - **Battle Frontier:** on the menu once you're the **Kanto Champion** (or
   Hoenn's). The first visit gives you the **Frontier Pass**.
+- **Flying:** once you've visited Hoenn towns, press **L/R** on the Fly map to
+  switch regions and fly there directly (HMs work with either region's badges).
 - **Back to Kanto:** the S.S. TIDAL desks in **Slateport**, **Lilycove** and
   the **Battle Frontier** ask "Would you like to go to VERMILION CITY?" first,
   and a **shuttle driver at the north end of Littleroot Town** drives you to
@@ -207,7 +217,7 @@ Pass and a **Battle Tower** challenge up to the first battle. The rest of
 Hoenn's story hasn't been played through.
 
 **Known gaps:** the trainer card shows Kanto's badges only; there's no PokéNav
-(Match Call) in the START menu; Fly's map is Kanto's; Hoenn's dialogue is
+(Match Call) in the START menu; Hoenn's dialogue is
 English even in Japanese mode (about 4,300 texts); contests, secret bases and
 Dive haven't been tested.
 
@@ -291,6 +301,5 @@ http://localhost:8000.
    strings that FireRed never shows are left in English.
 3. **Hard mode for more trainers** (rival fights, Giovanni's Rocket battles),
    and a randomizer option for gift Pokémon with matching dialogue.
-4. **Hoenn polish**: Hoenn badges on the trainer card, a Hoenn Fly map,
-   PokéNav, and translating Hoenn's ~4,300 texts into Japanese.
+4. **Hoenn polish**: Hoenn badges on the trainer card, PokéNav, and translating Hoenn's ~4,300 texts into Japanese.
 5. **More side quests**, e.g. around the Sevii Islands and the Trainer Tower.

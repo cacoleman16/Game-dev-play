@@ -69,6 +69,10 @@ struct MultiNameFlyDest
 };
 
 static EWRAM_DATA struct RegionMap *sRegionMap = NULL;
+// [QoL] Merged regions: the Fly map can show another region than the one the
+// player is in (R/L switch between Kanto, the Sevii Islands and Hoenn).
+static EWRAM_DATA bool8 sQoLViewOtherRegion = FALSE;
+static EWRAM_DATA u16 sQoLViewMapSec = 0;
 
 static EWRAM_DATA struct {
     void (*callback)(void);
@@ -116,6 +120,15 @@ static void SpriteCB_FlyDestIcon(struct Sprite *sprite);
 static void CB_FadeInFlyMap(void);
 static void CB_HandleFlyMapInput(void);
 static void CB_ExitFlyMap(void);
+static void CB_SwitchFlyMapRegion(void);
+static bool32 QoL_TrySwitchFlyMapRegion(s32 step);
+static bool32 QoL_CanSwitchFlyMapRegion(void);
+
+// [QoL] The map section whose region the region map shows.
+static u32 QoL_ViewMapSec(void)
+{
+    return sQoLViewOtherRegion ? sQoLViewMapSec : gMapHeader.regionMapSectionId;
+}
 
 static const u16 sRegionMapCursorPal[] = INCGFX_U16("graphics/pokenav/region_map/cursor.pal", ".gbapal");
 static const u32 sRegionMapCursorSmallGfxLZ[] = INCGFX_U32("graphics/pokenav/region_map/cursor_small.png", ".4bpp.smol");
@@ -604,7 +617,7 @@ static const struct WindowTemplate sFlyMapWindowTemplates[] =
         .bg = 0,
         .tilemapLeft = 1,
         .tilemapTop = 18,
-        .width = 14,
+        .width = 15, // [QoL] room for the L/R hint
         .height = 2,
         .paletteNum = 15,
         .baseBlock = 0x49
@@ -741,14 +754,14 @@ bool8 LoadRegionMapGfx(void)
     switch (sRegionMap->initStep)
     {
     case 0:
-        regionMapType = GetRegionMapType(gMapHeader.regionMapSectionId);
+        regionMapType = GetRegionMapType(QoL_ViewMapSec());
         if (sRegionMap->bgManaged)
             DecompressAndCopyTileDataToVram(sRegionMap->bgNum, gRegionMapInfos[regionMapType].regionMapGfx, 0, 0, 0);
         else
             DecompressDataWithHeaderVram(gRegionMapInfos[regionMapType].regionMapGfx, (u16 *)BG_CHAR_ADDR(2));
         break;
     case 1:
-        regionMapType = GetRegionMapType(gMapHeader.regionMapSectionId);
+        regionMapType = GetRegionMapType(QoL_ViewMapSec());
         if (sRegionMap->bgManaged)
         {
             if (!FreeTempTileDataBuffersIfPossible())
@@ -760,7 +773,7 @@ bool8 LoadRegionMapGfx(void)
         }
         break;
     case 2:
-        regionMapType = GetRegionMapType(gMapHeader.regionMapSectionId);
+        regionMapType = GetRegionMapType(QoL_ViewMapSec());
         if (!FreeTempTileDataBuffersIfPossible())
             LoadPalette(gRegionMapInfos[regionMapType].regionMapPalette, BG_PLTT_ID(7), 3 * PLTT_SIZE_4BPP);
         break;
@@ -1192,10 +1205,10 @@ static mapsec_u16_t GetMapSecIdAt(u16 x, u16 y)
     y -= MAPCURSOR_Y_MIN;
     x -= MAPCURSOR_X_MIN;
 
-    switch (GetCurrentRegion())
+    switch (GetRegionForSectionId(QoL_ViewMapSec()))
     {
     case REGION_KANTO:
-        switch (GetKantoSubregion(gMapHeader.regionMapSectionId))
+        switch (GetKantoSubregion(QoL_ViewMapSec()))
         {
         case KANTO_SUBREGION_SEVII123:
                 return sRegionMapSections_Sevii123[y][x];
@@ -1223,6 +1236,15 @@ static void InitMapBasedOnPlayerLocation(void)
     u16 dimensionScale;
     u16 xOnMap;
     struct WarpData *warp;
+
+    if (sQoLViewOtherRegion) // [QoL] Merged regions: viewing another region
+    {
+        sRegionMap->mapSecId = sQoLViewMapSec;
+        sRegionMap->playerIsInCave = FALSE;
+        sRegionMap->cursorPosX = gRegionMapEntries[sQoLViewMapSec].x + MAPCURSOR_X_MIN;
+        sRegionMap->cursorPosY = gRegionMapEntries[sQoLViewMapSec].y + MAPCURSOR_Y_MIN;
+        return;
+    }
 
     if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_SS_TIDAL_CORRIDOR)
         && (gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_SS_TIDAL_CORRIDOR)
@@ -1739,7 +1761,7 @@ void CreateRegionMapPlayerIcon(u16 tileTag, u16 paletteTag)
     struct SpritePalette palette = {sRegionMapPlayerIcon_BrendanPal, paletteTag};
     struct SpriteTemplate template = {tileTag, paletteTag, &sRegionMapPlayerIconOam, sRegionMapPlayerIconAnimTable, NULL, gDummySpriteAffineAnimTable, SpriteCallbackDummy};
 
-    if (IsEventIslandMapSecId(gMapHeader.regionMapSectionId))
+    if (IsEventIslandMapSecId(gMapHeader.regionMapSectionId) || sQoLViewOtherRegion)
     {
         sRegionMap->playerIconSprite = NULL;
         return;
@@ -2008,7 +2030,7 @@ void CB2_OpenFlyMap(void)
         LoadPalette(sRegionMapFramePal, BG_PLTT_ID(1), sizeof(sRegionMapFramePal));
         PutWindowTilemap(WIN_FLY_TO_WHERE);
         FillWindowPixelBuffer(WIN_FLY_TO_WHERE, PIXEL_FILL(0));
-        AddTextPrinterParameterized(WIN_FLY_TO_WHERE, FONT_NORMAL, gText_FlyToWhere, 0, 1, 0, NULL);
+        AddTextPrinterParameterized(WIN_FLY_TO_WHERE, FONT_NORMAL, QoL_CanSwitchFlyMapRegion() ? gText_QoL_FlyToWhereSwitch : gText_FlyToWhere, 0, 1, 0, NULL);
         ScheduleBgCopyTilemapToVram(0);
         gMain.state++;
         break;
@@ -2328,7 +2350,7 @@ static const struct FlyLocation sFlyLocations[] =
 
 static void CreateFlyDestIcons(void)
 {
-    enum RegionMapType regionMapType = GetRegionMapType(gMapHeader.regionMapSectionId);
+    enum RegionMapType regionMapType = GetRegionMapType(QoL_ViewMapSec());
     u32 i;
     u16 x;
     u16 y;
@@ -2443,8 +2465,14 @@ static void CB_HandleFlyMapInput(void)
 {
     if (sFlyMap->state == 0)
     {
+        // [QoL] Merged regions: L/R show the previous/next region you've visited.
+        if (JOY_NEW(L_BUTTON) && QoL_TrySwitchFlyMapRegion(-1))
+            return;
         switch (DoRegionMapInputCallback())
         {
+        case MAP_INPUT_R_BUTTON:
+            QoL_TrySwitchFlyMapRegion(1);
+            break;
         case MAP_INPUT_NONE:
         case MAP_INPUT_MOVE_START:
         case MAP_INPUT_MOVE_CONT:
@@ -2494,6 +2522,104 @@ static void CB_ExitFlyMap(void)
             }
             TRY_FREE_AND_SET_NULL(sFlyMap);
             FreeAllWindowBuffers();
+            sQoLViewOtherRegion = FALSE;
+        }
+        break;
+    }
+}
+
+// [QoL] Merged regions: switching the Fly map between regions.
+// Regions in L/R order, with the map section the cursor starts on if none of
+// the region's fly destinations is unlocked yet.
+static const u16 sQoLFlyRegions[][2] =
+{
+    {REGION_MAP_KANTO,    MAPSEC_PALLET_TOWN},
+    {REGION_MAP_SEVII123, MAPSEC_ONE_ISLAND},
+    {REGION_MAP_SEVII45,  MAPSEC_FOUR_ISLAND},
+    {REGION_MAP_SEVII67,  MAPSEC_SIX_ISLAND},
+    {REGION_MAP_HOENN,    MAPSEC_LITTLEROOT_TOWN},
+};
+
+// The first unlocked fly destination of a region, or MAPSEC_NONE.
+static u32 QoL_FirstFlyDestination(enum RegionMapType regionMapType)
+{
+    u32 i;
+    for (i = 0; i < ARRAY_COUNT(sFlyLocations); i++)
+    {
+        if (sFlyLocations[i].regionMapType == regionMapType && FlagGet(sFlyLocations[i].flag))
+            return sFlyLocations[i].mapsec;
+    }
+    return MAPSEC_NONE;
+}
+
+static bool32 QoL_FlyRegionAvailable(u32 index)
+{
+    if (GetRegionMapType(gMapHeader.regionMapSectionId) == sQoLFlyRegions[index][0])
+        return TRUE; // the region the player is in
+    return QoL_FirstFlyDestination(sQoLFlyRegions[index][0]) != MAPSEC_NONE;
+}
+
+static bool32 QoL_CanSwitchFlyMapRegion(void)
+{
+    u32 i, count = 0;
+    for (i = 0; i < ARRAY_COUNT(sQoLFlyRegions); i++)
+        count += QoL_FlyRegionAvailable(i);
+    return count > 1;
+}
+
+static bool32 QoL_TrySwitchFlyMapRegion(s32 step)
+{
+    u32 i, current = 0, next;
+    enum RegionMapType viewed = GetRegionMapType(QoL_ViewMapSec());
+
+    for (i = 0; i < ARRAY_COUNT(sQoLFlyRegions); i++)
+    {
+        if (sQoLFlyRegions[i][0] == viewed)
+            current = i;
+    }
+    next = current;
+    for (i = 0; i < ARRAY_COUNT(sQoLFlyRegions); i++)
+    {
+        next = (next + ARRAY_COUNT(sQoLFlyRegions) + step) % ARRAY_COUNT(sQoLFlyRegions);
+        if (QoL_FlyRegionAvailable(next))
+            break;
+    }
+    if (next == current)
+        return FALSE;
+
+    if (sQoLFlyRegions[next][0] == GetRegionMapType(gMapHeader.regionMapSectionId))
+    {
+        sQoLViewOtherRegion = FALSE; // back to where the player is
+    }
+    else
+    {
+        sQoLViewOtherRegion = TRUE;
+        sQoLViewMapSec = QoL_FirstFlyDestination(sQoLFlyRegions[next][0]);
+        if (sQoLViewMapSec == MAPSEC_NONE)
+            sQoLViewMapSec = sQoLFlyRegions[next][1];
+    }
+    m4aSongNumStart(SE_RG_CARD_OPEN);
+    SetFlyMapCallback(CB_SwitchFlyMapRegion);
+    return TRUE;
+}
+
+// Fade out and open the Fly map again on the new region.
+static void CB_SwitchFlyMapRegion(void)
+{
+    switch (sFlyMap->state)
+    {
+    case 0:
+        BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
+        sFlyMap->state++;
+        break;
+    case 1:
+        if (!UpdatePaletteFade())
+        {
+            FreeRegionMapIconResources();
+            TRY_FREE_AND_SET_NULL(sFlyMap);
+            FreeAllWindowBuffers();
+            gMain.state = 0;
+            SetMainCallback2(CB2_OpenFlyMap);
         }
         break;
     }

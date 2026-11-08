@@ -208,6 +208,8 @@ void TextPrinterDrawDownArrow(struct TextPrinter *textPrinter);
 void TextPrinterClearDownArrow(struct TextPrinter *textPrinter);
 bool32 TextPrinterWaitAutoMode(struct TextPrinter *textPrinter);
 bool32 TextPrinterWaitWithDownArrow(struct TextPrinter *textPrinter);
+void QoL_ArmTextSkip(void);    // [QoL] hold B to fast-forward dialogue
+bool32 QoL_TextSkipHeld(void);
 bool32 TextPrinterWait(struct TextPrinter *textPrinter);
 void DrawDownArrow(u8 windowId, u16 x, u16 y, u8 bgColor, bool32 drawArrow, u8 *counter, u8 *yCoordIndex);
 s32 GetGlyphWidth(u16 glyphId, bool32 isJapanese, u8 fontId);

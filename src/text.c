@@ -1254,12 +1254,50 @@ bool32 TextPrinterWaitAutoMode(struct TextPrinter *textPrinter)
     }
 }
 
+// [QoL] Hold B to fast-forward dialogue: once B has been pressed in a text box,
+// keeping it held turns the pages by itself (so running into a cutscene while
+// holding B doesn't skip it).
+#define QOL_TEXT_SKIP_DELAY 8 // frames each page stays up while B is held
+static EWRAM_DATA bool8 sQoLTextSkipArmed = FALSE;
+static EWRAM_DATA u8 sQoLTextSkipTimer = 0;
+
+void QoL_ArmTextSkip(void)
+{
+    sQoLTextSkipArmed = TRUE;
+    sQoLTextSkipTimer = 0;
+}
+
+bool32 QoL_TextSkipHeld(void)
+{
+    if (!JOY_HELD(B_BUTTON))
+    {
+        sQoLTextSkipArmed = FALSE;
+        sQoLTextSkipTimer = 0;
+        return FALSE;
+    }
+    if (JOY_NEW(B_BUTTON))
+    {
+        QoL_ArmTextSkip();
+        return FALSE;
+    }
+    if (!sQoLTextSkipArmed || ++sQoLTextSkipTimer < QOL_TEXT_SKIP_DELAY)
+        return FALSE;
+    sQoLTextSkipTimer = 0;
+    return TRUE;
+}
+
 void SetResultWithButtonPress(bool32 *result)
 {
     if (JOY_NEW(A_BUTTON | B_BUTTON))
     {
         *result = TRUE;
         PlaySE(SE_SELECT);
+        if (JOY_NEW(B_BUTTON))
+            QoL_ArmTextSkip();
+    }
+    else if (QoL_TextSkipHeld())
+    {
+        *result = TRUE;
     }
 }
 
@@ -1349,6 +1387,8 @@ static u16 RenderText(struct TextPrinter *textPrinter)
             {
                 textPrinter->hasPrintBeenSpedUp = TRUE;
                 textPrinter->delayCounter = 0;
+                if (JOY_NEW(B_BUTTON))
+                    QoL_ArmTextSkip(); // [QoL] hold B to fast-forward
             }
             return RENDER_UPDATE;
         }

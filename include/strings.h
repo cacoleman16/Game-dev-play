@@ -96,6 +96,7 @@ extern const u8 gText_Ferry[];
 extern const u8 gText_SecretBase[];
 extern const u8 gText_Hideout[];
 extern const u8 gText_FlyToWhere[];
+extern const u8 gText_QoL_FlyToWhereSwitch[];
 extern const u8 gText_PokemonLeague[];
 extern const u8 gText_PokemonCenter[];
 extern const u8 gText_ApostropheSBase[];

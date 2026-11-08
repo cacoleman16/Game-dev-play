@@ -911,6 +911,11 @@ static void PlayerNotOnBikeMoving(enum Direction direction, u16 heldKeys)
             gPlayerAvatar.creeping = TRUE;
             PlayerWalkSlow(direction);
         }
+        else if (IsRunButtonActive(heldKeys) && FlagGet(FLAG_SYS_B_DASH))
+        {
+            // [QoL] Fast surf: hold B (or turn on auto-run) to surf at bike speed
+            PlayerWalkFaster(direction);
+        }
         else
         {
             // speed 2 is fast, same speed as running

@@ -64,6 +64,7 @@ const u8 gText_BirchInTrouble[] = _("PROF. BIRCH is in trouble!\nRelease a POKé
 const u8 gText_ConfirmStarterChoice[] = _("Do you choose this POKéMON?${JPN}{JPN}この ポケモンに しますか？");
 const u8 gText_Pokemon4[] = _("POKéMON${JPN}{JPN}ポケモン"); // Unused
 const u8 gText_FlyToWhere[] = _("FLY to where?${JPN}{JPN}どこへ とびますか？");
+const u8 gText_QoL_FlyToWhereSwitch[] = _("Where to? {L_BUTTON}{R_BUTTON}MAP${JPN}{JPN}どこへ？ {L_BUTTON}{R_BUTTON}ちほう"); // [QoL] Merged regions
 const u8 gMenuText_Use[] = _("USE${JPN}{JPN}つかう");
 const u8 gMenuText_Toss[] = _("TOSS${JPN}{JPN}すてる");
 const u8 gMenuText_Register[] = _("REGISTER${JPN}{JPN}とうろく");

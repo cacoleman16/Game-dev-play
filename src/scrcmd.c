@@ -1754,8 +1754,11 @@ static bool8 WaitForAorBPress(void)
     if (JOY_NEW(A_BUTTON))
         return TRUE;
     if (JOY_NEW(B_BUTTON))
+    {
+        QoL_ArmTextSkip(); // [QoL] hold B to fast-forward
         return TRUE;
-    return FALSE;
+    }
+    return QoL_TextSkipHeld();
 }
 
 bool8 ScrCmd_waitbuttonpress(struct ScriptContext *ctx)
