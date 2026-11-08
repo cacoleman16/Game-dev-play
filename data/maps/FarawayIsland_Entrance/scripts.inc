@@ -19,6 +19,7 @@ FarawayIsland_Entrance_EventScript_ClearWeather::
 FarawayIsland_Entrance_EventScript_Sailor::
 	lock
 	faceplayer
+	call QoL_EventScript_FerryOfferKanto @ [QoL] Merged regions
 	msgbox FarawayIsland_Entrance_Text_SailorReturn, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, FarawayIsland_Entrance_EventScript_AsYouLike
 	msgbox EventTicket_Text_SailHome, MSGBOX_DEFAULT
@@ -40,6 +41,6 @@ FarawayIsland_Entrance_EventScript_AsYouLike::
 	end
 
 FarawayIsland_Entrance_EventScript_Sign::
-	msgbox FarawayIsland_Entrance_Text_Sign, MSGBOX_SIGN
+	msgbox QoL_Text_StarfallIsleSign, MSGBOX_SIGN @ [QoL] STARFALL ISLE
 	end
 

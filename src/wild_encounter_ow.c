@@ -1,4 +1,5 @@
 #include "global.h"
+#include "qol_hoenn.h"
 #include "wild_encounter_ow.h"
 #include "battle_setup.h"
 #include "battle_main.h"
@@ -239,6 +240,7 @@ void UpdateOverworldWildEncounter(void)
         return;
 
     if (!WE_OW_ENCOUNTERS
+     || !QoL_VisibleWildActive() // [QoL] only where visible wild Pokémon are on
      || FlagGet(WE_OWE_FLAG_DISABLED)
      || FlagGet(WE_FLAG_NO_ENCOUNTER)
      || FlagGet(DN_FLAG_SEARCHING)

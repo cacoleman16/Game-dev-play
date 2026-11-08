@@ -76,6 +76,18 @@ void QoL_HoennSetup(void)
 #endif
 }
 
+bool32 QoL_VisibleWildActive(void)
+{
+#if IS_FRLG
+    if (FlagGet(FLAG_QOL_VISIBLE_WILD))
+        return TRUE;
+    return gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_FARAWAY_ISLAND_INTERIOR)
+        && gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_FARAWAY_ISLAND_INTERIOR);
+#else
+    return FALSE;
+#endif
+}
+
 // Hoenn maps are in the Emerald map groups, which come before the FRLG ones.
 bool32 QoL_IsHoennMap(void)
 {

@@ -119,6 +119,29 @@ This hack's own features:
 | MEGA STONE / Z-CRYSTAL | メガストーン / Zクリスタル |
 | MEGA RING / DYNAMAX BAND / TERA ORB | メガリング / ダイマックスバンド / テラスタルオーブ |
 
+The Starfall story (`data/scripts/qol_starfall.inc`, see `docs/STARFALL.md`):
+
+| English | Japanese |
+| --- | --- |
+| STARFALL (the event, and the title) | スターフォール |
+| STAR SHARD / shard | スターシャード / かけら (not ほしのかけら: that is STAR PIECE) |
+| meteor / meteorite | ながれぼし / いんせき |
+| TEAM NOVA | ノバだん (ヴ is not in the font; it would print as ブ) |
+| VEGA / ALTAIR / DENEB | ベガ / アルタイル / デネブ (grunts call her ベガさま) |
+| Nova leader / admin / grunt | ボス / かんぶ / したっぱ |
+| TEAM MAGMA / TEAM AQUA / MAXIE / ARCHIE | マグマだん / アクアだん / マツブサ / アオギリ |
+| STEVEN (STONE) | ダイゴ (ツワブキ　ダイゴ); Oak calls him ダイゴくん |
+| PROF. BIRCH / PROF. COZMO / NORMAN | オダマキはかせ / ソライシはかせ / センリ |
+| S.S. TIDAL | タイドリップごう |
+| LITTLEROOT / PETALBURG / MOSSDEEP | ミシロタウン / トウカシティ / トクサネシティ |
+| METEOR FALLS / MT. CHIMNEY / SPACE CENTER | りゅうせいのたき / えんとつやま / (トクサネ)うちゅうセンター |
+| MOON STONE / MASTER BALL | つきのいし / マスターボール |
+
+Voices: ALTAIR rough (おれ, ～だぜ/～さ); DENEB playful (うふふ, ～わ/～よ,
+calls the player ダーリン); VEGA an heiress (わたくし, ～なさい/～わ).
+Speakers are written `ナマエ『...』` like the Oak's Lab text; letters and
+notes use `「...」`.
+
 Pokémon, moves, items and abilities use their official Japanese names; the game
 already has those tables (`src/data/text/qol_ja_names.h`), so in running text
 just write the official name.

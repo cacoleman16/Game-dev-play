@@ -39,6 +39,8 @@ PalletTown_PlayersHouse_2F_EventScript_NESMenu::
 	call_if_unset FLAG_QOL_LEVEL_CAPS, PalletTown_PlayersHouse_2F_EventScript_PushCapsOff
 	call_if_unset FLAG_QOL_FOLLOWERS_OFF, PalletTown_PlayersHouse_2F_EventScript_PushFollowersOn
 	call_if_set FLAG_QOL_FOLLOWERS_OFF, PalletTown_PlayersHouse_2F_EventScript_PushFollowersOff
+	call_if_set FLAG_QOL_VISIBLE_WILD, PalletTown_PlayersHouse_2F_EventScript_PushVisibleWildOn
+	call_if_unset FLAG_QOL_VISIBLE_WILD, PalletTown_PlayersHouse_2F_EventScript_PushVisibleWildOff
 	dynmultipush PalletTown_PlayersHouse_2F_Text_Done, 9
 	dynmultistack 0, 0, FALSE, 6, FALSE, 0, DYN_MULTICHOICE_CB_NONE
 	switch VAR_RESULT
@@ -47,6 +49,7 @@ PalletTown_PlayersHouse_2F_EventScript_NESMenu::
 	case 2, PalletTown_PlayersHouse_2F_EventScript_ToggleFollowers
 	case 3, PalletTown_PlayersHouse_2F_EventScript_ToggleRandomizer
 	case 4, PalletTown_PlayersHouse_2F_EventScript_ToggleHard
+	case 5, PalletTown_PlayersHouse_2F_EventScript_ToggleVisibleWild
 	msgbox PalletTown_PlayersHouse_2F_Text_SettingsSaved, MSGBOX_DEFAULT
 	releaseall
 	end
@@ -154,6 +157,27 @@ PalletTown_PlayersHouse_2F_EventScript_FollowersOn::
 	clearflag FLAG_QOL_FOLLOWERS_OFF
 	goto PalletTown_PlayersHouse_2F_EventScript_NESMenu
 
+PalletTown_PlayersHouse_2F_EventScript_PushVisibleWildOn::
+	dynmultipush PalletTown_PlayersHouse_2F_Text_VisibleWildOn, 5
+	return
+
+PalletTown_PlayersHouse_2F_EventScript_PushVisibleWildOff::
+	dynmultipush PalletTown_PlayersHouse_2F_Text_VisibleWildOff, 5
+	return
+
+@ Visible wild POKéMON: they walk around in the grass, caves and water, and
+@ you battle the ones you touch. No random battles while it's on.
+@ STARFALL ISLE always works this way.
+PalletTown_PlayersHouse_2F_EventScript_ToggleVisibleWild::
+	goto_if_set FLAG_QOL_VISIBLE_WILD, PalletTown_PlayersHouse_2F_EventScript_VisibleWildOff
+	msgbox PalletTown_PlayersHouse_2F_Text_VisibleWildExplain, MSGBOX_DEFAULT
+	setflag FLAG_QOL_VISIBLE_WILD
+	goto PalletTown_PlayersHouse_2F_EventScript_NESMenu
+
+PalletTown_PlayersHouse_2F_EventScript_VisibleWildOff::
+	clearflag FLAG_QOL_VISIBLE_WILD
+	goto PalletTown_PlayersHouse_2F_EventScript_NESMenu
+
 PalletTown_PlayersHouse_2F_EventScript_Sign::
 	msgbox PalletTown_PlayersHouse_2F_Text_PressLRForHelp, MSGBOX_SIGN
 	end
@@ -221,6 +245,25 @@ PalletTown_PlayersHouse_2F_Text_FollowersOn::
 PalletTown_PlayersHouse_2F_Text_FollowersOff::
 	.string "FOLLOWERS: OFF$"
 	.string "{JPN}{JPN}つれあるき:オフ$"
+
+PalletTown_PlayersHouse_2F_Text_VisibleWildOn::
+	.string "VISIBLE WILD: ON$"
+	.string "{JPN}{JPN}やせいシンボル:オン$"
+
+PalletTown_PlayersHouse_2F_Text_VisibleWildOff::
+	.string "VISIBLE WILD: OFF$"
+	.string "{JPN}{JPN}やせいシンボル:オフ$"
+
+PalletTown_PlayersHouse_2F_Text_VisibleWildExplain::
+	.string "With VISIBLE WILD ON, wild POKéMON\n"
+	.string "roam the grass, caves and water.\p"
+	.string "Walk into one to battle it, or walk\n"
+	.string "around it. No surprise battles!$"
+	.string "{JPN}{JPN}やせいシンボルが　オンだと　やせいの　ポケモンが\n"
+	.string "くさむらや　どうくつ　みずの　うえを\l"
+	.string "うろつきます。\p"
+	.string "ふれると　バトル！　よければ　たたかわずに\n"
+	.string "すみます。$"
 
 PalletTown_PlayersHouse_2F_Text_Done::
 	.string "DONE$"

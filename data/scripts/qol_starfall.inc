@@ -172,6 +172,8 @@ QoL_EventScript_ShowPalletMom::
 QoL_Text_OakLookAtMeteorite::
 	.string "OAK: Now, {PLAYER}, before\n"
 	.string "anything else, look at this!$"
+	.string "{JPN}{JPN}オーキド『{PLAYER}！　なには　ともあれ\n"
+	.string "まずは　これを　みてくれ！』$"
 
 QoL_Text_OakSentByStevenStone::
 	.string "OAK: Last night's STARFALL…\n"
@@ -183,14 +185,28 @@ QoL_Text_OakSentByStevenStone::
 	.string "STONE, sent me this meteorite.\p"
 	.string "It has been humming ever since\n"
 	.string "the STARFALL began…$"
+	.string "{JPN}{JPN}オーキド『ゆうべの　スターフォール‥　おまえも\n"
+	.string "みたかね？\p"
+	.string "カントーにも　ホウエンにも　おなじ　よるに\n"
+	.string "ながれぼしが　ふりそそいだんじゃ！\p"
+	.string "これは　ホウエンに　すむ　わしの　ともだち‥\n"
+	.string "めずらしい　いしを　あつめている　ツワブキ\l"
+	.string "ダイゴくんが　おくってくれた　いんせきじゃ。\p"
+	.string "スターフォールが　はじまってから　ずっと\n"
+	.string "ブーンと　うなって　おるんじゃ‥』$"
 
 QoL_Text_MeteoriteGlowing::
 	.string "OAK: Huh? It's glowing!$"
+	.string "{JPN}{JPN}オーキド『む？　ひかって　おるぞ！』$"
 
 QoL_Text_BallsBurstOpen::
 	.string "The flash startled the POKéMON on\n"
 	.string "the table!\p"
 	.string "Two POKé BALLS burst open!$"
+	.string "{JPN}{JPN}まぶしい　ひかりに　テーブルの　ポケモンたちが\n"
+	.string "びっくりした！\p"
+	.string "モンスターボールが　2つ　はじけるように\n"
+	.string "ひらいた！$"
 
 QoL_Text_OakTheyRanOff::
 	.string "OAK: BULBASAUR! SQUIRTLE!\n"
@@ -202,6 +218,15 @@ QoL_Text_OakTheyRanOff::
 	.string "They'll be safe out there.\p"
 	.string "Who knows? You might meet them\n"
 	.string "again on your journey!$"
+	.string "{JPN}{JPN}オーキド『フシギダネ！　ゼニガメ！\n"
+	.string "もどってこーい！\p"
+	.string "‥いって　しまった。　ひかりに　おびえて\n"
+	.string "しまったんじゃな。\p"
+	.string "しんぱい　いらん。　フシギダネは　もりが\n"
+	.string "ゼニガメは　みずべが　だいすきじゃ。　そとでも\l"
+	.string "へいきじゃろう。\p"
+	.string "もしかしたら　たびの　とちゅうで　また\n"
+	.string "あえるかも　しれんぞ！』$"
 
 QoL_Text_OakItsABeldum::
 	.string "OAK: And that… That POKéMON came\n"
@@ -213,6 +238,14 @@ QoL_Text_OakItsABeldum::
 	.string "right up to you!\p"
 	.string "It came all the way from the sky,\n"
 	.string "and it has chosen you!$"
+	.string "{JPN}{JPN}オーキド『そして‥　その　ポケモンは\n"
+	.string "いんせきから　でてきたんじゃ！\p"
+	.string "ダンバルじゃ！　ホウエンに　すむ　ポケモンで\n"
+	.string "つよい　こころに　ひかれると　いわれて　おる。\p"
+	.string "みろ　{PLAYER}！　おまえの　ところへ\n"
+	.string "ふわふわと　ちかづいて　いくぞ！\p"
+	.string "はるばる　そらから　やってきて　おまえを\n"
+	.string "えらんだんじゃ！』$"
 
 QoL_Text_OakTakeCareOfBeldum::
 	.string "OAK: Take good care of BELDUM,\n"
@@ -220,21 +253,35 @@ QoL_Text_OakTakeCareOfBeldum::
 	.string "When you can, show it to STEVEN\n"
 	.string "in HOENN. He'll want to see what\l"
 	.string "his meteorite turned into!$"
+	.string "{JPN}{JPN}オーキド『{PLAYER}　ダンバルを　だいじに\n"
+	.string "するんじゃぞ。\p"
+	.string "いつか　ホウエンの　ダイゴくんに　みせて\n"
+	.string "やってくれ。　じぶんの　いんせきが　なにに\l"
+	.string "なったか　きっと　みたがる　はずじゃ！』$"
 
 QoL_Text_RivalWhatAboutMe::
 	.string "{RIVAL}: Hey! Gramps!\n"
 	.string "What about me?$"
+	.string "{JPN}{JPN}{RIVAL}『おい！　じいさん！　おれの\n"
+	.string "ぶんは！？』$"
 
 QoL_Text_OakOneLeft::
 	.string "OAK: Be patient, {RIVAL}.\n"
 	.string "There's still one POKé BALL on\l"
 	.string "the table. It's yours.$"
+	.string "{JPN}{JPN}オーキド『まあ　あわてるな　{RIVAL}。\n"
+	.string "テーブルに　まだ　モンスターボールが　1つ\l"
+	.string "のこって　おる。　それが　おまえの　ぶんじゃ。』$"
 
 QoL_Text_RivalTakesLastBall::
 	.string "{RIVAL}: A floating hunk of metal?\n"
 	.string "Ha!\p"
 	.string "I'll take this one. It's way\n"
 	.string "tougher than yours, {PLAYER}!$"
+	.string "{JPN}{JPN}{RIVAL}『ういてる　てつの　かたまり？\n"
+	.string "はっ！\p"
+	.string "おれは　こいつに　するぜ。　おまえのより　ずっと\n"
+	.string "つよいからな　{PLAYER}！』$"
 
 QoL_Text_MomDadIsInHoenn::
 	.string "MOM: Oh, and {PLAYER}…\p"
@@ -246,12 +293,25 @@ QoL_Text_MomDadIsInHoenn::
 	.string "S.S. TIDAL from VERMILION CITY.\p"
 	.string "The movers have packed our\n"
 	.string "things already!$"
+	.string "{JPN}{JPN}ママ『そうそう　{PLAYER}‥\p"
+	.string "おとうさんから　また　てがみが　きたの。　いまは\n"
+	.string "ホウエンの　トウカシティで　ジムリーダーを\l"
+	.string "しているんですって。\p"
+	.string "ふねのチケットが　てに　はいったら\n"
+	.string "クチバシティから　タイドリップごうで　いっしょに\l"
+	.string "ホウエンへ　いきましょう。\p"
+	.string "ひっこしやさんが　もう　にもつを　まとめて\n"
+	.string "くれたのよ！』$"
 
 QoL_Text_MomsNoteOnTV::
 	.string "There's a note taped to the TV.\p"
 	.string "“{PLAYER}, we've moved to\n"
 	.string "LITTLEROOT TOWN in HOENN.\l"
 	.string "Come home anytime! Love, MOM”$"
+	.string "{JPN}{JPN}テレビに　メモが　はってある。\p"
+	.string "「{PLAYER}へ　ホウエンの　ミシロタウンに\n"
+	.string "ひっこしました。　いつでも　かえってきてね！\l"
+	.string "ママより」$"
 
 @ ---------------------------------------------------------------------------
 @ Shared: Deneb's first line depends on whether you've met her before.
@@ -541,10 +601,25 @@ QoL_Text_AltairMtMoonIntro::
 	.string "We want the STAR SHARD beneath.\p"
 	.string "Now, let's see if that BELDUM\n"
 	.string "remembers where it came from!$"
+	.string "{JPN}{JPN}？？？『ロケットだんの　やつら　ようやく　ふるい\n"
+	.string "クレーターまで　ほりあてたか。　ごくろうさん\l"
+	.string "コソドロくんたち。\p"
+	.string "ん？　おまえ　ロケットだんじゃ　ないな。　それに\n"
+	.string "その　ダンバル‥\p"
+	.string "スターフォールの　こどもか！　こいつは\n"
+	.string "おどろいた。\p"
+	.string "おれは　ノバだんの　アルタイル。　そらから\n"
+	.string "おちてくる　ものを　かりあつめている。\p"
+	.string "ここの　つきのいしは　むかし　そらから\n"
+	.string "ふってきた。　ロケットだんの　ねらいは　かせき。\l"
+	.string "おれたちは　その　したの　スターシャードさ。\p"
+	.string "さあ　その　ダンバルが　ふるさとを\n"
+	.string "おぼえているか　ためして　やろう！』$"
 
 QoL_Text_AltairMtMoonDefeat::
 	.string "It moves like it remembers the\n"
 	.string "sky. Interesting.$"
+	.string "{JPN}{JPN}そらを　おぼえている　うごきだ。　おもしろい。$"
 
 QoL_Text_AltairMtMoonAfter::
 	.string "ALTAIR: Keep it, then. For now.\p"
@@ -553,16 +628,28 @@ QoL_Text_AltairMtMoonAfter::
 	.string "home, you'll understand.\p"
 	.string "Tell ROCKET thanks for the\n"
 	.string "digging!$"
+	.string "{JPN}{JPN}アルタイル『なら　あずけておく。　いまは　な。\p"
+	.string "スターフォールは　まだ　おわっちゃ　いないぜ。\n"
+	.string "そらが　その　ダンバルを　よびもどす　とき‥\l"
+	.string "おまえにも　わかるさ。\p"
+	.string "ロケットだんに　あなほり　ごくろうさんと\n"
+	.string "つたえてくれ！』$"
 
 QoL_Text_DenebFirstMeeting::
 	.string "???: Hehe… So you're the one with\n"
 	.string "the STARFALL BELDUM.\p"
 	.string "I'm DENEB of TEAM NOVA.\n"
 	.string "ALTAIR told me all about you.$"
+	.string "{JPN}{JPN}？？？『うふふ‥　あなたが　スターフォールの\n"
+	.string "ダンバルを　つれた　こね。\p"
+	.string "わたしは　ノバだんの　デネブ。　アルタイルから\n"
+	.string "いろいろ　きいているわ。』$"
 
 QoL_Text_DenebAgain::
 	.string "DENEB: You again, darling? And\n"
 	.string "that BELDUM of yours, too.$"
+	.string "{JPN}{JPN}デネブ『また　あなたなの　ダーリン？　その\n"
+	.string "ダンバルも　いっしょね。』$"
 
 QoL_Text_DenebSilph::
 	.string "DENEB: GIOVANNI left in such a\n"
@@ -575,6 +662,16 @@ QoL_Text_DenebSilph::
 	.string "A ball that catches anything.\p"
 	.string "Even something that comes down\n"
 	.string "from the stars. Ciao!$"
+	.string "{JPN}{JPN}デネブ『サカキったら　あわてて　にげちゃって。\n"
+	.string "ざんねんね。\p"
+	.string "ロケットだんが　じぶんの　おかねだけで　こんな\n"
+	.string "ことを　したと　おもった？\p"
+	.string "この　のっとりの　おかねは　ぜんぶ　うちの\n"
+	.string "ボスが　だしたの。　その　かわりに　もらうのが‥\p"
+	.string "‥これ。　シルフの　マスターボールの　データ。\n"
+	.string "どんな　ポケモンでも　つかまえられる　ボールよ。\p"
+	.string "そう‥　ほしから　おりてくる　ものでもね。\n"
+	.string "チャオ！』$"
 
 QoL_Text_CinnabarScientistShards::
 	.string "Is that a BELDUM? From the\n"
@@ -583,30 +680,50 @@ QoL_Text_CinnabarScientistShards::
 	.string "the fragments the meteors left.\p"
 	.string "The DNA inside them is like\n"
 	.string "nothing on this planet…$"
+	.string "{JPN}{JPN}それは　ダンバル！？　スターフォールの！？\n"
+	.string "これは　すごい！\p"
+	.string "わたしたちは　スターシャード‥　ながれぼしが\n"
+	.string "のこした　かけらを　けんきゅう　しているんだ。\p"
+	.string "なかに　ある　DNAは　この　ほしの　どんな\n"
+	.string "ものとも　ちがうんだ‥$"
 
 QoL_Text_CinnabarGruntIntro::
 	.string "TEAM NOVA! Nobody move!\p"
 	.string "Hand over the STAR SHARDS!\n"
 	.string "You, kid! Out of the way!$"
+	.string "{JPN}{JPN}ノバだんだ！　うごくな！\p"
+	.string "スターシャードを　よこせ！　おい　こども！\n"
+	.string "じゃまだ！$"
 
 QoL_Text_CinnabarGruntDefeat::
 	.string "The stars weren't with me…$"
+	.string "{JPN}{JPN}ほしが　みかたして　くれなかった‥$"
 
 QoL_Text_DenebCinnabarIntro::
 	.string "DENEB: Those shards belong to\n"
 	.string "TEAM NOVA. We paid for them,\l"
 	.string "one way or another.\p"
 	.string "Shall we dance?$"
+	.string "{JPN}{JPN}デネブ『その　かけらは　ノバだんの　ものよ。\n"
+	.string "なんだかんだで　おかねは　はらって\l"
+	.string "いるんだから。\p"
+	.string "さあ　わたしと　おどって　くださる？』$"
 
 QoL_Text_DenebCinnabarDefeat::
 	.string "My, my. That BELDUM is quite the\n"
 	.string "bodyguard.$"
+	.string "{JPN}{JPN}あらあら。　その　ダンバル　たいした\n"
+	.string "ボディガードね。$"
 
 QoL_Text_DenebCinnabarAfter::
 	.string "DENEB: No matter. My grunt already\n"
 	.string "slipped out with one shard.\p"
 	.string "One is all we needed from KANTO.\n"
 	.string "Ta-ta!$"
+	.string "{JPN}{JPN}デネブ『まあ　いいわ。　したっぱが　もう\n"
+	.string "かけらを　1つ　もって　ぬけだしたもの。\p"
+	.string "カントーで　ひつようなのは　1つ　だけ。\n"
+	.string "バイバーイ！』$"
 
 QoL_Text_CinnabarScientistDeoxys::
 	.string "They took a sample… but I still\n"
@@ -620,6 +737,16 @@ QoL_Text_CinnabarScientistDeoxys::
 	.string "call it down…\p"
 	.string "Please, take care of that BELDUM.\n"
 	.string "Now, how can I help you?$"
+	.string "{JPN}{JPN}サンプルを　とられて　しまった‥　でも\n"
+	.string "けんきゅうの　けっかは　のこって　いる。\p"
+	.string "かけらの　DNAは　ずっと　みなみの\n"
+	.string "たんじょうのしまで　もくげき　された　ポケモンと\l"
+	.string "いっち　するんだ。\p"
+	.string "デオキシス。　うちゅうから　きた　ポケモンだ。\p"
+	.string "ノバだんが　かけらを　あつめて　いるなら　きっと\n"
+	.string "デオキシスを　よびよせる　つもりだ‥\p"
+	.string "どうか　その　ダンバルを　だいじに　して　くれ。\n"
+	.string "さて　なにか　ようかな？$"
 
 @ ---------------------------------------------------------------------------
 @ Text: Team Nova in Hoenn
@@ -636,15 +763,30 @@ QoL_Text_AltairMeteorFallsIntro::
 	.string "the meteorite up, TEAM NOVA will\l"
 	.string "take it back. That's the deal.\p"
 	.string "Now. Round two!$"
+	.string "{JPN}{JPN}アルタイル『ほう。　ダンバルつかいの　こどもが\n"
+	.string "はるばる　ホウエンまで　きたか。\p"
+	.string "みたか？　マグマだんの　やつら　じぶんたちの\n"
+	.string "かざん　けいかくの　ために　いんせきを　ぬすんだ\l"
+	.string "つもりで　いやがる。\p"
+	.string "ソライシはかせの　いばしょを　マツブサに\n"
+	.string "おしえたのは　だれだと　おもう？\p"
+	.string "マグマだんの　きかいで　いんせきが　めざめたら\n"
+	.string "ノバだんが　とりかえす。　そういう　やくそくさ。\p"
+	.string "さて‥　2ラウンドめと　いこうか！』$"
 
 QoL_Text_AltairMeteorFallsDefeat::
 	.string "Bah! It's grown.$"
+	.string "{JPN}{JPN}ちっ！　つよく　なりやがった。$"
 
 QoL_Text_AltairMeteorFallsAfter::
 	.string "ALTAIR: Go ahead, chase MAGMA up\n"
 	.string "MT. CHIMNEY.\p"
 	.string "Every step they take is a step\n"
 	.string "for us!$"
+	.string "{JPN}{JPN}アルタイル『さあ　マグマだんを　おって\n"
+	.string "えんとつやまへ　いきな。\p"
+	.string "やつらが　1ぽ　すすむ　たびに　おれたちの\n"
+	.string "ためにも　なるのさ！』$"
 
 QoL_Text_DenebChimneyIntro::
 	.string "DENEB: You beat MAXIE before his\n"
@@ -652,14 +794,23 @@ QoL_Text_DenebChimneyIntro::
 	.string "That meteorite was supposed to\n"
 	.string "be ours afterward. You're bad for\l"
 	.string "business, darling!$"
+	.string "{JPN}{JPN}デネブ『マツブサの　きかいが　しごとを　おえる\n"
+	.string "まえに　かっちゃう　なんてね。\p"
+	.string "あの　いんせきは　そのあと　わたしたちの　ものに\n"
+	.string "なる　はずだったのよ。　しょうばいの　じゃまよ\l"
+	.string "ダーリン！』$"
 
 QoL_Text_DenebChimneyDefeat::
 	.string "Ugh! Not my best investment.$"
+	.string "{JPN}{JPN}うう！　こんかいの　とうしは　だいしっぱいね！$"
 
 QoL_Text_DenebChimneyAfter::
 	.string "DENEB: Keep your little rock, then.\p"
 	.string "There are plenty more in the sky.\n"
 	.string "And soon they'll all come to us.$"
+	.string "{JPN}{JPN}デネブ『その　ちいさな　いしは　あげるわ。\p"
+	.string "そらには　まだ　いっぱい　あるもの。　もうすぐ\n"
+	.string "ぜんぶ　わたしたちの　ところへ　ふってくるわ。』$"
 
 QoL_Text_AltairSpaceCenterIntro::
 	.string "ALTAIR: MAGMA wanted the rocket\n"
@@ -669,10 +820,18 @@ QoL_Text_AltairSpaceCenterIntro::
 	.string "STARFALL!\p"
 	.string "You and that BELDUM again… Fine.\n"
 	.string "Let's settle this!$"
+	.string "{JPN}{JPN}アルタイル『マグマだんは　ロケットの\n"
+	.string "ねんりょうが　ほしかった。　ちいさな　ゆめだな。\p"
+	.string "ノバだんの　ねらいは　ひこうデータ。　つぎの\n"
+	.string "スターフォールの　きどうだ！\p"
+	.string "また　おまえと　ダンバルか‥　いいだろう。\n"
+	.string "けりを　つけようぜ！』$"
 
 QoL_Text_AltairSpaceCenterDefeat::
 	.string "…It's ready to go home. I can feel\n"
 	.string "it.$"
+	.string "{JPN}{JPN}‥そいつは　ふるさとへ　かえる　じゅんびが\n"
+	.string "できている。　おれには　わかる。$"
 
 QoL_Text_AltairSpaceCenterAfter::
 	.string "ALTAIR: I already sent the data to\n"
@@ -680,6 +839,11 @@ QoL_Text_AltairSpaceCenterAfter::
 	.string "next STARFALL will land.\p"
 	.string "When it does, the sky will answer\n"
 	.string "her. Not you!$"
+	.string "{JPN}{JPN}アルタイル『データは　もう　ボスに　おくった。\n"
+	.string "つぎの　スターフォールが　どこに　おちるか\l"
+	.string "ベガさまは　しっている。\p"
+	.string "その　とき　そらが　こたえるのは　ベガさまだ。\n"
+	.string "おまえじゃ　ない！』$"
 
 QoL_Text_StevenAboutBeldum::
 	.string "STEVEN: TEAM NOVA… So they're the\n"
@@ -691,6 +855,14 @@ QoL_Text_StevenAboutBeldum::
 	.string "chose you. Incredible.\p"
 	.string "I'll look into TEAM NOVA. Come and\n"
 	.string "see me at my house.$"
+	.string "{JPN}{JPN}ダイゴ『ノバだん‥　ホウエンじゅうで　いんせきを\n"
+	.string "かいあさって　いたのは　かれらだったのか。\p"
+	.string "それに　その　ダンバル‥　ぼくが\n"
+	.string "オーキドはかせに　おくった　いんせきじゃないか！\p"
+	.string "スターフォールの　よるに　かえって　きみを\n"
+	.string "えらんだ　なんて。　すごいな。\p"
+	.string "ノバだんの　ことは　ぼくが　しらべてみる。\n"
+	.string "こんど　ぼくの　いえに　きて　くれ。』$"
 
 QoL_Text_StevensLetter::
 	.string "A letter from STEVEN.\p"
@@ -712,11 +884,34 @@ QoL_Text_StevensLetter::
 	.string "I believe it can stop her.\p"
 	.string "I left something for it on my\n"
 	.string "table. -STEVEN”$"
+	.string "{JPN}{JPN}ダイゴからの　てがみだ。\p"
+	.string "「{PLAYER}　ホウエンの　チャンピオン\n"
+	.string "おめでとう。\p"
+	.string "ノバだんの　もくてきが　わかったよ。\p"
+	.string "ボスの　ベガは　ロケットだんや　マグマだん\n"
+	.string "アクアだんに　おかねを　はらって　ふたつの\l"
+	.string "ちほうの　スターシャードを　あつめさせて\l"
+	.string "いたんだ。\p"
+	.string "ベガは　かけらを　ぜんぶ　たんじょうのしまへ\n"
+	.string "はこんだ。　つぎの　スターフォールが　おちる\l"
+	.string "ばしょだ。　かけらを　つかって　デオキシスを\l"
+	.string "よびよせる　つもりらしい。\p"
+	.string "カントーと　ホウエン　りょうほうの\n"
+	.string "チャンピオンに　なったら　クチバシティの\l"
+	.string "タイドリップごうで　たんじょうのしまへ\l"
+	.string "つれていって　もらうと　いい。\p"
+	.string "きみの　ダンバルは　あの　そらから　きた。\n"
+	.string "きっと　ベガを　とめられる　はずだ。\p"
+	.string "ダンバルへの　おくりものを　テーブルに　おいて\n"
+	.string "おいたよ。　ダイゴより」$"
 
 QoL_Text_StevensGiftNote::
 	.string "There's a note by the POKé BALL.\p"
 	.string "“For the POKéMON from my\n"
 	.string "meteorite. -STEVEN”$"
+	.string "{JPN}{JPN}モンスターボールの　そばに　メモが　ある。\p"
+	.string "「ぼくの　いんせきから　きた　ポケモンへ\n"
+	.string "ダイゴより」$"
 
 @ ---------------------------------------------------------------------------
 @ Chapter 9: the finale on BIRTH ISLAND. Open once Steven's letter is read and
@@ -846,24 +1041,34 @@ QoL_EventScript_StarfallEnding::
 QoL_Text_BirthGrunt1Intro::
 	.string "The STARFALL is tonight! No one\n"
 	.string "gets past TEAM NOVA!$"
+	.string "{JPN}{JPN}こんやは　スターフォールよ！　ノバだんの　まえは\n"
+	.string "だれも　とおさないわ！$"
 
 QoL_Text_BirthGrunt1Defeat::
 	.string "A shooting star… of pain!$"
+	.string "{JPN}{JPN}めから　ほしが　とびでたわ‥！$"
 
 QoL_Text_BirthGrunt1After::
 	.string "VEGA bought every shard in two\n"
 	.string "regions. You can't stop her now!$"
+	.string "{JPN}{JPN}ベガさまは　ふたつの　ちほうの　かけらを　ぜんぶ\n"
+	.string "かいしめたのよ。　もう　とめられないわ！$"
 
 QoL_Text_BirthGrunt2Intro::
 	.string "Look up! The sky's already\n"
 	.string "glowing!$"
+	.string "{JPN}{JPN}うえを　みろ！　そらが　もう\n"
+	.string "ひかりはじめてるぜ！$"
 
 QoL_Text_BirthGrunt2Defeat::
 	.string "My stars are out…$"
+	.string "{JPN}{JPN}おれの　ほしも　ここまでか‥$"
 
 QoL_Text_BirthGrunt2After::
 	.string "When DEOXYS comes down, VEGA's\n"
 	.string "MASTER BALL will be ready.$"
+	.string "{JPN}{JPN}デオキシスが　おりてきたら　ベガさまの\n"
+	.string "マスターボールの　でばんだ。$"
 
 QoL_Text_BirthDenebIntro::
 	.string "DENEB: Darling, you're late. The\n"
@@ -872,13 +1077,21 @@ QoL_Text_BirthDenebIntro::
 	.string "every coin she has. I'm here to\l"
 	.string "make sure she gets her money's\l"
 	.string "worth!$"
+	.string "{JPN}{JPN}デネブ『おそいわよ　ダーリン。　もうすぐ\n"
+	.string "ショーの　はじまりよ。\p"
+	.string "ベガさまは　この　よるに　ぜんざいさんを\n"
+	.string "つぎこんだの。　わたしは　その　もとを　とらせる\l"
+	.string "ために　ここに　いるのよ！』$"
 
 QoL_Text_BirthDenebDefeat::
 	.string "Bankrupt… by a child!$"
+	.string "{JPN}{JPN}こどもに‥　はさん　させられる　なんて！$"
 
 QoL_Text_BirthDenebAfter::
 	.string "DENEB: Go on, then. VEGA doesn't\n"
 	.string "lose. Not to people like you.$"
+	.string "{JPN}{JPN}デネブ『いきなさい。　ベガさまは　まけないわ。\n"
+	.string "あなたみたいな　ひとにはね。』$"
 
 QoL_Text_BirthAltairIntro::
 	.string "ALTAIR: Mt. MOON, METEOR FALLS,\n"
@@ -887,21 +1100,33 @@ QoL_Text_BirthAltairIntro::
 	.string "circle behind me.\p"
 	.string "Your BELDUM can feel them too,\n"
 	.string "can't it? One last time, kid!$"
+	.string "{JPN}{JPN}アルタイル『おつきみやま　りゅうせいのたき\n"
+	.string "うちゅうセンター‥　そして　ここだ。\p"
+	.string "おれが　ほりだした　かけらは　ぜんぶ　うしろの\n"
+	.string "わの　なかに　ある。\p"
+	.string "おまえの　ダンバルも　かんじて　いるんだろう？\n"
+	.string "これが　さいごだ！』$"
 
 QoL_Text_BirthAltairDefeat::
 	.string "…The sky picked you. Fine.$"
+	.string "{JPN}{JPN}‥そらが　えらんだのは　おまえか。　いいだろう。$"
 
 QoL_Text_BirthAltairAfter::
 	.string "ALTAIR: Watch the sky, kid.\n"
 	.string "It's coming.$"
+	.string "{JPN}{JPN}アルタイル『そらを　みてな。　くるぞ。』$"
 
 QoL_Text_VegaCallsDeneb::
 	.string "VEGA: Slipping past my admins?\n"
 	.string "How rude. DENEB!$"
+	.string "{JPN}{JPN}ベガ『かんぶを　すりぬけて　くるなんて\n"
+	.string "しつれいな　こと。　デネブ！』$"
 
 QoL_Text_VegaCallsAltair::
 	.string "VEGA: ALTAIR! Don't just stand\n"
 	.string "there!$"
+	.string "{JPN}{JPN}ベガ『アルタイル！　ぼんやり　たって\n"
+	.string "いないで！』$"
 
 QoL_Text_VegaIntro::
 	.string "VEGA: So you're the child my\n"
@@ -925,34 +1150,70 @@ QoL_Text_VegaIntro::
 	.string "And that BELDUM? It fell with the\n"
 	.string "first STARFALL. It belongs to the\l"
 	.string "sky, so it belongs to me!$"
+	.string "{JPN}{JPN}ベガ『あなたが　わたくしの　かんぶたちが\n"
+	.string "どうしても　かてない　こどもね。\p"
+	.string "うえを　ごらんなさい。　こんや　2どめの\n"
+	.string "スターフォールが　この　たんじょうのしまに\l"
+	.string "おちるのよ。\p"
+	.string "ロケットだんに　おかねを　はらって　シルフの\n"
+	.string "マスターボールを　ぬすませたのも　わたくし。\p"
+	.string "マツブサに　かざんで　いんせきを\n"
+	.string "あたためさせたのも　わたくし。　アオギリは\l"
+	.string "せんすいかんの　おかねの　でどころさえ\l"
+	.string "しらなかったわ。\p"
+	.string "カントーと　ホウエンの　スターシャードは　すべて\n"
+	.string "この　わの　なかに　ある。　ほしが　ふれば\l"
+	.string "デオキシスが　かけらを　もとめて　やってくる‥\l"
+	.string "わたくしは　それを　まつだけ。\p"
+	.string "そらの　かなたから　きた　ポケモンは　それに\n"
+	.string "ふさわしい　おかねもちの　ものに\l"
+	.string "なるべきなのよ。\p"
+	.string "そして　その　ダンバル。　さいしょの\n"
+	.string "スターフォールと　ともに　おちてきた。　そらの\l"
+	.string "ものは　わたくしの　ものよ！』$"
 
 QoL_Text_VegaDefeat::
 	.string "My shards… My stars!$"
+	.string "{JPN}{JPN}わたくしの　かけらが‥　わたくしの　ほしが！$"
 
 QoL_Text_VegaAfter::
 	.string "VEGA: No… The shards are glowing.\p"
 	.string "They're not answering me.\n"
 	.string "They're answering your BELDUM!$"
+	.string "{JPN}{JPN}ベガ『そんな‥　かけらが　ひかって　いる。\p"
+	.string "わたくしに　こたえて　いるんじゃ　ない。\n"
+	.string "あなたの　ダンバルに　こたえて　いるのよ！』$"
 
 QoL_Text_ShardsRise::
 	.string "The STAR SHARDS rose from the\n"
 	.string "circle and shot into the sky!\p"
 	.string "High above, the second STARFALL\n"
 	.string "began…$"
+	.string "{JPN}{JPN}スターシャードが　わの　なかから　うかびあがり\n"
+	.string "そらへ　とんで　いった！\p"
+	.string "はるか　そらの　うえで　2どめの\n"
+	.string "スターフォールが　はじまった‥$"
 
 QoL_Text_VegaFlees::
 	.string "VEGA: Fine! Let the sky have you,\n"
 	.string "then! TEAM NOVA, we're leaving!$"
+	.string "{JPN}{JPN}ベガ『けっこう！　そらに　くれてやるわ！\n"
+	.string "ノバだん　ひきあげるわよ！』$"
 
 QoL_Text_TriangleHint::
 	.string "Something is shining at the top\n"
 	.string "of the island.\p"
 	.string "A strange triangle hums in the\n"
 	.string "light of the falling stars…$"
+	.string "{JPN}{JPN}しまの　てっぺんで　なにかが　ひかって　いる。\p"
+	.string "ふしぎな　さんかくが　ながれぼしの　ひかりの\n"
+	.string "なかで　うなって　いる‥$"
 
 QoL_Text_DeoxysWentHome::
 	.string "DEOXYS rose into the sky and\n"
 	.string "vanished among the falling stars.$"
+	.string "{JPN}{JPN}デオキシスは　そらへ　のぼり　ながれぼしの\n"
+	.string "なかに　きえて　いった。$"
 
 QoL_Text_Ending1::
 	.string "The second STARFALL lit up the\n"
@@ -960,6 +1221,11 @@ QoL_Text_Ending1::
 	.string "TEAM NOVA's shards had scattered\n"
 	.string "back into the stars, and with\l"
 	.string "them, VEGA's plan.$"
+	.string "{JPN}{JPN}2どめの　スターフォールが　カントーと\n"
+	.string "ホウエンの　そらを　てらした。\p"
+	.string "ノバだんの　かけらは　ほしぼしの　なかへ\n"
+	.string "ちらばり　ベガの　けいかくも　ともに\l"
+	.string "きえさった。$"
 
 QoL_Text_EndingSteven::
 	.string "STEVEN: {PLAYER}! I saw the sky\n"
@@ -970,6 +1236,13 @@ QoL_Text_EndingSteven::
 	.string "That BELDUM came down with the\n"
 	.string "STARFALL to find someone strong.\l"
 	.string "It found you.$"
+	.string "{JPN}{JPN}ダイゴ『{PLAYER}！　トクサネから　そらを\n"
+	.string "みたよ。　きれい　だった。\p"
+	.string "ノバだんは　おしまいだ。　かけらが　なければ\n"
+	.string "ベガが　かえる　ものは　もう　なにも　ない。\p"
+	.string "あの　ダンバルは　つよい　だれかを　さがして\n"
+	.string "スターフォールと　ともに　おりてきた。　そして\l"
+	.string "きみを　みつけたんだ。』$"
 
 QoL_Text_EndingOak::
 	.string "OAK: To think a meteorite on my\n"
@@ -977,13 +1250,24 @@ QoL_Text_EndingOak::
 	.string "{PLAYER}, you've filled your\n"
 	.string "POKéDEX with two regions' worth\l"
 	.string "of memories. I'm proud of you.$"
+	.string "{JPN}{JPN}オーキド『わしの　つくえの　いんせきが　すべての\n"
+	.string "はじまり　だったとは！\p"
+	.string "{PLAYER}　おまえは　ふたつの　ちほうの\n"
+	.string "おもいでで　ポケモンずかんを　いっぱいに\l"
+	.string "したのう。　わしは　ほこらしいぞ。』$"
 
 QoL_Text_EndingBirch::
 	.string "BIRCH: Now that's what I call\n"
 	.string "fieldwork! Come by the lab\l"
 	.string "anytime. Your mom's cooking, too!$"
+	.string "{JPN}{JPN}オダマキ『これぞ　フィールドワーク　だね！\n"
+	.string "いつでも　けんきゅうじょに　おいで。　きみの\l"
+	.string "おかあさんの　りょうりも　まってるよ！』$"
 
 QoL_Text_EndingTheEnd::
 	.string "STARFALL\n"
 	.string "THE END\p"
 	.string "Thank you for playing!$"
+	.string "{JPN}{JPN}スターフォール\n"
+	.string "おわり\p"
+	.string "あそんで　くれて　ありがとう！$"

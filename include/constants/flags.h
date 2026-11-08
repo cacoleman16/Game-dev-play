@@ -2524,6 +2524,7 @@
 #define FLAG_QOL_CAUGHT_GALAR_ARTICUNO FLAG_0x8EF
 #define FLAG_QOL_CAUGHT_GALAR_ZAPDOS   FLAG_0x8F0
 #define FLAG_QOL_CAUGHT_GALAR_MOLTRES  FLAG_0x8F1
+#define FLAG_QOL_VISIBLE_WILD       FLAG_0x8F2 // Set = wild Pokémon roam as overworld sprites everywhere (NES in your bedroom)
 // Nuzlocke: one "area used" flag per Kanto/Sevii map section, starting here.
 // Script flags 0x35D-0x3D7 are unused in FRLG; 105 map sections need 0x35D-0x3C5.
 #define FLAG_QOL_NUZLOCKE_AREAS_START QOL_EXTRA_FLAG(0x00) // one per Kanto/Sevii map section (was 0x35D, which overlapped FRLG's daily-reset flags)
@@ -2569,6 +2570,7 @@
 #define FLAG_QOL_CAUGHT_GALAR_ARTICUNO 0
 #define FLAG_QOL_CAUGHT_GALAR_ZAPDOS   0
 #define FLAG_QOL_CAUGHT_GALAR_MOLTRES  0
+#define FLAG_QOL_VISIBLE_WILD       0
 #define FLAG_QOL_NUZLOCKE_AREAS_START 0
 #endif
 

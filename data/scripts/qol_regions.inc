@@ -25,6 +25,7 @@ QoL_EventScript_TidalMenu::
 	call_if_set FLAG_VISITED_SLATEPORT_CITY, QoL_EventScript_PushSlateport
 	call_if_set FLAG_VISITED_LILYCOVE_CITY, QoL_EventScript_PushLilycove
 	call_if_eq VAR_0x8005, TRUE, QoL_EventScript_PushFrontier
+	dynmultipush QoL_Text_DestStarfallIsle, 5 @ [QoL] Visible wild POKéMON island
 	call QoL_EventScript_PushBirthIsland @ [QoL] Starfall finale
 	dynmultipush QoL_Text_DestCancel, 9
 	dynmultistack 0, 0, FALSE, 5, FALSE, 0, DYN_MULTICHOICE_CB_NONE
@@ -34,6 +35,7 @@ QoL_EventScript_TidalMenu::
 	case 2, QoL_EventScript_SailToLilycove
 	case 3, QoL_EventScript_SailToFrontier
 	case 4, QoL_EventScript_SailToBirthIsland
+	case 5, QoL_EventScript_SailToStarfallIsle
 	goto QoL_EventScript_TidalCancel
 	end
 
@@ -58,6 +60,16 @@ QoL_EventScript_PushBirthIsland::
 QoL_EventScript_SailToBirthIsland::
 	call QoL_EventScript_SetSail
 	warp MAP_BIRTH_ISLAND_HARBOR, 8, 4
+	waitstate
+	release
+	end
+
+@ STARFALL ISLE (Emerald's FARAWAY ISLAND): meteors from the STARFALL came
+@ down here, and its wild POKéMON always roam in the open (src/qol_hoenn.c,
+@ QoL_VisibleWildActive). Mew still hides in the grass.
+QoL_EventScript_SailToStarfallIsle::
+	call QoL_EventScript_SetSail
+	warp MAP_FARAWAY_ISLAND_ENTRANCE, 13, 38
 	waitstate
 	release
 	end
@@ -226,6 +238,25 @@ QoL_Text_DestFrontier::
 
 QoL_Text_DestBirthIsland::
 	.string "BIRTH ISLAND$"
+	.string "{JPN}{JPN}たんじょうのしま$"
+
+QoL_Text_DestStarfallIsle::
+	.string "STARFALL ISLE$"
+	.string "{JPN}{JPN}スターフォールとう$"
+
+QoL_Text_StarfallIsleSign::
+	.string "STARFALL ISLE\p"
+	.string "Meteors from the STARFALL fell\n"
+	.string "on this island.\p"
+	.string "The POKéMON here roam in the open.\n"
+	.string "Walk into one to battle it, or go\l"
+	.string "around it if you'd rather not.$"
+	.string "{JPN}{JPN}スターフォールとう\p"
+	.string "スターフォールの　ながれぼしが　この　しまに\n"
+	.string "おちた。\p"
+	.string "ここの　ポケモンは　そとを　うろついている。\n"
+	.string "ふれれば　バトル！　たたかいたく　なければ\l"
+	.string "よけて　とおろう。$"
 
 QoL_Text_DestCancel::
 	.string "CANCEL$"

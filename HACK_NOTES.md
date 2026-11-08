@@ -68,11 +68,12 @@ every CI run attaches the ROM: Actions → "Build ROM" → the run → Artifacts
 | Nuzlocke | ✅ optional | Starts when Oak gives you Poké Balls. Only the first random wild Pokémon in each area can be caught (species already caught don't count; shinies always can be). DexNav finds count; scripted encounters and the Safari Zone are exempt. Fainted = dead: no Pokémon Center healing, revives or Revival Blessing. With the whole party dead, wild Pokémon and trainers leave you alone so you can reach a PC. |
 | Randomizer | ✅ optional | Each species becomes another with a similar base stat total (legendaries swap among themselves). Fixed per save file (seeded by your Trainer ID). Changes wild Pokémon, DexNav, trainers' teams, scripted encounters, Blue's starter and Prof. Birch's starters (Beldum, your partner, stays a Beldum). Gift Pokémon and trades stay vanilla. Turn it on before picking a starter. |
 | Difficulty tiers | ✅ optional | **HARD MODE**: competitive 4–6 Pokémon teams with items, natures, EVs and Megas for the 8 gym leaders, the Elite Four and the Champion. Aces keep their vanilla levels. Other trainers are unchanged. |
-| Challenge settings | ✅ | The **NES in your bedroom** is a menu: NUZLOCKE, RANDOMIZER, HARD MODE, LEVEL CAPS, FOLLOWERS (each shows ON/OFF). The bedroom notice lists the L/R controls |
+| Challenge settings | ✅ | The **NES in your bedroom** is a menu: NUZLOCKE, RANDOMIZER, HARD MODE, LEVEL CAPS, FOLLOWERS, VISIBLE WILD (each shows ON/OFF). The bedroom notice lists the L/R controls |
 | Side quests | ✅ | **Field Research** (a researcher in Oak's Lab): 8 tasks about Pokémon from faraway regions, each with a reward, ending in a post-game hunt for **Galarian Articuno, Zapdos and Moltres**. See *Side quests* below |
 | Battle Frontier | ✅ | Emerald's full **Battle Frontier** (all 7 facilities, Frontier Pass, BP). Sail there from **Vermilion City's pier** once you're the Kanto (or Hoenn) Champion. See *Kanto + Hoenn* below |
 | Every region in one map | ✅ Kanto + Hoenn | All of **Hoenn** is in the game with its own story, trainers, wild Pokémon and badges. The **S.S. TIDAL** sails from Vermilion City's pier once you have the **S.S. TICKET**; your first trip starts Emerald's arrival in Littleroot Town (Prof. Birch, a Hoenn starter). See *Kanto + Hoenn* below |
 | Own story: STARFALL | ✅ new | A meteor shower links Kanto and Hoenn. **Beldum** is your partner (it falls out of Steven's meteorite in Oak's Lab), Team **Nova** pulls the strings behind Rocket, Magma and Aqua, and the finale is on **Birth Island** against their leader Vega, then Deoxys. Every starter is still catchable. **Needs a new save.** See *STARFALL* below and [docs/STARFALL.md](docs/STARFALL.md) |
+| Visible wild Pokémon | ✅ new | **STARFALL ISLE** (S.S. TIDAL from Vermilion): wild Pokémon roam in the open and you battle the ones you walk into, no random battles. **VISIBLE WILD: ON** on the NES does the same everywhere. See *Visible wild Pokémon* below |
 | Japanese + English | ✅ | **OPTION → LANGUAGE** (top row): ENGLISH / にほんご, switchable any time. Kana-only Gen 3 style. Story, NPC, trainer, menu and battle text translated; Pokémon, move, item and ability names and Pokédex entries are the official Japanese ones. See *Japanese mode* below |
 
 ## Where the settings live
@@ -114,6 +115,7 @@ every CI run attaches the ROM: Actions → "Build ROM" → the run → Artifacts
 | `dev_scripts/qol_add_starter_encounters.py` | every starter in the wild / Safari Zones |
 | `src/text.c`, `src/scrcmd.c`, `src/option_menu.c` | hold B to fast-forward text; MID/FAST/MAX text speed |
 | `src/field_player_avatar.c` | fast surf |
+| `src/qol_hoenn.c` (`QoL_VisibleWildActive`), `src/wild_encounter_ow.c`, `src/field_control_avatar.c` | visible wild Pokémon: where they're on, and no random battles there |
 
 ## New flags and vars (FireRed/LeafGreen)
 
@@ -148,6 +150,7 @@ Defined at the end of `include/constants/flags.h` / `vars.h`. They are `0`
 | `VAR_QOL_DIFFICULTY` | `0x40F9` | trainer difficulty (1 Normal, 2 Hard) |
 | `FLAG_QOL_HIDE_GALAR_*` | `0x8EC`–`0x8EE` | Galarian birds hidden until the research reveals them |
 | `FLAG_QOL_CAUGHT_GALAR_*` | `0x8EF`–`0x8F1` | Galarian birds caught |
+| `FLAG_QOL_VISIBLE_WILD` | `0x8F2` | set = visible wild Pokémon everywhere (NES option) |
 | `VAR_QOL_FIELD_RESEARCH` | `0x40FA` | current Field Research task |
 | `optionsLanguage` (SaveBlock2 option bit) | – | 0 English, 1 Japanese |
 
@@ -205,7 +208,29 @@ Start a **new game**. The plot, the cast and every chapter are in
 exit), the Cinnabar Lab raid (both battles), the Birth Island route, Team Nova
 on the island, Vega's defeat scene, and the ending. Silph Co., Meteor Falls,
 Mt. Chimney, the Space Center and Steven's house use the same pattern but
-haven't been played. Japanese text for the story is being added.
+haven't been played. The story's text is in Japanese too.
+
+## Visible wild Pokémon
+
+Wild Pokémon can walk around the map as sprites (the expansion's overworld
+wild encounters): walk into one to battle it, or walk around it. While they're
+on, random battles in grass, caves and water are off.
+
+- **STARFALL ISLE** is Emerald's Faraway Island, renamed. The Vermilion
+  S.S. TIDAL sailor lists it once you've been to Hoenn. Meteors from the
+  Starfall fell here, and its Pokémon always roam in the open: Clefairy,
+  Eevee, Elgyem, Minior, Bronzor, Ralts, Riolu, Togepi, Larvitar, Gible,
+  Dreepy (Lv 25–32) and a rare Jirachi (Lv 35). Emerald's Mew still hides in
+  the grass. The island's sailor sails back to Vermilion or Lilycove.
+- **VISIBLE WILD: ON** (bedroom NES) does it on every route, cave and lake.
+  Fishing, Rock Smash and the DexNav work as before.
+
+In tall grass only the top of a Pokémon shows, as in the main games.
+
+**Tested in the web player:** spawning on Starfall Isle and on Route 1 (with
+the option on), walking into a wild Pokémon starts the battle, winning returns
+to the field, no random battles while walking through grass, the NES toggle,
+and the ferry there and back.
 
 ## Kanto + Hoenn (merged regions) and the Battle Frontier
 

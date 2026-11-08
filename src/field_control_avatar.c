@@ -1,4 +1,5 @@
 #include "global.h"
+#include "qol_hoenn.h"
 #include "battle_setup.h"
 #include "bike.h"
 #include "coord_event_weather.h"
@@ -905,6 +906,9 @@ void RestartWildEncounterImmunitySteps(void)
 static bool32 ShouldDisableRandomEncounters(void)
 {
     if (FlagGet(WE_FLAG_NO_ENCOUNTER))
+        return TRUE;
+
+    if (QoL_VisibleWildActive()) // [QoL] wild Pokémon are visible here instead
         return TRUE;
 
     if (!WE_VANILLA_RANDOM && WE_OW_ENCOUNTERS)

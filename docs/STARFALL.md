@@ -71,6 +71,15 @@ Minior, Staryu, Baltoy, Beldum's cousins, and at the very end an Ultra Beast.
 | Chikorita, Cyndaquil, Totodile, Turtwig, Chimchar, Piplup | Kanto's Safari Zone (Prof. Birch also gives a Johto starter after Hoenn's Hall of Fame) |
 | Snivy … Quaxly (Gen 5–9) | Hoenn's Safari Zone |
 
+## Starfall Isle
+
+Where the Starfall's meteors came down: Emerald's Faraway Island, renamed.
+The S.S. TIDAL in Vermilion sails there once you've been to Hoenn. Its wild
+Pokémon roam in the open (walk into one to battle it): meteor and star
+Pokémon (Clefairy, Elgyem, Minior, Bronzor), rare babies and dragons
+(Togepi, Riolu, Larvitar, Gible, Dreepy) and, rarely, **Jirachi**. Mew still
+hides in the grass.
+
 ## Technical notes
 
 - Story flags: `FLAG_QOL_STARFALL_*` and the `FLAG_QOL_HIDE_NOVA_*` object

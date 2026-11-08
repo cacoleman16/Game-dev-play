@@ -35,5 +35,9 @@ bool32 QoL_IsHoennMap(void);
 // Hoenn's badge with the same number.
 bool32 QoL_BadgeGet(u32 kantoBadgeFlag);
 void QoL_HoennSetup(void);
+// [QoL] Visible wild Pokémon (the expansion's Overworld Wild Encounters):
+// everywhere with the NES option, always on Starfall Isle. Where they're on,
+// the usual random grass encounters are off.
+bool32 QoL_VisibleWildActive(void);
 
 #endif // GUARD_QOL_HOENN_H
