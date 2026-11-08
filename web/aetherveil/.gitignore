@@ -1,0 +1,2 @@
+# The repo root ignores *.js (ROM build output); the game is plain JS modules.
+!*.js

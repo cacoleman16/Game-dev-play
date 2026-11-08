@@ -46,6 +46,7 @@ self.addEventListener("fetch", (event) => {
   const req = event.request;
   const url = new URL(req.url);
   if (req.method !== "GET" || url.origin !== self.location.origin) return; // ROM blobs, CDN version checks, etc.
+  if (url.pathname.startsWith("/aetherveil/")) return; // The 3D game has its own service worker.
 
   if (req.mode === "navigate") {
     // Page: network first so updates arrive, cache when offline.
