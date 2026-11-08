@@ -763,31 +763,55 @@ export class UI {
       </div>`;
   }
 
-  // Render a head-and-shoulders portrait of a character from the live scene.
-  portrait(pos, yaw, height = 1) {
+  // Head-and-shoulders portrait. The character is lifted into a small studio
+  // scene (painted backdrop, key, fill and rim lights) for one render, so
+  // walls and props near where they stand can never block the face.
+  portrait(ch, height = 1, opts = {}) {
     const g = this.game, r = g.renderer;
-    const S = 192;
-    if (!this.pRT) {
-      this.pRT = new THREE.WebGLRenderTarget(S, S, { depthBuffer: true });
-      this.pCam = new THREE.PerspectiveCamera(24, 1, 0.1, 400);
+    const S = opts.size || 192;
+    if (!this.pScene) {
+      const sc = new THREE.Scene();
+      const bg = document.createElement('canvas'); bg.width = bg.height = 256;
+      const c = bg.getContext('2d');
+      const lin = c.createLinearGradient(0, 0, 0, 256);
+      lin.addColorStop(0, '#4a5a82'); lin.addColorStop(0.55, '#262d47'); lin.addColorStop(1, '#141726');
+      c.fillStyle = lin; c.fillRect(0, 0, 256, 256);
+      const rad = c.createRadialGradient(150, 92, 8, 150, 92, 150);
+      rad.addColorStop(0, 'rgba(255,226,170,0.42)'); rad.addColorStop(1, 'rgba(255,226,170,0)');
+      c.fillStyle = rad; c.fillRect(0, 0, 256, 256);
+      const tex = new THREE.CanvasTexture(bg); tex.colorSpace = THREE.SRGBColorSpace;
+      sc.background = tex;
+      sc.add(new THREE.HemisphereLight(0xd8e2ff, 0x4a3a30, 1.15));
+      const key = new THREE.DirectionalLight(0xfff0da, 2.3); key.position.set(2.2, 3.2, 3.0);
+      const rim = new THREE.DirectionalLight(0x9cc2ff, 1.9); rim.position.set(-2.6, 2.0, -2.4);
+      sc.add(key, rim, new THREE.AmbientLight(0xffffff, 0.1));
+      this.pScene = sc;
+      this.pCam = new THREE.PerspectiveCamera(24, 1, 0.05, 50);
+    }
+    if (!this.pRT || this.pRT.width !== S) {
+      this.pRT?.dispose();
+      this.pRT = new THREE.WebGLRenderTarget(S, S, { depthBuffer: true, samples: 4 });
       this.pBuf = new Uint8Array(S * S * 4);
       this.pCanvas = document.createElement('canvas');
       this.pCanvas.width = this.pCanvas.height = S;
     }
-    const head = new THREE.Vector3(pos.x, pos.y + 1.6 * height, pos.z);
-    const fwd = new THREE.Vector3(Math.sin(yaw), 0, Math.cos(yaw));
-    const side = new THREE.Vector3(fwd.z, 0, -fwd.x);
-    this.pCam.position.copy(head).addScaledVector(fwd, 1.25 * height).addScaledVector(side, 0.25 * height).add(new THREE.Vector3(0, 0.06, 0));
-    this.pCam.lookAt(head.x, head.y - 0.06 * height, head.z);
+    const grp = ch.group, parent = grp.parent;
+    const saved = { p: grp.position.clone(), ry: grp.rotation.y, vis: grp.visible };
+    this.pScene.add(grp);
+    grp.position.set(0, 0, 0); grp.rotation.y = 0; grp.visible = true;
+    const fullBody = !!opts.full;
+    const yaw = opts.yaw ?? 0.32;
+    const tY = (fullBody ? 0.95 : 1.58) * height, dist = (fullBody ? 6.2 : 1.35) * height;
+    this.pCam.position.set(Math.sin(yaw) * dist, tY + 0.05 * height, Math.cos(yaw) * dist);
+    this.pCam.lookAt(0, tY - 0.04 * height, 0);
     const prev = r.getRenderTarget();
-    const fog = g.scene.fog;
-    g.scene.fog = null;
     r.setRenderTarget(this.pRT);
     r.clear();
-    r.render(g.scene, this.pCam);
+    r.render(this.pScene, this.pCam);
     r.readRenderTargetPixels(this.pRT, 0, 0, S, S, this.pBuf);
     r.setRenderTarget(prev);
-    g.scene.fog = fog;
+    if (parent) parent.add(grp); else this.pScene.remove(grp);
+    grp.position.copy(saved.p); grp.rotation.y = saved.ry; grp.visible = saved.vis;
     const ctx = this.pCanvas.getContext('2d');
     const img = ctx.createImageData(S, S);
     const lut = this.pLut || (this.pLut = Array.from({ length: 256 }, (_, i) => { const x = i / 255; const t = x * 1.08 / (1 + x * 0.25); return Math.round(Math.pow(Math.min(1, t), 1 / 2.2) * 255); }));
@@ -798,7 +822,7 @@ export class UI {
       }
     }
     ctx.putImageData(img, 0, 0);
-    return this.pCanvas.toDataURL('image/jpeg', 0.85);
+    return this.pCanvas.toDataURL('image/jpeg', 0.88);
   }
 
   // ---------------------------------------------------------------- shops & waystones

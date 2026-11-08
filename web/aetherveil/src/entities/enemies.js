@@ -99,7 +99,7 @@ export const ENEMY_TYPES = {
       { kind: 'volley', range: 24, minRange: 6, windup: 0.8, strike: 0.3, recover: 0.8, dmg: 14, cd: 5, speed: 16, count: 5, color: 0xff7a2a, element: 'fire', anim: 'cast' },
       { kind: 'melee', range: 4.2, windup: 0.6, strike: 0.25, recover: 0.6, dmg: 22, cd: 2, arc: -0.3, anim: 'attack1' },
     ] },
-  herald: { name: 'The Hollow Herald', boss: true, hp: 1500, xp: 1000, speed: 4, aggro: 60, radius: 1.2, fly: true, keep: 10, loot: null,
+  herald: { name: 'The Hollow Herald', boss: true, hp: 2000, xp: 1000, speed: 4, aggro: 60, radius: 1.2, fly: true, keep: 10, loot: null,
     model: () => new WraithModel(),
     attacks: [
       { kind: 'volley', range: 30, windup: 0.8, strike: 0.3, recover: 0.6, dmg: 14, cd: 3, speed: 17, count: 7, color: 0xff7af0, element: 'aether' },

@@ -21,7 +21,7 @@ export class Dialogue {
     npc.talking = true;
     this.nodes = npc.def.dialogue(g, npc);
     let portrait = null;
-    try { portrait = g.ui.portrait(npc.position, npc.yaw, npc.def.look?.height ?? 1); } catch (e) { portrait = null; }
+    try { portrait = g.ui.portrait(npc.ch, npc.def.look?.height ?? 1); } catch (e) { portrait = null; }
     this.speaker = { name: npc.def.name, title: npc.def.title, portrait };
     this.voice = { ...(VOICES[npc.id] || VOICES.narrator), id: npc.id };
     this.begin(npc.position);

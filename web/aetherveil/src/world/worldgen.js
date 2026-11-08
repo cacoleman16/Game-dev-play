@@ -179,8 +179,71 @@ export class WorldData {
     }
   }
 
+  // Give each road a profile no steeper than ROAD_GRADE and fit the land to
+  // it. Where a road meets a ridge this carves a pass with sloped walls
+  // instead of the road climbing a cliff; small dips are filled. Returns
+  // { ceil, pinH, pinW } for buildRoads to re-apply after smoothing.
+  gradeRoads() {
+    const ROAD_GRADE = 0.4, HW = 3.5, WALL = 1.5;
+    const ceil = new Float32Array(N * N).fill(Infinity);
+    const pinH = new Float32Array(N * N), pinW = new Float32Array(N * N);
+    for (const road of ROADS) {
+      const sm = smoothPolyline(road, 6);
+      const xs = [], zs = [];
+      for (let k = 0; k < sm.length - 1; k++) {
+        const [ax, az] = sm[k], [bx, bz] = sm[k + 1];
+        const n = Math.max(1, Math.ceil(Math.hypot(bx - ax, bz - az) / 2));
+        for (let j = 0; j < n; j++) { xs.push(ax + (bx - ax) * j / n); zs.push(az + (bz - az) * j / n); }
+      }
+      xs.push(sm[sm.length - 1][0]); zs.push(sm[sm.length - 1][1]);
+      const n = xs.length;
+      const raw = new Float32Array(n), ds = new Float32Array(n);
+      for (let i = 0; i < n; i++) {
+        raw[i] = Math.max(this.heightAt(xs[i], zs[i]), WATER_LEVEL + 0.7);
+        if (i) ds[i] = Math.hypot(xs[i] - xs[i - 1], zs[i] - zs[i - 1]);
+      }
+      // Largest grade-limited profile that stays at or under the ground.
+      const p = Float32Array.from(raw);
+      for (let i = 1; i < n; i++) p[i] = Math.min(p[i], p[i - 1] + ROAD_GRADE * ds[i]);
+      for (let i = n - 2; i >= 0; i--) p[i] = Math.min(p[i], p[i + 1] + ROAD_GRADE * ds[i + 1]);
+      for (let i = 0; i < n - 1; i++) {
+        const depth = Math.max(raw[i] - p[i], raw[i + 1] - p[i + 1]);
+        // Deep cuts need wide walls; elsewhere just hold the road bed down.
+        const reach = depth > 0.5 ? Math.min(90, HW + (depth + 70) / WALL) : HW + 6;
+        const x0 = xs[i], z0 = zs[i], x1 = xs[i + 1], z1 = zs[i + 1];
+        const ix0 = clamp(Math.floor((Math.min(x0, x1) - reach + HALF) / CELL), 0, N - 1), ix1 = clamp(Math.ceil((Math.max(x0, x1) + reach + HALF) / CELL), 0, N - 1);
+        const iz0 = clamp(Math.floor((Math.min(z0, z1) - reach + HALF) / CELL), 0, N - 1), iz1 = clamp(Math.ceil((Math.max(z0, z1) + reach + HALF) / CELL), 0, N - 1);
+        for (let iz = iz0; iz <= iz1; iz++) {
+          for (let ix = ix0; ix <= ix1; ix++) {
+            const { d, t } = segDist(ix * CELL - HALF, iz * CELL - HALF, x0, z0, x1, z1);
+            if (d > reach) continue;
+            const ph = p[i] + (p[i + 1] - p[i]) * t;
+            const k = iz * N + ix;
+            const c = ph + Math.max(0, d - HW) * WALL;
+            if (c < ceil[k]) ceil[k] = c;
+            const w = 1 - smoothstep(HW - 0.5, HW + 4, d);
+            if (w > pinW[k]) { pinW[k] = w; pinH[k] = ph; }
+          }
+        }
+      }
+    }
+    const g = { ceil, pinH, pinW };
+    this.fitRoads(g);
+    return g;
+  }
+
+  fitRoads({ ceil, pinH, pinW }) {
+    const H = this.H;
+    for (let i = 0; i < N * N; i++) {
+      // Fill dips up to the road bed as an embankment (never out of the sea).
+      if (pinW[i] > 0 && H[i] < pinH[i] && H[i] > WATER_LEVEL - 0.5) H[i] = lerp(H[i], pinH[i], pinW[i]);
+      if (H[i] > ceil[i]) H[i] = ceil[i];
+    }
+  }
+
   buildRoads() {
     const H = this.H;
+    const grade = this.gradeRoads();
     const mask = new Float32Array(N * N);
     const paint = (x0, z0, x1, z1, half, edge) => {
       const minx = Math.min(x0, x1) - edge, maxx = Math.max(x0, x1) + edge;
@@ -215,6 +278,8 @@ export class WorldData {
         H[i] = lerp(H[i], Math.max(blur2[i], 0.7), mask[i] * 0.9);
       }
     }
+    // Blurring pulls pass floors up toward their walls: fit the bed again.
+    this.fitRoads(grade);
   }
 
   shadePoint(ix, iz) {
