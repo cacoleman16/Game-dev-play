@@ -296,7 +296,7 @@ fortune, or peace for Nova), and the sky over the eastern sea tears open.
 - The wish menu, the Jirachi battle and the sky tearing open.
 - The pier scene and companion choice.
 - Your companion following you and talking.
-- The ferries both ways.
+- The ferries both ways, and SKYRIFT ISLES on Vermilion's ferry menu.
 - Dr. Halley.
 - A rift battle with its boost, both running away and catching.
 - The Sirius gate as a 2-vs-1 with Altair.
@@ -304,9 +304,8 @@ fortune, or peace for Nova), and the sky over the eastern sea tears open.
 - Swapping companions in the inn.
 - The Necrozma rift appearing.
 
-**Not played through:** the regular island trainers, the observatory floors,
-and the Vermilion menu entry. The menu entry builds but wasn't opened in the
-emulator.
+**Not played through:** the regular island trainers and the observatory
+floors. They were checked on the rendered maps only.
 
 ## Kanto + Hoenn (merged regions) and the Battle Frontier
 
