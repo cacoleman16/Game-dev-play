@@ -1,0 +1,22 @@
+{
+ "Skyrift_Riftwake_Inn_Text_Ledger": "やどちょうだ。　どの　なまえの　ひとも　おなじ　ことを　かいて　いる。\\p「そらを　みに　きました」",
+ "Skyrift_Riftwake_Inn_Text_Guest": "よるの　さけめを　みる　ためだけに　クチバシティから　ふねで　きたの。\\pきれいよ。　それに　ちょっぴり　こわいわ。",
+ "QoL_Skyrift_Inn_Text_JoinedALTAIR": "アルタイル『また　たびに　でるのか？　おれは　かまわないぜ。』",
+ "QoL_Skyrift_Inn_Text_JoinedDENEB": "デネブ『いきましょうか　ダーリン？』",
+ "QoL_Skyrift_Inn_Text_JoinedMIRA": "ミラ『やったー！　つぎは　どこに　いくの？』",
+ "QoL_Skyrift_Inn_Text_LobbyALTAIR": "アルタイル『たびに　ちからじまんは　いらないか？　おれは　いつでも　いけるぜ。』",
+ "QoL_Skyrift_Inn_Text_LobbyNoALTAIR": "アルタイル『すきに　しな。　おれは　ここに　いるぜ。』",
+ "QoL_Skyrift_Inn_Text_LobbyDENEB": "デネブ『もう　やどには　あきちゃったわ　ダーリン。　わたしも　つれていって　くれる？』",
+ "QoL_Skyrift_Inn_Text_LobbyNoDENEB": "デネブ『ざんねん。　おちゃ　もう　1ぱいね。』",
+ "QoL_Skyrift_Inn_Text_LobbyMIRA": "ミラ『こんやは　ほしが　よく　みえるよ！　いっしょに　いっても　いい？』",
+ "QoL_Skyrift_Inn_Text_LobbyNoMIRA": "ミラ『わかった！　せいざずを　かきながら　まってるね！』",
+ "QoL_Skyrift_Inn_Text_Welcome": "ハザマのやどへ　ようこそ！　おやすみに　なりますか？",
+ "QoL_Skyrift_Inn_Text_Rest": "ごゆっくり　おやすみください！",
+ "QoL_Skyrift_Inn_Text_Morning": "おはよう　ございます！　ポケモンたちも　げんき　いっぱいですね。",
+ "QoL_Skyrift_Inn_Text_Lounge": "ノバてんもんだいで　ごいっしょだった　おともだちが　こちらに　おとまりですよ。\\pみなさん　あなたと　なら　どこへでも　いっしょに　いきたいそうです。",
+ "QoL_Skyrift_Inn_Text_Who": "だれと　いっしょに　たびを　しますか？",
+ "QoL_Skyrift_Inn_Text_OptAlone": "ひとりで　いく",
+ "QoL_Skyrift_Inn_Text_OptKeep": "このまま",
+ "QoL_Skyrift_Inn_Text_AloneDone": "なかまは　てを　ふって　みおくって　くれた。　この　やどで　まって　いるそうだ。",
+ "QoL_Skyrift_Inn_Text_Bye": "また　いつでも　どうぞ！"
+}

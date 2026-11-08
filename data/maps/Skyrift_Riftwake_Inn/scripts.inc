@@ -10,6 +10,9 @@ Skyrift_Riftwake_Inn_Text_Ledger::
 	.string "The guest book. Every name in\n"
 	.string "it wrote the same thing:\p"
 	.string "“Came to see the sky.”$"
+	.string "{JPN}{JPN}やどちょうだ。　どの　なまえの　ひとも　おなじ\n"
+	.string "ことを　かいて　いる。\p"
+	.string "「そらを　みに　きました」$"
 
 Skyrift_Riftwake_Inn_EventScript_Guest::
 	msgbox Skyrift_Riftwake_Inn_Text_Guest, MSGBOX_NPC
@@ -20,16 +23,23 @@ Skyrift_Riftwake_Inn_Text_Guest::
 	.string "to watch the rift at night.\p"
 	.string "It's beautiful. And a little bit\n"
 	.string "frightening.$"
+	.string "{JPN}{JPN}よるの　さけめを　みる　ためだけに\n"
+	.string "クチバシティから　ふねで　きたの。\p"
+	.string "きれいよ。　それに　ちょっぴり　こわいわ。$"
 
 QoL_Skyrift_Inn_Text_JoinedALTAIR::
 	.string "ALTAIR: Back on the road? Fine by\n"
 	.string "me.$"
+	.string "{JPN}{JPN}アルタイル『また　たびに　でるのか？　おれは\n"
+	.string "かまわないぜ。』$"
 
 QoL_Skyrift_Inn_Text_JoinedDENEB::
 	.string "DENEB: Shall we, darling?$"
+	.string "{JPN}{JPN}デネブ『いきましょうか　ダーリン？』$"
 
 QoL_Skyrift_Inn_Text_JoinedMIRA::
 	.string "MIRA: Yay! Where are we going next?$"
+	.string "{JPN}{JPN}ミラ『やったー！　つぎは　どこに　いくの？』$"
 
 QoL_Skyrift_EventScript_Inn::
 	lock
@@ -228,55 +238,81 @@ QoL_Skyrift_Inn_LobbyNoMIRA::
 QoL_Skyrift_Inn_Text_LobbyALTAIR::
 	.string "ALTAIR: Need a strong back on the\n"
 	.string "road? I'm ready when you are.$"
+	.string "{JPN}{JPN}アルタイル『たびに　ちからじまんは　いらないか？\n"
+	.string "おれは　いつでも　いけるぜ。』$"
 
 QoL_Skyrift_Inn_Text_LobbyNoALTAIR::
 	.string "ALTAIR: Suit yourself. I'll be\n"
 	.string "here.$"
+	.string "{JPN}{JPN}アルタイル『すきに　しな。　おれは　ここに\n"
+	.string "いるぜ。』$"
 
 QoL_Skyrift_Inn_Text_LobbyDENEB::
 	.string "DENEB: Bored of the inn already,\n"
 	.string "darling. Take me with you?$"
+	.string "{JPN}{JPN}デネブ『もう　やどには　あきちゃったわ\n"
+	.string "ダーリン。　わたしも　つれていって　くれる？』$"
 
 QoL_Skyrift_Inn_Text_LobbyNoDENEB::
 	.string "DENEB: Pity. I'll order more tea.$"
+	.string "{JPN}{JPN}デネブ『ざんねん。　おちゃ　もう　1ぱいね。』$"
 
 QoL_Skyrift_Inn_Text_LobbyMIRA::
 	.string "MIRA: The stars are clear tonight!\n"
 	.string "Can I come with you?$"
+	.string "{JPN}{JPN}ミラ『こんやは　ほしが　よく　みえるよ！\n"
+	.string "いっしょに　いっても　いい？』$"
 
 QoL_Skyrift_Inn_Text_LobbyNoMIRA::
 	.string "MIRA: Okay! I'll keep drawing my\n"
 	.string "star chart.$"
+	.string "{JPN}{JPN}ミラ『わかった！　せいざずを　かきながら\n"
+	.string "まってるね！』$"
 
 QoL_Skyrift_Inn_Text_Welcome::
 	.string "Welcome to the RIFTWAKE INN!\n"
 	.string "Would you like to rest?$"
+	.string "{JPN}{JPN}ハザマのやどへ　ようこそ！　おやすみに\n"
+	.string "なりますか？$"
 
 QoL_Skyrift_Inn_Text_Rest::
 	.string "Sleep well!$"
+	.string "{JPN}{JPN}ごゆっくり　おやすみください！$"
 
 QoL_Skyrift_Inn_Text_Morning::
 	.string "Good morning! Your POKéMON look\n"
 	.string "full of energy.$"
+	.string "{JPN}{JPN}おはよう　ございます！　ポケモンたちも　げんき\n"
+	.string "いっぱいですね。$"
 
 QoL_Skyrift_Inn_Text_Lounge::
 	.string "Your friends from the\n"
 	.string "OBSERVATORY are staying here.\p"
 	.string "They'd each love to travel with\n"
 	.string "you, wherever you go.$"
+	.string "{JPN}{JPN}ノバてんもんだいで　ごいっしょだった\n"
+	.string "おともだちが　こちらに　おとまりですよ。\p"
+	.string "みなさん　あなたと　なら　どこへでも　いっしょに\n"
+	.string "いきたいそうです。$"
 
 QoL_Skyrift_Inn_Text_Who::
 	.string "Who should travel with you?$"
+	.string "{JPN}{JPN}だれと　いっしょに　たびを　しますか？$"
 
 QoL_Skyrift_Inn_Text_OptAlone::
 	.string "TRAVEL ALONE$"
+	.string "{JPN}{JPN}ひとりで　いく$"
 
 QoL_Skyrift_Inn_Text_OptKeep::
 	.string "NO CHANGE$"
+	.string "{JPN}{JPN}このまま$"
 
 QoL_Skyrift_Inn_Text_AloneDone::
 	.string "Your companion waves goodbye.\n"
 	.string "They'll be here at the inn.$"
+	.string "{JPN}{JPN}なかまは　てを　ふって　みおくって　くれた。\n"
+	.string "この　やどで　まって　いるそうだ。$"
 
 QoL_Skyrift_Inn_Text_Bye::
 	.string "Come back anytime!$"
+	.string "{JPN}{JPN}また　いつでも　どうぞ！$"

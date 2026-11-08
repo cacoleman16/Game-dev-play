@@ -23,3 +23,7 @@ Skyrift_Riftwake_PokemonCenter_1F_Text_Npc0::
 	.string "SKYRIFT up close.\p"
 	.string "Now I can't stop looking up.\n"
 	.string "My neck hurts!$"
+	.string "{JPN}{JPN}ソラサケを　まぢかで　みたくて　はるばる\n"
+	.string "きたんだ。\p"
+	.string "それから　ずっと　うえばかり　みあげて　いてな。\n"
+	.string "くびが　いたいよ！$"

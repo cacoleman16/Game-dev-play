@@ -1,0 +1,19 @@
+{
+ "Skyrift_ObservatoryCliffs_Text_Sign": "テンモンがけ\\nこの　さき　ノバてんもんだい",
+ "Skyrift_ObservatoryCliffs_Text_ObsSign": "ノバてんもんだい\\pわれらは　そらを　みる。　そらが　われらに　こたえる　ように。　ー　ベガ",
+ "Skyrift_ObservatoryCliffs_Text_KanoaIntro": "まいあさ　この　がけを　のぼって　いるんだ。　ふたり　いっぺんに？　いいとも！",
+ "Skyrift_ObservatoryCliffs_Text_KanoaDefeat": "あしが‥　ガクガクだ‥",
+ "Skyrift_ObservatoryCliffs_Text_KanoaPost": "のぼりは　かいだんを　つかいな。　くだりは　だんさの　ほうが　はやいぞ。",
+ "Skyrift_ObservatoryCliffs_Text_MaileIntro": "ノバてんもんだいを　みに　きたのに　なかに　いれて　もらえなかったの！\\pだから　かわりに　しょうぶして！",
+ "Skyrift_ObservatoryCliffs_Text_MaileDefeat": "おかげで　すっきり　したわ！",
+ "Skyrift_ObservatoryCliffs_Text_MailePost": "てっぺんの　おおきな　おとこの　ひとが　とびらは　しまってるって。　だれで　あってもね。",
+ "Skyrift_ObservatoryCliffs_Text_NovaIntro": "ここまで　のぼって　きたのか？　なら　ここから　まっさかさまに　おちて　もらうぜ！",
+ "Skyrift_ObservatoryCliffs_Text_NovaDefeat": "おちた‥　がけから　まっさかさま‥",
+ "Skyrift_ObservatoryCliffs_Text_NovaPost": "うえの　もんは　シリウスが　まもって　いる。　あいつは　いちども　まけた　ことが　ないんだ。",
+ "QoL_Skyrift_Text_RiftHum": "まわりの　くうきが　ゆがんで　ゆらめいて　いる。　さけめから　エネルギーが　あふれだす！\\pさけめの　ちからを　まとった　ウルトラビーストだ！",
+ "QoL_Skyrift_Text_RiftBack": "それは　さけめの　ほうへ　すべるように　もどった‥　まだ　ここに　いる。",
+ "QoL_Skyrift_Text_RiftClosed": "ウルトラビーストが　いなく　なり　ちいさな　さけめは　とじた。",
+ "QoL_Skyrift_Gate_Text_Intro": "シリウス『そこで　とまれ。\\pおれは　シリウス。　ベガさまの　めいれいは　ひとつだ。　だれも　ノバてんもんだいには　いかせない。\\pセイカの　チャンピオンだろうと　おまえの　うしろを　あるく　ものだろうと　だ。』",
+ "QoL_Skyrift_Gate_Text_Defeat": "ちっ。　いいだろう。",
+ "QoL_Skyrift_Gate_Text_After": "シリウス『ベガさまは　おくじょうで　ソラサケエンジンを　うごかして　いる。\\pくるなら　こい。　おれは　ベガさまの　そばで　まって　いる。』"
+}

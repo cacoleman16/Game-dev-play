@@ -9,5 +9,17 @@
  "Seika_SkyShrine_Text_Jirachi": "ジラーー！",
  "Seika_SkyShrine_Text_StillHere": "ねがいぼしは　まだ　やしろの　うえに　うかんで　いる‥",
  "Seika_SkyShrine_Text_FlewHome": "ねがいぼしは　そらへ　のぼり　みえなく　なった。\\pでも　いく　まえに　いちどだけ　こちらを　ふりかえった。",
- "Seika_SkyShrine_Text_Ending": "はるか　したで　セイカの　ともしびが　よるの　なかに　かがやいて　いる。\\p2どめの　スターフォールは　おわった。　その　ねがいが　なんで　あれ　それは　あなただけの　ものだ。"
+ "Seika_SkyShrine_Text_Ending": "はるか　したで　セイカの　ともしびが　よるの　なかに　かがやいて　いる。\\p2どめの　スターフォールは　おわった。　その　ねがいが　なんで　あれ　それは　あなただけの　ものだ。",
+ "QoL_Skyrift_Wish_Text_Intro": "ねがいぼしが　めを　ひらき　まっすぐ　こちらを　みつめた。\\pあなたの　ねがいを　まって　いる。",
+ "QoL_Skyrift_Wish_Text_Ask": "なにを　ねがう？",
+ "QoL_Skyrift_Wish_Text_Strength": "つよさ",
+ "QoL_Skyrift_Wish_Text_Friend": "ともだち",
+ "QoL_Skyrift_Wish_Text_Fortune": "こううん",
+ "QoL_Skyrift_Wish_Text_Peace": "ノバに　へいわを",
+ "QoL_Skyrift_Wish_Text_Granted": "ほしが　まばゆく　かがやいた‥　ねがいが　かなった！",
+ "QoL_Skyrift_Wish_Text_PeaceGranted": "ほしは　ながい　あいだ　だまって　いた。\\pやがて　その　ひかりは　だれかを　さがす　ように　うみの　むこうへ　とんで　いった。\\pてのひらに　ちいさな　ものが　ぽとりと　おちて　きた。",
+ "QoL_Skyrift_Wish_Text_Test": "ねがいぼしが　くうちゅうで　くるりと　まわった。　あなたの　つよさを　たしかめたい　ようだ！",
+ "QoL_Skyrift_Wish_Text_FriendGranted": "ねがいぼしは　わらって　あなたの　うでの　なかへ　とびこんで　きた！",
+ "QoL_Skyrift_Wish_Text_GotJirachi": "{PLAYER}に　あたらしい　ともだちが　できた！　{STR_VAR_1}だ！",
+ "QoL_Skyrift_Wish_Text_SkyTears": "はるか　ひがしの　うみの　うえで　よぞらが　かみの　ように　ビリビリと　さけた！\\pふしぎな　ひかりの　ひびわれが　うみの　うえに　うかんで　いる。\\pトモシビタウンの　さんばしで　だれかが　まって　いる　はずだ‥"
 }

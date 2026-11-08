@@ -36,3 +36,7 @@ Skyrift_Riftwake_Mart_Text_Npc0::
 	.string "for what comes out of the rift.\p"
 	.string "On anything else, they barely\n"
 	.string "work at all. Choose wisely!$"
+	.string "{JPN}{JPN}ウルトラボールです！　さけめから　でてくる\n"
+	.string "ものの　ためだけに　つくられて　いるのですよ。\p"
+	.string "ほかの　ポケモンには　ほとんど　ききません。\n"
+	.string "よく　えらんで　くださいね！$"

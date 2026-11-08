@@ -9,6 +9,8 @@ Skyrift_ObservatoryCliffs_EventScript_Sign::
 Skyrift_ObservatoryCliffs_Text_Sign::
 	.string "OBSERVATORY CLIFFS\n"
 	.string "NOVA OBSERVATORY ahead$"
+	.string "{JPN}{JPN}テンモンがけ\n"
+	.string "この　さき　ノバてんもんだい$"
 
 Skyrift_ObservatoryCliffs_EventScript_ObsSign::
 	msgbox Skyrift_ObservatoryCliffs_Text_ObsSign, MSGBOX_SIGN
@@ -18,6 +20,9 @@ Skyrift_ObservatoryCliffs_Text_ObsSign::
 	.string "NOVA OBSERVATORY\p"
 	.string "We watch the sky so the sky\n"
 	.string "will answer us.  - VEGA$"
+	.string "{JPN}{JPN}ノバてんもんだい\p"
+	.string "われらは　そらを　みる。　そらが　われらに\n"
+	.string "こたえる　ように。　ー　ベガ$"
 
 Skyrift_ObservatoryCliffs_EventScript_ItemPPMax::
 	finditem ITEM_PP_MAX
@@ -31,13 +36,18 @@ Skyrift_ObservatoryCliffs_EventScript_Kanoa::
 Skyrift_ObservatoryCliffs_Text_KanoaIntro::
 	.string "I climb these cliffs every\n"
 	.string "morning. Two at a time? Fine!$"
+	.string "{JPN}{JPN}まいあさ　この　がけを　のぼって　いるんだ。\n"
+	.string "ふたり　いっぺんに？　いいとも！$"
 
 Skyrift_ObservatoryCliffs_Text_KanoaDefeat::
 	.string "My legs... are jelly...$"
+	.string "{JPN}{JPN}あしが‥　ガクガクだ‥$"
 
 Skyrift_ObservatoryCliffs_Text_KanoaPost::
 	.string "Use the steps going up. Going\n"
 	.string "down, the ledge is quicker.$"
+	.string "{JPN}{JPN}のぼりは　かいだんを　つかいな。　くだりは\n"
+	.string "だんさの　ほうが　はやいぞ。$"
 
 Skyrift_ObservatoryCliffs_EventScript_Maile::
 	trainerbattle_single TRAINER_SKYRIFT_COOLTRAINER_MAILE, Skyrift_ObservatoryCliffs_Text_MaileIntro, Skyrift_ObservatoryCliffs_Text_MaileDefeat
@@ -48,13 +58,19 @@ Skyrift_ObservatoryCliffs_Text_MaileIntro::
 	.string "I came to see the OBSERVATORY.\n"
 	.string "They wouldn't let me in!\p"
 	.string "So battle me instead!$"
+	.string "{JPN}{JPN}ノバてんもんだいを　みに　きたのに　なかに\n"
+	.string "いれて　もらえなかったの！\p"
+	.string "だから　かわりに　しょうぶして！$"
 
 Skyrift_ObservatoryCliffs_Text_MaileDefeat::
 	.string "That cheered me up!$"
+	.string "{JPN}{JPN}おかげで　すっきり　したわ！$"
 
 Skyrift_ObservatoryCliffs_Text_MailePost::
 	.string "The big man at the top says the\n"
 	.string "door is closed. For everyone.$"
+	.string "{JPN}{JPN}てっぺんの　おおきな　おとこの　ひとが　とびらは\n"
+	.string "しまってるって。　だれで　あってもね。$"
 
 Skyrift_ObservatoryCliffs_EventScript_Nova::
 	trainerbattle_single TRAINER_SKYRIFT_NOVA_CLIFFS, Skyrift_ObservatoryCliffs_Text_NovaIntro, Skyrift_ObservatoryCliffs_Text_NovaDefeat
@@ -64,13 +80,18 @@ Skyrift_ObservatoryCliffs_EventScript_Nova::
 Skyrift_ObservatoryCliffs_Text_NovaIntro::
 	.string "You climbed all this way? Then\n"
 	.string "you'll fall all this way!$"
+	.string "{JPN}{JPN}ここまで　のぼって　きたのか？　なら　ここから\n"
+	.string "まっさかさまに　おちて　もらうぜ！$"
 
 Skyrift_ObservatoryCliffs_Text_NovaDefeat::
 	.string "Fell... right off the cliff...$"
+	.string "{JPN}{JPN}おちた‥　がけから　まっさかさま‥$"
 
 Skyrift_ObservatoryCliffs_Text_NovaPost::
 	.string "SIRIUS guards the gate up there.\n"
 	.string "He has never lost. Not once.$"
+	.string "{JPN}{JPN}うえの　もんは　シリウスが　まもって　いる。\n"
+	.string "あいつは　いちども　まけた　ことが　ないんだ。$"
 
 QoL_Skyrift_EventScript_RiftXURKITREE::
 	lock
@@ -126,14 +147,22 @@ QoL_Skyrift_Text_RiftHum::
 	.string "out of the tear!\p"
 	.string "An ULTRA BEAST, wrapped in\n"
 	.string "the rift's power!$"
+	.string "{JPN}{JPN}まわりの　くうきが　ゆがんで　ゆらめいて　いる。\n"
+	.string "さけめから　エネルギーが　あふれだす！\p"
+	.string "さけめの　ちからを　まとった\n"
+	.string "ウルトラビーストだ！$"
 
 QoL_Skyrift_Text_RiftBack::
 	.string "It slipped back toward the\n"
 	.string "rift... It's still here.$"
+	.string "{JPN}{JPN}それは　さけめの　ほうへ　すべるように\n"
+	.string "もどった‥　まだ　ここに　いる。$"
 
 QoL_Skyrift_Text_RiftClosed::
 	.string "With the ULTRA BEAST gone,\n"
 	.string "the little rift closed.$"
+	.string "{JPN}{JPN}ウルトラビーストが　いなく　なり　ちいさな\n"
+	.string "さけめは　とじた。$"
 
 QoL_Skyrift_Gate_OnTransition::
 	setvar VAR_TEMP_4, 0
@@ -171,12 +200,23 @@ QoL_Skyrift_Gate_Text_Intro::
 	.string "Not a CHAMPION from SEIKA,\n"
 	.string "and not whoever walks\l"
 	.string "behind you.$"
+	.string "{JPN}{JPN}シリウス『そこで　とまれ。\p"
+	.string "おれは　シリウス。　ベガさまの　めいれいは\n"
+	.string "ひとつだ。　だれも　ノバてんもんだいには\l"
+	.string "いかせない。\p"
+	.string "セイカの　チャンピオンだろうと　おまえの\n"
+	.string "うしろを　あるく　ものだろうと　だ。』$"
 
 QoL_Skyrift_Gate_Text_Defeat::
 	.string "Tch. Fine.$"
+	.string "{JPN}{JPN}ちっ。　いいだろう。$"
 
 QoL_Skyrift_Gate_Text_After::
 	.string "SIRIUS: She's on the roof, starting\n"
 	.string "the SKYRIFT ENGINE.\p"
 	.string "Come up if you must. I will\n"
 	.string "be waiting at her side.$"
+	.string "{JPN}{JPN}シリウス『ベガさまは　おくじょうで\n"
+	.string "ソラサケエンジンを　うごかして　いる。\p"
+	.string "くるなら　こい。　おれは　ベガさまの　そばで\n"
+	.string "まって　いる。』$"

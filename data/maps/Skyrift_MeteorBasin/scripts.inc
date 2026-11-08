@@ -10,6 +10,9 @@ Skyrift_MeteorBasin_Text_Sign::
 	.string "METEOR BASIN\p"
 	.string "Where the brightest star of the\n"
 	.string "second STARFALL came down.$"
+	.string "{JPN}{JPN}インセキのくぼち\p"
+	.string "2どめの　スターフォールで　いちばん　あかるい\n"
+	.string "ほしが　おちた　ばしょ$"
 
 Skyrift_MeteorBasin_EventScript_Meteorite::
 	msgbox Skyrift_MeteorBasin_Text_Meteorite, MSGBOX_SIGN
@@ -20,6 +23,10 @@ Skyrift_MeteorBasin_Text_Meteorite::
 	.string "the crater floor.\p"
 	.string "It is still warm. Something deep\n"
 	.string "inside it hums, very softly.$"
+	.string "{JPN}{JPN}くぼちの　そこに　はんぶん　うまった　きょだいな\n"
+	.string "いんせきだ。\p"
+	.string "まだ　あたたかい。　おくふかくで　なにかが\n"
+	.string "かすかに　うなって　いる。$"
 
 Skyrift_MeteorBasin_EventScript_ItemCometShard::
 	finditem ITEM_COMET_SHARD
@@ -33,14 +40,19 @@ Skyrift_MeteorBasin_EventScript_Makoa::
 Skyrift_MeteorBasin_Text_MakoaIntro::
 	.string "I climbed down to see the big\n"
 	.string "rock. Now I can't stop staring!$"
+	.string "{JPN}{JPN}おおきな　いわを　みに　おりて　きたんだ。　もう\n"
+	.string "めが　はなせないぞ！$"
 
 Skyrift_MeteorBasin_Text_MakoaDefeat::
 	.string "Rockslide! On me!$"
+	.string "{JPN}{JPN}いわなだれだー！　おれの　うえに！$"
 
 Skyrift_MeteorBasin_Text_MakoaPost::
 	.string "The steps cut through the south\n"
 	.string "rim. The ledges are a one-way\l"
 	.string "trip down!$"
+	.string "{JPN}{JPN}かいだんは　みなみの　ふちを　ぬけて　いる。\n"
+	.string "だんさは　おりる　いっぽうだから　きを　つけな！$"
 
 Skyrift_MeteorBasin_EventScript_Hoku::
 	trainerbattle_single TRAINER_SKYRIFT_RUIN_MANIAC_HOKU, Skyrift_MeteorBasin_Text_HokuIntro, Skyrift_MeteorBasin_Text_HokuDefeat
@@ -50,14 +62,20 @@ Skyrift_MeteorBasin_EventScript_Hoku::
 Skyrift_MeteorBasin_Text_HokuIntro::
 	.string "This meteorite is not from our\n"
 	.string "sky. I've measured it!$"
+	.string "{JPN}{JPN}この　いんせきは　おれたちの　そらの　ものじゃ\n"
+	.string "ない。　ちゃんと　はかったんだ！$"
 
 Skyrift_MeteorBasin_Text_HokuDefeat::
 	.string "You hit harder than a meteor!$"
+	.string "{JPN}{JPN}いんせきより　つよい　いちげきだ！$"
 
 Skyrift_MeteorBasin_Text_HokuPost::
 	.string "Sometimes the light inside it\n"
 	.string "flickers, like it's hungry.\p"
 	.string "For light, maybe?$"
+	.string "{JPN}{JPN}ときどき　なかの　ひかりが　ちらつくんだ。\n"
+	.string "はらを　すかせて　いる　みたいにな。\p"
+	.string "ひかりに　うえて　いるのかも？$"
 
 Skyrift_MeteorBasin_EventScript_NovaA::
 	trainerbattle_single TRAINER_SKYRIFT_NOVA_BASIN_1, Skyrift_MeteorBasin_Text_NovaAIntro, Skyrift_MeteorBasin_Text_NovaADefeat
@@ -67,14 +85,20 @@ Skyrift_MeteorBasin_EventScript_NovaA::
 Skyrift_MeteorBasin_Text_NovaAIntro::
 	.string "The crater is sacred ground.\n"
 	.string "The second STARFALL hit here!$"
+	.string "{JPN}{JPN}この　くぼちは　せいなる　ばしょだ！　2どめの\n"
+	.string "スターフォールが　ここに　おちたんだ！$"
 
 Skyrift_MeteorBasin_Text_NovaADefeat::
 	.string "The crater... rejects me?$"
+	.string "{JPN}{JPN}くぼちが‥　おれを　こばむのか？$"
 
 Skyrift_MeteorBasin_Text_NovaAPost::
 	.string "VEGA studied this crater for\n"
 	.string "months. Then she built the\l"
 	.string "ENGINE.$"
+	.string "{JPN}{JPN}ベガさまは　なんかげつも　この　くぼちを\n"
+	.string "しらべて　いた。　そして　エンジンを\l"
+	.string "つくったんだ。$"
 
 Skyrift_MeteorBasin_EventScript_NovaB::
 	trainerbattle_single TRAINER_SKYRIFT_NOVA_BASIN_2, Skyrift_MeteorBasin_Text_NovaBIntro, Skyrift_MeteorBasin_Text_NovaBDefeat
@@ -84,13 +108,18 @@ Skyrift_MeteorBasin_EventScript_NovaB::
 Skyrift_MeteorBasin_Text_NovaBIntro::
 	.string "You and your friend won't pass\n"
 	.string "the crystal gate!$"
+	.string "{JPN}{JPN}あなたも　その　なかまも　すいしょうの　もんは\n"
+	.string "とおさないわよ！$"
 
 Skyrift_MeteorBasin_Text_NovaBDefeat::
 	.string "The gate is open... Go, then.$"
+	.string "{JPN}{JPN}もんは　ひらかれた‥　いきなさい。$"
 
 Skyrift_MeteorBasin_Text_NovaBPost::
 	.string "North of here are the cliffs,\n"
 	.string "and the OBSERVATORY on top.$"
+	.string "{JPN}{JPN}ここから　きたは　がけよ。　その　てっぺんに\n"
+	.string "ノバてんもんだいが　あるわ。$"
 
 QoL_Skyrift_EventScript_RiftBUZZWOLE::
 	lock
@@ -189,11 +218,20 @@ QoL_Skyrift_Necrozma_Text_Seen::
 	.string "A prism-black POKéMON, starved\n"
 	.string "for light, crawls out of the\l"
 	.string "tear!$"
+	.string "{JPN}{JPN}6つめの　さけめに　ひかりが　ながれこんで\n"
+	.string "いく‥　なかの　なにかが　それを　のみこんで\l"
+	.string "いる！\p"
+	.string "ひかりに　うえた　プリズムの　ように　くろい\n"
+	.string "ポケモンが　さけめから　はいでて　きた！$"
 
 QoL_Skyrift_Necrozma_Text_Back::
 	.string "It pulled back into the dark\n"
 	.string "of the rift... It's still there.$"
+	.string "{JPN}{JPN}それは　さけめの　やみへ　ひっこんだ‥　まだ\n"
+	.string "そこに　いる。$"
 
 QoL_Skyrift_Necrozma_Text_Closed::
 	.string "The sixth rift flickered\n"
 	.string "and went out.$"
+	.string "{JPN}{JPN}6つめの　さけめは　ちらちらと　ゆらめいて\n"
+	.string "きえた。$"

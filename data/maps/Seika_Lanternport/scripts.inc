@@ -227,58 +227,89 @@ QoL_Skyrift_Pier_Text_Mira1::
 	.string "I saw it from the SKY SHRINE.\n"
 	.string "The sky tore open over the\l"
 	.string "eastern sea!$"
+	.string "{JPN}{JPN}ミラ『{PLAYER}！　きてくれたんだね！\p"
+	.string "わたし　ミラ！　セイジおじいちゃんが　いってた。\n"
+	.string "あなたが　しんチャンピオンだって！\p"
+	.string "そらのやしろから　みたの。　ひがしの　うみの\n"
+	.string "うえで　そらが　さけたんだよ！』$"
 
 QoL_Skyrift_Pier_Text_Altair1::
 	.string "ALTAIR: ...And VEGA went through\n"
 	.string "it.\p"
 	.string "She's out on the SKYRIFT ISLES\n"
 	.string "with what's left of TEAM NOVA.$"
+	.string "{JPN}{JPN}アルタイル『‥そして　ベガは　その　むこうへ\n"
+	.string "いっちまった。\p"
+	.string "のこった　ノバだんを　つれて　ソラサケしょとうに\n"
+	.string "いるんだ。』$"
 
 QoL_Skyrift_Pier_Text_Deneb1::
 	.string "DENEB: We can't reach her alone,\n"
 	.string "darling.\p"
 	.string "Her bodyguard SIRIUS won't even\n"
 	.string "let us near the ISLES.$"
+	.string "{JPN}{JPN}デネブ『わたしたち　だけじゃ　ベガさまの\n"
+	.string "ところへ　いけないの　ダーリン。\p"
+	.string "ボディガードの　シリウスが　しまに　ちかづく\n"
+	.string "ことさえ　ゆるして　くれないのよ。』$"
 
 QoL_Skyrift_Pier_Text_Mira2::
 	.string "MIRA: Only two can make the\n"
 	.string "crossing on a sky this wild.\p"
 	.string "So... take one of us with you!$"
+	.string "{JPN}{JPN}ミラ『こんなに　そらが　あれてると　うみを\n"
+	.string "わたれるのは　ふたり　だけなの。\p"
+	.string "だから‥　だれか　ひとりを　つれていって！』$"
 
 QoL_Skyrift_Pier_Text_Choose::
 	.string "Who will go with you to the\n"
 	.string "SKYRIFT ISLES?$"
+	.string "{JPN}{JPN}だれと　いっしょに　ソラサケしょとうへ　いく？$"
 
 QoL_Skyrift_Pier_Text_OptAltair::
 	.string "ALTAIR$"
+	.string "{JPN}{JPN}アルタイル$"
 
 QoL_Skyrift_Pier_Text_OptDeneb::
 	.string "DENEB$"
+	.string "{JPN}{JPN}デネブ$"
 
 QoL_Skyrift_Pier_Text_OptMira::
 	.string "MIRA$"
+	.string "{JPN}{JPN}ミラ$"
 
 QoL_Skyrift_Pier_Text_OptLater::
 	.string "NOT YET$"
+	.string "{JPN}{JPN}あとで$"
 
 QoL_Skyrift_Pier_Text_Later::
 	.string "MIRA: We'll wait right here. Don't\n"
 	.string "take too long!$"
+	.string "{JPN}{JPN}ミラ『ここで　まってるね。　はやく　きてよ！』$"
 
 QoL_Skyrift_Pier_Text_ConfirmALTAIR::
 	.string "ALTAIR battles with GROUND, ROCK\n"
 	.string "and STEEL POKéMON.\p"
 	.string "Take ALTAIR with you?$"
+	.string "{JPN}{JPN}アルタイルは　じめん・いわ・はがねタイプの\n"
+	.string "ポケモンで　たたかう。\p"
+	.string "アルタイルを　つれていく？$"
 
 QoL_Skyrift_Pier_Text_ConfirmDENEB::
 	.string "DENEB battles with PSYCHIC and\n"
 	.string "FAIRY POKéMON.\p"
 	.string "Take DENEB with you?$"
+	.string "{JPN}{JPN}デネブは　エスパー・フェアリータイプの\n"
+	.string "ポケモンで　たたかう。\p"
+	.string "デネブを　つれていく？$"
 
 QoL_Skyrift_Pier_Text_ConfirmMIRA::
 	.string "MIRA battles with PSYCHIC, FAIRY\n"
 	.string "and WATER POKéMON.\p"
 	.string "Take MIRA with you?$"
+	.string "{JPN}{JPN}ミラは　エスパー・フェアリー・みずタイプの\n"
+	.string "ポケモンで　たたかう。\p"
+	.string "ミラを　つれていく？$"
 
 QoL_Skyrift_Pier_Text_PickedALTAIR::
 	.string "ALTAIR: Ha! Didn't think you'd pick\n"
@@ -286,6 +317,11 @@ QoL_Skyrift_Pier_Text_PickedALTAIR::
 	.string "I dug up that star stone. I owe\n"
 	.string "VEGA the truth. Let's go.\p"
 	.string "DENEB: Bring her home, you lump.$"
+	.string "{JPN}{JPN}アルタイル『はっ！　じゃまを　した　おとこを\n"
+	.string "えらぶとは　な。\p"
+	.string "スターストーンを　ほりだしたのは　おれだ。\n"
+	.string "ベガに　ほんとうの　ことを　いう。　いくぜ。』\p"
+	.string "デネブ『つれて　かえってよ　でくのぼう。』$"
 
 QoL_Skyrift_Pier_Text_PickedDENEB::
 	.string "DENEB: Me? How flattering, darling.\p"
@@ -294,6 +330,11 @@ QoL_Skyrift_Pier_Text_PickedDENEB::
 	.string "them off.\p"
 	.string "ALTAIR: Don't let her charm you,\n"
 	.string "kid.$"
+	.string "{JPN}{JPN}デネブ『わたし？　うれしいわ　ダーリン。\p"
+	.string "ベガさまの　きかいは　ネジ　1ぽんまで　わたしが\n"
+	.string "はらったの。　とめるのを　てつだわせて。』\p"
+	.string "アルタイル『その　おんなに　たぶらかされるなよ\n"
+	.string "ボウズ。』$"
 
 QoL_Skyrift_Pier_Text_PickedMIRA::
 	.string "MIRA: Really?! I won't let you\n"
@@ -302,121 +343,186 @@ QoL_Skyrift_Pier_Text_PickedMIRA::
 	.string "stars. Now I get to see one up\l"
 	.string "close!\p"
 	.string "ALTAIR: ...Keep her safe.$"
+	.string "{JPN}{JPN}ミラ『ほんと！？　ぜったい　がっかり\n"
+	.string "させないよ！\p"
+	.string "おじいちゃんに　ほしの　よみかたを　ならったの。\n"
+	.string "こんどは　ほしを　まぢかで　みられるんだね！』\p"
+	.string "アルタイル『‥その　こを　まもって　やれよ。』$"
 
 QoL_Skyrift_Pier_Text_Ready::
 	.string "Your companion will travel and\n"
 	.string "battle beside you.\p"
 	.string "The S.S. TIDAL can sail you both\n"
 	.string "to the SKYRIFT ISLES.$"
+	.string "{JPN}{JPN}なかまが　いっしょに　たびを　して　となりで\n"
+	.string "たたかって　くれる！\p"
+	.string "タイドリップごうで　ふたり　いっしょに\n"
+	.string "ソラサケしょとうへ　わたれる。$"
 
 QoL_Skyrift_Chat_Text_ALTAIRAfterA::
 	.string "ALTAIR: Whatever happens next, I'm\n"
 	.string "done digging for other people.$"
+	.string "{JPN}{JPN}アルタイル『この　さき　どう　なろうと　ひとの\n"
+	.string "ために　ほるのは　もう　やめだ。』$"
 
 QoL_Skyrift_Chat_Text_ALTAIRAfterB::
 	.string "ALTAIR: Thanks, kid. Really. Don't\n"
 	.string "make me say it twice.$"
+	.string "{JPN}{JPN}アルタイル『ありがとよ　ボウズ。　ほんとに。\n"
+	.string "にどは　いわせるなよ。』$"
 
 QoL_Skyrift_Chat_Text_ALTAIRRoofA::
 	.string "ALTAIR: SIRIUS was always her\n"
 	.string "shadow. Never liked him. Never had\l"
 	.string "to.$"
+	.string "{JPN}{JPN}アルタイル『シリウスは　いつも　ボスの\n"
+	.string "かげだった。　すかねえ　やつだ。　すく\l"
+	.string "ひつようも　なかったしな。』$"
 
 QoL_Skyrift_Chat_Text_ALTAIRRoofB::
 	.string "ALTAIR: VEGA's up there. I can feel\n"
 	.string "the ground humming. Stay close.$"
+	.string "{JPN}{JPN}アルタイル『ボスは　この　うえだ。　じめんが\n"
+	.string "うなってるのが　わかる。　はなれるなよ。』$"
 
 QoL_Skyrift_Chat_Text_ALTAIRIslesA::
 	.string "ALTAIR: These shards... they're the\n"
 	.string "same stuff as the star stone. The\l"
 	.string "whole beach is made of sky.$"
+	.string "{JPN}{JPN}アルタイル『この　かけら‥　スターストーンと\n"
+	.string "おなじ　ものだ。　この　はまは　まるごと　そらで\l"
+	.string "できてるんだ。』$"
 
 QoL_Skyrift_Chat_Text_ALTAIRIslesB::
 	.string "ALTAIR: Ultra Beasts in the rifts.\n"
 	.string "VEGA always said the sky had more\l"
 	.string "in it than DEOXYS.$"
+	.string "{JPN}{JPN}アルタイル『さけめに　ウルトラビーストか。\n"
+	.string "そらには　デオキシス　いがいにも　いろいろ\l"
+	.string "いるって　ボスは　いつも　いってたな。』$"
 
 QoL_Skyrift_Chat_Text_ALTAIRStartA::
 	.string "ALTAIR: I haven't been on a boat\n"
 	.string "since KANTO. My stomach remembers.$"
+	.string "{JPN}{JPN}アルタイル『ふねは　カントー　いらいだ。　はらが\n"
+	.string "まだ　おぼえてやがる。』$"
 
 QoL_Skyrift_Chat_Text_ALTAIRStartB::
 	.string "ALTAIR: You and me, eh? Strange\n"
 	.string "world. Last month I was digging\l"
 	.string "rocks to stop you.$"
+	.string "{JPN}{JPN}アルタイル『おまえと　おれか。　へんな\n"
+	.string "もんだな。　せんげつは　おまえを　とめる　ために\l"
+	.string "いわを　ほってたのに。』$"
 
 QoL_Skyrift_Chat_Text_DENEBAfterA::
 	.string "DENEB: You know, darling, I think\n"
 	.string "I'll keep this hat.$"
+	.string "{JPN}{JPN}デネブ『ねえ　ダーリン。　この　ぼうし　ずっと\n"
+	.string "かぶって　いようかしら。』$"
 
 QoL_Skyrift_Chat_Text_DENEBAfterB::
 	.string "DENEB: Strange... I don't miss the\n"
 	.string "money at all.$"
+	.string "{JPN}{JPN}デネブ『ふしぎね‥　おかねが　ちっとも　こいしく\n"
+	.string "ないの。』$"
 
 QoL_Skyrift_Chat_Text_DENEBRoofA::
 	.string "DENEB: SIRIUS hates me. I signed\n"
 	.string "his paychecks. It's complicated.$"
+	.string "{JPN}{JPN}デネブ『シリウスは　わたしが　きらいなの。\n"
+	.string "きゅうりょうを　はらってたのに。　ふくざつね。』$"
 
 QoL_Skyrift_Chat_Text_DENEBRoofB::
 	.string "DENEB: If we turn that engine off,\n"
 	.string "I'm finally out of work. What a\l"
 	.string "relief.$"
+	.string "{JPN}{JPN}デネブ『あの　エンジンを　とめたら　わたしも\n"
+	.string "やっと　おやくごめん。　ほっと　するわ。』$"
 
 QoL_Skyrift_Chat_Text_DENEBIslesA::
 	.string "DENEB: Rifts, shards, beasts from\n"
 	.string "another sky... VEGA spent a fortune\l"
 	.string "on this place.$"
+	.string "{JPN}{JPN}デネブ『さけめに　かけらに　べつの　そらの\n"
+	.string "ポケモン‥　ベガさまは　ここに　ばくだいな\l"
+	.string "おかねを　つぎこんだのよ。』$"
 
 QoL_Skyrift_Chat_Text_DENEBIslesB::
 	.string "DENEB: DR. HALLEY used to work for\n"
 	.string "us. He quit the day VEGA bought the\l"
 	.string "engine.$"
+	.string "{JPN}{JPN}デネブ『ハレーはかせは　むかし　うちで\n"
+	.string "はたらいて　いたの。　ベガさまが　エンジンを\l"
+	.string "かった　ひに　やめちゃったけど。』$"
 
 QoL_Skyrift_Chat_Text_DENEBStartA::
 	.string "DENEB: Do you like my hat? I chose\n"
 	.string "it for the crossing. Priorities,\l"
 	.string "darling.$"
+	.string "{JPN}{JPN}デネブ『この　ぼうし　どう？　ふなたびの　ために\n"
+	.string "えらんだの。　だいじな　ことよ　ダーリン。』$"
 
 QoL_Skyrift_Chat_Text_DENEBStartB::
 	.string "DENEB: VEGA once said I counted\n"
 	.string "money like other people count\l"
 	.string "stars. She wasn't wrong.$"
+	.string "{JPN}{JPN}デネブ『ひとが　ほしを　かぞえる　ように\n"
+	.string "わたしは　おかねを　かぞえるって　ベガさまに\l"
+	.string "いわれたわ。　そのとおりね。』$"
 
 QoL_Skyrift_Chat_Text_MIRAAfterA::
 	.string "MIRA: Wait until Grandpa hears!\n"
 	.string "He'll fall right off his throne!$"
+	.string "{JPN}{JPN}ミラ『おじいちゃんが　きいたら　びっくりして\n"
+	.string "チャンピオンの　いすから　ころげおちちゃうよ！』$"
 
 QoL_Skyrift_Chat_Text_MIRAAfterB::
 	.string "MIRA: I'm going to draw a new star\n"
 	.string "chart. You're on it!$"
+	.string "{JPN}{JPN}ミラ『あたらしい　せいざずを　かくんだ。\n"
+	.string "あなたも　のってるよ！』$"
 
 QoL_Skyrift_Chat_Text_MIRARoofA::
 	.string "MIRA: VEGA, DENEB, ALTAIR...\n"
 	.string "they're all named after stars. Like\l"
 	.string "a constellation that went wrong.$"
+	.string "{JPN}{JPN}ミラ『ベガ　デネブ　アルタイル‥　みんな　ほしの\n"
+	.string "なまえなんだよ。　まちがった　せいざ\l"
+	.string "みたいだね。』$"
 
 QoL_Skyrift_Chat_Text_MIRARoofB::
 	.string "MIRA: I'm a little scared. But I'm\n"
 	.string "more excited! Is that weird?$"
+	.string "{JPN}{JPN}ミラ『ちょっと　こわいけど　それより　わくわく\n"
+	.string "しちゃう！　へんかな？』$"
 
 QoL_Skyrift_Chat_Text_MIRAIslesA::
 	.string "MIRA: Look at the sky through the\n"
 	.string "rift! Those stars aren't any I\l"
 	.string "know!$"
+	.string "{JPN}{JPN}ミラ『さけめの　むこうの　そらを　みて！\n"
+	.string "しらない　ほし　ばっかりだよ！』$"
 
 QoL_Skyrift_Chat_Text_MIRAIslesB::
 	.string "MIRA: Ultra Beasts! I've only seen\n"
 	.string "them in Grandpa's oldest books.$"
+	.string "{JPN}{JPN}ミラ『ウルトラビーストだ！　おじいちゃんの\n"
+	.string "いちばん　ふるい　ほんでしか　しらないよ！』$"
 
 QoL_Skyrift_Chat_Text_MIRAStartA::
 	.string "MIRA: Grandpa gave me his old star\n"
 	.string "chart. I can read every\l"
 	.string "constellation!$"
+	.string "{JPN}{JPN}ミラ『おじいちゃんに　ふるい　せいざずを\n"
+	.string "もらったの。　どんな　せいざだって　よめるよ！』$"
 
 QoL_Skyrift_Chat_Text_MIRAStartB::
 	.string "MIRA: Do you think the WISHING STAR\n"
 	.string "will come back in another thousand\l"
 	.string "years?$"
+	.string "{JPN}{JPN}ミラ『ねがいぼしって　また　せんねんごに\n"
+	.string "もどって　くるのかな？』$"
 
 QoL_EventScript_CompanionTalk::
 	lock

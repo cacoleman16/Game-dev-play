@@ -9,6 +9,8 @@ Skyrift_RiftwakeHarbor_EventScript_TownSign::
 Skyrift_RiftwakeHarbor_Text_TownSign::
 	.string "RIFTWAKE HARBOR\n"
 	.string "The last port under the torn sky$"
+	.string "{JPN}{JPN}ハザマみなと\n"
+	.string "さけた　そらの　したの　さいはての　みなと$"
 
 Skyrift_RiftwakeHarbor_EventScript_HutSign::
 	msgbox Skyrift_RiftwakeHarbor_Text_HutSign, MSGBOX_SIGN
@@ -18,6 +20,9 @@ Skyrift_RiftwakeHarbor_Text_HutSign::
 	.string "DR. HALLEY'S RIFT HUT\p"
 	.string "Knock first. If the door hums,\n"
 	.string "knock twice.$"
+	.string "{JPN}{JPN}ハレーはかせの　けんきゅうごや\p"
+	.string "まずは　ノックを。　ドアが　うなって　いたら\n"
+	.string "2かい　ノックを。$"
 
 Skyrift_RiftwakeHarbor_EventScript_InnSign::
 	msgbox Skyrift_RiftwakeHarbor_Text_InnSign, MSGBOX_SIGN
@@ -26,6 +31,8 @@ Skyrift_RiftwakeHarbor_EventScript_InnSign::
 Skyrift_RiftwakeHarbor_Text_InnSign::
 	.string "RIFTWAKE INN\n"
 	.string "Rest under a quiet roof.$"
+	.string "{JPN}{JPN}ハザマのやど\n"
+	.string "しずかな　やねの　したで　ひとやすみ$"
 
 Skyrift_RiftwakeHarbor_EventScript_OldMan::
 	msgbox Skyrift_RiftwakeHarbor_Text_OldMan, MSGBOX_NPC
@@ -39,6 +46,13 @@ Skyrift_RiftwakeHarbor_Text_OldMan::
 	.string "an old sail.\p"
 	.string "Sixty years I've fished here.\n"
 	.string "Never seen the stars bleed before.$"
+	.string "{JPN}{JPN}ひがしの　おかの　うえに　そらの　ひびわれが\n"
+	.string "みえるじゃろ？\p"
+	.string "ねがいぼしが　セイカを　さった　よるに\n"
+	.string "ひらいたんじゃ。　ふるい　ほのように　ビリビリと\l"
+	.string "さけてのう。\p"
+	.string "ここで　60ねん　りょうを　して　きたが　ほしが\n"
+	.string "ちを　ながすのを　みたのは　はじめてじゃ。$"
 
 Skyrift_RiftwakeHarbor_EventScript_Woman::
 	msgbox Skyrift_RiftwakeHarbor_Text_Woman, MSGBOX_NPC
@@ -49,6 +63,10 @@ Skyrift_RiftwakeHarbor_Text_Woman::
 	.string "Nobody in town can sleep.\p"
 	.string "The inn is full of folk who came\n"
 	.string "just to watch it.$"
+	.string "{JPN}{JPN}よるに　なると　さけめが　むらさきいろに\n"
+	.string "ひかるの。　まちの　だれも　ねむれや　しないわ。\p"
+	.string "やどは　それを　みる　ためだけに　きた　ひとで\n"
+	.string "いっぱいよ。$"
 
 Skyrift_RiftwakeHarbor_EventScript_Boy::
 	msgbox Skyrift_RiftwakeHarbor_Text_Boy, MSGBOX_NPC
@@ -59,6 +77,10 @@ Skyrift_RiftwakeHarbor_Text_Boy::
 	.string "down onto SHARDFALL BEACH!\p"
 	.string "It looked like a jellyfish made\n"
 	.string "of glass. Mom says I dreamed it.$"
+	.string "{JPN}{JPN}しょくしゅの　ある　なにかが　カケラはまに\n"
+	.string "ふわふわ　おりて　きたんだ！\p"
+	.string "ガラスで　できた　クラゲ　みたいだった。　ママは\n"
+	.string "ゆめでも　みたのよって　いうけど。$"
 
 Skyrift_RiftwakeHarbor_EventScript_Fisher::
 	msgbox Skyrift_RiftwakeHarbor_Text_Fisher, MSGBOX_NPC
@@ -69,6 +91,10 @@ Skyrift_RiftwakeHarbor_Text_Fisher::
 	.string "glitters at night.\p"
 	.string "Little shards keep falling into\n"
 	.string "the water. STARYU love them!$"
+	.string "{JPN}{JPN}そらが　さけてから　よるの　うみが　キラキラ\n"
+	.string "ひかるんだ。\p"
+	.string "ちいさな　かけらが　うみに　おちつづけて\n"
+	.string "いてな。　ヒトデマンの　だいこうぶつさ！$"
 
 Skyrift_RiftwakeHarbor_EventScript_Worker::
 	msgbox Skyrift_RiftwakeHarbor_Text_Worker, MSGBOX_NPC
@@ -82,6 +108,13 @@ Skyrift_RiftwakeHarbor_Text_Worker::
 	.string "The people in the strange coats\n"
 	.string "came off a private boat. They\l"
 	.string "went up there and never left.$"
+	.string "{JPN}{JPN}まちの　ひがしは　カケラはまだ。\p"
+	.string "その　さきに　でっかい　いんせきが　おちた\n"
+	.string "くぼちと　ノバてんもんだいへ　のぼる　がけが\l"
+	.string "ある。\p"
+	.string "へんな　コートの　れんちゅうが　じぶんたちの\n"
+	.string "ふねで　きてな。　うえへ　のぼった　きり　おりて\l"
+	.string "こないんだ。$"
 
 Skyrift_EventScript_HarborSailor::
 	lock
@@ -144,15 +177,19 @@ QoL_EventScript_PushSkyrift::
 
 QoL_Skyrift_Ferry_Text_Where::
 	.string "Where would you like to sail?$"
+	.string "{JPN}{JPN}どこへ　ふねを　だそうか？$"
 
 QoL_Skyrift_Ferry_Text_Lanternport::
 	.string "LANTERNPORT$"
+	.string "{JPN}{JPN}トモシビタウン$"
 
 QoL_Skyrift_Ferry_Text_Vermilion::
 	.string "VERMILION CITY$"
+	.string "{JPN}{JPN}クチバシティ$"
 
 QoL_Skyrift_Ferry_Text_Skyrift::
 	.string "SKYRIFT ISLES$"
+	.string "{JPN}{JPN}ソラサケしょとう$"
 
 Skyrift_RiftwakeHarbor_QoLFly_OnTransition::
 	setflag FLAG_QOL_SKYRIFT_FLY_RIFTWAKE

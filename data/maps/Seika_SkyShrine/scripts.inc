@@ -264,25 +264,35 @@ QoL_Skyrift_Wish_Text_Intro::
 	.string "The WISHING STAR opens its eyes\n"
 	.string "and looks straight at you.\p"
 	.string "It is waiting for your wish.$"
+	.string "{JPN}{JPN}ねがいぼしが　めを　ひらき　まっすぐ　こちらを\n"
+	.string "みつめた。\p"
+	.string "あなたの　ねがいを　まって　いる。$"
 
 QoL_Skyrift_Wish_Text_Ask::
 	.string "What will you wish for?$"
+	.string "{JPN}{JPN}なにを　ねがう？$"
 
 QoL_Skyrift_Wish_Text_Strength::
 	.string "STRENGTH$"
+	.string "{JPN}{JPN}つよさ$"
 
 QoL_Skyrift_Wish_Text_Friend::
 	.string "A FRIEND$"
+	.string "{JPN}{JPN}ともだち$"
 
 QoL_Skyrift_Wish_Text_Fortune::
 	.string "FORTUNE$"
+	.string "{JPN}{JPN}こううん$"
 
 QoL_Skyrift_Wish_Text_Peace::
 	.string "PEACE FOR NOVA$"
+	.string "{JPN}{JPN}ノバに　へいわを$"
 
 QoL_Skyrift_Wish_Text_Granted::
 	.string "The star glows brightly...\n"
 	.string "Your wish is granted!$"
+	.string "{JPN}{JPN}ほしが　まばゆく　かがやいた‥　ねがいが\n"
+	.string "かなった！$"
 
 QoL_Skyrift_Wish_Text_PeaceGranted::
 	.string "The star is quiet for a long time.\p"
@@ -290,19 +300,30 @@ QoL_Skyrift_Wish_Text_PeaceGranted::
 	.string "the sea, looking for someone.\p"
 	.string "Something small falls into your\n"
 	.string "hands.$"
+	.string "{JPN}{JPN}ほしは　ながい　あいだ　だまって　いた。\p"
+	.string "やがて　その　ひかりは　だれかを　さがす　ように\n"
+	.string "うみの　むこうへ　とんで　いった。\p"
+	.string "てのひらに　ちいさな　ものが　ぽとりと　おちて\n"
+	.string "きた。$"
 
 QoL_Skyrift_Wish_Text_Test::
 	.string "The WISHING STAR spins in the air.\n"
 	.string "It wants to see how strong you\l"
 	.string "are!$"
+	.string "{JPN}{JPN}ねがいぼしが　くうちゅうで　くるりと　まわった。\n"
+	.string "あなたの　つよさを　たしかめたい　ようだ！$"
 
 QoL_Skyrift_Wish_Text_FriendGranted::
 	.string "The WISHING STAR laughs and floats\n"
 	.string "right into your arms!$"
+	.string "{JPN}{JPN}ねがいぼしは　わらって　あなたの　うでの　なかへ\n"
+	.string "とびこんで　きた！$"
 
 QoL_Skyrift_Wish_Text_GotJirachi::
 	.string "{PLAYER} made a new friend:\n"
 	.string "{STR_VAR_1}!$"
+	.string "{JPN}{JPN}{PLAYER}に　あたらしい　ともだちが\n"
+	.string "できた！　{STR_VAR_1}だ！$"
 
 QoL_Skyrift_Wish_Text_SkyTears::
 	.string "Far to the east, over the sea,\n"
@@ -312,3 +333,9 @@ QoL_Skyrift_Wish_Text_SkyTears::
 	.string "above the water.\p"
 	.string "Someone will be waiting on\n"
 	.string "LANTERNPORT's pier...$"
+	.string "{JPN}{JPN}はるか　ひがしの　うみの　うえで　よぞらが\n"
+	.string "かみの　ように　ビリビリと　さけた！\p"
+	.string "ふしぎな　ひかりの　ひびわれが　うみの　うえに\n"
+	.string "うかんで　いる。\p"
+	.string "トモシビタウンの　さんばしで　だれかが　まって\n"
+	.string "いる　はずだ‥$"
