@@ -1,0 +1,10 @@
+@ [QoL] Generated: the Seika region's map scripts.
+	.include "data/maps/Seika_Lanternport/scripts.inc"
+	.include "data/maps/Seika_Lanternport_PokemonCenter_1F/scripts.inc"
+	.include "data/maps/Seika_Lanternport_PokemonCenter_2F/scripts.inc"
+	.include "data/maps/Seika_Lanternport_Mart/scripts.inc"
+	.include "data/maps/Seika_Lanternport_House1/scripts.inc"
+	.include "data/maps/Seika_Lanternport_House2/scripts.inc"
+	.include "data/maps/Seika_Lanternport_LanternHall/scripts.inc"
+	.include "data/maps/Seika_Lanternport_Gym/scripts.inc"
+	.include "data/maps/Seika_LanternRoad/scripts.inc"

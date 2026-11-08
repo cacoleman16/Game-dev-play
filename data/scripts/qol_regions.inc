@@ -27,6 +27,7 @@ QoL_EventScript_TidalMenu::
 	call_if_eq VAR_0x8005, TRUE, QoL_EventScript_PushFrontier
 	dynmultipush QoL_Text_DestStarfallIsle, 5 @ [QoL] Visible wild POKéMON island
 	call QoL_EventScript_PushBirthIsland @ [QoL] Starfall finale
+	call QoL_EventScript_PushSeika @ [QoL] Seika region (after the finale)
 	dynmultipush QoL_Text_DestCancel, 9
 	dynmultistack 0, 0, FALSE, 5, FALSE, 0, DYN_MULTICHOICE_CB_NONE
 	switch VAR_RESULT
@@ -36,6 +37,7 @@ QoL_EventScript_TidalMenu::
 	case 3, QoL_EventScript_SailToFrontier
 	case 4, QoL_EventScript_SailToBirthIsland
 	case 5, QoL_EventScript_SailToStarfallIsle
+	case 6, QoL_EventScript_SailToSeika
 	goto QoL_EventScript_TidalCancel
 	end
 
@@ -70,6 +72,19 @@ QoL_EventScript_SailToBirthIsland::
 QoL_EventScript_SailToStarfallIsle::
 	call QoL_EventScript_SetSail
 	warp MAP_FARAWAY_ISLAND_ENTRANCE, 13, 38
+	waitstate
+	release
+	end
+
+@ SEIKA (docs/SEIKA.md): opens after the Starfall finale on Birth Island.
+QoL_EventScript_PushSeika::
+	goto_if_unset FLAG_QOL_STARFALL_DONE, Common_EventScript_NopReturn
+	dynmultipush QoL_Text_DestSeika, 6
+	return
+
+QoL_EventScript_SailToSeika::
+	call QoL_EventScript_SetSail
+	warp MAP_SEIKA_LANTERNPORT, 20, 28
 	waitstate
 	release
 	end
@@ -257,6 +272,10 @@ QoL_Text_StarfallIsleSign::
 	.string "ここの　ポケモンは　そとを　うろついている。\n"
 	.string "ふれれば　バトル！　たたかいたく　なければ\l"
 	.string "よけて　とおろう。$"
+
+QoL_Text_DestSeika::
+	.string "SEIKA$"
+	.string "{JPN}{JPN}セイカちほう$"
 
 QoL_Text_DestCancel::
 	.string "CANCEL$"

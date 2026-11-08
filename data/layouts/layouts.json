@@ -9323,6 +9323,45 @@
       "border_filepath": "data/layouts/OneIsland_KindleRoad_EmberSpa_Frlg/border.bin",
       "blockdata_filepath": "data/layouts/OneIsland_KindleRoad_EmberSpa_Frlg/map.bin",
       "layout_version": "frlg"
+    },
+    {
+      "id": "LAYOUT_SEIKA_LANTERNPORT",
+      "name": "Seika_Lanternport_Layout",
+      "width": 40,
+      "height": 34,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_General_Frlg",
+      "secondary_tileset": "gTileset_VermilionCity",
+      "border_filepath": "data/layouts/Seika_Lanternport/border.bin",
+      "blockdata_filepath": "data/layouts/Seika_Lanternport/map.bin",
+      "layout_version": "frlg"
+    },
+    {
+      "id": "LAYOUT_SEIKA_LANTERNPORT_GYM",
+      "name": "Seika_Lanternport_Gym_Layout",
+      "width": 15,
+      "height": 18,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_BuildingFrlg",
+      "secondary_tileset": "gTileset_CinnabarGym",
+      "border_filepath": "data/layouts/Seika_Lanternport_Gym/border.bin",
+      "blockdata_filepath": "data/layouts/Seika_Lanternport_Gym/map.bin",
+      "layout_version": "frlg"
+    },
+    {
+      "id": "LAYOUT_SEIKA_LANTERN_ROAD",
+      "name": "Seika_LanternRoad_Layout",
+      "width": 24,
+      "height": 50,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_General_Frlg",
+      "secondary_tileset": "gTileset_PalletTown",
+      "border_filepath": "data/layouts/Seika_LanternRoad/border.bin",
+      "blockdata_filepath": "data/layouts/Seika_LanternRoad/map.bin",
+      "layout_version": "frlg"
     }
   ]
 }

@@ -751,8 +751,9 @@ void process_groups(string groups_filepath, vector<string> &map_filepaths, strin
         string map_name = json_to_string(map_data, "name");
 
         // [QoL] Merged regions: the FireRed build includes the Hoenn maps too.
+        // [QoL] Seika (docs/SEIKA.md) is FireRed-build only.
         if ((version == "emerald" && region != "REGION_HOENN")
-         || (version == "firered" && region != "REGION_KANTO" && region != "REGION_HOENN")) {
+         || (version == "firered" && region != "REGION_KANTO" && region != "REGION_HOENN" && region != "REGION_SEIKA")) {
             invalid_maps.push_back(map_name);
         }
     }

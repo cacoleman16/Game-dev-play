@@ -1741,6 +1741,14 @@
       "y": 4,
       "width": 1,
       "height": 1
+    },
+    {
+      "id": "MAPSEC_SEIKA_LANTERNPORT",
+      "name": "LANTERNPORT"
+    },
+    {
+      "id": "MAPSEC_SEIKA_LANTERN_ROAD",
+      "name": "LANTERN ROAD"
     }
   ]
 }

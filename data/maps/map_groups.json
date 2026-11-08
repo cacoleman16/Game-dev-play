@@ -74,7 +74,8 @@
     "gMapGroup_IndoorFiveIslandRoute_Frlg",
     "gMapGroup_IndoorTwoIslandRoute_Frlg",
     "gMapGroup_IndoorSixIslandRoute_Frlg",
-    "gMapGroup_IndoorSevenIslandRoute_Frlg"
+    "gMapGroup_IndoorSevenIslandRoute_Frlg",
+    "gMapGroup_Seika"
   ],
   "gMapGroup_TownsAndRoutes": [
     "PetalburgCity",
@@ -1160,5 +1161,16 @@
   ],
   "gMapGroup_IndoorSevenIslandRoute_Frlg": [
     "SevenIsland_SevaultCanyon_House_Frlg"
+  ],
+  "gMapGroup_Seika": [
+    "Seika_Lanternport",
+    "Seika_Lanternport_PokemonCenter_1F",
+    "Seika_Lanternport_PokemonCenter_2F",
+    "Seika_Lanternport_Mart",
+    "Seika_Lanternport_House1",
+    "Seika_Lanternport_House2",
+    "Seika_Lanternport_LanternHall",
+    "Seika_Lanternport_Gym",
+    "Seika_LanternRoad"
   ]
 }
