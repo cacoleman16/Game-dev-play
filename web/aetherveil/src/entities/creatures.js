@@ -75,10 +75,10 @@ const QUAD_BONES = [
   ['jaw', 'head', [0, -0.07, 0.08]],
   ['tail1', 'body', [0, 0.08, -0.3]],
   ['tail2', 'tail1', [0, 0, -0.26]],
-  ['flL', 'chest', [0.13, -0.08, 0.06]], ['flL2', 'flL', [0, -0.3, 0]], ['flL3', 'flL2', [0, -0.3, 0]],
-  ['flR', 'chest', [-0.13, -0.08, 0.06]], ['flR2', 'flR', [0, -0.3, 0]], ['flR3', 'flR2', [0, -0.3, 0]],
-  ['blL', 'body', [0.13, -0.04, -0.22]], ['blL2', 'blL', [0, -0.32, 0]], ['blL3', 'blL2', [0, -0.3, 0]],
-  ['blR', 'body', [-0.13, -0.04, -0.22]], ['blR2', 'blR', [0, -0.32, 0]], ['blR3', 'blR2', [0, -0.3, 0]],
+  ['flL', 'chest', [0.13, -0.08, 0.06]], ['flL2', 'flL', [0, -0.3, -0.04]], ['flL3', 'flL2', [0, -0.27, 0.03]],
+  ['flR', 'chest', [-0.13, -0.08, 0.06]], ['flR2', 'flR', [0, -0.3, -0.04]], ['flR3', 'flR2', [0, -0.27, 0.03]],
+  ['blL', 'body', [0.13, -0.04, -0.22]], ['blL2', 'blL', [0, -0.27, 0.08]], ['blL3', 'blL2', [0, -0.25, -0.16]],
+  ['blR', 'body', [-0.13, -0.04, -0.22]], ['blR2', 'blR', [0, -0.27, 0.08]], ['blR3', 'blR2', [0, -0.25, -0.16]],
 ];
 const QI = Object.fromEntries(QUAD_BONES.map((b, i) => [b[0], i]));
 const QB = {};
@@ -102,31 +102,39 @@ function quadParts(o) {
   // Body sweep (rear -> chest). Ring "x" is vertical, "z" lateral for a horizontal chain.
   const bodyK = boar
     ? [[0, 0.17, 0.15, 0], [0.3, 0.22, 0.19, 0.0], [0.6, 0.23, 0.2, -0.01], [0.85, 0.24, 0.19, -0.02], [1, 0.18, 0.15, 0]]
-    : [[0, 0.15, 0.13, 0], [0.25, 0.18, 0.155, 0.0], [0.52, 0.15, 0.14, 0.03], [0.8, 0.25, 0.18, -0.03], [1, 0.19, 0.15, 0]];
+    : [[0, 0.16, 0.14, 0], [0.22, 0.19, 0.16, -0.01], [0.5, 0.155, 0.14, 0.04], [0.78, 0.28, 0.19, -0.08], [1, 0.22, 0.16, -0.03]];
   pre(tube([{ p: V(0, 0.79, -0.44), bone: QI.body }, { p: V(0, 0.74, -0.08), bone: QI.chest }, { p: V(0, 0.77, 0.25), bone: QI.chest }, { p: V(0, 0.8, 0.42), bone: QI.chest }],
     (s) => { const [rv, rl, ov] = keyed(bodyK, s); return { rx: rv, rz: rl, ox: ov }; },
     (s, a) => { const up = Math.cos(a); return up > 0.2 ? fur.clone().lerp(dark, up * 0.4) : up < -0.4 ? belly : fur.clone().lerp(belly, (0.2 - up) / 0.6); },
     { radial: 16, rings: 4, capStart: true, ref: V(1, 0, 0) }));
   // Neck.
   pre(tube([{ p: V(0, 0.8, 0.36), bone: QI.chest }, { p: V(0, 0.88, 0.52), bone: QI.neck }, { p: V(0, 0.98, 0.62), bone: QI.head }],
-    (s) => ({ rx: lerp(boar ? 0.19 : 0.15, boar ? 0.14 : 0.09, s), rz: lerp(boar ? 0.17 : 0.13, boar ? 0.13 : 0.085, s) }),
+    (s) => ({ rx: lerp(boar ? 0.19 : 0.19, boar ? 0.14 : 0.11, s), rz: lerp(boar ? 0.17 : 0.16, boar ? 0.13 : 0.1, s) }),
     (s, a) => (Math.cos(a) < -0.5 ? belly : fur), { radial: 12, rings: 3, ref: V(1, 0, 0) }));
   // Head: skull, snout, nose, ears, eyes.
   const hb = QB.head;
-  add('head', tf(colorGeo(new THREE.SphereGeometry(boar ? 0.16 : 0.135, 16, 12), (x, y) => (y < -0.04 ? belly : fur)), 0, 0.02, 0.0, 0, 0, 0, 0.95, 0.85, 1.05));
-  const sn0 = hb.clone().add(V(0, -0.01, 0.06)), sn2 = hb.clone().add(V(0, boar ? -0.06 : -0.035, boar ? 0.26 : 0.28));
-  pre(strand(sn0, sn0.clone().lerp(sn2, 0.5).add(V(0, 0.01, 0)), sn2, boar ? 0.085 : 0.06, { root: fur, tip: boar ? new THREE.Color(0xc89a8a) : dark, thick: 0.85, taper: 0.45, bone: QI.head, center: hb.clone().add(V(0, -0.1, 0.1)), segs: 5, radial: 8 }));
-  add('head', withGlow(tf(sph(boar ? 0.045 : 0.03, boar ? 0xc8848a : 0x16101a, 8, 6), 0, boar ? -0.06 : -0.035, boar ? 0.3 : 0.31)));
+  add('head', tf(colorGeo(new THREE.SphereGeometry(boar ? 0.16 : 0.15, 16, 12), (x, y) => (y < -0.04 ? belly : fur)), 0, 0.02, 0.0, 0, 0, 0, 1.0, 0.86, 1.1));
+  const sn0 = hb.clone().add(V(0, -0.01, 0.07)), sn2 = hb.clone().add(V(0, boar ? -0.06 : -0.045, boar ? 0.26 : 0.31));
+  pre(strand(sn0, sn0.clone().lerp(sn2, 0.5).add(V(0, 0.012, 0)), sn2, boar ? 0.085 : 0.07, { root: fur, tip: boar ? new THREE.Color(0xc89a8a) : dark, thick: 0.85, taper: 0.45, bone: QI.head, center: hb.clone().add(V(0, -0.1, 0.1)), segs: 5, radial: 8 }));
+  add('head', withGlow(tf(sph(boar ? 0.045 : 0.032, boar ? 0xc8848a : 0x16101a, 8, 6), 0, boar ? -0.06 : -0.04, boar ? 0.3 : 0.335, 0, 0, 0, 1.15, 0.85, 1)));
   for (const s of [1, -1]) {
     if (boar) {
       add('head', tf(colorGeo(new THREE.ConeGeometry(0.035, 0.12, 6), 0x5a3a2a), s * 0.08, 0.13, -0.02, -0.3, 0, s * -0.5));
       pre(strand(hb.clone().add(V(s * 0.05, -0.08, 0.22)), hb.clone().add(V(s * 0.09, -0.06, 0.28)), hb.clone().add(V(s * 0.08, 0.04, 0.3)), 0.022, { root: 0xf0e8d8, tip: 0xffffff, thick: 1, taper: 0.9, bone: QI.head, center: hb.clone(), segs: 4, radial: 6 }));
     } else {
-      add('head', tf(colorGeo(new THREE.ConeGeometry(0.045, 0.15, 5), (x, y) => (y > 0 ? dark : fur)), s * 0.075, 0.14, -0.03, -0.15, 0, s * -0.32));
+      add('head', tf(colorGeo(new THREE.ConeGeometry(0.055, 0.17, 6), (x, y) => (y > 0.02 ? dark : fur)), s * 0.08, 0.15, -0.04, -0.2, 0, s * -0.3, 1, 1, 0.55));
+      // Cheek fur sweeping back from the jaw.
+      pre(strand(hb.clone().add(V(s * 0.1, -0.04, 0.02)), hb.clone().add(V(s * 0.15, -0.06, -0.06)), hb.clone().add(V(s * 0.17, -0.1, -0.14)), 0.05, { root: fur, tip: belly, thick: 0.7, taper: 0.2, bone: QI.head, center: hb.clone(), segs: 4, radial: 6 }));
     }
     add('head', withGlow(tf(sph(0.022, o.eye ?? 0xffd23a, 8, 6), s * (boar ? 0.08 : 0.068), 0.045, 0.1), 1));
   }
-  add('jaw', tf(colorGeo(new THREE.BoxGeometry(boar ? 0.12 : 0.09, 0.035, 0.17), belly), 0, -0.01, 0.1));
+  add('jaw', tf(colorGeo(new THREE.CapsuleGeometry(boar ? 0.05 : 0.038, boar ? 0.1 : 0.14, 3, 8), belly), 0, -0.015, 0.11, Math.PI / 2, 0, 0, 1, 1, 0.55));
+  // A ruff of longer fur around the neck and chest.
+  if (!boar) for (let i = 0; i < 9; i++) {
+    const a = -1.25 + (i / 8) * 2.5;
+    const r0 = V(Math.sin(a) * 0.15, 0.84 - Math.cos(a) * 0.12 + 0.02, 0.46);
+    pre(strand(r0, r0.clone().add(V(Math.sin(a) * 0.05, -0.03, -0.09)), r0.clone().add(V(Math.sin(a) * 0.07, -0.08 - (1 - Math.abs(a) / 1.25) * 0.05, -0.2)), 0.065, { root: fur, tip: i === 4 ? belly : fur.clone().lerp(belly, 0.4), thick: 0.55, taper: 0.25, bone: QI.chest, center: V(0, 0.78, 0.4), segs: 4, radial: 6 }));
+  }
   // Mane / bristles along the neck and back.
   for (let i = 0; i < (boar ? 10 : 8); i++) {
     const z = 0.55 - i * (boar ? 0.1 : 0.09);
@@ -135,18 +143,35 @@ function quadParts(o) {
     const r0 = V(0, y, z);
     pre(strand(r0, r0.clone().add(V(0, 0.06, -0.06)), r0.clone().add(V(0, boar ? 0.12 : 0.08, -0.14)), boar ? 0.05 : 0.06, { root: dark, tip: o.spikes ? new THREE.Color(o.spikes) : dark.clone().multiplyScalar(0.8), thick: 0.4, bone, center: V(0, 0.6, z), segs: 4, radial: 5 }));
   }
-  // Legs.
+  // Legs: muscular shoulder and thigh blending into the body, a forward
+  // knee and a hock angled back on the hind legs, elongated paws.
   for (const L of ['flL', 'flR', 'blL', 'blR']) {
     const front = L[0] === 'f';
-    const sx = L[2] === 'L' ? 1 : -1;
-    const top = QB[L].clone().add(V(0, 0.06, front ? -0.02 : 0.02));
-    const mid = QB[L + '2'].clone().add(V(0, 0, front ? 0.02 : -0.05));
-    const low = QB[L + '3'].clone().add(V(0, 0.03, 0));
-    const K = front ? [[0, boar ? 0.11 : 0.095], [0.45, boar ? 0.065 : 0.055], [1, boar ? 0.05 : 0.04]] : [[0, boar ? 0.14 : 0.125], [0.3, boar ? 0.09 : 0.08], [0.5, 0.055], [1, boar ? 0.05 : 0.04]];
-    pre(tube([{ p: top, bone: QI[L] }, { p: mid, bone: QI[L + '2'] }, { p: low, bone: QI[L + '2'] }],
-      (s) => { const [r] = keyed(K, s); return { rx: r, rz: r * 0.9 }; }, (s) => (s > 0.6 ? dark : fur), { radial: 10, rings: 4, capEnd: true }));
-    add(L + '3', tf(sph(boar ? 0.05 : 0.042, boar ? 0x2a2020 : dark, 10, 6), 0, -0.005, 0.03, 0, 0, 0, 1, 0.6, 1.4));
-    void sx;
+    const bw = boar ? 1.25 : 1;
+    let chain, K;
+    if (front) {
+      chain = [
+        { p: QB[L].clone().add(V(0, 0.1, -0.02)), bone: QI[L] },
+        { p: QB[L + '2'].clone().add(V(0, 0, -0.01)), bone: QI[L + '2'] },
+        { p: QB[L + '3'].clone(), bone: QI[L + '3'] },
+        { p: QB[L + '3'].clone().add(V(0, -0.055, 0.02)), bone: QI[L + '3'] },
+      ];
+      K = [[0, 0.115, 1.2], [0.3, 0.08, 1.15], [0.6, 0.05, 1.0], [0.85, 0.042, 1.0], [1, 0.046, 1.1]];
+    } else {
+      chain = [
+        { p: QB[L].clone().add(V(0, 0.1, 0.05)), bone: QI[L] },
+        { p: QB[L + '2'].clone().add(V(0, 0, 0.02)), bone: QI[L + '2'] },
+        { p: QB[L + '3'].clone().add(V(0, 0, -0.02)), bone: QI[L + '3'] },
+        { p: QB[L + '3'].clone().add(V(0, -0.1, 0.03)), bone: QI[L + '3'] },
+      ];
+      K = [[0, 0.17, 1.35], [0.3, 0.105, 1.3], [0.55, 0.056, 1.05], [0.78, 0.044, 1.0], [1, 0.045, 1.1]];
+    }
+    pre(tube(chain, (s) => { const [r, d] = keyed(K, s); return { rx: r * bw * 0.85, rz: r * bw * d }; },
+      (s) => (s > 0.7 ? dark : s > 0.5 ? fur.clone().lerp(dark, (s - 0.5) * 5) : fur), { radial: 12, rings: 4 }));
+    // Paw: a flattened pad with two toe lumps.
+    const pawY = front ? -0.075 : -0.12, pawZ = front ? 0.05 : 0.07;
+    add(L + '3', tf(sph(boar ? 0.055 : 0.05, dark, 12, 8), 0, pawY, pawZ, 0, 0, 0, 1.05, 0.5, 1.45));
+    if (!boar) for (const tx of [-0.022, 0.022]) add(L + '3', tf(sph(0.022, dark, 8, 6), tx, pawY - 0.004, pawZ + 0.055, 0, 0, 0, 1, 0.7, 1.1));
   }
   // Tail.
   const t0 = V(0, 0.8, -0.42);
