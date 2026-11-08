@@ -11,3 +11,7 @@ Seika_Frostmere_House1_Text_Npc0::
 	.string "MT. SKYREACH.\p"
 	.string "The snow up there never melts.\n"
 	.string "Not in a thousand years.$"
+	.string "{JPN}{JPN}シモかいどうは　きたの　タソガレむらへ　つづいて\n"
+	.string "おる。　ソラトドキやまの　ふもとじゃ。\p"
+	.string "あそこの　ゆきは　けっして　とけん。　せんねん\n"
+	.string "たっても　な。$"

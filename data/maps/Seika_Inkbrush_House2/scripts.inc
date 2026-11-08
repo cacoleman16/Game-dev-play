@@ -10,3 +10,7 @@ Seika_Inkbrush_House2_Text_Npc0::
 	.string "ink stick on them with water.\p"
 	.string "The stone comes from MT. SKYREACH.\n"
 	.string "Some say it still holds starlight.$"
+	.string "{JPN}{JPN}おれは　すずりを　つくってるんだ。　すずりの\n"
+	.string "うえで　みずと　いっしょに　すみを　するのさ。\p"
+	.string "いしは　ソラトドキやまの　もの。　いまも　ほしの\n"
+	.string "ひかりが　やどってるって　いわれてるんだ。$"

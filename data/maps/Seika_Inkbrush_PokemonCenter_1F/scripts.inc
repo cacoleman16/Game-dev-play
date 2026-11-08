@@ -23,3 +23,7 @@ Seika_Inkbrush_PokemonCenter_1F_Text_Npc0::
 	.string "and pine resin.\p"
 	.string "It never fades. Some scrolls are\n"
 	.string "a thousand years old!$"
+	.string "{JPN}{JPN}この　まちの　すみは　すすと　まつやにから\n"
+	.string "つくるの。\p"
+	.string "ぜったいに　いろあせないわ。　せんねんまえの\n"
+	.string "まきものだって　あるのよ！$"

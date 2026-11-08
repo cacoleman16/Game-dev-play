@@ -14,6 +14,12 @@ Seika_League_Lobby_Text_GymGuy::
 	.string "rooms, so stock up here!\p"
 	.string "TETSU uses STEEL. FIRE and GROUND\n"
 	.string "melt him down. Good luck, champ!$"
+	.string "{JPN}{JPN}おーす！　ついに　きたな　セイカリーグ！\p"
+	.string "してんのう　4にん　そして　チャンピオン。\n"
+	.string "とちゅうで　かいふく　できないから　ここで\l"
+	.string "そなえて　おけよ！\p"
+	.string "テツは　はがね。　ほのおと　じめんで　とかして\n"
+	.string "やれ！　がんばれよ　チャンピオン！$"
 
 Seika_League_Lobby_EventScript_Cooltrainer::
 	msgbox Seika_League_Lobby_Text_Cooltrainer, MSGBOX_NPC
@@ -24,6 +30,10 @@ Seika_League_Lobby_Text_Cooltrainer::
 	.string "the path to the SKY SHRINE.\p"
 	.string "Only a CHAMPION may climb to the\n"
 	.string "top of MT. SKYREACH.$"
+	.string "{JPN}{JPN}セイジさんは　そらのやしろへの　みちを　まもる\n"
+	.string "チャンピオン　なんだって。\p"
+	.string "ソラトドキやまの　てっぺんに　のぼれるのは\n"
+	.string "チャンピオン　だけなんだ。$"
 
 Seika_League_Lobby_OnTransition::
 	setrespawn HEAL_LOCATION_SEIKA_LEAGUE

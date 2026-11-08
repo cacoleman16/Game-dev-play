@@ -28,6 +28,10 @@ Seika_KilnCity_PotteryShop_Text_Clerk::
 	.string "in our kilns.\p"
 	.string "Each one holds a little weather.\n"
 	.string "Take a look!$"
+	.string "{JPN}{JPN}いらっしゃいませ！　ここの　いしは　うちの\n"
+	.string "かまで　やいた　ものです。\p"
+	.string "どれも　ちいさな　おてんきが　やどって\n"
+	.string "いるんですよ。　どうぞ　ごらんください！$"
 
 Seika_KilnCity_PotteryShop_EventScript_Potter::
 	msgbox Seika_KilnCity_PotteryShop_Text_Potter, MSGBOX_NPC
@@ -38,3 +42,7 @@ Seika_KilnCity_PotteryShop_Text_Potter::
 	.string "made it. So does a stone.\p"
 	.string "A HEAT ROCK from our kilns makes\n"
 	.string "the sun shine longer in battle.$"
+	.string "{JPN}{JPN}つぼは　じぶんを　やいた　ほのおを　おぼえて\n"
+	.string "おる。　いしも　おなじじゃ。\p"
+	.string "うちの　かまの　あついいわを　もたせれば\n"
+	.string "バトルで　ひざしが　ながく　つづくぞ。$"

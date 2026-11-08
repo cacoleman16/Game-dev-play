@@ -1,0 +1,17 @@
+{
+ "Seika_Frostmere_Gym_Text_ShiroIntro": "シーッ！　さかなが　にげちまう‥　ああ　おそかった！　かわりに　しょうぶだ！",
+ "Seika_Frostmere_Gym_Text_ShiroDefeat": "おおものに　にげられた‥",
+ "Seika_Frostmere_Gym_Text_ShiroPost": "こおりの　うえは　なにかに　ぶつかるまで　すべるぞ。　いわを　つかえ！",
+ "Seika_Frostmere_Gym_Text_MizoreIntro": "こおりを　わたって　こられたの？　なら　みぞれは　どうかしら！",
+ "Seika_Frostmere_Gym_Text_MizoreDefeat": "とけちゃった‥",
+ "Seika_Frostmere_Gym_Text_MizorePost": "ツララさまは　この　みずうみで　40ねん　つりを　してるの。　けっして　あきらめないわ。",
+ "Seika_Frostmere_Gym_Text_ToumaIntro": "つめたい　こころは　すんだ　こころ。　おぬしの　こころを　みせて　みよ！",
+ "Seika_Frostmere_Gym_Text_ToumaDefeat": "ふむ。　こおりのように　すみきって　おる。",
+ "Seika_Frostmere_Gym_Text_ToumaPost": "ほのおは　こおりを　とかす。　だが　ツララさまの　ポケモンは　あつさにも　たえるぞ。",
+ "Seika_Frostmere_Gym_Text_RimeIntro": "ツララ『‥しずかに。　こおりを　みて　おったのじゃ。　ここで　なにかを　つるには　がまんが　いる。\\pわしは　ツララ。　この　みずうみで　40の　ふゆを　すごし　つりを　して　きた。\\pおぬしの　ほのおが　わしの　ふゆを　もちこたえられるか　みせて　もらおう！』",
+ "Seika_Frostmere_Gym_Text_RimeDefeat": "こおりが　われる‥　やはり　はるは　くるものじゃな。\\pシモバッジは　おぬしの　ものじゃ。　あたたかい　こころで　つけて　おくれ。\\p{FONT_NORMAL}{PLAYER}は　ツララから　シモバッジを　もらった！{PAUSE_MUSIC}{PLAY_BGM}{MUS_OBTAIN_BADGE}{PAUSE 0xFE}{PAUSE 0x56}{RESUME_MUSIC}",
+ "Seika_Frostmere_Gym_Text_RimeGift": "ツララ『これも　もって　いけ。　わしが　しる　いちばん　つめたい　こおりの　ビームじゃ。』",
+ "Seika_Frostmere_Gym_Text_RimePost": "ツララ『シモかいどうを　きたへ　すすめば　タソガレむらじゃ。\\pソラトドキやまの　ふもとで　トモエが　さいごの　やしろを　まもって　おる。\\pゆきに　きを　つけて　ポケモンを　あたためて　やるんじゃぞ。』",
+ "Seika_Frostmere_Gym_Text_GymGuy": "ブルル！　ツララの　こおりポケモンは　ひょうがみたいに　かたいぞ！\\pほのお　かくとう　いわ　はがねの　わざで　たたきわって　やれ！\\pそれと　あしもとに　ちゅうい！　こおりの　うえでは　なにかに　ぶつかるまで　すべって　いくからな！",
+ "Seika_Frostmere_Gym_Text_GymGuyWon": "バッジ　7つ！　こおりの　つめたさにも　まけない　あつさだな！"
+}

@@ -66,10 +66,18 @@ Seika_League_SteelRoom_Text_Intro::
 	.string "I forged my POKéMON from the\l"
 	.string "meteor iron of the first STARFALL.\p"
 	.string "Let us see if your team bends.{PLAY_BGM}{MUS_RG_ENCOUNTER_GYM_LEADER}$"
+	.string "{JPN}{JPN}テツ『セイカリーグへ　ようこそ。\p"
+	.string "おれは　してんのうの　テツ。　さいしょの\n"
+	.string "スターフォールの　いんせきの　てつで　おれの\l"
+	.string "ポケモンを　きたえあげた。\p"
+	.string "その　チームは　まがるか？』{PLAY_BGM}{MUS_RG_ENCOUNTER_GYM_LEADER}$"
 
 Seika_League_SteelRoom_Text_Defeat::
 	.string "You bent iron. Well done.$"
+	.string "{JPN}{JPN}てつを　まげたか。　みごとだ。$"
 
 Seika_League_SteelRoom_Text_Post::
 	.string "Go on. The next room is darker\n"
 	.string "than this one.$"
+	.string "{JPN}{JPN}テツ『さきへ　すすめ。　つぎの　へやは　ここより\n"
+	.string "くらいぞ。』$"

@@ -36,3 +36,6 @@ Seika_Silkhollow_Mart_Text_Npc0::
 	.string "SILK SCARVES are woven right here\n"
 	.string "in town. They power up NORMAL-\l"
 	.string "type moves!$"
+	.string "{JPN}{JPN}シルクのスカーフは　この　まちで　おられて\n"
+	.string "いるのよ。　ノーマルタイプの　わざを　つよく\l"
+	.string "するの！$"

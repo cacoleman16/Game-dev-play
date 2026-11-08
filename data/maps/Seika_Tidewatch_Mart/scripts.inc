@@ -36,3 +36,5 @@ Seika_Tidewatch_Mart_EventScript_Npc0::
 Seika_Tidewatch_Mart_Text_Npc0::
 	.string "A LURE BALL works best on POKéMON\n"
 	.string "you hook with a ROD.$"
+	.string "{JPN}{JPN}ルアーボールは　つりざおで　つりあげた\n"
+	.string "ポケモンに　よく　きくんだ。$"

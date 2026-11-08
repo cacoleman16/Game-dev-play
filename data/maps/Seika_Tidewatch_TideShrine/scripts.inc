@@ -15,6 +15,14 @@ Seika_Tidewatch_TideShrine_Text_Keeper::
 	.string "the star is stirring.\p"
 	.string "This year the sea has been very\n"
 	.string "high indeed...$"
+	.string "{JPN}{JPN}しおのやしろへ　ようこそ。\p"
+	.string "せんねん　まえ　さいしょの　ほしが　うみの\n"
+	.string "うえの　そらに　おちて　きた。　しおは　それを\l"
+	.string "むかえるように　みちたのじゃ。\p"
+	.string "それから　ずっと　しおを　みまもって　きた。\n"
+	.string "しおが　みちすぎる　ときは　ほしが　めざめかけて\l"
+	.string "いる　しるしじゃ。\p"
+	.string "ことしは　うみが　ずいぶん　たかくてのう‥$"
 
 Seika_Tidewatch_TideShrine_EventScript_Attendant::
 	msgbox Seika_Tidewatch_TideShrine_Text_Attendant, MSGBOX_NPC
@@ -26,6 +34,11 @@ Seika_Tidewatch_TideShrine_Text_Attendant::
 	.string "read the old stones.\p"
 	.string "She says the stones point north.\n"
 	.string "Toward the mountain.$"
+	.string "{JPN}{JPN}ナギサさんが　ここの　もりびとです。　いりえの\n"
+	.string "そこまで　もぐって　ふるい　いしを\l"
+	.string "よむんですよ。\p"
+	.string "いしは　きたを　さして　いるそうです。　やまの\n"
+	.string "ほうを。$"
 
 Seika_Tidewatch_TideShrine_EventScript_TideChart::
 	msgbox Seika_Tidewatch_TideShrine_Text_TideChart, MSGBOX_SIGN
@@ -37,3 +50,7 @@ Seika_Tidewatch_TideShrine_Text_TideChart::
 	.string "One page is marked with a star. On\n"
 	.string "it, the tide line runs off the top\l"
 	.string "of the page.$"
+	.string "{JPN}{JPN}せんねんぶんの　ふるい　しおの　きろくだ。\p"
+	.string "ほしの　しるしが　ついた　ページが　ある。\n"
+	.string "しおの　せんが　ページの　うえに　はみだして\l"
+	.string "いる。$"

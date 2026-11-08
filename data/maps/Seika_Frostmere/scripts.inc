@@ -10,6 +10,7 @@ Seika_Frostmere_Text_TownSign::
 	.string "FROSTMERE VILLAGE\n"
 	.string "Home of the coldest lake\l"
 	.string "in SEIKA.$"
+	.string "{JPN}{JPN}シモミズむら　セイカいち　つめたい　みずうみ$"
 
 Seika_Frostmere_EventScript_GymSign::
 	msgbox Seika_Frostmere_Text_GymSign, MSGBOX_SIGN
@@ -20,6 +21,9 @@ Seika_Frostmere_Text_GymSign::
 	.string "LEADER: RIME\p"
 	.string "The ice fisher who waits out\n"
 	.string "the longest winter!$"
+	.string "{JPN}{JPN}シモミズ　ポケモンジム　リーダー　ツララ\p"
+	.string "いちばん　ながい　ふゆを　たえぬく　こおりの\n"
+	.string "つりびと！$"
 
 Seika_Frostmere_EventScript_Fisher::
 	msgbox Seika_Frostmere_Text_Fisher, MSGBOX_NPC
@@ -30,6 +34,10 @@ Seika_Frostmere_Text_Fisher::
 	.string "and fish all night long.\p"
 	.string "RIME can sit by one hole for a\n"
 	.string "whole day without moving!$"
+	.string "{JPN}{JPN}ふゆは　こおりに　あなを　あけて　ひとばんじゅう\n"
+	.string "つりを　するんだ。\p"
+	.string "ツララさんなんか　ひとつの　あなの　まえで　まる\n"
+	.string "1にち　うごかずに　いられるんだぜ！$"
 
 Seika_Frostmere_EventScript_OldWoman::
 	msgbox Seika_Frostmere_Text_OldWoman, MSGBOX_NPC
@@ -40,6 +48,10 @@ Seika_Frostmere_Text_OldWoman::
 	.string "through here last night.\p"
 	.string "They were hauling something big,\n"
 	.string "wrapped in cloth. Up north.$"
+	.string "{JPN}{JPN}ゆうべ　くろい　コートの　あやしい　れんちゅうが\n"
+	.string "ここを　とおって　いったんじゃ。\p"
+	.string "ぬのに　つつんだ　おおきな　ものを　ひっぱって\n"
+	.string "きたの　ほうへ　いったのじゃ。$"
 
 Seika_Frostmere_EventScript_Boy::
 	msgbox Seika_Frostmere_Text_Boy, MSGBOX_NPC
@@ -48,6 +60,8 @@ Seika_Frostmere_EventScript_Boy::
 Seika_Frostmere_Text_Boy::
 	.string "I saw a LAPRAS in the lake once!\n"
 	.string "It was singing to the snow!$"
+	.string "{JPN}{JPN}ぼく　みずうみで　ラプラスを　みた　ことが\n"
+	.string "あるんだ！　ゆきに　むかって　うたってたよ！$"
 
 Seika_Frostmere_EventScript_Grunts::
 	lock
@@ -82,15 +96,25 @@ Seika_Frostmere_Text_GruntsTalk::
 	.string "standing there?\p"
 	.string "You didn't hear a thing! Nothing\n"
 	.string "about any bell!$"
+	.string "{JPN}{JPN}‥で　この　かねを　きたまで　ずっと\n"
+	.string "はこぶのか？　やまの　うえまで？\p"
+	.string "めいれいは　めいれいだ。　かねを\n"
+	.string "ソラトドキやまへ　はこんだら　おれたちは‥\p"
+	.string "ん？　この　ガキ　いつから　そこに　いたんだ？\p"
+	.string "おまえは　なにも　きいて　ない！　かねの\n"
+	.string "ことなんか　なにも　な！$"
 
 Seika_Frostmere_Text_Grunt1Defeat::
 	.string "Ugh! Not in the snow!$"
+	.string "{JPN}{JPN}ぐわっ！　ゆきの　なかで　まけるなんて！$"
 
 Seika_Frostmere_Text_Grunt2Intro::
 	.string "My turn! I'll freeze you out!$"
+	.string "{JPN}{JPN}つぎは　おれだ！　こおりづけに　して　やるぜ！$"
 
 Seika_Frostmere_Text_Grunt2Defeat::
 	.string "Beaten by a kid... again?$"
+	.string "{JPN}{JPN}ガキに　まけた‥　また　かよ！$"
 
 Seika_Frostmere_Text_GruntsAfter::
 	.string "Forget it! The bell's already on\n"
@@ -98,6 +122,11 @@ Seika_Frostmere_Text_GruntsAfter::
 	.string "DENEB and ALTAIR will have it\n"
 	.string "ringing before you get there!\p"
 	.string "Come on, let's go!$"
+	.string "{JPN}{JPN}もう　いい！　かねは　とっくに　やまを　のぼって\n"
+	.string "いる　ところだ。\p"
+	.string "おまえが　つく　まえに　デネブさまと\n"
+	.string "アルタイルさまが　ならして　くれるぜ！\p"
+	.string "おい　いくぞ！$"
 
 Seika_Frostmere_QoLFly_OnTransition::
 	setflag FLAG_QOL_SEIKA_FLY_FROSTMERE

@@ -23,3 +23,7 @@ Seika_Kiln_City_PokemonCenter_1F_Text_Npc0::
 	.string "a KILN CITY teapot.\p"
 	.string "Now I need a second bag to carry\n"
 	.string "it home!$"
+	.string "{JPN}{JPN}カマモトシティの　きゅうすが　ほしくて　はるばる\n"
+	.string "カントーから　きたのです。\p"
+	.string "おかげで　もちかえる　かばんが　もう　ひとつ\n"
+	.string "いりますな！$"

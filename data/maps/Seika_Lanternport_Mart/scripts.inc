@@ -34,3 +34,5 @@ Seika_Lanternport_Mart_EventScript_Npc0::
 Seika_Lanternport_Mart_Text_Npc0::
 	.string "A FIRE STONE for the festival\n"
 	.string "bonfire? Why not!$"
+	.string "{JPN}{JPN}おまつりの　たきびに　ほのおのいしを　ひとつ？\n"
+	.string "いいですな！$"

@@ -23,3 +23,7 @@ Seika_Duskpeak_PokemonCenter_1F_Text_Npc0::
 	.string "to see the top of MT. SKYREACH.\p"
 	.string "Only the CHAMPION may climb it.\n"
 	.string "Can you believe that?$"
+	.string "{JPN}{JPN}ソラトドキやまの　てっぺんを　みに　はるばる\n"
+	.string "カントーから　きたのですが‥\p"
+	.string "のぼれるのは　チャンピオン　だけ　だそうです。\n"
+	.string "しんじられますか？$"

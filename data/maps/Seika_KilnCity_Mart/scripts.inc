@@ -43,3 +43,6 @@ Seika_Kiln_City_Mart_Text_Npc0::
 	.string "This MART has more than any other\n"
 	.string "in SEIKA. Merchants come from\l"
 	.string "every town to KILN CITY.$"
+	.string "{JPN}{JPN}ここは　セイカで　いちばん　しなぞろえが　いい\n"
+	.string "おみせ。　どの　まちからも　しょうにんが\l"
+	.string "カマモトシティに　やってくるのよ。$"

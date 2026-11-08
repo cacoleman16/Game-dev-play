@@ -35,3 +35,6 @@ Seika_Mossgrove_Mart_Text_Npc0::
 	.string "MOSSGROVE HONEY is famous.\p"
 	.string "Spread some in tall grass and\n"
 	.string "wild POKéMON come running!$"
+	.string "{JPN}{JPN}コケムスの　あまいミツは　ゆうめいなのよ。\p"
+	.string "くさむらで　つかうと　やせいの　ポケモンが\n"
+	.string "とんで　くるわ！$"

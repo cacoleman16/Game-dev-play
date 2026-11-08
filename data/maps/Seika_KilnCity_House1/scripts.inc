@@ -10,6 +10,10 @@ Seika_Kiln_City_House1_Text_Npc0::
 	.string "for the sea, red for the kiln...\p"
 	.string "And gold for the WISHING STAR.\n"
 	.string "That one sells best!$"
+	.string "{JPN}{JPN}わたしは　つぼに　うわぐすりを　ぬるの。　あおは\n"
+	.string "うみ　あかは　かま‥\p"
+	.string "そして　きんいろは　ねがいぼし。　それが\n"
+	.string "いちばん　うれるのよ！$"
 
 Seika_Kiln_City_House1_EventScript_Npc1::
 	msgbox Seika_Kiln_City_House1_Text_Npc1, MSGBOX_NPC
@@ -18,3 +22,5 @@ Seika_Kiln_City_House1_EventScript_Npc1::
 Seika_Kiln_City_House1_Text_Npc1::
 	.string "My GLIGAR can glide all the way\n"
 	.string "from the GYM roof to the fountain!$"
+	.string "{JPN}{JPN}ぼくの　グライガーは　ジムの　やねから\n"
+	.string "ふんすいまで　ずーっと　とんで　いけるんだ！$"

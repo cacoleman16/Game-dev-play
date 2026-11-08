@@ -66,10 +66,18 @@ Seika_League_DragonRoom_Text_Intro::
 	.string "the first STARFALL.\p"
 	.string "They will not fall to a\n"
 	.string "traveler. Show me otherwise!{PLAY_BGM}{MUS_RG_ENCOUNTER_GYM_LEADER}$"
+	.string "{JPN}{JPN}リョウコ『わたしは　してんのう　さいごの　ひとり\n"
+	.string "リョウコ。　わが　ドラゴンは　さいしょの\l"
+	.string "スターフォールより　まえから　ここに　おった。\p"
+	.string "たびびとなどに　たおされは　せぬ。　ちがうと\n"
+	.string "いうなら　みせて　みよ！』{PLAY_BGM}{MUS_RG_ENCOUNTER_GYM_LEADER}$"
 
 Seika_League_DragonRoom_Text_Defeat::
 	.string "The dragons bow to you.$"
+	.string "{JPN}{JPN}ドラゴンたちが　そなたに　ひれふした。$"
 
 Seika_League_DragonRoom_Text_Post::
 	.string "The CHAMPION is waiting.\n"
 	.string "He has waited a long time.$"
+	.string "{JPN}{JPN}リョウコ『チャンピオンが　まって　おる。　ながい\n"
+	.string "あいだ　まち　つづけて　きたのじゃ。』$"

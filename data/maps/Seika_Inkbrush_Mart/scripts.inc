@@ -36,3 +36,6 @@ Seika_Inkbrush_Mart_Text_Npc0::
 	.string "the very first turn.\p"
 	.string "Just like a brush stroke. No\n"
 	.string "second chances!$"
+	.string "{JPN}{JPN}クイックボールは　さいしょの　ターンに\n"
+	.string "なげるのが　いちばん。\p"
+	.string "ふでと　おなじさ。　にどめは　ないんだ！$"

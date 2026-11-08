@@ -10,6 +10,10 @@ Seika_Lanternport_House1_Text_Npc0::
 	.string "star on our door, for luck.\p"
 	.string "They say it looks like a little\n"
 	.string "person with a long tail.$"
+	.string "{JPN}{JPN}わたしの　おじいさんが　えんぎものに　うちの\n"
+	.string "ドアに　むかしの　ほしを　かいたの。\p"
+	.string "ながい　しっぽの　ある　ちいさな　ひとみたいに\n"
+	.string "みえるって　いわれるわ。$"
 
 Seika_Lanternport_House1_EventScript_Npc1::
 	msgbox Seika_Lanternport_House1_Text_Npc1, MSGBOX_NPC
@@ -18,3 +22,5 @@ Seika_Lanternport_House1_EventScript_Npc1::
 Seika_Lanternport_House1_Text_Npc1::
 	.string "When I grow up I want to catch\n"
 	.string "the WISHING STAR!$"
+	.string "{JPN}{JPN}おおきく　なったら　ねがいぼしを\n"
+	.string "つかまえるんだ！$"

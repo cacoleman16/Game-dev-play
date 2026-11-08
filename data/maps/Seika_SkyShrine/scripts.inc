@@ -102,6 +102,8 @@ Seika_SkyShrine_EventScript_Ending::
 Seika_SkyShrine_Text_BellRings::
 	.string "A clear note rings out over the\n"
 	.string "clouds. The STARGLASS BELL!$"
+	.string "{JPN}{JPN}すんだ　ねいろが　くもの　うえに\n"
+	.string "ひびきわたった。　ほしガラスのかねだ！$"
 
 Seika_SkyShrine_Text_DenebIntro::
 	.string "DENEB: Darling, you are late.\n"
@@ -109,20 +111,32 @@ Seika_SkyShrine_Text_DenebIntro::
 	.string "When the WISHING STAR comes down,\n"
 	.string "our wish brings VEGA back to\l"
 	.string "lead us. Stay out of it!{PLAY_BGM}{MUS_ENCOUNTER_SUSPICIOUS}$"
+	.string "{JPN}{JPN}デネブ『おそかったわね　ダーリン。　かねは　もう\n"
+	.string "なって　いるわ。\p"
+	.string "ねがいぼしが　おりて　きたら　わたしたちの\n"
+	.string "ねがいで　ベガさまを　よびもどすの。　じゃまは\l"
+	.string "させないわよ！』{PLAY_BGM}{MUS_ENCOUNTER_SUSPICIOUS}$"
 
 Seika_SkyShrine_Text_DenebDefeat::
 	.string "Not again... Not on the last\n"
 	.string "day!$"
+	.string "{JPN}{JPN}また　なの‥？　さいごの　ひに　なって！$"
 
 Seika_SkyShrine_Text_AltairIntro::
 	.string "ALTAIR: I dug that star stone\n"
 	.string "out of the ground with my hands.\p"
 	.string "I won't let a kid from KANTO\n"
 	.string "waste it. Come on!{PLAY_BGM}{MUS_ENCOUNTER_SUSPICIOUS}$"
+	.string "{JPN}{JPN}アルタイル『あの　スターストーンは　おれが　この\n"
+	.string "てで　ほりだしたんだ。\p"
+	.string "カントーの　ガキに　むだに　されて　たまるか。\n"
+	.string "かかって　こい！』{PLAY_BGM}{MUS_ENCOUNTER_SUSPICIOUS}$"
 
 Seika_SkyShrine_Text_AltairDefeat::
 	.string "The bell... it stopped for\n"
 	.string "you, not for us.$"
+	.string "{JPN}{JPN}かねが‥　とまった。　おれたちじゃ　なく\n"
+	.string "おまえの　ために。$"
 
 Seika_SkyShrine_Text_NovaLeave::
 	.string "DENEB: The star turned away from\n"
@@ -130,24 +144,37 @@ Seika_SkyShrine_Text_NovaLeave::
 	.string "ALTAIR: Let's go, DENEB.\n"
 	.string "There is nothing left for us\l"
 	.string "here.$"
+	.string "{JPN}{JPN}デネブ『ほしが　そっぽを　むいたわ。　あなたの\n"
+	.string "ねがいを　きいて　いるのね。』\p"
+	.string "アルタイル『いくぞ　デネブ。　ここには　もう\n"
+	.string "おれたちの　ばしょは　ない。』$"
 
 Seika_SkyShrine_Text_StarComes::
 	.string "The last note of the bell fades.\p"
 	.string "A small light falls from the sky\n"
 	.string "and lands on the shrine...$"
+	.string "{JPN}{JPN}かねの　さいごの　ねいろが　きえて　いった。\p"
+	.string "ちいさな　ひかりが　そらから　ふって　きて\n"
+	.string "やしろに　おりたった‥$"
 
 Seika_SkyShrine_Text_Jirachi::
 	.string "Jiraaa!$"
+	.string "{JPN}{JPN}ジラーー！$"
 
 Seika_SkyShrine_Text_StillHere::
 	.string "The WISHING STAR is still\n"
 	.string "floating above the shrine...$"
+	.string "{JPN}{JPN}ねがいぼしは　まだ　やしろの　うえに　うかんで\n"
+	.string "いる‥$"
 
 Seika_SkyShrine_Text_FlewHome::
 	.string "The WISHING STAR rose into the\n"
 	.string "sky and was gone.\p"
 	.string "But it looked back at you, just\n"
 	.string "once, before it went.$"
+	.string "{JPN}{JPN}ねがいぼしは　そらへ　のぼり　みえなく　なった。\p"
+	.string "でも　いく　まえに　いちどだけ　こちらを\n"
+	.string "ふりかえった。$"
 
 Seika_SkyShrine_Text_Ending::
 	.string "Far below, the lanterns of\n"
@@ -155,3 +182,8 @@ Seika_SkyShrine_Text_Ending::
 	.string "The second STARFALL is over.\n"
 	.string "Its wish, whatever it was, is\l"
 	.string "yours to keep.$"
+	.string "{JPN}{JPN}はるか　したで　セイカの　ともしびが　よるの\n"
+	.string "なかに　かがやいて　いる。\p"
+	.string "2どめの　スターフォールは　おわった。　その\n"
+	.string "ねがいが　なんで　あれ　それは　あなただけの\l"
+	.string "ものだ。$"

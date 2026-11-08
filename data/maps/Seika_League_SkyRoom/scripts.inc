@@ -65,10 +65,17 @@ Seika_League_SkyRoom_Text_Intro::
 	.string "than MT. SKYREACH.\p"
 	.string "I saw the STARFALL from above\n"
 	.string "the clouds. Can you keep up?{PLAY_BGM}{MUS_RG_ENCOUNTER_GYM_LEADER}$"
+	.string "{JPN}{JPN}ソラ『わたしは　ソラ。　ソラトドキやまより\n"
+	.string "たかく　とんだ　ことが　あるの。\p"
+	.string "くもの　うえから　スターフォールを　みたわ。\n"
+	.string "ついて　こられるかしら？』{PLAY_BGM}{MUS_RG_ENCOUNTER_GYM_LEADER}$"
 
 Seika_League_SkyRoom_Text_Defeat::
 	.string "You flew right past me!$"
+	.string "{JPN}{JPN}あっと　いうまに　ぬかれちゃった！$"
 
 Seika_League_SkyRoom_Text_Post::
 	.string "The last of us waits beyond\n"
 	.string "that door. Breathe, then go.$"
+	.string "{JPN}{JPN}ソラ『さいごの　ひとりは　あの　とびらの\n"
+	.string "むこう。　いきを　ととのえて　いきなさい。』$"

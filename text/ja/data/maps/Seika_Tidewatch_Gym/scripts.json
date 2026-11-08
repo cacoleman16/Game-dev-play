@@ -1,0 +1,19 @@
+{
+ "Seika_Tidewatch_Gym_Text_GymStatue": "シオミ　ポケモンジム　リーダー　ナギサ\\pしょうりした　トレーナー:　まだ　いない",
+ "Seika_Tidewatch_Gym_Text_GymStatueWon": "シオミ　ポケモンジム　リーダー　ナギサ\\pしょうりした　トレーナー:　{PLAYER}",
+ "Seika_Tidewatch_Gym_Text_MinaIntro": "バシャーン！　わたしの　コースを　とおったわね。　およいで　しょうぶよ！",
+ "Seika_Tidewatch_Gym_Text_MinaDefeat": "いしみたいに　しずんじゃった‥",
+ "Seika_Tidewatch_Gym_Text_MinaPost": "ナギサさまは　セイカの　だれよりも　ふかく　もぐれるの。　とても　しずかなんだって。",
+ "Seika_Tidewatch_Gym_Text_KaitoIntro": "きょうの　しおは　おれの　みかただ！",
+ "Seika_Tidewatch_Gym_Text_KaitoDefeat": "しおが　ひいちまった‥",
+ "Seika_Tidewatch_Gym_Text_KaitoPost": "ナギサさまの　キングドラは　あめを　よぶんだ。　そうすると　すごく　はやく　なるんだぜ！",
+ "Seika_Tidewatch_Gym_Text_SoraIntro": "ずぶぬれに　ならずに　ナギサさまの　ところへは　いけないぜ！",
+ "Seika_Tidewatch_Gym_Text_SoraDefeat": "びしょぬれだ！",
+ "Seika_Tidewatch_Gym_Text_SoraPost": "ここでは　でんきと　くさの　わざが　よく　きくぜ。　ひとりごと　だけどな。",
+ "Seika_Tidewatch_Gym_Text_NagiIntro": "ナギサ『こんにちは。　わたしは　ナギサ。　しおのやしろの　もりびとで　ダイバーよ。\\pうみの　ふかくは　とても　しずか。　じぶんの　むねの　おとが　きこえるのよ。\\pしおが　みちて　きても　あなたの　こころは　しずかで　いられるかしら？』{PLAY_BGM}{MUS_RG_ENCOUNTER_GYM_LEADER}",
+ "Seika_Tidewatch_Gym_Text_NagiDefeat": "ふう‥　なみに　のって　いっきに　ここまで　きたわね。\\pシオバッジは　あなたの　ものよ。　うみは　あなたを　わすれないわ。\\p{FONT_NORMAL}{PLAYER}は　ナギサから　シオバッジを　もらった！{PAUSE_MUSIC}{PLAY_BGM}{MUS_OBTAIN_BADGE}{PAUSE 0xFE}{PAUSE 0x56}{RESUME_MUSIC}",
+ "Seika_Tidewatch_Gym_Text_NagiGift": "ナギサ『この　わざマシンも　どうぞ。　あまごいは　そらから　うみを　ふらせる　わざよ。』",
+ "Seika_Tidewatch_Gym_Text_NagiPost": "ナギサ『シオミタウンから　きたへ　ウツロのみちを　ぬければ　キヌウツロタウンよ。\\pそこでは　はたおりの　アヤメさんが　やしろを　まもって　いるわ。\\pいりえの　そこの　いしは　みんな　ソラトドキやまを　さして　いるの。　いそいで。』",
+ "Seika_Tidewatch_Gym_Text_GymGuy": "おーす！　シオミジムへ　ようこそ！\\pナギサは　みずタイプの　つかいてだ。　でんきと　くさの　わざが　みかたに　なるぞ。\\pちゅういしろよ。　キングドラは　あめを　ふらせて　すごく　はやく　なるからな！",
+ "Seika_Tidewatch_Gym_Text_GymGuyWon": "でっかい　しぶきを　あげたな！　これで　バッジ　5つ。　その　ちょうしだ！"
+}

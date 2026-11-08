@@ -13,6 +13,13 @@ Seika_Duskpeak_House2_Text_Npc0::
 	.string "with every step.\p"
 	.string "The guard tried to stop them.\n"
 	.string "They flew right over his head!$"
+	.string "{JPN}{JPN}ふたばん　まえ　くろい　コートの　ひとたちが\n"
+	.string "とうげを　のぼって　いったわ。\p"
+	.string "ぬのに　つつんだ　なにかを　はこんで　いたの。\n"
+	.string "あるく　たびに　ガラスみたいに　ひびいて\l"
+	.string "いたわ。\p"
+	.string "みはりが　とめようと　したけど　あの　ひとたち\n"
+	.string "あたまの　うえを　とんで　いっちゃったのよ！$"
 
 Seika_Duskpeak_House2_EventScript_Npc1::
 	msgbox Seika_Duskpeak_House2_Text_Npc1, MSGBOX_NPC
@@ -23,3 +30,7 @@ Seika_Duskpeak_House2_Text_Npc1::
 	.string "TOMOE one day.\p"
 	.string "She trains with a GASTLY every\n"
 	.string "night. It just laughs at her.$"
+	.string "{JPN}{JPN}おねえちゃんは　いつか　トモエさんに\n"
+	.string "かちたいんだって。\p"
+	.string "まいばん　ゴースと　とっくん　してるの。　でも\n"
+	.string "ゴースは　わらってる　だけなの。$"

@@ -37,3 +37,6 @@ Seika_Frostmere_Mart_Text_Npc0::
 	.string "NEVER-MELT ICE powers up ICE\n"
 	.string "moves. It never melts, not even\l"
 	.string "in my pocket!$"
+	.string "{JPN}{JPN}とけないこおりは　こおりの　わざを　つよく\n"
+	.string "するの。　ポケットに　いれても　ぜんぜん\l"
+	.string "とけないのよ！$"

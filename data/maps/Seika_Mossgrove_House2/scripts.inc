@@ -10,3 +10,7 @@ Seika_Mossgrove_House2_Text_Npc0::
 	.string "clean and the rain is gentle.\p"
 	.string "That's why we never cut the old\n"
 	.string "trees around the village.$"
+	.string "{JPN}{JPN}コケは　くうきが　きれいで　あめが　やさしい\n"
+	.string "ところにしか　はえないの。\p"
+	.string "だから　むらの　まわりの　ふるい　きは　けっして\n"
+	.string "きらないのよ。$"

@@ -23,3 +23,7 @@ Seika_Silkhollow_PokemonCenter_1F_Text_Npc0::
 	.string "the top of MT. SKYREACH.\p"
 	.string "They say the WISHING STAR sleeps\n"
 	.string "up there, above the clouds.$"
+	.string "{JPN}{JPN}きたの　ソラトドキやまの　てっぺんは　いつも\n"
+	.string "くもに　おおわれて　います。\p"
+	.string "ねがいぼしは　その　くもの　うえで　ねむって\n"
+	.string "いると　いわれて　いるのですよ。$"

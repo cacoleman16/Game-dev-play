@@ -1,0 +1,17 @@
+{
+ "Seika_Silkhollow_Gym_Text_MidoriIntro": "すーっと　すって‥　きぬに　しみた　はなの　かおり。　さあ　しょうぶよ！",
+ "Seika_Silkhollow_Gym_Text_MidoriDefeat": "ああ！　はなびらが　ちっちゃった！",
+ "Seika_Silkhollow_Gym_Text_MidoriPost": "アヤメさまは　まちの　はなばたけの　はなで　きぬを　そめて　いるの。",
+ "Seika_Silkhollow_Gym_Text_ChiyoIntro": "ワン　ツー　スリー　ターン！　わたしに　あわせて　ステップよ！",
+ "Seika_Silkhollow_Gym_Text_ChiyoDefeat": "あしを　ふまれちゃった！",
+ "Seika_Silkhollow_Gym_Text_ChiyoPost": "おどりこは　みんな　アヤメさまの　でしなの。　あの　かたは　ステップを　まちがえないわ。",
+ "Seika_Silkhollow_Gym_Text_YukaIntro": "きぬって　やわらかそうでしょ？　フェアリーポケモンも　そう　みえるわよね！",
+ "Seika_Silkhollow_Gym_Text_YukaDefeat": "すっかり　みすかされちゃった！",
+ "Seika_Silkhollow_Gym_Text_YukaPost": "いちばん　よわそうな　いとが　いちばん　つよい　ことも　あるのよ。",
+ "Seika_Silkhollow_Gym_Text_AyameIntro": "アヤメ『はたおりの　やかたへ　ようこそ。\\pわたしは　アヤメ。　バトルは　ひとつ　ひとつが　いと。　わたしは　それを　ぜんぶ　きぬに　おりあげるの。\\pあなたと　ポケモンが　どんな　もようを　おりなすのか　みせて　いただくわ！』",
+ "Seika_Silkhollow_Gym_Text_AyameDefeat": "まあ‥　なんて　うつくしい　もよう。　わたしには　とても　おれないわ。\\pキヌバッジを　どうぞ。　いとのように　かるくて　いとのように　つよいの。\\p{FONT_NORMAL}{PLAYER}は　アヤメから　キヌバッジを　もらった！{PAUSE_MUSIC}{PLAY_BGM}{MUS_OBTAIN_BADGE}{PAUSE 0xFE}{PAUSE 0x56}{RESUME_MUSIC}",
+ "Seika_Silkhollow_Gym_Text_AyameGift": "アヤメ『それと　これも。　あなたの　ポケモンを　まもる　きぬの　ベールよ。』",
+ "Seika_Silkhollow_Gym_Text_AyamePost": "アヤメ『ハタオリかいどうを　にしへ　いけば　シモミズむらよ。\\pそこの　つめたい　みずうみの　ほとりで　ツララさんが　やしろを　まもって　いるわ。　こおりのように　しんぼうづよい　ひとよ。』",
+ "Seika_Silkhollow_Gym_Text_GymGuy": "おーす！　アヤメは　フェアリーポケモンを　1まいの　つよい　ぬのに　おりあげるんだ。\\pどくと　はがねの　わざなら　スパッと　きりさけるぞ！\\pさいごの　いとは　ニンフィア。　めいそうを　つまれすぎるなよ！",
+ "Seika_Silkhollow_Gym_Text_GymGuyWon": "みごとな　ショー　だったぜ！　これで　バッジ　6つ。　あと　2つだ！"
+}

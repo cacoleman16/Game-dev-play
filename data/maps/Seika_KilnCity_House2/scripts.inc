@@ -11,3 +11,8 @@ Seika_Kiln_City_House2_Text_Npc0::
 	.string "leads a GYM.\p"
 	.string "TOBIN keeps the shrine of the\n"
 	.string "kilns. Fire, earth and patience.$"
+	.string "{JPN}{JPN}セイカの　まちには　どこも　ほしの　やしろが\n"
+	.string "あってね。　やしろの　もりびとが　ジムを\l"
+	.string "まかされて　おるんじゃ。\p"
+	.string "トビンが　まもるのは　かまの　やしろ。　ほのおと\n"
+	.string "つちと　がまんの　やしろじゃよ。$"

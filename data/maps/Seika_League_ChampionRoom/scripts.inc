@@ -57,22 +57,39 @@ Seika_League_ChampionRoom_Text_Intro::
 	.string "heart walk that path.\p"
 	.string "Show me your heart, trainer from\n"
 	.string "KANTO!{PLAY_BGM}{MUS_RG_VS_CHAMPION}$"
+	.string "{JPN}{JPN}セイジ『そうか‥　ともしびが　みちびいて\n"
+	.string "きたのは　きみだったか。\p"
+	.string "わたしは　セイカの　チャンピオン　セイジ。\n"
+	.string "そらのやしろへの　みちを　まもって　いる。\p"
+	.string "せんねん　まえ　わが　いちぞくは　ちかった。\n"
+	.string "その　みちを　あゆめるのは　もっとも　つよい\l"
+	.string "こころの　もちぬし　だけだと。\p"
+	.string "カントーから　きた　トレーナーよ！　きみの\n"
+	.string "こころを　みせて　くれ！』{PLAY_BGM}{MUS_RG_VS_CHAMPION}$"
 
 Seika_League_ChampionRoom_Text_Rematch::
 	.string "Back again? Good. The sky never\n"
 	.string "tires of a strong heart.{PLAY_BGM}{MUS_RG_VS_CHAMPION}$"
+	.string "{JPN}{JPN}セイジ『また　きたか。　よし。　そらは　つよい\n"
+	.string "こころに　あきは　しない。』{PLAY_BGM}{MUS_RG_VS_CHAMPION}$"
 
 Seika_League_ChampionRoom_Text_Defeat::
 	.string "Remarkable... The lanterns chose\n"
 	.string "well.$"
+	.string "{JPN}{JPN}みごとだ‥　ともしびの　めに　くるいは\n"
+	.string "なかったな。$"
 
 Seika_League_ChampionRoom_Text_Post::
 	.string "You are stronger than any trainer\n"
 	.string "I have faced.$"
+	.string "{JPN}{JPN}セイジ『きみは　わたしが　たたかった　どの\n"
+	.string "トレーナーよりも　つよい。』$"
 
 Seika_League_ChampionRoom_Text_Champion::
 	.string "{PLAYER} became the CHAMPION\n"
 	.string "of the SEIKA LEAGUE!$"
+	.string "{JPN}{JPN}{PLAYER}は　セイカリーグの　チャンピオンに\n"
+	.string "なった！$"
 
 Seika_League_ChampionRoom_Text_Shrine::
 	.string "Listen. Team NOVA carried the\n"
@@ -82,3 +99,10 @@ Seika_League_ChampionRoom_Text_Shrine::
 	.string "STAR will grant THEIR wish.\p"
 	.string "The path above STARWATCH PLATEAU\n"
 	.string "is yours now. Hurry!$"
+	.string "{JPN}{JPN}セイジ『きいて　くれ。　ノバだんが\n"
+	.string "ほしガラスのかねを　そらのやしろへ\l"
+	.string "はこびあげた。\p"
+	.string "かねを　ならされたら　ねがいぼしは　やつらの\n"
+	.string "ねがいを　かなえて　しまう。\p"
+	.string "ホシミこうげんの　うえへの　みちは　もう　きみの\n"
+	.string "ものだ。　いそいで　くれ！』$"

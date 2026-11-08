@@ -22,3 +22,6 @@ Seika_Mossgrove_PokemonCenter_1F_Text_Npc0::
 	.string "I caught a HERACROSS in the woods!\p"
 	.string "It tried to eat the honey in my\n"
 	.string "bag. It has good taste!$"
+	.string "{JPN}{JPN}もりで　ヘラクロスを　つかまえたよ！\p"
+	.string "ぼくの　バッグの　ミツを　たべようと　したんだ。\n"
+	.string "あじの　わかる　やつだよ！$"

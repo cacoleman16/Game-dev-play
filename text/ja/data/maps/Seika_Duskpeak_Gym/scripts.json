@@ -1,0 +1,17 @@
+{
+ "Seika_Duskpeak_Gym_Text_SayoIntro": "いしたちが　きいて　いる‥　そして　あなたを　きらって　いるわ！",
+ "Seika_Duskpeak_Gym_Text_SayoDefeat": "れいたちが‥　しずかに　なった‥",
+ "Seika_Duskpeak_Gym_Text_SayoPost": "ここの　いしは　ひとつ　ひとつが　ほしを　みまもった　もりびとの　ものなの。",
+ "Seika_Duskpeak_Gym_Text_MiyakoIntro": "ふふふ‥　つぎの　ターン　のろって　あげる！",
+ "Seika_Duskpeak_Gym_Text_MiyakoDefeat": "のろいが　じぶんに　かえって　きた‥",
+ "Seika_Duskpeak_Gym_Text_MiyakoPost": "トモエさまは　だれも　のろわない。　ただ　きいてる　だけ。　それが　こわいのよ。",
+ "Seika_Duskpeak_Gym_Text_KikueIntro": "わの　なかの　ひかりへ　おはいり。　たどりつけるならね！",
+ "Seika_Duskpeak_Gym_Text_KikueDefeat": "ろうそくが　きえちゃった‥",
+ "Seika_Duskpeak_Gym_Text_KikuePost": "トモエさまの　ムウマージは　こうげきの　まえに　うたうの。　きいちゃ　だめよ！",
+ "Seika_Duskpeak_Gym_Text_TomoeIntro": "トモエ『ようこそ。　わたしは　トモエ。　やまの　ふもとの　やしろを　まもる　もの。\\pむかしの　もりびとたちの　こえが　わたしに　とどくのです。　かれらは　トモシビタウンから　ずっと　あなたを　みていました。\\pあなたの　こころが　いただきに　ふさわしいか　しりたがって　います。\\pさあ　みせて　あげなさい！』",
+ "Seika_Duskpeak_Gym_Text_TomoeDefeat": "れいたちが　ほほえんで　います‥　あなたを　ほこりに　おもって　いるのです。\\pユウグレバッジを　おうけとりなさい。　8つの　うちの　さいごの　ひとつです。\\p{FONT_NORMAL}{PLAYER}は　トモエから　ユウグレバッジを　もらった！{PAUSE_MUSIC}{PLAY_BGM}{MUS_OBTAIN_BADGE}{PAUSE 0xFE}{PAUSE 0x56}{RESUME_MUSIC}",
+ "Seika_Duskpeak_Gym_Text_TomoeGift": "トモエ『これも　どうぞ。　やみに　あなたの　ちからを　のせて　ごらんなさい。』",
+ "Seika_Duskpeak_Gym_Text_TomoePost": "トモエ『よく　おききなさい。　ねがいぼしの　7かかんは　もうすぐ　おわります。\\pノバだんは　ほしガラスのかねを　そらのやしろへ　はこびあげました。\\pでも　やしろへの　みちは　セイカリーグの　チャンピオンにしか　ひらかれません。\\pソラトドキとうげを　こえて　ホシミこうげんへ。　そして　かつのです。　いそいで！』",
+ "Seika_Duskpeak_Gym_Text_GymGuy": "おーす！　ここは　セイカ　さいごの　ジム。　そして　いちばん　くらい　ジムだ！\\pトモエの　ゴーストポケモンは　ノーマルや　かくとうの　わざを　わらいとばすぞ。\\pかわりに　あくや　ゴーストの　わざで　せめるんだ。\\pそれに　ミカルゲ！　あいつに　ちゃんと　きくのは　フェアリーの　わざ　だけだ！",
+ "Seika_Duskpeak_Gym_Text_GymGuyWon": "やったな！　セイカの　バッジ　8つ　ぜんぶ　そろったぞ！\\pこれで　ソラトドキとうげを　とおれる。　いけ　みらいの　チャンピオン！"
+}

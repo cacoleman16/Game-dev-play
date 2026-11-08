@@ -1,0 +1,13 @@
+{
+ "Seika_SkyShrine_Text_BellRings": "すんだ　ねいろが　くもの　うえに　ひびきわたった。　ほしガラスのかねだ！",
+ "Seika_SkyShrine_Text_DenebIntro": "デネブ『おそかったわね　ダーリン。　かねは　もう　なって　いるわ。\\pねがいぼしが　おりて　きたら　わたしたちの　ねがいで　ベガさまを　よびもどすの。　じゃまは　させないわよ！』{PLAY_BGM}{MUS_ENCOUNTER_SUSPICIOUS}",
+ "Seika_SkyShrine_Text_DenebDefeat": "また　なの‥？　さいごの　ひに　なって！",
+ "Seika_SkyShrine_Text_AltairIntro": "アルタイル『あの　スターストーンは　おれが　この　てで　ほりだしたんだ。\\pカントーの　ガキに　むだに　されて　たまるか。　かかって　こい！』{PLAY_BGM}{MUS_ENCOUNTER_SUSPICIOUS}",
+ "Seika_SkyShrine_Text_AltairDefeat": "かねが‥　とまった。　おれたちじゃ　なく　おまえの　ために。",
+ "Seika_SkyShrine_Text_NovaLeave": "デネブ『ほしが　そっぽを　むいたわ。　あなたの　ねがいを　きいて　いるのね。』\\pアルタイル『いくぞ　デネブ。　ここには　もう　おれたちの　ばしょは　ない。』",
+ "Seika_SkyShrine_Text_StarComes": "かねの　さいごの　ねいろが　きえて　いった。\\pちいさな　ひかりが　そらから　ふって　きて　やしろに　おりたった‥",
+ "Seika_SkyShrine_Text_Jirachi": "ジラーー！",
+ "Seika_SkyShrine_Text_StillHere": "ねがいぼしは　まだ　やしろの　うえに　うかんで　いる‥",
+ "Seika_SkyShrine_Text_FlewHome": "ねがいぼしは　そらへ　のぼり　みえなく　なった。\\pでも　いく　まえに　いちどだけ　こちらを　ふりかえった。",
+ "Seika_SkyShrine_Text_Ending": "はるか　したで　セイカの　ともしびが　よるの　なかに　かがやいて　いる。\\p2どめの　スターフォールは　おわった。　その　ねがいが　なんで　あれ　それは　あなただけの　ものだ。"
+}

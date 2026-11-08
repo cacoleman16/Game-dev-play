@@ -21,3 +21,5 @@ Seika_Frostmere_PokemonCenter_1F_EventScript_Npc0::
 Seika_Frostmere_PokemonCenter_1F_Text_Npc0::
 	.string "Heal up before FROST ROAD.\n"
 	.string "The wind up there bites!$"
+	.string "{JPN}{JPN}シモかいどうに　いく　まえに　かいふく\n"
+	.string "しときな。　あそこの　かぜは　みに　しみるぞ！$"

@@ -1,0 +1,8 @@
+{
+ "Seika_League_ChampionRoom_Text_Intro": "セイジ『そうか‥　ともしびが　みちびいて　きたのは　きみだったか。\\pわたしは　セイカの　チャンピオン　セイジ。　そらのやしろへの　みちを　まもって　いる。\\pせんねん　まえ　わが　いちぞくは　ちかった。　その　みちを　あゆめるのは　もっとも　つよい　こころの　もちぬし　だけだと。\\pカントーから　きた　トレーナーよ！　きみの　こころを　みせて　くれ！』{PLAY_BGM}{MUS_RG_VS_CHAMPION}",
+ "Seika_League_ChampionRoom_Text_Rematch": "セイジ『また　きたか。　よし。　そらは　つよい　こころに　あきは　しない。』{PLAY_BGM}{MUS_RG_VS_CHAMPION}",
+ "Seika_League_ChampionRoom_Text_Defeat": "みごとだ‥　ともしびの　めに　くるいは　なかったな。",
+ "Seika_League_ChampionRoom_Text_Post": "セイジ『きみは　わたしが　たたかった　どの　トレーナーよりも　つよい。』",
+ "Seika_League_ChampionRoom_Text_Champion": "{PLAYER}は　セイカリーグの　チャンピオンに　なった！",
+ "Seika_League_ChampionRoom_Text_Shrine": "セイジ『きいて　くれ。　ノバだんが　ほしガラスのかねを　そらのやしろへ　はこびあげた。\\pかねを　ならされたら　ねがいぼしは　やつらの　ねがいを　かなえて　しまう。\\pホシミこうげんの　うえへの　みちは　もう　きみの　ものだ。　いそいで　くれ！』"
+}

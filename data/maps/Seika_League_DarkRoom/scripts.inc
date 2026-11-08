@@ -65,10 +65,17 @@ Seika_League_DarkRoom_Text_Intro::
 	.string "because the night is so dark.\p"
 	.string "Your light against my dark.\n"
 	.string "Shall we?{PLAY_BGM}{MUS_RG_ENCOUNTER_GYM_LEADER}$"
+	.string "{JPN}{JPN}クロエ『わたしは　クロエ。　ほしが　かがやくのは\n"
+	.string "よるが　くらいから　こそよ。\p"
+	.string "あなたの　ひかりと　わたしの　やみ。\n"
+	.string "はじめましょうか？』{PLAY_BGM}{MUS_RG_ENCOUNTER_GYM_LEADER}$"
 
 Seika_League_DarkRoom_Text_Defeat::
 	.string "So bright... I can hardly see.$"
+	.string "{JPN}{JPN}まぶしい‥　めが　くらみそう。$"
 
 Seika_League_DarkRoom_Text_Post::
 	.string "Keep that light. The sky is\n"
 	.string "waiting for you.$"
+	.string "{JPN}{JPN}クロエ『その　ひかりを　なくさないで。　そらが\n"
+	.string "あなたを　まって　いるわ。』$"

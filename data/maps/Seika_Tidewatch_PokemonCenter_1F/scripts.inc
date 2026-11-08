@@ -23,3 +23,7 @@ Seika_Tidewatch_PokemonCenter_1F_Text_Npc0::
 	.string "KILN CITY, and pots back again.\p"
 	.string "The KILN CITY folk do love their\n"
 	.string "fish on a nice plate!$"
+	.string "{JPN}{JPN}おれの　ふねは　カマモトシティへ　さかなを\n"
+	.string "はこんで　やきものを　つんで　かえるんだ。\p"
+	.string "カマモトシティの　れんちゅうは　いい　さらに\n"
+	.string "のせた　さかなが　だいすきなのさ！$"

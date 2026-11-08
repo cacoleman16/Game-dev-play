@@ -9,6 +9,7 @@ Seika_Tidewatch_EventScript_TownSign::
 Seika_Tidewatch_Text_TownSign::
 	.string "TIDEWATCH TOWN\n"
 	.string "The sea keeps time here.$"
+	.string "{JPN}{JPN}シオミタウン　うみが　ときを　きざむ　まち$"
 
 Seika_Tidewatch_EventScript_GymSign::
 	msgbox Seika_Tidewatch_Text_GymSign, MSGBOX_SIGN
@@ -19,6 +20,8 @@ Seika_Tidewatch_Text_GymSign::
 	.string "LEADER: NAGI\p"
 	.string "The diver who swims with\n"
 	.string "the tide!$"
+	.string "{JPN}{JPN}シオミ　ポケモンジム　リーダー　ナギサ\p"
+	.string "しおと　ともに　およぐ　ダイバー！$"
 
 Seika_Tidewatch_EventScript_ShrineSign::
 	msgbox Seika_Tidewatch_Text_ShrineSign, MSGBOX_SIGN
@@ -27,6 +30,7 @@ Seika_Tidewatch_EventScript_ShrineSign::
 Seika_Tidewatch_Text_ShrineSign::
 	.string "TIDE SHRINE\n"
 	.string "The sea rises for the star.$"
+	.string "{JPN}{JPN}しおのやしろ　うみは　ほしの　ために　みちる$"
 
 Seika_Tidewatch_EventScript_FisherWest::
 	msgbox Seika_Tidewatch_Text_FisherWest, MSGBOX_NPC
@@ -37,6 +41,10 @@ Seika_Tidewatch_Text_FisherWest::
 	.string "Even the GYM LEADER!\p"
 	.string "Well, NAGI dives for her catch.\n"
 	.string "Same thing, really.$"
+	.string "{JPN}{JPN}シオミタウンでは　みんな　つりを　する。\n"
+	.string "ジムリーダーだってな！\p"
+	.string "まあ　ナギサは　もぐって　とるんだけどな。\n"
+	.string "おなじ　ような　もんさ。$"
 
 Seika_Tidewatch_EventScript_FisherEast::
 	msgbox Seika_Tidewatch_Text_FisherEast, MSGBOX_NPC
@@ -47,6 +55,10 @@ Seika_Tidewatch_Text_FisherEast::
 	.string "right up to the pier.\p"
 	.string "At low tide, the OCTILLERY come\n"
 	.string "after the REMORAID!$"
+	.string "{JPN}{JPN}みちしおに　なると　テッポウオが　さんばしの\n"
+	.string "すぐ　そばまで　くるんだ。\p"
+	.string "ひきしおに　なると　その　テッポウオを\n"
+	.string "オクタンが　おいかけて　くるのさ！$"
 
 Seika_Tidewatch_EventScript_OldSailor::
 	msgbox Seika_Tidewatch_Text_OldSailor, MSGBOX_NPC
@@ -59,6 +71,12 @@ Seika_Tidewatch_Text_OldSailor::
 	.string "Except one night, they say. The\n"
 	.string "night the first star fell, the\l"
 	.string "sea rose all the way to the hills.$"
+	.string "{JPN}{JPN}ここの　しおは　いちども　くるった　ことが\n"
+	.string "ない。　1にち　2かい　せんねんの　あいだ\l"
+	.string "ずっとじゃ。\p"
+	.string "ただ　ひとばんを　のぞいてな。　さいしょの\n"
+	.string "ほしが　おちた　よる　うみは　おかの　うえまで\l"
+	.string "あがったそうじゃ。$"
 
 Seika_Tidewatch_EventScript_Girl::
 	msgbox Seika_Tidewatch_Text_Girl, MSGBOX_NPC
@@ -68,6 +86,8 @@ Seika_Tidewatch_Text_Girl::
 	.string "NAGI can hold her breath for ten\n"
 	.string "whole minutes! I can do ten\l"
 	.string "seconds.$"
+	.string "{JPN}{JPN}ナギサさんは　10ぷんも　いきを　とめて\n"
+	.string "いられるの！　わたしは　10びょう。$"
 
 Seika_Tidewatch_EventScript_NorthWoman::
 	msgbox Seika_Tidewatch_Text_NorthWoman, MSGBOX_NPC
@@ -78,6 +98,10 @@ Seika_Tidewatch_Text_NorthWoman::
 	.string "hills to SILKHOLLOW TOWN.\p"
 	.string "The weavers there make the finest\n"
 	.string "silk in all of SEIKA.$"
+	.string "{JPN}{JPN}きたの　みちは　おかを　こえて\n"
+	.string "キヌウツロタウンへ　つづいて　いるわ。\p"
+	.string "あそこの　はたおりたちは　セイカで　いちばんの\n"
+	.string "きぬを　おるのよ。$"
 
 Seika_Tidewatch_QoLFly_OnTransition::
 	setflag FLAG_QOL_SEIKA_FLY_TIDEWATCH

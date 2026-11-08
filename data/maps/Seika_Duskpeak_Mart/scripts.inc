@@ -38,3 +38,7 @@ Seika_Duskpeak_Mart_Text_Npc0::
 	.string "and at night.\p"
 	.string "Here in DUSKPEAK it always\n"
 	.string "feels like dusk.$"
+	.string "{JPN}{JPN}ダークボールは　どうくつや　よるに　つかうと\n"
+	.string "いちばん　よく　きくのよ。\p"
+	.string "ここ　タソガレむらは　いつも　たそがれどき\n"
+	.string "みたいだけどね。$"
