@@ -144,14 +144,9 @@ def gym_statue(m, name, xs, badge, text):
 
 def build():
     road = kiln_road()
-    if 'kiln_city' not in globals():
-        add(g.MapDef(P_KILN, 'MAP_SEIKA_KILN_CITY', SEC_KILN, kiln_city_canvas(), 'MUS_RG_CELADON'))
-    if 'kiln_city' in globals():
-        city = kiln_city(road)
-        if 'tide_road' in globals():
-            troad = tide_road(city)
-            if 'tidewatch' in globals():
-                tidewatch(troad)
+    city = kiln_city(road)
+    troad = tide_road(city)
+    tidewatch(troad)
 
 
 # ---------------------------------------------------------------- Kiln Road
@@ -1174,18 +1169,18 @@ def tidewatch(troad):
                           'LAYOUT_FIVE_ISLAND_RESORT_GORGEOUS_HOUSE', 'MUS_RG_SEVII_45', 'MAP_TYPE_INDOOR',
                           'WEATHER_NONE', False, False, False))
     door(shrine, 4, 7, t.id, w_shrine)
-    npc(shrine, 'OBJ_EVENT_GFX_OLD_WOMAN_FRLG', 4, 3, P_TIDE + '_TideShrine_EventScript_Keeper',
+    npc(shrine, 'OBJ_EVENT_GFX_OLD_WOMAN_FRLG', 6, 2, P_TIDE + '_TideShrine_EventScript_Keeper',
         'Welcome to the TIDE SHRINE.\fA thousand years ago, the first\n'
         'star fell into the sky over the\n'
         'sea, and the tide rose to meet it.\fWe have watched the tide ever\n'
         'since. When it rises too high,\n'
         'the star is stirring.\fThis year the sea has been very\n'
         'high indeed...')
-    npc(shrine, 'OBJ_EVENT_GFX_WOMAN_1_FRLG', 7, 4, P_TIDE + '_TideShrine_EventScript_Attendant',
+    npc(shrine, 'OBJ_EVENT_GFX_WOMAN_1_FRLG', 4, 4, P_TIDE + '_TideShrine_EventScript_Attendant',
         'NAGI is our shrine keeper. She\n'
         'dives to the bottom of the bay to\n'
         'read the old stones.\fShe says the stones point north.\n'
-        'Toward the mountain.', 'MOVEMENT_TYPE_FACE_LEFT')
+        'Toward the mountain.', 'MOVEMENT_TYPE_FACE_RIGHT')
     for x in (8, 9):
         shrine.bgs.append(g.sign(x, 1, P_TIDE + '_TideShrine_EventScript_TideChart', 'BG_EVENT_PLAYER_FACING_NORTH'))
     shrine.scripts += (P_TIDE + '_TideShrine_EventScript_TideChart::\n\tmsgbox %s_TideShrine_Text_TideChart, MSGBOX_SIGN\n\tend\n\n'
