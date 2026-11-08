@@ -177,6 +177,10 @@ enum __attribute__((packed)) TrainerPicID
     TRAINER_PIC_CRUSH_GIRL_FRLG,
     TRAINER_PIC_POKEMON_BREEDER_FRLG,
     TRAINER_PIC_PAINTER_FRLG,
+    // [QoL] Skyrift companions (docs/SKYRIFT.md): battle partners with recoloured back sprites
+    TRAINER_PIC_QOL_ALTAIR,
+    TRAINER_PIC_QOL_DENEB,
+    TRAINER_PIC_QOL_MIRA,
     TRAINER_PIC_COUNT,
 };
 

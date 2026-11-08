@@ -485,6 +485,13 @@ const u16 gTrainerBackPicPalette_Red[] = INCGFX_U16("graphics/trainers/back_pics
 const u16 gTrainerBackPicPalette_Leaf[] = INCGFX_U16("graphics/trainers/back_pics/leaf.png", ".gbapal");
 const u16 gTrainerBackPicPalette_Pokedude[] = INCGFX_U16("graphics/trainers/back_pics/pokedude.png", ".gbapal");
 const u16 gTrainerBackPicPalette_OldMan[] = INCGFX_U16("graphics/trainers/back_pics/old_man.png", ".gbapal");
+// [QoL] Skyrift companions (dev_scripts/qol_backpics.py)
+const u8 gTrainerBackPic_QolAltair[] = INCGFX_U8("graphics/trainers/back_pics/qol_altair.png", ".4bpp");
+const u8 gTrainerBackPic_QolDeneb[] = INCGFX_U8("graphics/trainers/back_pics/qol_deneb.png", ".4bpp");
+const u8 gTrainerBackPic_QolMira[] = INCGFX_U8("graphics/trainers/back_pics/qol_mira.png", ".4bpp");
+const u16 gTrainerBackPicPalette_QolAltair[] = INCGFX_U16("graphics/trainers/back_pics/qol_altair.png", ".gbapal");
+const u16 gTrainerBackPicPalette_QolDeneb[] = INCGFX_U16("graphics/trainers/back_pics/qol_deneb.png", ".gbapal");
+const u16 gTrainerBackPicPalette_QolMira[] = INCGFX_U16("graphics/trainers/back_pics/qol_mira.png", ".gbapal");
 
 
 static const union AnimCmd sAnimCmd_Hoenn[] =
@@ -1225,5 +1232,20 @@ const struct TrainerPicInfo gTrainerPicInfo[TRAINER_PIC_COUNT] =
     [TRAINER_PIC_PAINTER_FRLG] =
     {
         .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_PainterFrlg, gTrainerPalette_PainterFrlg),
+    },
+    [TRAINER_PIC_QOL_ALTAIR] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_RuinManiac, gTrainerPalette_RuinManiac),
+        .backPic = TRAINER_BACK_PIC(4, gTrainerBackPic_QolAltair, gTrainerBackPicPalette_QolAltair, sBackAnims_OldManPokedude),
+    },
+    [TRAINER_PIC_QOL_DENEB] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_HexManiac, gTrainerPalette_HexManiac),
+        .backPic = TRAINER_BACK_PIC(5, gTrainerBackPic_QolDeneb, gTrainerBackPicPalette_QolDeneb, sBackAnims_Kanto),
+    },
+    [TRAINER_PIC_QOL_MIRA] =
+    {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_PsychicFFrlg, gTrainerPalette_PsychicFFrlg),
+        .backPic = TRAINER_BACK_PIC(4, gTrainerBackPic_QolMira, gTrainerBackPicPalette_QolMira, sBackAnims_Hoenn),
     },
 };

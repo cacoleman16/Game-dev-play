@@ -473,7 +473,8 @@ def sky_shrine(plateau):
                            local_id='LOCALID_SEIKA_SHRINE_DENEB', move='MOVEMENT_TYPE_FACE_UP', flag=HIDE_SHRINE_NOVA))
     m.objects.append(g.obj('OBJ_EVENT_GFX_HIKER_FRLG', cx + 1, 10, name + '_EventScript_Altair',
                            local_id='LOCALID_SEIKA_SHRINE_ALTAIR', move='MOVEMENT_TYPE_FACE_UP', flag=HIDE_SHRINE_NOVA))
-    m.objects.append(g.obj('OBJ_EVENT_GFX_QOL_JIRACHI', cx, 7, name + '_EventScript_Jirachi',
+    # talking to the star starts the wish (skyrift_story.py), then the battle below
+    m.objects.append(g.obj('OBJ_EVENT_GFX_QOL_JIRACHI', cx, 7, 'QoL_EventScript_SkyriftWish',
                            local_id='LOCALID_SEIKA_SHRINE_JIRACHI', move='MOVEMENT_TYPE_FACE_DOWN', flag=HIDE_JIRACHI,
                            elevation=3))
     # the scene starts on the first step off the way up (the hole at `hole`)
@@ -527,7 +528,8 @@ def sky_shrine(plateau):
         '%(n)s_EventScript_StarFlewHome::\n\tfadescreen FADE_TO_BLACK\n\tremoveobject LOCALID_SEIKA_SHRINE_JIRACHI\n'
         '\tfadescreen FADE_FROM_BLACK\n\tmsgbox %(n)s_Text_FlewHome, MSGBOX_DEFAULT\n'
         '%(n)s_EventScript_Ending::\n\tsetflag %(hj)s\n\tsetflag %(done)s\n'
-        '\tmsgbox %(n)s_Text_Ending, MSGBOX_DEFAULT\n\trelease\n\tend\n\n'
+        '\tmsgbox %(n)s_Text_Ending, MSGBOX_DEFAULT\n'
+        '\tgoto QoL_EventScript_SkyriftOpens\n\n'   # docs/SKYRIFT.md
         % dict(n=name, done=SEIKA_DONE, nova=SHRINE_NOVA, hn=HIDE_SHRINE_NOVA, hj=HIDE_JIRACHI))
     m.scripts += T(name + '_Text_BellRings',
                    'A clear note rings out over the\nclouds. The STARGLASS BELL!')

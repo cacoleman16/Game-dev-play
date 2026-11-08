@@ -42,3 +42,118 @@ EVs: 252 Atk / 252 SpA / 6 SpD
 - Protect
 - Solar Beam
 - Dragon Claw
+
+/* [QoL] Skyrift companions (docs/SKYRIFT.md) */
+=== PARTNER_QOL_ALTAIR ===
+Name: ALTAIR
+Class: Nova Admin
+Pic: Qol Altair
+Gender: Male
+Music: Male
+AI: Smart Trainer
+
+Excadrill @ Life Orb
+Adamant Nature
+Level: 72
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 Atk / 252 Spe / 4 HP
+- Earthquake
+- Iron Head
+- Rock Slide
+- Swords Dance
+
+Rhyperior @ Weakness Policy
+Adamant Nature
+Level: 72
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 4 Def
+- High Horsepower
+- Stone Edge
+- Megahorn
+- Protect
+
+Probopass @ Leftovers
+Bold Nature
+Level: 72
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 SpD / 4 SpA
+- Power Gem
+- Earth Power
+- Flash Cannon
+- Thunder Wave
+
+=== PARTNER_QOL_DENEB ===
+Name: DENEB
+Class: Nova Admin
+Pic: Qol Deneb
+Gender: Female
+Music: Female
+AI: Smart Trainer
+
+Gardevoir @ Choice Specs
+Modest Nature
+Level: 72
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 SpA / 252 Spe / 4 HP
+- Moonblast
+- Psychic
+- Dazzling Gleam
+- Focus Blast
+
+Bronzong @ Leftovers
+Sassy Nature
+Level: 72
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 SpD / 4 Atk
+- Gyro Ball
+- Earthquake
+- Trick Room
+- Reflect
+
+Togekiss @ Sitrus Berry
+Calm Nature
+Level: 72
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 SpD / 4 SpA
+- Air Slash
+- Dazzling Gleam
+- Follow Me
+- Roost
+
+=== PARTNER_QOL_MIRA ===
+Name: MIRA
+Class: Psychic Frlg
+Pic: Qol Mira
+Gender: Female
+Music: Female
+AI: Smart Trainer
+
+Xatu @ Light Clay
+Timid Nature
+Level: 72
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 SpA / 252 Spe / 4 HP
+- Psychic
+- Air Slash
+- Reflect
+- Light Screen
+
+Clefable @ Leftovers
+Calm Nature
+Level: 72
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 SpD / 4 SpA
+- Moonblast
+- Moonlight
+- Follow Me
+- Thunder Wave
+
+Lanturn @ Sitrus Berry
+Modest Nature
+Level: 72
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 SpA / 4 SpD
+- Discharge
+- Scald
+- Ice Beam
+- Heal Bell

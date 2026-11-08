@@ -48,6 +48,11 @@ SECTIONS = [
     ('MAPSEC_SEIKA_STARWATCH_PLATEAU', 14, 1, 1, 1, 'town'),
     ('MAPSEC_SEIKA_SKY_SHRINE', 14, 0, 1, 1, 'route'),
 ]
+# The Skyrift Isles (docs/SKYRIFT.md), out in the eastern sea. Filled in
+# from skyrift.py's map sections: (id, x, y, w, h, kind).
+SKYRIFT_SECTIONS = []
+# the isles' outline: ellipses (cx, cy, rx, ry) in cell coordinates
+SKYRIFT_ISLES = [(25.0, 12.5, 1.4, 0.8), (26.45, 10.5, 1.05, 2.05)]
 
 
 def load_pal(p):
@@ -104,6 +109,15 @@ def draw():
         if ((cx - 13.0) / 0.8) ** 2 + ((cy - 6.4) / 0.55) ** 2 < 1.0:
             return False
         return True
+
+    def isle_at(px, py):
+        cx, cy = px / 8.0 - 1, py / 8.0 - 2
+        k = 0.18 * noise(px * 2, py * 2)
+        return any(((cx - ex) / rx) ** 2 + ((cy - ey) / ry) ** 2 < 1.0 + k for ex, ey, rx, ry in SKYRIFT_ISLES)
+    _land_at = land_at
+
+    def land_at(px, py):  # noqa: F811
+        return _land_at(px, py) or (SKYRIFT_ISLES and isle_at(px, py))
     mask = [[land_at(x, y) for x in range(S)] for y in range(S)]
     # distance to the coast (chessboard, capped) for the green shading
     INF = 99
@@ -139,6 +153,14 @@ def draw():
             r = ((cx - 15.2) / 4.2) ** 2 + ((cy + 0.4) / 2.4) ** 2 + 0.35 * noise(x * 2, y * 2)
             if mask[y][x] and r < 1.0:
                 img[y][x] = ROCK[0 if r > 0.7 else 1 if r > 0.35 else 2]
+    # Meteor Basin: a grey crater on the Skyrift Isles
+    for y in range(S):
+        for x in range(S):
+            cx, cy = x / 8.0 - 1, y / 8.0 - 2
+            r = ((cx - 26.4) / 0.75) ** 2 + ((cy - 11.3) / 0.6) ** 2 + 0.3 * noise(x * 2, y * 2)
+            if SKYRIFT_SECTIONS and mask[y][x] and r < 1.0:
+                img[y][x] = ROCK[0 if r > 0.6 else 1]
+
     def line(p, q, colour, width):
         (x0, y0), (x1, y1) = p, q
         n = max(abs(x1 - x0), abs(y1 - y0), 1)
@@ -159,9 +181,19 @@ def draw():
     # the S.S. TIDAL's sea lane south of Lanternport
     lx, ly = centre(17, 14)
     line((lx, ly + 6), (lx, ly + 14), WATER_ROUTE, 2)
+    if SKYRIFT_SECTIONS:
+        # ... and east to the Skyrift Isles, then the isles' own road
+        sx, sy = centre(*SKYRIFT_SECTIONS[0][1:3])
+        line((lx + 4, ly + 10), (sx - 10, ly + 10), WATER_ROUTE, 2)
+        line((sx - 10, ly + 10), (sx - 6, sy + 2), WATER_ROUTE, 2)
+        pts = [centre(x + (w - 1) // 2, y + (h - 1) // 2) for _, x, y, w, h, _ in SKYRIFT_SECTIONS]
+        for a, b in zip(pts, pts[1:]):
+            line(a, b, ROUTE_EDGE, 5)
+        for a, b in zip(pts, pts[1:]):
+            line(a, b, ROUTE, 3)
     # town dots: Kanto's dot tile
     dot = kanto_tile(54)
-    for sid, x, y, w, h, kind in SECTIONS:
+    for sid, x, y, w, h, kind in SECTIONS + SKYRIFT_SECTIONS:
         if kind == 'town':
             ox, oy = (x + 1) * 8, (y + 2) * 8
             for yy in range(8):
@@ -205,7 +237,7 @@ def write(tiles, tmap):
     grid = [['MAPSEC_NONE'] * W_CELLS for _ in range(H_CELLS)]
     import json
     known = {m['id'] for m in json.load(open(os.path.join(ROOT, 'src/data/region_map/region_map_sections.json')))['map_sections']}
-    for sid, x, y, w, h, kind in SECTIONS:
+    for sid, x, y, w, h, kind in SECTIONS + SKYRIFT_SECTIONS:
         if sid not in known:   # not built yet
             continue
         for yy in range(y, y + h):

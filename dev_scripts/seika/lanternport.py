@@ -89,7 +89,9 @@ def build():
     t.objects.append(g.obj('OBJ_EVENT_GFX_SAILOR_FRLG', 20, 29, P + '_EventScript_Sailor',
                            move='MOVEMENT_TYPE_FACE_UP', local_id='LOCALID_SEIKA_LANTERNPORT_SAILOR'))
     t.objects.append(g.obj('OBJ_EVENT_GFX_SS_TIDAL', 20, 31, '0x0', move='MOVEMENT_TYPE_FACE_RIGHT', elevation=1))
-    t.scripts += (P + '_EventScript_Sailor::\n\tlock\n\tfaceplayer\n'
+    t.scripts += (P + '_EventScript_Sailor::\n'
+                  '\tgoto_if_set FLAG_QOL_SKYRIFT_CHOSEN, QoL_EventScript_LanternportSailor @ skyrift_story.py\n'
+                  '\tlock\n\tfaceplayer\n'
                   '\tmsgbox QoL_Text_OfferKanto, MSGBOX_YESNO\n'
                   '\tgoto_if_eq VAR_RESULT, YES, QoL_EventScript_SailToKanto\n'
                   '\tmsgbox QoL_Text_TidalComeBack, MSGBOX_DEFAULT\n\trelease\n\tend\n\n')

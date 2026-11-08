@@ -16,7 +16,8 @@ import importlib  # noqa: E402
 import common as c  # noqa: E402
 
 # Order matters once released: flags and trainer IDs are numbered in this order.
-MODULES = ['lanternport', 'inkbrush', 'kiln', 'silkhollow', 'duskpeak', 'league', 'flymap']
+MODULES = ['lanternport', 'inkbrush', 'kiln', 'silkhollow', 'duskpeak', 'league', 'flymap',
+           'skyrift', 'skyrift_story']  # Skyrift (docs/SKYRIFT.md) comes after, so Seika's numbers stay put
 
 
 LOADED = []
