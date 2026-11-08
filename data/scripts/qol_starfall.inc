@@ -1027,6 +1027,7 @@ QoL_EventScript_StarfallEnding::
 	msgbox QoL_Text_EndingSteven
 	msgbox QoL_Text_EndingOak
 	msgbox QoL_Text_EndingBirch
+	msgbox QoL_Text_EndingSeika @ [QoL] Seika region (docs/SEIKA.md)
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	msgbox QoL_Text_EndingTheEnd
 	closemessage
@@ -1243,6 +1244,20 @@ QoL_Text_EndingSteven::
 	.string "あの　ダンバルは　つよい　だれかを　さがして\n"
 	.string "スターフォールと　ともに　おりてきた。　そして\l"
 	.string "きみを　みつけたんだ。』$"
+
+QoL_Text_EndingSeika::
+	.string "STEVEN: One more thing.\p"
+	.string "The oldest records say the first\n"
+	.string "STARFALL, a thousand years ago,\l"
+	.string "fell on a land called SEIKA.\p"
+	.string "The S.S. TIDAL can take you there\n"
+	.string "now. Something may be waiting.$"
+	.string "{JPN}{JPN}ダイゴ『もう　ひとつ。\p"
+	.string "いちばん　ふるい　きろくに　よると\n"
+	.string "せんねんまえの　さいしょの　スターフォールは\l"
+	.string "セイカと　いう　ちほうに　おちたらしい。\p"
+	.string "いまなら　タイドリップごうで　いけるよ。\n"
+	.string "なにかが　まだ　まっているかも　しれない。』$"
 
 QoL_Text_EndingOak::
 	.string "OAK: To think a meteorite on my\n"

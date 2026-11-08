@@ -1,6 +1,6 @@
 """Lanternport: Seika's harbor town (Gym 1, Fire) and Lantern Road."""
 from common import (g, T, add, door, npc, signpost, pokecenter, mart, house, wild, mapsec,
-                    trainer, battle, flag, PC, MART, GYM)
+                    trainer, battle, flag, link, PC, MART, GYM)
 
 VERM = 'LAYOUT_VERMILION_CITY'
 SEC = mapsec('MAPSEC_SEIKA_LANTERNPORT', 'LANTERNPORT')
@@ -294,7 +294,9 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 
 def road(t):
     c = g.Canvas(24, 50, 'gTileset_PalletTown', seed=12)
-    c.forest(0, 0, 24, 4)                 # north end (opens to Inkbrush later)
+    c.forest(0, 0, 14, 4)                 # north end: opening to Inkbrush Town
+    c.forest(20, 0, 4, 4)
+    c.rect(16, 0, 2, 4, 'path')
     c.forest(0, 4, 4, 40)
     c.forest(20, 4, 4, 40)
     c.forest(0, 44, 10, 6)
@@ -317,6 +319,7 @@ def road(t):
     name = 'Seika_LanternRoad'
     m = add(g.MapDef(name, 'MAP_SEIKA_LANTERN_ROAD', SEC_ROAD, c, 'MUS_RG_SEVII_ROUTE', 'MAP_TYPE_ROUTE'))
     t.connect(m, 'up', 8)
+    link('MAP_SEIKA_LANTERN_ROAD', 'up', -4, 'MAP_SEIKA_INKBRUSH')  # road path x16-17 = town x20-21
     signpost(m, 13, 46, name + '_EventScript_Sign', 'LANTERN ROAD\nLANTERNPORT - INKBRUSH TOWN')
     c.put(13, 46, g.SIGN)
     trainer('TRAINER_SEIKA_HIKER_GORO', 'GORO', 'Hiker Frlg', 'Hiker Frlg', 'Male', '''

@@ -77,7 +77,7 @@ Where the Starfall's meteors came down: Emerald's Faraway Island, renamed.
 The S.S. TIDAL in Vermilion sails there once you've been to Hoenn. Its wild
 Pokémon roam in the open (walk into one to battle it): meteor and star
 Pokémon (Clefairy, Elgyem, Minior, Bronzor), rare babies and dragons
-(Togepi, Riolu, Larvitar, Gible, Dreepy) and, rarely, **Jirachi**. Mew still
+(Togepi, Riolu, Larvitar, Gible, Dreepy) and, rarely, Chimecho. (The Wishing Star itself waits in Seika.) Mew still
 hides in the grass.
 
 ## Technical notes

@@ -36640,9 +36640,9 @@
                 "species": "SPECIES_DREEPY"
               },
               {
-                "min_level": 35,
-                "max_level": 35,
-                "species": "SPECIES_JIRACHI"
+                "min_level": 32,
+                "max_level": 32,
+                "species": "SPECIES_CHIMECHO"
               }
             ]
           }

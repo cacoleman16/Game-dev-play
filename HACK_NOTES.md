@@ -220,7 +220,7 @@ on, random battles in grass, caves and water are off.
   S.S. TIDAL sailor lists it once you've been to Hoenn. Meteors from the
   Starfall fell here, and its Pokémon always roam in the open: Clefairy,
   Eevee, Elgyem, Minior, Bronzor, Ralts, Riolu, Togepi, Larvitar, Gible,
-  Dreepy (Lv 25–32) and a rare Jirachi (Lv 35). Emerald's Mew still hides in
+  Dreepy (Lv 25–32) and a rare Chimecho. Emerald's Mew still hides in
   the grass. The island's sailor sails back to Vermilion or Lilycove.
 - **VISIBLE WILD: ON** (bedroom NES) does it on every route, cave and lake.
   Fishing, Rock Smash and the DexNav work as before.

@@ -257,3 +257,20 @@ def build_at(canvas, m, stamp, x, y, dest, dest_warp=0):
     lid, sx, sy, w, h, dx, dy = stamp
     canvas.stamp(lid, sx, sy, w, h, x, y)
     return door(m, x + dx, y + dy, dest, dest_warp)
+
+
+LINKS = []  # (map id, direction, offset, other map id), resolved by build.py
+
+
+def link(a_id, direction, offset, b_id):
+    """Connect two maps that may live in different modules. For 'up'/'down',
+    offset = the other map's x origin in this map's x coordinates; for
+    'left'/'right', its y origin in this map's y coordinates."""
+    LINKS.append((a_id, direction, offset, b_id))
+
+
+def resolve_links():
+    by_id = {m.id: m for m in MAPS}
+    for a, d, off, b in LINKS:
+        if a in by_id and b in by_id:
+            by_id[a].connect(by_id[b], d, off)

@@ -3,22 +3,35 @@
 trainers, flags, wild Pokémon, heal locations. Idempotent.
 
   python3 dev_scripts/seika/build.py            write everything
-  python3 dev_scripts/seika/build.py render DIR draw every new map to DIR
+  python3 dev_scripts/seika/build.py render DIR [module...]
+                                                draw the new maps to DIR
 """
 import os
 import subprocess
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-import common as c  # noqa: E402
-import lanternport  # noqa: E402
+import importlib  # noqa: E402
 
-TOWNS = [lanternport]
+import common as c  # noqa: E402
+
+# Order matters once released: flags and trainer IDs are numbered in this order.
+MODULES = ['lanternport', 'inkbrush', 'kiln', 'silkhollow', 'duskpeak', 'league', 'flymap']
+
+
+LOADED = []
 
 
 def main():
-    for t in TOWNS:
-        t.build()
+    only = sys.argv[3:] if len(sys.argv) > 3 and sys.argv[1] == 'render' else None
+    for name in MODULES:
+        if only and name not in only:
+            continue
+        if not os.path.exists(os.path.join(os.path.dirname(os.path.abspath(__file__)), name + '.py')):
+            continue
+        LOADED.append(importlib.import_module(name))
+        LOADED[-1].build()
+    c.resolve_links()
     if len(sys.argv) > 2 and sys.argv[1] == 'render':
         os.makedirs(sys.argv[2], exist_ok=True)
         for m in c.MAPS:
@@ -29,6 +42,9 @@ def main():
     c.write_trainers()
     c.g.write_maps(c.MAPS, c.GROUP, c.REGION, 'data/maps/seika_scripts.inc',
                    mapsecs=c.MAPSECS, heal_locations=c.HEALS, wild=c.WILD)
+    for mod in LOADED:
+        if hasattr(mod, 'write'):
+            mod.write()
     # Japanese text for any Seika map that has a translation
     for m in c.MAPS:
         js = os.path.join(c.ROOT, 'text/ja/data/maps', m.name, 'scripts.json')

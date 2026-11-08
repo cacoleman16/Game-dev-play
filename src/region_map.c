@@ -150,6 +150,13 @@ static const u8 sRegionMapPlayerIcon_LeafGfx[] = INCGFX_U8("graphics/pokenav/reg
 #include "data/region_map/region_map_layout_sevii123.h"
 #include "data/region_map/region_map_layout_sevii45.h"
 #include "data/region_map/region_map_layout_sevii67.h"
+#include "data/region_map/region_map_layout_seika.h" // [QoL] Seika
+
+// [QoL] Seika's map sections come after every other region's.
+static inline bool32 QoL_IsSeikaMapSec(u32 mapSecId)
+{
+    return mapSecId >= MAPSEC_SEIKA_LANTERNPORT && mapSecId < MAPSEC_NONE;
+}
 #include "data/region_map/region_map_entries.h"
 
 static const mapsec_u16_t sRegionMap_SpecialPlaceLocations[][2] =
@@ -337,6 +344,10 @@ static const u32 sPokedexAreaMapSevii67_Tilemap[] = INCGFX_U32("graphics/pokedex
 static const u16 ALIGNED(4) sRegionMapSevii67_Pal[] = INCGFX_U16("graphics/pokenav/region_map/map_sevii_67.pal", ".gbapal");
 static const u32 sRegionMapSevii67_Gfx[] = INCGFX_U32("graphics/pokenav/region_map/map_sevii_67.png", ".8bpp.smol");
 static const u32 sRegionMapSevii67_Tilemap[] = INCGFX_U32("graphics/pokenav/region_map/map_sevii_67.bin", ".smolTM");
+// [QoL] Seika's Fly map (drawn by dev_scripts/seika/region_map.py); the Pokédex area map reuses Kanto's
+static const u16 ALIGNED(4) sRegionMapSeika_Pal[] = INCGFX_U16("graphics/pokenav/region_map/map_seika.pal", ".gbapal");
+static const u32 sRegionMapSeika_Gfx[] = INCGFX_U32("graphics/pokenav/region_map/map_seika.png", ".8bpp.smol");
+static const u32 sRegionMapSeika_Tilemap[] = INCGFX_U32("graphics/pokenav/region_map/map_seika.bin", ".smolTM");
 
 const struct RegionMapInfo gRegionMapInfos[] =
 {
@@ -389,6 +400,16 @@ const struct RegionMapInfo gRegionMapInfos[] =
         .regionMapPalette = sRegionMapSevii67_Pal,
         .regionMapGfx = sRegionMapSevii67_Gfx,
         .regionMapTilemap = sRegionMapSevii67_Tilemap,
+    },
+    [REGION_MAP_SEIKA]    =
+    {
+        .dexMapPalette = sPokedexAreaMapKanto_Pal,
+        .dexMapGfx = sPokedexAreaMapKanto_Gfx,
+        .dexMapTilemap = sPokedexAreaMapKanto_Tilemap,
+        .dexMapPaletteSize = sizeof(sPokedexAreaMapKanto_Pal),
+        .regionMapPalette = sRegionMapSeika_Pal,
+        .regionMapGfx = sRegionMapSeika_Gfx,
+        .regionMapTilemap = sRegionMapSeika_Tilemap,
     },
 };
 
@@ -548,6 +569,7 @@ static const u8 sMapHealLocations[][3] =
     [MAPSEC_RIXY_CHAMBER] = {MAP_GROUP(MAP_PALLET_TOWN), MAP_NUM(MAP_PALLET_TOWN), HEAL_LOCATION_NONE},
     [MAPSEC_VIAPOIS_CHAMBER] = {MAP_GROUP(MAP_PALLET_TOWN), MAP_NUM(MAP_PALLET_TOWN), HEAL_LOCATION_NONE},
     [MAPSEC_EMBER_SPA] = {MAP_GROUP(MAP_PALLET_TOWN), MAP_NUM(MAP_PALLET_TOWN), HEAL_LOCATION_NONE},
+#include "data/region_map/seika_heal_locations.h" // [QoL] Seika
 };
 
 static const u8 *const sEverGrandeCityNames[] =
@@ -1175,6 +1197,8 @@ void PokedexAreaScreen_UpdateRegionMapVariablesAndVideoRegs(s16 x, s16 y)
 
 enum RegionMapType GetRegionMapType(u32 mapSecId)
 {
+    if (QoL_IsSeikaMapSec(mapSecId))
+        return REGION_MAP_SEIKA;
     switch (GetRegionForSectionId(mapSecId))
     {
     case REGION_KANTO:
@@ -1205,6 +1229,8 @@ static mapsec_u16_t GetMapSecIdAt(u16 x, u16 y)
     y -= MAPCURSOR_Y_MIN;
     x -= MAPCURSOR_X_MIN;
 
+    if (QoL_IsSeikaMapSec(QoL_ViewMapSec()))
+        return sRegionMapSections_Seika[y][x];
     switch (GetRegionForSectionId(QoL_ViewMapSec()))
     {
     case REGION_KANTO:
@@ -2341,6 +2367,7 @@ static const struct FlyLocation sFlyLocations[] =
         .mapsec = MAPSEC_ROUTE_10_POKECENTER,
         .flag = FLAG_WORLD_MAP_ROUTE10_POKEMON_CENTER_1F,
     },
+#include "data/region_map/seika_fly_locations.h" // [QoL] Seika
 };
 
 
@@ -2538,6 +2565,7 @@ static const u16 sQoLFlyRegions[][2] =
     {REGION_MAP_SEVII45,  MAPSEC_FOUR_ISLAND},
     {REGION_MAP_SEVII67,  MAPSEC_SIX_ISLAND},
     {REGION_MAP_HOENN,    MAPSEC_LITTLEROOT_TOWN},
+    {REGION_MAP_SEIKA,    MAPSEC_SEIKA_LANTERNPORT},
 };
 
 // The first unlocked fly destination of a region, or MAPSEC_NONE.
