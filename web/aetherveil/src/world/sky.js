@@ -206,6 +206,10 @@ export class Sky {
     this.ambient.intensity = 0.1 + night * 0.12;
 
     const fogCol = k.fog.clone().lerp(tmpA.setHex(0x7d8590), storm * 0.6);
+    // Looking toward the sun, the haze glows warmer and brighter.
+    this.game.camera.getWorldDirection(this._camF || (this._camF = new THREE.Vector3()));
+    const toward = Math.pow(Math.max(0, this._camF.dot(this.sunDir)), 3) * (1 - night) * (1 - storm);
+    fogCol.lerp(tmpB.copy(k.sun).multiplyScalar(1.05).lerp(k.hor, 0.35), toward * 0.45);
     this.fog.color.copy(fogCol);
     this.fog.density = this.fogBase * (1 + storm * 1.6 + this.weather.rain * 0.8);
 

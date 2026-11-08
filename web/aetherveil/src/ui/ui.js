@@ -10,6 +10,7 @@ import { QUALITY, saveSettings } from '../core/config.js';
 import { LOCATIONS } from '../world/locations.js';
 import { REGION_NAMES, N, HALF } from '../world/worldgen.js';
 import { formatTime, clamp, wrapAngle, el } from '../core/util.js';
+import { injectIcons, icon, SPELL_ICON, ITEM_ICON } from './icons.js';
 
 const $ = (id) => document.getElementById(id);
 const v3 = new THREE.Vector3();
@@ -49,6 +50,7 @@ export class UI {
     this.journalSel = null;
     this.compassEls = [];
     if (game.isTouch) document.body.classList.add('touch');
+    injectIcons();
     this.bind();
   }
 
@@ -68,7 +70,12 @@ export class UI {
     ev.on('quest:progress', (id, n, c) => this.feed(`${QUESTS[id].name}: ${n}/${c}`, 'q'));
     ev.on('quest:completed', (id, r) => { this.banner('Quest Complete', QUESTS[id].name + (r.gold ? ` · +${r.gold} gold` : ''), 0xf2d27a); });
     ev.on('interact:target', (it) => this.setPrompt(it));
-    ev.on('flash', (k) => this.flash(k));
+    ev.on('flash', (k) => { if (!g.post?.enabled) this.flash(k); });
+    ev.on('break', (e) => this.damageNumber(e.position.clone().setY(e.position.y + (e.boss ? 4 : 2.4)), 'BREAK!', 'big'));
+    ev.on('parry', (e) => this.damageNumber(g.player.position.clone().setY(g.player.position.y + 2.3), 'PARRY', 'big parry'));
+    ev.on('perfectDodge', () => this.damageNumber(g.player.position.clone().setY(g.player.position.y + 2.3), 'AETHER STEP', 'big parry'));
+    ev.on('surge:ready', () => { this.toast(g.isTouch ? 'Aether Surge ready! Tap the glowing button' : 'Aether Surge ready! Press G'); g.audio?.play('surgeReady'); });
+    ev.on('combo', (n) => { if (n >= 3) { $('combo-n').textContent = n; $('combo').classList.add('on'); this.comboT = 1.8; } });
     ev.on('saved', (slot) => slot !== 'auto' && this.toast(`Saved to slot ${slot}`));
     ev.on('input:press', (a) => this.onPress(a));
     $('death-btn').addEventListener('click', () => { $('death').classList.add('hidden'); g.story.respawn(); });
@@ -104,12 +111,18 @@ export class UI {
     const low = st.hp / p.maxHp < 0.3;
     this.hurtT = Math.max(0, (this.hurtT || 0) - dt);
     const vig = Math.max(this.hurtT * 2, low ? 0.35 + Math.sin(g.time * 5) * 0.15 : 0);
-    $('vignette').style.boxShadow = `inset 0 0 ${120 + vig * 80}px rgba(200, 0, 0, ${vig * 0.8})`;
+    if (!g.post?.enabled) $('vignette').style.boxShadow = `inset 0 0 ${120 + vig * 80}px rgba(200, 0, 0, ${vig * 0.8})`;
     // Clock & region
     const t = g.sky.timeOfDay;
     $('clock-time').textContent = formatTime(t);
     $('clock-region').textContent = g.inDungeon ? 'Sunscar Vault' : REGION_NAMES[g.world.regionAt(p.position.x, p.position.z)];
     this.updateSpells();
+    const sg = g.player.surge;
+    $('surge-fill').style.width = `${sg}%`;
+    $('surge').classList.toggle('ready', sg >= 100);
+    $('surge-label').textContent = sg >= 100 ? (g.isTouch ? 'AETHER SURGE · READY' : 'AETHER SURGE · PRESS G') : 'AETHER SURGE';
+    $('t-surge').classList.toggle('hidden', !(sg >= 100 && g.isTouch));
+    if (this.comboT > 0) { this.comboT -= dt; if (this.comboT <= 0) $('combo').classList.remove('on'); }
     this.updateCompass();
     this.updateTracker();
     this.updateTarget();
@@ -128,7 +141,8 @@ export class UI {
     const ids = SPELL_SLOTS;
     if (!this.spellEls) {
       this.spellEls = ids.map((id, i) => {
-        const s = el('div', 'slot', `<span class="key">${i + 1}</span>${SPELLS[id].icon}<span class="cost">${SPELLS[id].cost}</span><div class="cd"></div>`);
+        const s = el('div', 'slot s-' + SPELL_ICON[id], `<span class="key">${i + 1}</span>${icon(SPELL_ICON[id])}<span class="cost">${SPELLS[id].cost}</span><div class="cd"></div>`);
+        s.title = SPELLS[id].name;
         s.style.pointerEvents = 'auto';
         s.addEventListener('pointerdown', (e) => { e.stopPropagation(); p.tryCast(id); });
         wrap.appendChild(s);
@@ -155,10 +169,10 @@ export class UI {
     const cards = [['N', 0], ['NE', 0.25], ['E', 0.5], ['SE', 0.75], ['S', 1], ['SW', 1.25], ['W', 1.5], ['NW', 1.75]];
     for (const [n, a] of cards) items.push({ cls: n.length > 1 ? 'tick minor' : 'tick', html: n, ang: a * Math.PI });
     if (!g.inDungeon) {
-      for (const m of g.quests.markers()) items.push({ cls: 'mark quest', html: m.tracked ? '◆' : '◇', ang: Math.atan2(m.x - p.x, -(m.z - p.z)) });
+      for (const m of g.quests.markers()) items.push({ cls: 'mark quest' + (m.tracked ? '' : ' dim'), html: icon('diamond'), ang: Math.atan2(m.x - p.x, -(m.z - p.z)) });
       for (const l of LOCATIONS) {
         const d = Math.hypot(l.x - p.x, l.z - p.z);
-        if (d < 400 && d > l.r) items.push({ cls: 'mark loc', html: g.story.discovered.has(l.id) ? '⌂' : '?', ang: Math.atan2(l.x - p.x, -(l.z - p.z)) });
+        if (d < 400 && d > l.r) items.push({ cls: 'mark loc' + (g.story.discovered.has(l.id) ? '' : ' dim'), html: icon(l.waystone ? 'crystal' : 'house'), ang: Math.atan2(l.x - p.x, -(l.z - p.z)) });
       }
     }
     for (const e of g.combat.enemies) {
@@ -209,6 +223,7 @@ export class UI {
         tgtEl.style.left = s.x + 'px'; tgtEl.style.top = s.y + 'px';
         $('target-name').textContent = `${t.name}${t.level > 1 ? ' · Lv ' + t.level : ''}`;
         $('target-fill').style.width = `${(t.hp / t.maxHp) * 100}%`;
+        $('target-break').style.width = `${Math.min(1, t.poise / t.poiseMax) * 100}%`;
       } else tgtEl.classList.add('hidden');
     } else tgtEl.classList.add('hidden');
     if (p.lockTarget && !p.lockTarget.dead) {
@@ -222,7 +237,7 @@ export class UI {
   damageNumber(pos, amount, cls = '', label = '') {
     const e = el('div', 'dmg ' + cls, `${label ? `<small>${label}</small>` : ''}${amount}`);
     $('dmg-layer').appendChild(e);
-    this.dmg.push({ el: e, pos: pos.clone(), t: 0, dx: (Math.random() - 0.5) * 40 });
+    this.dmg.push({ el: e, pos: pos.clone(), t: cls.includes('big') ? -0.4 : 0, dx: cls.includes('big') ? 0 : (Math.random() - 0.5) * 40 });
     if (this.dmg.length > 30) { this.dmg[0].el.remove(); this.dmg.shift(); }
   }
 
@@ -232,7 +247,7 @@ export class UI {
       const s = this.project(d.pos);
       if (!s) { d.el.style.display = 'none'; continue; }
       d.el.style.display = '';
-      const rise = d.t * 60;
+      const rise = Math.max(0, d.t) * 60;
       const sc = d.t < 0.12 ? 1.6 - d.t * 5 : 1;
       d.el.style.transform = `translate(calc(-50% + ${d.dx * d.t}px), calc(-50% - ${rise}px)) scale(${sc})`;
       d.el.style.left = s.x + 'px'; d.el.style.top = s.y + 'px';
@@ -271,13 +286,13 @@ export class UI {
     const g = this.game;
     if (!it || g.mode !== 'play') { pr.classList.add('hidden'); $('t-interact').classList.add('hidden'); return; }
     const key = g.isTouch ? 'Tap' : g.input.lastDevice === 'gamepad' ? 'Y' : 'E';
-    pr.innerHTML = `<kbd>${key}</kbd>${it.label}`;
+    pr.innerHTML = g.isTouch ? `${icon('hand')}${it.label}` : `<kbd>${key}</kbd>${it.label}`;
     pr.classList.remove('hidden');
     $('t-interact').classList.remove('hidden');
   }
 
   showBossBar(e) { $('boss').classList.remove('hidden'); $('boss-name').textContent = e.name; this.updateBossBar(e); }
-  updateBossBar(e) { const w = `${Math.max(0, e.hp / e.maxHp) * 100}%`; $('boss-fill').style.width = w; $('boss-trail').style.width = w; }
+  updateBossBar(e) { const w = `${Math.max(0, e.hp / e.maxHp) * 100}%`; $('boss-fill').style.width = w; $('boss-trail').style.width = w; $('boss-break').style.width = `${Math.min(1, e.poise / e.poiseMax) * 100}%`; }
   hideBossBar() { $('boss').classList.add('hidden'); }
 
   flash(k = 0.6) {
@@ -312,6 +327,8 @@ export class UI {
   showDialogue(speaker, text, options) {
     const d = $('dialogue');
     d.classList.remove('hidden');
+    const pimg = $('dlg-portrait');
+    if (speaker.portrait) { pimg.src = speaker.portrait; pimg.classList.remove('hidden'); } else pimg.classList.add('hidden');
     $('dlg-name').innerHTML = `${speaker.name}${speaker.title ? `<small>${speaker.title}</small>` : ''}`;
     this.typing = { text, i: 0, t: 0 };
     $('dlg-text').textContent = '';
@@ -458,7 +475,7 @@ export class UI {
           </div>
           <div id="perkbox"></div>
           <h3 style="margin-top:16px;font-size:16px">Spells</h3>
-          <div class="list">${SPELL_SLOTS.filter((id) => st.spells.includes(id)).map((id) => `<div class="li"><span>${SPELLS[id].icon} ${SPELLS[id].name} <span class="cnt">[${SPELL_SLOTS.indexOf(id) + 1}]</span></span><span class="cnt">${SPELLS[id].cost} MP</span></div>`).join('')}</div>
+          <div class="list">${SPELL_SLOTS.filter((id) => st.spells.includes(id)).map((id) => `<div class="li"><span>${icon(SPELL_ICON[id])}${SPELLS[id].name} <span class="cnt">[${SPELL_SLOTS.indexOf(id) + 1}]</span></span><span class="cnt">${SPELLS[id].cost} MP</span></div>`).join('')}</div>
         </div>
         <div class="detail">
           <h3 style="font-size:16px">Skills</h3>
@@ -505,7 +522,7 @@ export class UI {
     if (!ids.length) list.appendChild(el('div', 'meta', 'Nothing here.'));
     for (const id of ids) {
       const eq = Object.values(inv.equipped).includes(id);
-      const li = el('div', 'li' + (this.invSel === id ? ' sel' : ''), `<span>${ITEMS[id].name} ${eq ? '<span class="eq">EQUIPPED</span>' : ''}</span><span class="cnt">×${inv.count(id)}</span>`);
+      const li = el('div', 'li' + (this.invSel === id ? ' sel' : ''), `<span>${icon(ITEM_ICON[ITEMS[id].type] || 'leaf')}${ITEMS[id].name} ${eq ? '<span class="eq">EQUIPPED</span>' : ''}</span><span class="cnt">×${inv.count(id)}</span>`);
       li.onclick = () => { this.invSel = id; this.renderMenu(); };
       li.ondblclick = () => { inv.use(id); this.renderMenu(); };
       list.appendChild(li);
@@ -674,6 +691,13 @@ export class UI {
     slider('Master volume', 'masterVolume', 0, 1, 0.05, () => g.audio?.applyVolumes());
     slider('Music volume', 'musicVolume', 0, 1, 0.05, () => g.audio?.applyVolumes());
     slider('Effects volume', 'sfxVolume', 0, 1, 0.05, () => g.audio?.applyVolumes());
+    slider('Voice volume', 'voiceVolume', 0, 1, 0.05, () => g.audio?.applyVolumes());
+    {
+      const vs = document.createElement('select');
+      for (const [k, label] of [['speech', 'Spoken (browser voices)'], ['babble', 'Stylised babble'], ['off', 'Off']]) { const o = document.createElement('option'); o.value = k; o.textContent = label; if ((s.voiceMode ?? 'speech') === k) o.selected = true; vs.appendChild(o); }
+      vs.onchange = () => { s.voiceMode = vs.value; saveSettings(s); g.audio?.speak('Hello, Wayfarer.', { g: 'f', pitch: 1, rate: 1, f0: 210, id: 'test' }); };
+      row('Character voices', vs);
+    }
     slider('Look sensitivity', 'mouseSensitivity', 0.3, 2.5, 0.1);
     slider('Day length (minutes)', 'dayLengthMinutes', 6, 60, 1, () => { g.sky.dayLength = s.dayLengthMinutes * 60; });
     const check = (label, key) => {
@@ -719,7 +743,8 @@ export class UI {
         <div><h3 class="gold" style="font-family:var(--font-title)">Keyboard & Mouse</h3><div class="keys">
           <kbd>WASD</kbd><span>Move</span><kbd>Mouse</kbd><span>Look (click the game to capture the mouse)</span>
           <kbd>Shift</kbd><span>Sprint</span><kbd>Space</kbd><span>Jump · press again in the air to glide</span>
-          <kbd>Left click</kbd><span>Attack (click again for a 3-hit combo)</span><kbd>Right click / X</kbd><span>Block</span>
+          <kbd>Left click</kbd><span>Attack: click for a 3-hit combo, hold after a swing to charge a heavy blow</span><kbd>Right click / X</kbd><span>Block. Tap just before a hit lands to parry</span>
+          <kbd>G</kbd><span>Aether Surge, when the meter is full</span><kbd>Sprint + attack</kbd><span>Spinning slash</span><kbd>Attack in mid-air</kbd><span>Plunging strike</span>
           <kbd>Q</kbd><span>Dodge roll</span><kbd>1 - 4</kbd><span>Cast spells</span><kbd>F</kbd><span>Cast selected spell</span>
           <kbd>E</kbd><span>Interact / talk</span><kbd>Tab / Middle click</kbd><span>Lock on to target</span>
           <kbd>Z</kbd><span>Quick potion</span><kbd>R</kbd><span>Draw / sheathe weapon</span><kbd>C</kbd><span>Crouch (sneak)</span>
@@ -728,14 +753,52 @@ export class UI {
         </div></div>
         <div><h3 class="gold" style="font-family:var(--font-title)">Gamepad</h3><div class="keys">
           <kbd>L stick</kbd><span>Move</span><kbd>R stick</kbd><span>Look</span><kbd>A</kbd><span>Jump / glide</span><kbd>X</kbd><span>Attack</span>
-          <kbd>B</kbd><span>Dodge</span><kbd>Y</kbd><span>Interact</span><kbd>LB</kbd><span>Block</span><kbd>RB</kbd><span>Cast spell</span>
-          <kbd>D-pad</kbd><span>Choose spell</span><kbd>LT</kbd><span>Potion</span><kbd>RT / L3</kbd><span>Sprint</span><kbd>R3</kbd><span>Lock on</span>
+          <kbd>B</kbd><span>Dodge</span><kbd>Y</kbd><span>Interact</span><kbd>LB</kbd><span>Block / parry</span><kbd>RB</kbd><span>Cast spell</span><kbd>L3</kbd><span>Aether Surge</span>
+          <kbd>D-pad</kbd><span>Choose spell</span><kbd>LT</kbd><span>Potion</span><kbd>RT</kbd><span>Sprint</span><kbd>R3</kbd><span>Lock on</span>
           <kbd>Start</kbd><span>Menu</span><kbd>Back</kbd><span>Map</span>
         </div>
         <h3 class="gold" style="font-family:var(--font-title);margin-top:16px">Touch</h3>
         <p class="meta">Left side: move stick. Right side: drag to look. Buttons: attack, jump/glide, dodge, block (hold), spell, cycle spell, sprint toggle, potion, lock-on. Add the page to your home screen for full-screen play.</p>
         </div>
       </div>`;
+  }
+
+  // Render a head-and-shoulders portrait of a character from the live scene.
+  portrait(pos, yaw, height = 1) {
+    const g = this.game, r = g.renderer;
+    const S = 192;
+    if (!this.pRT) {
+      this.pRT = new THREE.WebGLRenderTarget(S, S, { depthBuffer: true });
+      this.pCam = new THREE.PerspectiveCamera(24, 1, 0.1, 400);
+      this.pBuf = new Uint8Array(S * S * 4);
+      this.pCanvas = document.createElement('canvas');
+      this.pCanvas.width = this.pCanvas.height = S;
+    }
+    const head = new THREE.Vector3(pos.x, pos.y + 1.6 * height, pos.z);
+    const fwd = new THREE.Vector3(Math.sin(yaw), 0, Math.cos(yaw));
+    const side = new THREE.Vector3(fwd.z, 0, -fwd.x);
+    this.pCam.position.copy(head).addScaledVector(fwd, 1.25 * height).addScaledVector(side, 0.25 * height).add(new THREE.Vector3(0, 0.06, 0));
+    this.pCam.lookAt(head.x, head.y - 0.06 * height, head.z);
+    const prev = r.getRenderTarget();
+    const fog = g.scene.fog;
+    g.scene.fog = null;
+    r.setRenderTarget(this.pRT);
+    r.clear();
+    r.render(g.scene, this.pCam);
+    r.readRenderTargetPixels(this.pRT, 0, 0, S, S, this.pBuf);
+    r.setRenderTarget(prev);
+    g.scene.fog = fog;
+    const ctx = this.pCanvas.getContext('2d');
+    const img = ctx.createImageData(S, S);
+    const lut = this.pLut || (this.pLut = Array.from({ length: 256 }, (_, i) => { const x = i / 255; const t = x * 1.08 / (1 + x * 0.25); return Math.round(Math.pow(Math.min(1, t), 1 / 2.2) * 255); }));
+    for (let y = 0; y < S; y++) {
+      for (let x = 0; x < S; x++) {
+        const si = ((S - 1 - y) * S + x) * 4, di = (y * S + x) * 4;
+        img.data[di] = lut[this.pBuf[si]]; img.data[di + 1] = lut[this.pBuf[si + 1]]; img.data[di + 2] = lut[this.pBuf[si + 2]]; img.data[di + 3] = 255;
+      }
+    }
+    ctx.putImageData(img, 0, 0);
+    return this.pCanvas.toDataURL('image/jpeg', 0.85);
   }
 
   // ---------------------------------------------------------------- shops & waystones

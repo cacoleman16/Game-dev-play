@@ -21,7 +21,7 @@ export const LOCATIONS = [
     desc: 'An old lighthouse keeping watch over the Eastern Sea.' },
   { id: 'banditcamp', name: 'Redcloak Hideout', type: 'camp', x: -360, z: 430, r: 32, flatten: 28, waystone: false,
     desc: 'A camp of Redcloak bandits hidden at the edge of the woods.' },
-  { id: 'watchtower', name: 'Old Watchtower', type: 'landmark', x: 330, z: 140, r: 16, flatten: 12, waystone: false,
+  { id: 'watchtower', name: 'Old Watchtower', type: 'landmark', x: 318, z: 112, r: 16, flatten: 12, waystone: false,
     desc: 'A crumbling tower that once guarded the eastern road.' },
   { id: 'stonecircle', name: 'Circle of Echoes', type: 'landmark', x: -330, z: -280, r: 22, flatten: 18, waystone: false,
     desc: 'Standing stones that sing faintly when the wind passes through them.' },

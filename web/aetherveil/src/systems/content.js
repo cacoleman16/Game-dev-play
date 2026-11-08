@@ -31,6 +31,7 @@ export const ITEMS = {
   frostpetal: { name: 'Frostpetal', type: 'material', value: 8, desc: 'A pale flower that only blooms in snow.' },
   emberroot: { name: 'Emberroot', type: 'material', value: 8, desc: 'Warm to the touch, even at night.' },
   wolf_pelt: { name: 'Dusk Wolf Pelt', type: 'material', value: 12, desc: 'Thick grey fur.' },
+  boar_hide: { name: 'Thornback Hide', type: 'material', value: 16, desc: 'Bristly, tough, and still prickly.' },
   slime_gel: { name: 'Gloop Gel', type: 'material', value: 3, desc: 'Wobbly. Faintly minty.' },
   aether_dust: { name: 'Aether Dust', type: 'material', value: 20, desc: 'Glittering residue left by wisps.' },
   golem_core: { name: 'Golem Core', type: 'material', value: 60, desc: 'A warm stone heart.' },
@@ -63,6 +64,7 @@ export const LOOT = {
   // Creature drops
   gloop: [['slime_gel', 0.7, 1, 2], ['gold', 0.4, 1, 6]],
   wolf: [['wolf_pelt', 0.6, 1, 1], ['gold', 0.2, 2, 8]],
+  boar: [['boar_hide', 0.7, 1, 1], ['roast_fish', 0.15, 1, 1], ['gold', 0.3, 3, 10]],
   bandit_drop: [['gold', 0.9, 6, 22], ['potion_health', 0.2, 1, 1], ['honey_bread', 0.2, 1, 1]],
   wisp: [['aether_dust', 0.8, 1, 2]],
   golem: [['golem_core', 1, 1, 1], ['gold', 1, 20, 40]],

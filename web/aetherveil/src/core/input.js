@@ -5,7 +5,7 @@ const KEYMAP = {
   KeyW: 'up', ArrowUp: 'up', KeyS: 'down', ArrowDown: 'down', KeyA: 'left', ArrowLeft: 'left', KeyD: 'right', ArrowRight: 'right',
   ShiftLeft: 'sprint', ShiftRight: 'sprint', Space: 'jump', KeyE: 'interact', KeyF: 'cast', KeyQ: 'dodge', KeyR: 'draw',
   Digit1: 'spell1', Digit2: 'spell2', Digit3: 'spell3', Digit4: 'spell4', Tab: 'lockon', KeyI: 'inventory', KeyJ: 'journal',
-  KeyM: 'map', Escape: 'menu', KeyP: 'menu', KeyV: 'view', KeyC: 'crouch', KeyH: 'help', KeyZ: 'potion', KeyX: 'block', KeyT: 'wait',
+  KeyM: 'map', Escape: 'menu', KeyP: 'menu', KeyV: 'view', KeyC: 'crouch', KeyH: 'help', KeyZ: 'potion', KeyX: 'block', KeyT: 'wait', KeyG: 'surge', KeyK: 'attack',
 };
 
 export class Input {
@@ -47,7 +47,7 @@ export class Input {
         canvas.requestPointerLock?.();
         return;
       }
-      if (e.button === 0) this.press('attack');
+      if (e.button === 0) { this.press('attack'); this.down.add('attack'); }
       if (e.button === 2) this.down.add('block');
       if (e.button === 1) this.press('lockon');
       this.mouseButtons |= 1 << e.button;
@@ -55,6 +55,7 @@ export class Input {
     });
     window.addEventListener('mouseup', (e) => {
       if (e.button === 2) this.down.delete('block');
+      if (e.button === 0) this.down.delete('attack');
       this.mouseButtons &= ~(1 << e.button);
     });
     canvas.addEventListener('contextmenu', (e) => e.preventDefault());
@@ -117,7 +118,7 @@ export class Input {
       this.lookX += rx * 2.6 * dt * this.game.settings.mouseSensitivity;
       this.lookY += ry * 1.8 * dt * this.game.settings.mouseSensitivity * (this.game.settings.invertY ? -1 : 1);
     }
-    const map = { 0: 'jump', 1: 'dodge', 2: 'attack', 3: 'interact', 4: 'block', 5: 'cast', 6: 'potion', 7: 'sprint', 8: 'map', 9: 'menu', 10: 'sprint', 11: 'lockon', 12: 'spellPrev', 13: 'spellNext', 14: 'spellPrev', 15: 'spellNext' };
+    const map = { 0: 'jump', 1: 'dodge', 2: 'attack', 3: 'interact', 4: 'block', 5: 'cast', 6: 'potion', 7: 'sprint', 8: 'map', 9: 'menu', 10: 'surge', 11: 'lockon', 12: 'spellPrev', 13: 'spellNext', 14: 'spellPrev', 15: 'spellNext' };
     gp.buttons.forEach((b, i) => {
       const a = map[i];
       if (!a) return;

@@ -105,8 +105,8 @@ export class Grass {
           // Some blades in lush meadows become wildflowers.
           float flower = step(0.965, r2) * step(0.6, g.a) * step(g.r, g.g);
           vec3 fc = fract(rnd * 91.7) < 0.33 ? vec3(1.0, 0.85, 0.25) : (fract(rnd * 91.7) < 0.66 ? vec3(0.95, 0.55, 0.85) : vec3(0.95, 0.97, 1.0));
-          vec3 tip = mix(base * 1.35 + vec3(0.04, 0.05, 0.0), fc, flower * smoothstep(0.7, 1.0, t));
-          vCol = mix(base * 0.55, tip, t);
+          vec3 tip = mix(base * 1.2 + vec3(0.035, 0.035, 0.01), fc, flower * smoothstep(0.7, 1.0, t));
+          vCol = mix(base * 0.62, tip, t);
           vT = t;
           vec4 mvPosition = viewMatrix * vec4(p, 1.0);
           gl_Position = projectionMatrix * mvPosition;

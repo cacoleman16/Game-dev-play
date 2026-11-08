@@ -26,7 +26,7 @@
 <!-- In-game HUD -->
 <div id="hud" class="hidden">
   <div id="compass"><div id="compass-strip"></div><div id="compass-center"></div></div>
-  <div id="boss" class="hidden"><div id="boss-name"></div><div class="bar"><div id="boss-fill"></div><div id="boss-trail"></div></div></div>
+  <div id="boss" class="hidden"><div id="boss-name"></div><div class="bar"><div id="boss-fill"></div><div id="boss-trail"></div></div><div class="bar brk"><div id="boss-break"></div></div></div>
   <div id="tracker"></div>
   <div id="clock"><span id="clock-time"></span><span id="clock-region"></span></div>
   <div id="fps" class="hidden"></div>
@@ -40,12 +40,14 @@
     </div>
   </div>
   <div id="spells"></div>
+  <div id="surge"><span id="surge-label">AETHER SURGE</span><div id="surge-fill"></div></div>
+  <div id="combo" class="combo"><span id="combo-n">0</span><small>HITS</small></div>
   <div id="crosshair"></div>
   <div id="prompt" class="hidden"></div>
   <div id="feed"></div>
   <div id="toast"></div>
   <div id="banner" class="hidden"><div class="b-line"></div><div id="banner-title"></div><div id="banner-sub"></div><div class="b-line"></div></div>
-  <div id="target" class="hidden"><div id="target-name"></div><div class="bar"><div id="target-fill"></div></div></div>
+  <div id="target" class="hidden"><div id="target-name"></div><div class="bar"><div id="target-fill"></div></div><div class="bar brk"><div id="target-break"></div></div></div>
   <div id="lock" class="hidden"></div>
   <div id="dmg-layer"></div>
   <div id="vignette"></div>
@@ -55,25 +57,28 @@
 <div id="touch" class="hidden">
   <div id="stick-zone"><div id="stick-base"><div id="stick-knob"></div></div></div>
   <div id="look-zone"></div>
-  <button class="tbtn" id="t-attack" data-act="attack">⚔</button>
-  <button class="tbtn" id="t-jump" data-act="jump">⤒</button>
-  <button class="tbtn" id="t-dodge" data-act="dodge">⟲</button>
-  <button class="tbtn" id="t-block" data-hold="block">⛨</button>
-  <button class="tbtn" id="t-spell" data-act="cast">✦</button>
-  <button class="tbtn small" id="t-spellnext" data-act="spellNext">⇆</button>
-  <button class="tbtn small" id="t-sprint" data-toggle="sprint">»</button>
-  <button class="tbtn small" id="t-potion" data-act="potion">♥</button>
-  <button class="tbtn" id="t-interact" data-act="interact">E</button>
-  <button class="tbtn small" id="t-lock" data-act="lockon">◎</button>
-  <button class="tbtn small top" id="t-menu" data-act="menu">☰</button>
-  <button class="tbtn small top" id="t-map" data-act="map">⌖</button>
+  <button class="tbtn hidden" id="t-surge" data-act="surge" aria-label="Aether Surge"><svg class="ico"><use href="#i-surge"/></svg></button>
+  <button class="tbtn" id="t-attack" data-act="attack" data-hold="attack" aria-label="Attack"><svg class="ico"><use href="#i-sword"/></svg></button>
+  <button class="tbtn" id="t-jump" data-act="jump" aria-label="Jump"><svg class="ico"><use href="#i-jump"/></svg></button>
+  <button class="tbtn" id="t-dodge" data-act="dodge" aria-label="Dodge"><svg class="ico"><use href="#i-dodge"/></svg></button>
+  <button class="tbtn" id="t-block" data-hold="block" aria-label="Block"><svg class="ico"><use href="#i-shield"/></svg></button>
+  <button class="tbtn" id="t-spell" data-act="cast" aria-label="Cast spell"><svg class="ico"><use href="#i-spark"/></svg></button>
+  <button class="tbtn small" id="t-spellnext" data-act="spellNext" aria-label="Next spell"><svg class="ico"><use href="#i-swap"/></svg></button>
+  <button class="tbtn small" id="t-sprint" data-toggle="sprint" aria-label="Sprint"><svg class="ico"><use href="#i-sprint"/></svg></button>
+  <button class="tbtn small" id="t-potion" data-act="potion" aria-label="Potion"><svg class="ico"><use href="#i-potion"/></svg></button>
+  <button class="tbtn" id="t-interact" data-act="interact" aria-label="Interact"><svg class="ico"><use href="#i-hand"/></svg></button>
+  <button class="tbtn small" id="t-lock" data-act="lockon" aria-label="Lock on"><svg class="ico"><use href="#i-target"/></svg></button>
+  <button class="tbtn small top" id="t-menu" data-act="menu" aria-label="Menu"><svg class="ico"><use href="#i-menu"/></svg></button>
+  <button class="tbtn small top" id="t-map" data-act="map" aria-label="Map"><svg class="ico"><use href="#i-map"/></svg></button>
 </div>
 
 <!-- Dialogue -->
 <div id="dialogue" class="hidden window">
   <div id="dlg-name"></div>
-  <div id="dlg-text"></div>
-  <div id="dlg-options"></div>
+  <div class="dlg-row">
+    <img id="dlg-portrait" alt="" class="hidden">
+    <div class="dlg-main"><div id="dlg-text"></div><div id="dlg-options"></div></div>
+  </div>
 </div>
 
 <!-- Menus are built in JS inside this container -->

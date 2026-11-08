@@ -7,6 +7,7 @@ import { hash2 } from '../core/noise.js';
 import { smoothstep, lerp } from '../core/util.js';
 import { BIOME, HALF, WATER_LEVEL } from './worldgen.js';
 import { paint, place, lumpy, merge, cyl, cone, ico, crystal } from './geo.js';
+import { makeDetailedMaterial } from './terrain.js';
 
 const CELL = 128;
 const NC = (HALF * 2) / CELL;
@@ -202,7 +203,7 @@ export class Vegetation {
     this.group.name = 'vegetation';
     this.species = buildSpecies();
     this.matSway = makeFoliageMaterial(game, true);
-    this.matStill = makeFoliageMaterial(game, false);
+    this.matStill = makeDetailedMaterial({ detail: 0.22 });
     this.matGlow = makeGlowMaterial(0.85);
     this.cells = [];
     this.lastX = 1e9; this.lastZ = 1e9;

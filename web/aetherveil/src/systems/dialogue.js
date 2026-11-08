@@ -1,5 +1,8 @@
-// Runs conversations: frames the camera, pauses gameplay input, and walks
-// the dialogue node graph that each NPC (or story event) provides.
+// Runs conversations: frames the camera, pauses gameplay input, walks the
+// dialogue node graph that each NPC (or story event) provides, and voices
+// each line in the speaker's own voice.
+
+import { VOICES } from '../audio/audio.js';
 
 export class Dialogue {
   constructor(game) {
@@ -17,7 +20,10 @@ export class Dialogue {
     this.npc = npc;
     npc.talking = true;
     this.nodes = npc.def.dialogue(g, npc);
-    this.speaker = { name: npc.def.name, title: npc.def.title };
+    let portrait = null;
+    try { portrait = g.ui.portrait(npc.position, npc.yaw, npc.def.look?.height ?? 1); } catch (e) { portrait = null; }
+    this.speaker = { name: npc.def.name, title: npc.def.title, portrait };
+    this.voice = { ...(VOICES[npc.id] || VOICES.narrator), id: npc.id };
     this.begin(npc.position);
     this.show('start');
     g.events.emit('npc:talk', npc.id);
@@ -28,6 +34,7 @@ export class Dialogue {
     this.npc = null;
     this.nodes = nodes;
     this.speaker = { name, title };
+    this.voice = { ...VOICES.narrator, id: 'narrator' };
     this.begin(focus);
     this.show('start');
   }
@@ -50,7 +57,9 @@ export class Dialogue {
     const name = this.game.player.name || 'Wayfarer';
     const opts = (node.options || [{ text: 'Continue', next: null }]).filter((o) => !o.cond || o.cond(this.game));
     this.options = opts;
-    this.game.ui.showDialogue(this.speaker, node.text.replaceAll('{name}', name), opts.map((o) => o.text.replaceAll('{name}', name)));
+    const line = node.text.replaceAll('{name}', name);
+    this.game.ui.showDialogue(this.speaker, line, opts.map((o) => o.text.replaceAll('{name}', name)));
+    this.game.audio?.speak(line, this.voice);
   }
 
   choose(i) {
@@ -74,6 +83,7 @@ export class Dialogue {
     this.nodes = null;
     g.inDialogue = false;
     g.input.enabled = !g.ui.menuOpen;
+    g.audio?.stopSpeech();
     g.cameraRig.mode = 'follow';
     g.ui.hideDialogue();
   }

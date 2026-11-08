@@ -18,6 +18,13 @@ export class Combat {
 
   add(enemy) { this.enemies.push(enemy); return enemy; }
 
+  // How many other non-boss enemies are mid-attack on the player.
+  attackers(except) {
+    let n = 0;
+    for (const e of this.enemies) if (e !== except && !e.dead && !e.boss && e.state === 'attack') n++;
+    return n;
+  }
+
   findTarget(player, range, minDot) {
     const cam = this.game.cameraRig;
     const f = cam ? cam.forward(v1) : v1.set(Math.sin(player.yaw), 0, Math.cos(player.yaw));
@@ -46,7 +53,7 @@ export class Combat {
       if (Math.abs(e.position.y - attacker.position.y) > 2.5 + (e.boss ? 2 : 0)) continue;
       const dot = d > 0.01 ? (dx * fx + dz * fz) / d : 1;
       if (dot < o.arc && d > e.radius + 0.5) continue;
-      e.takeDamage(o.dmg, attacker, { element: o.element, knockback: o.knockback, heavy: o.heavy, melee: true });
+      e.takeDamage(o.dmg, attacker, { element: o.element, knockback: o.knockback, heavy: o.heavy, melee: true, crit: o.crit, breakMult: o.breakMult });
       hits++;
       const hp = v1.copy(e.position).setY(e.position.y + (e.boss ? 2 : 1.1));
       this.game.fx.hit(hp, o.element === 'fire' ? 0xff8a3a : o.element === 'frost' ? 0x9fdcff : o.element === 'aether' ? 0xb48cff : 0xfff2c0);
@@ -103,12 +110,20 @@ export class Combat {
   }
 
   spawnProjectile(o) {
-    const mat = new THREE.MeshBasicMaterial({ color: new THREE.Color(o.color).multiplyScalar(2.2) });
-    const mesh = new THREE.Mesh(this.projGeo, mat);
-    mesh.scale.setScalar(o.size ?? 0.3);
+    const dir = o.target.clone().sub(o.from).normalize();
+    let mesh, mat;
+    if (o.arrow) {
+      mat = new THREE.MeshLambertMaterial({ color: 0x8a6a4a });
+      mesh = new THREE.Mesh(this.arrowGeo || (this.arrowGeo = (() => { const g = new THREE.CylinderGeometry(0.015, 0.015, 0.8, 5); g.rotateX(Math.PI / 2); return g; })()), mat);
+      mesh.lookAt(mesh.position.clone().add(dir));
+      mesh.quaternion.setFromUnitVectors(new THREE.Vector3(0, 0, 1), dir);
+    } else {
+      mat = new THREE.MeshBasicMaterial({ color: new THREE.Color(o.color).multiplyScalar(2.2) });
+      mesh = new THREE.Mesh(this.projGeo, mat);
+      mesh.scale.setScalar(o.size ?? 0.3);
+    }
     mesh.position.copy(o.from);
     this.game.scene.add(mesh);
-    const dir = o.target.clone().sub(o.from).normalize();
     this.projectiles.push({ ...o, pos: o.from.clone(), vel: dir.multiplyScalar(o.speed), mesh, life: 3.5 });
     if (o.team === 'enemy') this.game.audio?.play('enemyCast');
   }
@@ -124,7 +139,7 @@ export class Combat {
       }
       p.pos.addScaledVector(p.vel, dt);
       p.mesh.position.copy(p.pos);
-      game.fx.trail(p.pos, p.color, (p.size ?? 0.3) * 1.8);
+      if (!p.arrow) game.fx.trail(p.pos, p.color, (p.size ?? 0.3) * 1.8);
       let hit = false;
       if (p.team === 'player') {
         for (const e of this.enemies) {
@@ -138,7 +153,7 @@ export class Combat {
       } else {
         const pl = game.player;
         if (!pl.dead && Math.hypot(pl.position.x - p.pos.x, pl.position.z - p.pos.z) < 0.7 && Math.abs(pl.position.y + 1 - p.pos.y) < 1.3) {
-          pl.takeDamage(p.dmg, p.owner, { element: p.element, knockback: 3 });
+          pl.takeDamage(p.dmg, p.owner, { element: p.element, knockback: 3, ranged: true });
           hit = true;
         }
       }
@@ -167,6 +182,7 @@ export class Combat {
     const game = this.game;
     const def = ENEMY_TYPES[e.type];
     const xp = Math.round(def.xp * (1 + (e.level - 1) * 0.2));
+    game.audio?.creature(e, 'death');
     game.player.gainXp(xp);
     game.player.stats.kills++;
     const loot = def.loot ? rollLoot(def.loot) : [];

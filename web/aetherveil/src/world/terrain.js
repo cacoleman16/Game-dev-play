@@ -223,18 +223,49 @@ function makeTerrainMaterial(game) {
       .replace('#include <color_vertex>', `#include <color_vertex>
         vColor.rgb = pow(vColor.rgb, vec3(2.2));
         vStrata = aStrata;`)
+      .replace('#include <beginnormal_vertex>', `#include <beginnormal_vertex>
+        vWNormal = objectNormal;`)
       .replace('#include <worldpos_vertex>', `#include <worldpos_vertex>
         vWPos = (modelMatrix * vec4(transformed, 1.0)).xyz;`);
+    shader.vertexShader = shader.vertexShader.replace('varying vec3 vWPos;', 'varying vec3 vWPos;\nvarying vec3 vWNormal;');
     shader.fragmentShader = shader.fragmentShader
       .replace('#include <common>', `#include <common>
         uniform sampler2D uDetail;
         varying float vStrata;
-        varying vec3 vWPos;`)
+        varying vec3 vWPos;
+        varying vec3 vWNormal;`)
       .replace('#include <color_fragment>', `#include <color_fragment>
         vec3 dA = texture2D(uDetail, vWPos.xz * 0.09).rgb;
         vec3 dB = texture2D(uDetail, vWPos.xz * 0.017).rgb;
-        float det = (dA.r - 0.5) * 0.26 + (dB.g - 0.5) * 0.34 + (dA.b - 0.5) * 0.12;
+        float det = (dA.r - 0.5) * 0.2 + (dB.g - 0.5) * 0.3 + (dA.b - 0.5) * 0.1;
+        // Classify the ground from its colour to pick a surface pattern.
+        vec3 base = diffuseColor.rgb;
+        float mx = max(base.r, max(base.g, base.b)), mn = min(base.r, min(base.g, base.b));
+        float sat = (mx - mn) / max(mx, 1e-3);
+        float grassW = smoothstep(0.02, 0.1, base.g - max(base.r, base.b));
+        float snowW = smoothstep(0.42, 0.62, mn) * (1.0 - smoothstep(0.18, 0.32, sat));
+        float sandW = smoothstep(0.08, 0.25, base.r - base.b) * (1.0 - grassW) * (1.0 - snowW) * (1.0 - vStrata);
+        float rockW = (1.0 - smoothstep(0.12, 0.3, sat)) * (1.0 - snowW) * (1.0 - grassW);
+        // Grass: directional brush strokes that wander in direction, plus darker clumps.
+        float ang = dB.r * 6.2831;
+        mat2 rot = mat2(cos(ang), -sin(ang), sin(ang), cos(ang));
+        float stroke = texture2D(uDetail, (rot * vWPos.xz) * vec2(0.55, 0.11)).r;
+        float clump = smoothstep(0.55, 0.75, texture2D(uDetail, vWPos.xz * 0.045).b);
+        det += grassW * ((stroke - 0.5) * 0.34 - clump * 0.12);
+        // Rock: triplanar cracks and faint layering.
+        vec3 an = abs(normalize(vWNormal));
+        an /= (an.x + an.y + an.z);
+        float rn = texture2D(uDetail, vWPos.zy * 0.21).r * an.x + texture2D(uDetail, vWPos.xz * 0.21).r * an.y + texture2D(uDetail, vWPos.xy * 0.21).r * an.z;
+        float crack = 1.0 - smoothstep(0.0, 0.03, abs(rn - 0.5));
+        det += rockW * (-crack * 0.32 + sin(vWPos.y * 2.6 + rn * 5.0) * 0.05 + (rn - 0.5) * 0.18);
+        // Sand: wind ripples.
+        float rip = sin(dot(vWPos.xz, vec2(0.83, 0.55)) * 2.4 + dA.g * 7.0);
+        det += sandW * rip * 0.06;
         diffuseColor.rgb *= 1.0 + det;
+        // Snow: cold blue in the hollows and scattered glints.
+        diffuseColor.rgb = mix(diffuseColor.rgb, diffuseColor.rgb * vec3(0.86, 0.92, 1.05), snowW * (1.0 - an.y) * 0.8);
+        float glint = step(0.993, fract(sin(dot(floor(vWPos.xz * 7.0), vec2(12.9898, 78.233))) * 43758.5453));
+        diffuseColor.rgb += glint * snowW * 0.5;
         if (vStrata > 0.01) {
           float b = vWPos.y * 0.23 + dB.r * 1.6 + dA.g * 0.3;
           float k = fract(b);
@@ -248,6 +279,34 @@ function makeTerrainMaterial(game) {
         // Wet, darker ground right at the waterline.
         diffuseColor.rgb *= mix(0.72, 1.0, smoothstep(-0.2, 0.6, vWPos.y));`);
   };
-  mat.customProgramCacheKey = () => 'terrain-v1';
+  mat.customProgramCacheKey = () => 'terrain-v2';
   return mat;
+}
+
+// Lambert with world-space triplanar detail, for buildings, rocks and trunks.
+export function makeDetailedMaterial(opts = {}) {
+  const { detail, ...rest } = opts;
+  const m = new THREE.MeshLambertMaterial({ vertexColors: true, ...rest });
+  const strength = detail ?? 0.16;
+  m.onBeforeCompile = (sh) => {
+    sh.uniforms.uDetail = { value: getDetailTexture() };
+    sh.vertexShader = sh.vertexShader
+      .replace('#include <common>', '#include <common>\nvarying vec3 vDW;\nvarying vec3 vDN;')
+      .replace('#include <beginnormal_vertex>', '#include <beginnormal_vertex>\nvDN = normalize(mat3(modelMatrix) * objectNormal);')
+      .replace('#include <worldpos_vertex>', `#include <worldpos_vertex>
+        #ifdef USE_INSTANCING
+          vDW = (modelMatrix * instanceMatrix * vec4(transformed, 1.0)).xyz;
+        #else
+          vDW = (modelMatrix * vec4(transformed, 1.0)).xyz;
+        #endif`);
+    sh.fragmentShader = sh.fragmentShader
+      .replace('#include <common>', '#include <common>\nuniform sampler2D uDetail;\nvarying vec3 vDW;\nvarying vec3 vDN;')
+      .replace('#include <color_fragment>', `#include <color_fragment>
+        vec3 an = abs(normalize(vDN)); an /= (an.x + an.y + an.z);
+        vec3 tx = texture2D(uDetail, vDW.zy * 0.7).rgb * an.x + texture2D(uDetail, vDW.xz * 0.7).rgb * an.y + texture2D(uDetail, vDW.xy * 0.7).rgb * an.z;
+        vec3 tl = texture2D(uDetail, vDW.zy * 0.13).rgb * an.x + texture2D(uDetail, vDW.xz * 0.13).rgb * an.y + texture2D(uDetail, vDW.xy * 0.13).rgb * an.z;
+        diffuseColor.rgb *= 1.0 + ((tx.r - 0.5) * 0.8 + (tl.g - 0.5) * 0.7) * ${strength.toFixed(2)};`);
+  };
+  m.customProgramCacheKey = () => 'detailed-' + strength;
+  return m;
 }

@@ -5,6 +5,7 @@
 import * as THREE from 'three';
 import { paint, place, merge, box, cyl, cone, ico, torus, lumpy } from './geo.js';
 import { makeGlowMaterial } from './vegetation.js';
+import { makeDetailedMaterial } from './terrain.js';
 
 const T = 4; // tile size
 const OX = 5000, OZ = 5000; // far from the overworld so colliders never overlap
@@ -52,6 +53,8 @@ export class Dungeon {
     this.torches = [];
     this.lavaT = 0;
     this.spawned = [];
+    this.flows = new Map();
+    this.wp = { x: 0, z: 0 };
   }
 
   tile(ix, iz) {
@@ -120,7 +123,7 @@ export class Dungeon {
       solid.push(place(lumpy(ico(0.22, 0, 0xe8dcc8), 0.05, 1, ix), x + 1.2, 0.1, z - 0.8));
       solid.push(place(box(0.7, 0.08, 0.12, 0xe8dcc8), x + 0.6, 0.05, z - 1.1, [0, ix, 0]));
     }
-    const mat = new THREE.MeshLambertMaterial({ vertexColors: true });
+    const mat = makeDetailedMaterial({ detail: 0.3 });
     const m = new THREE.Mesh(merge(solid), mat);
     m.receiveShadow = true;
     this.scene.add(m);
@@ -277,7 +280,18 @@ export class Dungeon {
   }
   resolve(pos, r, h) {
     let hit = false;
-    const [cx, cz] = this.toTile(pos.x, pos.z);
+    let [cx, cz] = this.toTile(pos.x, pos.z);
+    // Inside solid rock (or off the map): step back to the nearest open tile.
+    if (this.tile(cx, cz) === '#') {
+      let best = null, bd = Infinity;
+      for (let iz = 0; iz < this.H; iz++) for (let ix = 0; ix < this.W; ix++) {
+        if (this.tile(ix, iz) === '#' || this.tile(ix, iz) === 'L') continue;
+        const [x, z] = this.center(ix, iz);
+        const d = (x - pos.x) ** 2 + (z - pos.z) ** 2;
+        if (d < bd) { bd = d; best = [x, z]; }
+      }
+      if (best && bd > T * T * 4) { pos.x = best[0]; pos.z = best[1]; return true; }
+    }
     for (let iz = cz - 1; iz <= cz + 1; iz++) {
       for (let ix = cx - 1; ix <= cx + 1; ix++) {
         if (this.tile(ix, iz) !== '#') continue;
@@ -287,7 +301,12 @@ export class Dungeon {
         const d = Math.hypot(dx, dz);
         if (d < r) {
           if (d > 1e-5) { pos.x = qx + (dx / d) * r; pos.z = qz + (dz / d) * r; }
-          else { pos.x = (minX + maxX) / 2 + T; }
+          else {
+            // Centre inside a wall tile: push out through the nearest face.
+            const px = pos.x - minX, pz = pos.z - minZ;
+            const m = Math.min(px, T - px, pz, T - pz);
+            if (m === px) pos.x = minX - r; else if (m === T - px) pos.x = maxX + r; else if (m === pz) pos.z = minZ - r; else pos.z = maxZ + r;
+          }
           hit = true;
         }
       }
@@ -295,9 +314,81 @@ export class Dungeon {
     this.game.colliders.resolve(pos, r, h);
     return hit;
   }
+  // ---------------- grid navigation
+  // BFS distance field toward a tile, cached per target, so actors route
+  // around walls instead of pressing into them.
+  flowTo(tx, tz) {
+    const W = this.W, k = tz * W + tx;
+    let f = this.flows.get(k);
+    if (f) return f;
+    f = new Int16Array(W * this.H).fill(-1);
+    f[k] = 0;
+    const q = [k];
+    for (let h = 0; h < q.length; h++) {
+      const c = q[h], cx = c % W, cz = (c / W) | 0;
+      for (let d = 0; d < 4; d++) {
+        const nx = cx + (d === 0 ? 1 : d === 1 ? -1 : 0), nz = cz + (d === 2 ? 1 : d === 3 ? -1 : 0);
+        if (this.tile(nx, nz) === '#') continue;
+        const n = nz * W + nx;
+        if (f[n] >= 0) continue;
+        f[n] = f[c] + 1;
+        q.push(n);
+      }
+    }
+    this.flows.set(k, f);
+    return f;
+  }
+  // True when a body of radius pad can walk straight from a to b.
+  clearLine(ax, az, bx, bz, pad = 0.6) {
+    const n = Math.max(1, Math.ceil(Math.hypot(bx - ax, bz - az) / 0.5));
+    for (let k = 0; k <= n; k++) {
+      const t = k / n, x = ax + (bx - ax) * t, z = az + (bz - az) * t;
+      if (this.solidAt(x + pad, z, 0) || this.solidAt(x - pad, z, 0) || this.solidAt(x, z + pad, 0) || this.solidAt(x, z - pad, 0)) return false;
+    }
+    return true;
+  }
+  // Where to walk next to reach (gx, gz): the goal itself when the way is
+  // open, otherwise the farthest tile centre along the flow field that can
+  // be reached in a straight line. Returns a shared {x, z}.
+  steerPoint(x, z, gx, gz, pad = 0.6) {
+    const wp = this.wp;
+    wp.x = gx; wp.z = gz;
+    if (this.clearLine(x, z, gx, gz, pad)) return wp;
+    const [tx, tz] = this.toTile(gx, gz);
+    if (this.tile(tx, tz) === '#') return wp;
+    const f = this.flowTo(tx, tz), W = this.W;
+    let [ix, iz] = this.toTile(x, z);
+    if (f[iz * W + ix] < 0) {
+      // Pressed into a wall seam: start from the nearest open neighbour.
+      let bd = 1e9;
+      for (let dz = -1; dz <= 1; dz++) for (let dx = -1; dx <= 1; dx++) {
+        const v = f[(iz + dz) * W + ix + dx];
+        if (v >= 0 && v < bd && this.tile(ix + dx, iz + dz) !== '#') { bd = v; ix += dx; iz += dz; dx = dz = 2; }
+      }
+      if (bd === 1e9) return wp;
+    }
+    let cx = ix, cz = iz;
+    for (let step = 0; step < 6; step++) {
+      const cur = f[cz * W + cx];
+      if (cur <= 0) break;
+      let nx = -1, nz = -1;
+      for (let d = 0; d < 4; d++) {
+        const ax = cx + (d === 0 ? 1 : d === 1 ? -1 : 0), az = cz + (d === 2 ? 1 : d === 3 ? -1 : 0);
+        if (ax < 0 || az < 0 || ax >= W || az >= this.H) continue;
+        if (f[az * W + ax] === cur - 1) { nx = ax; nz = az; break; }
+      }
+      if (nx < 0) break;
+      const [px, pz] = this.center(nx, nz);
+      if (step > 0 && !this.clearLine(x, z, px, pz, pad)) break;
+      wp.x = px; wp.z = pz;
+      cx = nx; cz = nz;
+    }
+    return wp;
+  }
   waterLevel() { return -1e9; }
   waterDepth() { return -1e9; }
   normal(x, z, out) { return out.set(0, 1, 0); }
-  inBounds() { return true; }
+  inBounds(x, z) { const [ix, iz] = this.toTile(x, z); return ix >= 0 && iz >= 0 && ix < this.W && iz < this.H; }
+  recover(p) { p.x = this.entry.x; p.z = this.entry.z + 2; p.y = 0; }
   surface() { return 'stone'; }
 }

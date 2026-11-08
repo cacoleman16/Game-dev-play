@@ -196,6 +196,53 @@ export class FX {
     return t;
   }
 
+  // Expanding ring + debris for heavy impacts.
+  shockwave(pos, radius, color = 0xdfe8ff) {
+    const geo = new THREE.RingGeometry(0.7, 1, 48);
+    geo.rotateX(-Math.PI / 2);
+    const mat = new THREE.MeshBasicMaterial({ color: new THREE.Color(color).multiplyScalar(1.6), transparent: true, opacity: 0.9, depthWrite: false, blending: THREE.AdditiveBlending, side: THREE.DoubleSide });
+    const ring = new THREE.Mesh(geo, mat);
+    ring.position.copy(pos); ring.position.y += 0.15;
+    this.group.add(ring);
+    this.rings = this.rings || [];
+    this.rings.push({ ring, t: 0, radius });
+    this.burst(pos.clone().setY(pos.y + 0.4), color, 36, { speed: radius * 2.4, size: 0.4, life: 0.5, up: 1.5 });
+  }
+
+  // Long red strip showing the path of a charge.
+  telegraphLine(from, yaw, length, width, dur) {
+    const geo = new THREE.PlaneGeometry(width, length);
+    geo.rotateX(-Math.PI / 2);
+    geo.translate(0, 0, length / 2);
+    const fill = new THREE.Mesh(geo, this.telMat.clone());
+    const g = new THREE.Group();
+    g.add(fill);
+    g.position.copy(from);
+    g.position.y += 0.1;
+    g.rotation.y = yaw;
+    fill.scale.set(1, 1, 0.01);
+    this.group.add(g);
+    const t = { g, fill, radius: 1, t: 0, dur, line: true };
+    this.telegraphs.push(t);
+    return t;
+  }
+
+  // Thorny vines bursting out of the ground.
+  thorns(pos, radius) {
+    const n = 10;
+    const mat = new THREE.MeshLambertMaterial({ color: 0x4a6a2a });
+    const g = new THREE.Group();
+    for (let i = 0; i < n; i++) {
+      const a = (i / n) * Math.PI * 2 + Math.random() * 0.4, r = Math.random() * radius * 0.8;
+      const m = new THREE.Mesh(new THREE.ConeGeometry(0.12, 1.2 + Math.random() * 0.8, 5), mat);
+      m.position.set(pos.x + Math.cos(a) * r, pos.y + 0.3, pos.z + Math.sin(a) * r);
+      m.rotation.set((Math.random() - 0.5) * 0.6, 0, (Math.random() - 0.5) * 0.6);
+      g.add(m);
+    }
+    this.group.add(g);
+    this.bolts.push({ line: null, group: g, t: 0, life: 1.2, mat });
+  }
+
   lightning(from, to) {
     const pts = [];
     const segs = 14;
@@ -271,7 +318,7 @@ export class FX {
       const t = this.telegraphs[i];
       t.t += dt;
       const k = Math.min(1, t.t / t.dur);
-      t.fill.scale.setScalar(t.radius * k);
+      if (t.line) t.fill.scale.set(1, 1, Math.max(0.01, k)); else t.fill.scale.setScalar(t.radius * k);
       t.fill.material.opacity = 0.2 + 0.25 * k;
       if (t.t >= t.dur + 0.1 || t.cancel) {
         this.group.remove(t.g);
@@ -279,9 +326,23 @@ export class FX {
         this.telegraphs.splice(i, 1);
       }
     }
+    if (this.rings) for (let i = this.rings.length - 1; i >= 0; i--) {
+      const r = this.rings[i];
+      r.t += dt;
+      const k = r.t / 0.45;
+      r.ring.scale.setScalar(0.3 + k * r.radius);
+      r.ring.material.opacity = Math.max(0, 0.9 * (1 - k));
+      if (k >= 1) { this.group.remove(r.ring); r.ring.geometry.dispose(); r.ring.material.dispose(); this.rings.splice(i, 1); }
+    }
     for (let i = this.bolts.length - 1; i >= 0; i--) {
       const b = this.bolts[i];
       b.t += dt;
+      if (b.group) {
+        const k = b.t / b.life;
+        b.group.children.forEach((m) => { m.scale.y = k < 0.15 ? k / 0.15 : k > 0.75 ? Math.max(0.01, (1 - k) / 0.25) : 1; });
+        if (b.t > b.life) { this.group.remove(b.group); b.group.children.forEach((m) => m.geometry.dispose()); b.mat.dispose(); this.bolts.splice(i, 1); }
+        continue;
+      }
       b.line.material.opacity = 1 - b.t / 0.3;
       if (b.t > 0.3) { this.group.remove(b.line); b.line.geometry.dispose(); b.line.material.dispose(); this.bolts.splice(i, 1); }
     }

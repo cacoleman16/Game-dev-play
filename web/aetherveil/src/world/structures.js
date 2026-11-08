@@ -7,6 +7,7 @@ import * as THREE from 'three';
 import { RNG } from '../core/noise.js';
 import { LOC } from './locations.js';
 import { makeGlowMaterial } from './vegetation.js';
+import { makeDetailedMaterial } from './terrain.js';
 import { paint, place, merge, box, cyl, cone, ico, gable, crystal, lumpy, torus } from './geo.js';
 
 const P = {
@@ -34,7 +35,7 @@ export class Structures {
     this.game = game;
     this.group = new THREE.Group();
     this.group.name = 'structures';
-    this.solidMat = new THREE.MeshLambertMaterial({ vertexColors: true });
+    this.solidMat = makeDetailedMaterial({ detail: 0.14 });
     this.glowMat = makeGlowMaterial(1.1);
     this.windowMat = new THREE.MeshBasicMaterial({ color: 0x4a5a6e });
     this.animated = []; // {obj, fn(dt, t)}
@@ -136,24 +137,69 @@ export class Structures {
     for (const sx of [-1, 1]) for (const sz of [-1, 1]) parts.push(place(box(0.28, top - 0.3, 0.28, P.timber), sx * tw / 2, (top + 0.3) / 2, sz * td / 2));
     parts.push(place(box(w + 0.1, 0.22, d + 0.1, P.timber), 0, top - 0.1, 0));
     if (o.timberBand !== false) parts.push(place(box(w + 0.06, 0.18, d + 0.06, P.timber), 0, 0.3 + h * 0.55, 0));
-    // Roof.
-    parts.push(place(gable(w, d, roofH, o.roof ?? P.roofs[0], 0.45), 0, top, 0));
-    parts.push(place(box(0.3, 0.3, d + 1.0, P.timber), 0, top + roofH, 0));
+    // Roof: a base gable plus overlapping rows of shingles on each slope.
+    const roofCol = new THREE.Color(o.roof ?? P.roofs[0]);
+    parts.push(place(gable(w, d, roofH, roofCol.clone().multiplyScalar(0.7), 0.45), 0, top, 0));
+    {
+      const W2 = w / 2 + 0.45, slope = Math.hypot(W2, roofH), ang = Math.atan2(roofH, W2);
+      const rows = Math.max(4, Math.round(slope / 0.42));
+      for (const side of [-1, 1]) {
+        for (let r = 0; r < rows; r++) {
+          const t = (r + 0.5) / rows;
+          const cx = side * W2 * (1 - t), cy = roofH * t;
+          const shade = r % 2 ? 1.0 : 0.88;
+          const g = box(slope / rows * 1.22, 0.06, d + 0.95, roofCol.clone().multiplyScalar(shade * (0.92 + 0.12 * t)));
+          place(g, cx + side * 0.02, top + cy + 0.045, 0, [0, 0, side * ang]);
+          parts.push(g);
+        }
+      }
+    }
+    parts.push(place(box(0.32, 0.32, d + 1.05, P.timber), 0, top + roofH, 0));
     if (o.chimney !== false) parts.push(place(box(0.8, roofH * 0.9 + 0.8, 0.8, P.stoneDark, 0.1), w * 0.22, top + roofH * 0.5, -d * 0.2));
-    // Door + step.
+    // Diagonal braces on the ground floor (half-timbering).
+    for (const sx of [-1, 1]) {
+      const bx = sx * w * 0.3;
+      const len = Math.hypot(w * 0.18, h * 0.42);
+      parts.push(place(box(0.14, len, 0.06, P.timber), bx + sx * 0.05, 0.3 + h * 0.77, d / 2 + 0.03, [0, 0, -sx * Math.atan2(w * 0.18, h * 0.42)]));
+    }
+    // Door: frame, planks, handle, step.
     parts.push(place(box(1.2, 2.1, 0.14, P.woodDark), 0, 1.35, d / 2 + 0.05));
+    for (let k = 0; k < 4; k++) parts.push(place(box(0.03, 2.0, 0.02, 0x3a2618), -0.45 + k * 0.3, 1.35, d / 2 + 0.125));
+    parts.push(place(box(1.42, 0.16, 0.18, P.timber), 0, 2.45, d / 2 + 0.08));
+    for (const sx of [-1, 1]) parts.push(place(box(0.14, 2.2, 0.18, P.timber), sx * 0.67, 1.35, d / 2 + 0.08));
+    parts.push(place(box(0.08, 0.08, 0.06, 0xd8b04a), 0.38, 1.3, d / 2 + 0.15));
     parts.push(place(box(1.6, 0.25, 0.9, P.stone), 0, 0.18, d / 2 + 0.5));
-    parts.push(place(box(1.5, 0.18, 0.2, P.timber), 0, 2.45, d / 2 + 0.08));
-    const solid = merge(parts);
-    b.add('solid', solid, f);
-    // Windows (glow at night).
+    // Windows (glow at night) with frames, mullions, shutters and flower boxes.
     const wins = [];
     const wy = 0.3 + h * 0.55;
-    for (const sx of [-1, 1]) wins.push(place(box(0.9, 0.9, 0.1, 0xffffff), sx * w * 0.3, wy, d / 2 + 0.05));
-    for (const sx of [-1, 1]) wins.push(place(box(0.1, 0.9, 0.9, 0xffffff), sx * (w / 2 + 0.05), wy, 0));
+    const shutter = o.shutter ?? [0x3f6f4a, 0x4c5f8f, 0x8a3a2a, 0x6a5a3a][Math.abs(Math.round(x * 7 + z * 3)) % 4];
+    const flowers = [0xff7aa8, 0xffd84a, 0xffffff, 0xb08aff];
+    const windowAt = (wx, wyy, wz, ry, size = 0.85, box_ = true) => {
+      const fr = [];
+      wins.push(place(box(size, size, 0.08, 0xffffff), wx, wyy, wz, [0, ry, 0]));
+      const fx = (lx, ly, lz, sw, sh, sd, col) => { const g = box(sw, sh, sd, col); place(g, lx, ly, lz); return g; };
+      fr.push(fx(0, size / 2 + 0.05, 0.05, size + 0.2, 0.1, 0.1, P.timber));
+      fr.push(fx(0, -size / 2 - 0.06, 0.07, size + 0.3, 0.1, 0.16, P.timber));
+      for (const sx2 of [-1, 1]) fr.push(fx(sx2 * (size / 2 + 0.05), 0, 0.05, 0.1, size + 0.1, 0.1, P.timber));
+      fr.push(fx(0, 0, 0.07, 0.05, size, 0.04, 0x3a2618));
+      fr.push(fx(0, 0, 0.07, size, 0.05, 0.04, 0x3a2618));
+      for (const sx2 of [-1, 1]) fr.push(fx(sx2 * (size * 0.5 + 0.28), 0, 0.06, 0.34, size + 0.08, 0.05, shutter));
+      if (box_) {
+        fr.push(fx(0, -size / 2 - 0.2, 0.18, size + 0.1, 0.18, 0.22, P.woodDark));
+        for (let k = 0; k < 5; k++) fr.push(place(ico(0.09, 0, flowers[(k + Math.round(wx * 3)) % 4]), -size / 2 + 0.1 + k * (size - 0.2) / 4, -size / 2 - 0.06, 0.2));
+      }
+      const g = merge(fr);
+      place(g, 0, 0, 0, [0, ry, 0]);
+      g.translate(wx, wyy, wz);
+      parts.push(g);
+    };
+    for (const sx of [-1, 1]) windowAt(sx * w * 0.3, wy, d / 2 + 0.05, 0, 0.85, true);
+    for (const sx of [-1, 1]) windowAt(sx * (w / 2 + 0.05), wy, 0, sx * Math.PI / 2, 0.8, false);
     if (o.stories === 2) {
-      for (const sx of [-1, 0, 1]) wins.push(place(box(0.8, 0.8, 0.1, 0xffffff), sx * w * 0.3, h * 1.4 + 0.3, (d + 0.5) / 2 + 0.05));
+      for (const sx of [-1, 0, 1]) windowAt(sx * w * 0.3, h * 1.4 + 0.3, (d + 0.5) / 2 + 0.05, 0, 0.75, sx === 0);
     }
+    const solid = merge(parts);
+    b.add('solid', solid, f);
     b.add('window', merge(wins), f);
     this.colliders.addBox(x, z, w / 2 + 0.2, d / 2 + 0.2, rot, y - 3, y + top + roofH * 0.45, 'building');
     const door = this.local(f, 0, d / 2 + 1.4);
@@ -323,14 +369,15 @@ export class Structures {
     this.waystone(b, 'brightwater', L.x - 4, L.z - 2, L.name);
     this.well(b, L.x + 7, L.z + 6);
     const ring = [
-      { a: -1.57, r: 30, o: { w: 8, d: 6, stories: 2, roof: 0x7a5aa8, wall: 0xf4ead6 }, tag: 'elder' },
-      { a: -0.6, r: 31, o: { w: 9, d: 6.5, stories: 2, roof: 0xc8513c }, tag: 'inn' },
+      // Gaps are left where the north road (about -1.67 rad) and east road (about -0.2 rad) enter.
+      { a: -1.05, r: 30, o: { w: 8, d: 6, stories: 2, roof: 0x7a5aa8, wall: 0xf4ead6 }, tag: 'elder' },
+      { a: -0.5, r: 32, o: { w: 9, d: 6.5, stories: 2, roof: 0xc8513c }, tag: 'inn' },
       { a: 0.25, r: 30, o: { w: 6, d: 5, roof: 0x4c7fbf }, tag: 'house1' },
       { a: 1.0, r: 32, o: { w: 6.5, d: 5, roof: 0xd2693c }, tag: 'house2' },
       { a: 1.9, r: 30, o: { w: 5.5, d: 5, roof: 0x3f9f9a }, tag: 'house3' },
       { a: 2.6, r: 31, o: { w: 7, d: 5.5, roof: 0xc8513c, wall: 0xe2d0b0 }, tag: 'smithy' },
       { a: 3.4, r: 32, o: { w: 6, d: 5, roof: 0x4c7fbf }, tag: 'herbalist' },
-      { a: 4.15, r: 31, o: { w: 6, d: 5, roof: 0xb8453a }, tag: 'house4' },
+      { a: 4.05, r: 31, o: { w: 6, d: 5, roof: 0xb8453a }, tag: 'house4' },
     ];
     for (const r of ring) {
       const x = L.x + Math.cos(r.a) * r.r, z = L.z + Math.sin(r.a) * r.r;
@@ -387,7 +434,7 @@ export class Structures {
     this.fence(b, gx + 5, gz - 4, gx + 5, gz + 4);
     this.fence(b, gx + 5, gz + 4, gx - 5, gz + 4);
     this.points['brightwater.garden'] = { x: gx, z: gz };
-    this.chest('bw_inn_cellar', L.x + Math.cos(-0.6) * 40, L.z + Math.sin(-0.6) * 40, 0.3, 'starter');
+    this.chest('bw_inn_cellar', L.x + Math.cos(-0.36) * 40, L.z + Math.sin(-0.36) * 40, 0.3, 'starter');
     this.flush(b, 'brightwater');
   }
 

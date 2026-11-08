@@ -2,7 +2,6 @@
 // the frame loop. Systems reach each other through `game.*` and `game.events`.
 
 import * as THREE from 'three';
-import { EffectComposer, RenderPass, UnrealBloomPass, OutputPass } from 'three/addons';
 import { Events, isTouchDevice } from './core/util.js';
 import { QUALITY, loadSettings } from './core/config.js';
 import { Input } from './core/input.js';
@@ -27,6 +26,7 @@ import { Dialogue } from './systems/dialogue.js';
 import { Story } from './systems/story.js';
 import { SaveSystem } from './systems/save.js';
 import { FX } from './fx/particles.js';
+import { Post } from './fx/post.js';
 import { Player } from './entities/player.js';
 import { CameraRig } from './entities/camera.js';
 import { NPCs } from './entities/npcs.js';
@@ -51,11 +51,16 @@ export class Game {
     this.inDialogue = false;
     this.flags = {};
     this.totalHours = 0;
+    this.slowT = 0;
+    this.slowScale = 1;
   }
+
+  // Brief slow motion for parries, perfect dodges and the surge.
+  slowMo(scale, dur) { this.slowScale = scale; this.slowT = Math.max(this.slowT, dur); }
 
   async init(progress) {
     const q = this.quality;
-    const renderer = new THREE.WebGLRenderer({ canvas: this.canvas, antialias: q.antialias && !q.bloom, powerPreference: 'high-performance', stencil: false });
+    const renderer = new THREE.WebGLRenderer({ canvas: this.canvas, antialias: q.antialias && q.post === false, powerPreference: 'high-performance', stencil: false });
     renderer.setPixelRatio(q.pixelRatio);
     renderer.setSize(window.innerWidth, window.innerHeight, false);
     renderer.outputColorSpace = THREE.SRGBColorSpace;
@@ -126,15 +131,7 @@ export class Game {
     this.player.buildCharacter(this.player.look);
     this.player.character.group.visible = false;
 
-    if (q.bloom) {
-      const composer = new EffectComposer(renderer);
-      this.renderPass = new RenderPass(this.scene, this.camera);
-      composer.addPass(this.renderPass);
-      this.bloom = new UnrealBloomPass(new THREE.Vector2(window.innerWidth / 2, window.innerHeight / 2), 0.55, 0.45, 1.05);
-      composer.addPass(this.bloom);
-      composer.addPass(new OutputPass());
-      this.composer = composer;
-    }
+    this.post = new Post(this);
 
     progress(0.9, 'Placing the last stones');
     await tick();
@@ -151,7 +148,7 @@ export class Game {
     this.camera.aspect = w / h;
     this.camera.updateProjectionMatrix();
     this.renderer.setSize(w, h, false);
-    if (this.composer) { this.composer.setSize(w, h); this.bloom.resolution.set(w / 2, h / 2); }
+    this.post?.setSize(w, h);
   }
 
   // ---------------------------------------------------------------- modes
@@ -254,7 +251,9 @@ export class Game {
   frame() {
     this.timer.update();
     let raw = Math.min(this.timer.getDelta(), 0.05);
+    this.rawDt = raw;
     if (this.hitStop > 0) { this.hitStop -= raw; raw *= 0.08; }
+    else if (this.slowT > 0) { this.slowT -= raw; raw *= this.slowScale; }
     const dt = this.paused ? 0 : raw;
     this.dt = dt;
     this.time += dt;
@@ -303,10 +302,7 @@ export class Game {
 
   render() {
     this.renderer.info.reset();
-    if (this.composer) {
-      this.renderPass.scene = this.scene;
-      this.composer.render();
-    } else this.renderer.render(this.scene, this.camera);
+    this.post.render(this.rawDt || 0.016);
   }
 }
 

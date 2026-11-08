@@ -7,6 +7,7 @@ import { Character, makeSword } from './character.js';
 import { clamp, damp, dampAngle, lerp } from '../core/util.js';
 import { ITEMS, SPELLS } from '../systems/content.js';
 import { makeGlowMaterial } from '../world/vegetation.js';
+import { SwordTrail } from '../fx/trail.js';
 
 const GRAV = 22;
 const tmpV = new THREE.Vector3(), fwd = new THREE.Vector3(), nrm = new THREE.Vector3();
@@ -62,6 +63,26 @@ export class Player {
     };
     this.character = null;
     this.wings = null;
+    this.surge = 0;
+    this.blockT = -10;
+    this.counterT = 0;
+    this.comboCount = 0;
+    this.comboT = 0;
+    this.trail = null;
+  }
+
+  addSurge(n) {
+    const was = this.surge >= 100;
+    this.surge = Math.min(100, this.surge + n);
+    if (!was && this.surge >= 100) this.game.events.emit('surge:ready');
+  }
+
+  registerHits(n, dmg) {
+    if (n <= 0) return;
+    this.comboCount = this.comboT > 0 ? this.comboCount + n : n;
+    this.comboT = 2.2;
+    this.addSurge(dmg * 0.22 * n);
+    this.game.events.emit('combo', this.comboCount);
   }
 
   // ---------------- derived stats
@@ -170,16 +191,37 @@ export class Player {
     this.action = { name, t: 0, dur, hit: false, ...extra };
   }
 
-  tryAttack(heavy = false) {
+  tryAttack() {
     const st = this.stats;
-    if (this.swimming || this.gliding) return;
+    if (this.swimming) return;
+    // Plunge from the air.
+    if (!this.grounded && !this.action) {
+      const g = this.game.env.ground(this.position.x, this.position.z, this.position.y);
+      if (this.position.y - g.y > 2.2) {
+        this.gliding = false;
+        this.character.drawWeapon(true);
+        this.startAction('plunge', 3, {});
+        this.velocity.y = Math.min(this.velocity.y, -6);
+        this.game.audio?.play('swing', { pitch: 0.7 });
+        this.game.audio?.voice?.('attack');
+      }
+      return;
+    }
+    if (this.gliding) return;
     if (this.action && this.action.name.startsWith('attack')) {
-      if (this.action.t / this.action.dur > 0.35) this.comboQueued = true;
+      if (this.action.t / this.action.dur > 0.3) this.comboQueued = true;
       return;
     }
     if (this.action && this.action.name !== 'block') return;
     if (st.sp < 4) { this.game.events.emit('toast', 'Too tired to attack'); return; }
     this.character.drawWeapon(true);
+    if (this.sprinting && this.speed > 7) {
+      st.sp -= 12; this.staminaDelay = 0.8;
+      this.startAction('spin', 0.62, { strikeAt: 0.4 });
+      this.game.audio?.play('swing', { pitch: 0.8 });
+      this.game.audio?.voice?.('attack');
+      return;
+    }
     this.beginAttack(1);
   }
 
@@ -190,6 +232,28 @@ export class Player {
     this.staminaDelay = 0.8;
     this.faceTarget(true);
     this.game.audio?.play('swing', { pitch: 0.9 + n * 0.08 });
+    if (n === 3 || Math.random() < 0.35) this.game.audio?.voice?.('attack');
+  }
+
+  // Area strike used by heavy finishers, plunges and the Aether Surge.
+  shockwave(radius, dmg, element, opts = {}) {
+    const g = this.game;
+    let hits = 0;
+    for (const e of g.combat.enemies) {
+      if (e.dead) continue;
+      const d = Math.hypot(e.position.x - this.position.x, e.position.z - this.position.z);
+      if (d < radius + e.radius && Math.abs(e.position.y - this.position.y) < 3.5) {
+        e.takeDamage(dmg * (1 - (d / (radius + e.radius)) * 0.3), this, { element, knockback: opts.knockback ?? 9, heavy: true, melee: true, breakMult: opts.breakMult ?? 1.5 });
+        hits++;
+      }
+    }
+    g.fx.shockwave(this.position, radius, opts.color ?? 0xdfe8ff);
+    g.fx.dust(this.position, 16);
+    g.cameraRig.shake(opts.shake ?? 0.5);
+    g.audio?.play('slam');
+    this.registerHits(hits, dmg);
+    if (hits) g.hitStop = 0.1;
+    return hits;
   }
 
   faceTarget(snap) {
@@ -219,12 +283,37 @@ export class Player {
 
   takeDamage(amount, source, opts = {}) {
     if (this.dead || this.invuln > 0 || this.game.godMode) return 0;
-    if (this.action && this.action.name === 'dodge' && this.action.t > 0.05 && this.action.t < this.action.dur * 0.8) {
-      this.game.events.emit('dodged');
+    if (this.action && (this.action.name === 'surge' || this.action.name === 'plunge')) return 0;
+    if (this.action && this.action.name === 'dodge' && this.action.t > 0.03 && this.action.t < this.action.dur * 0.8) {
+      if (this.action.t < 0.22 && !this.action.perfect) {
+        this.action.perfect = true;
+        this.game.slowMo(0.3, 0.55);
+        this.addSurge(15);
+        this.game.events.emit('perfectDodge');
+        this.game.audio?.play('perfect');
+      } else this.game.events.emit('dodged');
       return 0;
     }
     let dmg = amount;
-    const blocking = this.action && this.action.name === 'block';
+    const blocking = this.action && (this.action.name === 'block' || this.action.name === 'parry');
+    // Parry: block just before a melee blow lands.
+    if (blocking && source && !opts.ranged && !opts.unblockable && this.game.time - this.blockT < 0.24 && source.parried) {
+      const dx = source.position.x - this.position.x, dz = source.position.z - this.position.z;
+      const facing = (dx * Math.sin(this.yaw) + dz * Math.cos(this.yaw)) / (Math.hypot(dx, dz) || 1);
+      if (facing > 0) {
+        source.parried(this);
+        this.counterT = 1.6;
+        this.addSurge(20);
+        this.trainSkill('guard', 5);
+        this.startAction('parry', 0.35);
+        this.game.slowMo(0.25, 0.4);
+        this.game.events.emit('parry', source);
+        this.game.events.emit('flash', 0.35);
+        this.game.audio?.play('parry');
+        this.game.fx?.sparks(tmpV.copy(this.position).add(new THREE.Vector3(Math.sin(this.yaw) * 0.7, 1.3, Math.cos(this.yaw) * 0.7)), 0xffffff, 30);
+        return 0;
+      }
+    }
     if (blocking && source) {
       const dx = source.position.x - this.position.x, dz = source.position.z - this.position.z;
       const facing = (dx * Math.sin(this.yaw) + dz * Math.cos(this.yaw)) / (Math.hypot(dx, dz) || 1);
@@ -242,11 +331,14 @@ export class Player {
     dmg *= 100 / (100 + this.armor * 2.5);
     dmg = Math.max(1, Math.round(dmg));
     this.stats.hp -= dmg;
+    this.addSurge(dmg * 0.5);
+    this.game.audio?.voice?.('hurt', dmg);
     this.combatTimer = 6;
     this.game.events.emit('player:hurt', dmg, opts);
     this.game.cameraRig?.shake(Math.min(0.6, dmg / 30));
     if (this.stats.hp <= 0) { this.stats.hp = 0; this.die(); return dmg; }
-    if (!blocking && dmg > 8 && !(this.action && this.action.name.startsWith('attack') && this.action.combo === 3)) {
+    const armored = this.action && (['heavy', 'charge', 'spin', 'surge', 'plunge'].includes(this.action.name) || (this.action.name.startsWith('attack') && this.action.combo === 3));
+    if (!blocking && dmg > 8 && !armored) {
       this.startAction('hit', 0.35);
       if (source) {
         const dx = this.position.x - source.position.x, dz = this.position.z - source.position.z;
@@ -268,6 +360,7 @@ export class Player {
     this.deadT = 0;
     this.action = null;
     this.gliding = false;
+    this.game.audio?.voice?.('death');
     this.game.events.emit('player:died');
   }
 
@@ -285,6 +378,9 @@ export class Player {
     const game = this.game, env = game.env, st = this.stats;
     if (!this.character) return;
     this.invuln = Math.max(0, this.invuln - dt);
+    this.counterT = Math.max(0, this.counterT - dt);
+    this.comboT = Math.max(0, this.comboT - dt);
+    if (this.comboT <= 0) this.comboCount = 0;
     this.combatTimer = Math.max(0, this.combatTimer - dt);
     this.slow = Math.max(0, this.slow - dt * 0.5);
     for (const k in this.spellCd) this.spellCd[k] = Math.max(0, this.spellCd[k] - dt);
@@ -316,8 +412,17 @@ export class Player {
       this.selectedSpell = list[n];
       game.events.emit('spell:selected', this.selectedSpell);
     }
+    if (input.pressed('surge') && this.surge >= 100 && this.grounded && !this.swimming && !(this.action && ['surge', 'plunge', 'dodge'].includes(this.action.name))) {
+      this.surge = 0;
+      this.character.drawWeapon(true);
+      this.startAction('surge', 1.25, { strikeAt: 0.42 });
+      this.game.slowMo(0.5, 0.5);
+      this.game.audio?.voice?.('surge');
+      this.game.audio?.play('surgeCharge');
+      this.game.events.emit('surge:used');
+    }
     const blockHeld = input.held('block') && !this.swimming && this.grounded;
-    if (blockHeld && !this.action) { this.startAction('block', Infinity); this.character.drawWeapon(true); }
+    if (blockHeld && !this.action) { this.startAction('block', Infinity); this.character.drawWeapon(true); this.blockT = game.time; }
     if (!blockHeld && this.action && this.action.name === 'block') this.action = null;
     if (input.pressed('dodge') && this.grounded && !this.swimming && (!this.action || this.action.name === 'block' || (this.action.name.startsWith('attack') && this.action.t > this.action.dur * 0.5))) {
       if (st.sp >= 15) {
@@ -337,13 +442,62 @@ export class Player {
     if (a) {
       const prev = a.t;
       a.t += dt;
+      const w = this.game.inventory.equipped.weapon;
+      const element = w ? ITEMS[w].element : null;
+      const counter = this.counterT > 0 ? 2 : 1;
       if (a.name.startsWith('attack') && !a.hit && a.t >= a.dur * a.strikeAt) {
         a.hit = true;
         const n = a.combo;
-        const dmg = this.meleeDamage() * (n === 3 ? 1.6 : 1);
-        const w = this.game.inventory.equipped.weapon;
-        const hits = game.combat.melee(this, { range: 2.6 + (w ? 0.3 : 0), arc: n === 3 ? 0.2 : -0.1, dmg, element: w ? ITEMS[w].element : null, knockback: n === 3 ? 7 : 3, heavy: n === 3 });
-        if (hits > 0) this.trainSkill('blade', hits * 1.5);
+        const dmg = this.meleeDamage() * (n === 3 ? 1.6 : 1) * counter;
+        const hits = game.combat.melee(this, { range: 2.6 + (w ? 0.3 : 0), arc: n === 3 ? 0.2 : -0.1, dmg, element, knockback: n === 3 ? 7 : 3, heavy: n === 3, crit: counter > 1 });
+        if (hits > 0) { this.trainSkill('blade', hits * 1.5); this.registerHits(hits, dmg); if (counter > 1) this.counterT = 0; }
+      }
+      if (a.name === 'spin' && !a.hit && a.t >= a.dur * a.strikeAt) {
+        a.hit = true;
+        const dmg = this.meleeDamage() * 1.35 * counter;
+        const hits = game.combat.melee(this, { range: 3.0, arc: -1.1, dmg, element, knockback: 8, heavy: true });
+        this.registerHits(hits, dmg);
+      }
+      if (a.name === 'heavy' && !a.hit && a.t >= a.dur * a.strikeAt) {
+        a.hit = true;
+        const pw = a.power;
+        const dmg = this.meleeDamage() * (1.9 + pw * 1.6) * counter;
+        const hits = game.combat.melee(this, { range: 3.0, arc: 0.1, dmg, element, knockback: 10, heavy: true, breakMult: 2.2, crit: counter > 1 });
+        this.registerHits(hits, dmg);
+        if (pw > 0.95) this.shockwave(3.6, dmg * 0.6, element, { breakMult: 1.5 });
+        else game.cameraRig.shake(0.3);
+        this.trainSkill('blade', 3);
+      }
+      if (a.name === 'surge' && !a.hit && a.t >= a.dur * a.strikeAt) {
+        a.hit = true;
+        const dmg = 70 + this.stats.level * 9 + this.meleeDamage() * 2.5;
+        this.shockwave(7.5, dmg, 'aether', { knockback: 16, breakMult: 3, color: 0x9ff0ff, shake: 1.0 });
+        game.events.emit('flash', 0.9);
+        game.fx.levelUp(this.position);
+        game.audio?.play('surge');
+      }
+      if (a.name === 'plunge') {
+        if (this.grounded || this.swimming) {
+          if (!this.swimming) this.shockwave(3.2, this.meleeDamage() * 2.2 * counter, element, { breakMult: 1.8 });
+          this.action = null;
+          this.startAction('attack3', 0.35, { combo: 3, strikeAt: 2, hit: true });
+          this.action.t = 0.2;
+        } else this.velocity.y = Math.min(this.velocity.y, -22);
+      }
+      if (a.name === 'charge') {
+        a.power = Math.min(1, a.t / 1.1);
+        if (a.power >= 1 && !a.full) { a.full = true; game.fx.burst(tmpV.copy(this.position).setY(this.position.y + 1.4), 0xffe8a0, 24, { speed: 3 }); game.audio?.play('chargeFull'); }
+        if (!input.held('attack') || st.sp <= 0) {
+          this.startAction('heavy', 0.7, { strikeAt: 0.6, power: a.power });
+          game.audio?.play('swing', { pitch: 0.65 });
+          game.audio?.voice?.('heavy');
+        } else { st.sp -= dt * 6; this.staminaDelay = 0.5; }
+      }
+      // Keep the blade's trail going during swings.
+      if (this.trail && this.character.weapon && /attack|heavy|spin|surge|plunge/.test(a.name)) {
+        const wpn = this.character.weapon;
+        const L = wpn.userData.length ?? 1;
+        this.trail.push(wpn.localToWorld(new THREE.Vector3(0, 0.25, 0)), wpn.localToWorld(new THREE.Vector3(0, L, 0)));
       }
       if (a.name.startsWith('attack') && a.t < a.dur * 0.3) this.faceTarget(false);
       if ((a.name === 'cast' || a.name === 'castUp') && !a.hit && a.t >= a.castAt) {
@@ -351,9 +505,10 @@ export class Player {
         game.combat.castSpell(this, a.spell, this.lockTarget || this.softTarget);
         this.trainSkill('sorcery', SPELLS[a.spell].cost / 8);
       }
-      if (a.t >= a.dur) {
+      if (a.t >= a.dur && this.action === a) {
         this.action = null;
         if (a.name.startsWith('attack') && this.comboQueued && a.combo < 3 && st.sp >= 4) this.beginAttack(a.combo + 1);
+        else if (a.name.startsWith('attack') && input.held('attack') && st.sp > 8) this.startAction('charge', Infinity, { power: 0 });
         this.comboQueued = false;
       }
       void prev;
@@ -369,7 +524,8 @@ export class Player {
     if (this.swimming) target = this.sprinting ? 4.6 : 3.0;
     if (this.action) {
       if (this.action.name === 'block') target = 1.6;
-      else if (this.action.name.startsWith('attack') || this.action.name.startsWith('cast')) target = 0.6;
+      else if (this.action.name === 'charge') target = 1.0;
+      else if (this.action.name.startsWith('attack') || this.action.name.startsWith('cast') || this.action.name === 'heavy' || this.action.name === 'surge' || this.action.name === 'parry') target = 0.6;
       else if (this.action.name === 'hit') target = 0;
     }
     target *= 1 - this.slow * 0.5;
@@ -379,7 +535,10 @@ export class Player {
       const k = 1 - this.action.t / this.action.dur;
       desired.copy(this.action.dir).multiplyScalar(4 + 7 * k);
     }
-    if (this.action && this.action.name.startsWith('attack') && this.action.t < this.action.dur * 0.45) {
+    if (this.action && this.action.name === 'spin') {
+      desired.x = Math.sin(this.yaw) * 6; desired.z = Math.cos(this.yaw) * 6;
+    }
+    if (this.action && (this.action.name.startsWith('attack') || this.action.name === 'heavy') && this.action.t < this.action.dur * 0.45) {
       desired.x += Math.sin(this.yaw) * 2.2;
       desired.z += Math.cos(this.yaw) * 2.2;
     }
@@ -455,10 +614,10 @@ export class Player {
       v.y -= GRAV * dt;
     }
     // Slide down steep terrain.
-    if (this.grounded && env.normal) {
+    if (this.grounded && env.normal && !(this.game.world && !this.game.inDungeon && this.game.world.roadAt(p.x, p.z) > 0.3)) {
       env.normal(p.x, p.z, nrm);
-      if (nrm.y < 0.66) {
-        const k = (0.66 - nrm.y) * 60;
+      if (nrm.y < 0.6) {
+        const k = (0.6 - nrm.y) * 50;
         v.x += nrm.x * k * dt; v.z += nrm.z * k * dt;
         const into = v.x * nrm.x + v.z * nrm.z;
         if (into < 0) { v.x -= nrm.x * into * 0.85; v.z -= nrm.z * into * 0.85; }
@@ -467,8 +626,8 @@ export class Player {
     p.x += v.x * dt; p.z += v.z * dt; p.y += v.y * dt;
     env.resolve(p, this.radius, this.height);
     if (!env.inBounds(p.x, p.z)) {
-      const d = Math.hypot(p.x, p.z);
-      p.x *= 989 / d; p.z *= 989 / d;
+      if (env.recover) { env.recover(p); v.set(0, 0, 0); }
+      else { const d = Math.hypot(p.x, p.z); p.x *= 989 / d; p.z *= 989 / d; }
     }
     // Ground.
     const g = env.ground(p.x, p.z, p.y);
@@ -504,6 +663,7 @@ export class Player {
   }
 
   land(height, impact) {
+    this.landedImpact = Math.min(1, impact / 14);
     this.game.events.emit('land', this.position, impact);
     if (impact > 4) this.game.audio?.play('land', { volume: Math.min(1, impact / 15) });
     if (height > 9 && impact > 15) {
@@ -522,8 +682,13 @@ export class Player {
     ch.update(dt, {
       speed: this.speed, grounded: this.grounded || this.swimming, vy: this.velocity.y, glide: this.gliding, swim: this.swimming,
       action: a ? a.name : null, actionT: a ? Math.min(1, a.t / (a.dur === Infinity ? 1 : a.dur)) : 0,
-      dead: this.dead, deadT: this.deadT, crouch: this.crouching, lean,
+      dead: this.dead, deadT: this.deadT, crouch: this.crouching, lean, landed: this.landedImpact || 0,
     });
+    this.landedImpact = 0;
+    if (!this.trail) { this.trail = new SwordTrail(this.game.scene); }
+    this.trail.attach(this.game.scene);
+    if (ch.weapon?.userData.color) this.trail.setColor(ch.weapon.userData.color);
+    this.trail.update(dt);
     if (this.wings) {
       const s = damp(this.wings.scale.x, this.gliding ? 1 : 0.01, 8, dt);
       this.wings.scale.setScalar(s);

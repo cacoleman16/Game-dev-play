@@ -9,6 +9,7 @@ import { REGION } from '../world/worldgen.js';
 import { hash2 } from '../core/noise.js';
 import { makeGlowMaterial } from '../world/vegetation.js';
 import { paint, place, merge } from '../world/geo.js';
+import { VOICES } from '../audio/audio.js';
 import { clamp, damp, smoothstep } from '../core/util.js';
 
 const HERB_KINDS = {
@@ -124,7 +125,16 @@ export class Story {
       }
     }
     this.updateWeather(dt);
-    if (this.activeBoss) g.ui.updateBossBar(this.activeBoss);
+    if (this.activeBoss) {
+      const b = this.activeBoss;
+      g.ui.updateBossBar(b);
+      if (b.type === 'herald' && !b.dead) {
+        const lines = ['You patch the cracks, little wayfarer. The sky remembers how to break.', 'Enough! Let the hollow swallow you whole!'];
+        const k = b.hp / b.maxHp;
+        if (b.taunted === 0 && k < 0.6) { b.taunted = 1; g.audio?.speak(lines[0], { ...VOICES.herald, id: 'herald' }, true); g.ui.toast('The Herald: "' + lines[0] + '"'); }
+        if (b.taunted === 1 && k < 0.25) { b.taunted = 2; g.audio?.speak(lines[1], { ...VOICES.herald, id: 'herald' }, true); g.ui.toast('The Herald: "' + lines[1] + '"'); }
+      }
+    }
     if (this.endingT >= 0) this.updateEnding(dt);
   }
 
@@ -168,6 +178,7 @@ export class Story {
     const ws = g.structures.waystones.find((w) => w.id === id);
     if (!ws) return;
     g.ui.fade(() => {
+      if (g.inDungeon) g.dungeon.exit(true);
       g.spawner.despawnAll();
       this.despawnBoss();
       const a = Math.random() * Math.PI * 2;
@@ -345,6 +356,9 @@ export class Story {
     const L = LOC.heartshard;
     const e = this.spawnBoss('herald', 'herald', L.x, L.z - 6);
     e.home.set(L.x, e.position.y, L.z);
+    e.taunted = 0;
+    setTimeout(() => g.audio?.speak('So, the vessel is full again. Then I will empty it myself.', { ...VOICES.herald, id: 'herald' }, true), 1200);
+    g.ui.banner('The Hollow Herald', 'So, the vessel is full again. Then I will empty it myself.', 0xff7af0);
     g.audio?.setMusic('final');
     g.events.emit('flash', 1);
   }

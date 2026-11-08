@@ -44,9 +44,13 @@ export class Spawner {
     Z('frost_wolf', -200, -620, 3, 12); Z('frost_gloop', -100, -560, 3, 12); Z('frost_wolf', -60, -720, 2, 10);
     Z('magma_gloop', 520, -60, 3, 12); Z('golem', 640, -100, 1, 8); Z('magma_gloop', 600, -260, 3, 12);
     Z('bandit', LOC.watchtower.x + 10, LOC.watchtower.z + 6, 2, 8);
+    Z('boar', 170, 250, 2, 12); Z('boar', -220, 160, 2, 12); Z('boar', 420, 330, 2, 10);
+    Z('archer', LOC.banditcamp.x - 8, LOC.banditcamp.z + 6, 2, 6); Z('archer', -200, 300, 1, 4);
+    Z('skyray', 260, -320, 2, 16); Z('skyray', -300, -420, 2, 16); Z('skyray', 700, 500, 2, 16);
+    Z('treant', -620, 120, 1, 6); Z('treant', -480, -120, 1, 6);
     // Scatter extra groups by region with a seeded RNG.
     const rng = new RNG(2024);
-    const byRegion = { 0: ['gloop', 'gloop', 'wolf'], 1: ['wolf', 'gloop', 'bandit'], 2: ['frost_wolf', 'frost_gloop'], 3: ['magma_gloop', 'golem', 'bandit'] };
+    const byRegion = { 0: ['gloop', 'wolf', 'boar'], 1: ['wolf', 'boar', 'bandit', 'treant'], 2: ['frost_wolf', 'frost_gloop', 'skyray'], 3: ['magma_gloop', 'golem', 'archer'] };
     let placed = 0;
     for (let i = 0; i < 400 && placed < 34; i++) {
       const x = rng.range(-850, 850), z = rng.range(-850, 850);

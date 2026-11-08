@@ -3,7 +3,7 @@
 // blinks), stagger, leash back home, die and drop loot.
 
 import * as THREE from 'three';
-import { GloopModel, WolfModel, WispModel, WraithModel, HumanoidModel } from './creatures.js';
+import { GloopModel, WolfModel, QuadrupedModel, SkyrayModel, WispModel, WraithModel, HumanoidModel } from './creatures.js';
 import { clamp, damp, dampAngle, lerp } from '../core/util.js';
 
 const v1 = new THREE.Vector3(), v2 = new THREE.Vector3();
@@ -53,6 +53,24 @@ export const ENEMY_TYPES = {
       { kind: 'melee', range: 2.3, windup: 0.4, strike: 0.2, recover: 0.4, dmg: 12, cd: 1.0, arc: 0.2, anim: 'attack2' },
       { kind: 'melee', range: 2.5, windup: 0.75, strike: 0.25, recover: 0.6, dmg: 19, cd: 3, arc: 0.0, anim: 'attack3', heavy: true },
     ] },
+  boar: { name: 'Thornback Boar', hp: 70, xp: 26, speed: 6.2, aggro: 18, radius: 0.7, loot: 'boar',
+    model: (q) => new QuadrupedModel({ kind: 'boar', fur: 0x6a4a3a, belly: 0x9a7a62, dark: 0x3a2a22, eye: 0xff6a3a, scale: 1.05, outline: q.outlines }),
+    attacks: [
+      { kind: 'melee', range: 2.2, windup: 0.45, strike: 0.2, recover: 0.5, dmg: 12, cd: 1.2, arc: 0.3 },
+      { kind: 'charge', range: 16, minRange: 5, windup: 0.9, strike: 0.9, recover: 0.8, dmg: 20, cd: 5, speed: 15, width: 1.6 },
+    ] },
+  archer: { name: 'Redcloak Archer', hp: 52, xp: 30, speed: 4.8, aggro: 26, radius: 0.4, loot: 'bandit_drop', humanoid: true, keep: 12,
+    model: (q) => new HumanoidModel(bandLook({ hatColor: 0x6a3a2a, top: 0x4a3a2a, trim: 0x8a2a2a }), 'bow', q.npcOutlines),
+    attacks: [{ kind: 'projectile', range: 26, minRange: 4, windup: 0.8, strike: 0.2, recover: 0.5, dmg: 13, cd: 1.8, speed: 30, color: 0xf0e0c0, size: 0.12, arrow: true, anim: 'aim' }] },
+  skyray: { name: 'Gale Skyray', hp: 44, xp: 28, speed: 6.5, aggro: 24, radius: 0.9, loot: 'wisp', fly: true, keep: 7, weak: 'storm',
+    model: (q) => new SkyrayModel({ outline: q.outlines }),
+    attacks: [{ kind: 'lunge', range: 11, minRange: 3, windup: 0.8, strike: 0.6, recover: 0.8, dmg: 14, cd: 3.2, lunge: 16 }] },
+  treant: { name: 'Bramble Sentinel', hp: 190, xp: 70, speed: 2.4, aggro: 16, radius: 0.9, loot: 'golem', weak: 'fire', humanoid: true, heavyBody: true,
+    model: (q) => new HumanoidModel({ kind: 'treant', height: 1.65, build: 1.1 }, null, q.npcOutlines),
+    attacks: [
+      { kind: 'melee', range: 3.0, windup: 0.65, strike: 0.25, recover: 0.6, dmg: 17, cd: 1.6, arc: -0.1, anim: 'attack2' },
+      { kind: 'aoe', range: 14, minRange: 4, windup: 1.1, strike: 0.3, recover: 0.7, dmg: 18, cd: 5, radius: 2.4, at: 'target', anim: 'castUp', slow: 0.7, color: 0x6a9a3a, thorns: true },
+    ] },
   wisp: { name: 'Aether Wisp', hp: 26, xp: 18, speed: 4.2, aggro: 20, radius: 0.4, loot: 'wisp', fly: true, keep: 8, night: true,
     model: () => new WispModel(0x9ff0ff),
     attacks: [{ kind: 'projectile', range: 18, windup: 0.75, strike: 0.2, recover: 0.6, dmg: 10, cd: 2.2, speed: 14, color: 0x9ff0ff, element: 'aether' }] },
@@ -65,8 +83,8 @@ export const ENEMY_TYPES = {
       { kind: 'aoe', range: 6, windup: 1.1, strike: 0.3, recover: 1.0, dmg: 32, cd: 5, radius: 4.6, at: 'front', anim: 'attack3' },
       { kind: 'projectile', range: 26, minRange: 8, windup: 0.9, strike: 0.25, recover: 0.7, dmg: 22, cd: 4, speed: 20, color: 0x8a8478, size: 0.7, anim: 'castUp' },
     ] },
-  rimefang: { name: 'Rimefang, Alpha of the Peaks', boss: true, hp: 760, xp: 450, speed: 8.2, aggro: 32, radius: 1.3, loot: 'boss_rimefang', weak: 'fire', resist: 'frost',
-    model: (q) => new WolfModel({ fur: 0xe8f0fa, belly: 0xffffff, dark: 0x7a94c0, eye: 0x5ad8ff, spikes: 0x9fdcff, scale: 2.5, outline: true }),
+  rimefang: { name: 'Rimefang, Alpha of the Peaks', boss: true, hp: 760, xp: 450, speed: 8.2, aggro: 32, radius: 1.6, loot: 'boss_rimefang', weak: 'fire', resist: 'frost',
+    model: (q) => new WolfModel({ fur: 0xc8d6e8, belly: 0xe4ecf6, dark: 0x6a84b0, eye: 0x5ad8ff, spikes: 0x9fdcff, scale: 3.1, outline: true }),
     attacks: [
       { kind: 'melee', range: 3.6, windup: 0.4, strike: 0.15, recover: 0.5, dmg: 18, cd: 1.2, arc: 0.2 },
       { kind: 'lunge', range: 12, minRange: 5, windup: 0.55, strike: 0.5, recover: 0.8, dmg: 24, cd: 4, lunge: 18, leap: 5 },
@@ -125,6 +143,12 @@ export class Enemy {
     this.lastHit = -10;
     this.model = this.def.model(game.quality);
     game.scene.add(this.model.group);
+    this.poise = 0;
+    this.poiseMax = Math.round(this.maxHp * (this.boss ? 0.42 : 0.65));
+    this.poiseT = 0;
+    this.flashT = 0;
+    this.flashMats = [];
+    this.model.group.traverse((o) => { if (o.material && o.material.isMeshToonMaterial && !o.material.map && !this.flashMats.includes(o.material)) this.flashMats.push(o.material); });
     this.sync();
   }
 
@@ -150,15 +174,24 @@ export class Enemy {
         this.game.audio?.play('block');
       }
     }
-    const crit = opts.melee && Math.random() < 0.1;
-    if (crit) mult *= 1.5;
+    const crit = opts.crit || (opts.melee && Math.random() < 0.1);
+    if (crit) mult *= opts.crit ? 2 : 1.5;
+    if (this.state === 'broken') mult *= 1.5;
     const dmg = Math.max(1, Math.round(amount * mult * (0.9 + Math.random() * 0.2)));
     this.hp -= dmg;
     this.lastHit = this.game.time;
+    this.flashT = 0.13;
+    // Break gauge: fills faster from heavy hits and weaknesses.
+    if (this.state !== 'broken') {
+      this.poise += dmg * (opts.heavy ? 1.6 : 1) * (weak ? 1.6 : 1) * (opts.breakMult ?? 1);
+      this.poiseT = 2.5;
+      if (this.poise >= this.poiseMax && this.hp > 0) this.breakGuard();
+    }
     this.game.events.emit('damage', { pos: v2.copy(this.position).setY(this.position.y + (this.boss ? 3.2 : 1.8)).clone(), amount: dmg, weak, resist, crit, enemy: this });
     if (opts.slow) this.slow = Math.max(this.slow, opts.slow);
     if (this.state === 'idle' || this.state === 'return') this.state = 'chase';
     if (this.hp <= 0) { this.die(source); return dmg; }
+    if (Math.random() < 0.3) this.game.audio?.creature(this, 'hurt');
     // Knockback and stagger for small foes.
     if (source && !this.boss && !this.def.heavyBody) {
       const dx = this.position.x - source.position.x, dz = this.position.z - source.position.z;
@@ -168,6 +201,26 @@ export class Enemy {
       if (opts.heavy || dmg > this.maxHp * 0.25) { this.cancelAttack(); this.state = 'stagger'; this.stateT = 0.45; }
     }
     return dmg;
+  }
+
+  breakGuard() {
+    this.cancelAttack();
+    this.state = 'broken';
+    this.stateT = this.boss ? 5 : 3.5;
+    this.poise = this.poiseMax;
+    this.game.events.emit('break', this);
+    this.game.audio?.play('break');
+    this.game.audio?.creature(this, 'hurt');
+    this.game.fx.burst(this.position.clone().setY(this.position.y + (this.boss ? 2.5 : 1.2)), 0xffe27a, 30, { speed: 6 });
+  }
+
+  parried() {
+    this.cancelAttack();
+    this.state = 'stagger';
+    this.stateT = this.boss ? 1.2 : 1.6;
+    this.poise = Math.min(this.poiseMax * 0.99, this.poise + this.poiseMax * 0.35);
+    this.poiseT = 3;
+    this.game.audio?.creature(this, 'hurt');
   }
 
   facingDot(p) {
@@ -199,6 +252,9 @@ export class Enemy {
     const game = this.game, player = game.player, def = this.def;
     this.stateT -= dt;
     this.slow = Math.max(0, this.slow - dt * 0.3);
+    this.flashT = Math.max(0, this.flashT - dt);
+    this.poiseT -= dt;
+    if (this.poiseT <= 0 && this.state !== 'broken') this.poise = Math.max(0, this.poise - this.poiseMax * 0.1 * dt);
     for (let i = 0; i < this.cooldowns.length; i++) this.cooldowns[i] -= dt;
     if (this.dead) {
       this.deadT += dt;
@@ -239,13 +295,24 @@ export class Enemy {
       case 'chase': {
         if (!alive) { this.state = 'return'; break; }
         if (this.position.distanceTo(this.home) > leash && d > 8) { this.state = 'return'; break; }
-        // Try an attack.
-        const choice = this.pickAttack(d);
-        if (choice >= 0) { this.beginAttack(choice); break; }
+        // Try an attack (non-bosses take turns: at most two attack at once).
         const dx = player.position.x - this.position.x, dz = player.position.z - this.position.z;
+        const busy = !this.boss && game.combat.attackers(this) >= 2;
+        const choice = busy ? -1 : this.pickAttack(d);
+        if (choice >= 0) { this.beginAttack(choice); break; }
+        if (busy && d < 7 && !def.keep) {
+          // Circle at a respectful distance while waiting for an opening.
+          const side = (this.id % 2 ? 1 : -1);
+          const tx = -dz * side, tz = dx * side;
+          const outward = d < 4.5 ? -1 : d > 6 ? 0.6 : 0;
+          desired = v2.set(tx + dx * outward * 0.5, 0, tz + dz * outward * 0.5).normalize();
+          speed *= 0.45;
+          this.yaw = dampAngle(this.yaw, Math.atan2(dx, dz), 8, dt);
+          break;
+        }
         const keep = def.keep || 0;
         if (keep && d < keep * 0.7) desired = v2.set(-dx, 0, -dz).normalize();
-        else if (d > Math.max(keep, def.radius + 1.4)) desired = v2.set(dx, 0, dz).normalize();
+        else if (d > Math.max(keep, def.radius + 1.4)) desired = this.toward(player.position.x, player.position.z);
         else desired = null;
         if (keep && d < keep * 1.2 && d > keep * 0.7) {
           // Circle-strafe at range.
@@ -258,12 +325,15 @@ export class Enemy {
       case 'stagger': case 'block':
         if (this.stateT <= 0) this.state = 'chase';
         break;
+      case 'broken':
+        if (this.stateT <= 0) { this.state = 'chase'; this.poise = 0; }
+        break;
       case 'return': {
         const dx = this.home.x - this.position.x, dz = this.home.z - this.position.z;
         const dd = Math.hypot(dx, dz);
         this.hp = Math.min(this.maxHp, this.hp + this.maxHp * 0.3 * dt);
         if (dd < 2) { this.state = 'idle'; break; }
-        desired = v2.set(dx, 0, dz).normalize();
+        desired = this.toward(this.home.x, this.home.z);
         if (alive && d < def.aggro * 0.6) this.state = 'chase';
         break;
       }
@@ -305,6 +375,13 @@ export class Enemy {
       this.attack.at = at;
       this.attack.tele = this.game.fx.telegraph(at, a.radius, a.windup);
     }
+    if (a.kind === 'charge') {
+      const yaw = Math.atan2(p.x - this.position.x, p.z - this.position.z);
+      this.attack.dir = new THREE.Vector3(Math.sin(yaw), 0, Math.cos(yaw));
+      this.yaw = yaw;
+      this.attack.tele = this.game.fx.telegraphLine(this.position, yaw, a.speed * a.strike, a.width, a.windup);
+    }
+    this.game.audio?.creature(this, a.kind === 'summon' || a.anim === 'howl' ? 'howl' : 'windup');
     if (a.kind === 'summon' || a.anim === 'howl') this.game.audio?.play('howl');
     else if (this.boss) this.game.audio?.play('bossWindup');
   }
@@ -315,12 +392,22 @@ export class Enemy {
     const p = player.position;
     const dx = p.x - this.position.x, dz = p.z - this.position.z;
     if (at.phase === 'windup') {
-      if (a.kind !== 'lunge' || at.t < a.windup * 0.8) this.yaw = dampAngle(this.yaw, Math.atan2(dx, dz), 10, dt);
+      if (a.kind !== 'lunge' && a.kind !== 'charge' || (a.kind === 'lunge' && at.t < a.windup * 0.8)) this.yaw = dampAngle(this.yaw, Math.atan2(dx, dz), 10, dt);
+      if (a.kind === 'charge' && Math.random() < dt * 20) game.fx.dust(this.position.clone().add(at.dir.clone().multiplyScalar(-0.6)), 2);
       if (at.t >= a.windup) { at.phase = 'strike'; at.t = 0; this.strike(at, d); }
     } else if (at.phase === 'strike') {
       if (a.kind === 'lunge' && !at.done && d < this.radius + 1.0 && Math.abs(p.y - this.position.y) < 2.5) {
         at.done = true;
         player.takeDamage(a.dmg, this, { slow: a.slow, element: a.element, knockback: 6 });
+      }
+      if (a.kind === 'charge') {
+        this.velocity.x = at.dir.x * a.speed; this.velocity.z = at.dir.z * a.speed;
+        if (Math.random() < dt * 30) game.fx.dust(this.position, 2);
+        if (!at.done && d < this.radius + 0.9 && Math.abs(p.y - this.position.y) < 2) {
+          at.done = true;
+          player.takeDamage(a.dmg, this, { knockback: 12, heavy: true });
+        }
+        if (at.bonked) { at.phase = 'recover'; at.t = 0; this.state = 'stagger'; this.stateT = 1.4; this.attack = null; game.fx.sparks(this.position.clone().setY(this.position.y + 0.8), 0xffe8a0, 16); game.audio?.play('slam'); return; }
       }
       if (a.kind === 'breath') {
         at.ticks += dt;
@@ -369,6 +456,8 @@ export class Enemy {
         const c = at.at;
         const r = Math.hypot(p.x - c.x, p.z - c.z);
         if (r < a.radius && Math.abs(p.y - c.y) < 3) player.takeDamage(a.dmg, this, { element: a.element, knockback: 10, unblockable: a.at === 'self' });
+        if (a.thorns) game.fx.thorns(c, a.radius);
+        if (a.slow && r < a.radius) player.slow = Math.max(player.slow, a.slow);
         game.fx.burst(c.clone().setY(c.y + 0.3), a.element === 'fire' ? 0xff7a2a : a.color ?? 0xd8c8a8, 50, { speed: a.radius * 2.2, size: 0.6, life: 0.7, up: 2 });
         game.fx.dust(c, 12);
         game.cameraRig?.shake(this.boss ? 0.7 : 0.4);
@@ -376,7 +465,13 @@ export class Enemy {
         break;
       }
       case 'projectile': {
-        game.combat.spawnProjectile({ from: hpos.clone(), target: p.clone().setY(p.y + 1.1), speed: a.speed, dmg: a.dmg, team: 'enemy', owner: this, color: a.color, element: a.element, size: a.size ?? 0.35 });
+        // Lead the target a little so strafing in a straight line isn't free.
+        const lead = player.velocity.clone().multiplyScalar(Math.min(0.6, d / a.speed) * 0.6);
+        game.combat.spawnProjectile({ from: hpos.clone(), target: p.clone().add(lead).setY(p.y + 1.1), speed: a.speed, dmg: a.dmg, team: 'enemy', owner: this, color: a.color, element: a.element, size: a.size ?? 0.35, arrow: a.arrow });
+        break;
+      }
+      case 'charge': {
+        game.audio?.creature(this, 'roar');
         break;
       }
       case 'volley': {
@@ -409,13 +504,22 @@ export class Enemy {
     }
   }
 
+  // Unit direction toward a goal; inside the vault this follows the tile
+  // grid around walls rather than walking into them.
+  toward(gx, gz) {
+    const env = this.game.env, p = this.position;
+    if (env.steerPoint && !this.def.fly) { const w = env.steerPoint(p.x, p.z, gx, gz, this.radius + 0.15); gx = w.x; gz = w.z; }
+    v2.set(gx - p.x, 0, gz - p.z);
+    return v2.lengthSq() > 1e-6 ? v2.normalize() : v2;
+  }
+
   physics(dt, desired) {
     const env = this.game.env, p = this.position, v = this.velocity;
     const def = this.def;
     if (desired) {
       v.x = damp(v.x, desired.x, 8, dt);
       v.z = damp(v.z, desired.z, 8, dt);
-    } else if (!(this.attack && this.attack.def.kind === 'lunge' && this.attack.phase === 'strike')) {
+    } else if (!(this.attack && (this.attack.def.kind === 'lunge' || this.attack.def.kind === 'charge') && this.attack.phase === 'strike')) {
       v.x = damp(v.x, 0, 6, dt);
       v.z = damp(v.z, 0, 6, dt);
     }
@@ -431,7 +535,11 @@ export class Enemy {
       p.y += v.y * dt;
       if (p.y <= g.y) { p.y = g.y; v.y = 0; }
     }
-    if (!this.dead) env.resolve(p, this.radius, this.boss ? 4 : 1.8);
+    if (!this.dead) {
+      const bx = p.x, bz = p.z;
+      const hit = env.resolve(p, this.radius, this.boss ? 4 : 1.8);
+      if (hit && this.attack && this.attack.def.kind === 'charge' && this.attack.phase === 'strike' && Math.hypot(p.x - bx, p.z - bz) > 0.05) this.attack.bonked = true;
+    }
     // Separate from other enemies.
     for (const o of this.game.combat.enemies) {
       if (o === this || o.dead) continue;
@@ -458,9 +566,14 @@ export class Enemy {
       if (at.def.anim === 'howl' && at.phase !== 'recover') action = 'howl';
       if (at.def.kind === 'breath' && at.phase === 'strike') action = 'breath';
     }
-    if (this.state === 'stagger') { action = 'stagger'; k = 1 - this.stateT / 0.45; }
+    if (this.state === 'stagger') { action = 'stagger'; k = clamp(1 - this.stateT / 0.45, 0, 1); }
+    if (this.state === 'broken') { action = 'stagger'; k = 0.5 + Math.sin(this.game.time * 6) * 0.2; }
+    if (this.flashMats.length) {
+      const f = this.flashT > 0 ? this.flashT / 0.13 : 0;
+      for (const m of this.flashMats) m.emissive.setScalar(f * 0.9 + (this.state === 'broken' ? 0.12 + Math.sin(this.game.time * 10) * 0.08 : 0));
+    }
     if (this.state === 'block') action = 'block';
-    if (dt > 0) m.animate(dt, { speed: Math.hypot(this.velocity.x, this.velocity.z), action, actionK: k, attackAnim: at?.def.anim, dead: this.dead, deadT: this.deadT });
+    if (dt > 0) m.animate(dt, { speed: Math.hypot(this.velocity.x, this.velocity.z), action, actionK: k, attackAnim: at?.def.anim, dead: this.dead, deadT: this.deadT, alert: this.state === 'chase' || this.state === 'attack' });
   }
 }
 

@@ -25,15 +25,15 @@ const LAKE = { x: 0, z: -60, r0: 110, r1: 178 };
 
 const hex = (h) => [(h >> 16) & 255, (h >> 8) & 255, h & 255];
 const C = {
-  meadowA: hex(0x78c255), meadowB: hex(0x9fd46a), meadowC: hex(0x5fae4a),
-  forestA: hex(0x4a8c3c), forestB: hex(0x3a7434),
+  meadowA: hex(0x72b252), meadowB: hex(0x98c46a), meadowC: hex(0x5a9c4a),
+  forestA: hex(0x467f3c), forestB: hex(0x376a34),
   highland: hex(0x7c9c58), highland2: hex(0x93a565),
   rock: hex(0x8d877b), rockDark: hex(0x6c6760),
   snow: hex(0xf3f7fc), snowShade: hex(0xd8e4f2),
   sand: hex(0xecdcaa), wetSand: hex(0xc8b585), seabed: hex(0x9c946e),
   desert: hex(0xe0a66c), desertB: hex(0xd28e58),
   road: hex(0xb8956a), plaza: hex(0xaea38f),
-  crystal: hex(0x6fd1b0), crystalB: hex(0x8ee0c8),
+  crystal: hex(0x6cc2a6), crystalB: hex(0x8ad2bc),
   dryGrass: hex(0xc9b765),
 };
 

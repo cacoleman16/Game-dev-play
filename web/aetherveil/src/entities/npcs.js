@@ -7,6 +7,9 @@ import { Character, makeSword, makeStaff, makeTool } from './character.js';
 import { LOC } from '../world/locations.js';
 import { dampAngle } from '../core/util.js';
 import { ITEMS } from '../systems/content.js';
+import { VOICES } from '../audio/audio.js';
+
+const GREETINGS = ['Morning!', 'Safe travels.', 'Fine day, isn\'t it?', 'Mind the wolves out there.', 'Hello there.', 'Good to see you.'];
 
 const bye = (t = 'Farewell.') => ({ text: t, next: null });
 
@@ -310,6 +313,13 @@ export class NPC {
     if (!visible) return;
     let headYaw = 0;
     let moving = false;
+    // A passing greeting, now and then.
+    this.greetT = (this.greetT ?? 0) - dt;
+    if (d < 4 && !this.talking && this.greetT <= 0 && game.mode === 'play' && !game.inDialogue && !(typeof speechSynthesis !== 'undefined' && speechSynthesis.speaking)) {
+      this.greetT = 90;
+      const line = this.def.greet || GREETINGS[(this.id.length + Math.floor(game.time / 60)) % GREETINGS.length];
+      game.audio?.speak(line, { ...(VOICES[this.id] || VOICES.narrator), id: this.id }, true);
+    }
     if (this.talking || d < 5) {
       const want = Math.atan2(dx, dz);
       if (this.talking) this.yaw = dampAngle(this.yaw, want, 5, dt);

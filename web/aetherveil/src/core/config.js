@@ -9,7 +9,7 @@ export const QUALITY = {
   low: {
     label: 'Low', pixelRatio: Math.min(dpr, 1), antialias: false, shadows: false, shadowSize: 512, shadowRange: 30,
     viewDist: 420, lodScale: 0.55, chunkBuildsPerFrame: 1, treeDensity: 0.4, propDensity: 0.4,
-    grassTile: 10, grassTiles: 5, grassDensity: 2.5, grassHeight: 0.85, bloom: false, outlines: false, maxParticles: 400, npcOutlines: false,
+    grassTile: 10, grassTiles: 5, grassDensity: 2.5, grassHeight: 0.85, bloom: false, post: false, outlines: false, maxParticles: 400, npcOutlines: false,
   },
   medium: {
     label: 'Medium', pixelRatio: Math.min(dpr, 1.5), antialias: false, shadows: true, shadowSize: 1024, shadowRange: 38,
@@ -35,6 +35,8 @@ export const DEFAULT_SETTINGS = {
   masterVolume: 0.8,
   musicVolume: 0.55,
   sfxVolume: 0.9,
+  voiceVolume: 1,
+  voiceMode: 'speech', // speech | babble | off
   mouseSensitivity: 1,
   invertY: false,
   showFps: false,
