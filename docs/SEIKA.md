@@ -1,70 +1,104 @@
 # SEIKA — the region where the first Starfall fell
 
-An original post-game region with an old-capital feel: lantern festivals,
-shrines, calligraphy, kilns and mountain temples, and wild Pokémon mostly from
-the second generation. Its towns, routes, people and story are this hack's
-own. It continues the [Starfall](STARFALL.md) story.
+An original post-game region with an old-capital feel: a lantern festival,
+star shrines, calligraphy, kilns, silk, frozen lakes and a mountain temple
+in the clouds. Most wild Pokémon are from the second generation. The
+towns, routes, people and story belong to this hack, and the region
+continues the [Starfall](STARFALL.md) story.
 
-## How you get there
+## Getting there
 
-After the Birth Island finale (`FLAG_QOL_STARFALL_DONE`), the S.S. TIDAL in
-Vermilion City adds **SEIKA** to its destinations. It docks at Lanternport.
+After the Birth Island finale (`FLAG_QOL_STARFALL_DONE`), Steven's ending
+message mentions Seika. From then on the S.S. TIDAL sailor in Vermilion
+City lists **SEIKA**, and the ship docks at Lanternport's pier. The sailor
+on that pier takes you back to Vermilion.
+
+Once you've visited a Seika town you can Fly to it. On the Fly map, L/R
+switches between Kanto, the Sevii Islands, Hoenn and Seika.
 
 ## The legend
 
 A thousand years ago the **first Starfall** came down over Seika. The people
 who watched it wrote that a small star fell on **Mt. Skyreach** and went to
-sleep there: the **Wishing Star**, who wakes for seven days every thousand
-years (Jirachi). They built a shrine in every town to keep watch, and the
-shrine keepers became the region's Gym Leaders.
+sleep there. They called it the **Wishing Star**, and it wakes for seven days
+every thousand years (Jirachi). Every town built a star shrine to keep
+watch, and the shrine keepers became the region's Gym Leaders.
 
-The new Starfall has woken it. What is left of Team Nova wants its wish.
+The new Starfall has woken the star, and what's left of Team Nova wants its
+wish: Deneb and Altair hope to bring Vega back.
 
-## Towns, roads and Gyms
+## The way through
 
-| # | Town | Gym Leader | Type | Levels | Feel |
-|---|------|-----------|------|--------|------|
-| 1 | **Lanternport** | Wick, the lantern maker | Fire | 50–52 | Harbor town; the S.S. TIDAL docks here; the Starwatch Festival |
-| 2 | **Inkbrush Town** | Sumi, the calligrapher | Psychic | 53–55 | Scriptorium with the Starfall Scroll |
-| 3 | **Mossgrove Village** | Kaya, the beekeeper | Bug | 56–57 | Village past Mossgrove Woods |
-| 4 | **Kiln City** | Tobin, the potter | Ground | 58–59 | The region's big city: kilns, a department store |
-| 5 | **Tidewatch Town** | Nagi, the diver | Water | 60–61 | Fishing town with a tide shrine |
-| 6 | **Silkhollow Town** | Ayame, the weaver | Fairy | 62–63 | Silk and dance; reached through Hollow Cave |
-| 7 | **Frostmere Village** | Rime, the ice fisher | Ice | 64–65 | A frozen lake village in the north |
-| 8 | **Duskpeak Village** | Tomoe, the shrine medium | Ghost | 66–68 | The last village below Mt. Skyreach |
-| – | **Starwatch Plateau** | Seika League | – | 70–78 | Elite Four (Steel, Dark, Flying, Dragon) and Champion Seiji |
-| – | **Sky Shrine** | the finale | – | 70 | Summit of Mt. Skyreach: the Wishing Star |
+| # | Place | Gym Leader | Type | Badge | TM | Levels |
+|---|-------|-----------|------|-------|----|--------|
+| 1 | **Lanternport**: harbor, Lantern Hall | Wick, lantern maker | Fire | Lantern | Flamethrower | 50–52 |
+|   | Lantern Road | | | | | wild 42–46 |
+| 2 | **Inkbrush Town**: the Scriptorium, a brush school | Sumi, calligrapher | Psychic | Ink | Calm Mind | 53–55 |
+|   | Mossgrove Woods (Altair) | | | | | wild 45–48 |
+| 3 | **Mossgrove**: a beekeeping village | Kaya, beekeeper | Bug | Grove | Giga Drain | 56–57 |
+|   | Kiln Road | | | | | wild 48–51 |
+| 4 | **Kiln City**: kilns, pottery shop, the workshop (Deneb) | Tobin, potter | Ground | Kiln | Earthquake | 58–59 |
+|   | Tide Road (sea, Surf) | | | | | wild 50–53 |
+| 5 | **Tidewatch Town**: the Tide Shrine | Nagi, diver | Water | Tide | Rain Dance | 60–61 |
+|   | Hollow Path (Altair again) | | | | | wild 53–56 |
+| 6 | **Silkhollow Town**: weavers and dancers | Ayame, weaver | Fairy | Silk | Safeguard | 62–63 |
+|   | Weaver's Road | | | | | wild 56–58 |
+| 7 | **Frostmere**: a snowy lake village (Nova grunts) | Rime, ice fisher | Ice | Frost | Ice Beam | 64–65 |
+|   | Frost Road (snow) | | | | | wild 58–61 |
+| 8 | **Duskpeak Village**: the keepers' pond | Tomoe, shrine medium | Ghost | Dusk | Shadow Ball | 66–68 |
+|   | Skyreach Pass: a guard checks all 8 badges | | | | | wild 60–64 |
+| – | **Starwatch Plateau**: the Seika League | Elite Four: Tetsu (Steel), Kuroe (Dark), Sora (Flying), Ryoko (Dragon) | | | | 70–74 |
+| – | | Champion **Seiji** | | | | 75–78 |
+| – | **Sky Shrine**: the summit of Mt. Skyreach, above the clouds | Deneb, Altair, then the Wishing Star (Jirachi, Lv 70) | | | | 72–74 |
 
-Roads between them: Lantern Road, Moss Trail (and Mossgrove Woods), Kiln
-Road, Tide Road, Hollow Cave, Weaver's Road, Frost Road, Dusk Road and
-Skyreach Pass.
+The plateau's monk only steps aside for the Seika Champion. If you run
+from Jirachi it waits on the shrine; if you knock it out, it flies home.
 
 ## Story beats
 
 | Where | What happens |
 |---|---|
-| Lanternport | The festival's lanterns go up for the Wishing Star. The town elder tells the legend |
-| Inkbrush Town | The Starfall Scroll was copied by a woman in a fine coat: **Deneb** |
-| Mossgrove Woods | **Altair** digs for a star stone from the first Starfall |
-| Kiln City | Deneb buys the kilns' Starglass Bell, said to wake the star. Battle her |
-| Silkhollow | Altair, again, in Hollow Cave |
-| Frostmere | Nova grunts on the ice |
-| Duskpeak | Tomoe: the star's seven days are almost over |
-| Sky Shrine | After the League: Altair and Deneb ring the bell. Beat them, then the Wishing Star comes down to you |
-
-## Wild Pokémon
-
-Mostly the second generation (Hoothoot, Sentret, Ledyba, Spinarak, Mareep,
-Hoppip, Aipom, Yanma, Wooper, Murkrow, Misdreavus, Girafarig, Pineco,
-Dunsparce, Gligar, Snubbull, Heracross, Sneasel, Teddiursa, Swinub,
-Houndour, Phanpy, Stantler, Natu, Skarmory, Larvitar, Corsola, Remoraid,
-Mantine, Chinchou…) with their later evolutions, at Lv 42–66.
+| Lanternport | The Starwatch Festival. The elder tells the legend, and an old woman saw strange visitors from Kanto |
+| Inkbrush Scriptorium | A woman in a fine coat (Deneb) copied the Starfall Scroll: the star sleeps at the Sky Shrine and wakes when the Starglass Bell rings |
+| Mossgrove Woods | Altair is digging for a star stone from the first Starfall. Battle |
+| Kiln City workshop | Deneb buys the Starglass Bell from the kiln master. Battle; she leaves with it anyway |
+| Hollow Path | Altair has found his star stone, without which the bell can't ring. Battle |
+| Frostmere | Two Nova grunts are hauling the bell north. Battles |
+| Duskpeak | Tomoe: the star's seven days are almost over, and only the Champion may climb |
+| Seika League | Seiji, keeper of the path, tells you Nova took the bell up the mountain |
+| Sky Shrine | The bell rings. You beat Deneb, then Altair, the star turns to you, and Jirachi comes down |
 
 ## Technical notes
 
-- Maps are built with `dev_scripts/qol_maptools.py` (renderer) and
-  `dev_scripts/qol_mapgen.py` (paints outdoor maps from shapes and stamps cut
-  from Kanto's maps), driven by `dev_scripts/seika/`.
-- Seika maps use `"region": "REGION_SEIKA"` (FireRed build only) and the map
-  group `gMapGroup_Seika`, after every existing group, so no existing map
-  constant moves.
+- Everything is generated by `python3 dev_scripts/seika/build.py`. Run it
+  after any change (it's idempotent), then `make firered`. It writes:
+  - the maps, layouts, scripts and connections;
+  - the trainers (`TRAINER_SEIKA_*`, ids 635 onward) and flags
+    (`FLAG_QOL_SEIKA_*`, `QOL_EXTRA_FLAG(0xA0)` onward);
+  - the wild encounters, heal locations, map sections and Fly data.
+  - Japanese text comes from `text/ja/data/maps/Seika_*/scripts.json`.
+- Each part of the region has its own module:
+  - `lanternport.py`, `inkbrush.py` (Inkbrush, Mossgrove Woods, Mossgrove);
+  - `kiln.py` (Kiln Road, Kiln City, Tide Road, Tidewatch);
+  - `silkhollow.py` (Hollow Path, Silkhollow, Weaver's Road, Frostmere);
+  - `duskpeak.py` (Frost Road, Duskpeak, Skyreach Pass, Starwatch
+    Plateau);
+  - `league.py` (League and Sky Shrine) and `flymap.py` (Fly).
+  - Flags and trainer ids are numbered in module order, so add new ones at
+    the end of a module list, never in the middle.
+- The helpers are in `dev_scripts/seika/common.py`.
+  - `dev_scripts/qol_mapgen.py` paints the outdoor maps. It works from
+    shapes (forests, paths, beaches, sea, ponds, ledges, piers) and stamps
+    buildings cut from Kanto's maps. The edge tiles are learned from
+    Kanto's own maps (`dev_scripts/seika/autotile_frlg.json`).
+  - `dev_scripts/qol_maptools.py` renders any map to a PNG.
+- `dev_scripts/seika/region_map.py` draws the Fly map in the Kanto map's
+  style (`graphics/pokenav/region_map/map_seika.*`).
+  - `REGION_MAP_SEIKA` in `src/region_map.c` shows it for every
+    `MAPSEC_SEIKA_*` section.
+- Seika maps use `"region": "REGION_SEIKA"` (FireRed build only). They
+  are in the map group `gMapGroup_Seika`, which comes after every existing
+  group, so no existing map constant moves.
+- Reused interiors: Kanto's Pokémon Center, Mart, house and League room
+  layouts. The Gym rooms are new, built from each Kanto Gym's tiles, plus
+  ice-cave tiles for the Ice gym and Pokémon Tower tiles for the Ghost gym.

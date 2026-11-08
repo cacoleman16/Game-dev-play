@@ -1748,7 +1748,8 @@
       "x": 17,
       "y": 14,
       "width": 1,
-      "height": 1
+      "height": 1,
+      "name_ja": "トモシビタウン"
     },
     {
       "id": "MAPSEC_SEIKA_LANTERN_ROAD",
@@ -1756,7 +1757,8 @@
       "x": 17,
       "y": 12,
       "width": 1,
-      "height": 2
+      "height": 2,
+      "name_ja": "トモシビかいどう"
     },
     {
       "id": "MAPSEC_SEIKA_INKBRUSH",
@@ -1764,7 +1766,8 @@
       "x": 17,
       "y": 11,
       "width": 1,
-      "height": 1
+      "height": 1,
+      "name_ja": "スミフデタウン"
     },
     {
       "id": "MAPSEC_SEIKA_MOSSGROVE_WOODS",
@@ -1772,7 +1775,8 @@
       "x": 13,
       "y": 11,
       "width": 4,
-      "height": 1
+      "height": 1,
+      "name_ja": "コケムスのもり"
     },
     {
       "id": "MAPSEC_SEIKA_MOSSGROVE",
@@ -1780,7 +1784,8 @@
       "x": 12,
       "y": 11,
       "width": 1,
-      "height": 1
+      "height": 1,
+      "name_ja": "コケムスむら"
     },
     {
       "id": "MAPSEC_SEIKA_KILN_ROAD",
@@ -1788,7 +1793,8 @@
       "x": 12,
       "y": 9,
       "width": 1,
-      "height": 2
+      "height": 2,
+      "name_ja": "カマモトかいどう"
     },
     {
       "id": "MAPSEC_SEIKA_KILN_CITY",
@@ -1796,7 +1802,8 @@
       "x": 12,
       "y": 8,
       "width": 1,
-      "height": 1
+      "height": 1,
+      "name_ja": "カマモトシティ"
     },
     {
       "id": "MAPSEC_SEIKA_TIDE_ROAD",
@@ -1804,7 +1811,8 @@
       "x": 13,
       "y": 8,
       "width": 7,
-      "height": 1
+      "height": 1,
+      "name_ja": "シオサイかいどう"
     },
     {
       "id": "MAPSEC_SEIKA_TIDEWATCH",
@@ -1812,7 +1820,8 @@
       "x": 20,
       "y": 8,
       "width": 1,
-      "height": 1
+      "height": 1,
+      "name_ja": "シオミタウン"
     },
     {
       "id": "MAPSEC_SEIKA_HOLLOW_PATH",
@@ -1820,7 +1829,8 @@
       "x": 20,
       "y": 6,
       "width": 1,
-      "height": 2
+      "height": 2,
+      "name_ja": "ウツロのみち"
     },
     {
       "id": "MAPSEC_SEIKA_SILKHOLLOW",
@@ -1828,7 +1838,8 @@
       "x": 20,
       "y": 5,
       "width": 1,
-      "height": 1
+      "height": 1,
+      "name_ja": "キヌウツロタウン"
     },
     {
       "id": "MAPSEC_SEIKA_WEAVERS_ROAD",
@@ -1836,7 +1847,8 @@
       "x": 15,
       "y": 5,
       "width": 5,
-      "height": 1
+      "height": 1,
+      "name_ja": "ハタオリかいどう"
     },
     {
       "id": "MAPSEC_SEIKA_FROSTMERE",
@@ -1844,7 +1856,8 @@
       "x": 14,
       "y": 5,
       "width": 1,
-      "height": 1
+      "height": 1,
+      "name_ja": "シモミズむら"
     },
     {
       "id": "MAPSEC_SEIKA_DUSKPEAK",
@@ -1852,7 +1865,8 @@
       "x": 14,
       "y": 3,
       "width": 1,
-      "height": 1
+      "height": 1,
+      "name_ja": "タソガレむら"
     },
     {
       "id": "MAPSEC_SEIKA_FROST_ROAD",
@@ -1860,7 +1874,8 @@
       "x": 14,
       "y": 4,
       "width": 1,
-      "height": 1
+      "height": 1,
+      "name_ja": "シモかいどう"
     },
     {
       "id": "MAPSEC_SEIKA_SKYREACH_PASS",
@@ -1868,7 +1883,8 @@
       "x": 14,
       "y": 2,
       "width": 1,
-      "height": 1
+      "height": 1,
+      "name_ja": "ソラトドキとうげ"
     },
     {
       "id": "MAPSEC_SEIKA_STARWATCH_PLATEAU",
@@ -1876,7 +1892,8 @@
       "x": 14,
       "y": 1,
       "width": 1,
-      "height": 1
+      "height": 1,
+      "name_ja": "ホシミこうげん"
     },
     {
       "id": "MAPSEC_SEIKA_SKY_SHRINE",
@@ -1884,7 +1901,8 @@
       "x": 14,
       "y": 0,
       "width": 1,
-      "height": 1
+      "height": 1,
+      "name_ja": "そらのやしろ"
     }
   ]
 }

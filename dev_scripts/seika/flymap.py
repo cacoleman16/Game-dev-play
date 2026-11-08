@@ -19,6 +19,17 @@ TOWNS = [
     ('DUSKPEAK', 'MAP_SEIKA_DUSKPEAK', 'HEAL_LOCATION_SEIKA_DUSKPEAK', 'MAPSEC_SEIKA_DUSKPEAK'),
     ('LEAGUE', 'MAP_SEIKA_STARWATCH_PLATEAU', 'HEAL_LOCATION_SEIKA_LEAGUE', 'MAPSEC_SEIKA_STARWATCH_PLATEAU'),
 ]
+NAME_JA = {
+    'MAPSEC_SEIKA_LANTERNPORT': 'トモシビタウン', 'MAPSEC_SEIKA_LANTERN_ROAD': 'トモシビかいどう',
+    'MAPSEC_SEIKA_INKBRUSH': 'スミフデタウン', 'MAPSEC_SEIKA_MOSSGROVE_WOODS': 'コケムスのもり',
+    'MAPSEC_SEIKA_MOSSGROVE': 'コケムスむら', 'MAPSEC_SEIKA_KILN_ROAD': 'カマモトかいどう',
+    'MAPSEC_SEIKA_KILN_CITY': 'カマモトシティ', 'MAPSEC_SEIKA_TIDE_ROAD': 'シオサイかいどう',
+    'MAPSEC_SEIKA_TIDEWATCH': 'シオミタウン', 'MAPSEC_SEIKA_HOLLOW_PATH': 'ウツロのみち',
+    'MAPSEC_SEIKA_SILKHOLLOW': 'キヌウツロタウン', 'MAPSEC_SEIKA_WEAVERS_ROAD': 'ハタオリかいどう',
+    'MAPSEC_SEIKA_FROSTMERE': 'シモミズむら', 'MAPSEC_SEIKA_DUSKPEAK': 'タソガレむら',
+    'MAPSEC_SEIKA_FROST_ROAD': 'シモかいどう', 'MAPSEC_SEIKA_SKYREACH_PASS': 'ソラトドキとうげ',
+    'MAPSEC_SEIKA_STARWATCH_PLATEAU': 'ホシミこうげん', 'MAPSEC_SEIKA_SKY_SHRINE': 'そらのやしろ',
+}
 FLAGS = {k: flag('FLAG_QOL_SEIKA_FLY_' + k, 'Fly unlocked: ' + k.title()) for k, _, _, _ in TOWNS}
 _ENTRIES = []
 
@@ -38,6 +49,8 @@ def build():
         _ENTRIES.append((key, map_id, heal, sec))
     geo = {s[0]: s for s in rm.SECTIONS}
     for sec in c.MAPSECS:
+        if sec['id'] in NAME_JA:
+            sec['name_ja'] = NAME_JA[sec['id']]
         if sec['id'] in geo:
             _, x, y, w, h, _ = geo[sec['id']]
             sec.update(x=x, y=y, width=w, height=h)
