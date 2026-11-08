@@ -9,6 +9,12 @@ enum DifficultyLevel GetCurrentDifficultyLevel(void)
     if (!B_VAR_DIFFICULTY)
         return DIFFICULTY_NORMAL;
 
+#if IS_FRLG
+    // [QoL] This hack has no Easy teams. Saves made before HARD MODE existed
+    // have the var at 0 (Easy); treat that as Normal.
+    if (VarGet(B_VAR_DIFFICULTY) == DIFFICULTY_EASY)
+        return DIFFICULTY_NORMAL;
+#endif
     return VarGet(B_VAR_DIFFICULTY);
 }
 

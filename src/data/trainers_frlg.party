@@ -13787,3 +13787,1075 @@ IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 Muk
 Level: 39
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+/* [QoL] HARD MODE teams for the gym leaders, Elite Four and Champion.
+   Used when the bedroom NES sets HARD MODE (VAR_QOL_DIFFICULTY = DIFFICULTY_HARD);
+   every other trainer falls back to its Normal team. Aces keep their vanilla
+   levels so the optional level caps still line up. */
+
+=== TRAINER_LEADER_BROCK ===
+Name: BROCK
+Class: Leader Frlg
+Pic: Leader Brock Frlg
+Gender: Male
+Music: Serious
+Double Battle: No
+AI: Smart Trainer
+Difficulty: Hard
+
+Geodude @ Oran Berry
+Impish Nature
+Level: 12
+Ability: Sturdy
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Rock Tomb
+- Magnitude
+- Defense Curl
+- Rollout
+
+Nacli @ Oran Berry
+Careful Nature
+Level: 12
+Ability: Purifying Salt
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Rock Throw
+- Mud-Slap
+- Harden
+- Smack Down
+
+Rockruff @ Oran Berry
+Jolly Nature
+Level: 13
+Ability: Keen Eye
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Rock Throw
+- Bite
+- Sand Attack
+- Tackle
+
+Onix @ Sitrus Berry
+Impish Nature
+Level: 14
+Ability: Sturdy
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Rock Tomb
+- Stealth Rock
+- Bind
+- Screech
+
+=== TRAINER_LEADER_MISTY ===
+Name: MISTY
+Class: Leader Frlg
+Pic: Leader Misty Frlg
+Gender: Male
+Music: Cute
+Items: Super Potion
+Double Battle: No
+AI: Smart Trainer
+Difficulty: Hard
+
+Goldeen @ Oran Berry
+Adamant Nature
+Level: 19
+Ability: Swift Swim
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Water Pulse
+- Horn Attack
+- Supersonic
+- Aqua Ring
+
+Buizel @ Oran Berry
+Jolly Nature
+Level: 19
+Ability: Swift Swim
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Aqua Jet
+- Water Gun
+- Quick Attack
+- Swift
+
+Staryu @ Oran Berry
+Timid Nature
+Level: 20
+Ability: Natural Cure
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Water Pulse
+- Rapid Spin
+- Swift
+- Recover
+
+Starmie @ Sitrus Berry
+Timid Nature
+Level: 21
+Ability: Natural Cure
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Water Pulse
+- Psybeam
+- Swift
+- Recover
+
+=== TRAINER_LEADER_LT_SURGE ===
+Name: LT. SURGE
+Class: Leader Frlg
+Pic: Leader Lt Surge Frlg
+Gender: Male
+Music: Serious
+Items: Super Potion / Full Heal
+Double Battle: No
+AI: Smart Trainer
+Difficulty: Hard
+
+Voltorb @ Oran Berry
+Hasty Nature
+Level: 21
+Ability: Soundproof
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Spark
+- Charge Beam
+- Rollout
+- Self-Destruct
+
+Magnemite @ Oran Berry
+Modest Nature
+Level: 22
+Ability: Sturdy
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Spark
+- Thunder Wave
+- Mirror Shot
+- Supersonic
+
+Pawmo @ Oran Berry
+Jolly Nature
+Level: 22
+Ability: Volt Absorb
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Spark
+- Arm Thrust
+- Nuzzle
+- Quick Attack
+
+Raichu @ Sitrus Berry
+Timid Nature
+Level: 24
+Ability: Static
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Electro Ball
+- Brick Break
+- Quick Attack
+- Thunder Wave
+
+=== TRAINER_LEADER_ERIKA ===
+Name: ERIKA
+Class: Leader Frlg
+Pic: Leader Erika Frlg
+Gender: Male
+Music: Cute
+Items: Hyper Potion / Full Heal
+Double Battle: No
+AI: Smart Trainer
+Difficulty: Hard
+
+Tangela @ Oran Berry
+Bold Nature
+Level: 26
+Ability: Chlorophyll
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Giga Drain
+- Sleep Powder
+- Ancient Power
+- Bind
+
+Skiddo @ Oran Berry
+Adamant Nature
+Level: 26
+Ability: Sap Sipper
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Razor Leaf
+- Leech Seed
+- Take Down
+- Bulldoze
+
+Lilligant @ Miracle Seed
+Timid Nature
+Level: 27
+Ability: Own Tempo
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Quiver Dance
+- Magical Leaf
+- Sleep Powder
+- Draining Kiss
+
+Victreebel @ Oran Berry
+Adamant Nature
+Level: 28
+Ability: Chlorophyll
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Razor Leaf
+- Poison Jab
+- Sleep Powder
+- Knock Off
+
+Vileplume @ Sitrus Berry
+Modest Nature
+Level: 29
+Ability: Chlorophyll
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Giga Drain
+- Sludge Bomb
+- Moonblast
+- Stun Spore
+
+=== TRAINER_LEADER_KOGA ===
+Name: KOGA
+Class: Leader Frlg
+Pic: Leader Koga Frlg
+Gender: Male
+Music: Serious
+Items: Hyper Potion / Hyper Potion / Full Heal
+Double Battle: No
+AI: Smart Trainer
+Difficulty: Hard
+
+Muk @ Black Sludge
+Adamant Nature
+Level: 40
+Ability: Sticky Hold
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 128 HP / 64 Def / 64 SpD
+- Poison Jab
+- Shadow Sneak
+- Knock Off
+- Toxic
+
+Toxicroak @ Focus Sash
+Jolly Nature
+Level: 40
+Ability: Dry Skin
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 128 Atk / 128 Spe
+- Poison Jab
+- Sucker Punch
+- Drain Punch
+- Bulk Up
+
+Crobat @ Sitrus Berry
+Jolly Nature
+Level: 41
+Ability: Inner Focus
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 128 Atk / 128 Spe
+- Cross Poison
+- Air Slash
+- U-turn
+- Confuse Ray
+
+Venomoth @ Sitrus Berry
+Timid Nature
+Level: 41
+Ability: Tinted Lens
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 128 SpA / 128 Spe
+- Quiver Dance
+- Bug Buzz
+- Sludge Bomb
+- Sleep Powder
+
+Salazzle @ Sitrus Berry
+Timid Nature
+Level: 41
+Ability: Corrosion
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 128 SpA / 128 Spe
+- Flamethrower
+- Sludge Bomb
+- Nasty Plot
+- Toxic
+
+Weezing @ Black Sludge
+Bold Nature
+Level: 43
+Ability: Levitate
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 128 HP / 64 Def / 64 SpD
+- Sludge Bomb
+- Flamethrower
+- Will-O-Wisp
+- Toxic Spikes
+
+=== TRAINER_LEADER_SABRINA ===
+Name: SABRINA
+Class: Leader Frlg
+Pic: Leader Sabrina Frlg
+Gender: Male
+Music: Cute
+Items: Hyper Potion / Hyper Potion / Full Heal
+Double Battle: No
+AI: Smart Trainer
+Difficulty: Hard
+
+Hypno @ Sitrus Berry
+Calm Nature
+Level: 40
+Ability: Insomnia
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 128 SpA / 128 Spe
+- Psychic
+- Hypnosis
+- Thunder Punch
+- Nasty Plot
+
+Bronzong @ Leftovers
+Relaxed Nature
+Level: 40
+Ability: Levitate
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 128 HP / 64 Def / 64 SpD
+- Gyro Ball
+- Extrasensory
+- Hypnosis
+- Stealth Rock
+
+Mr Mime @ Light Clay
+Timid Nature
+Level: 40
+Ability: Filter
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 128 SpA / 128 Spe
+- Reflect
+- Light Screen
+- Psychic
+- Dazzling Gleam
+
+Espeon @ Sitrus Berry
+Timid Nature
+Level: 41
+Ability: Synchronize
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 128 SpA / 128 Spe
+- Psychic
+- Shadow Ball
+- Dazzling Gleam
+- Morning Sun
+
+Gardevoir @ Sitrus Berry
+Modest Nature
+Level: 41
+Ability: Trace
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 128 SpA / 128 Spe
+- Psychic
+- Moonblast
+- Mystical Fire
+- Calm Mind
+
+Alakazam @ Alakazite
+Timid Nature
+Level: 43
+Ability: Magic Guard
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 128 SpA / 128 Spe
+- Psychic
+- Shadow Ball
+- Energy Ball
+- Calm Mind
+
+=== TRAINER_LEADER_BLAINE ===
+Name: BLAINE
+Class: Leader Frlg
+Pic: Leader Blaine Frlg
+Gender: Male
+Music: Serious
+Items: Hyper Potion / Hyper Potion / Full Heal
+Double Battle: No
+AI: Smart Trainer
+Difficulty: Hard
+
+Torkoal @ Leftovers
+Bold Nature
+Level: 44
+Ability: White Smoke
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 128 HP / 64 Def / 64 SpD
+- Stealth Rock
+- Lava Plume
+- Earth Power
+- Yawn
+
+Ninetales @ Sitrus Berry
+Timid Nature
+Level: 45
+Ability: Drought
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 128 SpA / 128 Spe
+- Flamethrower
+- Solar Beam
+- Nasty Plot
+- Will-O-Wisp
+
+Rapidash @ Sitrus Berry
+Jolly Nature
+Level: 45
+Ability: Flash Fire
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 128 Atk / 128 Spe
+- Flare Blitz
+- Wild Charge
+- Bounce
+- Smart Strike
+
+Magmortar @ Sitrus Berry
+Modest Nature
+Level: 45
+Ability: Flame Body
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 128 SpA / 128 Spe
+- Flamethrower
+- Thunderbolt
+- Focus Blast
+- Confuse Ray
+
+Houndoom @ Houndoominite
+Timid Nature
+Level: 46
+Ability: Flash Fire
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 128 SpA / 128 Spe
+- Dark Pulse
+- Flamethrower
+- Sludge Bomb
+- Nasty Plot
+
+Arcanine @ Sitrus Berry
+Adamant Nature
+Level: 47
+Ability: Intimidate
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 128 Atk / 128 Spe
+- Flare Blitz
+- Extreme Speed
+- Wild Charge
+- Crunch
+
+=== TRAINER_LEADER_GIOVANNI ===
+Name: GIOVANNI
+Class: Leader Frlg
+Pic: Leader Giovanni Frlg
+Gender: Male
+Music: Dangerous
+Items: Hyper Potion / Hyper Potion / Full Heal
+Double Battle: No
+AI: Smart Trainer
+Difficulty: Hard
+
+Dugtrio @ Focus Sash
+Jolly Nature
+Level: 47
+Ability: Arena Trap
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 Atk / 4 SpD / 252 Spe
+- Earthquake
+- Rock Slide
+- Sucker Punch
+- Sand Tomb
+
+Nidoqueen @ Leftovers
+Modest Nature
+Level: 48
+Ability: Sheer Force
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 128 SpA / 128 Spe
+- Earth Power
+- Sludge Bomb
+- Ice Beam
+- Stealth Rock
+
+Nidoking @ Life Orb
+Timid Nature
+Level: 48
+Ability: Sheer Force
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 SpA / 4 SpD / 252 Spe
+- Earth Power
+- Sludge Bomb
+- Ice Beam
+- Thunderbolt
+
+Excadrill @ Sitrus Berry
+Adamant Nature
+Level: 48
+Ability: Mold Breaker
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 Atk / 4 SpD / 252 Spe
+- Earthquake
+- Iron Head
+- Rock Slide
+- Swords Dance
+
+Garchomp @ Sitrus Berry
+Jolly Nature
+Level: 49
+Ability: Rough Skin
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 Atk / 4 SpD / 252 Spe
+- Earthquake
+- Dragon Claw
+- Rock Slide
+- Swords Dance
+
+Rhyperior @ Weakness Policy
+Adamant Nature
+Level: 50
+Ability: Solid Rock
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 4 SpD
+- Earthquake
+- Stone Edge
+- Megahorn
+- Rock Polish
+
+=== TRAINER_ELITE_FOUR_LORELEI ===
+Name: LORELEI
+Class: Elite Four Frlg
+Pic: Elite Four Lorelei Frlg
+Gender: Male
+Music: Serious
+Items: Full Restore / Full Restore
+Double Battle: No
+AI: Smart Trainer
+Mugshot: Purple
+Difficulty: Hard
+
+Dewgong @ Leftovers
+Calm Nature
+Level: 52
+Ability: Thick Fat
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 128 Def / 128 SpD
+- Ice Beam
+- Surf
+- Protect
+- Encore
+
+Cloyster @ Focus Sash
+Adamant Nature
+Level: 52
+Ability: Skill Link
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 Atk / 4 SpD / 252 Spe
+- Icicle Spear
+- Rock Blast
+- Shell Smash
+- Ice Shard
+
+Slowbro @ Leftovers
+Bold Nature
+Level: 52
+Ability: Regenerator
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 128 Def / 128 SpD
+- Scald
+- Psychic
+- Slack Off
+- Ice Beam
+
+Jynx @ Sitrus Berry
+Timid Nature
+Level: 53
+Ability: Dry Skin
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 SpA / 4 SpD / 252 Spe
+- Ice Beam
+- Psychic
+- Lovely Kiss
+- Nasty Plot
+
+Abomasnow @ Abomasite
+Modest Nature
+Level: 53
+Ability: Snow Warning
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 SpA / 4 SpD / 252 Spe
+- Blizzard
+- Giga Drain
+- Ice Shard
+- Earth Power
+
+Lapras @ Sitrus Berry
+Modest Nature
+Level: 54
+Ability: Water Absorb
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 SpA / 4 SpD
+- Freeze-Dry
+- Surf
+- Thunderbolt
+- Ice Shard
+
+=== TRAINER_ELITE_FOUR_BRUNO ===
+Name: BRUNO
+Class: Elite Four Frlg
+Pic: Elite Four Bruno Frlg
+Gender: Male
+Music: Serious
+Items: Full Restore / Full Restore
+Double Battle: No
+AI: Smart Trainer
+Mugshot: Green
+Difficulty: Hard
+
+Hitmonlee @ Sitrus Berry
+Jolly Nature
+Level: 53
+Ability: Reckless
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 Atk / 4 SpD / 252 Spe
+- High Jump Kick
+- Knock Off
+- Rock Slide
+- Mach Punch
+
+Hitmonchan @ Sitrus Berry
+Adamant Nature
+Level: 53
+Ability: Iron Fist
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 Atk / 4 SpD / 252 Spe
+- Drain Punch
+- Ice Punch
+- Thunder Punch
+- Mach Punch
+
+Hawlucha @ Sitrus Berry
+Jolly Nature
+Level: 53
+Ability: Unburden
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 Atk / 4 SpD / 252 Spe
+- Acrobatics
+- High Jump Kick
+- Swords Dance
+- Roost
+
+Lucario @ Life Orb
+Adamant Nature
+Level: 54
+Ability: Inner Focus
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 Atk / 4 SpD / 252 Spe
+- Close Combat
+- Extreme Speed
+- Meteor Mash
+- Swords Dance
+
+Steelix @ Steelixite
+Impish Nature
+Level: 54
+Ability: Sturdy
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 4 Def
+- Earthquake
+- Heavy Slam
+- Stone Edge
+- Stealth Rock
+
+Machamp @ Sitrus Berry
+Adamant Nature
+Level: 56
+Ability: No Guard
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 4 SpD
+- Dynamic Punch
+- Stone Edge
+- Knock Off
+- Bullet Punch
+
+=== TRAINER_ELITE_FOUR_AGATHA ===
+Name: AGATHA
+Class: Elite Four Frlg
+Pic: Elite Four Agatha Frlg
+Gender: Male
+Music: Serious
+Items: Full Restore / Full Restore
+Double Battle: No
+AI: Smart Trainer
+Mugshot: Pink
+Difficulty: Hard
+
+Spiritomb @ Leftovers
+Careful Nature
+Level: 54
+Ability: Infiltrator
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 128 Def / 128 SpD
+- Shadow Sneak
+- Sucker Punch
+- Will-O-Wisp
+- Pain Split
+
+Mismagius @ Sitrus Berry
+Timid Nature
+Level: 55
+Ability: Levitate
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 SpA / 4 SpD / 252 Spe
+- Shadow Ball
+- Dazzling Gleam
+- Thunderbolt
+- Nasty Plot
+
+Dusknoir @ Leftovers
+Adamant Nature
+Level: 55
+Ability: Pressure
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 4 Def
+- Shadow Punch
+- Earthquake
+- Will-O-Wisp
+- Ice Punch
+
+Chandelure @ Sitrus Berry
+Modest Nature
+Level: 55
+Ability: Flash Fire
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 SpA / 4 SpD / 252 Spe
+- Shadow Ball
+- Flamethrower
+- Energy Ball
+- Will-O-Wisp
+
+Arbok @ Sitrus Berry
+Adamant Nature
+Level: 56
+Ability: Intimidate
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 Atk / 4 SpD / 252 Spe
+- Gunk Shot
+- Crunch
+- Glare
+- Sucker Punch
+
+Gengar @ Gengarite
+Timid Nature
+Level: 58
+Ability: Cursed Body
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 SpA / 4 SpD / 252 Spe
+- Shadow Ball
+- Sludge Bomb
+- Focus Blast
+- Hypnosis
+
+=== TRAINER_ELITE_FOUR_LANCE ===
+Name: LANCE
+Class: Elite Four Frlg
+Pic: Elite Four Lance Frlg
+Gender: Male
+Music: Serious
+Items: Full Restore / Full Restore
+Double Battle: No
+AI: Smart Trainer
+Mugshot: Blue
+Difficulty: Hard
+
+Gyarados @ Gyaradosite
+Jolly Nature
+Level: 56
+Ability: Intimidate
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 Atk / 4 SpD / 252 Spe
+- Dragon Dance
+- Waterfall
+- Crunch
+- Ice Fang
+
+Kingdra @ Life Orb
+Modest Nature
+Level: 57
+Ability: Sniper
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 SpA / 4 SpD / 252 Spe
+- Draco Meteor
+- Surf
+- Ice Beam
+- Flash Cannon
+
+Haxorus @ Sitrus Berry
+Jolly Nature
+Level: 57
+Ability: Mold Breaker
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 Atk / 4 SpD / 252 Spe
+- Dragon Claw
+- Earthquake
+- Poison Jab
+- Dragon Dance
+
+Aerodactyl @ Sitrus Berry
+Jolly Nature
+Level: 58
+Ability: Rock Head
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 Atk / 4 SpD / 252 Spe
+- Stone Edge
+- Earthquake
+- Dual Wingbeat
+- Ice Fang
+
+Salamence @ Sitrus Berry
+Naive Nature
+Level: 58
+Ability: Intimidate
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 128 Atk / 128 SpA / 252 Spe
+- Draco Meteor
+- Flamethrower
+- Earthquake
+- Roost
+
+Dragonite @ Sitrus Berry
+Adamant Nature
+Level: 60
+Ability: Multiscale
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 Atk / 4 SpD / 252 Spe
+- Dragon Dance
+- Outrage
+- Extreme Speed
+- Earthquake
+
+=== TRAINER_CHAMPION_FIRST_SQUIRTLE ===
+Name: TERRY
+Class: Champion Frlg
+Pic: Champion Rival Frlg
+Gender: Male
+Music: Serious
+Items: Full Restore / Full Restore / Full Restore / Full Restore
+Double Battle: No
+AI: Smart Trainer
+Mugshot: Yellow
+Difficulty: Hard
+
+Pidgeot @ Sitrus Berry
+Timid Nature
+Level: 59
+Ability: Big Pecks
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 SpA / 4 SpD / 252 Spe
+- Hurricane
+- Heat Wave
+- U-turn
+- Roost
+
+Alakazam @ Focus Sash
+Timid Nature
+Level: 59
+Ability: Magic Guard
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 SpA / 4 SpD / 252 Spe
+- Psychic
+- Shadow Ball
+- Focus Blast
+- Calm Mind
+
+Rhyperior @ Weakness Policy
+Adamant Nature
+Level: 60
+Ability: Solid Rock
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 4 SpD
+- Earthquake
+- Stone Edge
+- Megahorn
+- Ice Punch
+
+Arcanine @ Sitrus Berry
+Adamant Nature
+Level: 60
+Ability: Intimidate
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 Atk / 4 SpD / 252 Spe
+- Flare Blitz
+- Extreme Speed
+- Wild Charge
+- Close Combat
+
+Exeggutor @ Sitrus Berry
+Modest Nature
+Level: 61
+Ability: Harvest
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 SpA / 4 SpD
+- Psychic
+- Energy Ball
+- Sleep Powder
+- Leech Seed
+
+Blastoise @ Blastoisinite
+Modest Nature
+Level: 63
+Ability: Torrent
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 SpA / 4 SpD / 252 Spe
+- Hydro Pump
+- Dark Pulse
+- Aura Sphere
+- Ice Beam
+
+=== TRAINER_CHAMPION_FIRST_BULBASAUR ===
+Name: TERRY
+Class: Champion Frlg
+Pic: Champion Rival Frlg
+Gender: Male
+Music: Serious
+Items: Full Restore / Full Restore / Full Restore / Full Restore
+Double Battle: No
+AI: Smart Trainer
+Mugshot: Yellow
+Difficulty: Hard
+
+Pidgeot @ Sitrus Berry
+Timid Nature
+Level: 59
+Ability: Big Pecks
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 SpA / 4 SpD / 252 Spe
+- Hurricane
+- Heat Wave
+- U-turn
+- Roost
+
+Alakazam @ Focus Sash
+Timid Nature
+Level: 59
+Ability: Magic Guard
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 SpA / 4 SpD / 252 Spe
+- Psychic
+- Shadow Ball
+- Focus Blast
+- Calm Mind
+
+Rhyperior @ Weakness Policy
+Adamant Nature
+Level: 60
+Ability: Solid Rock
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 4 SpD
+- Earthquake
+- Stone Edge
+- Megahorn
+- Ice Punch
+
+Gyarados @ Leftovers
+Jolly Nature
+Level: 60
+Ability: Intimidate
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 Atk / 4 SpD / 252 Spe
+- Dragon Dance
+- Waterfall
+- Crunch
+- Ice Fang
+
+Arcanine @ Sitrus Berry
+Adamant Nature
+Level: 61
+Ability: Intimidate
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 Atk / 4 SpD / 252 Spe
+- Flare Blitz
+- Extreme Speed
+- Wild Charge
+- Close Combat
+
+Venusaur @ Venusaurite
+Modest Nature
+Level: 63
+Ability: Overgrow
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 SpA / 4 SpD
+- Giga Drain
+- Sludge Bomb
+- Earth Power
+- Synthesis
+
+=== TRAINER_CHAMPION_FIRST_CHARMANDER ===
+Name: TERRY
+Class: Champion Frlg
+Pic: Champion Rival Frlg
+Gender: Male
+Music: Serious
+Items: Full Restore / Full Restore / Full Restore / Full Restore
+Double Battle: No
+AI: Smart Trainer
+Mugshot: Yellow
+Difficulty: Hard
+
+Pidgeot @ Sitrus Berry
+Timid Nature
+Level: 59
+Ability: Big Pecks
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 SpA / 4 SpD / 252 Spe
+- Hurricane
+- Heat Wave
+- U-turn
+- Roost
+
+Alakazam @ Focus Sash
+Timid Nature
+Level: 59
+Ability: Magic Guard
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 SpA / 4 SpD / 252 Spe
+- Psychic
+- Shadow Ball
+- Focus Blast
+- Calm Mind
+
+Rhyperior @ Weakness Policy
+Adamant Nature
+Level: 60
+Ability: Solid Rock
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 4 SpD
+- Earthquake
+- Stone Edge
+- Megahorn
+- Ice Punch
+
+Exeggutor @ Sitrus Berry
+Modest Nature
+Level: 60
+Ability: Harvest
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 SpA / 4 SpD
+- Psychic
+- Energy Ball
+- Sleep Powder
+- Leech Seed
+
+Gyarados @ Leftovers
+Jolly Nature
+Level: 61
+Ability: Intimidate
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 Atk / 4 SpD / 252 Spe
+- Dragon Dance
+- Waterfall
+- Crunch
+- Ice Fang
+
+Charizard @ Charizardite Y
+Timid Nature
+Level: 63
+Ability: Blaze
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 SpA / 4 SpD / 252 Spe
+- Flamethrower
+- Solar Beam
+- Air Slash
+- Focus Blast

@@ -344,10 +344,15 @@
 #define VAR_QOL_LAST_REPEL          0x40A1 // Last Repel used (Smart Repel prompt)
 #define VAR_QOL_DEXNAV_SPECIES      0x40F7 // DexNav registered species
 #define VAR_QOL_DEXNAV_STEPS        0x40F8 // DexNav hidden-Pokemon step counter
+#define VAR_QOL_DIFFICULTY          0x40F9 // Trainer difficulty (HARD MODE on the bedroom NES)
 #else
 #define VAR_QOL_LAST_REPEL          0
 #define VAR_QOL_DEXNAV_SPECIES      0
 #define VAR_QOL_DEXNAV_STEPS        0
+#define VAR_QOL_DIFFICULTY          0
 #endif
+// Script-friendly copies of enum DifficultyLevel (checked in src/new_game.c).
+#define QOL_DIFFICULTY_NORMAL       1
+#define QOL_DIFFICULTY_HARD         2
 
 #endif // GUARD_CONSTANTS_VARS_H

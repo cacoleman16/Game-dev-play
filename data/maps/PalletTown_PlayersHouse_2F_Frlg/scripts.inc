@@ -33,6 +33,8 @@ PalletTown_PlayersHouse_2F_EventScript_NESMenu::
 	call_if_unset FLAG_QOL_NUZLOCKE, PalletTown_PlayersHouse_2F_EventScript_PushNuzlockeOff
 	call_if_set FLAG_QOL_RANDOMIZER, PalletTown_PlayersHouse_2F_EventScript_PushRandomizerOn
 	call_if_unset FLAG_QOL_RANDOMIZER, PalletTown_PlayersHouse_2F_EventScript_PushRandomizerOff
+	call_if_eq VAR_QOL_DIFFICULTY, QOL_DIFFICULTY_HARD, PalletTown_PlayersHouse_2F_EventScript_PushHardOn
+	call_if_ne VAR_QOL_DIFFICULTY, QOL_DIFFICULTY_HARD, PalletTown_PlayersHouse_2F_EventScript_PushHardOff
 	call_if_set FLAG_QOL_LEVEL_CAPS, PalletTown_PlayersHouse_2F_EventScript_PushCapsOn
 	call_if_unset FLAG_QOL_LEVEL_CAPS, PalletTown_PlayersHouse_2F_EventScript_PushCapsOff
 	call_if_unset FLAG_QOL_FOLLOWERS_OFF, PalletTown_PlayersHouse_2F_EventScript_PushFollowersOn
@@ -44,6 +46,7 @@ PalletTown_PlayersHouse_2F_EventScript_NESMenu::
 	case 1, PalletTown_PlayersHouse_2F_EventScript_ToggleCaps
 	case 2, PalletTown_PlayersHouse_2F_EventScript_ToggleFollowers
 	case 3, PalletTown_PlayersHouse_2F_EventScript_ToggleRandomizer
+	case 4, PalletTown_PlayersHouse_2F_EventScript_ToggleHard
 	msgbox PalletTown_PlayersHouse_2F_Text_SettingsSaved, MSGBOX_DEFAULT
 	releaseall
 	end
@@ -62,6 +65,14 @@ PalletTown_PlayersHouse_2F_EventScript_PushRandomizerOn::
 
 PalletTown_PlayersHouse_2F_EventScript_PushRandomizerOff::
 	dynmultipush PalletTown_PlayersHouse_2F_Text_RandomizerOff, 3
+	return
+
+PalletTown_PlayersHouse_2F_EventScript_PushHardOn::
+	dynmultipush PalletTown_PlayersHouse_2F_Text_HardOn, 4
+	return
+
+PalletTown_PlayersHouse_2F_EventScript_PushHardOff::
+	dynmultipush PalletTown_PlayersHouse_2F_Text_HardOff, 4
 	return
 
 PalletTown_PlayersHouse_2F_EventScript_PushCapsOn::
@@ -108,6 +119,20 @@ PalletTown_PlayersHouse_2F_EventScript_RandomizerOff::
 	msgbox PalletTown_PlayersHouse_2F_Text_TurnRandomizerOff, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, PalletTown_PlayersHouse_2F_EventScript_NESMenu
 	clearflag FLAG_QOL_RANDOMIZER
+	goto PalletTown_PlayersHouse_2F_EventScript_NESMenu
+
+@ Hard mode: gym leaders, the Elite Four and the Champion use their HARD MODE
+@ teams from src/data/trainers_frlg.party.
+PalletTown_PlayersHouse_2F_EventScript_ToggleHard::
+	goto_if_eq VAR_QOL_DIFFICULTY, QOL_DIFFICULTY_HARD, PalletTown_PlayersHouse_2F_EventScript_HardOff
+	msgbox PalletTown_PlayersHouse_2F_Text_HardRules, MSGBOX_DEFAULT
+	msgbox PalletTown_PlayersHouse_2F_Text_TurnHardOn, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, PalletTown_PlayersHouse_2F_EventScript_NESMenu
+	setvar VAR_QOL_DIFFICULTY, QOL_DIFFICULTY_HARD
+	goto PalletTown_PlayersHouse_2F_EventScript_NESMenu
+
+PalletTown_PlayersHouse_2F_EventScript_HardOff::
+	setvar VAR_QOL_DIFFICULTY, QOL_DIFFICULTY_NORMAL
 	goto PalletTown_PlayersHouse_2F_EventScript_NESMenu
 
 PalletTown_PlayersHouse_2F_EventScript_ToggleCaps::
@@ -160,6 +185,12 @@ PalletTown_PlayersHouse_2F_Text_RandomizerOn::
 PalletTown_PlayersHouse_2F_Text_RandomizerOff::
 	.string "RANDOMIZER: OFF$"
 
+PalletTown_PlayersHouse_2F_Text_HardOn::
+	.string "HARD MODE: ON$"
+
+PalletTown_PlayersHouse_2F_Text_HardOff::
+	.string "HARD MODE: OFF$"
+
 PalletTown_PlayersHouse_2F_Text_CapsOn::
 	.string "LEVEL CAPS: ON$"
 
@@ -210,6 +241,17 @@ PalletTown_PlayersHouse_2F_Text_TurnRandomizerOn::
 PalletTown_PlayersHouse_2F_Text_TurnRandomizerOff::
 	.string "Turn the RANDOMIZER OFF?\n"
 	.string "Everything goes back to normal.$"
+
+PalletTown_PlayersHouse_2F_Text_HardRules::
+	.string "In HARD MODE, GYM LEADERS, the\n"
+	.string "ELITE FOUR and the CHAMPION bring\l"
+	.string "full teams with held items.\p"
+	.string "Some even MEGA EVOLVE!\n"
+	.string "Their top POKéMON keep the usual\l"
+	.string "levels, so LEVEL CAPS still fit.$"
+
+PalletTown_PlayersHouse_2F_Text_TurnHardOn::
+	.string "Turn HARD MODE ON?$"
 
 PalletTown_PlayersHouse_2F_Text_CapsExplain::
 	.string "With LEVEL CAPS ON, POKéMON stop\n"

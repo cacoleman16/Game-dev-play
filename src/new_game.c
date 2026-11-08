@@ -258,7 +258,13 @@ static void SetupQoLNewGame(void)
     AddBagItem(ITEM_TERA_ORB, 1);
     FlagSet(FLAG_QOL_DYNAMAX_BATTLES);
     FlagSet(FLAG_QOL_TERA_ORB_CHARGED);
+    // Trainers use their Normal teams until HARD MODE is switched on at the NES.
+    SetCurrentDifficultyLevel(DIFFICULTY_NORMAL);
 }
+
+// The NES script uses these copies of the difficulty enum.
+STATIC_ASSERT(QOL_DIFFICULTY_NORMAL == DIFFICULTY_NORMAL, QolDifficultyNormalMatches);
+STATIC_ASSERT(QOL_DIFFICULTY_HARD == DIFFICULTY_HARD, QolDifficultyHardMatches);
 #endif
 
 static void ResetMiniGamesRecords(void)
