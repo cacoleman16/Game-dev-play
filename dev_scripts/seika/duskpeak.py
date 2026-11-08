@@ -32,7 +32,6 @@ ROCK_IN_BOT = (0x07B, 0x07C, 0x07D)
 ROCK_BOT = (0x078, 0x079, 0x07A)       # the cliff face at the bottom
 STAIRS = (0x091, 0x089)                # stone steps cut into a cliff (left, right)
 BOULDER = 0x09F
-CAVE = 0x0A9                           # cave mouth (a door)
 
 
 # ---------------------------------------------------------------- painting helpers
@@ -358,7 +357,7 @@ Level: 60
 - Stone Edge
 - Night Slash
 ''', music='Serious')
-    trainer('TRAINER_SEIKA_HIKER_IWAO', 'IWAO', 'Hiker Frlg', 'Hiker Frlg', 'Male', '''
+    trainer('TRAINER_SEIKA_HIKER_GENZO', 'GENZO', 'Hiker Frlg', 'Hiker Frlg', 'Male', '''
 Steelix
 Level: 60
 - Iron Tail
@@ -373,11 +372,11 @@ Level: 61
 - Ice Shard
 - Stone Edge
 ''', music='Serious')
-    m.objects.append(g.obj('OBJ_EVENT_GFX_COOLTRAINER_F', 12, 39, name + '_EventScript_Fuyumi',
+    m.objects.append(g.obj('OBJ_EVENT_GFX_PICNICKER_FRLG', 12, 39, name + '_EventScript_Fuyumi',
                            move='MOVEMENT_TYPE_FACE_LEFT', trainer='TRAINER_TYPE_NORMAL', sight=3))
     m.objects.append(g.obj('OBJ_EVENT_GFX_BLACK_BELT_FRLG', 7, 28, name + '_EventScript_Shingo',
                            move='MOVEMENT_TYPE_FACE_LEFT', trainer='TRAINER_TYPE_NORMAL', sight=2))
-    m.objects.append(g.obj('OBJ_EVENT_GFX_HIKER_FRLG', 12, 13, name + '_EventScript_Iwao',
+    m.objects.append(g.obj('OBJ_EVENT_GFX_HIKER_FRLG', 12, 13, name + '_EventScript_Genzo',
                            move='MOVEMENT_TYPE_FACE_RIGHT', trainer='TRAINER_TYPE_NORMAL', sight=3))
     m.scripts += battle(name + '_EventScript_Fuyumi', 'TRAINER_SEIKA_RANGER_FUYUMI',
                         'The snow came early this year.\nMy POKéMON love it!',
@@ -387,19 +386,19 @@ Level: 61
                         'I train barefoot in the snow!\nHyah!',
                         'My feet are frozen...',
                         'The cold makes the body strong.\nAnd the nose red.', name)
-    m.scripts += battle(name + '_EventScript_Iwao', 'TRAINER_SEIKA_HIKER_IWAO',
+    m.scripts += battle(name + '_EventScript_Genzo', 'TRAINER_SEIKA_HIKER_GENZO',
                         'I climb MT. SKYREACH every year.\nWell, the bottom of it!',
                         'Avalanche!',
                         'They say the summit is above the\nclouds. Only the CHAMPION has\nseen it.', name)
     wild('MAP_SEIKA_FROST_ROAD', 'gSeika_FrostRoad',
          land=[('SWINUB', 58, 59), ('SNEASEL', 58, 59), ('DELIBIRD', 58, 60), ('SNORUNT', 58, 60),
                ('PILOSWINE', 59, 60), ('JYNX', 59, 60), ('WEAVILE', 60, 61), ('GLALIE', 60, 61),
-               ('MAMOSWINE', 61, 61), ('FROSLASS', 61, 61), ('SMOOCHUM', 58, 58), ('LAPRAS', 61, 61)],
+               ('MAMOSWINE', 61, 61), ('FROSLASS', 61, 61), ('PILOSWINE', 61, 61), ('WEAVILE', 61, 61)],
          water=[('SEEL', 58, 60), ('SHELLDER', 58, 60), ('DEWGONG', 59, 61), ('CLOYSTER', 59, 61),
                 ('LAPRAS', 61, 61)],
-         fishing=[('MAGIKARP', 55, 57), ('SHELLDER', 55, 57), ('SHELLDER', 56, 58), ('REMORAID', 56, 58),
-                  ('SEEL', 57, 59), ('OCTILLERY', 58, 60), ('CLOYSTER', 58, 60), ('DEWGONG', 58, 60),
-                  ('GYARADOS', 59, 61), ('LAPRAS', 60, 61)])
+         fishing=[('MAGIKARP', 58, 59), ('SHELLDER', 58, 59), ('SHELLDER', 58, 60), ('REMORAID', 58, 60),
+                  ('SEEL', 58, 60), ('OCTILLERY', 59, 61), ('CLOYSTER', 59, 61), ('DEWGONG', 59, 61),
+                  ('GYARADOS', 60, 61), ('LAPRAS', 61, 61)])
 
 
 # ---------------------------------------------------------------- Duskpeak Village
@@ -441,9 +440,9 @@ def build_village(t):
         'all eight SEIKA BADGES.',
         'MOVEMENT_TYPE_FACE_LEFT')
     wild('MAP_SEIKA_DUSKPEAK', 'gSeika_Duskpeak',
-         fishing=[('MAGIKARP', 55, 57), ('POLIWAG', 55, 57), ('POLIWHIRL', 56, 58), ('WOOPER', 56, 58),
-                  ('QUAGSIRE', 57, 59), ('SLOWPOKE', 58, 60), ('POLIWHIRL', 58, 60), ('SLOWBRO', 58, 60),
-                  ('GYARADOS', 59, 61), ('SLOWKING', 60, 61)])
+         fishing=[('MAGIKARP', 58, 60), ('POLIWHIRL', 58, 60), ('POLIWHIRL', 59, 61), ('QUAGSIRE', 59, 61),
+                  ('SLOWPOKE', 59, 61), ('QUAGSIRE', 60, 62), ('POLIWRATH', 60, 62), ('SLOWBRO', 60, 62),
+                  ('GYARADOS', 61, 62), ('SLOWKING', 62, 62)])
 
     pokecenter('Duskpeak', SEC, t, w_pc, 'HEAL_LOCATION_SEIKA_DUSKPEAK', npcs=[
         ('OBJ_EVENT_GFX_GENTLEMAN_FRLG', 11, 5,

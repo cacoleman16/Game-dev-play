@@ -152,8 +152,6 @@ def build():
             troad = tide_road(city)
             if 'tidewatch' in globals():
                 tidewatch(troad)
-            else:
-                add(g.MapDef(P_TIDE, 'MAP_SEIKA_TIDEWATCH', SEC_TIDE, tidewatch_canvas(), 'MUS_RG_SEVII_45', border=g.SEA_BORDER))
 
 
 # ---------------------------------------------------------------- Kiln Road
@@ -436,7 +434,6 @@ def shop_clerk(m, name, x, y, items, text):
 
 def kiln_city(road):
     c = kiln_city_canvas()
-    c.put(28, 10, g.SIGN)
     c.put(47, 19, g.SIGN)
     t = add(g.MapDef(P_KILN, 'MAP_SEIKA_KILN_CITY', SEC_KILN, c, 'MUS_RG_CELADON', 'MAP_TYPE_CITY'))
     link('MAP_SEIKA_KILN_ROAD', 'up', -16, 'MAP_SEIKA_KILN_CITY')   # road path x10-11 = city x26-27
@@ -451,7 +448,7 @@ def kiln_city(road):
     signpost(t, 24, 34, P_KILN + '_EventScript_CitySign',
              'KILN CITY\n'
              'A thousand kilns, one fire.')
-    signpost(t, 28, 10, P_KILN + '_EventScript_GymSign',
+    signpost(t, 29, 11, P_KILN + '_EventScript_GymSign',
              'KILN CITY POKéMON GYM\n'
              'LEADER: TOBIN\fThe potter whose clay never\n'
              'cracks!')
@@ -1036,6 +1033,319 @@ def tidewatch_canvas():
     c.tree(14, 7)
     c.tree(16, 7)
     c.tree(28, 8)
-    c.put(19, 14, g.SIGN)
+    c.put(19, 10, g.SIGN)
     c.put(13, 21, g.SIGN)
     return c
+
+
+# Cerulean Gym's pool: walkway and water blocks by their neighbours.
+POOL_WALK = ({0x329C, 0x32B9, 0x32BA, 0x32C1, 0x32C4, 0x32C5} | set(range(0x32A1, 0x32AE))
+             | set(range(0x32B1, 0x32B6)))
+POOL_STATUE = {0x32D0, 0x32D1, 0x06D2}
+POOL_NEIGH = [(0, -1), (1, 0), (0, 1), (-1, 0), (-1, -1), (1, -1), (-1, 1), (1, 1)]
+
+
+def _pool_kind(b):
+    if b in POOL_WALK:
+        return '='
+    if b in POOL_STATUE:
+        return 'S'
+    if (b >> 12) == 1 or b == 0x0293:
+        return '~'
+    return '#' if (b >> 10) & 3 else '.'
+
+
+def tide_gym_room(walks):
+    """Gym 5 on Cerulean Gym's tiles: the room, ladders, entrance pier and
+    leader's platform as in Kanto, the walkways in the pool redrawn.
+    walks: set of (x, y) pool cells that are walkway."""
+    import collections
+    src = 'LAYOUT_CERULEAN_CITY_GYM'
+    W, H = 17, 20
+    r = g.Room(W, H, 'gTileset_BuildingFrlg', 'gTileset_CeruleanGym', source=src)
+    r.copy(0, 0, W, H, 0, 0)
+    S = r.src
+
+    def kind_src(x, y):
+        return _pool_kind(S[y][x]) if 0 <= x < W and 0 <= y < H else '#'
+    table = collections.defaultdict(collections.Counter)
+    for y in range(H):
+        for x in range(W):
+            k = kind_src(x, y)
+            if k in '=~' and S[y][x] not in (0x12A8, 0x12C6):    # not the ladders
+                table[(k, ''.join(kind_src(x + dx, y + dy) for dx, dy in POOL_NEIGH))][S[y][x]] += 1
+    pool = {(x, y) for y in range(4, 18) for x in range(2, 15) if kind_src(x, y) in '=~'}
+    keep = {(3, 5), (13, 5), (3, 17), (13, 17)}           # ladders
+    keep |= {(x, y) for x in (7, 8, 9) for y in (16, 17)}  # the entrance pier
+
+    def kind_new(x, y):
+        if (x, y) in pool:
+            return '=' if (x, y) in walks or ((x, y) in keep and kind_src(x, y) == '=') else '~'
+        return kind_src(x, y)
+    w8 = [4, 4, 4, 4, 1, 1, 1, 1]
+    for (x, y) in sorted(pool - keep):
+        k = kind_new(x, y)
+        key = ''.join(kind_new(x + dx, y + dy) for dx, dy in POOL_NEIGH)
+        if (k, key) in table:
+            r.set(x, y, table[(k, key)].most_common(1)[0][0])
+            continue
+        best = min((kk for kk in table if kk[0] == k),
+                   key=lambda kk: sum(w for w, a, b in zip(w8, kk[1], key) if a != b))
+        r.set(x, y, table[best].most_common(1)[0][0])
+    return r
+
+
+TIDE_MART = ['ITEM_ULTRA_BALL', 'ITEM_GREAT_BALL', 'ITEM_NET_BALL', 'ITEM_DIVE_BALL', 'ITEM_LURE_BALL',
+             'ITEM_HYPER_POTION', 'ITEM_MAX_POTION', 'ITEM_FULL_RESTORE', 'ITEM_REVIVE', 'ITEM_FULL_HEAL',
+             'ITEM_MAX_REPEL', 'ITEM_WATER_STONE']
+
+
+def tidewatch(troad):
+    c = tidewatch_canvas()
+    t = add(g.MapDef(P_TIDE, 'MAP_SEIKA_TIDEWATCH', SEC_TIDE, c, 'MUS_RG_SEVII_45', 'MAP_TYPE_TOWN',
+                     border=g.SEA_BORDER))
+    link('MAP_SEIKA_TIDE_ROAD', 'right', -4, 'MAP_SEIKA_TIDEWATCH')   # road y12-13 = town y16-17
+    w_pc = door(t, 11, 15, 'MAP_SEIKA_TIDEWATCH_POKEMON_CENTER_1F', 0)
+    w_gym = door(t, 26, 15, 'MAP_SEIKA_TIDEWATCH_GYM', 0)
+    w_mart = door(t, 11, 22, 'MAP_SEIKA_TIDEWATCH_MART', 0)
+    w_h1 = door(t, 16, 15, 'MAP_SEIKA_TIDEWATCH_HOUSE1', 0)
+    w_shrine = door(t, 17, 22, 'MAP_SEIKA_TIDEWATCH_TIDE_SHRINE', 0)
+    w_h2 = door(t, 25, 22, 'MAP_SEIKA_TIDEWATCH_HOUSE2', 0)
+    signpost(t, 19, 10, P_TIDE + '_EventScript_TownSign',
+             'TIDEWATCH TOWN\n'
+             'The sea keeps time here.')
+    signpost(t, 22, 15, P_TIDE + '_EventScript_GymSign',
+             'TIDEWATCH POKéMON GYM\n'
+             'LEADER: NAGI\fThe diver who swims with\n'
+             'the tide!')
+    signpost(t, 13, 21, P_TIDE + '_EventScript_ShrineSign',
+             'TIDE SHRINE\n'
+             'The sea rises for the star.')
+    npc(t, 'OBJ_EVENT_GFX_FISHER', 12, 29, P_TIDE + '_EventScript_FisherWest',
+        'Everyone in TIDEWATCH fishes.\n'
+        'Even the GYM LEADER!\fWell, NAGI dives for her catch.\n'
+        'Same thing, really.', 'MOVEMENT_TYPE_FACE_DOWN')
+    npc(t, 'OBJ_EVENT_GFX_FISHER', 27, 28, P_TIDE + '_EventScript_FisherEast',
+        'At high tide the REMORAID come\n'
+        'right up to the pier.\fAt low tide, the OCTILLERY come\n'
+        'after the REMORAID!', 'MOVEMENT_TYPE_FACE_DOWN')
+    npc(t, 'OBJ_EVENT_GFX_OLD_MAN_1', 31, 12, P_TIDE + '_EventScript_OldSailor',
+        'The tide here never misses a\n'
+        'beat. Twice a day, for a thousand\n'
+        'years.\fExcept one night, they say. The\n'
+        'night the first star fell, the\n'
+        'sea rose all the way to the hills.', 'MOVEMENT_TYPE_FACE_RIGHT')
+    npc(t, 'OBJ_EVENT_GFX_LITTLE_GIRL_FRLG', 24, 18, P_TIDE + '_EventScript_Girl',
+        'NAGI can hold her breath for ten\n'
+        'whole minutes! I can do ten\n'
+        'seconds.', 'MOVEMENT_TYPE_WANDER_AROUND')
+    npc(t, 'OBJ_EVENT_GFX_WOMAN_2_FRLG', 21, 6, P_TIDE + '_EventScript_NorthWoman',
+        'The path north goes through the\n'
+        'hills to SILKHOLLOW TOWN.\fThe weavers there make the finest\n'
+        'silk in all of SEIKA.', 'MOVEMENT_TYPE_FACE_DOWN')
+
+    pokecenter('Tidewatch', SEC_TIDE, t, w_pc, 'HEAL_LOCATION_SEIKA_TIDEWATCH', npcs=[
+        ('OBJ_EVENT_GFX_SAILOR_FRLG', 11, 5,
+         'My ship brings fish from here to\n'
+         'KILN CITY, and pots back again.\fThe KILN CITY folk do love their\n'
+         'fish on a nice plate!'),
+    ])
+    mart('Tidewatch', SEC_TIDE, t, w_mart, TIDE_MART, npcs=[
+        ('OBJ_EVENT_GFX_FISHER', 6, 4,
+         'A LURE BALL works best on POKéMON\n'
+         'you hook with a ROD.'),
+    ])
+    house('Tidewatch', 1, SEC_TIDE, t, w_h1, 'MUS_RG_SEVII_45', [
+        ('OBJ_EVENT_GFX_OLD_WOMAN_FRLG', 2, 3,
+         'My husband mends nets, I sell the\n'
+         'fish. Fifty years now!\fThe sea gives, and the sea takes.\n'
+         'Mostly it gives.'),
+        ('OBJ_EVENT_GFX_FAT_MAN_FRLG', 7, 4,
+         'A fine woman in a coat came\n'
+         'through on a fast boat.\fShe asked about the old road to\n'
+         'MT. SKYREACH. I told her nothing!', 'MOVEMENT_TYPE_FACE_LEFT'),
+    ], layout='LAYOUT_HOUSE2_FRLG')
+    house('Tidewatch', 2, SEC_TIDE, t, w_h2, 'MUS_RG_SEVII_45', [
+        ('OBJ_EVENT_GFX_SWIMMER_M_LAND', 5, 3,
+         'I train in NAGI\'s pool every day.\fShe swims rings around me. Every\n'
+         'single time!'),
+    ], layout='LAYOUT_HOUSE1_FRLG')
+    shrine = add(g.MapDef(P_TIDE + '_TideShrine', 'MAP_SEIKA_TIDEWATCH_TIDE_SHRINE', SEC_TIDE,
+                          'LAYOUT_FIVE_ISLAND_RESORT_GORGEOUS_HOUSE', 'MUS_RG_SEVII_45', 'MAP_TYPE_INDOOR',
+                          'WEATHER_NONE', False, False, False))
+    door(shrine, 4, 7, t.id, w_shrine)
+    npc(shrine, 'OBJ_EVENT_GFX_OLD_WOMAN_FRLG', 4, 3, P_TIDE + '_TideShrine_EventScript_Keeper',
+        'Welcome to the TIDE SHRINE.\fA thousand years ago, the first\n'
+        'star fell into the sky over the\n'
+        'sea, and the tide rose to meet it.\fWe have watched the tide ever\n'
+        'since. When it rises too high,\n'
+        'the star is stirring.\fThis year the sea has been very\n'
+        'high indeed...')
+    npc(shrine, 'OBJ_EVENT_GFX_WOMAN_1_FRLG', 7, 4, P_TIDE + '_TideShrine_EventScript_Attendant',
+        'NAGI is our shrine keeper. She\n'
+        'dives to the bottom of the bay to\n'
+        'read the old stones.\fShe says the stones point north.\n'
+        'Toward the mountain.', 'MOVEMENT_TYPE_FACE_LEFT')
+    for x in (8, 9):
+        shrine.bgs.append(g.sign(x, 1, P_TIDE + '_TideShrine_EventScript_TideChart', 'BG_EVENT_PLAYER_FACING_NORTH'))
+    shrine.scripts += (P_TIDE + '_TideShrine_EventScript_TideChart::\n\tmsgbox %s_TideShrine_Text_TideChart, MSGBOX_SIGN\n\tend\n\n'
+                       % P_TIDE + T(P_TIDE + '_TideShrine_Text_TideChart',
+                                    'Old tide charts, a thousand years\n'
+                                    'of them.\fOne page is marked with a star. On\n'
+                                    'it, the tide line runs off the top\n'
+                                    'of the page.'))
+    tide_gym(t, w_gym)
+    wild('MAP_SEIKA_TIDEWATCH', 'gSeika_Tidewatch',
+         water=[('TENTACRUEL', 52, 54), ('MANTINE', 52, 54), ('PELIPPER', 52, 54), ('LANTURN', 53, 55),
+                ('LAPRAS', 54, 55)],
+         fishing=[('MAGIKARP', 50, 52), ('REMORAID', 50, 52), ('REMORAID', 52, 54), ('CHINCHOU', 52, 54),
+                  ('QWILFISH', 52, 54), ('OCTILLERY', 53, 55), ('LANTURN', 53, 55), ('CORSOLA', 53, 55),
+                  ('SEADRA', 54, 55), ('KINGDRA', 55, 55)])
+    return t
+
+
+def tide_gym(t, w_gym):
+    walks = {(x, y) for x in (7, 8, 9) for y in (6, 7, 8)}     # the leader's platform
+    walks |= {(x, 7) for x in range(4, 13)}                     # its arms
+    walks |= {(x, y) for x in (4, 12) for y in range(7, 13)}    # down both sides
+    walks |= {(x, 12) for x in range(4, 13)}                    # joined at the bottom
+    walks |= {(9, y) for y in range(12, 16)}                    # and up from the entrance
+    r = tide_gym_room(walks)
+    W, H = r.w, r.h
+    name = P_TIDE + '_Gym'
+    m = add(g.MapDef(name, 'MAP_SEIKA_TIDEWATCH_GYM', SEC_TIDE, r, 'MUS_RG_GYM', 'MAP_TYPE_INDOOR',
+                     'WEATHER_NONE', False, False, False))
+    for k in (7, 8, 9):
+        door(m, k, 18, t.id, w_gym)
+    m.objects.append(g.obj('OBJ_EVENT_GFX_SWIMMER_F_LAND', 8, 6, name + '_EventScript_Nagi'))
+    m.objects.append(g.obj('OBJ_EVENT_GFX_GYM_GUY', 7, 16, name + '_EventScript_GymGuy'))
+    gym_statue(m, name, ((6, 17), (10, 17)), BADGE5, 'TIDEWATCH POKéMON GYM\nLEADER: NAGI')
+    swimmers = (('OBJ_EVENT_GFX_SWIMMER_F_WATER', 3, 10, 'Mina', 'MOVEMENT_TYPE_FACE_RIGHT'),
+                ('OBJ_EVENT_GFX_SWIMMER_M_WATER', 13, 10, 'Kaito', 'MOVEMENT_TYPE_FACE_LEFT'),
+                ('OBJ_EVENT_GFX_SWIMMER_M_WATER', 8, 14, 'Sora', 'MOVEMENT_TYPE_FACE_RIGHT'))
+    for gfx, x, y, label, move in swimmers:
+        r.set(x, y, r.grid[y][x] & 0x0FFF)      # elevation 0 under a swimmer, as in Kanto
+        m.objects.append(g.obj(gfx, x, y, name + '_EventScript_' + label, move=move,
+                               trainer='TRAINER_TYPE_NORMAL', sight=1, elevation=0))
+    trainer('TRAINER_SEIKA_SWIMMER_F_MINA', 'MINA', 'Swimmer F Frlg', 'Swimmer F Frlg', 'Female', '''
+Azumarill
+Level: 57
+- Aqua Jet
+- Play Rough
+- Liquidation
+- Superpower
+
+Lanturn
+Level: 57
+- Scald
+- Thunderbolt
+- Ice Beam
+- Volt Switch
+''', music='Female')
+    trainer('TRAINER_SEIKA_SWIMMER_M_KAITO', 'KAITO', 'Swimmer M Frlg', 'Swimmer M Frlg', 'Male', '''
+Octillery
+Level: 57
+- Octazooka
+- Ice Beam
+- Fire Blast
+- Energy Ball
+
+Mantine
+Level: 57
+- Scald
+- Air Slash
+- Ice Beam
+- Roost
+''')
+    trainer('TRAINER_SEIKA_SWIMMER_M_SORA', 'SORA', 'Swimmer M Frlg', 'Swimmer M Frlg', 'Male', '''
+Politoed
+Level: 57
+- Hydro Pump
+- Ice Beam
+- Hypnosis
+- Rain Dance
+
+Overqwil
+Level: 58
+- Crunch
+- Gunk Shot
+- Liquidation
+- Swords Dance
+''')
+    trainer('TRAINER_SEIKA_LEADER_NAGI', 'NAGI', 'Leader Frlg', 'Swimmer F', 'Female', '''
+Lanturn
+Level: 60
+%(iv)s
+- Scald
+- Thunderbolt
+- Ice Beam
+- Volt Switch
+
+Mantine
+Level: 60
+%(iv)s
+- Hydro Pump
+- Air Slash
+- Ice Beam
+- Roost
+
+Octillery
+Level: 60
+%(iv)s
+- Octazooka
+- Ice Beam
+- Fire Blast
+- Energy Ball
+
+Azumarill
+Level: 60
+%(iv)s
+- Aqua Jet
+- Play Rough
+- Liquidation
+- Superpower
+
+Kingdra @ Mystic Water
+Level: 61
+%(iv)s
+- Rain Dance
+- Hydro Pump
+- Draco Meteor
+- Ice Beam
+''' % {'iv': FULL_IVS}, music='Female', ai='Smart Trainer')
+    m.scripts += battle(name + '_EventScript_Mina', 'TRAINER_SEIKA_SWIMMER_F_MINA',
+                        'Splash! You walked right past my\nlane. Time to swim for it!',
+                        'I sank like a stone...',
+                        'NAGI dives deeper than anyone in\nSEIKA. She says it\'s very quiet.', name)
+    m.scripts += battle(name + '_EventScript_Kaito', 'TRAINER_SEIKA_SWIMMER_M_KAITO',
+                        'The tide is with me today!',
+                        'The tide went out...',
+                        'NAGI\'s KINGDRA calls the rain.\nThen it gets really fast!', name)
+    m.scripts += battle(name + '_EventScript_Sora', 'TRAINER_SEIKA_SWIMMER_M_SORA',
+                        'No one gets to NAGI without\ngetting wet first!',
+                        'Soaked through!',
+                        'Electric and Grass moves work\nwell here. Just saying.', name)
+    m.scripts += leader_script(
+        name, 'Nagi', 'TRAINER_SEIKA_LEADER_NAGI', BADGE5, 'ITEM_TM_RAIN_DANCE',
+        'Hello there. I am NAGI. I keep the\n'
+        'TIDE SHRINE, and I dive.\fDown deep, the sea is very calm.\n'
+        'You can hear your own heart.\fLet\'s see if yours stays calm\n'
+        'when the tide comes in!{PLAY_BGM}{MUS_RG_ENCOUNTER_GYM_LEADER}',
+        'Whew... You rode the wave all the\n'
+        'way in.\fThe TIDE BADGE is yours. The sea\n'
+        'will remember you.\f'
+        '{FONT_NORMAL}{PLAYER} received the TIDE BADGE\n'
+        'from NAGI!{PAUSE_MUSIC}{PLAY_BGM}{MUS_OBTAIN_BADGE}{PAUSE 0xFE}{PAUSE 0x56}{RESUME_MUSIC}',
+        'Take this TM, too. RAIN DANCE\n'
+        'brings the sea down from the sky.',
+        'Go north from TIDEWATCH, through\n'
+        'HOLLOW PATH, to SILKHOLLOW TOWN.\f'
+        'AYAME, the weaver, keeps the\n'
+        'shrine there.\fThe stones under the bay all\n'
+        'point to MT. SKYREACH. Hurry.')
+    m.scripts += gym_guy(name, BADGE5,
+                         'Yo! Welcome to the TIDEWATCH GYM!\fNAGI uses WATER types. ELECTRIC\n'
+                         'and GRASS moves are your friends.\fCareful: her KINGDRA brings rain\n'
+                         'and gets super fast in it!',
+                         'You made a splash! Five BADGES\nnow. Way to go!')
+    return m

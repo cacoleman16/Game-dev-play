@@ -533,7 +533,7 @@ def silkhollow(t):
          'My CLEFAIRY taught me to dance.\fIt spins around and around under\n'
          'the moon. AYAME says it has the\n'
          'best steps in town!'),
-        ('OBJ_EVENT_GFX_CLEFAIRY', 6, 5, 'CLEFAIRY: Pippi! Pi pippi!', 'MOVEMENT_TYPE_WANDER_AROUND'),
+        ('OBJ_EVENT_GFX_CLEFAIRY', 8, 5, 'CLEFAIRY: Pippi! Pi pippi!', 'MOVEMENT_TYPE_WANDER_AROUND'),
     ], layout='LAYOUT_HOUSE2_FRLG')
     silk_gym(t, w_gym)
 
@@ -1010,6 +1010,7 @@ def ice_sheet(r, cells):
     for (x, y) in cells:
         r.set(x, y, ice_block('ice'))
     ring = {(x + dx, y + dy) for (x, y) in cells for dx in (-1, 0, 1) for dy in (-1, 0, 1)} - cells
+    ring = {(x, y) for (x, y) in ring if 2 <= x < r.w - 2}
     for (x, y) in ring:
         n, s, w, e = (x, y - 1) in cells, (x, y + 1) in cells, (x - 1, y) in cells, (x + 1, y) in cells
         if s:
@@ -1031,23 +1032,26 @@ def ice_sheet(r, cells):
         r.set(x, y, ice_block(k))
 
 
-# Rime's hall: the floor plan (x 2..14, y 2..19). '#' rock on the ice, 'o' rock on
-# the floor, '~' ice; everything else is cave floor.
+# Rime's hall: the floor plan (x 2..14, y 2..19). '~' ice, '#' rock on the ice;
+# everything else is cave floor. Ice runs wall to wall, so the only way up is
+# across it: in at the gap in the bottom row, stop on a rock, slide right, then
+# up through the gap in the top row (3 slides; checked with a solver: every
+# spot you can reach on the ice can slide back to the entrance).
 FROST_PLAN = [
     '.............',   # y 2
     '.............',
     '.............',
     '.............',
     '.............',   # y 6: ice edge
-    '.~~~~~~~~~~#.',
-    '.~#~~~~~~~~~.',
-    '.~~~~~~#~~~~.',
-    '.~~~~~~~~~#~.',
-    '.~~~~#~~~~~~.',   # y 11
-    '.~#~~~~~~~~~.',
-    '.~~~~~~~#~~~.',
-    '.~~~~~~~~~~~.',
-    '.~~~~~~~~~~~.',
+    '###########~#',   # y 7
+    '~~~~~~~~~~~~~',
+    '~~~~~~~#~~~~~',
+    '~~#~~~~~~~~~~',
+    '~~~~~#~~~~~~~',
+    '~~~~~~~~~~~~#',
+    '~~~#~~#~~~~~~',
+    '~~~~~~~~~#~~~',
+    '#####~~~#####',   # y 15
     '.............',   # y 16: ice edge
     '.............',
     '.............',
@@ -1194,10 +1198,10 @@ Level: 65
 """ % {'iv': IV31}, music='Male', ai='Smart Trainer')
     m.objects.append(g.obj('OBJ_EVENT_GFX_FISHER', 5, 17, name + '_EventScript_Shiro',
                            move='MOVEMENT_TYPE_FACE_RIGHT', trainer='TRAINER_TYPE_NORMAL', sight=3))
-    m.objects.append(g.obj('OBJ_EVENT_GFX_COOLTRAINER_F', 13, 5, name + '_EventScript_Mizore',
-                           move='MOVEMENT_TYPE_FACE_LEFT', trainer='TRAINER_TYPE_NORMAL', sight=4))
-    m.objects.append(g.obj('OBJ_EVENT_GFX_EXPERT_M', 3, 5, name + '_EventScript_Touma',
-                           move='MOVEMENT_TYPE_FACE_RIGHT', trainer='TRAINER_TYPE_NORMAL', sight=4))
+    m.objects.append(g.obj('OBJ_EVENT_GFX_COOLTRAINER_F', 11, 6, name + '_EventScript_Mizore',
+                           move='MOVEMENT_TYPE_FACE_RIGHT', trainer='TRAINER_TYPE_NORMAL', sight=2))
+    m.objects.append(g.obj('OBJ_EVENT_GFX_EXPERT_M', 5, 4, name + '_EventScript_Touma',
+                           move='MOVEMENT_TYPE_FACE_RIGHT', trainer='TRAINER_TYPE_NORMAL', sight=3))
     m.scripts += battle(name + '_EventScript_Shiro', 'TRAINER_SEIKA_FISHERMAN_SHIRO',
                         'Shh! You\'ll scare the fish...\nToo late! Battle me instead!',
                         'The big one got away...',
