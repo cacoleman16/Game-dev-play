@@ -21,14 +21,16 @@ int GameClear(void)
 
     HealPlayerParty();
 
-    if (FlagGet(FLAG_SYS_GAME_CLEAR) == TRUE)
+    // [QoL] Merged regions: this is Hoenn's Hall of Fame (Kanto's is
+    // EnterHallOfFame below), so it marks Hoenn as cleared.
+    if (FlagGet(FLAG_HOENN_GAME_CLEAR) == TRUE)
     {
         gHasHallOfFameRecords = TRUE;
     }
     else
     {
-        gHasHallOfFameRecords = FALSE;
-        FlagSet(FLAG_SYS_GAME_CLEAR);
+        gHasHallOfFameRecords = FlagGet(FLAG_SYS_GAME_CLEAR);
+        FlagSet(FLAG_HOENN_GAME_CLEAR);
     }
 
     if (GetGameStat(GAME_STAT_FIRST_HOF_PLAY_TIME) == 0)

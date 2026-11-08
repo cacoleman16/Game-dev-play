@@ -750,8 +750,9 @@ void process_groups(string groups_filepath, vector<string> &map_filepaths, strin
         }
         string map_name = json_to_string(map_data, "name");
 
+        // [QoL] Merged regions: the FireRed build includes the Hoenn maps too.
         if ((version == "emerald" && region != "REGION_HOENN")
-         || (version == "firered" && region != "REGION_KANTO")) {
+         || (version == "firered" && region != "REGION_KANTO" && region != "REGION_HOENN")) {
             invalid_maps.push_back(map_name);
         }
     }
@@ -790,8 +791,7 @@ string generate_layout_headers_text(Json layouts_data) {
             else if (version == "firered")
                 layout_version = "frlg";
         }
-        if ((version == "emerald" && layout_version != "emerald")
-         || (version == "firered" && layout_version != "frlg"))
+        if (version == "emerald" && layout_version != "emerald") // [QoL] FireRed build: both games' layouts
             continue;
         string layoutName = json_to_string(layout, "name");
         string border_label = layoutName + "_Border";
@@ -848,7 +848,7 @@ string generate_layouts_table_text(Json layouts_data) {
             else if (version == "firered")
                 layout_version = "frlg";
         }
-        if ((version == "emerald" && layout_version != "emerald") || (version == "firered" && layout_version != "frlg")) {
+        if (version == "emerald" && layout_version != "emerald") { // [QoL] FireRed build: both games' layouts
             text << "\t.4byte NULL\n";
         } else {
             string layout_name = json_to_string(layout, "name", true);

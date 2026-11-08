@@ -21,6 +21,17 @@ static bool32 IsAlwaysTrue(enum FieldMove fieldMove)
 
 static bool32 HasBadgeForFieldMove(enum FieldMove fieldMove)
 {
+#if IS_FRLG
+    // [QoL] Merged regions: Hoenn's badges unlock the HMs as they do in Emerald.
+    static const u8 sHoennBadge[FIELD_MOVES_COUNT] =
+    {
+        [FIELD_MOVE_CUT] = 1, [FIELD_MOVE_FLASH] = 2, [FIELD_MOVE_ROCK_SMASH] = 3,
+        [FIELD_MOVE_STRENGTH] = 4, [FIELD_MOVE_SURF] = 5, [FIELD_MOVE_FLY] = 6,
+        [FIELD_MOVE_DIVE] = 7, [FIELD_MOVE_WATERFALL] = 8,
+    };
+    if (sHoennBadge[fieldMove] != 0 && FlagGet(FLAG_HOENN_BADGE01_GET + sHoennBadge[fieldMove] - 1))
+        return TRUE;
+#endif
     return FlagGet(gFieldMoveInfo[fieldMove].arg + FLAG_BADGE01_GET);
 }
 

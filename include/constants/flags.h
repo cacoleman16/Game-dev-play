@@ -45,6 +45,15 @@
 #define TEMP_FLAGS_END   FLAG_TEMP_1F
 #define NUM_TEMP_FLAGS   (TEMP_FLAGS_END - TEMP_FLAGS_START + 1)
 
+// [QoL] Merged regions: in the FireRed build the Emerald-only flags (Hoenn
+// story, items, trainers...) live in a separate block after the Kanto flags,
+// stored in SaveBlock3 (see src/qol_hoenn.c). QOL_HOENN_FLAG(n) is the flag that
+// was number n in Emerald. Set up by dev_scripts/qol_hoenn_constants.py.
+// Numbers 0x960 and up (after Emerald's last flag) are this hack's own Hoenn flags.
+#define QOL_HOENN_FLAGS_START   0x900
+#define QOL_HOENN_FLAGS_COUNT   0x9C0
+#define QOL_HOENN_FLAG(n)       (QOL_HOENN_FLAGS_START + (n))
+
 #if IS_FRLG
 
 #include "constants/flags_frlg.h"
@@ -2447,6 +2456,45 @@
 #define TESTING_FLAG_UNUSED_6                   (TESTING_FLAGS_START + 0x6)
 #define TESTING_FLAG_UNUSED_7                   (TESTING_FLAGS_START + 0x7)
 #endif // TESTING
+
+// [QoL] Merged regions: Hoenn's badges and Hoenn Hall of Fame. Hoenn scripts
+// use these instead of the (Kanto) FLAG_BADGE0x_GET and FLAG_SYS_GAME_CLEAR.
+#if IS_FRLG
+#define FLAG_HOENN_BADGE01_GET  QOL_HOENN_FLAG(0x867)
+#define FLAG_HOENN_BADGE02_GET  QOL_HOENN_FLAG(0x868)
+#define FLAG_HOENN_BADGE03_GET  QOL_HOENN_FLAG(0x869)
+#define FLAG_HOENN_BADGE04_GET  QOL_HOENN_FLAG(0x86A)
+#define FLAG_HOENN_BADGE05_GET  QOL_HOENN_FLAG(0x86B)
+#define FLAG_HOENN_BADGE06_GET  QOL_HOENN_FLAG(0x86C)
+#define FLAG_HOENN_BADGE07_GET  QOL_HOENN_FLAG(0x86D)
+#define FLAG_HOENN_BADGE08_GET  QOL_HOENN_FLAG(0x86E)
+#define FLAG_HOENN_GAME_CLEAR   QOL_HOENN_FLAG(0x864)
+// Set once the Hoenn map flags have been set up (first trip to Hoenn).
+#define FLAG_QOL_HOENN_SETUP    QOL_HOENN_FLAG(0x020)
+// Nuzlocke: one flag per Hoenn map section (MAPSEC_LITTLEROOT_TOWN on), set
+// once its encounter is used up. Kanto's are FLAG_QOL_NUZLOCKE_AREAS_START.
+#define FLAG_QOL_NUZLOCKE_HOENN_AREAS_START QOL_HOENN_FLAG(0x960)
+#else
+#define FLAG_HOENN_BADGE01_GET  FLAG_BADGE01_GET
+#define FLAG_HOENN_BADGE02_GET  FLAG_BADGE02_GET
+#define FLAG_HOENN_BADGE03_GET  FLAG_BADGE03_GET
+#define FLAG_HOENN_BADGE04_GET  FLAG_BADGE04_GET
+#define FLAG_HOENN_BADGE05_GET  FLAG_BADGE05_GET
+#define FLAG_HOENN_BADGE06_GET  FLAG_BADGE06_GET
+#define FLAG_HOENN_BADGE07_GET  FLAG_BADGE07_GET
+#define FLAG_HOENN_BADGE08_GET  FLAG_BADGE08_GET
+#define FLAG_HOENN_GAME_CLEAR   FLAG_SYS_GAME_CLEAR
+#define FLAG_QOL_HOENN_SETUP    0
+#define FLAG_QOL_NUZLOCKE_HOENN_AREAS_START 0
+#endif
+
+// [QoL] Merged regions: a trainer's "defeated" flag. Hoenn trainers use the
+// Emerald trainer flags in the Hoenn flag block.
+#if IS_FRLG
+#define TRAINER_FLAG(id) ((id) >= QOL_HOENN_TRAINER_BASE ? QOL_HOENN_FLAG(0x500 + (id) - QOL_HOENN_TRAINER_BASE) : TRAINER_FLAGS_START + (id))
+#else
+#define TRAINER_FLAG(id) (TRAINER_FLAGS_START + (id))
+#endif
 
 // [QoL] Flags used by this hack's FireRed/LeafGreen build. They repurpose FRLG
 // system flags 0x8E0-0x8F1, which nothing in the game uses. In Emerald builds

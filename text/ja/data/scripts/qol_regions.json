@@ -1,0 +1,15 @@
+{
+  "QoL_Text_TidalGreeting": "おーい！ ここは タイドリップごうの のりばだ。\\pホウエン ちほうまで うみを わたって いくんだ！",
+  "QoL_Text_TidalNeedTicket": "ただし のるには ふねのチケットが ひつようだぞ。",
+  "QoL_Text_TidalFirstTrip": "おっ ふねのチケット！ それなら だいじょうぶだ。\\pホウエンは はじめてかい？\\pふねが ついたら ひっこしの トラックで ミシロタウンまで おくって もらえるぞ。\\pミシロタウンには やせいの ポケモンを けんきゅうしている オダマキはかせが いるんだ。\\pさあ しゅっこう するかい？",
+  "QoL_Text_TidalWhereTo": "どこへ いくかい？",
+  "QoL_Text_TidalAllAboard": "ごじょうせん ください！ タイドリップごう しゅっこう！",
+  "QoL_Text_TidalComeBack": "また いつでも きてくれよな！",
+  "QoL_Text_OfferKanto": "タイドリップごうは カントーへも いくぞ。\\pクチバシティへ いくかい？",
+  "QoL_Text_ShuttleDriver": "わたしは タイドリップごうの みなとへ いく トラックの うんてんしゅさ。\\pふねは カントーの クチバシティへ いくんだ。 のっていくかい？",
+  "QoL_Text_DestLittleroot": "ミシロタウン",
+  "QoL_Text_DestSlateport": "カイナシティ",
+  "QoL_Text_DestLilycove": "ミナモシティ",
+  "QoL_Text_DestFrontier": "バトルフロンティア",
+  "QoL_Text_DestCancel": "やめる"
+}

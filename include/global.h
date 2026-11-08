@@ -254,6 +254,15 @@ struct NPCFollower
 #include "constants/items.h"
 #define ITEM_FLAGS_COUNT ((ITEMS_COUNT / 8) + ((ITEMS_COUNT % 8) ? 1 : 0))
 
+// [QoL] Merged regions: the Hoenn (Emerald-only) flags and vars of the
+// FireRed build. See QOL_HOENN_FLAG / QOL_HOENN_VAR and src/qol_hoenn.c.
+struct QoLHoennState
+{
+    u32 magic;
+    u8 flags[QOL_HOENN_FLAGS_COUNT / 8];
+    u16 vars[QOL_HOENN_VARS_COUNT];
+};
+
 struct SaveBlock3
 {
 #if OW_USE_FAKE_RTC
@@ -271,6 +280,9 @@ struct SaveBlock3
     u8 dexNavChain;
 #if APRICORN_TREE_COUNT > 0
     u8 apricornTrees[NUM_APRICORN_TREE_BYTES];
+#endif
+#if IS_FRLG
+    struct QoLHoennState qolHoenn; // [QoL] Merged regions: Hoenn flags and vars (src/qol_hoenn.c)
 #endif
 }; /* max size 1624 bytes */
 

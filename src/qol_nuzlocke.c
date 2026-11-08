@@ -9,6 +9,7 @@
 
 #if IS_FRLG
 STATIC_ASSERT(FLAG_QOL_NUZLOCKE_AREAS_START + KANTO_MAPSEC_COUNT - 1 <= FLAG_0x3D7, NuzlockeAreaFlagsFitInFreeRange);
+STATIC_ASSERT(FLAG_QOL_NUZLOCKE_HOENN_AREAS_START + KANTO_MAPSEC_START <= QOL_HOENN_FLAGS_START + QOL_HOENN_FLAGS_COUNT, NuzlockeHoennAreaFlagsFit);
 #endif
 
 bool32 QoL_NuzlockeActive(void)
@@ -76,14 +77,17 @@ void QoL_NuzlockeOnWildEncounter(void)
     FlagClear(FLAG_QOL_NO_CATCHING);
     if (!QoL_NuzlockeActive())
         return;
-    if (mapSec < KANTO_MAPSEC_START || mapSec > KANTO_MAPSEC_END)
-        return; // Not a Kanto/Sevii area: no tracking.
+    if (mapSec > KANTO_MAPSEC_END)
+        return; // Not a Kanto, Sevii or Hoenn area: no tracking.
 
     // Shiny clause: always catchable, and the area stays open.
     if (IsMonShiny(wildMon))
         return;
 
-    areaFlag = FLAG_QOL_NUZLOCKE_AREAS_START + (mapSec - KANTO_MAPSEC_START);
+    if (mapSec < KANTO_MAPSEC_START) // [QoL] Merged regions: a Hoenn area
+        areaFlag = FLAG_QOL_NUZLOCKE_HOENN_AREAS_START + mapSec;
+    else
+        areaFlag = FLAG_QOL_NUZLOCKE_AREAS_START + (mapSec - KANTO_MAPSEC_START);
     if (FlagGet(areaFlag))
     {
         FlagSet(FLAG_QOL_NO_CATCHING); // This area's encounter is used up.

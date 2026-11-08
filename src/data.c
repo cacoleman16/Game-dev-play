@@ -228,14 +228,20 @@ const union AnimCmd *const gAnims_Trainer[] ={
 };
 
 #if !TESTING
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Woverride-init"
 const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT] =
 {
 #if IS_FRLG
 #include "data/trainers_frlg.h"
+// [QoL] Merged regions: the Hoenn trainers, from QOL_HOENN_TRAINER_BASE on
+// (their TRAINER_NONE entry repeats the Kanto one).
+#include "data/trainers.h"
 #else
 #include "data/trainers.h"
 #endif
 };
+#pragma GCC diagnostic pop
 #endif
 
 #include "data/trainer_approach_music.h"

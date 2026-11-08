@@ -642,3 +642,5 @@ gSpecials::
 	def_special QoL_RandomizeSpecialVar
 @ [QoL] Field Research side quest: progress of the current task
 	def_special QoL_Research_Status
+@ [QoL] Merged regions: set up Hoenn's map flags before the first trip
+	def_special QoL_HoennSetup

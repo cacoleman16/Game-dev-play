@@ -6,7 +6,7 @@ SlateportCity_Harbor_OnTransition:
 	setescapewarp MAP_SLATEPORT_CITY, 28, 13
 	setvar VAR_TEMP_1, 0
 	call_if_eq VAR_SLATEPORT_HARBOR_STATE, 1, SlateportCity_Harbor_EventScript_ReadyAquaEscapeScene
-	call_if_set FLAG_SYS_GAME_CLEAR, SlateportCity_Harbor_EventScript_ShowSSTidal
+	call_if_set FLAG_HOENN_GAME_CLEAR, SlateportCity_Harbor_EventScript_ShowSSTidal
 	end
 
 SlateportCity_Harbor_EventScript_ShowSSTidal::
@@ -157,7 +157,8 @@ SlateportCity_Harbor_Movement_PlayerWalkUp:
 SlateportCity_Harbor_EventScript_FerryAttendant::
 	lock
 	faceplayer
-	goto_if_set FLAG_SYS_GAME_CLEAR, SlateportCity_Harbor_EventScript_AskForTicket
+	call QoL_EventScript_FerryOfferKanto @ [QoL] Merged regions
+	goto_if_set FLAG_HOENN_GAME_CLEAR, SlateportCity_Harbor_EventScript_AskForTicket
 	msgbox SlateportCity_Harbor_Text_FerryServiceUnavailable, MSGBOX_DEFAULT
 	release
 	end
@@ -260,7 +261,7 @@ SlateportCity_Harbor_Movement_BoardFerryNorth:
 SlateportCity_Harbor_EventScript_Sailor::
 	lock
 	faceplayer
-	goto_if_unset FLAG_SYS_GAME_CLEAR, SlateportCity_Harbor_EventScript_SailorNoAbnormalWeather
+	goto_if_unset FLAG_HOENN_GAME_CLEAR, SlateportCity_Harbor_EventScript_SailorNoAbnormalWeather
 	setvar VAR_0x8004, 0
 	call_if_set FLAG_DEFEATED_KYOGRE, SlateportCity_Harbor_EventScript_CountDefeatedLegendary
 	call_if_set FLAG_DEFEATED_GROUDON, SlateportCity_Harbor_EventScript_CountDefeatedLegendary
@@ -285,7 +286,7 @@ SlateportCity_Harbor_EventScript_FatMan::
 SlateportCity_Harbor_EventScript_CaptStern::
 	lock
 	faceplayer
-	goto_if_set FLAG_BADGE07_GET, SlateportCity_Harbor_EventScript_CaptSternFerryOrScannerComment
+	goto_if_set FLAG_HOENN_BADGE07_GET, SlateportCity_Harbor_EventScript_CaptSternFerryOrScannerComment
 	goto_if_set FLAG_EVIL_TEAM_ESCAPED_STERN_SPOKE, SlateportCity_Harbor_EventScript_NeedDive
 	goto_if_set FLAG_TEAM_AQUA_ESCAPED_IN_SUBMARINE, SlateportCity_Harbor_EventScript_TeamAquaLeftNeedDive
 	goto_if_eq VAR_SLATEPORT_HARBOR_STATE, 2, SlateportCity_Harbor_EventScript_WhyStealSubmarine
@@ -316,7 +317,7 @@ SlateportCity_Harbor_EventScript_CaptSternFerryOrScannerComment::
 	goto_if_eq VAR_TEMP_1, 1, SlateportCity_Harbor_EventScript_TradedScanner
 	checkitem ITEM_SCANNER
 	goto_if_eq VAR_RESULT, TRUE, SlateportCity_Harbor_EventScript_AskToTradeScanner
-	goto_if_set FLAG_SYS_GAME_CLEAR, SlateportCity_Harbor_EventScript_FerryFinished
+	goto_if_set FLAG_HOENN_GAME_CLEAR, SlateportCity_Harbor_EventScript_FerryFinished
 	msgbox SlateportCity_Harbor_Text_WontBeLongBeforeWeFinishFerry, MSGBOX_DEFAULT
 	release
 	end

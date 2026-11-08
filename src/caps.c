@@ -23,16 +23,41 @@ u32 GetCurrentLevelCap(void)
         {FLAG_BADGE08_GET, 50}, // Giovanni
         {FLAG_SYS_GAME_CLEAR, 63}, // Champion
     };
-    u32 j;
+    // [QoL] Merged regions: Hoenn's gym leaders (Emerald levels). The cap is
+    // the higher of the two regions', so progress in either raises it.
+    static const u32 sLevelCapFlagMapHoenn[][2] =
+    {
+        {FLAG_HOENN_BADGE01_GET, 15}, // Roxanne
+        {FLAG_HOENN_BADGE02_GET, 19}, // Brawly
+        {FLAG_HOENN_BADGE03_GET, 24}, // Wattson
+        {FLAG_HOENN_BADGE04_GET, 29}, // Flannery
+        {FLAG_HOENN_BADGE05_GET, 31}, // Norman
+        {FLAG_HOENN_BADGE06_GET, 33}, // Winona
+        {FLAG_HOENN_BADGE07_GET, 42}, // Tate & Liza
+        {FLAG_HOENN_BADGE08_GET, 46}, // Juan
+        {FLAG_HOENN_GAME_CLEAR, 58},  // Champion
+    };
+    u32 j, kanto = MAX_LEVEL, hoenn = MAX_LEVEL;
 
     if (FLAG_QOL_LEVEL_CAPS == 0 || !FlagGet(FLAG_QOL_LEVEL_CAPS))
         return MAX_LEVEL;
     for (j = 0; j < ARRAY_COUNT(sLevelCapFlagMapFrlg); j++)
     {
         if (!FlagGet(sLevelCapFlagMapFrlg[j][0]))
-            return sLevelCapFlagMapFrlg[j][1];
+        {
+            kanto = sLevelCapFlagMapFrlg[j][1];
+            break;
+        }
     }
-    return MAX_LEVEL;
+    for (j = 0; j < ARRAY_COUNT(sLevelCapFlagMapHoenn); j++)
+    {
+        if (!FlagGet(sLevelCapFlagMapHoenn[j][0]))
+        {
+            hoenn = sLevelCapFlagMapHoenn[j][1];
+            break;
+        }
+    }
+    return max(kanto, hoenn);
 #endif
 
     static const u32 sLevelCapFlagMap[][2] =

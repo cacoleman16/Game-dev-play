@@ -1,4 +1,5 @@
 #include "global.h"
+#include "qol_randomizer.h"
 #include "bg.h"
 #include "data.h"
 #include "decompress.h"
@@ -110,9 +111,11 @@ static const u8 sStarterLabelCoords[STARTER_MON_COUNT][2] =
     {8, 4},
 };
 
-#define GRASS_STARTER (IS_FRLG ? SPECIES_BULBASAUR  : SPECIES_TREECKO)
-#define FIRE_STARTER  (IS_FRLG ? SPECIES_CHARMANDER : SPECIES_TORCHIC)
-#define WATER_STARTER (IS_FRLG ? SPECIES_SQUIRTLE   : SPECIES_MUDKIP )
+// [QoL] Merged regions: only Prof. Birch's bag (Hoenn) uses this screen, so it
+// always offers the Hoenn starters. Kanto's starters are Oak's Poké Balls.
+#define GRASS_STARTER SPECIES_TREECKO
+#define FIRE_STARTER  SPECIES_TORCHIC
+#define WATER_STARTER SPECIES_MUDKIP
 
 static const u16 sStarterMon[STARTER_MON_COUNT] =
 {
@@ -351,7 +354,11 @@ u16 GetStarterPokemon(u16 chosenStarterId)
 {
     if (chosenStarterId > STARTER_MON_COUNT)
         chosenStarterId = 0;
+#if IS_FRLG
+    return QoL_RandomizeSpecies(sStarterMon[chosenStarterId]); // [QoL] Randomizer
+#else
     return sStarterMon[chosenStarterId];
+#endif
 }
 
 static void VblankCB_StarterChoose(void)

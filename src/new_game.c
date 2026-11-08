@@ -1,4 +1,5 @@
 #include "global.h"
+#include "qol_hoenn.h"
 #include "clock.h"
 #include "new_game.h"
 #include "random.h"
@@ -292,4 +293,7 @@ static void ResetDexNav(void)
     memset(gSaveBlock3Ptr->dexNavSearchLevels, 0, sizeof(gSaveBlock3Ptr->dexNavSearchLevels));
 #endif
     gSaveBlock3Ptr->dexNavChain = 0;
+#if IS_FRLG
+    QoL_HoennResetState(); // [QoL] Merged regions: Hoenn flags and vars
+#endif
 }

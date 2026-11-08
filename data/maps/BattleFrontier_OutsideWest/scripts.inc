@@ -10,6 +10,7 @@ BattleFrontier_OutsideWest_OnTransition:
 BattleFrontier_OutsideWest_EventScript_FerryAttendant::
 	lock
 	faceplayer
+	call QoL_EventScript_FerryOfferKanto @ [QoL] Merged regions
 	msgbox BattleFrontier_OutsideWest_Text_MayISeeYourTicket, MSGBOX_DEFAULT
 	checkitem ITEM_SS_TICKET
 	goto_if_eq VAR_RESULT, FALSE, BattleFrontier_OutsideWest_EventScript_NoSSTicket

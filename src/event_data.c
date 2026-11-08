@@ -1,5 +1,6 @@
 #include "global.h"
 #include "event_data.h"
+#include "qol_hoenn.h"
 #include "pokedex.h"
 
 #define SPECIAL_FLAGS_SIZE  (NUM_SPECIAL_FLAGS / 8)  // 8 flags per byte
@@ -69,6 +70,9 @@ void ClearTempFieldEventData(void)
 void ClearDailyFlags(void)
 {
     memset(&gSaveBlock1Ptr->flags[DAILY_FLAGS_START / 8], 0, DAILY_FLAGS_SIZE);
+#if IS_FRLG
+    QoL_HoennClearDailyFlags();
+#endif
 }
 
 void DisableNationalPokedex(void)
@@ -164,8 +168,14 @@ u16 *GetVarPointer(u16 id)
 {
     if (id < VARS_START)
         return NULL;
-    else if (id < SPECIAL_VARS_START)
+#if IS_FRLG
+    else if (QoL_IsHoennVar(id)) // [QoL] Merged regions
+        return QoL_HoennVarPointer(id);
+#endif
+    else if (id < VARS_START + VARS_COUNT)
         return &gSaveBlock1Ptr->vars[id - VARS_START];
+    else if (id < SPECIAL_VARS_START)
+        return NULL;
 #if TESTING
     else if (id >= TESTING_VARS_START)
         return &sTestVars[id - TESTING_VARS_START];
@@ -208,8 +218,14 @@ u8 *GetFlagPointer(u16 id)
 {
     if (id == 0)
         return NULL;
-    else if (id < SPECIAL_FLAGS_START)
+#if IS_FRLG
+    else if (QoL_IsHoennFlag(id)) // [QoL] Merged regions
+        return QoL_HoennFlagPointer(id);
+#endif
+    else if (id < FLAGS_COUNT)
         return &gSaveBlock1Ptr->flags[id / 8];
+    else if (id < SPECIAL_FLAGS_START)
+        return NULL;
 #if TESTING
     else if (id >= TESTING_FLAGS_START)
         return &sTestFlags[(id - TESTING_FLAGS_START) / 8];
