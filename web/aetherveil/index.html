@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<title>Aetherveil</title>
+<meta name="description" content="Aetherveil: Shards of the Hollow Sky. An open-world action RPG that runs in your browser.">
+<meta name="theme-color" content="#0b1026">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Nunito:wght@400;600;800&display=swap">
+<link rel="stylesheet" href="style.css">
+<script type="importmap">
+{ "imports": { "three": "./vendor/three.module.min.js", "three/addons": "./vendor/three-addons.min.js" } }
+</script>
+</head>
+<body>
+<canvas id="scene" tabindex="0"></canvas>
+
+<!-- In-game HUD -->
+<div id="hud" class="hidden">
+  <div id="compass"><div id="compass-strip"></div><div id="compass-center"></div></div>
+  <div id="boss" class="hidden"><div id="boss-name"></div><div class="bar"><div id="boss-fill"></div><div id="boss-trail"></div></div></div>
+  <div id="tracker"></div>
+  <div id="clock"><span id="clock-time"></span><span id="clock-region"></span></div>
+  <div id="fps" class="hidden"></div>
+  <div id="vitals">
+    <div class="lvl"><span id="lvl-num">1</span></div>
+    <div class="bars">
+      <div class="vbar hp"><div class="fill" id="hp-fill"></div><span id="hp-text"></span></div>
+      <div class="vbar mp"><div class="fill" id="mp-fill"></div><span id="mp-text"></span></div>
+      <div class="vbar sp"><div class="fill" id="sp-fill"></div><span id="sp-text"></span></div>
+      <div class="xpbar"><div class="fill" id="xp-fill"></div></div>
+    </div>
+  </div>
+  <div id="spells"></div>
+  <div id="crosshair"></div>
+  <div id="prompt" class="hidden"></div>
+  <div id="feed"></div>
+  <div id="toast"></div>
+  <div id="banner" class="hidden"><div class="b-line"></div><div id="banner-title"></div><div id="banner-sub"></div><div class="b-line"></div></div>
+  <div id="target" class="hidden"><div id="target-name"></div><div class="bar"><div id="target-fill"></div></div></div>
+  <div id="lock" class="hidden"></div>
+  <div id="dmg-layer"></div>
+  <div id="vignette"></div>
+</div>
+
+<!-- Touch controls -->
+<div id="touch" class="hidden">
+  <div id="stick-zone"><div id="stick-base"><div id="stick-knob"></div></div></div>
+  <div id="look-zone"></div>
+  <button class="tbtn" id="t-attack" data-act="attack">⚔</button>
+  <button class="tbtn" id="t-jump" data-act="jump">⤒</button>
+  <button class="tbtn" id="t-dodge" data-act="dodge">⟲</button>
+  <button class="tbtn" id="t-block" data-hold="block">⛨</button>
+  <button class="tbtn" id="t-spell" data-act="cast">✦</button>
+  <button class="tbtn small" id="t-spellnext" data-act="spellNext">⇆</button>
+  <button class="tbtn small" id="t-sprint" data-toggle="sprint">»</button>
+  <button class="tbtn small" id="t-potion" data-act="potion">♥</button>
+  <button class="tbtn" id="t-interact" data-act="interact">E</button>
+  <button class="tbtn small" id="t-lock" data-act="lockon">◎</button>
+  <button class="tbtn small top" id="t-menu" data-act="menu">☰</button>
+  <button class="tbtn small top" id="t-map" data-act="map">⌖</button>
+</div>
+
+<!-- Dialogue -->
+<div id="dialogue" class="hidden window">
+  <div id="dlg-name"></div>
+  <div id="dlg-text"></div>
+  <div id="dlg-options"></div>
+</div>
+
+<!-- Menus are built in JS inside this container -->
+<div id="menu" class="hidden"></div>
+
+<!-- Title screen -->
+<div id="title" class="hidden">
+  <div class="logo">
+    <div class="logo-main">AETHERVEIL</div>
+    <div class="logo-sub">Shards of the Hollow Sky</div>
+  </div>
+  <div id="title-menu" class="window"></div>
+  <div class="title-foot">An open-world adventure built from scratch in the browser · <span id="title-q"></span></div>
+</div>
+
+<!-- Character creator -->
+<div id="creator" class="hidden">
+  <div class="window creator-panel">
+    <h2>Create Your Wayfarer</h2>
+    <div id="creator-body"></div>
+    <div class="row end"><button class="btn" id="cr-back">Back</button><button class="btn primary" id="cr-go">Begin Journey</button></div>
+  </div>
+</div>
+
+<!-- Overlays -->
+<div id="death" class="hidden"><div class="death-title">You have fallen</div><button class="btn primary" id="death-btn">Rise at the last waystone</button></div>
+<div id="fade"></div>
+<div id="flash"></div>
+
+<div id="loading">
+  <div class="logo"><div class="logo-main">AETHERVEIL</div><div class="logo-sub">Shards of the Hollow Sky</div></div>
+  <div class="load-wrap"><div class="bar"><div id="load-bar"></div></div><div id="load-msg">Preparing</div></div>
+  <div class="load-tip" id="load-tip"></div>
+</div>
+<noscript>Aetherveil needs JavaScript and WebGL2.</noscript>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
