@@ -53,7 +53,7 @@ export const QUESTS = {
   bounty: {
     name: 'Redcloak Bounty', giver: 'dain',
     stages: [
-      { desc: 'Defeat Redcloak bandits.', kill: ['bandit', 'bandit_mage'], count: 6, target: () => locPos('banditcamp') },
+      { desc: 'Defeat Redcloak bandits.', kill: ['bandit', 'bandit_mage', 'archer'], count: 6, target: () => locPos('banditcamp') },
       { desc: 'Report to Captain Dain in Brightwater.', target: (g) => npcPos(g, 'dain') },
     ],
     reward: { xp: 180, gold: 200 },
