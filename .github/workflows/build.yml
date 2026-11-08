@@ -48,3 +48,14 @@ jobs:
 
       - name: ROM size
         run: ls -l *.gba
+
+      # Only when the repository is private: then the ROM is a download on the
+      # run's page (Actions -> the run -> Artifacts), visible only to you.
+      # Public repos never upload it.
+      - name: Upload ROM (private repos only)
+        if: ${{ github.event.repository.private }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: FireRed-QoL-${{ github.sha }}
+          path: pokefirered.gba
+          retention-days: 30

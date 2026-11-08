@@ -15,10 +15,23 @@
 // The core string functions (StringCopy, StringExpandPlaceholders, the text
 // printer...) call QoL_LangStr(), so most text switches without other changes.
 
+bool32 QoL_IsJapanese(void);
+
+// Padding for right-aligned numbers: the English spacer (0x77) is a kana (ラ)
+// in the Japanese font, where a plain space is as wide as a digit.
+#define QOL_CHAR_SPACER (QoL_IsJapanese() ? CHAR_SPACE : CHAR_SPACER)
+
+// In Japanese mode, digits, Latin letters, '/' and ':' (codes shared by both
+// charsets) use the English glyphs: the menus were laid out for their widths.
+#define QOL_IS_SHARED_LATIN_CHAR(c) (((c) >= 0xA1 && (c) <= 0xAA) || ((c) >= 0xBA && (c) <= 0xEE) || (c) == 0xF0)
+static inline bool32 QoL_UseJapaneseGlyph(bool32 japanese, u32 c)
+{
+    return japanese && !(QoL_IsJapanese() && QOL_IS_SHARED_LATIN_CHAR(c));
+}
+
 #define QOL_LANGUAGE_ENGLISH  0
 #define QOL_LANGUAGE_JAPANESE 1
 
-bool32 QoL_IsJapanese(void);
 const u8 *QoL_LangStr(const u8 *str);
 const u8 *QoL_LangMoveName(enum Move move, const u8 *english);
 const u8 *QoL_LangItemName(enum Item item, const u8 *english);

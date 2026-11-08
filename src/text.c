@@ -1588,34 +1588,34 @@ static u16 RenderText(struct TextPrinter *textPrinter)
         switch (textPrinter->fontId)
         {
         case FONT_SMALL:
-            DecompressGlyph_Small(currChar, textPrinter->japanese);
+            DecompressGlyph_Small(currChar, QoL_UseJapaneseGlyph(textPrinter->japanese, currChar));
             break;
         case FONT_NORMAL:
-            DecompressGlyph_Normal(currChar, textPrinter->japanese);
+            DecompressGlyph_Normal(currChar, QoL_UseJapaneseGlyph(textPrinter->japanese, currChar));
             break;
         case FONT_SHORT:
         case FONT_SHORT_COPY_1:
         case FONT_SHORT_COPY_2:
         case FONT_SHORT_COPY_3:
-            DecompressGlyph_Short(currChar, textPrinter->japanese);
+            DecompressGlyph_Short(currChar, QoL_UseJapaneseGlyph(textPrinter->japanese, currChar));
             break;
         case FONT_NARROW:
-            DecompressGlyph_Narrow(currChar, textPrinter->japanese);
+            DecompressGlyph_Narrow(currChar, QoL_UseJapaneseGlyph(textPrinter->japanese, currChar));
             break;
         case FONT_SMALL_NARROW:
-            DecompressGlyph_SmallNarrow(currChar, textPrinter->japanese);
+            DecompressGlyph_SmallNarrow(currChar, QoL_UseJapaneseGlyph(textPrinter->japanese, currChar));
             break;
         case FONT_NARROWER:
-            DecompressGlyph_Narrower(currChar, textPrinter->japanese);
+            DecompressGlyph_Narrower(currChar, QoL_UseJapaneseGlyph(textPrinter->japanese, currChar));
             break;
         case FONT_SMALL_NARROWER:
-            DecompressGlyph_SmallNarrower(currChar, textPrinter->japanese);
+            DecompressGlyph_SmallNarrower(currChar, QoL_UseJapaneseGlyph(textPrinter->japanese, currChar));
             break;
         case FONT_SHORT_NARROW:
-            DecompressGlyph_ShortNarrow(currChar, textPrinter->japanese);
+            DecompressGlyph_ShortNarrow(currChar, QoL_UseJapaneseGlyph(textPrinter->japanese, currChar));
             break;
         case FONT_SHORT_NARROWER:
-            DecompressGlyph_ShortNarrower(currChar, textPrinter->japanese);
+            DecompressGlyph_ShortNarrower(currChar, QoL_UseJapaneseGlyph(textPrinter->japanese, currChar));
             break;
         case FONT_BRAILLE:
             break;
@@ -1817,7 +1817,7 @@ s32 GetGlyphWidth(u16 glyphId, bool32 isJapanese, u8 fontId)
     func = GetFontWidthFunc(fontId);
     if (func == NULL)
         return 0;
-    return func(glyphId, isJapanese);
+    return func(glyphId, QoL_UseJapaneseGlyph(isJapanese, glyphId)); // [QoL]
 }
 
 s32 GetStringWidth(u8 fontId, const u8 *str, s16 letterSpacing)
@@ -1877,7 +1877,8 @@ s32 GetStringWidth(u8 fontId, const u8 *str, s16 letterSpacing)
                 bufferPointer = DynamicPlaceholderTextUtil_GetPlaceholderPtr(*++str);
             while (*bufferPointer != EOS)
             {
-                glyphWidth = func(*bufferPointer++, isJapanese);
+                glyphWidth = func(*bufferPointer, QoL_UseJapaneseGlyph(isJapanese, *bufferPointer)); // [QoL]
+                bufferPointer++;
                 if (minGlyphWidth > 0)
                 {
                     if (glyphWidth < minGlyphWidth)
@@ -1974,7 +1975,7 @@ s32 GetStringWidth(u8 fontId, const u8 *str, s16 letterSpacing)
         case CHAR_PROMPT_CLEAR:
             break;
         default:
-            glyphWidth = func(*str, isJapanese);
+            glyphWidth = func(*str, QoL_UseJapaneseGlyph(isJapanese, *str));
             if (minGlyphWidth > 0)
             {
                 if (glyphWidth < minGlyphWidth)
@@ -2386,6 +2387,10 @@ static void DecompressGlyph_Normal(u16 glyphId, bool32 isJapanese)
         DecompressGlyphTile(glyphs, gCurGlyph.gfxBufferTop);
         DecompressGlyphTile(glyphs + 0x80, gCurGlyph.gfxBufferBottom);
         gCurGlyph.width = 8;
+        // [QoL] Japanese mode: a space is as wide as an English digit (6), so
+        // right-aligned numbers padded with spaces line up.
+        if (glyphId == CHAR_SPACE && QoL_IsJapanese())
+            gCurGlyph.width = 6;
         gCurGlyph.height = 15;
     }
     else
@@ -2413,7 +2418,7 @@ static void DecompressGlyph_Normal(u16 glyphId, bool32 isJapanese)
 static u32 GetGlyphWidth_Normal(u16 glyphId, bool32 isJapanese)
 {
     if (isJapanese == TRUE)
-        return 8;
+        return (glyphId == CHAR_SPACE && QoL_IsJapanese()) ? 6 : 8; // [QoL]
     else
         return gFontNormalLatinGlyphWidths[glyphId];
 }

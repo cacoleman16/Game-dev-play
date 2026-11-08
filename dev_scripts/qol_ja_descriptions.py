@@ -43,6 +43,10 @@ def newest_flavor(folder, file, idcol, vercol):
         for r in csv.DictReader(f):
             if r['language_id'] != '1':
                 continue
+            # The newest games replace removed moves/items with a "can't be
+            # used" note; use an older description instead.
+            if 'つかえません' in r['flavor_text'] or 'つかえない' in r['flavor_text']:
+                continue
             v = int(r[vercol])
             if r[idcol] not in best or v > best[r[idcol]][0]:
                 best[r[idcol]] = (v, r['flavor_text'])

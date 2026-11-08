@@ -11,6 +11,7 @@
 #include "strings.h"
 #include "decompress.h"
 #include "tv.h"
+#include "qol_language.h"
 
 EWRAM_DATA static u8 sMoneyBoxWindowId = 0;
 EWRAM_DATA static u8 sMoneyLabelSpriteId = 0;
@@ -150,7 +151,7 @@ void PrintMoneyAmount(u8 windowId, u8 x, u8 y, int amount, u8 speed)
     leadingSpaces = CalculateLeadingSpacesForMoney(numDigits);
 
     while (leadingSpaces-- > 0)
-        *(txtPtr++) = CHAR_SPACER;
+        *(txtPtr++) = QOL_CHAR_SPACER; // [QoL]
 
     StringExpandPlaceholders(txtPtr, gText_PokedollarVar1);
 

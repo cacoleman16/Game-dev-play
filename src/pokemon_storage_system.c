@@ -46,6 +46,7 @@
 #include "constants/pokemon_icon.h"
 #include "chooseboxmon.h"
 #include "party_menu.h"
+#include "qol_language.h"
 
 /*
     NOTE: This file is large. Some general groups of functions have
@@ -7098,7 +7099,7 @@ static void SetDisplayMonData(void *pokemon, u8 mode)
             *(txtPtr++) = TEXT_COLOR_DARK_GRAY;
             *(txtPtr++) = TEXT_COLOR_LIGHT_GRAY;
             *(txtPtr++) = TEXT_COLOR_WHITE;
-            *(txtPtr++) = CHAR_SPACER; // Genderless
+            *(txtPtr++) = QOL_CHAR_SPACER; // Genderless [QoL]
             break;
         }
 

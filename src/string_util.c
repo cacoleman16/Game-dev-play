@@ -223,7 +223,7 @@ u8 *ConvertIntToDecimalStringN(u8 *dest, s32 value, enum StringConvertMode mode,
         }
         else if (state == WRITING_SPACES)
         {
-            *dest++ = CHAR_SPACER;
+            *dest++ = QOL_CHAR_SPACER; // [QoL]
         }
 
         value = temp;
@@ -279,7 +279,7 @@ u8 *ConvertUIntToDecimalStringN(u8 *dest, u32 value, enum StringConvertMode mode
         }
         else if (state == WRITING_SPACES)
         {
-            *dest++ = CHAR_SPACER;
+            *dest++ = QOL_CHAR_SPACER; // [QoL]
         }
 
         value = temp;
@@ -339,7 +339,7 @@ u8 *ConvertIntToHexStringN(u8 *dest, s32 value, enum StringConvertMode mode, u8 
         }
         else if (state == WRITING_SPACES)
         {
-            *dest++ = CHAR_SPACER;
+            *dest++ = QOL_CHAR_SPACER; // [QoL]
         }
 
         value = temp;
