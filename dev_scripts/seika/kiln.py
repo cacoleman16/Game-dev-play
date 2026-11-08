@@ -152,6 +152,8 @@ def build():
             troad = tide_road(city)
             if 'tidewatch' in globals():
                 tidewatch(troad)
+            else:
+                add(g.MapDef(P_TIDE, 'MAP_SEIKA_TIDEWATCH', SEC_TIDE, tidewatch_canvas(), 'MUS_RG_SEVII_45', border=g.SEA_BORDER))
 
 
 # ---------------------------------------------------------------- Kiln Road
@@ -837,7 +839,7 @@ def tide_road_canvas():
     # the coast
     c.rect(10, 15, 56, 5, 'beach')
     c.rect(62, 20, 10, 2, 'beach')
-    c.rect(12, 20, 50, 2, 'sea')
+    c.rect(10, 20, 52, 2, 'sea')
     c.rect(10, 22, 62, 4, 'sea')
     c.rect(20, 18, 7, 2, 'sea')           # bays
     c.rect(43, 17, 9, 3, 'sea')
@@ -997,3 +999,43 @@ Level: 53
                   ('QWILFISH', 50, 52), ('OCTILLERY', 51, 53), ('LANTURN', 51, 53), ('CORSOLA', 51, 53),
                   ('SEADRA', 52, 53), ('KINGDRA', 53, 53)])
     return m
+
+
+# ---------------------------------------------------------------- Tidewatch Town
+
+TIDE_HOUSE = (CER, 21, 25, 6, 4)           # door (2,3)
+TIDE_COTTAGE = (CER, 31, 25, 5, 4)         # no door
+SHRINE = ('LAYOUT_ROUTE5', 20, 21, 8, 6)   # Route 5's Day Care and its yard, door (3,4)
+
+
+def tidewatch_canvas():
+    c = g.Canvas(40, 34, 'gTileset_CeruleanCity', seed=53)
+    c.forest(0, 0, 18, 6)
+    c.forest(24, 0, 16, 6)                # north: opening to Hollow Path
+    c.forest(0, 6, 8, 8)
+    c.forest(0, 20, 8, 4)                 # west: opening to Tide Road
+    c.rect(0, 24, 32, 2, 'beach')
+    c.rect(30, 6, 2, 20, 'beach')
+    c.rect(0, 26, 40, 8, 'sea')
+    c.rect(32, 6, 8, 20, 'sea')
+    # streets
+    c.rect(0, 16, 32, 2, 'beach')
+    c.rect(20, 0, 2, 16, 'beach')
+    # buildings
+    for st, x, y in ((PC, 9, 11), (GYM, 23, 11), (MART, 9, 19)):
+        c.stamp(*st[:5], x, y)            # doors: PC (11,15), Gym (26,15), Mart (11,22)
+    c.stamp(*TIDE_HOUSE, 14, 12)          # house 1, door (16,15)
+    c.stamp(*SHRINE, 14, 18, ground=True)  # tide shrine, door (17,22)
+    c.stamp(*TIDE_HOUSE, 23, 19)          # house 2, door (25,22)
+    c.stamp(*GYM_SIGN, 22, 14)
+    # the shore
+    g.pier(c, 12, 24, 2, 6)
+    g.pier(c, 26, 24, 2, 5)
+    c.rect(9, 7, 4, 3, 'flowers')
+    c.rect(24, 7, 4, 2, 'flowers')
+    c.tree(14, 7)
+    c.tree(16, 7)
+    c.tree(28, 8)
+    c.put(19, 14, g.SIGN)
+    c.put(13, 21, g.SIGN)
+    return c
