@@ -48,7 +48,12 @@ class EJS_GameManager {
                 this.saveSaveFiles();
             }
             this.toggleMainLoop(0);
-            this.FS.unmount("/data/saves");
+            // [FireRed QoL] Don't unmount /data/saves here. IDBFS autoPersist
+            // queues a sync after the save writes above; if the folder is
+            // unmounted by the time it runs, it sees an empty folder and
+            // deletes every stored save from IndexedDB. The page is closing
+            // anyway, so leaving it mounted is harmless.
+            // this.FS.unmount("/data/saves");
             setTimeout(() => {
                 try {
                     this.Module.abort();

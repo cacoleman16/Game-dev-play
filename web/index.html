@@ -202,7 +202,7 @@ footer a { color: var(--ink); }
       notGba: "That file doesn't look like a GBA ROM (expected .gba).",
       loading: "Starting the emulator…", forgotten: "Stored ROM removed from this device.",
       noSave: "No save yet. Save in the game first (START → SAVE).",
-      imported: "Save imported. The game restarted to load it.",
+      imported: "Save imported. Restarting the game to load it…",
       storeFail: "Couldn't keep the ROM for next time (browser storage unavailable); you'll pick it again later."
     },
     ja: {
@@ -225,7 +225,7 @@ footer a { color: var(--ink); }
       notGba: "GBAのROMではないようです（.gba を選んでください）。",
       loading: "エミュレーターを起動中…", forgotten: "保存したROMをこの端末から消しました。",
       noSave: "まだセーブがありません。先にゲーム内でセーブしてください。",
-      imported: "セーブを読み込みました。ゲームを再起動しました。",
+      imported: "セーブを読み込みました。ゲームを再起動しています…",
       storeFail: "ブラウザの保存領域が使えないため、ROMは次回また選んでください。"
     }
   };
@@ -317,6 +317,25 @@ footer a { color: var(--ink); }
     ["turbo", "ratio", "export-save", "import-save"].forEach(function (id) { $(id).disabled = false; });
     $("import-wrap").removeAttribute("aria-disabled");
     try { gm().setFastForwardRatio(Number($("ratio").value)); } catch (e) {}
+    // Keep the in-game save safe: EmulatorJS only copies the game's save
+    // memory into its save file every 5 minutes. Do it every few seconds and
+    // when the page is hidden (e.g. switching apps on a phone); the save
+    // folder then commits the file to IndexedDB by itself (IDBFS autoPersist).
+    setInterval(flushSave, 6000);
+    document.addEventListener("visibilitychange", function () {
+      if (document.visibilityState === "hidden") flushSave();
+    });
+  }
+
+  function flushSave() {
+    var g = gm();
+    if (!g || !g.FS) return;
+    try {
+      // Only while the save folder is mounted: writing into the bare folder
+      // would not be stored.
+      if (!g.FS.lookupPath("/data/saves", { follow_mount: false }).node.mounted) return;
+      g.saveSaveFiles(); // game save memory -> /data/saves/<game>.srm -> IndexedDB
+    } catch (e) {}
   }
 
   $("turbo").addEventListener("click", function () {
@@ -347,11 +366,21 @@ footer a { color: var(--ink); }
     var file = this.files && this.files[0];
     if (!file) return;
     file.arrayBuffer().then(function (buf) {
+      // Store the save where the emulator keeps it, commit it to the browser,
+      // then reload so the game boots with it (a core reset alone doesn't
+      // reliably make the game re-read its save).
       var g = gm();
-      g.FS.writeFile(g.getSaveFilePath(), new Uint8Array(buf));
+      var path = g.getSaveFilePath();
+      try { g.FS.unlink(path); } catch (e) {}
+      g.FS.writeFile(path, new Uint8Array(buf));
+      // Also load it into the running game: on unload EmulatorJS writes the
+      // game's save memory back to this file, which must not be the old save.
       g.loadSaveFiles();
-      g.restart();
       barStatus(t("imported"));
+      g.FS.syncfs(false, function () {
+        try { sessionStorage.setItem("frqol-autostart", "1"); } catch (e) {}
+        location.reload();
+      });
     }).catch(function (e) { barStatus(String(e), true); });
     this.value = "";
   });
@@ -408,6 +437,10 @@ footer a { color: var(--ink); }
       var btn = $("play-last");
       btn.textContent = t("playLast").replace("{name}", rec.name);
       btn.hidden = false;
+      // Coming back from "Import save": start the game straight away.
+      var auto = false;
+      try { auto = sessionStorage.getItem("frqol-autostart") === "1"; sessionStorage.removeItem("frqol-autostart"); } catch (e) {}
+      if (auto) startEmulator(rec.data, rec.name);
     }
   }).catch(function () {});
 })();
