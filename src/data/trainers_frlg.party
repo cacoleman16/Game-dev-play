@@ -15349,4 +15349,2180 @@ IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Spikes
 - Roost
 
+=== TRAINER_SEIKA_PSYCHIC_HAKU ===
+Name: HAKU
+Class: Psychic Frlg
+Pic: Psychic M Frlg
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Smart Trainer
+
+Jynx
+Level: 51
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Psychic
+- Ice Beam
+- Lovely Kiss
+- Nasty Plot
+
+Slowbro
+Level: 52
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Psychic
+- Surf
+- Slack Off
+- Thunder Wave
+
+=== TRAINER_SEIKA_PAINTER_SHIZU ===
+Name: SHIZU
+Class: Painter Frlg
+Pic: Painter Frlg
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Smart Trainer
+
+Smeargle
+Level: 50
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Psychic
+- Shadow Ball
+- Thunder Wave
+- Focus Blast
+
+Mr. Mime
+Level: 51
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Psychic
+- Dazzling Gleam
+- Reflect
+- Light Screen
+
+Xatu
+Level: 51
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Psychic
+- Air Slash
+- Confuse Ray
+- Roost
+
+=== TRAINER_SEIKA_LEADER_SUMI ===
+Name: SUMI
+Class: Leader Frlg
+Pic: Expert F
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Smart Trainer
+
+Xatu
+Level: 53
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Psychic
+- Air Slash
+- Heat Wave
+- Calm Mind
+
+Slowking
+Level: 53
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Psychic
+- Scald
+- Slack Off
+- Fire Blast
+
+Farigiraf
+Level: 54
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Psychic
+- Hyper Voice
+- Thunderbolt
+- Calm Mind
+
+Espeon @ Twisted Spoon
+Level: 55
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Psychic
+- Dazzling Gleam
+- Shadow Ball
+- Calm Mind
+
+=== TRAINER_SEIKA_NOVA_ALTAIR_WOODS ===
+Name: ALTAIR
+Class: Nova Admin
+Pic: Ruin Maniac
+Gender: Male
+Music: Suspicious
+Double Battle: No
+AI: Smart Trainer
+
+Solrock
+Level: 50
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Rock Slide
+- Zen Headbutt
+- Earthquake
+- Flare Blitz
+
+Steelix
+Level: 50
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Iron Tail
+- Earthquake
+- Stone Edge
+- Rock Polish
+
+Claydol
+Level: 51
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Earth Power
+- Psychic
+- Ice Beam
+- Stealth Rock
+
+Probopass @ Sitrus Berry
+Level: 52
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Flash Cannon
+- Earth Power
+- Power Gem
+- Thunderbolt
+
+=== TRAINER_SEIKA_BUG_CATCHER_RIKU ===
+Name: RIKU
+Class: Bug Catcher Frlg
+Pic: Bug Catcher Frlg
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Smart Trainer
+
+Ledian
+Level: 46
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Air Slash
+- Bug Buzz
+- Light Screen
+- Reflect
+
+Ariados
+Level: 46
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Poison Jab
+- Sucker Punch
+- Leech Life
+- Toxic Spikes
+
+Yanma
+Level: 47
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Bug Buzz
+- Air Slash
+- Ancient Power
+- Hypnosis
+
+=== TRAINER_SEIKA_PICNICKER_NANAMI ===
+Name: NANAMI
+Class: Picnicker Frlg
+Pic: Picnicker Frlg
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Smart Trainer
+
+Furret
+Level: 47
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Double-Edge
+- Sucker Punch
+- Knock Off
+- Coil
+
+Stantler
+Level: 47
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Double-Edge
+- Zen Headbutt
+- Megahorn
+- Hypnosis
+
+Ursaring
+Level: 48
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Crunch
+- Play Rough
+- Close Combat
+- Bulk Up
+
+=== TRAINER_SEIKA_AROMA_LADY_KAORI ===
+Name: KAORI
+Class: Aroma Lady Frlg
+Pic: Aroma Lady Frlg
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Smart Trainer
+
+Bellossom
+Level: 48
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Petal Dance
+- Moonblast
+- Sleep Powder
+- Quiver Dance
+
+Jumpluff
+Level: 48
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Acrobatics
+- Leech Seed
+- Sleep Powder
+- U-turn
+
+Sunflora
+Level: 49
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Solar Beam
+- Earth Power
+- Sludge Bomb
+- Sunny Day
+
+=== TRAINER_SEIKA_BUG_MANIAC_ISAMU ===
+Name: ISAMU
+Class: Bug Maniac
+Pic: Bug Maniac
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Smart Trainer
+
+Forretress
+Level: 48
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Gyro Ball
+- Volt Switch
+- Spikes
+- Rapid Spin
+
+Heracross
+Level: 48
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Megahorn
+- Close Combat
+- Stone Edge
+- Night Slash
+
+Yanmega
+Level: 49
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Bug Buzz
+- Air Slash
+- Ancient Power
+- U-turn
+
+=== TRAINER_SEIKA_BUG_MANIAC_TETSU ===
+Name: TETSU
+Class: Bug Maniac
+Pic: Bug Maniac
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Smart Trainer
+
+Ariados
+Level: 53
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Poison Jab
+- Sucker Punch
+- X-Scissor
+- Sticky Web
+
+Ledian
+Level: 53
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Air Slash
+- Bug Buzz
+- Focus Blast
+- Roost
+
+Heracross
+Level: 54
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Megahorn
+- Close Combat
+- Stone Edge
+- Knock Off
+
+=== TRAINER_SEIKA_PKMN_BREEDER_MITSU ===
+Name: MITSU
+Class: Pkmn Breeder Frlg
+Pic: Pokemon Breeder Frlg
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Smart Trainer
+
+Beedrill
+Level: 54
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Poison Jab
+- X-Scissor
+- Drill Run
+- Swords Dance
+
+Butterfree
+Level: 55
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Bug Buzz
+- Air Slash
+- Sleep Powder
+- Quiver Dance
+
+=== TRAINER_SEIKA_LEADER_KAYA ===
+Name: KAYA
+Class: Leader Frlg
+Pic: Pokemon Breeder Frlg
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Smart Trainer
+
+Forretress
+Level: 56
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Gyro Ball
+- Volt Switch
+- Spikes
+- Explosion
+
+Yanmega
+Level: 56
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Bug Buzz
+- Air Slash
+- Ancient Power
+- U-turn
+
+Heracross @ Sitrus Berry
+Level: 56
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Megahorn
+- Close Combat
+- Stone Edge
+- Knock Off
+
+Scizor @ Metal Coat
+Level: 56
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Bullet Punch
+- U-turn
+- Swords Dance
+- Brick Break
+
+Vespiquen @ Leftovers
+Level: 57
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Attack Order
+- Defend Order
+- Heal Order
+- Power Gem
+
+=== TRAINER_SEIKA_HIKER_BUNTA ===
+Name: BUNTA
+Class: Hiker Frlg
+Pic: Hiker Frlg
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Smart Trainer
+
+Sudowoodo
+Level: 48
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Wood Hammer
+- Head Smash
+- Sucker Punch
+- Low Kick
+
+Golem
+Level: 49
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Earthquake
+- Stone Edge
+- Explosion
+- Rock Polish
+
+Donphan
+Level: 49
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Earthquake
+- Ice Shard
+- Knock Off
+- Rapid Spin
+
+=== TRAINER_SEIKA_PICNICKER_HANA ===
+Name: HANA
+Class: Picnicker Frlg
+Pic: Picnicker Frlg
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Smart Trainer
+
+Bellossom
+Level: 49
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Petal Blizzard
+- Moonblast
+- Sleep Powder
+- Quiver Dance
+
+Girafarig
+Level: 49
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Psychic
+- Hyper Voice
+- Thunderbolt
+- Calm Mind
+
+Ampharos
+Level: 50
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Thunderbolt
+- Dragon Pulse
+- Power Gem
+- Cotton Guard
+
+=== TRAINER_SEIKA_BLACK_BELT_RYUJI ===
+Name: RYUJI
+Class: Black Belt Frlg
+Pic: Black Belt Frlg
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Smart Trainer
+
+Hitmontop
+Level: 50
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Close Combat
+- Sucker Punch
+- Triple Axel
+- Fake Out
+
+Heracross
+Level: 50
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Megahorn
+- Close Combat
+- Stone Edge
+- Night Slash
+
+Ursaring
+Level: 51
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Facade
+- Crunch
+- Close Combat
+- Swords Dance
+
+=== TRAINER_SEIKA_NOVA_DENEB_KILN ===
+Name: DENEB
+Class: Nova Admin
+Pic: Hex Maniac
+Gender: Female
+Music: Suspicious
+Double Battle: No
+AI: Smart Trainer
+
+Bronzong @ Leftovers
+Level: 56
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Gyro Ball
+- Earthquake
+- Psychic
+- Stealth Rock
+
+Mismagius
+Level: 56
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Shadow Ball
+- Dazzling Gleam
+- Thunderbolt
+- Nasty Plot
+
+Togekiss
+Level: 57
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Air Slash
+- Dazzling Gleam
+- Aura Sphere
+- Roost
+
+Gardevoir @ Sitrus Berry
+Level: 58
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Psychic
+- Moonblast
+- Focus Blast
+- Calm Mind
+
+=== TRAINER_SEIKA_RUIN_MANIAC_TETSU ===
+Name: TETSU
+Class: Ruin Maniac Frlg
+Pic: Ruin Maniac Frlg
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Smart Trainer
+
+Sandslash
+Level: 55
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Earthquake
+- Knock Off
+- Rapid Spin
+- Swords Dance
+
+Piloswine
+Level: 55
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Earthquake
+- Icicle Crash
+- Ice Shard
+- Stone Edge
+
+Rhydon
+Level: 56
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Earthquake
+- Rock Slide
+- Megahorn
+- Hammer Arm
+
+=== TRAINER_SEIKA_POKEMANIAC_KAZU ===
+Name: KAZU
+Class: Pokemaniac Frlg
+Pic: Pokemaniac Frlg
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Smart Trainer
+
+Marowak @ Thick Club
+Level: 56
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Bonemerang
+- Rock Slide
+- Fire Punch
+- Swords Dance
+
+Nidoking
+Level: 56
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Earth Power
+- Sludge Wave
+- Ice Beam
+- Thunderbolt
+
+=== TRAINER_SEIKA_CAMPER_DAIKI ===
+Name: DAIKI
+Class: Camper Frlg
+Pic: Camper Frlg
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Smart Trainer
+
+Gligar
+Level: 56
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Earthquake
+- Acrobatics
+- Knock Off
+- Roost
+
+Quagsire
+Level: 56
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Earthquake
+- Waterfall
+- Recover
+- Toxic
+
+Steelix
+Level: 57
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Iron Tail
+- Earthquake
+- Crunch
+- Rock Slide
+
+=== TRAINER_SEIKA_LEADER_TOBIN ===
+Name: TOBIN
+Class: Leader Frlg
+Pic: Expert M
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Smart Trainer
+
+Claydol
+Level: 58
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Earth Power
+- Psychic
+- Ice Beam
+- Stealth Rock
+
+Gliscor @ Toxic Orb
+Level: 58
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Earthquake
+- Knock Off
+- Swords Dance
+- Roost
+
+Quagsire
+Level: 58
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Earthquake
+- Waterfall
+- Recover
+- Yawn
+
+Donphan
+Level: 58
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Earthquake
+- Ice Shard
+- Knock Off
+- Rapid Spin
+
+Golurk @ Life Orb
+Level: 59
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Earthquake
+- Shadow Punch
+- Ice Punch
+- Rock Polish
+
+=== TRAINER_SEIKA_FISHERMAN_SHIGE ===
+Name: SHIGE
+Class: Fisherman Frlg
+Pic: Fisherman Frlg
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Smart Trainer
+
+Octillery
+Level: 50
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Octazooka
+- Ice Beam
+- Fire Blast
+- Gunk Shot
+
+Qwilfish
+Level: 50
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Waterfall
+- Poison Jab
+- Spikes
+- Aqua Jet
+
+Lanturn
+Level: 51
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Surf
+- Thunderbolt
+- Ice Beam
+- Confuse Ray
+
+=== TRAINER_SEIKA_SAILOR_DAN ===
+Name: DAN
+Class: Sailor Frlg
+Pic: Sailor Frlg
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Smart Trainer
+
+Poliwrath
+Level: 51
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Waterfall
+- Close Combat
+- Ice Punch
+- Bulk Up
+
+Machamp
+Level: 51
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Cross Chop
+- Knock Off
+- Stone Edge
+- Bullet Punch
+
+Pelipper
+Level: 52
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Hurricane
+- Surf
+- Roost
+- U-turn
+
+=== TRAINER_SEIKA_SWIMMER_F_RIN ===
+Name: RIN
+Class: Swimmer F Frlg
+Pic: Swimmer F Frlg
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Smart Trainer
+
+Mantine
+Level: 52
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Air Slash
+- Surf
+- Ice Beam
+- Roost
+
+Corsola
+Level: 52
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Power Gem
+- Surf
+- Recover
+- Stealth Rock
+
+Starmie
+Level: 52
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Surf
+- Psychic
+- Thunderbolt
+- Recover
+
+=== TRAINER_SEIKA_SWIMMER_M_JUN ===
+Name: JUN
+Class: Swimmer M Frlg
+Pic: Swimmer M Frlg
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Smart Trainer
+
+Golduck
+Level: 52
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Surf
+- Psychic
+- Ice Beam
+- Calm Mind
+
+Quagsire
+Level: 52
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Earthquake
+- Waterfall
+- Recover
+- Yawn
+
+Kingdra
+Level: 53
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Surf
+- Dragon Pulse
+- Ice Beam
+- Rain Dance
+
+=== TRAINER_SEIKA_SWIMMER_F_MINA ===
+Name: MINA
+Class: Swimmer F Frlg
+Pic: Swimmer F Frlg
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Smart Trainer
+
+Azumarill
+Level: 57
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Aqua Jet
+- Play Rough
+- Liquidation
+- Superpower
+
+Lanturn
+Level: 57
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Scald
+- Thunderbolt
+- Ice Beam
+- Volt Switch
+
+=== TRAINER_SEIKA_SWIMMER_M_KAITO ===
+Name: KAITO
+Class: Swimmer M Frlg
+Pic: Swimmer M Frlg
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Smart Trainer
+
+Octillery
+Level: 57
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Octazooka
+- Ice Beam
+- Fire Blast
+- Energy Ball
+
+Mantine
+Level: 57
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Scald
+- Air Slash
+- Ice Beam
+- Roost
+
+=== TRAINER_SEIKA_SWIMMER_M_SORA ===
+Name: SORA
+Class: Swimmer M Frlg
+Pic: Swimmer M Frlg
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Smart Trainer
+
+Politoed
+Level: 57
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Hydro Pump
+- Ice Beam
+- Hypnosis
+- Rain Dance
+
+Overqwil
+Level: 58
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Crunch
+- Gunk Shot
+- Liquidation
+- Swords Dance
+
+=== TRAINER_SEIKA_LEADER_NAGI ===
+Name: NAGI
+Class: Leader Frlg
+Pic: Swimmer F
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Smart Trainer
+
+Lanturn
+Level: 60
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Scald
+- Thunderbolt
+- Ice Beam
+- Volt Switch
+
+Mantine
+Level: 60
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Hydro Pump
+- Air Slash
+- Ice Beam
+- Roost
+
+Octillery
+Level: 60
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Octazooka
+- Ice Beam
+- Fire Blast
+- Energy Ball
+
+Azumarill
+Level: 60
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Aqua Jet
+- Play Rough
+- Liquidation
+- Superpower
+
+Kingdra @ Mystic Water
+Level: 61
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Rain Dance
+- Hydro Pump
+- Draco Meteor
+- Ice Beam
+
+=== TRAINER_SEIKA_HIKER_IWAO ===
+Name: IWAO
+Class: Hiker Frlg
+Pic: Hiker Frlg
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Smart Trainer
+
+Golem
+Level: 54
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Rock Slide
+- Earthquake
+- Explosion
+- Stealth Rock
+
+Sudowoodo
+Level: 54
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Wood Hammer
+- Head Smash
+- Sucker Punch
+- Low Kick
+
+Donphan
+Level: 55
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Earthquake
+- Ice Shard
+- Knock Off
+- Rapid Spin
+
+=== TRAINER_SEIKA_BLACK_BELT_KENTA ===
+Name: KENTA
+Class: Black Belt Frlg
+Pic: Black Belt Frlg
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Smart Trainer
+
+Hitmontop
+Level: 55
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Close Combat
+- Sucker Punch
+- Triple Axel
+- Rapid Spin
+
+Heracross
+Level: 56
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Megahorn
+- Close Combat
+- Stone Edge
+- Knock Off
+
+=== TRAINER_SEIKA_PICNICKER_SAKI ===
+Name: SAKI
+Class: Picnicker Frlg
+Pic: Picnicker Frlg
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Smart Trainer
+
+Granbull
+Level: 53
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Play Rough
+- Crunch
+- Thunder Fang
+- Bulk Up
+
+Jumpluff
+Level: 54
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Acrobatics
+- Leech Seed
+- Sleep Powder
+- U-turn
+
+Ampharos
+Level: 54
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Thunderbolt
+- Dragon Pulse
+- Power Gem
+- Thunder Wave
+
+=== TRAINER_SEIKA_NOVA_ALTAIR_HOLLOW ===
+Name: ALTAIR
+Class: Nova Admin
+Pic: Ruin Maniac
+Gender: Male
+Music: Suspicious
+Double Battle: No
+AI: Smart Trainer
+
+Solrock
+Level: 57
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Flare Blitz
+- Stone Edge
+- Zen Headbutt
+- Earthquake
+
+Claydol
+Level: 57
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Earth Power
+- Psychic
+- Ice Beam
+- Stealth Rock
+
+Minior Meteor Red
+Level: 58
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Shell Smash
+- Power Gem
+- Acrobatics
+- Earthquake
+
+Clefable @ Sitrus Berry
+Level: 59
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Moonblast
+- Cosmic Power
+- Moonlight
+- Meteor Mash
+
+=== TRAINER_SEIKA_AROMA_LADY_MIDORI ===
+Name: MIDORI
+Class: Aroma Lady Frlg
+Pic: Aroma Lady Frlg
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Smart Trainer
+
+Whimsicott
+Level: 60
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Moonblast
+- Energy Ball
+- Encore
+- Tailwind
+
+Florges
+Level: 60
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Moonblast
+- Psychic
+- Calm Mind
+- Synthesis
+
+=== TRAINER_SEIKA_PARASOL_LADY_CHIYO ===
+Name: CHIYO
+Class: Parasol Lady
+Pic: Parasol Lady
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Smart Trainer
+
+Azumarill
+Level: 60
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Play Rough
+- Aqua Jet
+- Superpower
+- Knock Off
+
+Wigglytuff
+Level: 60
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Dazzling Gleam
+- Hyper Voice
+- Fire Blast
+- Sing
+
+Togetic
+Level: 61
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Dazzling Gleam
+- Air Slash
+- Aura Sphere
+- Roost
+
+=== TRAINER_SEIKA_BEAUTY_YUKA ===
+Name: YUKA
+Class: Beauty Frlg
+Pic: Beauty Frlg
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Smart Trainer
+
+Granbull
+Level: 61
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Play Rough
+- Close Combat
+- Crunch
+- Thunder Wave
+
+Mawile
+Level: 61
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Play Rough
+- Iron Head
+- Sucker Punch
+- Swords Dance
+
+=== TRAINER_SEIKA_LEADER_AYAME ===
+Name: AYAME
+Class: Leader Frlg
+Pic: Beauty
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Smart Trainer
+
+Azumarill
+Level: 62
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Play Rough
+- Aqua Jet
+- Knock Off
+- Belly Drum
+
+Granbull
+Level: 62
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Play Rough
+- Close Combat
+- Crunch
+- Thunder Wave
+
+Togekiss
+Level: 62
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Air Slash
+- Dazzling Gleam
+- Aura Sphere
+- Roost
+
+Clefable @ Leftovers
+Level: 62
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Moonblast
+- Calm Mind
+- Moonlight
+- Flamethrower
+
+Sylveon @ Sitrus Berry
+Level: 63
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Moonblast
+- Hyper Voice
+- Calm Mind
+- Shadow Ball
+
+=== TRAINER_SEIKA_BUG_MANIAC_TSUMUGI ===
+Name: TSUMUGI
+Class: Bug Maniac
+Pic: Bug Maniac
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Smart Trainer
+
+Ariados
+Level: 56
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Poison Jab
+- Sucker Punch
+- Sticky Web
+- Megahorn
+
+Yanmega
+Level: 57
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Bug Buzz
+- Air Slash
+- Ancient Power
+- U-turn
+
+Scizor
+Level: 57
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Bullet Punch
+- X-Scissor
+- Swords Dance
+- Roost
+
+=== TRAINER_SEIKA_AROMA_LADY_KINU ===
+Name: KINU
+Class: Aroma Lady Frlg
+Pic: Aroma Lady Frlg
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Smart Trainer
+
+Bellossom
+Level: 56
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Petal Blizzard
+- Moonblast
+- Quiver Dance
+- Sleep Powder
+
+Sunflora
+Level: 56
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Solar Beam
+- Earth Power
+- Sunny Day
+- Sludge Bomb
+
+Jumpluff
+Level: 57
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Acrobatics
+- Sleep Powder
+- Leech Seed
+- U-turn
+
+=== TRAINER_SEIKA_COOLTRAINER_DAIKI ===
+Name: DAIKI
+Class: Cooltrainer Frlg
+Pic: Cooltrainer M Frlg
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Smart Trainer
+
+Ursaring
+Level: 57
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Facade
+- Close Combat
+- Crunch
+- Swords Dance
+
+Lanturn
+Level: 57
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Scald
+- Thunderbolt
+- Ice Beam
+- Thunder Wave
+
+Xatu
+Level: 58
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Psychic
+- Air Slash
+- Heat Wave
+- Roost
+
+=== TRAINER_SEIKA_LASS_MAYU ===
+Name: MAYU
+Class: Lass Frlg
+Pic: Lass Frlg
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Smart Trainer
+
+Ledian
+Level: 56
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Bug Buzz
+- Air Slash
+- Light Screen
+- Reflect
+
+Furret
+Level: 57
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Double-Edge
+- Knock Off
+- U-turn
+- Coil
+
+Snubbull
+Level: 57
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Play Rough
+- Crunch
+- Fire Fang
+- Thunder Wave
+
+=== TRAINER_SEIKA_NOVA_GRUNT_FROSTMERE_1 ===
+Name: GRUNT
+Class: Team Nova
+Pic: Psychic M
+Gender: Male
+Music: Intense
+Double Battle: No
+AI: Basic Trainer
+
+Bronzong
+Level: 60
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Gyro Ball
+- Earthquake
+- Psychic
+- Stealth Rock
+
+Beheeyem
+Level: 61
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Psychic
+- Shadow Ball
+- Thunderbolt
+- Recover
+
+=== TRAINER_SEIKA_NOVA_GRUNT_FROSTMERE_2 ===
+Name: GRUNT
+Class: Team Nova
+Pic: Psychic M
+Gender: Male
+Music: Intense
+Double Battle: No
+AI: Basic Trainer
+
+Lunatone
+Level: 61
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Moonblast
+- Psychic
+- Ice Beam
+- Earth Power
+
+Starmie
+Level: 62
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Hydro Pump
+- Psychic
+- Ice Beam
+- Recover
+
+=== TRAINER_SEIKA_FISHERMAN_SHIRO ===
+Name: SHIRO
+Class: Fisherman Frlg
+Pic: Fisherman Frlg
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Smart Trainer
+
+Dewgong
+Level: 62
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Ice Beam
+- Surf
+- Encore
+- Perish Song
+
+Cloyster
+Level: 62
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Icicle Spear
+- Rock Blast
+- Shell Smash
+- Ice Shard
+
+=== TRAINER_SEIKA_COOLTRAINER_MIZORE ===
+Name: MIZORE
+Class: Cooltrainer Frlg
+Pic: Cooltrainer F Frlg
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Smart Trainer
+
+Piloswine
+Level: 62
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Icicle Crash
+- Earthquake
+- Ice Shard
+- Stone Edge
+
+Delibird
+Level: 62
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Ice Spinner
+- Brave Bird
+- Drill Run
+- Ice Shard
+
+Froslass
+Level: 63
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Ice Beam
+- Shadow Ball
+- Spikes
+- Will-O-Wisp
+
+=== TRAINER_SEIKA_EXPERT_TOUMA ===
+Name: TOUMA
+Class: Expert
+Pic: Expert M
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Smart Trainer
+
+Glalie
+Level: 63
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Freeze-Dry
+- Earthquake
+- Crunch
+- Spikes
+
+Walrein
+Level: 63
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Blizzard
+- Surf
+- Body Slam
+- Rest
+
+=== TRAINER_SEIKA_LEADER_RIME ===
+Name: RIME
+Class: Leader Frlg
+Pic: Expert M
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Smart Trainer
+
+Cloyster
+Level: 64
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Icicle Spear
+- Rock Blast
+- Shell Smash
+- Ice Shard
+
+Jynx
+Level: 64
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Ice Beam
+- Psychic
+- Lovely Kiss
+- Nasty Plot
+
+Weavile
+Level: 64
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Triple Axel
+- Knock Off
+- Ice Shard
+- Swords Dance
+
+Lapras
+Level: 64
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Freeze-Dry
+- Hydro Pump
+- Thunderbolt
+- Ice Shard
+
+Mamoswine @ Never-Melt Ice
+Level: 65
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Icicle Crash
+- Earthquake
+- Ice Shard
+- Stone Edge
+
+=== TRAINER_SEIKA_RANGER_FUYUMI ===
+Name: FUYUMI
+Class: Pkmn Ranger Frlg
+Pic: Pokemon Ranger F Frlg
+Gender: Female
+Music: Serious
+Double Battle: No
+AI: Smart Trainer
+
+Piloswine
+Level: 58
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Earthquake
+- Icicle Crash
+- Stone Edge
+- Ice Shard
+
+Jynx
+Level: 59
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Ice Beam
+- Psychic
+- Lovely Kiss
+- Nasty Plot
+
+Dewgong
+Level: 59
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Waterfall
+- Ice Beam
+- Aqua Jet
+- Rest
+
+=== TRAINER_SEIKA_BLACK_BELT_SHINGO ===
+Name: SHINGO
+Class: Black Belt Frlg
+Pic: Black Belt Frlg
+Gender: Male
+Music: Serious
+Double Battle: No
+AI: Smart Trainer
+
+Hitmontop
+Level: 59
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Close Combat
+- Triple Axel
+- Sucker Punch
+- Rapid Spin
+
+Poliwrath
+Level: 59
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Waterfall
+- Close Combat
+- Ice Punch
+- Bulk Up
+
+Heracross
+Level: 60
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Megahorn
+- Close Combat
+- Stone Edge
+- Night Slash
+
+=== TRAINER_SEIKA_HIKER_GENZO ===
+Name: GENZO
+Class: Hiker Frlg
+Pic: Hiker Frlg
+Gender: Male
+Music: Serious
+Double Battle: No
+AI: Smart Trainer
+
+Steelix
+Level: 60
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Iron Tail
+- Earthquake
+- Rock Slide
+- Curse
+
+Mamoswine
+Level: 61
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Earthquake
+- Icicle Crash
+- Ice Shard
+- Stone Edge
+
+=== TRAINER_SEIKA_CHANNELER_SAYO ===
+Name: SAYO
+Class: Channeler Frlg
+Pic: Channeler Frlg
+Gender: Female
+Music: Dangerous
+Double Battle: No
+AI: Smart Trainer
+
+Dusclops
+Level: 64
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Shadow Sneak
+- Will-O-Wisp
+- Pain Split
+- Ice Beam
+
+Banette
+Level: 65
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Shadow Claw
+- Gunk Shot
+- Sucker Punch
+- Knock Off
+
+=== TRAINER_SEIKA_HEX_MANIAC_MIYAKO ===
+Name: MIYAKO
+Class: Hex Maniac
+Pic: Hex Maniac
+Gender: Female
+Music: Suspicious
+Double Battle: No
+AI: Smart Trainer
+
+Drifblim
+Level: 64
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Shadow Ball
+- Thunderbolt
+- Will-O-Wisp
+- Calm Mind
+
+Sableye
+Level: 65
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Knock Off
+- Shadow Sneak
+- Will-O-Wisp
+- Recover
+
+Golurk
+Level: 65
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Earthquake
+- Shadow Punch
+- Ice Punch
+- Rock Slide
+
+=== TRAINER_SEIKA_CHANNELER_KIKUE ===
+Name: KIKUE
+Class: Channeler Frlg
+Pic: Channeler Frlg
+Gender: Female
+Music: Dangerous
+Double Battle: No
+AI: Smart Trainer
+
+Cofagrigus
+Level: 65
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Shadow Ball
+- Will-O-Wisp
+- Trick Room
+- Nasty Plot
+
+Chandelure
+Level: 66
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Shadow Ball
+- Flamethrower
+- Energy Ball
+- Calm Mind
+
+=== TRAINER_SEIKA_LEADER_TOMOE ===
+Name: TOMOE
+Class: Leader Frlg
+Pic: Channeler Frlg
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Smart Trainer
+
+Spiritomb @ Leftovers
+Level: 66
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Foul Play
+- Shadow Sneak
+- Will-O-Wisp
+- Pain Split
+
+Froslass
+Level: 66
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Ice Beam
+- Shadow Ball
+- Thunderbolt
+- Destiny Bond
+
+Dusknoir
+Level: 67
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Poltergeist
+- Ice Punch
+- Earthquake
+- Shadow Sneak
+
+Gengar @ Spell Tag
+Level: 67
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Shadow Ball
+- Sludge Bomb
+- Focus Blast
+- Thunderbolt
+
+Mismagius @ Sitrus Berry
+Level: 68
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Shadow Ball
+- Mystical Fire
+- Dazzling Gleam
+- Nasty Plot
+
+=== TRAINER_SEIKA_COOLTRAINER_RYUSEI ===
+Name: RYUSEI
+Class: Cooltrainer Frlg
+Pic: Cooltrainer M Frlg
+Gender: Male
+Music: Serious
+Double Battle: No
+AI: Smart Trainer
+
+Gliscor
+Level: 62
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Earthquake
+- Knock Off
+- Acrobatics
+- Swords Dance
+
+Ampharos
+Level: 63
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Thunderbolt
+- Dragon Pulse
+- Focus Blast
+- Power Gem
+
+=== TRAINER_SEIKA_COOLTRAINER_HOSHIE ===
+Name: HOSHIE
+Class: Cooltrainer Frlg
+Pic: Cooltrainer F Frlg
+Gender: Female
+Music: Serious
+Double Battle: No
+AI: Smart Trainer
+
+Togekiss
+Level: 63
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Air Slash
+- Dazzling Gleam
+- Aura Sphere
+- Roost
+
+Kingdra
+Level: 63
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Surf
+- Dragon Pulse
+- Ice Beam
+- Dragon Dance
+
+Espeon
+Level: 63
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Psychic
+- Dazzling Gleam
+- Shadow Ball
+- Calm Mind
+
+=== TRAINER_SEIKA_COOLTRAINER_TAKERU ===
+Name: TAKERU
+Class: Cooltrainer Frlg
+Pic: Cooltrainer M Frlg
+Gender: Male
+Music: Serious
+Double Battle: No
+AI: Smart Trainer
+
+Donphan
+Level: 63
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Earthquake
+- Ice Shard
+- Knock Off
+- Rapid Spin
+
+Ursaring
+Level: 63
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Facade
+- Close Combat
+- Crunch
+- Swords Dance
+
+Tyranitar
+Level: 64
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Stone Edge
+- Crunch
+- Earthquake
+- Dragon Dance
+
+=== TRAINER_SEIKA_COOLTRAINER_MISORA ===
+Name: MISORA
+Class: Cooltrainer Frlg
+Pic: Cooltrainer F Frlg
+Gender: Female
+Music: Serious
+Double Battle: No
+AI: Smart Trainer
+
+Lanturn
+Level: 64
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Surf
+- Thunderbolt
+- Ice Beam
+- Volt Switch
+
+Skarmory
+Level: 64
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Brave Bird
+- Iron Head
+- Spikes
+- Roost
+
+Blissey
+Level: 65
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Seismic Toss
+- Soft-Boiled
+- Ice Beam
+- Thunder Wave
+
+=== TRAINER_SEIKA_E4_TETSU ===
+Name: TETSU
+Class: Elite Four Frlg
+Pic: Hiker Frlg
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Smart Trainer
+
+Skarmory @ Leftovers
+Level: 70
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Brave Bird
+- Spikes
+- Roost
+- Iron Defense
+
+Forretress
+Level: 70
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Gyro Ball
+- Volt Switch
+- Stealth Rock
+- Rapid Spin
+
+Steelix @ Steelixite
+Level: 71
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Iron Tail
+- Earthquake
+- Stone Edge
+- Dragon Dance
+
+Magnezone
+Level: 70
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Flash Cannon
+- Thunderbolt
+- Volt Switch
+- Body Press
+
+Scizor @ Sitrus Berry
+Level: 71
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Bullet Punch
+- U-turn
+- Swords Dance
+- Close Combat
+
+=== TRAINER_SEIKA_E4_KUROE ===
+Name: KUROE
+Class: Elite Four Frlg
+Pic: Cooltrainer F Frlg
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Smart Trainer
+
+Umbreon @ Leftovers
+Level: 71
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Foul Play
+- Wish
+- Protect
+- Toxic
+
+Honchkrow
+Level: 71
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Brave Bird
+- Sucker Punch
+- Night Slash
+- Heat Wave
+
+Weavile
+Level: 71
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Knock Off
+- Ice Shard
+- Triple Axel
+- Swords Dance
+
+Absol @ Absolite
+Level: 72
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Knock Off
+- Sucker Punch
+- Play Rough
+- Swords Dance
+
+Houndoom
+Level: 72
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Dark Pulse
+- Flamethrower
+- Sludge Bomb
+- Nasty Plot
+
+=== TRAINER_SEIKA_E4_SORA ===
+Name: SORA
+Class: Elite Four Frlg
+Pic: Beauty Frlg
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Smart Trainer
+
+Crobat
+Level: 72
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Brave Bird
+- Cross Poison
+- U-turn
+- Roost
+
+Togekiss @ Leftovers
+Level: 72
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Air Slash
+- Dazzling Gleam
+- Aura Sphere
+- Roost
+
+Xatu
+Level: 72
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Psychic
+- Air Slash
+- Heat Wave
+- Roost
+
+Yanmega
+Level: 72
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Bug Buzz
+- Air Slash
+- Giga Drain
+- U-turn
+
+Pidgeot @ Pidgeotite
+Level: 73
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Hurricane
+- Heat Wave
+- U-turn
+- Roost
+
+=== TRAINER_SEIKA_E4_RYOKO ===
+Name: RYOKO
+Class: Elite Four Frlg
+Pic: Expert F
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Smart Trainer
+
+Kingdra @ Leftovers
+Level: 73
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Draco Meteor
+- Surf
+- Ice Beam
+- Rain Dance
+
+Altaria @ Altarianite
+Level: 73
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Dragon Dance
+- Return
+- Earthquake
+- Roost
+
+Flygon
+Level: 73
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Earthquake
+- Dragon Claw
+- Stone Edge
+- U-turn
+
+Dragonite @ Lum Berry
+Level: 74
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Dragon Dance
+- Extreme Speed
+- Earthquake
+- Fire Punch
+
+Garchomp @ Sitrus Berry
+Level: 74
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Earthquake
+- Dragon Claw
+- Stone Edge
+- Swords Dance
+
+=== TRAINER_SEIKA_CHAMPION_SEIJI ===
+Name: SEIJI
+Class: Champion
+Pic: Expert M
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Smart Trainer
+Items: Full Restore / Full Restore / Full Restore
+
+Espeon @ Light Clay
+Level: 75
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Psychic
+- Dazzling Gleam
+- Shadow Ball
+- Reflect
+
+Lapras @ Leftovers
+Level: 75
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Freeze-Dry
+- Surf
+- Thunderbolt
+- Sing
+
+Scizor @ Choice Band
+Level: 76
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Bullet Punch
+- U-turn
+- Knock Off
+- Close Combat
+
+Ampharos @ Ampharosite
+Level: 76
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Thunderbolt
+- Dragon Pulse
+- Focus Blast
+- Volt Switch
+
+Tyranitar @ Chople Berry
+Level: 77
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Stone Edge
+- Crunch
+- Earthquake
+- Dragon Dance
+
+Dragonite @ Lum Berry
+Level: 78
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Dragon Dance
+- Extreme Speed
+- Earthquake
+- Fire Punch
+
+=== TRAINER_SEIKA_NOVA_DENEB_SHRINE ===
+Name: DENEB
+Class: Nova Admin
+Pic: Hex Maniac
+Gender: Female
+Music: Suspicious
+Double Battle: No
+AI: Smart Trainer
+
+Gardevoir @ Gardevoirite
+Level: 72
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Moonblast
+- Psychic
+- Focus Blast
+- Calm Mind
+
+Bronzong @ Leftovers
+Level: 72
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Gyro Ball
+- Earthquake
+- Trick Room
+- Stealth Rock
+
+Mismagius
+Level: 72
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Shadow Ball
+- Dazzling Gleam
+- Thunderbolt
+- Nasty Plot
+
+Togekiss @ Sitrus Berry
+Level: 73
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Air Slash
+- Dazzling Gleam
+- Aura Sphere
+- Roost
+
+=== TRAINER_SEIKA_NOVA_ALTAIR_SHRINE ===
+Name: ALTAIR
+Class: Nova Admin
+Pic: Ruin Maniac
+Gender: Male
+Music: Suspicious
+Double Battle: No
+AI: Smart Trainer
+
+Excadrill @ Life Orb
+Level: 72
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Earthquake
+- Iron Head
+- Rock Slide
+- Swords Dance
+
+Rhyperior
+Level: 72
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Stone Edge
+- Earthquake
+- Megahorn
+- Ice Punch
+
+Probopass @ Leftovers
+Level: 72
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Power Gem
+- Earth Power
+- Flash Cannon
+- Thunder Wave
+
+Metagross @ Metagrossite
+Level: 74
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Meteor Mash
+- Zen Headbutt
+- Earthquake
+- Bullet Punch
+
 /* [QoL] end of Seika region */

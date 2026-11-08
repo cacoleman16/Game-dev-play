@@ -1744,11 +1744,147 @@
     },
     {
       "id": "MAPSEC_SEIKA_LANTERNPORT",
-      "name": "LANTERNPORT"
+      "name": "LANTERNPORT",
+      "x": 17,
+      "y": 14,
+      "width": 1,
+      "height": 1
     },
     {
       "id": "MAPSEC_SEIKA_LANTERN_ROAD",
-      "name": "LANTERN ROAD"
+      "name": "LANTERN ROAD",
+      "x": 17,
+      "y": 12,
+      "width": 1,
+      "height": 2
+    },
+    {
+      "id": "MAPSEC_SEIKA_INKBRUSH",
+      "name": "INKBRUSH TOWN",
+      "x": 17,
+      "y": 11,
+      "width": 1,
+      "height": 1
+    },
+    {
+      "id": "MAPSEC_SEIKA_MOSSGROVE_WOODS",
+      "name": "MOSSGROVE WOODS",
+      "x": 13,
+      "y": 11,
+      "width": 4,
+      "height": 1
+    },
+    {
+      "id": "MAPSEC_SEIKA_MOSSGROVE",
+      "name": "MOSSGROVE",
+      "x": 12,
+      "y": 11,
+      "width": 1,
+      "height": 1
+    },
+    {
+      "id": "MAPSEC_SEIKA_KILN_ROAD",
+      "name": "KILN ROAD",
+      "x": 12,
+      "y": 9,
+      "width": 1,
+      "height": 2
+    },
+    {
+      "id": "MAPSEC_SEIKA_KILN_CITY",
+      "name": "KILN CITY",
+      "x": 12,
+      "y": 8,
+      "width": 1,
+      "height": 1
+    },
+    {
+      "id": "MAPSEC_SEIKA_TIDE_ROAD",
+      "name": "TIDE ROAD",
+      "x": 13,
+      "y": 8,
+      "width": 7,
+      "height": 1
+    },
+    {
+      "id": "MAPSEC_SEIKA_TIDEWATCH",
+      "name": "TIDEWATCH TOWN",
+      "x": 20,
+      "y": 8,
+      "width": 1,
+      "height": 1
+    },
+    {
+      "id": "MAPSEC_SEIKA_HOLLOW_PATH",
+      "name": "HOLLOW PATH",
+      "x": 20,
+      "y": 6,
+      "width": 1,
+      "height": 2
+    },
+    {
+      "id": "MAPSEC_SEIKA_SILKHOLLOW",
+      "name": "SILKHOLLOW TOWN",
+      "x": 20,
+      "y": 5,
+      "width": 1,
+      "height": 1
+    },
+    {
+      "id": "MAPSEC_SEIKA_WEAVERS_ROAD",
+      "name": "WEAVER'S ROAD",
+      "x": 15,
+      "y": 5,
+      "width": 5,
+      "height": 1
+    },
+    {
+      "id": "MAPSEC_SEIKA_FROSTMERE",
+      "name": "FROSTMERE",
+      "x": 14,
+      "y": 5,
+      "width": 1,
+      "height": 1
+    },
+    {
+      "id": "MAPSEC_SEIKA_DUSKPEAK",
+      "name": "DUSKPEAK VILLAGE",
+      "x": 14,
+      "y": 3,
+      "width": 1,
+      "height": 1
+    },
+    {
+      "id": "MAPSEC_SEIKA_FROST_ROAD",
+      "name": "FROST ROAD",
+      "x": 14,
+      "y": 4,
+      "width": 1,
+      "height": 1
+    },
+    {
+      "id": "MAPSEC_SEIKA_SKYREACH_PASS",
+      "name": "SKYREACH PASS",
+      "x": 14,
+      "y": 2,
+      "width": 1,
+      "height": 1
+    },
+    {
+      "id": "MAPSEC_SEIKA_STARWATCH_PLATEAU",
+      "name": "STARWATCH",
+      "x": 14,
+      "y": 1,
+      "width": 1,
+      "height": 1
+    },
+    {
+      "id": "MAPSEC_SEIKA_SKY_SHRINE",
+      "name": "SKY SHRINE",
+      "x": 14,
+      "y": 0,
+      "width": 1,
+      "height": 1
     }
   ]
 }

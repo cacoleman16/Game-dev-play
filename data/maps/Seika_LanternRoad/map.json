@@ -19,6 +19,11 @@
       "map": "MAP_SEIKA_LANTERNPORT",
       "offset": -8,
       "direction": "down"
+    },
+    {
+      "map": "MAP_SEIKA_INKBRUSH",
+      "offset": -4,
+      "direction": "up"
     }
   ],
   "object_events": [

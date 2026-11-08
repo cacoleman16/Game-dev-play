@@ -32,6 +32,15 @@ def main():
         LOADED.append(importlib.import_module(name))
         LOADED[-1].build()
     c.resolve_links()
+    # Doors lead to the middle of a 3-wide entrance mat, like Kanto's.
+    by_id = {m.id: m for m in c.MAPS}
+    for m in c.MAPS:
+        for w in m.warps:
+            d = by_id.get(w['dest_map'])
+            if d and w['dest_warp_id'] == '0' and len(d.warps) >= 3:
+                a, b, e = d.warps[:3]
+                if a['y'] == b['y'] == e['y'] and b['x'] == a['x'] + 1 and e['x'] == a['x'] + 2:
+                    w['dest_warp_id'] = '1'
     if len(sys.argv) > 2 and sys.argv[1] == 'render':
         os.makedirs(sys.argv[2], exist_ok=True)
         for m in c.MAPS:

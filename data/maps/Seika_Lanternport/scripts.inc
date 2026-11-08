@@ -1,4 +1,5 @@
 Seika_Lanternport_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Seika_Lanternport_QoLFly_OnTransition
 	.byte 0
 
 Seika_Lanternport_EventScript_TownSign::
@@ -83,4 +84,8 @@ Seika_Lanternport_EventScript_Sailor::
 	goto_if_eq VAR_RESULT, YES, QoL_EventScript_SailToKanto
 	msgbox QoL_Text_TidalComeBack, MSGBOX_DEFAULT
 	release
+	end
+
+Seika_Lanternport_QoLFly_OnTransition::
+	setflag FLAG_QOL_SEIKA_FLY_LANTERNPORT
 	end

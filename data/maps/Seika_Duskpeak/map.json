@@ -1,0 +1,151 @@
+{
+  "id": "MAP_SEIKA_DUSKPEAK",
+  "name": "Seika_Duskpeak",
+  "layout": "LAYOUT_SEIKA_DUSKPEAK",
+  "music": "MUS_MT_PYRE_EXTERIOR",
+  "region": "REGION_SEIKA",
+  "region_map_section": "MAPSEC_SEIKA_DUSKPEAK",
+  "requires_flash": false,
+  "weather": "WEATHER_SHADE",
+  "map_type": "MAP_TYPE_TOWN",
+  "allow_cycling": true,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": true,
+  "floor_number": 0,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": [
+    {
+      "map": "MAP_SEIKA_FROST_ROAD",
+      "offset": 6,
+      "direction": "down"
+    },
+    {
+      "map": "MAP_SEIKA_SKYREACH_PASS",
+      "offset": 6,
+      "direction": "up"
+    }
+  ],
+  "object_events": [
+    {
+      "type": "object",
+      "graphics_id": "OBJ_EVENT_GFX_CHANNELER",
+      "x": 13,
+      "y": 9,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Seika_Duskpeak_EventScript_Channeler",
+      "flag": "0"
+    },
+    {
+      "type": "object",
+      "graphics_id": "OBJ_EVENT_GFX_OLD_WOMAN_FRLG",
+      "x": 12,
+      "y": 22,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Seika_Duskpeak_EventScript_OldWoman",
+      "flag": "0"
+    },
+    {
+      "type": "object",
+      "graphics_id": "OBJ_EVENT_GFX_LITTLE_BOY_FRLG",
+      "x": 19,
+      "y": 17,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Seika_Duskpeak_EventScript_Boy",
+      "flag": "0"
+    },
+    {
+      "type": "object",
+      "graphics_id": "OBJ_EVENT_GFX_HIKER_FRLG",
+      "x": 18,
+      "y": 6,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Seika_Duskpeak_EventScript_Hiker",
+      "flag": "0"
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 11,
+      "y": 8,
+      "elevation": 3,
+      "dest_map": "MAP_SEIKA_DUSKPEAK_GYM",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 21,
+      "y": 8,
+      "elevation": 3,
+      "dest_map": "MAP_SEIKA_DUSKPEAK_POKEMON_CENTER_1F",
+      "dest_warp_id": "1"
+    },
+    {
+      "x": 22,
+      "y": 20,
+      "elevation": 3,
+      "dest_map": "MAP_SEIKA_DUSKPEAK_MART",
+      "dest_warp_id": "1"
+    },
+    {
+      "x": 10,
+      "y": 14,
+      "elevation": 3,
+      "dest_map": "MAP_SEIKA_DUSKPEAK_HOUSE1",
+      "dest_warp_id": "1"
+    },
+    {
+      "x": 21,
+      "y": 14,
+      "elevation": 3,
+      "dest_map": "MAP_SEIKA_DUSKPEAK_HOUSE2",
+      "dest_warp_id": "1"
+    }
+  ],
+  "coord_events": [],
+  "bg_events": [
+    {
+      "type": "sign",
+      "x": 15,
+      "y": 22,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "Seika_Duskpeak_EventScript_TownSign"
+    },
+    {
+      "type": "sign",
+      "x": 15,
+      "y": 8,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "Seika_Duskpeak_EventScript_GymSign"
+    },
+    {
+      "type": "sign",
+      "x": 14,
+      "y": 17,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "Seika_Duskpeak_EventScript_PondSign"
+    }
+  ]
+}

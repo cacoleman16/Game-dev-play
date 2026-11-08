@@ -357,6 +357,70 @@
       "y": 11,
       "respawn_map": "MAP_SEIKA_LANTERNPORT_POKEMON_CENTER_1F",
       "respawn_npc": "LOCALID_SEIKA_LANTERNPORT_NURSE"
+    },
+    {
+      "id": "HEAL_LOCATION_SEIKA_INKBRUSH",
+      "map": "MAP_SEIKA_INKBRUSH",
+      "x": 11,
+      "y": 21,
+      "respawn_map": "MAP_SEIKA_INKBRUSH_POKEMON_CENTER_1F",
+      "respawn_npc": "LOCALID_SEIKA_INKBRUSH_NURSE"
+    },
+    {
+      "id": "HEAL_LOCATION_SEIKA_MOSSGROVE",
+      "map": "MAP_SEIKA_MOSSGROVE",
+      "x": 23,
+      "y": 14,
+      "respawn_map": "MAP_SEIKA_MOSSGROVE_POKEMON_CENTER_1F",
+      "respawn_npc": "LOCALID_SEIKA_MOSSGROVE_NURSE"
+    },
+    {
+      "id": "HEAL_LOCATION_SEIKA_KILN_CITY",
+      "map": "MAP_SEIKA_KILN_CITY",
+      "x": 13,
+      "y": 12,
+      "respawn_map": "MAP_SEIKA_KILN_CITY_POKEMON_CENTER_1F",
+      "respawn_npc": "LOCALID_SEIKA_KILN_CITY_NURSE"
+    },
+    {
+      "id": "HEAL_LOCATION_SEIKA_TIDEWATCH",
+      "map": "MAP_SEIKA_TIDEWATCH",
+      "x": 11,
+      "y": 16,
+      "respawn_map": "MAP_SEIKA_TIDEWATCH_POKEMON_CENTER_1F",
+      "respawn_npc": "LOCALID_SEIKA_TIDEWATCH_NURSE"
+    },
+    {
+      "id": "HEAL_LOCATION_SEIKA_SILKHOLLOW",
+      "map": "MAP_SEIKA_SILKHOLLOW",
+      "x": 11,
+      "y": 11,
+      "respawn_map": "MAP_SEIKA_SILKHOLLOW_POKEMON_CENTER_1F",
+      "respawn_npc": "LOCALID_SEIKA_SILKHOLLOW_NURSE"
+    },
+    {
+      "id": "HEAL_LOCATION_SEIKA_FROSTMERE",
+      "map": "MAP_SEIKA_FROSTMERE",
+      "x": 16,
+      "y": 20,
+      "respawn_map": "MAP_SEIKA_FROSTMERE_POKEMON_CENTER_1F",
+      "respawn_npc": "LOCALID_SEIKA_FROSTMERE_NURSE"
+    },
+    {
+      "id": "HEAL_LOCATION_SEIKA_DUSKPEAK",
+      "map": "MAP_SEIKA_DUSKPEAK",
+      "x": 21,
+      "y": 9,
+      "respawn_map": "MAP_SEIKA_DUSKPEAK_POKEMON_CENTER_1F",
+      "respawn_npc": "LOCALID_SEIKA_DUSKPEAK_NURSE"
+    },
+    {
+      "id": "HEAL_LOCATION_SEIKA_LEAGUE",
+      "map": "MAP_SEIKA_STARWATCH_PLATEAU",
+      "x": 11,
+      "y": 7,
+      "respawn_map": "MAP_SEIKA_LEAGUE_LOBBY",
+      "respawn_npc": "LOCALID_SEIKA_LEAGUE_NURSE"
     }
   ]
 }

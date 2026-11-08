@@ -114,42 +114,42 @@
       "y": 10,
       "elevation": 3,
       "dest_map": "MAP_SEIKA_LANTERNPORT_POKEMON_CENTER_1F",
-      "dest_warp_id": "0"
+      "dest_warp_id": "1"
     },
     {
       "x": 28,
       "y": 10,
       "elevation": 3,
       "dest_map": "MAP_SEIKA_LANTERNPORT_GYM",
-      "dest_warp_id": "0"
+      "dest_warp_id": "1"
     },
     {
       "x": 29,
       "y": 19,
       "elevation": 3,
       "dest_map": "MAP_SEIKA_LANTERNPORT_MART",
-      "dest_warp_id": "0"
+      "dest_warp_id": "1"
     },
     {
       "x": 10,
       "y": 19,
       "elevation": 3,
       "dest_map": "MAP_SEIKA_LANTERNPORT_HOUSE1",
-      "dest_warp_id": "0"
+      "dest_warp_id": "1"
     },
     {
       "x": 14,
       "y": 19,
       "elevation": 3,
       "dest_map": "MAP_SEIKA_LANTERNPORT_LANTERN_HALL",
-      "dest_warp_id": "0"
+      "dest_warp_id": "1"
     },
     {
       "x": 23,
       "y": 19,
       "elevation": 3,
       "dest_map": "MAP_SEIKA_LANTERNPORT_HOUSE2",
-      "dest_warp_id": "0"
+      "dest_warp_id": "1"
     }
   ],
   "coord_events": [],

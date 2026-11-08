@@ -1,0 +1,166 @@
+{
+  "id": "MAP_SEIKA_FROSTMERE",
+  "name": "Seika_Frostmere",
+  "layout": "LAYOUT_SEIKA_FROSTMERE",
+  "music": "MUS_RG_SEVII_45",
+  "region": "REGION_SEIKA",
+  "region_map_section": "MAPSEC_SEIKA_FROSTMERE",
+  "requires_flash": false,
+  "weather": "WEATHER_SNOW",
+  "map_type": "MAP_TYPE_TOWN",
+  "allow_cycling": true,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": true,
+  "floor_number": 0,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": [
+    {
+      "map": "MAP_SEIKA_WEAVERS_ROAD",
+      "offset": 0,
+      "direction": "right"
+    },
+    {
+      "map": "MAP_SEIKA_FROST_ROAD",
+      "offset": 6,
+      "direction": "up"
+    }
+  ],
+  "object_events": [
+    {
+      "type": "object",
+      "graphics_id": "OBJ_EVENT_GFX_FISHER",
+      "x": 14,
+      "y": 14,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Seika_Frostmere_EventScript_Fisher",
+      "flag": "0"
+    },
+    {
+      "type": "object",
+      "graphics_id": "OBJ_EVENT_GFX_OLD_WOMAN_FRLG",
+      "x": 22,
+      "y": 14,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Seika_Frostmere_EventScript_OldWoman",
+      "flag": "0"
+    },
+    {
+      "type": "object",
+      "graphics_id": "OBJ_EVENT_GFX_LITTLE_BOY_FRLG",
+      "x": 11,
+      "y": 25,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Seika_Frostmere_EventScript_Boy",
+      "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_SEIKA_FROSTMERE_GRUNT1",
+      "type": "object",
+      "graphics_id": "OBJ_EVENT_GFX_PSYCHIC_M",
+      "x": 16,
+      "y": 8,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Seika_Frostmere_EventScript_Grunts",
+      "flag": "FLAG_QOL_SEIKA_HIDE_GRUNTS_FROSTMERE"
+    },
+    {
+      "local_id": "LOCALID_SEIKA_FROSTMERE_GRUNT2",
+      "type": "object",
+      "graphics_id": "OBJ_EVENT_GFX_PSYCHIC_M",
+      "x": 17,
+      "y": 8,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Seika_Frostmere_EventScript_Grunts",
+      "flag": "FLAG_QOL_SEIKA_HIDE_GRUNTS_FROSTMERE"
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 16,
+      "y": 19,
+      "elevation": 3,
+      "dest_map": "MAP_SEIKA_FROSTMERE_POKEMON_CENTER_1F",
+      "dest_warp_id": "1"
+    },
+    {
+      "x": 24,
+      "y": 19,
+      "elevation": 3,
+      "dest_map": "MAP_SEIKA_FROSTMERE_GYM",
+      "dest_warp_id": "1"
+    },
+    {
+      "x": 25,
+      "y": 9,
+      "elevation": 3,
+      "dest_map": "MAP_SEIKA_FROSTMERE_MART",
+      "dest_warp_id": "1"
+    },
+    {
+      "x": 19,
+      "y": 9,
+      "elevation": 3,
+      "dest_map": "MAP_SEIKA_FROSTMERE_HOUSE1",
+      "dest_warp_id": "1"
+    },
+    {
+      "x": 15,
+      "y": 25,
+      "elevation": 3,
+      "dest_map": "MAP_SEIKA_FROSTMERE_HOUSE2",
+      "dest_warp_id": "1"
+    },
+    {
+      "x": 24,
+      "y": 25,
+      "elevation": 3,
+      "dest_map": "MAP_SEIKA_FROSTMERE_HOUSE3",
+      "dest_warp_id": "1"
+    }
+  ],
+  "coord_events": [],
+  "bg_events": [
+    {
+      "type": "sign",
+      "x": 27,
+      "y": 11,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "Seika_Frostmere_EventScript_TownSign"
+    },
+    {
+      "type": "sign",
+      "x": 26,
+      "y": 20,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "Seika_Frostmere_EventScript_GymSign"
+    }
+  ]
+}

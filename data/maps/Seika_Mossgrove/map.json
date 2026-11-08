@@ -1,0 +1,151 @@
+{
+  "id": "MAP_SEIKA_MOSSGROVE",
+  "name": "Seika_Mossgrove",
+  "layout": "LAYOUT_SEIKA_MOSSGROVE",
+  "music": "MUS_FORTREE",
+  "region": "REGION_SEIKA",
+  "region_map_section": "MAPSEC_SEIKA_MOSSGROVE",
+  "requires_flash": false,
+  "weather": "WEATHER_SUNNY",
+  "map_type": "MAP_TYPE_TOWN",
+  "allow_cycling": true,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": true,
+  "floor_number": 0,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": [
+    {
+      "map": "MAP_SEIKA_MOSSGROVE_WOODS",
+      "offset": -4,
+      "direction": "right"
+    },
+    {
+      "map": "MAP_SEIKA_KILN_ROAD",
+      "offset": 8,
+      "direction": "up"
+    }
+  ],
+  "object_events": [
+    {
+      "type": "object",
+      "graphics_id": "OBJ_EVENT_GFX_MAN",
+      "x": 13,
+      "y": 23,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Seika_Mossgrove_EventScript_Beekeeper",
+      "flag": "0"
+    },
+    {
+      "type": "object",
+      "graphics_id": "OBJ_EVENT_GFX_LITTLE_GIRL_FRLG",
+      "x": 23,
+      "y": 16,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Seika_Mossgrove_EventScript_Girl",
+      "flag": "0"
+    },
+    {
+      "type": "object",
+      "graphics_id": "OBJ_EVENT_GFX_HIKER_FRLG",
+      "x": 20,
+      "y": 4,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Seika_Mossgrove_EventScript_Hiker",
+      "flag": "0"
+    },
+    {
+      "type": "object",
+      "graphics_id": "OBJ_EVENT_GFX_OLD_WOMAN_FRLG",
+      "x": 25,
+      "y": 22,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Seika_Mossgrove_EventScript_OldWoman",
+      "flag": "0"
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 12,
+      "y": 13,
+      "elevation": 3,
+      "dest_map": "MAP_SEIKA_MOSSGROVE_GYM",
+      "dest_warp_id": "1"
+    },
+    {
+      "x": 23,
+      "y": 13,
+      "elevation": 3,
+      "dest_map": "MAP_SEIKA_MOSSGROVE_POKEMON_CENTER_1F",
+      "dest_warp_id": "1"
+    },
+    {
+      "x": 16,
+      "y": 20,
+      "elevation": 3,
+      "dest_map": "MAP_SEIKA_MOSSGROVE_MART",
+      "dest_warp_id": "1"
+    },
+    {
+      "x": 10,
+      "y": 20,
+      "elevation": 3,
+      "dest_map": "MAP_SEIKA_MOSSGROVE_HOUSE1",
+      "dest_warp_id": "1"
+    },
+    {
+      "x": 22,
+      "y": 20,
+      "elevation": 3,
+      "dest_map": "MAP_SEIKA_MOSSGROVE_HOUSE2",
+      "dest_warp_id": "1"
+    }
+  ],
+  "coord_events": [],
+  "bg_events": [
+    {
+      "type": "sign",
+      "x": 20,
+      "y": 13,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "Seika_Mossgrove_EventScript_TownSign"
+    },
+    {
+      "type": "sign",
+      "x": 16,
+      "y": 13,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "Seika_Mossgrove_EventScript_GymSign"
+    },
+    {
+      "type": "sign",
+      "x": 27,
+      "y": 13,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "Seika_Mossgrove_EventScript_EastSign"
+    }
+  ]
+}

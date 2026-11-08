@@ -31,6 +31,9 @@ def fmt(text):
     """Text with newlines (lines) and form feeds (pages) -> .string lines:
     a newline code after a page's first line, the scroll code after later
     lines, the page code between pages and $ at the end."""
+    # straight double quotes end a .string: use the game's curly quotes
+    parts = text.split('"')
+    text = ''.join(p + ('\u201c' if i % 2 == 0 else '\u201d') for i, p in enumerate(parts[:-1])) + parts[-1]
     pages = text.strip('\n').split('\f')
     res = []
     for pi, page in enumerate(pages):

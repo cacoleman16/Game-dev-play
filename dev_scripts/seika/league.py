@@ -182,7 +182,7 @@ TRAINERS = []
 for r in ROOMS:
     trainer(r['const'], r['who'], 'Elite Four Frlg', r['pic'], r['gender'], r['party'],
             music='Male' if r['gender'] == 'Male' else 'Female')
-trainer('TRAINER_SEIKA_CHAMPION_SEIJI', 'SEIJI', 'Champion Frlg', 'Expert M', 'Male', '''
+trainer('TRAINER_SEIKA_CHAMPION_SEIJI', 'SEIJI', 'Champion', 'Expert M', 'Male', '''
 Espeon @ Light Clay
 Level: 75
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
@@ -355,13 +355,13 @@ def e4_room(i, r):
     prev = (LOBBY, 1) if i == 0 else (ROOMS[i - 1]['id'], 1)
     nxt = ROOMS[i + 1]['id'] if i + 1 < len(ROOMS) else CHAMP['id']
     lance = r['layout'] == 'LAYOUT_POKEMON_LEAGUE_LANCES_ROOM'
-    if lance:
-        door(m, 23, 13, *prev)
-        door(m, 6, 5, nxt, 0)
+    if lance:   # door elevations as in Kanto's rooms
+        door(m, 23, 13, *prev, elevation=3)
+        door(m, 6, 5, nxt, 0, elevation=0)
         leader_xy = (6, 8)
     else:
-        door(m, 6, 12, *prev)
-        door(m, 6, 2, nxt, 0)
+        door(m, 6, 12, *prev, elevation=0)
+        door(m, 6, 2, nxt, 0, elevation=0)
         leader_xy = (6, 5)
     fl = E4_FLAGS[i]
     m.objects.append(g.obj(r['gfx'], leader_xy[0], leader_xy[1], name + '_EventScript_Leader'))
@@ -462,30 +462,34 @@ def sky_shrine(plateau):
         for sx in range(6, 13):
             r.set(cx - 3 + (sx - 6), sy + dy, r.at(sx, sy))
     name = 'Seika_SkyShrine'
-    m = add(g.MapDef(name, 'MAP_SEIKA_SKY_SHRINE', SEC_SHRINE, r, 'MUS_RG_NANAISEKI', 'MAP_TYPE_UNDERGROUND',
+    m = add(g.MapDef(name, 'MAP_SEIKA_SKY_SHRINE', SEC_SHRINE, r, 'MUS_RG_SEVII_DUNGEON', 'MAP_TYPE_UNDERGROUND',
                      'WEATHER_NONE', True, False, False, battle_scene='MAP_BATTLE_SCENE_NORMAL'))
     hole = (x0 + 5 + k, 18 + dy)                       # Navel Rock's way down, kept as the exit
     cave = 0
     if plateau:
         cave = next(i for i, w in enumerate(plateau.warps) if w['dest_map'] == 'MAP_SEIKA_SKY_SHRINE')
     door(m, hole[0], hole[1], PLATEAU, cave)
-    m.objects.append(g.obj('OBJ_EVENT_GFX_HEX_MANIAC', cx - 2, 11, name + '_EventScript_Deneb',
+    m.objects.append(g.obj('OBJ_EVENT_GFX_HEX_MANIAC', cx - 1, 10, name + '_EventScript_Deneb',
                            local_id='LOCALID_SEIKA_SHRINE_DENEB', move='MOVEMENT_TYPE_FACE_UP', flag=HIDE_SHRINE_NOVA))
-    m.objects.append(g.obj('OBJ_EVENT_GFX_HIKER_FRLG', cx + 2, 11, name + '_EventScript_Altair',
+    m.objects.append(g.obj('OBJ_EVENT_GFX_HIKER_FRLG', cx + 1, 10, name + '_EventScript_Altair',
                            local_id='LOCALID_SEIKA_SHRINE_ALTAIR', move='MOVEMENT_TYPE_FACE_UP', flag=HIDE_SHRINE_NOVA))
     m.objects.append(g.obj('OBJ_EVENT_GFX_QOL_JIRACHI', cx, 7, name + '_EventScript_Jirachi',
                            local_id='LOCALID_SEIKA_SHRINE_JIRACHI', move='MOVEMENT_TYPE_FACE_DOWN', flag=HIDE_JIRACHI,
                            elevation=3))
-    m.coords.append(g.coord(cx, 12, name + '_EventScript_Confront', 'VAR_TEMP_2', 0))
-    m.coords.append(g.coord(cx - 1, 12, name + '_EventScript_Confront', 'VAR_TEMP_2', 0))
-    m.coords.append(g.coord(cx + 1, 12, name + '_EventScript_Confront', 'VAR_TEMP_2', 0))
+    # the scene starts on the first step off the way up (the hole at `hole`)
+    for yy in range(9, 13):
+        for xx in range(hole[0] - 1, hole[0] + 3):
+            if (xx, yy) != hole:
+                m.coords.append(g.coord(xx, yy, name + '_EventScript_Confront', 'VAR_TEMP_2', 0))
     m.map_scripts = [('MAP_SCRIPT_ON_TRANSITION', name + '_OnTransition'),
                      ('MAP_SCRIPT_ON_RESUME', name + '_OnResume')]
     m.scripts += (
         '%(n)s_OnTransition::\n'
+        '\tcall_if_unset %(nova)s, %(n)s_EventScript_HideStar\n'
         '\tcall_if_set %(done)s, %(n)s_EventScript_HideAll\n'
         '\tcall_if_set %(nova)s, %(n)s_EventScript_SkipConfront\n'
         '\tend\n\n'
+        '%(n)s_EventScript_HideStar::\n\tsetflag %(hj)s\n\treturn\n\n'
         '%(n)s_EventScript_HideAll::\n\tsetflag %(hn)s\n\tsetflag %(hj)s\n\tsetvar VAR_TEMP_2, 1\n\treturn\n\n'
         '%(n)s_EventScript_SkipConfront::\n\tsetvar VAR_TEMP_2, 1\n\treturn\n\n'
         '%(n)s_OnResume::\n\tcall_if_set FLAG_SYS_CTRL_OBJ_DELETE, %(n)s_EventScript_TryRemoveJirachi\n\tend\n\n'
@@ -518,8 +522,7 @@ def sky_shrine(plateau):
         '\tspecialvar VAR_RESULT, GetBattleOutcome\n'
         '\tgoto_if_eq VAR_RESULT, B_OUTCOME_CAUGHT, %(n)s_EventScript_Ending\n'
         '\tgoto_if_eq VAR_RESULT, B_OUTCOME_WON, %(n)s_EventScript_StarFlewHome\n'
-        '\tgoto_if_eq VAR_RESULT, B_OUTCOME_RAN, %(n)s_EventScript_StarFlewHome\n'
-        '\tgoto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, %(n)s_EventScript_StarFlewHome\n'
+        '\tmsgbox %(n)s_Text_StillHere, MSGBOX_DEFAULT\n'   # ran away: it waits for you
         '\trelease\n\tend\n\n'
         '%(n)s_EventScript_StarFlewHome::\n\tfadescreen FADE_TO_BLACK\n\tremoveobject LOCALID_SEIKA_SHRINE_JIRACHI\n'
         '\tfadescreen FADE_FROM_BLACK\n\tmsgbox %(n)s_Text_FlewHome, MSGBOX_DEFAULT\n'
@@ -543,6 +546,7 @@ def sky_shrine(plateau):
                    'The last note of the bell fades.\fA small light falls from the sky\n'
                    'and lands on the shrine...')
     m.scripts += T(name + '_Text_Jirachi', 'Jiraaa!')
+    m.scripts += T(name + '_Text_StillHere', 'The WISHING STAR is still\nfloating above the shrine...')
     m.scripts += T(name + '_Text_FlewHome',
                    'The WISHING STAR rose into the\nsky and was gone.\fBut it looked back at you, just\n'
                    'once, before it went.')
