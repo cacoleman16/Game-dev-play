@@ -345,14 +345,27 @@
 #define VAR_QOL_DEXNAV_SPECIES      0x40F7 // DexNav registered species
 #define VAR_QOL_DEXNAV_STEPS        0x40F8 // DexNav hidden-Pokemon step counter
 #define VAR_QOL_DIFFICULTY          0x40F9 // Trainer difficulty (HARD MODE on the bedroom NES)
+#define VAR_QOL_FIELD_RESEARCH      0x40FA // Side quest: current Field Research task (QOL_RESEARCH_*)
 #else
 #define VAR_QOL_LAST_REPEL          0
 #define VAR_QOL_DEXNAV_SPECIES      0
 #define VAR_QOL_DEXNAV_STEPS        0
 #define VAR_QOL_DIFFICULTY          0
+#define VAR_QOL_FIELD_RESEARCH      0
 #endif
 // Script-friendly copies of enum DifficultyLevel (checked in src/new_game.c).
 #define QOL_DIFFICULTY_NORMAL       1
 #define QOL_DIFFICULTY_HARD         2
+
+// Field Research tasks, in order (src/qol_quests.c, Oak's Lab script).
+#define QOL_RESEARCH_SHOW_FOREIGN       0
+#define QOL_RESEARCH_CATCH_10_FOREIGN   1
+#define QOL_RESEARCH_WIN_50_BATTLES     2
+#define QOL_RESEARCH_HATCH_EGG          3
+#define QOL_RESEARCH_CATCH_25_FOREIGN   4
+#define QOL_RESEARCH_CATCH_100_KANTO    5
+#define QOL_RESEARCH_GALAR_LEAD         6
+#define QOL_RESEARCH_CATCH_GALAR_BIRDS  7
+#define QOL_RESEARCH_DONE               8
 
 #endif // GUARD_CONSTANTS_VARS_H

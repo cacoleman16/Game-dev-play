@@ -455,6 +455,13 @@ enum
 // Used to call a specific species' follower graphics. Useful for static encounters.
 #define OBJ_EVENT_GFX_SPECIES(name)                 (SPECIES_##name + OBJ_EVENT_MON)
 #define OBJ_EVENT_GFX_SPECIES_SHINY(name)           (SPECIES_##name + OBJ_EVENT_MON + OBJ_EVENT_MON_SHINY)
+
+// [QoL] Galarian birds for the side quest. Map files are assembled, where the
+// species enum isn't available, so these spell out the species numbers
+// (checked against SPECIES_* in src/qol_quests.c).
+#define OBJ_EVENT_GFX_QOL_ARTICUNO_GALAR            (0x4000 + 982) // OBJ_EVENT_MON + SPECIES_ARTICUNO_GALAR
+#define OBJ_EVENT_GFX_QOL_ZAPDOS_GALAR              (0x4000 + 983) // OBJ_EVENT_MON + SPECIES_ZAPDOS_GALAR
+#define OBJ_EVENT_GFX_QOL_MOLTRES_GALAR             (0x4000 + 984) // OBJ_EVENT_MON + SPECIES_MOLTRES_GALAR
 #define OBJ_EVENT_GFX_SPECIES_FEMALE(name)          (SPECIES_##name + OBJ_EVENT_MON + OBJ_EVENT_MON_FEMALE)
 #define OBJ_EVENT_GFX_SPECIES_SHINY_FEMALE(name)    (SPECIES_##name + OBJ_EVENT_MON + OBJ_EVENT_MON_SHINY + OBJ_EVENT_MON_FEMALE)
 

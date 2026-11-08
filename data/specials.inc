@@ -640,3 +640,5 @@ gSpecials::
 	def_special CheckAddCoins
 @ [QoL] Randomizer: VAR_RESULT = randomized species of VAR_0x8004
 	def_special QoL_RandomizeSpecialVar
+@ [QoL] Field Research side quest: progress of the current task
+	def_special QoL_Research_Status

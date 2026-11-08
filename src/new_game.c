@@ -258,6 +258,10 @@ static void SetupQoLNewGame(void)
     AddBagItem(ITEM_TERA_ORB, 1);
     FlagSet(FLAG_QOL_DYNAMAX_BATTLES);
     FlagSet(FLAG_QOL_TERA_ORB_CHARGED);
+    // Side quest: the Galarian birds stay hidden until Field Research reveals them.
+    FlagSet(FLAG_QOL_HIDE_GALAR_ARTICUNO);
+    FlagSet(FLAG_QOL_HIDE_GALAR_ZAPDOS);
+    FlagSet(FLAG_QOL_HIDE_GALAR_MOLTRES);
     // Trainers use their Normal teams until HARD MODE is switched on at the NES.
     SetCurrentDifficultyLevel(DIFFICULTY_NORMAL);
 }
