@@ -1,0 +1,16 @@
+{
+ "Seika_Inkbrush_Gym_Text_Statue": "スミフデ　ポケモンジム　リーダー　スミ",
+ "Seika_Inkbrush_Gym_Text_StatueWon": "スミフデ　ポケモンジム　リーダー　スミ\\pしょうりした　トレーナー:　{PLAYER}",
+ "Seika_Inkbrush_Gym_Text_HakuIntro": "おまえの　かげの　かたちで　つぎの　てを　よんだ！",
+ "Seika_Inkbrush_Gym_Text_HakuDefeat": "よみが‥　にじんで　しまった。",
+ "Seika_Inkbrush_Gym_Text_HakuPost": "スミさまは　バトルちゅう　なにも　いわない。　ただ　ふでを　はしらせ‥　そして　かつのだ。",
+ "Seika_Inkbrush_Gym_Text_ShizuIntro": "わたしの　ドーブルは　しっぽで　えを　かくの。　あなたの　まけを　えがいて　あげる！",
+ "Seika_Inkbrush_Gym_Text_ShizuDefeat": "ああっ！　わたしの　えが　だいなしよ！",
+ "Seika_Inkbrush_Gym_Text_ShizuPost": "スミさまの　エーフィは　さいごの　ひとふで。　その　ぶんの　ちからを　のこして　おきなさい！",
+ "Seika_Inkbrush_Gym_Text_SumiIntro": "スミ『ようこそ。　わたくしは　スミ。　スミフデの　やしろと　その　すみを　まもる　ものです。\\pふでは　うそを　つけません。　ひとふでに　もつ　ひとの　こころが　すべて　あらわれるのです。\\pあなたは　どんな　ふでを　はこぶのか　みせて　もらいましょう。　いざ！』",
+ "Seika_Inkbrush_Gym_Text_SumiDefeat": "ちからづよく　そして　まっすぐな　ふで。　これを　うけとる　しかくが　あります。\\pスミバッジを　どうぞ。\\p{FONT_NORMAL}{PLAYER}は　スミから　スミバッジを　もらった！{PAUSE_MUSIC}{PLAY_BGM}{MUS_OBTAIN_BADGE}{PAUSE 0xFE}{PAUSE 0x56}{RESUME_MUSIC}",
+ "Seika_Inkbrush_Gym_Text_SumiGift": "スミ『それと　これも。　おちついた　こころが　ぶれない　てを　つくるのです。』",
+ "Seika_Inkbrush_Gym_Text_SumiPost": "スミ『あなたは　スターフォールのまきものの　ことで　きたのでしょう？\\pまきものかんの　あるじが　なにが　かいて　あるか　おしえて　くれます。　おおどおりの　すぐ　きたですよ。\\pそれから　にしへ　コケムスのもりを　ぬけて　コケムスむらへ。　そこの　やしろは　カヤが　まもって　います。』",
+ "Seika_Inkbrush_Gym_Text_GymGuy": "よう！　スミの　ポケモンは　みんな　エスパータイプだ。\\pむし　ゴースト　あくの　わざで　すみを　にじませて　やれ！　めいそうにも　きをつけろよ！",
+ "Seika_Inkbrush_Gym_Text_GymGuyWon": "みごとな　フィニッシュ！　その　スミバッジは　もう　ずっと　きえないぜ！"
+}

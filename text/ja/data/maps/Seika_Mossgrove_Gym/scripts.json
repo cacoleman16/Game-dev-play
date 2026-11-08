@@ -1,0 +1,16 @@
+{
+ "Seika_Mossgrove_Gym_Text_Statue": "コケムス　ポケモンジム　リーダー　カヤ",
+ "Seika_Mossgrove_Gym_Text_StatueWon": "コケムス　ポケモンジム　リーダー　カヤ\\pしょうりした　トレーナー:　{PLAYER}",
+ "Seika_Mossgrove_Gym_Text_TetsuIntro": "ブーン！　ぼくの　くものすに　まんまと　かかったな！",
+ "Seika_Mossgrove_Gym_Text_TetsuDefeat": "くものすが‥　やぶれた！",
+ "Seika_Mossgrove_Gym_Text_TetsuPost": "カヤさんは　バトルの　まえに　むしたちに　うたを　きかせるの。　すると　ゆうかんに　なるんだ！",
+ "Seika_Mossgrove_Gym_Text_MitsuIntro": "きをつけて！　きょうは　すが　ざわざわ　してるの。　わたしの　ポケモンもよ！",
+ "Seika_Mossgrove_Gym_Text_MitsuDefeat": "まあ　かわいそうに。",
+ "Seika_Mossgrove_Gym_Text_MitsuPost": "カヤさんの　ビークインは　すの　じょおう。　じぶんで　なおすから　いっきに　たたいて！",
+ "Seika_Mossgrove_Gym_Text_KayaIntro": "カヤ『こんにちは！　わたしは　カヤ。　わたしが　ハチを　まもり　ハチが　やしろを　まもるの。\\pすと　いうのは　1000の　ちいさな　はねが　ひとつに　なって　はたらく　ところ。\\pむらがって　さして　すぐに　かいふく！　じゅんびは　いい？』",
+ "Seika_Mossgrove_Gym_Text_KayaDefeat": "ブーン‥　わたしたちの　すが　こんなに　あまく　まけるなんて　はじめて！\\pモリバッジは　あなたの　ものよ。\\p{FONT_NORMAL}{PLAYER}は　カヤから　モリバッジを　もらった！{PAUSE_MUSIC}{PLAY_BGM}{MUS_OBTAIN_BADGE}{PAUSE 0xFE}{PAUSE 0x56}{RESUME_MUSIC}",
+ "Seika_Mossgrove_Gym_Text_KayaGift": "カヤ『この　わざマシンも　どうぞ。　ハチが　ミツを　すうように　あいての　ちからを　すいとるの。』",
+ "Seika_Mossgrove_Gym_Text_KayaPost": "カヤ『むらの　きたの　みちは　カマモトシティへ　つづいて　いるわ。\\pそこの　やしろは　トビンさんが　まもって　いて　ほしガラスのかねを　つくれるのは　そこの　かまだけなの。\\pあの　おんなの　ひとが　かねを　ねらって　いるなら　きっと　カマモトシティよ。　いそいで　{PLAYER}！』",
+ "Seika_Mossgrove_Gym_Text_GymGuy": "よう！　カヤの　すは　むしポケモン　ばかりだ。\\pほのお　ひこう　いわの　わざで　いぶりだして　やれ！\\pハッサムには　きをつけろ。　ほんとうに　にがてなのは　ほのおだけだ。",
+ "Seika_Mossgrove_Gym_Text_GymGuyWon": "じょおうバチに　かったな！　あまーい　しょうりだぜ！"
+}

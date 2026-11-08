@@ -1,0 +1,19 @@
+{
+ "Seika_KilnCity_Gym_Text_GymStatue": "カマモト　ポケモンジム　リーダー　トビン\\pしょうりした　トレーナー:　まだ　いない",
+ "Seika_KilnCity_Gym_Text_GymStatueWon": "カマモト　ポケモンジム　リーダー　トビン\\pしょうりした　トレーナー:　{PLAYER}",
+ "Seika_KilnCity_Gym_Text_DaikiIntro": "ししょうに　ねんどは　じぶんで　ほれと　おそわった。　かちも　じぶんで　ほりあてるぞ！",
+ "Seika_KilnCity_Gym_Text_DaikiDefeat": "じぶんで　ほった　あなに　おちちゃった‥",
+ "Seika_KilnCity_Gym_Text_DaikiPost": "この　ジムの　かべは　かまと　おなじ　つくり。　あったかいって　ししょうは　いうよ。",
+ "Seika_KilnCity_Gym_Text_KazuIntro": "ホネと　ねんど！　ねんどと　ホネ！　ぼくの　ポケモンは　じめんが　だいすき！",
+ "Seika_KilnCity_Gym_Text_KazuDefeat": "ホネまで　ガタガタだ！",
+ "Seika_KilnCity_Gym_Text_KazuPost": "トビンさんの　ゴルーグは　てづくり　なんだ。　ほんものの　ねんどの　きょじんだよ！",
+ "Seika_KilnCity_Gym_Text_TetsuIntro": "まちの　したで　ふるい　つぼを　ほりあてた。　ふるい　わざも　いくつか　な！",
+ "Seika_KilnCity_Gym_Text_TetsuDefeat": "つぼみたいに　こなごなだ！",
+ "Seika_KilnCity_Gym_Text_TetsuPost": "さあ　いけ。　ししょうは　かまの　おくで　まって　いるぞ。",
+ "Seika_KilnCity_Gym_Text_TobinIntro": "トビン『わしの　かまを　ぬけて　きたか。　わしは　とうげいかの　トビン。\\pねんどは　こねた　ての　ことも　やいた　ほのおの　ことも　すべて　おぼえて　おる。\\pおまえさんを　きたえた　ほのおが　どんな　ものか　みせて　もらおう！』{PLAY_BGM}{MUS_RG_ENCOUNTER_GYM_LEADER}",
+ "Seika_KilnCity_Gym_Text_TobinDefeat": "はっは！　わしの　ねんどが　われたか。　はじる　ことでは　ない。\\pカマバッジを　わたそう。　だいじに　するんじゃぞ。\\p{FONT_NORMAL}{PLAYER}は　トビンから　カマバッジを　もらった！{PAUSE_MUSIC}{PLAY_BGM}{MUS_OBTAIN_BADGE}{PAUSE 0xFE}{PAUSE 0x56}{RESUME_MUSIC}",
+ "Seika_KilnCity_Gym_Text_TobinGift": "トビン『それと　この　わざマシンも　やろう。　だいち　そのものを　ゆるがす　わざじゃ。』",
+ "Seika_KilnCity_Gym_Text_TobinPost": "トビン『シオサイかいどうを　ひがしへ　ゆけば　シオミタウンじゃ。\\pナギサが　シオミの　やしろを　まもって　おる。　わしが　ねんどを　よむように　あれは　うみを　よむのじゃ。』",
+ "Seika_KilnCity_Gym_Text_GymGuy": "よう！　カマモトジムへ　ようこそ！\\pトビンは　じめんタイプの　つかいて。　みず　くさ　こおりの　わざで　ねんどを　やわらかく　しちまえ！\\pきりふだは　ねんどの　きょじん　ゴルーグ。　ゴーストタイプだから　ノーマルと　かくとうの　わざは　きかないぞ！",
+ "Seika_KilnCity_Gym_Text_GymGuyWon": "カマモトジムを　うちくだいたな！　これで　バッジは　4つだ！"
+}

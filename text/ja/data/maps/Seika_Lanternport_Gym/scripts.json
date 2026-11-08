@@ -1,0 +1,14 @@
+{
+ "Seika_Lanternport_Gym_Text_HomuraIntro": "ウィックさまの　ほのおは　1000や　もえた！　おれも　あのかたの　ために　もえる！",
+ "Seika_Lanternport_Gym_Text_HomuraDefeat": "おれの　ほのおが‥　きえちまった。",
+ "Seika_Lanternport_Gym_Text_HomuraPost": "ウィックさまは　ひといきで　まちじゅうの　ランタンに　ひを　ともすんだ。　ほんとだぞ！",
+ "Seika_Lanternport_Gym_Text_EnkaIntro": "ひに　ちかづきすぎたな？　ざんねん！",
+ "Seika_Lanternport_Gym_Text_EnkaDefeat": "うわっ　やけどした！",
+ "Seika_Lanternport_Gym_Text_EnkaPost": "ウィックさまは　まず　あくの　ほのおで　くる。　ヘルガーに　きをつけろ！",
+ "Seika_Lanternport_Gym_Text_WickIntro": "ウィック『カントーから　きた　たびびとが　おれの　やしろに　きたか。\\pおれは　ウィック。　ねがいぼしを　ふるさとへ　みちびく　ランタンを　つくって　いる。\\pかぜを　こわがる　ランタンなど　ランタンでは　ない！　おまえの　ほのおを　みせて　みろ！』",
+ "Seika_Lanternport_Gym_Text_WickDefeat": "はっ！　おれの　ほのおが　おまえの　ほのおに　ひれふしたか。\\pランタンバッジを　うけとれ。　セイカの　たびじを　てらして　くれるだろう。\\p{FONT_NORMAL}{PLAYER}は　ウィックから　ランタンバッジを　もらった！{PAUSE_MUSIC}{PLAY_BGM}{MUS_OBTAIN_BADGE}{PAUSE 0xFE}{PAUSE 0x56}{RESUME_MUSIC}",
+ "Seika_Lanternport_Gym_Text_WickGift": "ウィック『これも　もって　いけ。　けっして　きえない　ほのおだ。』",
+ "Seika_Lanternport_Gym_Text_WickPost": "ウィック『きたの　スミフデタウンへ　いけ。\\pスミが　スターフォールのまきものを　まもって　いる。　ねがいぼしの　ねむる　ばしょを　しる　ものが　いるなら　それは　スミだ。』",
+ "Seika_Lanternport_Gym_Text_GymGuy": "よう！　セイカ　さいしょの　ジムへ　ようこそ！\\pウィックは　あつい　おとこだ。　みず　じめん　いわの　わざで　ひやして　やれ！\\pバクフーンは　HPが　まんタンだと　ふんかを　ぶちかます。　はやめに　いっきに　たたけ！",
+ "Seika_Lanternport_Gym_Text_GymGuyWon": "もえる　しょうぶ　だったな！　バッジ　1つめ　ゲット！　のこり　7つだ！"
+}
