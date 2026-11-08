@@ -358,6 +358,41 @@ def lanternport(m, spots):
                    'The S.S. TIDAL can sail you both\nto the SKYRIFT ISLES.')
 
 
+PLACES = ['Kanto', 'Hoenn', 'Seika', 'Isles']
+PLACE_LINES = {
+    'ALTAIR': {
+        'Kanto': ('KANTO. The second STARFALL came\ndown here. Where all of this\nstarted.',
+                  'MT. MOON\'s full of MOON STONES.\nI dug there before NOVA ever\npaid me.'),
+        'Hoenn': ('HOENN\'s hot. Even the rocks are\nsweating.',
+                  'METEOR FALLS... a whole cave\nwhere a meteor hit. I could\nlive there.'),
+        'Seika': ('Every town here has a star\nshrine. I dug under one once.\nNever again.',
+                  'KILN CITY\'s clay is good, honest\nstuff. Not everything has to\nfall from the sky.'),
+        'Isles': ('The rifts are quiet. These\nisles almost feel like home now.',
+                  'HALLEY measures every rock I\nfind. Rocks don\'t need measuring.\nThey need digging.'),
+    },
+    'DENEB': {
+        'Kanto': ('CELADON\'s DEPT. STORE, darling.\nShall we? My treat... Oh. I\nforgot. No more NOVA money.',
+                  'VEGA found me in KANTO. I was\ncounting coins at the GAME\nCORNER. Old times.'),
+        'Hoenn': ('HOENN\'s weather is ruining my\nhair, darling.',
+                  'SLATEPORT\'s market has the\nloveliest hats. Just saying.'),
+        'Seika': ('Silk from SILKHOLLOW... I simply\nmust have a scarf.',
+                  'An INKBRUSH scribe once wrote me\na receipt in calligraphy. I had\nit framed.'),
+        'Isles': ('The inn\'s tea is dreadful. I\'ve\nsent them better leaves.',
+                  'Without the engine humming, the\nisles are almost... peaceful.'),
+    },
+    'MIRA': {
+        'Kanto': ('KANTO! Grandpa says the stars\nlook different here. He\'s right!',
+                  'CLEFAIRY came from the moon, you\nknow. MT. MOON\'s named after\nthem! ...I think.'),
+        'Hoenn': ('MOSSDEEP has a SPACE CENTER! Can\nwe go? Please?',
+                  'The sea is so big here. The stars\nfloat on it at night!'),
+        'Seika': ('Home! Grandpa will want to hear\neverything.',
+                  'LANTERNPORT lights every lantern\nfor the STARWATCH FESTIVAL. It\'s\nso pretty!'),
+        'Isles': ('DR. HALLEY lets me use the big\ntelescope now!',
+                  'The rift stars are fading. I\ndrew every one of them first!'),
+    },
+}
+
+
 def companion_talk(m):
     """Talk to your companion: lines by companion and story stage."""
     if m is None:
@@ -408,13 +443,28 @@ def companion_talk(m):
             else:
                 s += '\tgoto %s_%s%s\n' % (n, key, st)
         s += '\n'
+        # after the story: lines about wherever you are now
+        s += ('%(n)s_%(k)sAfter::\n\tspecial QoL_CompanionPlace\n'
+              '\tswitch VAR_RESULT\n\tcase 0, %(n)s_%(k)sAtKanto\n\tcase 1, %(n)s_%(k)sAtHoenn\n'
+              '\tcase 2, %(n)s_%(k)sAtSeika\n\tgoto %(n)s_%(k)sAtIsles\n\n' % dict(n=n, k=key))
+        for place in PLACES:
+            s += ('%(n)s_%(k)sAt%(pl)s::\n\trandom 3\n\tgoto_if_eq VAR_RESULT, 2, %(n)s_%(k)sAny\n'
+                  '\tgoto_if_eq VAR_RESULT, 1, %(n)s_%(k)sAt%(pl)sB\n'
+                  '\tmsgbox %(n)s_Text_%(k)sAt%(pl)sA, MSGBOX_DEFAULT\n\trelease\n\tend\n\n'
+                  '%(n)s_%(k)sAt%(pl)sB::\n\tmsgbox %(n)s_Text_%(k)sAt%(pl)sB, MSGBOX_DEFAULT\n\trelease\n\tend\n\n'
+                  % dict(n=n, k=key, pl=place))
+            m.scripts += T('%s_Text_%sAt%sA' % (n, key, place), say(name, PLACE_LINES[key][place][0]))
+            m.scripts += T('%s_Text_%sAt%sB' % (n, key, place), say(name, PLACE_LINES[key][place][1]))
         for _, st in stages:
+            if st == 'After':
+                st = 'Any'   # the old "after" lines, mixed in with the place lines
             s += ('%(n)s_%(k)s%(st)s::\n\trandom 2\n\tgoto_if_eq VAR_RESULT, 1, %(n)s_%(k)s%(st)sB\n'
                   '\tmsgbox %(n)s_Text_%(k)s%(st)sA, MSGBOX_DEFAULT\n\trelease\n\tend\n\n'
                   '%(n)s_%(k)s%(st)sB::\n\tmsgbox %(n)s_Text_%(k)s%(st)sB, MSGBOX_DEFAULT\n\trelease\n\tend\n\n'
                   % dict(n=n, k=key, st=st))
-            m.scripts += T('%s_Text_%s%sA' % (n, key, st), say(name, lines[key][st][0]))
-            m.scripts += T('%s_Text_%s%sB' % (n, key, st), say(name, lines[key][st][1]))
+            src = 'After' if st == 'Any' else st
+            m.scripts += T('%s_Text_%s%sA' % (n, key, st), say(name, lines[key][src][0]))
+            m.scripts += T('%s_Text_%s%sB' % (n, key, st), say(name, lines[key][src][1]))
     m.scripts += s
 
 

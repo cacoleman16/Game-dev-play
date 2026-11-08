@@ -359,13 +359,74 @@ QoL_Skyrift_Pier_Text_Ready::
 	.string "タイドリップごうで　ふたり　いっしょに\n"
 	.string "ソラサケしょとうへ　わたれる。$"
 
-QoL_Skyrift_Chat_Text_ALTAIRAfterA::
+QoL_Skyrift_Chat_Text_ALTAIRAtKantoA::
+	.string "ALTAIR: KANTO. The second STARFALL\n"
+	.string "came down here. Where all of this\l"
+	.string "started.$"
+	.string "{JPN}{JPN}アルタイル『カントー。　ふたつめの\n"
+	.string "スターフォールが　おちた　ところだ。　ぜんぶ\l"
+	.string "ここから　はじまったんだな。』$"
+
+QoL_Skyrift_Chat_Text_ALTAIRAtKantoB::
+	.string "ALTAIR: MT. MOON's full of MOON\n"
+	.string "STONES. I dug there before NOVA\l"
+	.string "ever paid me.$"
+	.string "{JPN}{JPN}アルタイル『オツキミやまは　つきのいしだらけだ。\n"
+	.string "ノバに　やとわれる　まえは　あそこで\l"
+	.string "ほってたんだぜ。』$"
+
+QoL_Skyrift_Chat_Text_ALTAIRAtHoennA::
+	.string "ALTAIR: HOENN's hot. Even the rocks\n"
+	.string "are sweating.$"
+	.string "{JPN}{JPN}アルタイル『ホウエンは　あついな。　いわまで\n"
+	.string "あせを　かいてやがる。』$"
+
+QoL_Skyrift_Chat_Text_ALTAIRAtHoennB::
+	.string "ALTAIR: METEOR FALLS... a whole\n"
+	.string "cave where a meteor hit. I could\l"
+	.string "live there.$"
+	.string "{JPN}{JPN}アルタイル『りゅうせいのたき‥　いんせきが\n"
+	.string "おちて　できた　どうくつだってよ。　おれ\l"
+	.string "あそこに　すめるぜ。』$"
+
+QoL_Skyrift_Chat_Text_ALTAIRAtSeikaA::
+	.string "ALTAIR: Every town here has a star\n"
+	.string "shrine. I dug under one once. Never\l"
+	.string "again.$"
+	.string "{JPN}{JPN}アルタイル『この　ちほうは　どの　まちにも\n"
+	.string "ほしの　やしろが　ある。　いちど　したを\l"
+	.string "ほって‥　もう　にどと　やらねえ。』$"
+
+QoL_Skyrift_Chat_Text_ALTAIRAtSeikaB::
+	.string "ALTAIR: KILN CITY's clay is good,\n"
+	.string "honest stuff. Not everything has to\l"
+	.string "fall from the sky.$"
+	.string "{JPN}{JPN}アルタイル『カマモトシティの　ねんどは　いい\n"
+	.string "もんだ。　そらから　おちてくる　もんだけが\l"
+	.string "たからじゃ　ねえ。』$"
+
+QoL_Skyrift_Chat_Text_ALTAIRAtIslesA::
+	.string "ALTAIR: The rifts are quiet. These\n"
+	.string "isles almost feel like home now.$"
+	.string "{JPN}{JPN}アルタイル『さけめも　しずかに　なった。　この\n"
+	.string "しまが　なんだか　いえみたいに\l"
+	.string "おもえてきたぜ。』$"
+
+QoL_Skyrift_Chat_Text_ALTAIRAtIslesB::
+	.string "ALTAIR: HALLEY measures every rock\n"
+	.string "I find. Rocks don't need measuring.\l"
+	.string "They need digging.$"
+	.string "{JPN}{JPN}アルタイル『ハレーはかせは　おれが　みつけた\n"
+	.string "いしを　ぜんぶ　はかりやがる。　いしは　はかる\l"
+	.string "もんじゃねえ。　ほる　もんだ。』$"
+
+QoL_Skyrift_Chat_Text_ALTAIRAnyA::
 	.string "ALTAIR: Whatever happens next, I'm\n"
 	.string "done digging for other people.$"
 	.string "{JPN}{JPN}アルタイル『この　さき　どう　なろうと　ひとの\n"
 	.string "ために　ほるのは　もう　やめだ。』$"
 
-QoL_Skyrift_Chat_Text_ALTAIRAfterB::
+QoL_Skyrift_Chat_Text_ALTAIRAnyB::
 	.string "ALTAIR: Thanks, kid. Really. Don't\n"
 	.string "make me say it twice.$"
 	.string "{JPN}{JPN}アルタイル『ありがとよ　ボウズ。　ほんとに。\n"
@@ -415,13 +476,67 @@ QoL_Skyrift_Chat_Text_ALTAIRStartB::
 	.string "もんだな。　せんげつは　おまえを　とめる　ために\l"
 	.string "いわを　ほってたのに。』$"
 
-QoL_Skyrift_Chat_Text_DENEBAfterA::
+QoL_Skyrift_Chat_Text_DENEBAtKantoA::
+	.string "DENEB: CELADON's DEPT. STORE,\n"
+	.string "darling. Shall we? My treat... Oh.\l"
+	.string "I forgot. No more NOVA money.$"
+	.string "{JPN}{JPN}デネブ『タマムシデパートよ　ダーリン。\n"
+	.string "いきましょ？　わたしが　はらうわ‥　あら。　もう\l"
+	.string "ノバの　おかねは　ないんだったわ。』$"
+
+QoL_Skyrift_Chat_Text_DENEBAtKantoB::
+	.string "DENEB: VEGA found me in KANTO. I\n"
+	.string "was counting coins at the GAME\l"
+	.string "CORNER. Old times.$"
+	.string "{JPN}{JPN}デネブ『ベガさまに　であったのは　カントーよ。\n"
+	.string "ゲームコーナーで　コインを　かぞえてたの。\l"
+	.string "なつかしいわ。』$"
+
+QoL_Skyrift_Chat_Text_DENEBAtHoennA::
+	.string "DENEB: HOENN's weather is ruining\n"
+	.string "my hair, darling.$"
+	.string "{JPN}{JPN}デネブ『ホウエンの　てんきは　かみが　だいなしよ\n"
+	.string "ダーリン。』$"
+
+QoL_Skyrift_Chat_Text_DENEBAtHoennB::
+	.string "DENEB: SLATEPORT's market has the\n"
+	.string "loveliest hats. Just saying.$"
+	.string "{JPN}{JPN}デネブ『カイナシティの　いちばには　すてきな\n"
+	.string "ぼうしが　あるのよ。　いちおう　いっておくわ。』$"
+
+QoL_Skyrift_Chat_Text_DENEBAtSeikaA::
+	.string "DENEB: Silk from SILKHOLLOW... I\n"
+	.string "simply must have a scarf.$"
+	.string "{JPN}{JPN}デネブ『キヌウツロタウンの　きぬ‥　スカーフが\n"
+	.string "ぜったい　ほしいわ。』$"
+
+QoL_Skyrift_Chat_Text_DENEBAtSeikaB::
+	.string "DENEB: An INKBRUSH scribe once\n"
+	.string "wrote me a receipt in calligraphy.\l"
+	.string "I had it framed.$"
+	.string "{JPN}{JPN}デネブ『スミフデタウンの　しょかに\n"
+	.string "りょうしゅうしょを　ふでで　かいて　もらったの。\l"
+	.string "がくに　いれて　かざってるわ。』$"
+
+QoL_Skyrift_Chat_Text_DENEBAtIslesA::
+	.string "DENEB: The inn's tea is dreadful.\n"
+	.string "I've sent them better leaves.$"
+	.string "{JPN}{JPN}デネブ『やどの　おちゃは　ひどいものよ。　いい\n"
+	.string "ちゃばを　おくって　あげたわ。』$"
+
+QoL_Skyrift_Chat_Text_DENEBAtIslesB::
+	.string "DENEB: Without the engine humming,\n"
+	.string "the isles are almost... peaceful.$"
+	.string "{JPN}{JPN}デネブ『エンジンの　おとが　しないと　この\n"
+	.string "しまも　なんだか‥　おだやかね。』$"
+
+QoL_Skyrift_Chat_Text_DENEBAnyA::
 	.string "DENEB: You know, darling, I think\n"
 	.string "I'll keep this hat.$"
 	.string "{JPN}{JPN}デネブ『ねえ　ダーリン。　この　ぼうし　ずっと\n"
 	.string "かぶって　いようかしら。』$"
 
-QoL_Skyrift_Chat_Text_DENEBAfterB::
+QoL_Skyrift_Chat_Text_DENEBAnyB::
 	.string "DENEB: Strange... I don't miss the\n"
 	.string "money at all.$"
 	.string "{JPN}{JPN}デネブ『ふしぎね‥　おかねが　ちっとも　こいしく\n"
@@ -471,13 +586,66 @@ QoL_Skyrift_Chat_Text_DENEBStartB::
 	.string "わたしは　おかねを　かぞえるって　ベガさまに\l"
 	.string "いわれたわ。　そのとおりね。』$"
 
-QoL_Skyrift_Chat_Text_MIRAAfterA::
+QoL_Skyrift_Chat_Text_MIRAAtKantoA::
+	.string "MIRA: KANTO! Grandpa says the stars\n"
+	.string "look different here. He's right!$"
+	.string "{JPN}{JPN}ミラ『カントーだ！　ここの　ほしは　みえかたが\n"
+	.string "ちがうって　おじいちゃんが　いってた。\l"
+	.string "ほんとだね！』$"
+
+QoL_Skyrift_Chat_Text_MIRAAtKantoB::
+	.string "MIRA: CLEFAIRY came from the moon,\n"
+	.string "you know. MT. MOON's named after\l"
+	.string "them! ...I think.$"
+	.string "{JPN}{JPN}ミラ『ピッピって　つきから　きたんだって。\n"
+	.string "オツキミやまの　なまえも　そこから\l"
+	.string "きてるんだよ！‥　たぶん。』$"
+
+QoL_Skyrift_Chat_Text_MIRAAtHoennA::
+	.string "MIRA: MOSSDEEP has a SPACE CENTER!\n"
+	.string "Can we go? Please?$"
+	.string "{JPN}{JPN}ミラ『トクサネシティには　うちゅうセンターが\n"
+	.string "あるんだって！　いこうよ！　ね？』$"
+
+QoL_Skyrift_Chat_Text_MIRAAtHoennB::
+	.string "MIRA: The sea is so big here. The\n"
+	.string "stars float on it at night!$"
+	.string "{JPN}{JPN}ミラ『ここの　うみは　ひろいね。　よるに　なると\n"
+	.string "ほしが　うみに　うかぶんだよ！』$"
+
+QoL_Skyrift_Chat_Text_MIRAAtSeikaA::
+	.string "MIRA: Home! Grandpa will want to\n"
+	.string "hear everything.$"
+	.string "{JPN}{JPN}ミラ『ただいま！　おじいちゃんに　ぜんぶ\n"
+	.string "はなさなきゃ！』$"
+
+QoL_Skyrift_Chat_Text_MIRAAtSeikaB::
+	.string "MIRA: LANTERNPORT lights every\n"
+	.string "lantern for the STARWATCH FESTIVAL.\l"
+	.string "It's so pretty!$"
+	.string "{JPN}{JPN}ミラ『ほしみまつりには　トモシビタウンの\n"
+	.string "ランタンが　ぜんぶ　ともるの。　すっごく\l"
+	.string "きれいなんだよ！』$"
+
+QoL_Skyrift_Chat_Text_MIRAAtIslesA::
+	.string "MIRA: DR. HALLEY lets me use the\n"
+	.string "big telescope now!$"
+	.string "{JPN}{JPN}ミラ『ハレーはかせが　おおきな　ぼうえんきょうを\n"
+	.string "つかわせて　くれるの！』$"
+
+QoL_Skyrift_Chat_Text_MIRAAtIslesB::
+	.string "MIRA: The rift stars are fading. I\n"
+	.string "drew every one of them first!$"
+	.string "{JPN}{JPN}ミラ『さけめの　ほしが　きえていくね。　でも\n"
+	.string "ぜんぶ　さきに　かいておいたよ！』$"
+
+QoL_Skyrift_Chat_Text_MIRAAnyA::
 	.string "MIRA: Wait until Grandpa hears!\n"
 	.string "He'll fall right off his throne!$"
 	.string "{JPN}{JPN}ミラ『おじいちゃんが　きいたら　びっくりして\n"
 	.string "チャンピオンの　いすから　ころげおちちゃうよ！』$"
 
-QoL_Skyrift_Chat_Text_MIRAAfterB::
+QoL_Skyrift_Chat_Text_MIRAAnyB::
 	.string "MIRA: I'm going to draw a new star\n"
 	.string "chart. You're on it!$"
 	.string "{JPN}{JPN}ミラ『あたらしい　せいざずを　かくんだ。\n"
@@ -540,14 +708,74 @@ QoL_Skyrift_Chat_ALTAIR::
 	goto QoL_Skyrift_Chat_ALTAIRStart
 
 QoL_Skyrift_Chat_ALTAIRAfter::
-	random 2
-	goto_if_eq VAR_RESULT, 1, QoL_Skyrift_Chat_ALTAIRAfterB
-	msgbox QoL_Skyrift_Chat_Text_ALTAIRAfterA, MSGBOX_DEFAULT
+	special QoL_CompanionPlace
+	switch VAR_RESULT
+	case 0, QoL_Skyrift_Chat_ALTAIRAtKanto
+	case 1, QoL_Skyrift_Chat_ALTAIRAtHoenn
+	case 2, QoL_Skyrift_Chat_ALTAIRAtSeika
+	goto QoL_Skyrift_Chat_ALTAIRAtIsles
+
+QoL_Skyrift_Chat_ALTAIRAtKanto::
+	random 3
+	goto_if_eq VAR_RESULT, 2, QoL_Skyrift_Chat_ALTAIRAny
+	goto_if_eq VAR_RESULT, 1, QoL_Skyrift_Chat_ALTAIRAtKantoB
+	msgbox QoL_Skyrift_Chat_Text_ALTAIRAtKantoA, MSGBOX_DEFAULT
 	release
 	end
 
-QoL_Skyrift_Chat_ALTAIRAfterB::
-	msgbox QoL_Skyrift_Chat_Text_ALTAIRAfterB, MSGBOX_DEFAULT
+QoL_Skyrift_Chat_ALTAIRAtKantoB::
+	msgbox QoL_Skyrift_Chat_Text_ALTAIRAtKantoB, MSGBOX_DEFAULT
+	release
+	end
+
+QoL_Skyrift_Chat_ALTAIRAtHoenn::
+	random 3
+	goto_if_eq VAR_RESULT, 2, QoL_Skyrift_Chat_ALTAIRAny
+	goto_if_eq VAR_RESULT, 1, QoL_Skyrift_Chat_ALTAIRAtHoennB
+	msgbox QoL_Skyrift_Chat_Text_ALTAIRAtHoennA, MSGBOX_DEFAULT
+	release
+	end
+
+QoL_Skyrift_Chat_ALTAIRAtHoennB::
+	msgbox QoL_Skyrift_Chat_Text_ALTAIRAtHoennB, MSGBOX_DEFAULT
+	release
+	end
+
+QoL_Skyrift_Chat_ALTAIRAtSeika::
+	random 3
+	goto_if_eq VAR_RESULT, 2, QoL_Skyrift_Chat_ALTAIRAny
+	goto_if_eq VAR_RESULT, 1, QoL_Skyrift_Chat_ALTAIRAtSeikaB
+	msgbox QoL_Skyrift_Chat_Text_ALTAIRAtSeikaA, MSGBOX_DEFAULT
+	release
+	end
+
+QoL_Skyrift_Chat_ALTAIRAtSeikaB::
+	msgbox QoL_Skyrift_Chat_Text_ALTAIRAtSeikaB, MSGBOX_DEFAULT
+	release
+	end
+
+QoL_Skyrift_Chat_ALTAIRAtIsles::
+	random 3
+	goto_if_eq VAR_RESULT, 2, QoL_Skyrift_Chat_ALTAIRAny
+	goto_if_eq VAR_RESULT, 1, QoL_Skyrift_Chat_ALTAIRAtIslesB
+	msgbox QoL_Skyrift_Chat_Text_ALTAIRAtIslesA, MSGBOX_DEFAULT
+	release
+	end
+
+QoL_Skyrift_Chat_ALTAIRAtIslesB::
+	msgbox QoL_Skyrift_Chat_Text_ALTAIRAtIslesB, MSGBOX_DEFAULT
+	release
+	end
+
+QoL_Skyrift_Chat_ALTAIRAny::
+	random 2
+	goto_if_eq VAR_RESULT, 1, QoL_Skyrift_Chat_ALTAIRAnyB
+	msgbox QoL_Skyrift_Chat_Text_ALTAIRAnyA, MSGBOX_DEFAULT
+	release
+	end
+
+QoL_Skyrift_Chat_ALTAIRAnyB::
+	msgbox QoL_Skyrift_Chat_Text_ALTAIRAnyB, MSGBOX_DEFAULT
 	release
 	end
 
@@ -594,14 +822,74 @@ QoL_Skyrift_Chat_DENEB::
 	goto QoL_Skyrift_Chat_DENEBStart
 
 QoL_Skyrift_Chat_DENEBAfter::
-	random 2
-	goto_if_eq VAR_RESULT, 1, QoL_Skyrift_Chat_DENEBAfterB
-	msgbox QoL_Skyrift_Chat_Text_DENEBAfterA, MSGBOX_DEFAULT
+	special QoL_CompanionPlace
+	switch VAR_RESULT
+	case 0, QoL_Skyrift_Chat_DENEBAtKanto
+	case 1, QoL_Skyrift_Chat_DENEBAtHoenn
+	case 2, QoL_Skyrift_Chat_DENEBAtSeika
+	goto QoL_Skyrift_Chat_DENEBAtIsles
+
+QoL_Skyrift_Chat_DENEBAtKanto::
+	random 3
+	goto_if_eq VAR_RESULT, 2, QoL_Skyrift_Chat_DENEBAny
+	goto_if_eq VAR_RESULT, 1, QoL_Skyrift_Chat_DENEBAtKantoB
+	msgbox QoL_Skyrift_Chat_Text_DENEBAtKantoA, MSGBOX_DEFAULT
 	release
 	end
 
-QoL_Skyrift_Chat_DENEBAfterB::
-	msgbox QoL_Skyrift_Chat_Text_DENEBAfterB, MSGBOX_DEFAULT
+QoL_Skyrift_Chat_DENEBAtKantoB::
+	msgbox QoL_Skyrift_Chat_Text_DENEBAtKantoB, MSGBOX_DEFAULT
+	release
+	end
+
+QoL_Skyrift_Chat_DENEBAtHoenn::
+	random 3
+	goto_if_eq VAR_RESULT, 2, QoL_Skyrift_Chat_DENEBAny
+	goto_if_eq VAR_RESULT, 1, QoL_Skyrift_Chat_DENEBAtHoennB
+	msgbox QoL_Skyrift_Chat_Text_DENEBAtHoennA, MSGBOX_DEFAULT
+	release
+	end
+
+QoL_Skyrift_Chat_DENEBAtHoennB::
+	msgbox QoL_Skyrift_Chat_Text_DENEBAtHoennB, MSGBOX_DEFAULT
+	release
+	end
+
+QoL_Skyrift_Chat_DENEBAtSeika::
+	random 3
+	goto_if_eq VAR_RESULT, 2, QoL_Skyrift_Chat_DENEBAny
+	goto_if_eq VAR_RESULT, 1, QoL_Skyrift_Chat_DENEBAtSeikaB
+	msgbox QoL_Skyrift_Chat_Text_DENEBAtSeikaA, MSGBOX_DEFAULT
+	release
+	end
+
+QoL_Skyrift_Chat_DENEBAtSeikaB::
+	msgbox QoL_Skyrift_Chat_Text_DENEBAtSeikaB, MSGBOX_DEFAULT
+	release
+	end
+
+QoL_Skyrift_Chat_DENEBAtIsles::
+	random 3
+	goto_if_eq VAR_RESULT, 2, QoL_Skyrift_Chat_DENEBAny
+	goto_if_eq VAR_RESULT, 1, QoL_Skyrift_Chat_DENEBAtIslesB
+	msgbox QoL_Skyrift_Chat_Text_DENEBAtIslesA, MSGBOX_DEFAULT
+	release
+	end
+
+QoL_Skyrift_Chat_DENEBAtIslesB::
+	msgbox QoL_Skyrift_Chat_Text_DENEBAtIslesB, MSGBOX_DEFAULT
+	release
+	end
+
+QoL_Skyrift_Chat_DENEBAny::
+	random 2
+	goto_if_eq VAR_RESULT, 1, QoL_Skyrift_Chat_DENEBAnyB
+	msgbox QoL_Skyrift_Chat_Text_DENEBAnyA, MSGBOX_DEFAULT
+	release
+	end
+
+QoL_Skyrift_Chat_DENEBAnyB::
+	msgbox QoL_Skyrift_Chat_Text_DENEBAnyB, MSGBOX_DEFAULT
 	release
 	end
 
@@ -648,14 +936,74 @@ QoL_Skyrift_Chat_MIRA::
 	goto QoL_Skyrift_Chat_MIRAStart
 
 QoL_Skyrift_Chat_MIRAAfter::
-	random 2
-	goto_if_eq VAR_RESULT, 1, QoL_Skyrift_Chat_MIRAAfterB
-	msgbox QoL_Skyrift_Chat_Text_MIRAAfterA, MSGBOX_DEFAULT
+	special QoL_CompanionPlace
+	switch VAR_RESULT
+	case 0, QoL_Skyrift_Chat_MIRAAtKanto
+	case 1, QoL_Skyrift_Chat_MIRAAtHoenn
+	case 2, QoL_Skyrift_Chat_MIRAAtSeika
+	goto QoL_Skyrift_Chat_MIRAAtIsles
+
+QoL_Skyrift_Chat_MIRAAtKanto::
+	random 3
+	goto_if_eq VAR_RESULT, 2, QoL_Skyrift_Chat_MIRAAny
+	goto_if_eq VAR_RESULT, 1, QoL_Skyrift_Chat_MIRAAtKantoB
+	msgbox QoL_Skyrift_Chat_Text_MIRAAtKantoA, MSGBOX_DEFAULT
 	release
 	end
 
-QoL_Skyrift_Chat_MIRAAfterB::
-	msgbox QoL_Skyrift_Chat_Text_MIRAAfterB, MSGBOX_DEFAULT
+QoL_Skyrift_Chat_MIRAAtKantoB::
+	msgbox QoL_Skyrift_Chat_Text_MIRAAtKantoB, MSGBOX_DEFAULT
+	release
+	end
+
+QoL_Skyrift_Chat_MIRAAtHoenn::
+	random 3
+	goto_if_eq VAR_RESULT, 2, QoL_Skyrift_Chat_MIRAAny
+	goto_if_eq VAR_RESULT, 1, QoL_Skyrift_Chat_MIRAAtHoennB
+	msgbox QoL_Skyrift_Chat_Text_MIRAAtHoennA, MSGBOX_DEFAULT
+	release
+	end
+
+QoL_Skyrift_Chat_MIRAAtHoennB::
+	msgbox QoL_Skyrift_Chat_Text_MIRAAtHoennB, MSGBOX_DEFAULT
+	release
+	end
+
+QoL_Skyrift_Chat_MIRAAtSeika::
+	random 3
+	goto_if_eq VAR_RESULT, 2, QoL_Skyrift_Chat_MIRAAny
+	goto_if_eq VAR_RESULT, 1, QoL_Skyrift_Chat_MIRAAtSeikaB
+	msgbox QoL_Skyrift_Chat_Text_MIRAAtSeikaA, MSGBOX_DEFAULT
+	release
+	end
+
+QoL_Skyrift_Chat_MIRAAtSeikaB::
+	msgbox QoL_Skyrift_Chat_Text_MIRAAtSeikaB, MSGBOX_DEFAULT
+	release
+	end
+
+QoL_Skyrift_Chat_MIRAAtIsles::
+	random 3
+	goto_if_eq VAR_RESULT, 2, QoL_Skyrift_Chat_MIRAAny
+	goto_if_eq VAR_RESULT, 1, QoL_Skyrift_Chat_MIRAAtIslesB
+	msgbox QoL_Skyrift_Chat_Text_MIRAAtIslesA, MSGBOX_DEFAULT
+	release
+	end
+
+QoL_Skyrift_Chat_MIRAAtIslesB::
+	msgbox QoL_Skyrift_Chat_Text_MIRAAtIslesB, MSGBOX_DEFAULT
+	release
+	end
+
+QoL_Skyrift_Chat_MIRAAny::
+	random 2
+	goto_if_eq VAR_RESULT, 1, QoL_Skyrift_Chat_MIRAAnyB
+	msgbox QoL_Skyrift_Chat_Text_MIRAAnyA, MSGBOX_DEFAULT
+	release
+	end
+
+QoL_Skyrift_Chat_MIRAAnyB::
+	msgbox QoL_Skyrift_Chat_Text_MIRAAnyB, MSGBOX_DEFAULT
 	release
 	end
 

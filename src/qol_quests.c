@@ -8,6 +8,7 @@
 #include "global.h"
 #include "event_data.h"
 #include "overworld.h"
+#include "constants/region_map_sections.h"
 #include "pokedex.h"
 #include "pokemon.h"
 #include "constants/event_objects.h"
@@ -107,4 +108,21 @@ void QoL_Research_Status(void)
     gSpecialVar_0x8005 = Min16(progress);
     gSpecialVar_0x8006 = goal;
     gSpecialVar_Result = (progress >= goal);
+}
+
+// [QoL] Skyrift companions (docs/SKYRIFT.md): where the player is, so the
+// companion can talk about it. VAR_RESULT: 0 Kanto and the Sevii Islands,
+// 1 Hoenn, 2 Seika, 3 the Skyrift Isles.
+void QoL_CompanionPlace(void)
+{
+    u32 sec = gMapHeader.regionMapSectionId;
+
+    if (sec >= MAPSEC_SKYRIFT_RIFTWAKE_HARBOR && sec < MAPSEC_NONE)
+        gSpecialVar_Result = 3;
+    else if (sec >= MAPSEC_SEIKA_LANTERNPORT && sec < MAPSEC_NONE)
+        gSpecialVar_Result = 2;
+    else if (sec >= KANTO_MAPSEC_START && sec < MAPSEC_SPECIAL_AREA)
+        gSpecialVar_Result = 0;
+    else
+        gSpecialVar_Result = 1;
 }

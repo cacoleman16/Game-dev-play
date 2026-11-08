@@ -1501,6 +1501,19 @@ static void Cmd_printselectionstring(void)
     gBattleCommunication[MSG_DISPLAY] = MSG_DISPLAY_WAIT;
 }
 
+// [QoL] Battle text pauses follow the text speed option (half as long at
+// MAX), and holding B skips them, like holding B in the field.
+static u16 QoL_BattlePause(u16 frames)
+{
+    if (gBattleTypeFlags & BATTLE_TYPE_LINK)
+        return frames;
+    if (JOY_HELD(B_BUTTON))
+        return 1;
+    if (GetPlayerTextSpeed() == OPTIONS_TEXT_SPEED_INSTANT)
+        return frames / 2 ? frames / 2 : 1;
+    return frames;
+}
+
 static void Cmd_waitmessage(void)
 {
     CMD_ARGS(u16 time);
@@ -1513,7 +1526,7 @@ static void Cmd_waitmessage(void)
         }
         else
         {
-            u16 toWait = cmd->time;
+            u16 toWait = QoL_BattlePause(cmd->time);
             if (gTestRunnerHeadless)
                 gPauseCounterBattle = toWait;
             if (++gPauseCounterBattle >= toWait)

@@ -47,7 +47,7 @@ every CI run attaches the ROM: Actions → "Build ROM" → the run → Artifacts
 | Run indoors, from the start | ✅ on | `OW_RUNNING_INDOORS` (Gen 4+) + Running Shoes at new game |
 | Auto-run | ✅ new | **L** toggles auto-run; hold **B** to walk while it's on |
 | Turbo speed | ✅ new | Turbo ×2–×8 button in the web player; faster battle text; fast HP/EXP bars |
-| Skip through text | ✅ new | **Hold B** in any dialogue (after pressing it once in that text box) and the pages turn on their own, in the field and in battle; it stops at YES/NO and other choices. **OPTION → TEXT SPEED** is now **MID / FAST / MAX** (MAX prints each page at once); new games start on FAST |
+| Skip through text | ✅ new | **Hold B** in any dialogue (after pressing it once in that text box) and the pages turn on their own, in the field and in battle; it stops at YES/NO and other choices. **OPTION → TEXT SPEED** is **MID / FAST / MAX**, and every setting is quicker than vanilla: MID prints like vanilla FAST, FAST prints three letters a frame, and MAX prints each page at once and scrolls a line in one step. At MAX, battle text pauses are half as long, and holding B skips them. New games start on MAX |
 | Faster battles | ✅ new | No opening slide-in at the start of battles (`B_FAST_INTRO_NO_SLIDE`) |
 | Fast surf | ✅ new | Hold **B** (or turn on auto-run) while surfing to go at bike speed |
 | Less waiting | ✅ new | The location pop-up only shows when you enter a new area (`OW_HIDE_REPEAT_MAP_POPUP`); Pokémon Centers skip the Union Room check |
@@ -116,7 +116,8 @@ every CI run attaches the ROM: Actions → "Build ROM" → the run → Artifacts
 | `dev_scripts/qol_add_starter_encounters.py` | every starter in the wild / Safari Zones |
 | `dev_scripts/seika/`, `docs/SEIKA.md` | the SEIKA region: `build.py` generates its 80 maps, trainers, flags, wild Pokémon and Fly data |
 | `dev_scripts/qol_mapgen.py`, `dev_scripts/qol_maptools.py` | map painter (shapes and stamps into FireRed maps) and renderer |
-| `src/text.c`, `src/scrcmd.c`, `src/option_menu.c` | hold B to fast-forward text; MID/FAST/MAX text speed |
+| `src/text.c`, `src/scrcmd.c`, `src/option_menu.c`, `include/config/text.h` | hold B to fast-forward text; MID/FAST/MAX text speed and how fast each prints |
+| `src/battle_script_commands.c` (`QoL_BattlePause`) | battle text pauses follow the text speed; hold B to skip them |
 | `src/field_player_avatar.c` | fast surf |
 | `src/qol_hoenn.c` (`QoL_VisibleWildActive`), `src/wild_encounter_ow.c`, `src/field_control_avatar.c` | visible wild Pokémon: where they're on, and no random battles there |
 
@@ -288,8 +289,9 @@ fortune, or peace for Nova), and the sky over the eastern sea tears open.
 - **The climax**: a 2-vs-2 against Vega and Sirius with your companion, then
   one choice. **Take her hand** and you get Poipole and Vega's rematch.
   **Let go** and you get Cosmog, and Sirius waits for revenge.
-- Afterwards your companion can keep travelling with you anywhere. The
-  others wait in the Riftwake Inn, where you can swap.
+- Afterwards your companion can keep travelling with you anywhere, and
+  talks about where you are (Kanto, Hoenn, Seika or the isles). The others
+  wait in the Riftwake Inn, where you can swap.
 - Full design: [docs/SKYRIFT.md](docs/SKYRIFT.md).
 
 **Tested in the web player:**
@@ -303,9 +305,12 @@ fortune, or peace for Nova), and the sky over the eastern sea tears open.
 - The rooftop 2-vs-2 with Deneb and both endings.
 - Swapping companions in the inn.
 - The Necrozma rift appearing.
+- The observatory's trainer pair as a 2-vs-2 with Altair.
+- Companion lines in Kanto and Seika.
 
-**Not played through:** the regular island trainers and the observatory
-floors. They were checked on the rendered maps only.
+**Not played through:** the other island trainers (the same battle setup as
+the observatory pair) and the observatory's 2F. They were checked on the
+rendered maps only.
 
 ## Kanto + Hoenn (merged regions) and the Battle Frontier
 

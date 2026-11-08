@@ -291,10 +291,14 @@ static const u8 sMenuCursorDimensions[][2] =
 };
 
 // these three arrays are most for readability, ie instead of returning a magic number 8
+// [QoL] Every speed is quicker than vanilla: MID prints like vanilla FAST
+// (a letter a frame), FAST prints three letters a frame, and MAX is instant
+// and scrolls a whole line at once. (Vanilla: MID 4 frames a letter, scroll
+// 2/4/6 pixels a step.)
 static const u8 sTextSpeedFrameDelays[] =
 {
     [OPTIONS_TEXT_SPEED_SLOW]    = 8,
-    [OPTIONS_TEXT_SPEED_MID]     = 4,
+    [OPTIONS_TEXT_SPEED_MID]     = 1,
     [OPTIONS_TEXT_SPEED_FAST]    = 1,
     [OPTIONS_TEXT_SPEED_INSTANT] = 1,
 };
@@ -310,9 +314,9 @@ static const u8 sTextSpeedModifiers[] =
 static const u8 sTextScrollSpeeds[] =
 {
     [OPTIONS_TEXT_SPEED_SLOW]    = 1,
-    [OPTIONS_TEXT_SPEED_MID]     = 2,
-    [OPTIONS_TEXT_SPEED_FAST]    = 4,
-    [OPTIONS_TEXT_SPEED_INSTANT] = 6,
+    [OPTIONS_TEXT_SPEED_MID]     = 4,
+    [OPTIONS_TEXT_SPEED_FAST]    = 8,
+    [OPTIONS_TEXT_SPEED_INSTANT] = 16,
 };
 
 static const u16 sFontBoldJapaneseGlyphs[] = INCGFX_U16("graphics/fonts/japanese_bold.png", ".hwjpnfont");
@@ -1257,7 +1261,7 @@ bool32 TextPrinterWaitAutoMode(struct TextPrinter *textPrinter)
 // [QoL] Hold B to fast-forward dialogue: once B has been pressed in a text box,
 // keeping it held turns the pages by itself (so running into a cutscene while
 // holding B doesn't skip it).
-#define QOL_TEXT_SKIP_DELAY 8 // frames each page stays up while B is held
+#define QOL_TEXT_SKIP_DELAY 5 // frames each page stays up while B is held
 static EWRAM_DATA bool8 sQoLTextSkipArmed = FALSE;
 static EWRAM_DATA u8 sQoLTextSkipTimer = 0;
 

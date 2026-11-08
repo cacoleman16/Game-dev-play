@@ -72,7 +72,9 @@ comes your last choice: **take her hand, or let go**.
 The PEACE FOR NOVA wish adds a closing scene: the star's light reaches Vega
 in the rift. Each companion closes the story in their own way. Afterwards
 your companion asks whether to keep travelling with you. If you say yes,
-they follow you everywhere and keep fighting beside you.
+they follow you everywhere and keep fighting beside you. They have
+something to say about each place you take them: Kanto, Hoenn, Seika and
+the isles.
 
 ## 5. After the story: the Riftwake Inn
 
