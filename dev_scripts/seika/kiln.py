@@ -1,4 +1,6 @@
 """Kiln Road, Kiln City (Gym 4, Ground), Tide Road and Tidewatch Town (Gym 5, Water)."""
+import collections
+
 from common import (g, T, add, door, npc, signpost, pokecenter, mart, house, wild, mapsec,
                     trainer, battle, flag, link, PC, MART, GYM, MAPS)
 
@@ -996,7 +998,6 @@ Level: 53
 # ---------------------------------------------------------------- Tidewatch Town
 
 TIDE_HOUSE = (CER, 21, 25, 6, 4)           # door (2,3)
-TIDE_COTTAGE = (CER, 31, 25, 5, 4)         # no door
 SHRINE = ('LAYOUT_ROUTE5', 20, 21, 8, 6)   # Route 5's Day Care and its yard, door (3,4)
 
 
@@ -1054,7 +1055,6 @@ def tide_gym_room(walks):
     """Gym 5 on Cerulean Gym's tiles: the room, ladders, entrance pier and
     leader's platform as in Kanto, the walkways in the pool redrawn.
     walks: set of (x, y) pool cells that are walkway."""
-    import collections
     src = 'LAYOUT_CERULEAN_CITY_GYM'
     W, H = 17, 20
     r = g.Room(W, H, 'gTileset_BuildingFrlg', 'gTileset_CeruleanGym', source=src)
@@ -1134,10 +1134,10 @@ def tidewatch(troad):
         'NAGI can hold her breath for ten\n'
         'whole minutes! I can do ten\n'
         'seconds.', 'MOVEMENT_TYPE_WANDER_AROUND')
-    npc(t, 'OBJ_EVENT_GFX_WOMAN_2_FRLG', 21, 6, P_TIDE + '_EventScript_NorthWoman',
+    npc(t, 'OBJ_EVENT_GFX_WOMAN_2_FRLG', 22, 7, P_TIDE + '_EventScript_NorthWoman',
         'The path north goes through the\n'
         'hills to SILKHOLLOW TOWN.\fThe weavers there make the finest\n'
-        'silk in all of SEIKA.', 'MOVEMENT_TYPE_FACE_DOWN')
+        'silk in all of SEIKA.', 'MOVEMENT_TYPE_FACE_LEFT')
 
     pokecenter('Tidewatch', SEC_TIDE, t, w_pc, 'HEAL_LOCATION_SEIKA_TIDEWATCH', npcs=[
         ('OBJ_EVENT_GFX_SAILOR_FRLG', 11, 5,

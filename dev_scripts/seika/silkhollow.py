@@ -47,9 +47,6 @@ class Blobs:
     def rect(self, x, y, w, h):
         self.cells |= {(xx, yy) for yy in range(y, y + h) for xx in range(x, x + w)}
 
-    def cut(self, x, y, w, h):
-        self.cells -= {(xx, yy) for yy in range(y, y + h) for xx in range(x, x + w)}
-
     def paint(self, c):
         t = self.tiles
 
@@ -137,7 +134,7 @@ def hollow_path():
     c.rect(10, 42, 7, 2, 'path')
     c.rect(10, 42, 2, 14, 'path')
     # tall grass
-    c.rect(13, 45, 6, 5, 'tall')
+    c.rect(13, 45, 6, 4, 'tall')
     c.rect(9, 30, 5, 8, 'tall')
     c.rect(4, 19, 3, 6, 'tall')
     c.rect(12, 14, 6, 3, 'tall')
@@ -148,6 +145,7 @@ def hollow_path():
     rock.paint(c)
     for x, y in ((5, 46), (18, 41), (6, 26), (18, 28)):
         c.put(x, y, SMALL_ROCK)
+    c.put(12, 52, g.SIGN)
     return c
 
 
@@ -228,7 +226,7 @@ def weavers_road():
     c.rect(10, 5, 10, 5, 'tall')
     c.rect(4, 15, 8, 4, 'tall')
     c.rect(25, 7, 3, 7, 'tall')
-    c.rect(54, 14, 2, 5, 'tall')
+    c.rect(54, 15, 2, 4, 'tall')
     c.rect(48, 15, 6, 4, 'tall')
     c.rect(38, 9, 3, 6, 'tall')
     # flowers and the pond
@@ -269,10 +267,10 @@ def frostmere_town():
     c.rect(19, 12, 2, 10, 'path')
     c.rect(14, 20, 12, 2, 'path')
     c.rect(20, 22, 2, 4, 'path')
-    c.rect(10, 26, 12, 2, 'path')
+    c.rect(10, 26, 16, 2, 'path')
     # gardens
     c.rect(27, 6, 1, 4, 'flowers')
-    c.rect(22, 26, 6, 2, 'flowers')
+    c.rect(26, 26, 2, 2, 'flowers')
     lake.paint(c)
     # buildings
     c.stamp(*FOUR_HOUSE[:5], 18, 6)       # door (19,9)
@@ -320,7 +318,6 @@ def badge_text(badge, leader):
 def hollow(hp):
     P = hp.name
     signpost(hp, 12, 52, P + '_EventScript_Sign', 'HOLLOW PATH\nTIDEWATCH TOWN - SILKHOLLOW TOWN')
-    hp.layout.put(12, 52, g.SIGN)
     trainer('TRAINER_SEIKA_HIKER_IWAO', 'IWAO', 'Hiker Frlg', 'Hiker Frlg', 'Male', """
 Golem
 Level: 54
