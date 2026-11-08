@@ -25,10 +25,11 @@ make firered -j$(nproc)      # → pokefirered.gba (non-matching, by design)
 ```
 Toolchain: see `INSTALL.md` / `docs/install/` (arm-none-eabi gcc + libpng).
 
-The repo is **public**, so CI only checks that the ROM builds and never uploads
-it. Build it on your own machine to get the `.gba`. If you make the repo
-private, CI could attach the ROM to each run for you to download. Ask and I'll
-add that.
+**Getting the ROM:** while the repo is **public**, CI only checks that the ROM
+builds and never uploads it; build it yourself with `make firered`. If you make
+the repo **private** (Settings → General → Danger Zone → Change visibility),
+every CI run attaches the ROM: Actions → "Build ROM" → the run → Artifacts →
+`FireRed-QoL-<commit>` (a zip with `pokefirered.gba`, kept 30 days).
 
 ---
 
