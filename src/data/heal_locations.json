@@ -421,6 +421,14 @@
       "y": 7,
       "respawn_map": "MAP_SEIKA_LEAGUE_LOBBY",
       "respawn_npc": "LOCALID_SEIKA_LEAGUE_NURSE"
+    },
+    {
+      "id": "HEAL_LOCATION_SKYRIFT_RIFTWAKE",
+      "map": "MAP_SKYRIFT_RIFTWAKE_HARBOR",
+      "x": 11,
+      "y": 11,
+      "respawn_map": "MAP_SKYRIFT_RIFTWAKE_POKEMON_CENTER_1F",
+      "respawn_npc": "LOCALID_SKYRIFT_RIFTWAKE_NURSE"
     }
   ]
 }

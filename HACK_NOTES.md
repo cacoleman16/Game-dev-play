@@ -155,6 +155,7 @@ Defined at the end of `include/constants/flags.h` / `vars.h`. They are `0`
 | `FLAG_QOL_CAUGHT_GALAR_*` | `0x8EF`–`0x8F1` | Galarian birds caught |
 | `FLAG_QOL_VISIBLE_WILD` | `0x8F2` | set = visible wild Pokémon everywhere (NES option) |
 | `FLAG_QOL_SEIKA_*` | `QOL_EXTRA_FLAG(0xA0)`+ | Seika badges, story, League run, Fly (generated, see `include/constants/flags.h`) |
+| `FLAG_QOL_SKYRIFT_*` | after Seika's | Skyrift wish, companion, rifts, endings, inn (generated) |
 | `VAR_QOL_FIELD_RESEARCH` | `0x40FA` | current Field Research task |
 | `optionsLanguage` (SaveBlock2 option bit) | – | 0 English, 1 Japanese |
 
@@ -270,6 +271,42 @@ post-game: Gyms run from Lv 50 to 68, the League from 70 to 78.
 - The Sky Shrine finale: Deneb, Altair, the bell, and Jirachi's battle.
 - Gyms 2–8, most houses and the remaining roads were checked on rendered
   maps but not played through.
+
+## SKYRIFT (the last chapter: companions and choices)
+
+After you meet the Wishing Star, it grants **one wish** (strength, a friend,
+fortune, or peace for Nova), and the sky over the eastern sea tears open.
+
+- **Choose a companion** on Lanternport's pier: Altair, Deneb or Mira
+  (Seiji's granddaughter). They **follow you and fight beside you**. Wild
+  battles become 2-on-2, and every trainer battle becomes a multi battle
+  with them. Talk to them for lines that change as the story goes on.
+- **The Skyrift Isles**: Riftwake Harbor, Shardfall Beach, Meteor Basin,
+  Observatory Cliffs and Vega's observatory. Lv 66–74.
+- **Rift raids**: five boosted Ultra Beasts at Lv 75 (Beast Balls are sold
+  in Riftwake), then a sixth rift with Necrozma at Lv 80.
+- **The climax**: a 2-vs-2 against Vega and Sirius with your companion, then
+  one choice. **Take her hand** and you get Poipole and Vega's rematch.
+  **Let go** and you get Cosmog, and Sirius waits for revenge.
+- Afterwards your companion can keep travelling with you anywhere. The
+  others wait in the Riftwake Inn, where you can swap.
+- Full design: [docs/SKYRIFT.md](docs/SKYRIFT.md).
+
+**Tested in the web player:**
+- The wish menu, the Jirachi battle and the sky tearing open.
+- The pier scene and companion choice.
+- Your companion following you and talking.
+- The ferries both ways.
+- Dr. Halley.
+- A rift battle with its boost, both running away and catching.
+- The Sirius gate as a 2-vs-1 with Altair.
+- The rooftop 2-vs-2 with Deneb and both endings.
+- Swapping companions in the inn.
+- The Necrozma rift appearing.
+
+**Not played through:** the regular island trainers, the observatory floors,
+and the Vermilion menu entry. The menu entry builds but wasn't opened in the
+emulator.
 
 ## Kanto + Hoenn (merged regions) and the Battle Frontier
 

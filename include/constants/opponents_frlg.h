@@ -714,9 +714,27 @@
 #define TRAINER_SEIKA_CHAMPION_SEIJI               701
 #define TRAINER_SEIKA_NOVA_DENEB_SHRINE            702
 #define TRAINER_SEIKA_NOVA_ALTAIR_SHRINE           703
+#define TRAINER_SKYRIFT_RANGER_KAI                 704
+#define TRAINER_SKYRIFT_NOVA_BEACH_1               705
+#define TRAINER_SKYRIFT_NOVA_BEACH_2               706
+#define TRAINER_SKYRIFT_SWIMMER_LEILANI            707
+#define TRAINER_SKYRIFT_HIKER_MAKOA                708
+#define TRAINER_SKYRIFT_RUIN_MANIAC_HOKU           709
+#define TRAINER_SKYRIFT_NOVA_BASIN_1               710
+#define TRAINER_SKYRIFT_NOVA_BASIN_2               711
+#define TRAINER_SKYRIFT_BLACK_BELT_KANOA           712
+#define TRAINER_SKYRIFT_COOLTRAINER_MAILE          713
+#define TRAINER_SKYRIFT_NOVA_CLIFFS                714
+#define TRAINER_SKYRIFT_NOVA_1F_1                  715
+#define TRAINER_SKYRIFT_NOVA_1F_2                  716
+#define TRAINER_SKYRIFT_NOVA_2F_1                  717
+#define TRAINER_SKYRIFT_NOVA_2F_2                  718
+#define TRAINER_SKYRIFT_SIRIUS_GATE                719
+#define TRAINER_SKYRIFT_SIRIUS                     720
+#define TRAINER_SKYRIFT_VEGA                       721
 // [QoL] end of Seika trainers
 
-#define TRAINERS_COUNT_FRLG                      704 // [QoL] was 624 (Team Nova and Seika added)
+#define TRAINERS_COUNT_FRLG                      722 // [QoL] was 624 (Team Nova and Seika added)
 #define MAX_TRAINERS_COUNT_FRLG                  768
 
 #endif  // GUARD_CONSTANTS_OPPONENTS_FRLG_H

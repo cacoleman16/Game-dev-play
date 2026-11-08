@@ -72,8 +72,23 @@ comes your last choice: **take her hand, or let go**.
 The PEACE FOR NOVA wish adds a closing scene: the star's light reaches Vega
 in the rift. Each companion closes the story in their own way. Afterwards
 your companion asks whether to keep travelling with you. If you say yes,
-they follow you everywhere and keep fighting beside you. You can change
-your mind at the Riftwake inn.
+they follow you everywhere and keep fighting beside you.
+
+## 5. After the story: the Riftwake Inn
+
+The two companions who aren't travelling with you wait in the inn's lounge.
+Talk to one to swap them in; the one you were travelling with takes their
+seat. The innkeeper can also change your companion, or let you travel
+alone.
+
+## Getting around
+
+- The S.S. TIDAL sails to the isles from Lanternport's pier and from
+  Vermilion City once you've chosen a companion. The sailor on Riftwake's
+  pier sails back to Lanternport or Vermilion.
+- Riftwake Harbor is on the Seika Fly map, east of Lanternport.
+- If your save met the Wishing Star before this chapter existed, the
+  Skyrift opens the next time you visit Lanternport.
 
 ## Technical notes
 
@@ -82,7 +97,10 @@ your mind at the Riftwake inn.
   (`src/data/battle_partners.party`, `include/constants/battle_partner.h`).
 - Their back sprites are recoloured copies of existing ones
   (`graphics/trainers/back_pics/qol_*.png`).
-- Rift Ultra Beasts use `settotemboost`.
+- Rift Ultra Beasts and Necrozma use `settotemboost` (+1 to every stat).
+- The map-name popup holds 20 characters: section name plus floor
+  ("OBSERVATORY ROOFTOP"). `build.py` refuses longer names, because they
+  overran the buffer and crashed the game.
 - Maps and scripts: `dev_scripts/seika/skyrift.py` (the isles) and
   `dev_scripts/seika/skyrift_story.py` (the wish, the companions, the
   climax).

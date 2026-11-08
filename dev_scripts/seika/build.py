@@ -42,6 +42,14 @@ def main():
                 a, b, e = d.warps[:3]
                 if a['y'] == b['y'] == e['y'] and b['x'] == a['x'] + 1 and e['x'] == a['x'] + 2:
                     w['dest_warp_id'] = '1'
+    # The map-name popup holds 20 characters: section name, a space, then
+    # the floor ("2F", "B1F" or "ROOFTOP"). Longer names overrun it and crash.
+    names = {s['id']: s['name'] for s in c.MAPSECS}
+    for m in c.MAPS:
+        fl = getattr(m, 'floor', 0)
+        if fl and m.mapsec in names:
+            text = names[m.mapsec] + ' ' + ('ROOFTOP' if fl == 127 else ('B%dF' % -fl if fl < 0 else '%dF' % fl))
+            assert len(text) <= 20, 'map name popup too long for %s: %r' % (m.id, text)
     if len(sys.argv) > 2 and sys.argv[1] == 'render':
         os.makedirs(sys.argv[2], exist_ok=True)
         for m in c.MAPS:

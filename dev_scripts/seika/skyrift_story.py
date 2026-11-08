@@ -32,6 +32,9 @@ F = {k: flag('FLAG_QOL_SKYRIFT_' + k, why) for k, why in [
     ('FLY_RIFTWAKE', 'Fly unlocked: Riftwake Harbor'),
     ('NECROZMA', 'caught Necrozma in the sixth rift'),
     ('HIDE_NECROZMA', 'the sixth rift is not open'),
+    ('HIDE_INN_ALTAIR', 'Altair not in the Riftwake Inn lobby'),
+    ('HIDE_INN_DENEB', 'Deneb not in the Riftwake Inn lobby'),
+    ('HIDE_INN_MIRA', 'Mira not in the Riftwake Inn lobby'),
 ]}
 
 COMPANION_FLAGS = '0x3E'   # land + water, kept after a white-out (no FNPC_WHITE_OUT)
@@ -290,6 +293,9 @@ def lanternport(m, spots):
          '\tclearflag %(hide)s\n\tsetvar VAR_TEMP_4, 0\n\treturn\n\n'
          '%(n)s_EventScript_Open::\n\tsetflag %(open)s\n\treturn\n\n'
          '%(n)s_EventScript_Talk::\n\tlockall\n\tsetvar VAR_TEMP_4, 1\n'
+         '\tapplymovement LOCALID_SKYRIFT_PIER_MIRA, Common_Movement_FaceUp\n\twaitmovement 0\n'
+         '\tplayse SE_PIN\n\tapplymovement LOCALID_SKYRIFT_PIER_MIRA, Common_Movement_ExclamationMark\n'
+         '\twaitmovement 0\n'
          '\tmsgbox %(n)s_Text_Mira1, MSGBOX_DEFAULT\n\tmsgbox %(n)s_Text_Altair1, MSGBOX_DEFAULT\n'
          '\tmsgbox %(n)s_Text_Deneb1, MSGBOX_DEFAULT\n\tmsgbox %(n)s_Text_Mira2, MSGBOX_DEFAULT\n'
          '%(n)s_Choose::\n\tmessage %(n)s_Text_Choose\n\twaitmessage\n'
@@ -305,11 +311,12 @@ def lanternport(m, spots):
               '\tsetflag %(chosen)s\n\tsetflag %(with)s\n'
               '\tmsgbox %(n)s_Text_Picked%(k)s, MSGBOX_DEFAULT\n\tclosemessage\n'
               '\tfadescreen FADE_TO_BLACK\n'
-              + ''.join('\tremoveobject %s\n' % lid[k2] for k2, _, _, _ in COMPANIONS) +
-              '\tsetflag %(hide)s\n'
+              '%(j1)s'
+              '\tsetflag %(hide)s\n\tfadescreen FADE_FROM_BLACK\n'
+              # created after the fade: making it while the screen is black left the map dimmed
               '\tcreatefollowernpc %(gfx)s, %(cf)s, QoL_EventScript_CompanionTalk, %(partner)s\n'
-              '\tfadescreen FADE_FROM_BLACK\n\tmsgbox %(n)s_Text_Ready, MSGBOX_DEFAULT\n\treleaseall\n\tend\n\n'
-              % dict(n=n, k=key, chosen=F['CHOSEN'], hide=F['HIDE_TRIO'], gfx=gfx, cf=COMPANION_FLAGS,
+              '\tmsgbox %(n)s_Text_Ready, MSGBOX_DEFAULT\n\treleaseall\n\tend\n\n'
+              % dict(j1=''.join('\tremoveobject %s\n' % lid[k2] for k2, _, _, _ in COMPANIONS), n=n, k=key, chosen=F['CHOSEN'], hide=F['HIDE_TRIO'], gfx=gfx, cf=COMPANION_FLAGS,
                      partner=partner, **{'with': F['WITH_' + key]}))
     m.scripts += s
     m.scripts += T(n + '_Text_Mira1',
@@ -376,7 +383,7 @@ def companion_talk(m):
             'Start': ['Do you like my hat? I chose it\nfor the crossing. Priorities,\ndarling.',
                       'VEGA once said I counted money\nlike other people count stars.\nShe wasn\'t wrong.'],
             'Isles': ['Rifts, shards, beasts from\nanother sky... VEGA spent a\nfortune on this place.',
-                      'DR. HALLEY used to work for us.\nShe quit the day VEGA bought\nthe engine.'],
+                      'DR. HALLEY used to work for us.\nHe quit the day VEGA bought\nthe engine.'],
             'Roof': ['SIRIUS hates me. I signed his\npaychecks. It\'s complicated.',
                      'If we turn that engine off,\nI\'m finally out of work.\nWhat a relief.'],
             'After': ['You know, darling, I think I\'ll\nkeep this hat.',
@@ -438,7 +445,7 @@ def isles(spots):
                          six=('\tcall %s_Necrozma_Check\n\tgoto_if_unset %s, %s_Sixth\n'
                               % (P, F['HIDE_NECROZMA'], n)) if 'necrozma' in spots else ''))
     m.scripts += T(n + '_Text_Intro',
-                   say('DR. HALLEY', 'Visitors! From the CHAMPION\nof SEIKA, no less.\f'
+                   say('DR. HALLEY', 'Visitors! And the CHAMPION of\nSEIKA, no less.\f'
                        'I study the SKYRIFT. I used to\nwork for VEGA, until she\nbought that engine.\f'
                        'Five tears in the sky have\nopened on these islands. Out of\neach one, an ULTRA BEAST.\f'
                        'Take these. BEAST BALLS work on\nthem far better than anything\nelse.'))
@@ -474,26 +481,31 @@ def isles(spots):
          '%(n)s_Clear::\n\tcheckfollowernpc\n\tgoto_if_eq VAR_RESULT, FALSE, %(n)s_ClearFlags\n'
          '\tdestroyfollowernpc\n'
          '%(n)s_ClearFlags::\n'
-         + ''.join('\tclearflag %s\n' % F['WITH_' + k] for k, _, _, _ in COMPANIONS) +
+         '%(j2)s'
          '\treturn\n\n'
-         '%(n)s_Alone::\n\tcall %(n)s_Clear\n\tmsgbox %(n)s_Text_AloneDone, MSGBOX_DEFAULT\n\trelease\n\tend\n\n'
-         % dict(p=P, n=n, climax=F['CLIMAX'], pier=P + '_Pier'))
+         '%(n)s_Alone::\n\tcall %(n)s_Clear\n\tcall %(n)s_Lobby\n%(showall)s'
+         '\tmsgbox %(n)s_Text_AloneDone, MSGBOX_DEFAULT\n\trelease\n\tend\n\n'
+         % dict(showall=''.join('\tcall %s_Show%s\n' % (n, k) for k, _, _, _ in COMPANIONS), j2=''.join('\tclearflag %s\n' % F['WITH_' + k] for k, _, _, _ in COMPANIONS), p=P, n=n, climax=F['CLIMAX'], pier=P + '_Pier'))
     for key, name, gfx, partner in COMPANIONS:
-        s += ('%(n)s_Set%(k)s::\n\tcall %(n)s_Clear\n\tsetflag %(with)s\n'
+        s += ('%(n)s_Set%(k)s::\n\tcall %(n)s_Clear\n\tsetflag %(with)s\n\tcall %(n)s_Lobby\n'
+              '\tremoveobject LOCALID_SKYRIFT_INN_%(k)s\n%(back)s'
               '\tcreatefollowernpc %(gfx)s, %(cf)s, QoL_EventScript_CompanionTalk, %(partner)s\n'
               '\tmsgbox %(n)s_Text_Joined%(k)s, MSGBOX_DEFAULT\n\trelease\n\tend\n\n'
-              % dict(n=n, k=key, gfx=gfx, cf=COMPANION_FLAGS, partner=partner, **{'with': F['WITH_' + key]}))
+              % dict(n=n, k=key, gfx=gfx, cf=COMPANION_FLAGS, partner=partner, **{'with': F['WITH_' + key]},
+                     back=''.join('\tcall_if_unset %s, %s_Show%s\n' % (F['HIDE_INN_' + k2], n, k2)
+                                  for k2, _, _, _ in COMPANIONS if k2 != key)))
         m.scripts += T('%s_Text_Joined%s' % (n, key), say(name, {
             'ALTAIR': 'Back on the road? Fine by me.',
             'DENEB': 'Shall we, darling?',
             'MIRA': 'Yay! Where are we going next?'}[key]))
     m.scripts += s
+    lobby(m, n)
     m.scripts += T(n + '_Text_Welcome',
                    'Welcome to the RIFTWAKE INN!\nWould you like to rest?')
     m.scripts += T(n + '_Text_Rest', 'Sleep well!')
     m.scripts += T(n + '_Text_Morning', 'Good morning! Your POKéMON look\nfull of energy.')
     m.scripts += T(n + '_Text_Lounge',
-                   'ALTAIR, DENEB and MIRA are all\nstaying here now.\f'
+                   'Your friends from the\nOBSERVATORY are staying here.\f'
                    'They\'d each love to travel with\nyou, wherever you go.')
     m.scripts += T(n + '_Text_Who', 'Who should travel with you?')
     m.scripts += T(n + '_Text_OptAlone', 'TRAVEL ALONE')
@@ -533,6 +545,52 @@ def isles(spots):
     roof(by_spot)
 
 
+INN_SEATS = {'ALTAIR': (12, 3, 'MOVEMENT_TYPE_FACE_RIGHT'), 'DENEB': (15, 3, 'MOVEMENT_TYPE_FACE_LEFT'),
+             'MIRA': (12, 7, 'MOVEMENT_TYPE_FACE_RIGHT')}
+
+
+def lobby(m, n):
+    """After the climax, the companions who aren't travelling with you wait
+    in the inn's lounge. Talk to one to swap them in."""
+    setup = ''
+    for key, name, gfx, partner in COMPANIONS:
+        x, y, move = INN_SEATS[key]
+        lid = 'LOCALID_SKYRIFT_INN_' + key
+        m.objects.append(g.obj(gfx, x, y, '%s_EventScript_Lobby%s' % (n, key), local_id=lid, move=move,
+                               flag=F['HIDE_INN_' + key]))
+        setup += '\tsetflag %s\n\tcall_if_unset %s, %s_Seat%s\n' % (F['HIDE_INN_' + key], F['WITH_' + key], n, key)
+    wrap_transition(m, '\tcall %s_Lobby\n' % n, n + '_OnTransition')
+    s = ('%(n)s_Lobby::\n%(setup)s\tgoto_if_set %(climax)s, Common_EventScript_NopReturn\n'
+         + ''.join('\tsetflag %s\n' % F['HIDE_INN_' + k] for k, _, _, _ in COMPANIONS) +
+         '\treturn\n\n') % dict(n=n, setup=setup, climax=F['CLIMAX'])
+    for key, name, gfx, partner in COMPANIONS:
+        lid = 'LOCALID_SKYRIFT_INN_' + key
+        back = ''.join('\tcall_if_unset %s, %s_Show%s\n' % (F['HIDE_INN_' + k2], n, k2)
+                       for k2, _, _, _ in COMPANIONS if k2 != key)
+        s += ('%(n)s_Seat%(k)s::\n\tclearflag %(hide)s\n\treturn\n\n'
+              '%(n)s_Show%(k)s::\n\taddobject %(lid)s\n\treturn\n\n'
+              '%(n)s_EventScript_Lobby%(k)s::\n\tlock\n\tfaceplayer\n'
+              '\tmsgbox %(n)s_Text_Lobby%(k)s, MSGBOX_YESNO\n'
+              '\tgoto_if_eq VAR_RESULT, NO, %(n)s_LobbyNo%(k)s\n'
+              '\tcall %(n)s_Clear\n\tsetflag %(with)s\n\tremoveobject %(lid)s\n'
+              # whoever was travelling with you takes a free seat
+              '\tcall %(n)s_Lobby\n%(back)s'
+              '\tcreatefollowernpc %(gfx)s, %(cf)s, QoL_EventScript_CompanionTalk, %(partner)s\n'
+              '\tmsgbox %(n)s_Text_Joined%(k)s, MSGBOX_DEFAULT\n\trelease\n\tend\n\n'
+              '%(n)s_LobbyNo%(k)s::\n\tmsgbox %(n)s_Text_LobbyNo%(k)s, MSGBOX_DEFAULT\n\trelease\n\tend\n\n'
+              % dict(n=n, k=key, lid=lid, hide=F['HIDE_INN_' + key], gfx=gfx, cf=COMPANION_FLAGS, partner=partner,
+                     back=back, **{'with': F['WITH_' + key]}))
+    m.scripts += s
+    lines = {
+        'ALTAIR': ('Need a strong back on the road?\nI\'m ready when you are.', 'Suit yourself. I\'ll be here.'),
+        'DENEB': ('Bored of the inn already,\ndarling. Take me with you?', 'Pity. I\'ll order more tea.'),
+        'MIRA': ('The stars are clear tonight!\nCan I come with you?', 'Okay! I\'ll keep drawing my\nstar chart.'),
+    }
+    for key, name, _, _ in COMPANIONS:
+        m.scripts += T('%s_Text_Lobby%s' % (n, key), say(name, lines[key][0]))
+        m.scripts += T('%s_Text_LobbyNo%s' % (n, key), say(name, lines[key][1]))
+
+
 def sixth_rift(by_spot):
     """After the climax, with all five Ultra Beasts caught, a sixth rift
     opens in Meteor Basin: Necrozma, drawn by the engine's last light."""
@@ -541,57 +599,22 @@ def sixth_rift(by_spot):
     lid = 'LOCALID_SKYRIFT_NECROZMA'
     m.objects.append(g.obj('OBJ_EVENT_GFX_QOL_NECROZMA', x, y, n + '_EventScript', local_id=lid,
                            flag=F['HIDE_NECROZMA']))
-    checks = ''.join('	goto_if_unset %s, %s_Shut
-' % (F['UB_' + sp], n) for _, sp, _ in RIFTS)
-    wrap_transition(m, '	call %s_Check
-' % n, n + '_OnTransition')
-    m.scripts += ('%(n)s_Check::
-	setflag %(hide)s
-	goto_if_unset %(climax)s, %(n)s_Shut
-'
-                  '	goto_if_set %(caught)s, %(n)s_Shut
-%(checks)s	clearflag %(hide)s
-'
-                  '%(n)s_Shut::
-	return
-
-'
-                  '%(n)s_EventScript::
-	lock
-	faceplayer
-	msgbox %(n)s_Text_Seen, MSGBOX_DEFAULT
-'
-                  '	playmoncry SPECIES_NECROZMA, CRY_MODE_ENCOUNTER
-	waitmoncry
-'
-                  '	setwildbattle SPECIES_NECROZMA, 80
-'
-                  '	settotemboost B_POSITION_OPPONENT_LEFT, 1, 1, 1, 1, 1
-'
-                  '	setflag FLAG_SYS_CTRL_OBJ_DELETE
-	special BattleSetup_StartLegendaryBattle
-'
-                  '	clearflag FLAG_SYS_CTRL_OBJ_DELETE
-'
-                  '	specialvar VAR_RESULT, GetBattleOutcome
-'
-                  '	goto_if_eq VAR_RESULT, B_OUTCOME_CAUGHT, %(n)s_Caught
-'
-                  '	msgbox %(n)s_Text_Back, MSGBOX_DEFAULT
-	release
-	end
-
-'
-                  '%(n)s_Caught::
-	setflag %(caught)s
-	setflag %(hide)s
-	removeobject %(lid)s
-'
-                  '	msgbox %(n)s_Text_Closed, MSGBOX_DEFAULT
-	release
-	end
-
-'
+    checks = ''.join('\tgoto_if_unset %s, %s_Shut\n' % (F['UB_' + sp], n) for _, sp, _ in RIFTS)
+    wrap_transition(m, '\tcall %s_Check\n' % n, n + '_OnTransition')
+    m.scripts += ('%(n)s_Check::\n\tsetflag %(hide)s\n\tgoto_if_unset %(climax)s, %(n)s_Shut\n'
+                  '\tgoto_if_set %(caught)s, %(n)s_Shut\n%(checks)s\tclearflag %(hide)s\n'
+                  '%(n)s_Shut::\n\treturn\n\n'
+                  '%(n)s_EventScript::\n\tlock\n\tfaceplayer\n\tmsgbox %(n)s_Text_Seen, MSGBOX_DEFAULT\n'
+                  '\tplaymoncry SPECIES_NECROZMA, CRY_MODE_ENCOUNTER\n\twaitmoncry\n'
+                  '\tsetwildbattle SPECIES_NECROZMA, 80\n'
+                  '\tsettotemboost B_POSITION_OPPONENT_LEFT, 1, 1, 1, 1, 1\n'
+                  '\tsetflag FLAG_SYS_CTRL_OBJ_DELETE\n\tspecial BattleSetup_StartLegendaryBattle\n'
+                  '\tclearflag FLAG_SYS_CTRL_OBJ_DELETE\n'
+                  '\tspecialvar VAR_RESULT, GetBattleOutcome\n'
+                  '\tgoto_if_eq VAR_RESULT, B_OUTCOME_CAUGHT, %(n)s_Caught\n'
+                  '\tmsgbox %(n)s_Text_Back, MSGBOX_DEFAULT\n\trelease\n\tend\n\n'
+                  '%(n)s_Caught::\n\tsetflag %(caught)s\n\tsetflag %(hide)s\n\tremoveobject %(lid)s\n'
+                  '\tmsgbox %(n)s_Text_Closed, MSGBOX_DEFAULT\n\trelease\n\tend\n\n'
                   % dict(n=n, lid=lid, hide=F['HIDE_NECROZMA'], climax=F['CLIMAX'],
                          caught=F['NECROZMA'], checks=checks))
     m.scripts += T(n + '_Text_Seen',
@@ -688,12 +711,12 @@ def roof(by_spot):
          '%(n)s_ShowSirius::\n\tclearflag %(hs)s\n\treturn\n\n'
          '%(n)s_EventScript_Climax::\n\tlockall\n\tsetvar VAR_TEMP_4, 1\n'
          '\tmsgbox %(n)s_Text_Vega1, MSGBOX_DEFAULT\n'
-         + ''.join('\tcall_if_set %s, %s_Talk%s\n' % (F['WITH_' + k], n, k) for k, _, _, _ in COMPANIONS) +
+         '%(j3)s'
          '\tmsgbox %(n)s_Text_Vega2, MSGBOX_DEFAULT\n\tmsgbox %(n)s_Text_Sirius1, MSGBOX_DEFAULT\n'
-         + ''.join('\tgoto_if_set %s, %s_Battle%s\n' % (F['WITH_' + k], n, k) for k, _, _, _ in COMPANIONS) +
+         '%(j4)s'
          '\ttrainerbattle_two_trainers TRAINER_SKYRIFT_VEGA, %(n)s_Text_VegaDefeat, TRAINER_SKYRIFT_SIRIUS, %(n)s_Text_SiriusDefeat\n'
          '\tgoto %(n)s_AfterBattle\n\n'
-         % dict(n=n, hv=F['HIDE_REMATCH_VEGA'], hs=F['HIDE_REMATCH_SIRIUS']))
+         % dict(j4=''.join('\tgoto_if_set %s, %s_Battle%s\n' % (F['WITH_' + k], n, k) for k, _, _, _ in COMPANIONS), j3=''.join('\tcall_if_set %s, %s_Talk%s\n' % (F['WITH_' + k], n, k) for k, _, _, _ in COMPANIONS), n=n, hv=F['HIDE_REMATCH_VEGA'], hs=F['HIDE_REMATCH_SIRIUS']))
     for key, name, gfx, partner in COMPANIONS:
         s += ('%(n)s_Talk%(k)s::\n\tmsgbox %(n)s_Text_Talk%(k)s, MSGBOX_DEFAULT\n\treturn\n\n'
               '%(n)s_Battle%(k)s::\n\tmulti_fixed_2_vs_2 TRAINER_SKYRIFT_VEGA, %(n)s_Text_VegaDefeat, '
@@ -709,15 +732,17 @@ def roof(by_spot):
           # take her hand
           '\tsetflag %(saved)s\n\tcall_if_set %(peace)s, %(n)s_PeaceSave\n'
           '\tmsgbox %(n)s_Text_Saved, MSGBOX_DEFAULT\n'
-          + ''.join('\tcall_if_set %s, %s_Saved%s\n' % (F['WITH_' + k], n, k) for k, _, _, _ in COMPANIONS) +
+          '%(j5)s'
           '\tmsgbox %(n)s_Text_VegaGift, MSGBOX_DEFAULT\n'
           '\tgivemon SPECIES_POIPOLE, 60, ITEM_NONE, ITEM_BEAST_BALL\n'
           '\tbufferspeciesname STR_VAR_1, SPECIES_POIPOLE\n\tplayfanfare MUS_RG_OBTAIN_KEY_ITEM\n'
           '\tmessage %(n)s_Text_Received\n\twaitmessage\n\twaitfanfare\n\tgoto %(n)s_Epilogue\n\n'
           # let go
-          '%(n)s_LetGo::\n\tsetflag %(lost)s\n\tmsgbox %(n)s_Text_Falls, MSGBOX_DEFAULT\n'
+          '%(n)s_LetGo::\n\tsetflag %(lost)s\n\tmsgbox %(n)s_Text_Falls, MSGBOX_DEFAULT\n\tclosemessage\n'
+          '\tplayse SE_THUNDER\n\tfadescreen FADE_TO_WHITE\n\tremoveobject LOCALID_SKYRIFT_VEGA\n'
+          '\tfadescreen FADE_FROM_WHITE\n'
           '\tcall_if_set %(peace)s, %(n)s_PeaceLost\n'
-          + ''.join('\tcall_if_set %s, %s_Lost%s\n' % (F['WITH_' + k], n, k) for k, _, _, _ in COMPANIONS) +
+          '%(j6)s'
           '\tmsgbox %(n)s_Text_SiriusVow, MSGBOX_DEFAULT\n\tmsgbox %(n)s_Text_Cosmog, MSGBOX_DEFAULT\n'
           '\tgivemon SPECIES_COSMOG, 60, ITEM_NONE, ITEM_BEAST_BALL\n'
           '\tbufferspeciesname STR_VAR_1, SPECIES_COSMOG\n\tplayfanfare MUS_RG_OBTAIN_KEY_ITEM\n'
@@ -726,10 +751,8 @@ def roof(by_spot):
           '%(n)s_PeaceLost::\n\tmsgbox %(n)s_Text_PeaceLost, MSGBOX_DEFAULT\n\treturn\n\n'
           '%(n)s_Epilogue::\n\tsetflag %(climax)s\n\tfadescreen FADE_TO_BLACK\n'
           '\tremoveobject LOCALID_SKYRIFT_VEGA\n\tremoveobject LOCALID_SKYRIFT_SIRIUS\n'
-          '\tfadescreen FADE_FROM_BLACK\n\tmsgbox %(n)s_Text_Keep, MSGBOX_YESNO\n'
-          '\tgoto_if_eq VAR_RESULT, NO, %(n)s_Part\n'
-          '\tmsgbox %(n)s_Text_KeepYes, MSGBOX_DEFAULT\n\tgoto %(n)s_TheEnd\n\n'
-          '%(n)s_Part::\n\tmsgbox %(n)s_Text_KeepNo, MSGBOX_DEFAULT\n\tcall QoL_Skyrift_Inn_Clear\n'
+          '\tfadescreen FADE_FROM_BLACK\n'
+          '%(asks)s\tgoto %(n)s_TheEnd\n\n'
           '%(n)s_TheEnd::\n\tplaybgm MUS_RG_CREDITS, FALSE\n\tmsgbox %(n)s_Text_TheEnd, MSGBOX_DEFAULT\n'
           '\tfadedefaultbgm\n\treleaseall\n\tend\n\n'
           '%(n)s_Lost::\n\treleaseall\n\tend\n\n'
@@ -740,8 +763,14 @@ def roof(by_spot):
           '\tgoto_if_eq VAR_RESULT, NO, %(n)s_RematchNo\n'
           '\ttrainerbattle_no_intro TRAINER_SKYRIFT_SIRIUS, %(n)s_Text_SiriusDefeat\n\trelease\n\tend\n\n'
           '%(n)s_RematchNo::\n\trelease\n\tend\n\n'
-          % dict(n=n, saved=F['VEGA_SAVED'], lost=F['VEGA_LOST'], peace=F['WISH_PEACE'], climax=F['CLIMAX']))
+          % dict(asks=''.join('\tgoto_if_set %s, %s_Ask%s\n' % (F['WITH_' + k], n, k) for k, _, _, _ in COMPANIONS),
+                 j6=''.join('\tcall_if_set %s, %s_Lost%s\n' % (F['WITH_' + k], n, k) for k, _, _, _ in COMPANIONS), j5=''.join('\tcall_if_set %s, %s_Saved%s\n' % (F['WITH_' + k], n, k) for k, _, _, _ in COMPANIONS), n=n, saved=F['VEGA_SAVED'], lost=F['VEGA_LOST'], peace=F['WISH_PEACE'], climax=F['CLIMAX']))
     for key, name, _, _ in COMPANIONS:
+        s += ('%(n)s_Ask%(k)s::\n\tmsgbox %(n)s_Text_Keep%(k)s, MSGBOX_YESNO\n'
+              '\tgoto_if_eq VAR_RESULT, NO, %(n)s_Part%(k)s\n'
+              '\tmsgbox %(n)s_Text_KeepYes%(k)s, MSGBOX_DEFAULT\n\tgoto %(n)s_TheEnd\n\n'
+              '%(n)s_Part%(k)s::\n\tmsgbox %(n)s_Text_KeepNo%(k)s, MSGBOX_DEFAULT\n'
+              '\tcall QoL_Skyrift_Inn_Clear\n\tgoto %(n)s_TheEnd\n\n' % dict(n=n, k=key))
         s += '%(n)s_Saved%(k)s::\n\tmsgbox %(n)s_Text_Saved%(k)s, MSGBOX_DEFAULT\n\treturn\n\n' % dict(n=n, k=key)
         s += '%(n)s_Lost%(k)s::\n\tmsgbox %(n)s_Text_Lost%(k)s, MSGBOX_DEFAULT\n\treturn\n\n' % dict(n=n, k=key)
     m.scripts += s
@@ -804,13 +833,22 @@ def roof(by_spot):
                    say('SIRIUS', 'You let her go.\fI will find a way through that\nrift. I will wait here, on her\nroof, for as long as it takes.'))
     m.scripts += T(n + '_Text_Cosmog',
                    'Something small drifts down from\nwhere the rift closed...\fIt floats over to you.')
-    m.scripts += T(n + '_Text_Keep',
-                   'Your companion looks out at\nthe quiet sky.\f'
-                   '"Will you keep traveling\nwith me?"')
-    m.scripts += T(n + '_Text_KeepYes',
-                   '"Then let\'s go! Wherever\nyou\'re headed next."')
-    m.scripts += T(n + '_Text_KeepNo',
-                   '"I understand. I\'ll stay at the\nRIFTWAKE INN. Come find me\nanytime."')
+    keep = {
+        'ALTAIR': ('So... the boss is sorted, and\nI\'ve got nowhere to be.\fMind if I keep tagging along?',
+                   'Ha! Then let\'s go find\nsomething worth digging up.',
+                   'Fair enough. I\'ll be at the\nRIFTWAKE INN if you need muscle.'),
+        'DENEB': ('Well, darling. I\'m out of a\njob now.\fMay I keep traveling with you?',
+                  'Wonderful. I\'ll pack light.\nThree hats at most.',
+                  'Then I\'ll wait at the RIFTWAKE\nINN. Don\'t keep a lady waiting.'),
+        'MIRA': ('Grandpa can wait a little\nlonger, right?\fCan I keep traveling with you?',
+                 'Yay! I\'ll read the stars,\nyou do the battling!',
+                 'Okay... I\'ll be at the\nRIFTWAKE INN. Come get me\nanytime!'),
+    }
+    for key, name, _, _ in COMPANIONS:
+        ask, yes, no = keep[key]
+        m.scripts += T(n + '_Text_Keep' + key, say(name, ask))
+        m.scripts += T(n + '_Text_KeepYes' + key, say(name, yes))
+        m.scripts += T(n + '_Text_KeepNo' + key, say(name, no))
     m.scripts += T(n + '_Text_TheEnd',
                    'The SKYRIFT is closed.\nThe STARFALL is truly over.\f'
                    'STARFALL - THE END\fThank you for playing!')

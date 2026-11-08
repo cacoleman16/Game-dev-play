@@ -1,0 +1,165 @@
+{
+  "id": "MAP_SKYRIFT_OBSERVATORY_CLIFFS",
+  "name": "Skyrift_ObservatoryCliffs",
+  "layout": "LAYOUT_SKYRIFT_OBSERVATORY_CLIFFS",
+  "music": "MUS_ABNORMAL_WEATHER",
+  "region": "REGION_SEIKA",
+  "region_map_section": "MAPSEC_SKYRIFT_OBSERVATORY_CLIFFS",
+  "requires_flash": false,
+  "weather": "WEATHER_SHADE",
+  "map_type": "MAP_TYPE_ROUTE",
+  "allow_cycling": true,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": true,
+  "floor_number": 0,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": [
+    {
+      "map": "MAP_SKYRIFT_METEOR_BASIN",
+      "offset": -2,
+      "direction": "down"
+    }
+  ],
+  "object_events": [
+    {
+      "type": "object",
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 4,
+      "y": 32,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Skyrift_ObservatoryCliffs_EventScript_ItemPPMax",
+      "flag": "FLAG_QOL_SKYRIFT_ITEM_CLIFFS"
+    },
+    {
+      "type": "object",
+      "graphics_id": "OBJ_EVENT_GFX_BLACK_BELT_FRLG",
+      "x": 10,
+      "y": 37,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "3",
+      "script": "Skyrift_ObservatoryCliffs_EventScript_Kanoa",
+      "flag": "0"
+    },
+    {
+      "type": "object",
+      "graphics_id": "OBJ_EVENT_GFX_COOLTRAINER_F",
+      "x": 14,
+      "y": 26,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "3",
+      "script": "Skyrift_ObservatoryCliffs_EventScript_Maile",
+      "flag": "0"
+    },
+    {
+      "type": "object",
+      "graphics_id": "OBJ_EVENT_GFX_PSYCHIC_M",
+      "x": 18,
+      "y": 17,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "2",
+      "script": "Skyrift_ObservatoryCliffs_EventScript_Nova",
+      "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_SKYRIFT_RIFT_XURKITREE",
+      "type": "object",
+      "graphics_id": "OBJ_EVENT_GFX_QOL_XURKITREE",
+      "x": 24,
+      "y": 32,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "QoL_Skyrift_EventScript_RiftXURKITREE",
+      "flag": "FLAG_QOL_SKYRIFT_UB_XURKITREE"
+    },
+    {
+      "local_id": "LOCALID_SKYRIFT_RIFT_KARTANA",
+      "type": "object",
+      "graphics_id": "OBJ_EVENT_GFX_QOL_KARTANA",
+      "x": 7,
+      "y": 18,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "QoL_Skyrift_EventScript_RiftKARTANA",
+      "flag": "FLAG_QOL_SKYRIFT_UB_KARTANA"
+    },
+    {
+      "local_id": "LOCALID_SKYRIFT_SIRIUS_GATE",
+      "type": "object",
+      "graphics_id": "OBJ_EVENT_GFX_COOLTRAINER_M",
+      "x": 14,
+      "y": 10,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "QoL_Skyrift_Gate_EventScript_Sirius",
+      "flag": "FLAG_QOL_SKYRIFT_SIRIUS_GATE"
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 14,
+      "y": 7,
+      "elevation": 3,
+      "dest_map": "MAP_SKYRIFT_OBSERVATORY_1F",
+      "dest_warp_id": "1"
+    }
+  ],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 14,
+      "y": 12,
+      "elevation": 3,
+      "var": "VAR_TEMP_4",
+      "var_value": "0",
+      "script": "QoL_Skyrift_Gate_EventScript_Sirius"
+    }
+  ],
+  "bg_events": [
+    {
+      "type": "sign",
+      "x": 16,
+      "y": 41,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "Skyrift_ObservatoryCliffs_EventScript_Sign"
+    },
+    {
+      "type": "sign",
+      "x": 11,
+      "y": 8,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "Skyrift_ObservatoryCliffs_EventScript_ObsSign"
+    }
+  ]
+}

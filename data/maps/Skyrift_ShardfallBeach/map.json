@@ -1,0 +1,128 @@
+{
+  "id": "MAP_SKYRIFT_SHARDFALL_BEACH",
+  "name": "Skyrift_ShardfallBeach",
+  "layout": "LAYOUT_SKYRIFT_SHARDFALL_BEACH",
+  "music": "MUS_ROUTE119",
+  "region": "REGION_SEIKA",
+  "region_map_section": "MAPSEC_SKYRIFT_SHARDFALL_BEACH",
+  "requires_flash": false,
+  "weather": "WEATHER_SUNNY",
+  "map_type": "MAP_TYPE_ROUTE",
+  "allow_cycling": true,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": true,
+  "floor_number": 0,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": [
+    {
+      "map": "MAP_SKYRIFT_RIFTWAKE_HARBOR",
+      "offset": -6,
+      "direction": "left"
+    },
+    {
+      "map": "MAP_SKYRIFT_METEOR_BASIN",
+      "offset": -22,
+      "direction": "right"
+    }
+  ],
+  "object_events": [
+    {
+      "type": "object",
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 5,
+      "y": 16,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Skyrift_ShardfallBeach_EventScript_ItemStarPiece",
+      "flag": "FLAG_QOL_SKYRIFT_ITEM_BEACH"
+    },
+    {
+      "type": "object",
+      "graphics_id": "OBJ_EVENT_GFX_CAMPER_FRLG",
+      "x": 18,
+      "y": 15,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "4",
+      "script": "Skyrift_ShardfallBeach_EventScript_Kai",
+      "flag": "0"
+    },
+    {
+      "type": "object",
+      "graphics_id": "OBJ_EVENT_GFX_PSYCHIC_M",
+      "x": 33,
+      "y": 15,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "2",
+      "script": "Skyrift_ShardfallBeach_EventScript_NovaA",
+      "flag": "0"
+    },
+    {
+      "type": "object",
+      "graphics_id": "OBJ_EVENT_GFX_HEX_MANIAC",
+      "x": 33,
+      "y": 17,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "2",
+      "script": "Skyrift_ShardfallBeach_EventScript_NovaB",
+      "flag": "0"
+    },
+    {
+      "type": "object",
+      "graphics_id": "OBJ_EVENT_GFX_SWIMMER_F_WATER",
+      "x": 44,
+      "y": 21,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "5",
+      "script": "Skyrift_ShardfallBeach_EventScript_Leilani",
+      "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_SKYRIFT_RIFT_NIHILEGO",
+      "type": "object",
+      "graphics_id": "OBJ_EVENT_GFX_QOL_NIHILEGO",
+      "x": 54,
+      "y": 15,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "QoL_Skyrift_EventScript_RiftNIHILEGO",
+      "flag": "FLAG_QOL_SKYRIFT_UB_NIHILEGO"
+    }
+  ],
+  "warp_events": [],
+  "coord_events": [],
+  "bg_events": [
+    {
+      "type": "sign",
+      "x": 13,
+      "y": 8,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "Skyrift_ShardfallBeach_EventScript_Sign"
+    }
+  ]
+}

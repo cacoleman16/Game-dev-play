@@ -1242,6 +1242,18 @@
     "Seika_League_SkyRoom",
     "Seika_League_DragonRoom",
     "Seika_League_ChampionRoom",
-    "Seika_SkyShrine"
+    "Seika_SkyShrine",
+    "Skyrift_RiftwakeHarbor",
+    "Skyrift_Riftwake_PokemonCenter_1F",
+    "Skyrift_Riftwake_PokemonCenter_2F",
+    "Skyrift_Riftwake_Mart",
+    "Skyrift_Riftwake_RiftHut",
+    "Skyrift_Riftwake_Inn",
+    "Skyrift_ShardfallBeach",
+    "Skyrift_MeteorBasin",
+    "Skyrift_ObservatoryCliffs",
+    "Skyrift_Observatory_1F",
+    "Skyrift_Observatory_2F",
+    "Skyrift_Observatory_Roof"
   ]
 }

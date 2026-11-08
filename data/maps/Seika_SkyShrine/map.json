@@ -58,7 +58,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Seika_SkyShrine_EventScript_Jirachi",
+      "script": "QoL_EventScript_SkyriftWish",
       "flag": "FLAG_QOL_SEIKA_HIDE_JIRACHI"
     }
   ],

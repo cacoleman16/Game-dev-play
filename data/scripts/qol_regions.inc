@@ -28,6 +28,7 @@ QoL_EventScript_TidalMenu::
 	dynmultipush QoL_Text_DestStarfallIsle, 5 @ [QoL] Visible wild POKéMON island
 	call QoL_EventScript_PushBirthIsland @ [QoL] Starfall finale
 	call QoL_EventScript_PushSeika @ [QoL] Seika region (after the finale)
+	call QoL_EventScript_PushSkyrift @ [QoL] Skyrift Isles (docs/SKYRIFT.md)
 	dynmultipush QoL_Text_DestCancel, 9
 	dynmultistack 0, 0, FALSE, 5, FALSE, 0, DYN_MULTICHOICE_CB_NONE
 	switch VAR_RESULT
@@ -38,6 +39,7 @@ QoL_EventScript_TidalMenu::
 	case 4, QoL_EventScript_SailToBirthIsland
 	case 5, QoL_EventScript_SailToStarfallIsle
 	case 6, QoL_EventScript_SailToSeika
+	case 7, QoL_EventScript_SailToSkyrift
 	goto QoL_EventScript_TidalCancel
 	end
 

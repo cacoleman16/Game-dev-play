@@ -17525,4 +17525,678 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Earthquake
 - Bullet Punch
 
+=== TRAINER_SKYRIFT_RANGER_KAI ===
+Name: KAI
+Class: Pkmn Ranger Frlg
+Pic: Pokemon Ranger M Frlg
+Gender: Male
+Music: Serious
+Double Battle: No
+AI: Smart Trainer
+
+Exeggutor-Alola @ Sitrus Berry
+Level: 71
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Dragon Hammer
+- Wood Hammer
+- Flamethrower
+- Earthquake
+
+Toucannon
+Level: 71
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Beak Blast
+- Bullet Seed
+- Rock Blast
+- Roost
+
+Oricorio-Pom-Pom
+Level: 71
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Revelation Dance
+- Hurricane
+- Quiver Dance
+- Roost
+
+Palossand
+Level: 72
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Shadow Ball
+- Earth Power
+- Shore Up
+- Giga Drain
+
+=== TRAINER_SKYRIFT_NOVA_BEACH_1 ===
+Name: LOYALIST
+Class: Team Nova
+Pic: Psychic M
+Gender: Male
+Music: Intense
+Double Battle: No
+AI: Smart Trainer
+
+Lunatone
+Level: 71
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Moonblast
+- Psychic
+- Ice Beam
+- Calm Mind
+
+Bronzong @ Leftovers
+Level: 71
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Gyro Ball
+- Earthquake
+- Psychic
+- Trick Room
+
+Minior
+Level: 72
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Shell Smash
+- Power Gem
+- Acrobatics
+- Earthquake
+
+=== TRAINER_SKYRIFT_NOVA_BEACH_2 ===
+Name: LOYALIST
+Class: Team Nova
+Pic: Psychic F
+Gender: Female
+Music: Intense
+Double Battle: No
+AI: Smart Trainer
+
+Solrock
+Level: 71
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Flare Blitz
+- Zen Headbutt
+- Stone Edge
+- Morning Sun
+
+Starmie
+Level: 71
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Hydro Pump
+- Psychic
+- Thunderbolt
+- Recover
+
+Beheeyem @ Life Orb
+Level: 72
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Psychic
+- Shadow Ball
+- Thunderbolt
+- Nasty Plot
+
+=== TRAINER_SKYRIFT_SWIMMER_LEILANI ===
+Name: LEILANI
+Class: Swimmer F Frlg
+Pic: Swimmer F Frlg
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Smart Trainer
+
+Araquanid
+Level: 71
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Liquidation
+- Leech Life
+- Poison Jab
+- Sticky Web
+
+Toxapex @ Black Sludge
+Level: 71
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Scald
+- Toxic
+- Recover
+- Baneful Bunker
+
+Bruxish
+Level: 72
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Psychic Fangs
+- Aqua Jet
+- Crunch
+- Ice Fang
+
+Mantine
+Level: 72
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Scald
+- Air Slash
+- Roost
+- Haze
+
+=== TRAINER_SKYRIFT_HIKER_MAKOA ===
+Name: MAKOA
+Class: Hiker Frlg
+Pic: Hiker Frlg
+Gender: Male
+Music: Serious
+Double Battle: No
+AI: Smart Trainer
+
+Golem-Alola
+Level: 72
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Thunder Punch
+- Stone Edge
+- Earthquake
+- Stealth Rock
+
+Mudsdale
+Level: 72
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- High Horsepower
+- Heavy Slam
+- Rock Slide
+- Close Combat
+
+Lycanroc
+Level: 72
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Accelerock
+- Stone Edge
+- Crunch
+- Swords Dance
+
+Turtonator @ White Herb
+Level: 73
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Flamethrower
+- Dragon Pulse
+- Body Press
+- Shell Smash
+
+=== TRAINER_SKYRIFT_RUIN_MANIAC_HOKU ===
+Name: HOKU
+Class: Ruin Maniac Frlg
+Pic: Ruin Maniac Frlg
+Gender: Male
+Music: Serious
+Double Battle: No
+AI: Smart Trainer
+
+Carbink
+Level: 72
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Moonblast
+- Power Gem
+- Stealth Rock
+- Reflect
+
+Golurk
+Level: 72
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Earthquake
+- Shadow Punch
+- Ice Punch
+- Rock Polish
+
+Minior
+Level: 73
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Shell Smash
+- Stone Edge
+- Acrobatics
+- Earthquake
+
+=== TRAINER_SKYRIFT_NOVA_BASIN_1 ===
+Name: LOYALIST
+Class: Team Nova
+Pic: Psychic M
+Gender: Male
+Music: Intense
+Double Battle: No
+AI: Smart Trainer
+
+Sigilyph
+Level: 72
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Psychic
+- Air Slash
+- Heat Wave
+- Cosmic Power
+
+Claydol
+Level: 72
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Earth Power
+- Psychic
+- Ice Beam
+- Rapid Spin
+
+Reuniclus
+Level: 73
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Psychic
+- Focus Blast
+- Shadow Ball
+- Recover
+
+=== TRAINER_SKYRIFT_NOVA_BASIN_2 ===
+Name: LOYALIST
+Class: Team Nova
+Pic: Psychic F
+Gender: Female
+Music: Intense
+Double Battle: No
+AI: Smart Trainer
+
+Clefable @ Leftovers
+Level: 72
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Moonblast
+- Cosmic Power
+- Moonlight
+- Flamethrower
+
+Musharna
+Level: 72
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Psychic
+- Moonblast
+- Calm Mind
+- Moonlight
+
+Lunatone
+Level: 72
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Psychic
+- Power Gem
+- Earth Power
+- Rock Polish
+
+Starmie
+Level: 73
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Hydro Pump
+- Psychic
+- Ice Beam
+- Recover
+
+=== TRAINER_SKYRIFT_BLACK_BELT_KANOA ===
+Name: KANOA
+Class: Black Belt Frlg
+Pic: Black Belt Frlg
+Gender: Male
+Music: Serious
+Double Battle: No
+AI: Smart Trainer
+
+Hawlucha
+Level: 72
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Acrobatics
+- Close Combat
+- Poison Jab
+- Swords Dance
+
+Crabominable
+Level: 72
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Ice Hammer
+- Close Combat
+- Earthquake
+- Thunder Punch
+
+Passimian
+Level: 72
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Close Combat
+- U-turn
+- Knock Off
+- Gunk Shot
+
+Kommo-o @ Sitrus Berry
+Level: 73
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Dragon Claw
+- Close Combat
+- Poison Jab
+- Dragon Dance
+
+=== TRAINER_SKYRIFT_COOLTRAINER_MAILE ===
+Name: MAILE
+Class: Cooltrainer Frlg
+Pic: Cooltrainer F Frlg
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Smart Trainer
+
+Ribombee
+Level: 72
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Moonblast
+- Bug Buzz
+- Quiver Dance
+- Psychic
+
+Salazzle
+Level: 72
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Flamethrower
+- Sludge Wave
+- Dragon Pulse
+- Nasty Plot
+
+Vikavolt
+Level: 72
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Thunderbolt
+- Bug Buzz
+- Energy Ball
+- Flash Cannon
+
+Golisopod @ Leftovers
+Level: 73
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- First Impression
+- Liquidation
+- Leech Life
+- Aqua Jet
+
+=== TRAINER_SKYRIFT_NOVA_CLIFFS ===
+Name: LOYALIST
+Class: Team Nova
+Pic: Psychic M
+Gender: Male
+Music: Intense
+Double Battle: No
+AI: Smart Trainer
+
+Beheeyem
+Level: 73
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Psychic
+- Shadow Ball
+- Thunderbolt
+- Trick Room
+
+Bronzong
+Level: 73
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Gyro Ball
+- Earthquake
+- Psychic
+- Stealth Rock
+
+Metagross @ Life Orb
+Level: 74
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Meteor Mash
+- Zen Headbutt
+- Earthquake
+- Bullet Punch
+
+=== TRAINER_SKYRIFT_NOVA_1F_1 ===
+Name: LOYALIST
+Class: Team Nova
+Pic: Psychic M
+Gender: Male
+Music: Intense
+Double Battle: No
+AI: Smart Trainer
+
+Gothitelle
+Level: 73
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Psychic
+- Shadow Ball
+- Thunderbolt
+- Trick Room
+
+Porygon-Z
+Level: 73
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Tri Attack
+- Thunderbolt
+- Ice Beam
+- Nasty Plot
+
+Magnezone @ Leftovers
+Level: 73
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Thunderbolt
+- Flash Cannon
+- Volt Switch
+- Body Press
+
+=== TRAINER_SKYRIFT_NOVA_1F_2 ===
+Name: RESEARCHER
+Class: Team Nova
+Pic: Scientist Frlg
+Gender: Male
+Music: Intense
+Double Battle: No
+AI: Smart Trainer
+
+Porygon2 @ Eviolite
+Level: 73
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Tri Attack
+- Ice Beam
+- Thunderbolt
+- Recover
+
+Klinklang
+Level: 73
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Gear Grind
+- Wild Charge
+- Shift Gear
+- Zen Headbutt
+
+Starmie
+Level: 73
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Hydro Pump
+- Psychic
+- Thunderbolt
+- Recover
+
+Beheeyem
+Level: 74
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Psychic
+- Shadow Ball
+- Dazzling Gleam
+- Calm Mind
+
+=== TRAINER_SKYRIFT_NOVA_2F_1 ===
+Name: RESEARCHER
+Class: Team Nova
+Pic: Scientist Frlg
+Gender: Male
+Music: Intense
+Double Battle: No
+AI: Smart Trainer
+
+Cryogonal
+Level: 74
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Ice Beam
+- Freeze-Dry
+- Recover
+- Rapid Spin
+
+Rotom-Wash
+Level: 74
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Hydro Pump
+- Volt Switch
+- Will-O-Wisp
+- Thunderbolt
+
+Claydol
+Level: 74
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Earth Power
+- Psychic
+- Ice Beam
+- Rapid Spin
+
+=== TRAINER_SKYRIFT_NOVA_2F_2 ===
+Name: LOYALIST
+Class: Team Nova
+Pic: Psychic F
+Gender: Female
+Music: Intense
+Double Battle: No
+AI: Smart Trainer
+
+Espeon
+Level: 74
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Psychic
+- Dazzling Gleam
+- Shadow Ball
+- Morning Sun
+
+Reuniclus
+Level: 74
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Psychic
+- Focus Blast
+- Shadow Ball
+- Recover
+
+Hatterene @ Life Orb
+Level: 74
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Psychic
+- Dazzling Gleam
+- Mystical Fire
+- Trick Room
+
+=== TRAINER_SKYRIFT_SIRIUS_GATE ===
+Name: SIRIUS
+Class: Nova Admin
+Pic: Cooltrainer M Frlg
+Gender: Male
+Music: Suspicious
+Double Battle: No
+AI: Smart Trainer
+
+Lycanroc-Midnight @ Life Orb
+Level: 74
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Stone Edge
+- Crunch
+- Close Combat
+- Swords Dance
+
+Houndoom
+Level: 74
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Dark Pulse
+- Flamethrower
+- Sludge Bomb
+- Nasty Plot
+
+Arcanine @ Sitrus Berry
+Level: 74
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Flare Blitz
+- Extreme Speed
+- Wild Charge
+- Close Combat
+
+Mightyena
+Level: 74
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Sucker Punch
+- Crunch
+- Play Rough
+- Swords Dance
+
+=== TRAINER_SKYRIFT_SIRIUS ===
+Name: SIRIUS
+Class: Nova Admin
+Pic: Cooltrainer M Frlg
+Gender: Male
+Music: Suspicious
+Double Battle: No
+AI: Smart Trainer
+
+Lycanroc-Midnight @ Life Orb
+Level: 76
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Stone Edge
+- Crunch
+- Close Combat
+- Swords Dance
+
+Houndoom @ Houndoominite
+Level: 76
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Dark Pulse
+- Flamethrower
+- Sludge Bomb
+- Nasty Plot
+
+Arcanine @ Sitrus Berry
+Level: 76
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Flare Blitz
+- Extreme Speed
+- Wild Charge
+- Close Combat
+
+Luxray
+Level: 76
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Wild Charge
+- Crunch
+- Ice Fang
+- Volt Switch
+
+=== TRAINER_SKYRIFT_VEGA ===
+Name: VEGA
+Class: Nova Leader
+Pic: Lady
+Gender: Female
+Music: Rich
+Double Battle: No
+AI: Smart Trainer
+
+Clefable @ Leftovers
+Level: 78
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Moonblast
+- Cosmic Power
+- Moonlight
+- Flamethrower
+
+Starmie
+Level: 78
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Surf
+- Psychic
+- Ice Beam
+- Thunderbolt
+
+Reuniclus @ Sitrus Berry
+Level: 79
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Psychic
+- Focus Blast
+- Shadow Ball
+- Recover
+
+Celesteela @ Leftovers
+Level: 80
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Heavy Slam
+- Air Slash
+- Flamethrower
+- Leech Seed
+
 /* [QoL] end of Seika region */

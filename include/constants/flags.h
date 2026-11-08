@@ -2588,7 +2588,37 @@
 #define FLAG_QOL_SEIKA_FLY_FROSTMERE             QOL_EXTRA_FLAG(0xC1)  // Fly unlocked: Frostmere
 #define FLAG_QOL_SEIKA_FLY_DUSKPEAK              QOL_EXTRA_FLAG(0xC2)  // Fly unlocked: Duskpeak
 #define FLAG_QOL_SEIKA_FLY_LEAGUE                QOL_EXTRA_FLAG(0xC3)  // Fly unlocked: League
-#define QOL_SEIKA_FLAGS_END QOL_EXTRA_FLAG(0xC4)
+#define FLAG_QOL_SKYRIFT_ITEM_BEACH              QOL_EXTRA_FLAG(0xC4)  // Shardfall Beach item ball
+#define FLAG_QOL_SKYRIFT_ITEM_BASIN              QOL_EXTRA_FLAG(0xC5)  // Meteor Basin item ball
+#define FLAG_QOL_SKYRIFT_ITEM_CLIFFS             QOL_EXTRA_FLAG(0xC6)  // Observatory Cliffs item ball
+#define FLAG_QOL_SKYRIFT_ITEM_OBSERVATORY        QOL_EXTRA_FLAG(0xC7)  // Nova Observatory 2F item ball
+#define FLAG_QOL_SKYRIFT_OPEN                    QOL_EXTRA_FLAG(0xC8)  // the sky over the eastern sea tore open
+#define FLAG_QOL_SKYRIFT_WISH_DONE               QOL_EXTRA_FLAG(0xC9)  // made a wish to the Wishing Star
+#define FLAG_QOL_SKYRIFT_WISH_PEACE              QOL_EXTRA_FLAG(0xCA)  // wished for peace for Team Nova
+#define FLAG_QOL_SKYRIFT_CHOSEN                  QOL_EXTRA_FLAG(0xCB)  // chose a companion at Lanternport
+#define FLAG_QOL_SKYRIFT_WITH_ALTAIR             QOL_EXTRA_FLAG(0xCC)  // companion: Altair
+#define FLAG_QOL_SKYRIFT_WITH_DENEB              QOL_EXTRA_FLAG(0xCD)  // companion: Deneb
+#define FLAG_QOL_SKYRIFT_WITH_MIRA               QOL_EXTRA_FLAG(0xCE)  // companion: Mira
+#define FLAG_QOL_SKYRIFT_HIDE_TRIO               QOL_EXTRA_FLAG(0xCF)  // Altair, Deneb and Mira not on Lanternport pier
+#define FLAG_QOL_SKYRIFT_HALLEY                  QOL_EXTRA_FLAG(0xD0)  // met Dr. Halley
+#define FLAG_QOL_SKYRIFT_SIRIUS_GATE             QOL_EXTRA_FLAG(0xD1)  // beat Sirius on the cliff road
+#define FLAG_QOL_SKYRIFT_CLIMAX                  QOL_EXTRA_FLAG(0xD2)  // the battle on the observatory roof is over
+#define FLAG_QOL_SKYRIFT_VEGA_SAVED              QOL_EXTRA_FLAG(0xD3)  // took Vega's hand
+#define FLAG_QOL_SKYRIFT_VEGA_LOST               QOL_EXTRA_FLAG(0xD4)  // let Vega go
+#define FLAG_QOL_SKYRIFT_HIDE_REMATCH_VEGA       QOL_EXTRA_FLAG(0xD5)  // Vega not on the roof for rematches
+#define FLAG_QOL_SKYRIFT_HIDE_REMATCH_SIRIUS     QOL_EXTRA_FLAG(0xD6)  // Sirius not on the roof for rematches
+#define FLAG_QOL_SKYRIFT_UB_NIHILEGO             QOL_EXTRA_FLAG(0xD7)  // caught the rift's Nihilego
+#define FLAG_QOL_SKYRIFT_UB_BUZZWOLE             QOL_EXTRA_FLAG(0xD8)  // caught the rift's Buzzwole
+#define FLAG_QOL_SKYRIFT_UB_PHEROMOSA            QOL_EXTRA_FLAG(0xD9)  // caught the rift's Pheromosa
+#define FLAG_QOL_SKYRIFT_UB_XURKITREE            QOL_EXTRA_FLAG(0xDA)  // caught the rift's Xurkitree
+#define FLAG_QOL_SKYRIFT_UB_KARTANA              QOL_EXTRA_FLAG(0xDB)  // caught the rift's Kartana
+#define FLAG_QOL_SKYRIFT_FLY_RIFTWAKE            QOL_EXTRA_FLAG(0xDC)  // Fly unlocked: Riftwake Harbor
+#define FLAG_QOL_SKYRIFT_NECROZMA                QOL_EXTRA_FLAG(0xDD)  // caught Necrozma in the sixth rift
+#define FLAG_QOL_SKYRIFT_HIDE_NECROZMA           QOL_EXTRA_FLAG(0xDE)  // the sixth rift is not open
+#define FLAG_QOL_SKYRIFT_HIDE_INN_ALTAIR         QOL_EXTRA_FLAG(0xDF)  // Altair not in the Riftwake Inn lobby
+#define FLAG_QOL_SKYRIFT_HIDE_INN_DENEB          QOL_EXTRA_FLAG(0xE0)  // Deneb not in the Riftwake Inn lobby
+#define FLAG_QOL_SKYRIFT_HIDE_INN_MIRA           QOL_EXTRA_FLAG(0xE1)  // Mira not in the Riftwake Inn lobby
+#define QOL_SEIKA_FLAGS_END QOL_EXTRA_FLAG(0xE2)
 // [QoL] end of Seika flags
 #else
 #define FLAG_QOL_EXP_SHARE          0

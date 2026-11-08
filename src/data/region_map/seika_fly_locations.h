@@ -44,3 +44,8 @@
         .mapsec = MAPSEC_SEIKA_STARWATCH_PLATEAU,
         .flag = FLAG_QOL_SEIKA_FLY_LEAGUE,
     },
+    {
+        .regionMapType = REGION_MAP_SEIKA,
+        .mapsec = MAPSEC_SKYRIFT_RIFTWAKE_HARBOR,
+        .flag = FLAG_QOL_SKYRIFT_FLY_RIFTWAKE,
+    },

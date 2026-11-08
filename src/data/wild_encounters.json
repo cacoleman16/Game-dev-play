@@ -38038,6 +38038,387 @@
               }
             ]
           }
+        },
+        {
+          "map": "MAP_SKYRIFT_RIFTWAKE_HARBOR",
+          "base_label": "gSkyrift_RiftwakeHarbor",
+          "water_mons": {
+            "encounter_rate": 4,
+            "mons": [
+              {
+                "min_level": 66,
+                "max_level": 68,
+                "species": "SPECIES_TENTACRUEL"
+              },
+              {
+                "min_level": 66,
+                "max_level": 68,
+                "species": "SPECIES_PELIPPER"
+              },
+              {
+                "min_level": 67,
+                "max_level": 69,
+                "species": "SPECIES_MANTINE"
+              },
+              {
+                "min_level": 67,
+                "max_level": 69,
+                "species": "SPECIES_STARMIE"
+              },
+              {
+                "min_level": 70,
+                "max_level": 70,
+                "species": "SPECIES_LAPRAS"
+              }
+            ]
+          },
+          "fishing_mons": {
+            "encounter_rate": 20,
+            "mons": [
+              {
+                "min_level": 60,
+                "max_level": 64,
+                "species": "SPECIES_MAGIKARP"
+              },
+              {
+                "min_level": 64,
+                "max_level": 66,
+                "species": "SPECIES_STARYU"
+              },
+              {
+                "min_level": 66,
+                "max_level": 68,
+                "species": "SPECIES_WISHIWASHI"
+              },
+              {
+                "min_level": 66,
+                "max_level": 68,
+                "species": "SPECIES_STARYU"
+              },
+              {
+                "min_level": 66,
+                "max_level": 68,
+                "species": "SPECIES_BRUXISH"
+              },
+              {
+                "min_level": 67,
+                "max_level": 69,
+                "species": "SPECIES_STARMIE"
+              },
+              {
+                "min_level": 68,
+                "max_level": 70,
+                "species": "SPECIES_WISHIWASHI"
+              },
+              {
+                "min_level": 68,
+                "max_level": 70,
+                "species": "SPECIES_BRUXISH"
+              },
+              {
+                "min_level": 68,
+                "max_level": 70,
+                "species": "SPECIES_GYARADOS"
+              },
+              {
+                "min_level": 70,
+                "max_level": 72,
+                "species": "SPECIES_DHELMISE"
+              }
+            ]
+          }
+        },
+        {
+          "map": "MAP_SKYRIFT_SHARDFALL_BEACH",
+          "base_label": "gSkyrift_ShardfallBeach",
+          "land_mons": {
+            "encounter_rate": 20,
+            "mons": [
+              {
+                "min_level": 66,
+                "max_level": 68,
+                "species": "SPECIES_PALOSSAND"
+              },
+              {
+                "min_level": 66,
+                "max_level": 68,
+                "species": "SPECIES_PELIPPER"
+              },
+              {
+                "min_level": 66,
+                "max_level": 68,
+                "species": "SPECIES_EXEGGUTOR_ALOLA"
+              },
+              {
+                "min_level": 67,
+                "max_level": 69,
+                "species": "SPECIES_ORICORIO_POM_POM"
+              },
+              {
+                "min_level": 67,
+                "max_level": 69,
+                "species": "SPECIES_CRABOMINABLE"
+              },
+              {
+                "min_level": 67,
+                "max_level": 69,
+                "species": "SPECIES_RIBOMBEE"
+              },
+              {
+                "min_level": 68,
+                "max_level": 70,
+                "species": "SPECIES_TOUCANNON"
+              },
+              {
+                "min_level": 68,
+                "max_level": 70,
+                "species": "SPECIES_MINIOR"
+              },
+              {
+                "min_level": 68,
+                "max_level": 70,
+                "species": "SPECIES_CLEFAIRY"
+              },
+              {
+                "min_level": 66,
+                "max_level": 66,
+                "species": "SPECIES_SANDYGAST"
+              },
+              {
+                "min_level": 70,
+                "max_level": 72,
+                "species": "SPECIES_MINIOR"
+              },
+              {
+                "min_level": 70,
+                "max_level": 72,
+                "species": "SPECIES_CLEFABLE"
+              }
+            ]
+          },
+          "water_mons": {
+            "encounter_rate": 4,
+            "mons": [
+              {
+                "min_level": 66,
+                "max_level": 68,
+                "species": "SPECIES_TENTACRUEL"
+              },
+              {
+                "min_level": 66,
+                "max_level": 68,
+                "species": "SPECIES_MANTINE"
+              },
+              {
+                "min_level": 67,
+                "max_level": 69,
+                "species": "SPECIES_STARMIE"
+              },
+              {
+                "min_level": 67,
+                "max_level": 69,
+                "species": "SPECIES_TOXAPEX"
+              },
+              {
+                "min_level": 68,
+                "max_level": 70,
+                "species": "SPECIES_WISHIWASHI"
+              }
+            ]
+          },
+          "fishing_mons": {
+            "encounter_rate": 20,
+            "mons": [
+              {
+                "min_level": 60,
+                "max_level": 64,
+                "species": "SPECIES_MAGIKARP"
+              },
+              {
+                "min_level": 64,
+                "max_level": 66,
+                "species": "SPECIES_STARYU"
+              },
+              {
+                "min_level": 66,
+                "max_level": 68,
+                "species": "SPECIES_WISHIWASHI"
+              },
+              {
+                "min_level": 66,
+                "max_level": 68,
+                "species": "SPECIES_STARYU"
+              },
+              {
+                "min_level": 66,
+                "max_level": 68,
+                "species": "SPECIES_PYUKUMUKU"
+              },
+              {
+                "min_level": 67,
+                "max_level": 69,
+                "species": "SPECIES_STARMIE"
+              },
+              {
+                "min_level": 66,
+                "max_level": 68,
+                "species": "SPECIES_BRUXISH"
+              },
+              {
+                "min_level": 68,
+                "max_level": 70,
+                "species": "SPECIES_BRUXISH"
+              },
+              {
+                "min_level": 68,
+                "max_level": 70,
+                "species": "SPECIES_GYARADOS"
+              },
+              {
+                "min_level": 70,
+                "max_level": 72,
+                "species": "SPECIES_DHELMISE"
+              }
+            ]
+          }
+        },
+        {
+          "map": "MAP_SKYRIFT_METEOR_BASIN",
+          "base_label": "gSkyrift_MeteorBasin",
+          "land_mons": {
+            "encounter_rate": 20,
+            "mons": [
+              {
+                "min_level": 66,
+                "max_level": 68,
+                "species": "SPECIES_LUNATONE"
+              },
+              {
+                "min_level": 66,
+                "max_level": 68,
+                "species": "SPECIES_SOLROCK"
+              },
+              {
+                "min_level": 66,
+                "max_level": 68,
+                "species": "SPECIES_BRONZOR"
+              },
+              {
+                "min_level": 67,
+                "max_level": 69,
+                "species": "SPECIES_MINIOR"
+              },
+              {
+                "min_level": 67,
+                "max_level": 69,
+                "species": "SPECIES_CLEFAIRY"
+              },
+              {
+                "min_level": 67,
+                "max_level": 69,
+                "species": "SPECIES_LYCANROC"
+              },
+              {
+                "min_level": 68,
+                "max_level": 70,
+                "species": "SPECIES_MUDSDALE"
+              },
+              {
+                "min_level": 68,
+                "max_level": 70,
+                "species": "SPECIES_GOLEM_ALOLA"
+              },
+              {
+                "min_level": 69,
+                "max_level": 71,
+                "species": "SPECIES_BRONZONG"
+              },
+              {
+                "min_level": 69,
+                "max_level": 71,
+                "species": "SPECIES_SALAZZLE"
+              },
+              {
+                "min_level": 70,
+                "max_level": 72,
+                "species": "SPECIES_CLEFABLE"
+              },
+              {
+                "min_level": 70,
+                "max_level": 70,
+                "species": "SPECIES_BELDUM"
+              }
+            ]
+          }
+        },
+        {
+          "map": "MAP_SKYRIFT_OBSERVATORY_CLIFFS",
+          "base_label": "gSkyrift_ObservatoryCliffs",
+          "land_mons": {
+            "encounter_rate": 20,
+            "mons": [
+              {
+                "min_level": 66,
+                "max_level": 68,
+                "species": "SPECIES_ELGYEM"
+              },
+              {
+                "min_level": 66,
+                "max_level": 68,
+                "species": "SPECIES_CLEFAIRY"
+              },
+              {
+                "min_level": 67,
+                "max_level": 69,
+                "species": "SPECIES_BEHEEYEM"
+              },
+              {
+                "min_level": 67,
+                "max_level": 69,
+                "species": "SPECIES_HAWLUCHA"
+              },
+              {
+                "min_level": 67,
+                "max_level": 69,
+                "species": "SPECIES_BRONZONG"
+              },
+              {
+                "min_level": 68,
+                "max_level": 70,
+                "species": "SPECIES_MINIOR"
+              },
+              {
+                "min_level": 68,
+                "max_level": 70,
+                "species": "SPECIES_TOGEDEMARU"
+              },
+              {
+                "min_level": 68,
+                "max_level": 70,
+                "species": "SPECIES_ORICORIO_SENSU"
+              },
+              {
+                "min_level": 69,
+                "max_level": 71,
+                "species": "SPECIES_KOMALA"
+              },
+              {
+                "min_level": 69,
+                "max_level": 71,
+                "species": "SPECIES_DRAMPA"
+              },
+              {
+                "min_level": 70,
+                "max_level": 72,
+                "species": "SPECIES_BEHEEYEM"
+              },
+              {
+                "min_level": 70,
+                "max_level": 70,
+                "species": "SPECIES_BELDUM"
+              }
+            ]
+          }
         }
       ]
     },

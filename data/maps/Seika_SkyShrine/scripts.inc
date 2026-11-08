@@ -96,8 +96,7 @@ Seika_SkyShrine_EventScript_Ending::
 	setflag FLAG_QOL_SEIKA_HIDE_JIRACHI
 	setflag FLAG_QOL_SEIKA_DONE
 	msgbox Seika_SkyShrine_Text_Ending, MSGBOX_DEFAULT
-	release
-	end
+	goto QoL_EventScript_SkyriftOpens
 
 Seika_SkyShrine_Text_BellRings::
 	.string "A clear note rings out over the\n"
@@ -187,3 +186,129 @@ Seika_SkyShrine_Text_Ending::
 	.string "2どめの　スターフォールは　おわった。　その\n"
 	.string "ねがいが　なんで　あれ　それは　あなただけの\l"
 	.string "ものだ。$"
+
+QoL_EventScript_SkyriftWish::
+	lock
+	faceplayer
+	goto_if_set FLAG_QOL_SKYRIFT_WISH_DONE, Seika_SkyShrine_EventScript_Jirachi
+	playmoncry SPECIES_JIRACHI, CRY_MODE_ENCOUNTER
+	msgbox QoL_Skyrift_Wish_Text_Intro, MSGBOX_DEFAULT
+	waitmoncry
+QoL_Skyrift_Wish_Ask::
+	message QoL_Skyrift_Wish_Text_Ask
+	waitmessage
+	dynmultipush QoL_Skyrift_Wish_Text_Strength, 0
+	dynmultipush QoL_Skyrift_Wish_Text_Friend, 1
+	dynmultipush QoL_Skyrift_Wish_Text_Fortune, 2
+	dynmultipush QoL_Skyrift_Wish_Text_Peace, 3
+	dynmultistack 0, 0, TRUE, 4, FALSE, 0, DYN_MULTICHOICE_CB_NONE
+	switch VAR_RESULT
+	case 0, QoL_Skyrift_Wish_Strength
+	case 1, QoL_Skyrift_Wish_Friend
+	case 2, QoL_Skyrift_Wish_Fortune
+	case 3, QoL_Skyrift_Wish_Peace
+	goto QoL_Skyrift_Wish_Ask
+
+QoL_Skyrift_Wish_Strength::
+	msgbox QoL_Skyrift_Wish_Text_Granted, MSGBOX_DEFAULT
+	giveitem ITEM_ABILITY_PATCH
+	giveitem ITEM_GOLD_BOTTLE_CAP
+	giveitem ITEM_RARE_CANDY, 5
+	goto QoL_Skyrift_Wish_Test
+
+QoL_Skyrift_Wish_Fortune::
+	msgbox QoL_Skyrift_Wish_Text_Granted, MSGBOX_DEFAULT
+	giveitem ITEM_SHINY_CHARM
+	goto QoL_Skyrift_Wish_Test
+
+QoL_Skyrift_Wish_Peace::
+	setflag FLAG_QOL_SKYRIFT_WISH_PEACE
+	msgbox QoL_Skyrift_Wish_Text_PeaceGranted, MSGBOX_DEFAULT
+	giveitem ITEM_COMET_SHARD
+	goto QoL_Skyrift_Wish_Test
+
+QoL_Skyrift_Wish_Test::
+	setflag FLAG_QOL_SKYRIFT_WISH_DONE
+	msgbox QoL_Skyrift_Wish_Text_Test, MSGBOX_DEFAULT
+	goto Seika_SkyShrine_EventScript_Jirachi
+
+QoL_Skyrift_Wish_Friend::
+	setflag FLAG_QOL_SKYRIFT_WISH_DONE
+	msgbox QoL_Skyrift_Wish_Text_FriendGranted, MSGBOX_DEFAULT
+	givemon SPECIES_JIRACHI, 70, ITEM_STAR_PIECE, ITEM_CHERISH_BALL
+	bufferspeciesname STR_VAR_1, SPECIES_JIRACHI
+	playfanfare MUS_RG_OBTAIN_KEY_ITEM
+	message QoL_Skyrift_Wish_Text_GotJirachi
+	waitmessage
+	waitfanfare
+	fadescreen FADE_TO_BLACK
+	removeobject LOCALID_SEIKA_SHRINE_JIRACHI
+	fadescreen FADE_FROM_BLACK
+	goto Seika_SkyShrine_EventScript_Ending
+
+QoL_EventScript_SkyriftOpens::
+	setflag FLAG_QOL_SKYRIFT_OPEN
+	delay 30
+	playse SE_THUNDER
+	setvar VAR_0x8004, 2
+	setvar VAR_0x8005, 2
+	setvar VAR_0x8006, 12
+	setvar VAR_0x8007, 3
+	special ShakeCamera
+	waitstate
+	msgbox QoL_Skyrift_Wish_Text_SkyTears, MSGBOX_DEFAULT
+	release
+	end
+
+QoL_Skyrift_Wish_Text_Intro::
+	.string "The WISHING STAR opens its eyes\n"
+	.string "and looks straight at you.\p"
+	.string "It is waiting for your wish.$"
+
+QoL_Skyrift_Wish_Text_Ask::
+	.string "What will you wish for?$"
+
+QoL_Skyrift_Wish_Text_Strength::
+	.string "STRENGTH$"
+
+QoL_Skyrift_Wish_Text_Friend::
+	.string "A FRIEND$"
+
+QoL_Skyrift_Wish_Text_Fortune::
+	.string "FORTUNE$"
+
+QoL_Skyrift_Wish_Text_Peace::
+	.string "PEACE FOR NOVA$"
+
+QoL_Skyrift_Wish_Text_Granted::
+	.string "The star glows brightly...\n"
+	.string "Your wish is granted!$"
+
+QoL_Skyrift_Wish_Text_PeaceGranted::
+	.string "The star is quiet for a long time.\p"
+	.string "Then its light flies away across\n"
+	.string "the sea, looking for someone.\p"
+	.string "Something small falls into your\n"
+	.string "hands.$"
+
+QoL_Skyrift_Wish_Text_Test::
+	.string "The WISHING STAR spins in the air.\n"
+	.string "It wants to see how strong you\l"
+	.string "are!$"
+
+QoL_Skyrift_Wish_Text_FriendGranted::
+	.string "The WISHING STAR laughs and floats\n"
+	.string "right into your arms!$"
+
+QoL_Skyrift_Wish_Text_GotJirachi::
+	.string "{PLAYER} made a new friend:\n"
+	.string "{STR_VAR_1}!$"
+
+QoL_Skyrift_Wish_Text_SkyTears::
+	.string "Far to the east, over the sea,\n"
+	.string "the night sky TEARS open like\l"
+	.string "paper.\p"
+	.string "A crack of strange light hangs\n"
+	.string "above the water.\p"
+	.string "Someone will be waiting on\n"
+	.string "LANTERNPORT's pier...$"

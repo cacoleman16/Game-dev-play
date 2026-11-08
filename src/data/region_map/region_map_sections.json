@@ -1903,6 +1903,51 @@
       "width": 1,
       "height": 1,
       "name_ja": "そらのやしろ"
+    },
+    {
+      "id": "MAPSEC_SKYRIFT_RIFTWAKE_HARBOR",
+      "name": "RIFTWAKE HARBOR",
+      "x": 24,
+      "y": 12,
+      "width": 1,
+      "height": 1,
+      "name_ja": "ハザマみなと"
+    },
+    {
+      "id": "MAPSEC_SKYRIFT_SHARDFALL_BEACH",
+      "name": "SHARDFALL BEACH",
+      "x": 25,
+      "y": 12,
+      "width": 1,
+      "height": 1,
+      "name_ja": "カケラはま"
+    },
+    {
+      "id": "MAPSEC_SKYRIFT_METEOR_BASIN",
+      "name": "METEOR BASIN",
+      "x": 26,
+      "y": 11,
+      "width": 1,
+      "height": 1,
+      "name_ja": "インセキのくぼち"
+    },
+    {
+      "id": "MAPSEC_SKYRIFT_OBSERVATORY_CLIFFS",
+      "name": "OBSERV. CLIFFS",
+      "x": 26,
+      "y": 10,
+      "width": 1,
+      "height": 1,
+      "name_ja": "テンモンがけ"
+    },
+    {
+      "id": "MAPSEC_SKYRIFT_OBSERVATORY",
+      "name": "OBSERVATORY",
+      "x": 26,
+      "y": 9,
+      "width": 1,
+      "height": 1,
+      "name_ja": "ノバてんもんだい"
     }
   ]
 }
