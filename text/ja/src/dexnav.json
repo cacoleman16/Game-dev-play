@@ -3,7 +3,8 @@
  "R TO REGISTER!": "Rで とうろく！",
  "Search {STR_VAR_1}": "{STR_VAR_1}を さがす",
  "This Pokémon cannot be found here!": "この ポケモンは ここには いない！",
- "SEARCH {LV}. {STR_VAR_1}": "サーチ {LV}. {STR_VAR_1}",
+ "SEARCH {LV}. {STR_VAR_1}": "サーチ {LV_2}. {STR_VAR_1}",
  "MOVE: {STR_VAR_1}": "わざ: {STR_VAR_1}",
- "{START_BUTTON} EXIT": "{START_BUTTON} おわる"
+ "{START_BUTTON} EXIT": "{START_BUTTON} おわる",
+ "{LV}. {STR_VAR_1}": "{LV_2}{STR_VAR_1}"
 }

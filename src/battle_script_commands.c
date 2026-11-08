@@ -77,6 +77,7 @@
 #include "follower_npc.h"
 #include "load_save.h"
 #include "qol_nuzlocke.h"
+#include "qol_language.h"
 
 // Helper for accessing command arguments and advancing gBattlescriptCurrInstr.
 //
@@ -4625,7 +4626,7 @@ static void DrawLevelUpBannerText(void)
     var = (u32)(txtPtr);
     txtPtr = ConvertIntToDecimalStringN(txtPtr, monLevel, STR_CONV_MODE_LEFT_ALIGN, 3);
     var = (u32)(txtPtr) - var;
-    txtPtr = StringFill(txtPtr, CHAR_SPACER, 4 - var);
+    txtPtr = StringFill(txtPtr, QOL_CHAR_SPACER, 4 - var); // [QoL]
 
     if (monGender != MON_GENDERLESS)
     {

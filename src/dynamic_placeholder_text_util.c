@@ -2,6 +2,7 @@
 #include "text.h"
 #include "dynamic_placeholder_text_util.h"
 #include "string_util.h"
+#include "qol_language.h"
 
 static EWRAM_DATA const u8 *sStringPointers[8] = {};
 
@@ -22,6 +23,7 @@ void DynamicPlaceholderTextUtil_SetPlaceholderPtr(u8 idx, const u8 *ptr)
 
 u8 *DynamicPlaceholderTextUtil_ExpandPlaceholders(u8 *dest, const u8 *src)
 {
+    src = QoL_LangStr(src); // [QoL] Japanese text in Japanese mode
     while (*src != EOS)
     {
         if (*src != CHAR_DYNAMIC)

@@ -163,6 +163,7 @@ static void ClearSearchParameterBoxText(void);
 
 // const rom data
 #include "data/pokemon/pokedex_orders.h"
+#include "qol_language.h"
 
 static const struct OamData sOamData_ScrollBar =
 {
@@ -4389,7 +4390,7 @@ static u8* ConvertMonWeightToImperialString(u32 weight)
 
     if ((weightString[index] = (lbs / 100000) + CHAR_0) == CHAR_0 && !output)
     {
-        weightString[index++] = CHAR_SPACER;
+        weightString[index++] = QOL_CHAR_SPACER; // [QoL]
     }
     else
     {
@@ -4400,7 +4401,7 @@ static u8* ConvertMonWeightToImperialString(u32 weight)
     lbs %= 100000;
     if ((weightString[index] = (lbs / 10000) + CHAR_0) == CHAR_0 && !output)
     {
-        weightString[index++] = CHAR_SPACER;
+        weightString[index++] = QOL_CHAR_SPACER; // [QoL]
     }
     else
     {
@@ -4411,7 +4412,7 @@ static u8* ConvertMonWeightToImperialString(u32 weight)
     lbs %= 10000;
     if ((weightString[index] = (lbs / 1000) + CHAR_0) == CHAR_0 && !output)
     {
-        weightString[index++] = CHAR_SPACER;
+        weightString[index++] = QOL_CHAR_SPACER; // [QoL]
     }
     else
     {
@@ -4455,7 +4456,7 @@ static u8* ConvertMeasurementToMetricString(u32 num, u32* index)
     result = num / 1000;
     if (result == 0)
     {
-        string[(*index)++] = CHAR_SPACER;
+        string[(*index)++] = QOL_CHAR_SPACER; // [QoL]
         outputted = FALSE;
     }
     else
@@ -4467,7 +4468,7 @@ static u8* ConvertMeasurementToMetricString(u32 num, u32* index)
     result = (num % 1000) / 100;
     if (result == 0 && !outputted)
     {
-        string[(*index)++] = CHAR_SPACER;
+        string[(*index)++] = QOL_CHAR_SPACER; // [QoL]
         outputted = FALSE;
     }
     else
@@ -4748,7 +4749,7 @@ static void UNUSED PrintDecimalNum(u8 windowId, u16 num, u8 left, u8 top)
     result = num / 1000;
     if (result == 0)
     {
-        str[0] = CHAR_SPACER;
+        str[0] = QOL_CHAR_SPACER; // [QoL]
         outputted = FALSE;
     }
     else
@@ -4760,7 +4761,7 @@ static void UNUSED PrintDecimalNum(u8 windowId, u16 num, u8 left, u8 top)
     result = (num % 1000) / 100;
     if (result == 0 && !outputted)
     {
-        str[1] = CHAR_SPACER;
+        str[1] = QOL_CHAR_SPACER; // [QoL]
         outputted = FALSE;
     }
     else
