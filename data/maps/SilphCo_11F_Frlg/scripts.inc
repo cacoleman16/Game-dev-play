@@ -1,6 +1,11 @@
 SilphCo_11F_Frlg_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, SilphCo_11F_OnTransition
 	map_script MAP_SCRIPT_ON_LOAD, SilphCo_11F_OnLoad
 	.byte 0
+
+SilphCo_11F_OnTransition::
+	call QoL_EventScript_StarfallSilphOnTransition @ [QoL] Starfall
+	end
 
 SilphCo_11F_OnLoad::
 	call_if_unset FLAG_SILPH_11F_DOOR, EventScript_Close11FDoor
@@ -76,6 +81,7 @@ SilphCo_11F_EventScript_BattleGiovanni::
 	setvar VAR_MAP_SCENE_SILPH_CO_11F, 1
 	setflag FLAG_HIDE_SAFFRON_ROCKETS
 	clearflag FLAG_HIDE_SAFFRON_CIVILIANS
+	call QoL_EventScript_StarfallSilph @ [QoL] Starfall: Deneb of Team Nova
 	releaseall
 	end
 

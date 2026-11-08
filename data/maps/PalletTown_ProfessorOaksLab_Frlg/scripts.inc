@@ -12,6 +12,7 @@ PalletTown_ProfessorOaksLab_Frlg_MapScripts::
 	.byte 0
 
 PalletTown_ProfessorOaksLab_OnTransition::
+	call QoL_EventScript_StarfallLabOnTransition @ [QoL] Starfall
 	setflag FLAG_VISITED_OAKS_LAB
 	call_if_eq VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB, 1, PalletTown_ProfessorOaksLab_EventScript_ReadyOakForStarterScene
 	call_if_eq VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB, 7, PalletTown_ProfessorOaksLab_EventScript_ReadyOakForNationalDexScene
@@ -212,18 +213,7 @@ PalletTown_ProfessorOaksLab_ChooseStarterScene::
 	clearflag FLAG_DONT_TRANSITION_MUSIC
 	savebgm MUS_DUMMY
 	fadedefaultbgm
-	msgbox PalletTown_ProfessorOaksLab_Text_RivalFedUpWithWaiting
-	closemessage
-	delay 60
-	msgbox PalletTown_ProfessorOaksLab_Text_OakThreeMonsChooseOne
-	closemessage
-	delay 30
-	applymovement LOCALID_OAKS_LAB_RIVAL, PalletTown_ProfessorOaksLab_Movement_RivalReact
-	waitmovement 0
-	msgbox PalletTown_ProfessorOaksLab_Text_RivalNoFairWhatAboutMe
-	msgbox PalletTown_ProfessorOaksLab_Text_OakBePatientRival
-	setvar VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB, 2
-	releaseall
+	goto QoL_EventScript_StarfallPrologue @ [QoL] Starfall: Beldum chooses the player (data/scripts/qol_starfall.inc)
 	end
 
 PalletTown_ProfessorOaksLab_Movement_OakEnter::

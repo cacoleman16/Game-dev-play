@@ -25,6 +25,7 @@ QoL_EventScript_TidalMenu::
 	call_if_set FLAG_VISITED_SLATEPORT_CITY, QoL_EventScript_PushSlateport
 	call_if_set FLAG_VISITED_LILYCOVE_CITY, QoL_EventScript_PushLilycove
 	call_if_eq VAR_0x8005, TRUE, QoL_EventScript_PushFrontier
+	call QoL_EventScript_PushBirthIsland @ [QoL] Starfall finale
 	dynmultipush QoL_Text_DestCancel, 9
 	dynmultistack 0, 0, FALSE, 5, FALSE, 0, DYN_MULTICHOICE_CB_NONE
 	switch VAR_RESULT
@@ -32,6 +33,7 @@ QoL_EventScript_TidalMenu::
 	case 1, QoL_EventScript_SailToSlateport
 	case 2, QoL_EventScript_SailToLilycove
 	case 3, QoL_EventScript_SailToFrontier
+	case 4, QoL_EventScript_SailToBirthIsland
 	goto QoL_EventScript_TidalCancel
 	end
 
@@ -46,6 +48,19 @@ QoL_EventScript_PushLilycove::
 QoL_EventScript_PushFrontier::
 	dynmultipush QoL_Text_DestFrontier, 3
 	return
+
+QoL_EventScript_PushBirthIsland::
+	call QoL_EventScript_StarfallFinaleOpen
+	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_NopReturn
+	dynmultipush QoL_Text_DestBirthIsland, 4
+	return
+
+QoL_EventScript_SailToBirthIsland::
+	call QoL_EventScript_SetSail
+	warp MAP_BIRTH_ISLAND_HARBOR, 8, 4
+	waitstate
+	release
+	end
 
 QoL_EventScript_FrontierOpen::
 	setvar VAR_0x8005, TRUE
@@ -208,6 +223,9 @@ QoL_Text_DestLilycove::
 QoL_Text_DestFrontier::
 	.string "BATTLE FRONTIER$"
 	.string "{JPN}{JPN}バトルフロンティア$"
+
+QoL_Text_DestBirthIsland::
+	.string "BIRTH ISLAND$"
 
 QoL_Text_DestCancel::
 	.string "CANCEL$"

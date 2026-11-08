@@ -221,6 +221,8 @@ u8 *GetFlagPointer(u16 id)
 #if IS_FRLG
     else if (QoL_IsHoennFlag(id)) // [QoL] Merged regions
         return QoL_HoennFlagPointer(id);
+    else if (QoL_IsExtraFlag(id)) // [QoL] Starfall, Nuzlocke
+        return QoL_ExtraFlagPointer(id);
 #endif
     else if (id < FLAGS_COUNT)
         return &gSaveBlock1Ptr->flags[id / 8];

@@ -409,6 +409,20 @@
       "trainer_sight_or_berry_tree_id": "6",
       "script": "MtChimney_EventScript_Sawyer",
       "flag": "FLAG_HIDE_MT_CHIMNEY_TRAINERS"
+    },
+    {
+      "local_id": "LOCALID_STARFALL_MT_CHIMNEY_DENEB",
+      "graphics_id": "OBJ_EVENT_GFX_HEX_MANIAC",
+      "x": 10,
+      "y": 10,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "0x0",
+      "flag": "FLAG_QOL_HIDE_NOVA_MT_CHIMNEY"
     }
   ],
   "warp_events": [

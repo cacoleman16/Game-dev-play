@@ -66,12 +66,13 @@ every CI run attaches the ROM: Actions → "Build ROM" → the run → Artifacts
 | Gen 1–9 roster | ✅ | Every Kanto/Sevii table gained up to 5 Gen 4–9 Pokémon in rare duplicate slots (forest bugs, Tower ghosts, Power Plant electrics, Seafoam ice, baby pseudo-legendaries in Cerulean Cave...). Every vanilla species is still there. Regenerate with `dev_scripts/qol_add_modern_encounters.py`. |
 | Level caps | ✅ optional | Kanto caps (14/21/24/29/43/43/47/50, then 63 before the Champion). Off by default. Rare Candies and the Day Care respect them. |
 | Nuzlocke | ✅ optional | Starts when Oak gives you Poké Balls. Only the first random wild Pokémon in each area can be caught (species already caught don't count; shinies always can be). DexNav finds count; scripted encounters and the Safari Zone are exempt. Fainted = dead: no Pokémon Center healing, revives or Revival Blessing. With the whole party dead, wild Pokémon and trainers leave you alone so you can reach a PC. |
-| Randomizer | ✅ optional | Each species becomes another with a similar base stat total (legendaries swap among themselves). Fixed per save file (seeded by your Trainer ID). Changes wild Pokémon, DexNav, trainers' teams, scripted encounters and both starters (Oak names what's in each ball). Gift Pokémon and trades stay vanilla. Turn it on before picking a starter. |
+| Randomizer | ✅ optional | Each species becomes another with a similar base stat total (legendaries swap among themselves). Fixed per save file (seeded by your Trainer ID). Changes wild Pokémon, DexNav, trainers' teams, scripted encounters, Blue's starter and Prof. Birch's starters (Beldum, your partner, stays a Beldum). Gift Pokémon and trades stay vanilla. Turn it on before picking a starter. |
 | Difficulty tiers | ✅ optional | **HARD MODE**: competitive 4–6 Pokémon teams with items, natures, EVs and Megas for the 8 gym leaders, the Elite Four and the Champion. Aces keep their vanilla levels. Other trainers are unchanged. |
 | Challenge settings | ✅ | The **NES in your bedroom** is a menu: NUZLOCKE, RANDOMIZER, HARD MODE, LEVEL CAPS, FOLLOWERS (each shows ON/OFF). The bedroom notice lists the L/R controls |
 | Side quests | ✅ | **Field Research** (a researcher in Oak's Lab): 8 tasks about Pokémon from faraway regions, each with a reward, ending in a post-game hunt for **Galarian Articuno, Zapdos and Moltres**. See *Side quests* below |
 | Battle Frontier | ✅ | Emerald's full **Battle Frontier** (all 7 facilities, Frontier Pass, BP). Sail there from **Vermilion City's pier** once you're the Kanto (or Hoenn) Champion. See *Kanto + Hoenn* below |
 | Every region in one map | ✅ Kanto + Hoenn | All of **Hoenn** is in the game with its own story, trainers, wild Pokémon and badges. The **S.S. TIDAL** sails from Vermilion City's pier once you have the **S.S. TICKET**; your first trip starts Emerald's arrival in Littleroot Town (Prof. Birch, a Hoenn starter). See *Kanto + Hoenn* below |
+| Own story: STARFALL | ✅ new | A meteor shower links Kanto and Hoenn. **Beldum** is your partner (it falls out of Steven's meteorite in Oak's Lab), Team **Nova** pulls the strings behind Rocket, Magma and Aqua, and the finale is on **Birth Island** against their leader Vega, then Deoxys. Every starter is still catchable. **Needs a new save.** See *STARFALL* below and [docs/STARFALL.md](docs/STARFALL.md) |
 | Japanese + English | ✅ | **OPTION → LANGUAGE** (top row): ENGLISH / にほんご, switchable any time. Kana-only Gen 3 style. Story, NPC, trainer, menu and battle text translated; Pokémon, move, item and ability names and Pokédex entries are the official Japanese ones. See *Japanese mode* below |
 
 ## Where the settings live
@@ -108,6 +109,9 @@ every CI run attaches the ROM: Actions → "Build ROM" → the run → Artifacts
 | `src/qol_hoenn.c`, `include/qol_hoenn.h`, `src/event_data.c` | Hoenn flag/var storage (SaveBlock3), first-trip setup, badges from either region |
 | `data/scripts/qol_regions.inc` | S.S. TIDAL sailor (Vermilion), Littleroot shuttle driver, "sail to Kanto?" at Hoenn's ferry desks |
 | `src/region_map.c` | Fly map: L/R switch regions |
+| `data/scripts/qol_starfall.inc`, `docs/STARFALL.md` | the STARFALL story; hooks in Oak's Lab, Pallet house, Mt. Moon B2F, Silph Co. 11F, Cinnabar Lab, Meteor Falls, Mt. Chimney, the Space Center, Steven's house, Birth Island |
+| `src/data/trainers_frlg.party` (end), `include/constants/opponents_frlg.h`, `trainers.h` | Team Nova's 11 trainers and 3 trainer classes |
+| `dev_scripts/qol_add_starter_encounters.py` | every starter in the wild / Safari Zones |
 | `src/text.c`, `src/scrcmd.c`, `src/option_menu.c` | hold B to fast-forward text; MID/FAST/MAX text speed |
 | `src/field_player_avatar.c` | fast surf |
 
@@ -128,7 +132,10 @@ Defined at the end of `include/constants/flags.h` / `vars.h`. They are `0`
 | `FLAG_QOL_NUZLOCKE` | `0x8E9` | set = Nuzlocke ON |
 | `FLAG_QOL_NO_CATCHING` | `0x8EA` | set during a wild battle Nuzlocke won't let you catch |
 | `FLAG_QOL_RANDOMIZER` | `0x8EB` | set = randomizer ON |
-| `FLAG_QOL_NUZLOCKE_AREAS_START` | `0x35D`–`0x3C5` | one "encounter used" flag per Kanto/Sevii map section |
+| `QOL_EXTRA_FLAG(n)` | `0x12C0`–`0x13BF` | more hack flags, stored after the Hoenn block in SaveBlock3 |
+| `FLAG_QOL_NUZLOCKE_AREAS_START` | `QOL_EXTRA_FLAG(0x00)`+ | one "encounter used" flag per Kanto/Sevii map section (moved from `0x35D`, which overlapped FRLG's daily-reset flags) |
+| `FLAG_QOL_STARFALL_*` | `QOL_EXTRA_FLAG(0x80)`+ | Starfall story progress (prologue, each chapter, Steven's letter, Vega, ending) |
+| `FLAG_QOL_HIDE_NOVA_*`, `FLAG_QOL_HIDE_STARFALL_LAB`, `FLAG_QOL_HIDE_PALLET_MOM` | `QOL_EXTRA_FLAG(0x90)`+ | Starfall cutscene objects; Mom after the move |
 | `QOL_HOENN_FLAG(n)` | `0x900`–`0x12BF` | Hoenn's flags: Emerald flag *n*, stored in SaveBlock3 |
 | `QOL_HOENN_VAR(n)` | `0x5000`–`0x50FF` | Hoenn's vars: Emerald var *n*, stored in SaveBlock3 |
 | `HOENN_TRAINER(n)` | `1024`+ | Emerald trainer *n* (after the Kanto trainers in `gTrainers`) |
@@ -170,6 +177,35 @@ The Galarian birds wait near the Kanto birds' homes: **Seafoam Islands B4F**,
 the **Power Plant** and the **Mt. Ember summit**. If one faints or you run,
 it stays there, so you can try again. A full Bag keeps the task open until
 you make room.
+
+## STARFALL (the hack's own story)
+
+Start a **new game**. The plot, the cast and every chapter are in
+[docs/STARFALL.md](docs/STARFALL.md). In short:
+
+- **Oak's Lab:** Steven's meteorite cracks open during the Starfall and a
+  **Beldum** (Lv 5: Take Down, Metal Claw, Confusion, Iron Defense) chooses
+  you. Bulbasaur and Squirtle run off; Blue takes Charmander.
+- **Your family:** Dad is Norman, Petalburg's Gym Leader. Mom moves to
+  Littleroot with you on your first S.S. TIDAL trip (in Pallet she leaves a
+  note on the TV).
+- **Team Nova** (Altair, Deneb, leader Vega) shows up at Mt. Moon, Silph Co.,
+  Cinnabar Lab, Meteor Falls, Mt. Chimney and the Mossdeep Space Center.
+- **Steven's house** after Hoenn's Hall of Fame: his letter, and a
+  **Metagrossite** (instead of Emerald's Beldum).
+- **Finale:** Champion of both regions + the letter → the S.S. TIDAL in
+  Vermilion sails to **Birth Island**: Team Nova, **Vega** (Lv 72–75, Ultra
+  Beast ace), then the triangle puzzle and **Deoxys (Lv 70)**, then the ending.
+- **Every starter is catchable:** Bulbasaur (Viridian Forest), Charmander
+  (Route 4), Squirtle (Vermilion fishing), Treecko/Torchic/Mudkip (Petalburg
+  Woods, Route 117, Route 102 fishing), Gen 2 and 4 starters in Kanto's Safari
+  Zone, Gen 5–9 starters in Hoenn's Safari Zone (randomizer off).
+
+**Tested in the web player:** the Oak's Lab scene, Mt. Moon (Altair's battle and
+exit), the Cinnabar Lab raid (both battles), the Birth Island route, Team Nova
+on the island, Vega's defeat scene, and the ending. Silph Co., Meteor Falls,
+Mt. Chimney, the Space Center and Steven's house use the same pattern but
+haven't been played. Japanese text for the story is being added.
 
 ## Kanto + Hoenn (merged regions) and the Battle Frontier
 

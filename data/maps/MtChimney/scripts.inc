@@ -4,6 +4,7 @@ MtChimney_MapScripts::
 	.byte 0
 
 MtChimney_OnTransition:
+	call QoL_EventScript_StarfallMtChimneyOnTransition @ [QoL] Starfall
 	setvar VAR_JAGGED_PASS_ASH_WEATHER, 1
 	end
 
@@ -70,6 +71,7 @@ MtChimney_EventScript_Maxie::
 	clearflag FLAG_HIDE_FALLARBOR_HOUSE_PROF_COZMO
 	setflag FLAG_HIDE_METEOR_FALLS_1F_1R_COZMO
 	clearflag FLAG_HIDE_MT_CHIMNEY_LAVA_COOKIE_LADY
+	call QoL_EventScript_StarfallMtChimney @ [QoL] Starfall: Deneb of Team Nova
 	releaseall
 	end
 

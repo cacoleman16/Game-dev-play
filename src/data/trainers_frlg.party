@@ -14859,3 +14859,308 @@ EVs: 252 SpA / 4 SpD / 252 Spe
 - Solar Beam
 - Air Slash
 - Focus Blast
+
+/* [QoL] Starfall story: Team Nova (docs/STARFALL.md) */
+
+=== TRAINER_NOVA_ALTAIR_MT_MOON ===
+Name: ALTAIR
+Class: Nova Admin
+Pic: Ruin Maniac
+Gender: Male
+Music: Suspicious
+Double Battle: No
+AI: Smart Trainer
+
+Baltoy
+Level: 11
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+
+Clefairy
+Level: 13
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+
+=== TRAINER_NOVA_GRUNT_CINNABAR ===
+Name: GRUNT
+Class: Team Nova
+Pic: Psychic M
+Gender: Male
+Music: Intense
+Double Battle: No
+AI: Basic Trainer
+
+Bronzor
+Level: 38
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+
+Solrock
+Level: 39
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+
+=== TRAINER_NOVA_DENEB_CINNABAR ===
+Name: DENEB
+Class: Nova Admin
+Pic: Hex Maniac
+Gender: Female
+Music: Suspicious
+Double Battle: No
+AI: Smart Trainer
+
+Lunatone
+Level: 41
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+
+Bronzong
+Level: 41
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+
+Beheeyem @ Sitrus Berry
+Level: 43
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Psychic
+- Signal Beam
+- Recover
+- Thunderbolt
+
+=== TRAINER_NOVA_ALTAIR_METEOR_FALLS ===
+Name: ALTAIR
+Class: Nova Admin
+Pic: Ruin Maniac
+Gender: Male
+Music: Suspicious
+Double Battle: No
+AI: Smart Trainer
+
+Solrock
+Level: 21
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+
+Minior Meteor Red
+Level: 22
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+
+Clefairy @ Oran Berry
+Level: 23
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+
+=== TRAINER_NOVA_DENEB_MT_CHIMNEY ===
+Name: DENEB
+Class: Nova Admin
+Pic: Hex Maniac
+Gender: Female
+Music: Suspicious
+Double Battle: No
+AI: Smart Trainer
+
+Lunatone
+Level: 28
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+
+Bronzor
+Level: 28
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+
+Elgyem @ Oran Berry
+Level: 30
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+
+=== TRAINER_NOVA_ALTAIR_SPACE_CENTER ===
+Name: ALTAIR
+Class: Nova Admin
+Pic: Ruin Maniac
+Gender: Male
+Music: Suspicious
+Double Battle: No
+AI: Smart Trainer
+
+Solrock
+Level: 42
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+
+Minior Meteor Red
+Level: 43
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+
+Claydol
+Level: 43
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+
+Clefable @ Sitrus Berry
+Level: 45
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Moonblast
+- Cosmic Power
+- Moonlight
+- Meteor Mash
+
+=== TRAINER_NOVA_GRUNT_BIRTH_ISLAND_1 ===
+Name: GRUNT
+Class: Team Nova
+Pic: Psychic F
+Gender: Female
+Music: Intense
+Double Battle: No
+AI: Basic Trainer
+
+Bronzong
+Level: 64
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+
+Lunatone
+Level: 65
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+
+=== TRAINER_NOVA_GRUNT_BIRTH_ISLAND_2 ===
+Name: GRUNT
+Class: Team Nova
+Pic: Psychic M
+Gender: Male
+Music: Intense
+Double Battle: No
+AI: Basic Trainer
+
+Beheeyem
+Level: 64
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+
+Starmie
+Level: 65
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+
+=== TRAINER_NOVA_DENEB_BIRTH_ISLAND ===
+Name: DENEB
+Class: Nova Admin
+Pic: Hex Maniac
+Gender: Female
+Music: Suspicious
+Double Battle: No
+AI: Smart Trainer
+
+Lunatone
+Level: 68
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Moonblast
+- Psychic
+- Earth Power
+- Ice Beam
+
+Bronzong @ Leftovers
+Level: 68
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Gyro Ball
+- Earthquake
+- Stealth Rock
+- Psychic
+
+Beheeyem
+Level: 69
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Psychic
+- Shadow Ball
+- Thunderbolt
+- Recover
+
+Reuniclus @ Sitrus Berry
+Level: 70
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Psychic
+- Focus Blast
+- Shadow Ball
+- Recover
+
+=== TRAINER_NOVA_ALTAIR_BIRTH_ISLAND ===
+Name: ALTAIR
+Class: Nova Admin
+Pic: Ruin Maniac
+Gender: Male
+Music: Suspicious
+Double Battle: No
+AI: Smart Trainer
+
+Solrock
+Level: 68
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Flare Blitz
+- Stone Edge
+- Zen Headbutt
+- Earthquake
+
+Claydol
+Level: 68
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Earth Power
+- Psychic
+- Ice Beam
+- Stealth Rock
+
+Minior Meteor Red
+Level: 69
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Shell Smash
+- Power Gem
+- Acrobatics
+- Earthquake
+
+Probopass @ Sitrus Berry
+Level: 70
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Flash Cannon
+- Earth Power
+- Power Gem
+- Thunderbolt
+
+=== TRAINER_NOVA_VEGA ===
+Name: VEGA
+Class: Nova Leader
+Pic: Lady
+Gender: Female
+Music: Rich
+Double Battle: No
+AI: Smart Trainer
+
+Clefable @ Leftovers
+Level: 72
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Moonblast
+- Cosmic Power
+- Moonlight
+- Flamethrower
+
+Starmie
+Level: 72
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Surf
+- Psychic
+- Ice Beam
+- Thunderbolt
+
+Bronzong
+Level: 72
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Gyro Ball
+- Earthquake
+- Stealth Rock
+- Psychic
+
+Reuniclus @ Sitrus Berry
+Level: 73
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Psychic
+- Focus Blast
+- Shadow Ball
+- Recover
+
+Minior Meteor Red
+Level: 73
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Shell Smash
+- Power Gem
+- Acrobatics
+- Earthquake
+
+Celesteela @ Leftovers
+Level: 75
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Heavy Slam
+- Air Slash
+- Flamethrower
+- Leech Seed

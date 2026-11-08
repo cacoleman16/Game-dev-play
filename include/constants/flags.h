@@ -53,6 +53,11 @@
 #define QOL_HOENN_FLAGS_START   0x900
 #define QOL_HOENN_FLAGS_COUNT   0x9C0
 #define QOL_HOENN_FLAG(n)       (QOL_HOENN_FLAGS_START + (n))
+// [QoL] More flags of this hack, stored after the Hoenn block in SaveBlock3
+// (FRLG has no free flags left outside its daily-reset range).
+#define QOL_EXTRA_FLAGS_START   (QOL_HOENN_FLAGS_START + QOL_HOENN_FLAGS_COUNT) // 0x12C0
+#define QOL_EXTRA_FLAGS_COUNT   0x100
+#define QOL_EXTRA_FLAG(n)       (QOL_EXTRA_FLAGS_START + (n))
 
 #if IS_FRLG
 
@@ -2521,7 +2526,30 @@
 #define FLAG_QOL_CAUGHT_GALAR_MOLTRES  FLAG_0x8F1
 // Nuzlocke: one "area used" flag per Kanto/Sevii map section, starting here.
 // Script flags 0x35D-0x3D7 are unused in FRLG; 105 map sections need 0x35D-0x3C5.
-#define FLAG_QOL_NUZLOCKE_AREAS_START FLAG_0x35D
+#define FLAG_QOL_NUZLOCKE_AREAS_START QOL_EXTRA_FLAG(0x00) // one per Kanto/Sevii map section (was 0x35D, which overlapped FRLG's daily-reset flags)
+
+// [QoL] Starfall story (docs/STARFALL.md)
+#define FLAG_QOL_STARFALL_PROLOGUE          QOL_EXTRA_FLAG(0x80) // Beldum chose you in Oak's Lab
+#define FLAG_QOL_STARFALL_MT_MOON           QOL_EXTRA_FLAG(0x81) // beat Altair at Mt. Moon
+#define FLAG_QOL_STARFALL_SILPH             QOL_EXTRA_FLAG(0x82) // met Deneb at Silph Co.
+#define FLAG_QOL_STARFALL_CINNABAR          QOL_EXTRA_FLAG(0x83) // beat Team Nova at Cinnabar Lab
+#define FLAG_QOL_STARFALL_METEOR_FALLS      QOL_EXTRA_FLAG(0x84) // beat Altair at Meteor Falls
+#define FLAG_QOL_STARFALL_MT_CHIMNEY        QOL_EXTRA_FLAG(0x85) // beat Deneb at Mt. Chimney
+#define FLAG_QOL_STARFALL_SPACE_CENTER      QOL_EXTRA_FLAG(0x86) // beat Altair at the Space Center
+#define FLAG_QOL_STARFALL_LETTER            QOL_EXTRA_FLAG(0x87) // read Steven's letter (finale unlocked with both titles)
+#define FLAG_QOL_STARFALL_VEGA              QOL_EXTRA_FLAG(0x88) // beat Vega on Birth Island
+#define FLAG_QOL_STARFALL_DONE              QOL_EXTRA_FLAG(0x89) // saw the ending
+#define FLAG_QOL_STARFALL_STEVEN_GIFT       QOL_EXTRA_FLAG(0x8A) // got the Metagrossite from Steven's house
+// Cutscene objects, hidden by their maps on load (they appear with addobject)
+#define FLAG_QOL_HIDE_STARFALL_LAB          QOL_EXTRA_FLAG(0x90)
+#define FLAG_QOL_HIDE_NOVA_MT_MOON          QOL_EXTRA_FLAG(0x91)
+#define FLAG_QOL_HIDE_NOVA_SILPH            QOL_EXTRA_FLAG(0x92)
+#define FLAG_QOL_HIDE_NOVA_CINNABAR         QOL_EXTRA_FLAG(0x93)
+#define FLAG_QOL_HIDE_NOVA_METEOR_FALLS     QOL_EXTRA_FLAG(0x94)
+#define FLAG_QOL_HIDE_NOVA_MT_CHIMNEY       QOL_EXTRA_FLAG(0x95)
+#define FLAG_QOL_HIDE_NOVA_SPACE_CENTER     QOL_EXTRA_FLAG(0x96)
+#define FLAG_QOL_HIDE_NOVA_BIRTH_ISLAND     QOL_EXTRA_FLAG(0x97)
+#define FLAG_QOL_HIDE_PALLET_MOM            QOL_EXTRA_FLAG(0x98) // Mom has moved to Littleroot Town
 #else
 #define FLAG_QOL_EXP_SHARE          0
 #define FLAG_QOL_FOLLOWERS_OFF      0

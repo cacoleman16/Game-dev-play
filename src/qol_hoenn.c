@@ -27,6 +27,11 @@ u8 *QoL_HoennFlagPointer(u16 id)
     return &GetState()->flags[(id - QOL_HOENN_FLAGS_START) / 8];
 }
 
+u8 *QoL_ExtraFlagPointer(u16 id)
+{
+    return &GetState()->extraFlags[(id - QOL_EXTRA_FLAGS_START) / 8];
+}
+
 u16 *QoL_HoennVarPointer(u16 id)
 {
     return &GetState()->vars[id - QOL_HOENN_VARS_START];

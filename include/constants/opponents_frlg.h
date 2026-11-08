@@ -627,12 +627,24 @@
 #define TRAINER_CHAMPION_REMATCH_BULBASAUR         621
 #define TRAINER_CHAMPION_REMATCH_CHARMANDER        622
 #define TRAINER_CUE_BALL_PAXTON                    623
+// [QoL] Starfall story: Team Nova (docs/STARFALL.md)
+#define TRAINER_NOVA_ALTAIR_MT_MOON                624
+#define TRAINER_NOVA_GRUNT_CINNABAR                625
+#define TRAINER_NOVA_DENEB_CINNABAR                626
+#define TRAINER_NOVA_ALTAIR_METEOR_FALLS           627
+#define TRAINER_NOVA_DENEB_MT_CHIMNEY              628
+#define TRAINER_NOVA_ALTAIR_SPACE_CENTER           629
+#define TRAINER_NOVA_GRUNT_BIRTH_ISLAND_1          630
+#define TRAINER_NOVA_GRUNT_BIRTH_ISLAND_2          631
+#define TRAINER_NOVA_DENEB_BIRTH_ISLAND            632
+#define TRAINER_NOVA_ALTAIR_BIRTH_ISLAND           633
+#define TRAINER_NOVA_VEGA                          634
 
 // NOTE: Because each Trainer uses a flag to determine when they are defeated, there is
 //       only space for 25 additional trainers before trainer flag space overflows.
 //       MAX_TRAINERS_COUNT_FRLG can be increased but will take up additional saveblock space
 
-#define TRAINERS_COUNT_FRLG                      624
+#define TRAINERS_COUNT_FRLG                      635 // [QoL] was 624 (Team Nova added)
 #define MAX_TRAINERS_COUNT_FRLG                  768
 
 #endif  // GUARD_CONSTANTS_OPPONENTS_FRLG_H

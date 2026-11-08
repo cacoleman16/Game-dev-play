@@ -261,6 +261,7 @@ struct QoLHoennState
     u32 magic;
     u8 flags[QOL_HOENN_FLAGS_COUNT / 8];
     u16 vars[QOL_HOENN_VARS_COUNT];
+    u8 extraFlags[QOL_EXTRA_FLAGS_COUNT / 8]; // QOL_EXTRA_FLAG(n): Kanto Nuzlocke areas, Starfall story
 };
 
 struct SaveBlock3

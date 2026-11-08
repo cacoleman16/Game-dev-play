@@ -15,11 +15,16 @@ static inline bool32 QoL_IsHoennFlag(u32 id)
 {
     return id >= QOL_HOENN_FLAGS_START && id < QOL_HOENN_FLAGS_START + QOL_HOENN_FLAGS_COUNT;
 }
+static inline bool32 QoL_IsExtraFlag(u32 id)
+{
+    return id >= QOL_EXTRA_FLAGS_START && id < QOL_EXTRA_FLAGS_START + QOL_EXTRA_FLAGS_COUNT;
+}
 static inline bool32 QoL_IsHoennVar(u32 id)
 {
     return id >= QOL_HOENN_VARS_START && id < QOL_HOENN_VARS_START + QOL_HOENN_VARS_COUNT;
 }
 u8 *QoL_HoennFlagPointer(u16 id);
+u8 *QoL_ExtraFlagPointer(u16 id);
 u16 *QoL_HoennVarPointer(u16 id);
 void QoL_HoennResetState(void);
 void QoL_HoennClearDailyFlags(void);

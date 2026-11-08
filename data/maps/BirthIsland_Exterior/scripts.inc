@@ -15,6 +15,7 @@ BirthIsland_Exterior_OnTransition:
 	setvar VAR_DEOXYS_ROCK_LEVEL, 0
 	call_if_set FLAG_BATTLED_DEOXYS, BirthIsland_Exterior_EventScript_HideDeoxysAndPuzzle
 	call_if_unset FLAG_BATTLED_DEOXYS, BirthIsland_Exterior_EventScript_TryShowDeoxysPuzzle
+	call QoL_EventScript_StarfallBirthIslandOnTransition @ [QoL] Starfall finale: Team Nova
 	end
 
 BirthIsland_Exterior_EventScript_HideDeoxysAndPuzzle::
@@ -80,7 +81,7 @@ BirthIsland_Exterior_EventScript_Deoxys::
 	delay 40
 	waitmoncry
 	setvar VAR_LAST_TALKED, LOCALID_BIRTH_ISLAND_DEOXYS
-	seteventmon SPECIES_DEOXYS_NORMAL, 30
+	seteventmon SPECIES_DEOXYS_NORMAL, 70 @ [QoL] Starfall finale (was 30)
 	setflag FLAG_SYS_CTRL_OBJ_DELETE
 	special BattleSetup_StartLegendaryBattle
 	clearflag FLAG_SYS_CTRL_OBJ_DELETE
@@ -89,11 +90,13 @@ BirthIsland_Exterior_EventScript_Deoxys::
 	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, BirthIsland_Exterior_EventScript_RanFromDeoxys
 	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, BirthIsland_Exterior_EventScript_RanFromDeoxys
 	setflag FLAG_BATTLED_DEOXYS
+	call QoL_EventScript_StarfallEnding @ [QoL] Starfall
 	release
 	end
 
 BirthIsland_Exterior_EventScript_DefeatedDeoxys::
 	setflag FLAG_DEFEATED_DEOXYS
+	call_if_set FLAG_QOL_STARFALL_VEGA, QoL_EventScript_StarfallDeoxysFlewHome @ [QoL] Starfall
 	setvar VAR_0x8004, SPECIES_DEOXYS_NORMAL
 	goto Common_EventScript_LegendaryFlewAway
 	end

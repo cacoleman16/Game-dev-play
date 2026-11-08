@@ -1,6 +1,11 @@
 MeteorFalls_1F_1R_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, MeteorFalls_1F_1R_OnTransition
 	map_script MAP_SCRIPT_ON_LOAD, MeteorFalls_1F_1R_OnLoad
 	.byte 0
+
+MeteorFalls_1F_1R_OnTransition::
+	call QoL_EventScript_StarfallMeteorFallsOnTransition @ [QoL] Starfall
+	end
 
 MeteorFalls_1F_1R_OnLoad:
 	call_if_set FLAG_HOENN_GAME_CLEAR, MeteorFalls_1F_1R_EventScript_OpenStevensCave
@@ -87,6 +92,7 @@ MeteorFalls_1F_1R_EventScript_MagmaStealsMeteoriteScene::
 	setflag FLAG_MET_ARCHIE_METEOR_FALLS
 	setflag FLAG_HIDE_FALLARBOR_TOWN_BATTLE_TENT_SCOTT
 	setvar VAR_METEOR_FALLS_STATE, 1
+	call QoL_EventScript_StarfallMeteorFalls @ [QoL] Starfall: Altair of Team Nova
 	releaseall
 	end
 

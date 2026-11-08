@@ -3,7 +3,12 @@
 .equ OLD_AMBER,    3
 
 CinnabarIsland_PokemonLab_ExperimentRoom_Frlg_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, CinnabarIsland_PokemonLab_ExperimentRoom_OnTransition
 	.byte 0
+
+CinnabarIsland_PokemonLab_ExperimentRoom_OnTransition::
+	call QoL_EventScript_StarfallCinnabarOnTransition @ [QoL] Starfall
+	end
 
 CinnabarIsland_PokemonLab_ExperimentRoom_EventScript_Garett::
 	lock
@@ -42,6 +47,7 @@ CinnabarIsland_PokemonLab_ExperimentRoom_EventScript_AlreadyTraded::
 CinnabarIsland_PokemonLab_ExperimentRoom_EventScript_FossilScientist::
 	lock
 	faceplayer
+	call QoL_EventScript_StarfallCinnabar @ [QoL] Starfall: Team Nova raids the lab
 	setvar VAR_RESULT, FALSE
 	call_if_set FLAG_REVIVED_AMBER, CinnabarIsland_PokemonLab_ExperimentRoom_EventScript_CheckRevivedMtMoonFossil
 	goto_if_eq VAR_RESULT, TRUE, CinnabarIsland_PokemonLab_ExperimentRoom_EventScript_RevivedAllFossils

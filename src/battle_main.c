@@ -414,6 +414,10 @@ const struct TrainerClass gTrainerClasses[TRAINER_CLASS_COUNT] =
     [TRAINER_CLASS_RUIN_MANIAC_FRLG] =     { _("RUIN MANIAC"), 12 },
     [TRAINER_CLASS_LADY_FRLG] =            { _("LADY"), 50 },
     [TRAINER_CLASS_PAINTER_FRLG] =         { _("PAINTER"), 4 },
+    // [QoL] Starfall story
+    [TRAINER_CLASS_TEAM_NOVA] =            { _("TEAM NOVA"), 10 },
+    [TRAINER_CLASS_NOVA_ADMIN] =           { _("NOVA ADMIN"), 15 },
+    [TRAINER_CLASS_NOVA_LEADER] =          { _("NOVA LEADER"), 30, BALL_CHERISH },
 };
 
 static void (*const sTurnActionsFuncsTable[])(void) =
@@ -5097,6 +5101,9 @@ static void HandleEndTurn_BattleWon(void)
         case TRAINER_CLASS_AQUA_LEADER:
         case TRAINER_CLASS_MAGMA_ADMIN:
         case TRAINER_CLASS_MAGMA_LEADER:
+        case TRAINER_CLASS_TEAM_NOVA: // [QoL] Starfall
+        case TRAINER_CLASS_NOVA_ADMIN:
+        case TRAINER_CLASS_NOVA_LEADER:
             PlayBGM(MUS_VICTORY_AQUA_MAGMA);
             break;
         case TRAINER_CLASS_LEADER:

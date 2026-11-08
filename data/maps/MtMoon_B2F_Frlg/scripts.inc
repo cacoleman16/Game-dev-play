@@ -3,6 +3,7 @@ MtMoon_B2F_Frlg_MapScripts::
 	.byte 0
 
 MtMoon_B2F_OnTransition::
+	call QoL_EventScript_StarfallMtMoonOnTransition @ [QoL] Starfall
 	call_if_unset FLAG_GOT_FOSSIL_FROM_MT_MOON, MtMoon_B2F_EventScript_ShowFossils
 	end
 
@@ -70,6 +71,7 @@ MtMoon_B2F_EventScript_DomeFossil::
 	removeobject LOCALID_HELIX_FOSSIL
 	setflag FLAG_GOT_DOME_FOSSIL
 	setflag FLAG_GOT_FOSSIL_FROM_MT_MOON
+	call QoL_EventScript_StarfallMtMoon @ [QoL] Starfall: Altair of Team Nova
 	release
 	end
 
@@ -100,6 +102,7 @@ MtMoon_B2F_EventScript_HelixFossil::
 	removeobject LOCALID_DOME_FOSSIL
 	setflag FLAG_GOT_HELIX_FOSSIL
 	setflag FLAG_GOT_FOSSIL_FROM_MT_MOON
+	call QoL_EventScript_StarfallMtMoon @ [QoL] Starfall: Altair of Team Nova
 	release
 	end
 

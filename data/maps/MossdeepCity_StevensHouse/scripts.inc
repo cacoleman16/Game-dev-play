@@ -70,6 +70,7 @@ MossdeepCity_StevensHouse_Movement_StevenReturn:
 	step_end
 
 MossdeepCity_StevensHouse_EventScript_BeldumPokeball::
+	goto QoL_EventScript_StarfallStevensGift @ [QoL] Starfall: a Metagrossite instead of a Beldum
 	lockall
 	msgbox MossdeepCity_StevensHouse_Text_TakeBallContainingBeldum, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, MossdeepCity_StevensHouse_EventScript_LeaveBeldum
@@ -137,7 +138,7 @@ MossdeepCity_StevensHouse_EventScript_Steven::
 
 MossdeepCity_StevensHouse_EventScript_Letter::
 	lockall
-	msgbox MossdeepCity_StevensHouse_Text_LetterFromSteven, MSGBOX_DEFAULT
+	call QoL_EventScript_StarfallStevensLetter @ [QoL] Starfall: was MossdeepCity_StevensHouse_Text_LetterFromSteven
 	releaseall
 	end
 

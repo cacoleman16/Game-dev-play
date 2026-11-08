@@ -1,5 +1,10 @@
 PalletTown_PlayersHouse_1F_Frlg_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, PalletTown_PlayersHouse_1F_OnTransition
 	.byte 0
+
+PalletTown_PlayersHouse_1F_OnTransition::
+	call QoL_EventScript_PalletHouseOnTransition @ [QoL] Starfall: Mom moves to Hoenn
+	end
 
 PalletTown_PlayersHouse_1F_EventScript_Mom::
 	lock
@@ -27,6 +32,7 @@ PalletTown_PlayersHouse_1F_EventScript_MomHeal::
 	closemessage
 	call Common_EventScript_OutOfCenterPartyHeal
 	msgbox PalletTown_PlayersHouse_1F_Text_LookingGreatTakeCare
+	call QoL_EventScript_MomTalksAboutHoenn @ [QoL] Starfall
 	release
 	end
 
@@ -39,9 +45,16 @@ PalletTown_PlayersHouse_1F_EventScript_TV::
 	end
 
 PalletTown_PlayersHouse_1F_EventScript_TVScreen::
+	goto_if_ne VAR_LITTLEROOT_INTRO_STATE, 0, PalletTown_PlayersHouse_1F_EventScript_TVNote
 	checkplayergender
 	call_if_eq VAR_RESULT, MALE, PalletTown_PlayersHouse_1F_EventScript_TVScreenMale
 	call_if_eq VAR_RESULT, FEMALE, PalletTown_PlayersHouse_1F_EventScript_TVScreenFemale
+	releaseall
+	end
+
+@ [QoL] Starfall: after the move to Hoenn, Mom left a note on the TV
+PalletTown_PlayersHouse_1F_EventScript_TVNote::
+	msgbox QoL_Text_MomsNoteOnTV
 	releaseall
 	end
 

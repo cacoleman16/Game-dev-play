@@ -4,6 +4,7 @@ MossdeepCity_SpaceCenter_2F_MapScripts::
 	.byte 0
 
 MossdeepCity_SpaceCenter_2F_OnTransition:
+	call QoL_EventScript_StarfallSpaceCenterOnTransition @ [QoL] Starfall
 	call_if_eq VAR_MOSSDEEP_CITY_STATE, 2, MossdeepCity_SpaceCenter_2F_EventScript_MoveCivilians
 	call_if_eq VAR_MOSSDEEP_SPACE_CENTER_STATE, 2, MossdeepCity_SpaceCenter_2F_EventScript_MoveDefeatedGrunts
 	end
@@ -287,6 +288,7 @@ MossdeepCity_SpaceCenter_2F_EventScript_DefeatedMaxieTabitha::
 	fadescreen FADE_FROM_BLACK
 	msgbox MossdeepCity_SpaceCenter_2F_Text_StevenThankYouComeSeeMeAtHome, MSGBOX_DEFAULT
 	closemessage
+	call QoL_EventScript_StarfallSpaceCenter @ [QoL] Starfall: Altair of Team Nova
 	fadescreen FADE_TO_BLACK
 	setflag FLAG_DEFEATED_MAGMA_SPACE_CENTER
 	setflag FLAG_HIDE_MOSSDEEP_CITY_STEVENS_HOUSE_STEVEN
