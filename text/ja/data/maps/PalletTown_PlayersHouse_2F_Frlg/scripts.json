@@ -25,5 +25,9 @@
   "PalletTown_PlayersHouse_2F_Text_SettingsSaved": "せっていを　かえました。　たのしんでね！",
   "PalletTown_PlayersHouse_2F_Text_VisibleWildOn": "やせいシンボル:オン",
   "PalletTown_PlayersHouse_2F_Text_VisibleWildOff": "やせいシンボル:オフ",
-  "PalletTown_PlayersHouse_2F_Text_VisibleWildExplain": "やせいシンボルが オンだと やせいの ポケモンが くさむらや どうくつ みずの うえを うろつきます。\\pふれると バトル！ よければ たたかわずに すみます。"
+  "PalletTown_PlayersHouse_2F_Text_VisibleWildExplain": "やせいシンボルが オンだと やせいの ポケモンが くさむらや どうくつ みずの うえを うろつきます。\\pふれると バトル！ よければ たたかわずに すみます。",
+  "PalletTown_PlayersHouse_2F_Text_ShinyNormal": "いろちがい:ふつう",
+  "PalletTown_PlayersHouse_2F_Text_ShinyX8": "いろちがい:8ばい",
+  "PalletTown_PlayersHouse_2F_Text_ShinyX32": "いろちがい:32ばい",
+  "PalletTown_PlayersHouse_2F_Text_ShinyExplain": "いろちがいの　かくりつを　あげると　やせいで　いろちがいの　ポケモンに　であいやすく　なります。\\pふつうは　4096ぶんの1　8ばいで　やく　512ぶんの1　32ばいで　やく　128ぶんの1です。\\pもういちど　えらぶと　きりかわります。"
 }

@@ -96,11 +96,13 @@ def build():
                   '\tgoto_if_eq VAR_RESULT, YES, QoL_EventScript_SailToKanto\n'
                   '\tmsgbox QoL_Text_TidalComeBack, MSGBOX_DEFAULT\n\trelease\n\tend\n\n')
 
-    pokecenter('Lanternport', SEC, t, w_pc, 'HEAL_LOCATION_SEIKA_LANTERNPORT', npcs=[
+    pc = pokecenter('Lanternport', SEC, t, w_pc, 'HEAL_LOCATION_SEIKA_LANTERNPORT', npcs=[
         ('OBJ_EVENT_GFX_YOUNGSTER_FRLG', 11, 5,
          'POKéMON in SEIKA are strong.\n'
          'The sea air makes them tough!'),
     ])
+    # the Shiny Painter (data/scripts/qol_shiny.inc), also in Viridian City
+    pc.objects.append(g.obj('OBJ_EVENT_GFX_ARTIST', 14, 3, 'QoL_EventScript_ShinyPainter'))
     mart('Lanternport', SEC, t, w_mart, MART_ITEMS, npcs=[
         ('OBJ_EVENT_GFX_GENTLEMAN_FRLG', 6, 4,
          'A FIRE STONE for the festival\n'

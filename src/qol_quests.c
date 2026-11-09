@@ -11,6 +11,8 @@
 #include "constants/region_map_sections.h"
 #include "pokedex.h"
 #include "pokemon.h"
+#include "party_menu.h"
+#include "string_util.h"
 #include "constants/event_objects.h"
 #include "constants/flags.h"
 #include "constants/species.h"
@@ -125,4 +127,37 @@ void QoL_CompanionPlace(void)
         gSpecialVar_Result = 0;
     else
         gSpecialVar_Result = 1;
+}
+
+// [QoL] The Shiny Painter (data/scripts/qol_shiny.inc). VAR_0x8004 is the
+// party slot from ChoosePartyMon. QoL_PainterCheck puts the Pokémon's name in
+// STR_VAR_1 and sets VAR_RESULT: 0 can be painted, 1 already shiny, 2 an Egg
+// or no Pokémon. QoL_PainterSet paints it (VAR_0x8005 TRUE) or washes the
+// shine off (FALSE).
+void QoL_PainterCheck(void)
+{
+    struct Pokemon *mon;
+
+    if (gSpecialVar_0x8004 >= PARTY_SIZE)
+    {
+        gSpecialVar_Result = 2;
+        return;
+    }
+    mon = &gPlayerParty[gSpecialVar_0x8004];
+    if (GetMonData(mon, MON_DATA_SPECIES) == SPECIES_NONE || GetMonData(mon, MON_DATA_IS_EGG))
+    {
+        gSpecialVar_Result = 2;
+        return;
+    }
+    GetMonNickname(mon, gStringVar1);
+    gSpecialVar_Result = GetMonData(mon, MON_DATA_IS_SHINY) ? 1 : 0;
+}
+
+void QoL_PainterSet(void)
+{
+    bool32 shiny = gSpecialVar_0x8005 ? TRUE : FALSE;
+
+    if (gSpecialVar_0x8004 >= PARTY_SIZE)
+        return;
+    SetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_IS_SHINY, &shiny);
 }

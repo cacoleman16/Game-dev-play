@@ -646,3 +646,6 @@ gSpecials::
 	def_special QoL_HoennSetup
 @ [QoL] Skyrift companions: VAR_RESULT = 0 Kanto, 1 Hoenn, 2 Seika, 3 Skyrift Isles
 	def_special QoL_CompanionPlace
+@ [QoL] The Shiny Painter (data/scripts/qol_shiny.inc)
+	def_special QoL_PainterCheck
+	def_special QoL_PainterSet

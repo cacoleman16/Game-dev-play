@@ -2541,6 +2541,10 @@
 #define FLAG_QOL_STARFALL_VEGA              QOL_EXTRA_FLAG(0x88) // beat Vega on Birth Island
 #define FLAG_QOL_STARFALL_DONE              QOL_EXTRA_FLAG(0x89) // saw the ending
 #define FLAG_QOL_STARFALL_STEVEN_GIFT       QOL_EXTRA_FLAG(0x8A) // got the Metagrossite from Steven's house
+// [QoL] Shiny hunting (SHINY ODDS at the bedroom NES; the Shiny Painter)
+#define FLAG_QOL_SHINY_X8                   QOL_EXTRA_FLAG(0x8B) // shiny odds x8 (about 1 in 512)
+#define FLAG_QOL_SHINY_X32                  QOL_EXTRA_FLAG(0x8C) // shiny odds x32 (about 1 in 128)
+#define FLAG_QOL_SHINY_FREE_PAINT           QOL_EXTRA_FLAG(0x8D) // the Shiny Painter's free first job is used
 // Cutscene objects, hidden by their maps on load (they appear with addobject)
 #define FLAG_QOL_HIDE_STARFALL_LAB          QOL_EXTRA_FLAG(0x90)
 #define FLAG_QOL_HIDE_NOVA_MT_MOON          QOL_EXTRA_FLAG(0x91)

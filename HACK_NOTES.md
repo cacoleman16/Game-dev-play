@@ -157,6 +157,7 @@ Defined at the end of `include/constants/flags.h` / `vars.h`. They are `0`
 | `FLAG_QOL_VISIBLE_WILD` | `0x8F2` | set = visible wild Pokémon everywhere (NES option) |
 | `FLAG_QOL_SEIKA_*` | `QOL_EXTRA_FLAG(0xA0)`+ | Seika badges, story, League run, Fly (generated, see `include/constants/flags.h`) |
 | `FLAG_QOL_SKYRIFT_*` | after Seika's | Skyrift wish, companion, rifts, endings, inn (generated) |
+| `FLAG_QOL_SHINY_X8` / `_X32` / `_FREE_PAINT` | `QOL_EXTRA_FLAG(0x8B)`–`(0x8D)` | SHINY ODDS setting; the Shiny Painter's free job used |
 | `VAR_QOL_FIELD_RESEARCH` | `0x40FA` | current Field Research task |
 | `optionsLanguage` (SaveBlock2 option bit) | – | 0 English, 1 Japanese |
 
@@ -186,6 +187,37 @@ The Galarian birds wait near the Kanto birds' homes: **Seafoam Islands B4F**,
 the **Power Plant** and the **Mt. Ember summit**. If one faints or you run,
 it stays there, so you can try again. A full Bag keeps the task open until
 you make room.
+
+## Shiny hunting
+
+- **Better odds:** the base rate is 1 in 4096, as in newer games (vanilla
+  FireRed is 1 in 8192).
+- **SHINY ODDS** at the NES in your bedroom: NORMAL, **x8** (about 1 in 512)
+  or **x32** (about 1 in 128). Pick it again to cycle. The menu now reopens
+  on the last setting you picked.
+- These stack with the other boosts:
+  - the **Shiny Charm**;
+  - DexNav search levels;
+  - Lures;
+  - **fishing chains**: hooking the same Pokémon again and again.
+- **The Shiny Painter** is in the Pokémon Centers in **Viridian City** and
+  **Lanternport**. She paints any party Pokémon shiny for ¥10,000.
+  - **The first one is free**, so your starter can shine right away.
+  - She washes the shine off again for free.
+  - She sells the **Shiny Charm** for ¥30,000 (you can also get it from the
+    Wishing Star).
+- **Seeing them in the wild:**
+  - With VISIBLE WILD on (and always on Starfall Isle), a shiny wild
+    Pokémon walks around in its shiny colours. It sparkles and plays the
+    shiny sound when it appears, and it doesn't despawn while you're on
+    its map.
+  - In normal grass battles a shiny sparkles as it comes out, as usual.
+- **Tested in the web player:**
+  - painting Mewtwo with the free first job (the summary and the following
+    Pokémon both show it shiny);
+  - the SHINY ODDS menu entry;
+  - a shiny wild Pidgey in its shiny colours, both walking in the grass and
+    in battle.
 
 ## STARFALL (the hack's own story)
 

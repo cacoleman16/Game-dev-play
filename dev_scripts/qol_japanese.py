@@ -65,7 +65,7 @@ SHARED_SCRIPT_FILES = [
     'data/scripts/surf.inc', 'data/scripts/field_poison.inc', 'data/scripts/field_move_scripts.inc',
     'data/scripts/repel.inc', 'data/scripts/safari_zone.inc', 'data/scripts/follower.inc',
     'data/scripts/dexnav.inc', 'data/scripts/flash.inc', 'data/scripts/qol_quests.inc',
-    'data/scripts/qol_regions.inc', 'data/scripts/qol_starfall.inc',
+    'data/scripts/qol_regions.inc', 'data/scripts/qol_starfall.inc', 'data/scripts/qol_shiny.inc',
 ]
 
 # ---------------------------------------------------------------- characters

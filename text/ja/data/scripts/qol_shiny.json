@@ -1,0 +1,18 @@
+{
+ "QoL_Text_PainterHello": "おや　おきゃくさん！　わたしは　いろちがい　ペインター。\\pほしの　こなの　えのぐで　どんな　ポケモンも　いろちがいみたいに　かがやかせて　あげるわ。",
+ "QoL_Text_PainterWhat": "なにに　する？",
+ "QoL_Text_PainterOptPaint": "ポケモンを　ぬる",
+ "QoL_Text_PainterOptCharm": "ひかるおまもり",
+ "QoL_Text_PainterOptBye": "やめておく",
+ "QoL_Text_PainterWhich": "どの　ポケモンを　ぬる？",
+ "QoL_Text_PainterFree": "さいしょの　1ぴきは　ただよ！\\n{STR_VAR_1}を　ぬる？",
+ "QoL_Text_PainterPrice": "{STR_VAR_1}を　ぬるのは　10000えんよ。\\nいい？",
+ "QoL_Text_PainterWork": "{STR_VAR_1}　じっとしてて‥\\nほしの　こなを　ちょっと‥",
+ "QoL_Text_PainterDone": "できた！　{STR_VAR_1}は　いろちがいに　なったわ。\\nよく　にあってる！",
+ "QoL_Text_PainterAlready": "{STR_VAR_1}は　もう　かがやいてるわ！\\pかがやきを　あらいおとす？\\nそれは　ただで　いいわよ。",
+ "QoL_Text_PainterWashed": "あらいおわったわ。　{STR_VAR_1}は\\nもとどおりよ。",
+ "QoL_Text_PainterNoMoney": "あら　おかねが　たりないみたい。",
+ "QoL_Text_PainterCharmPrice": "ひかるおまもりが　あると　やせいの　いろちがいに　であいやすく　なるの。\\p30000えんよ。　かう？",
+ "QoL_Text_PainterCharmInfo": "バッグに　いれて　おけば　いろちがいの　ポケモンが　よく　でてくるわ。",
+ "QoL_Text_PainterBye": "かがやきが　ほしく　なったら　また　きてね！"
+}

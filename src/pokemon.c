@@ -887,6 +887,12 @@ bool32 ComputePlayerShinyOdds(u32 personality, u32 value)
     if (CheckBagHasItem(ITEM_SHINY_CHARM, 1))
         totalRerolls += I_SHINY_CHARM_ADDITIONAL_ROLLS;
 
+    // [QoL] SHINY ODDS setting at the bedroom NES: x8 or x32 more rolls
+    if (FlagGet(FLAG_QOL_SHINY_X32))
+        totalRerolls += 31;
+    else if (FlagGet(FLAG_QOL_SHINY_X8))
+        totalRerolls += 7;
+
     if (LURE_STEP_COUNT != 0)
         totalRerolls += 1;
 

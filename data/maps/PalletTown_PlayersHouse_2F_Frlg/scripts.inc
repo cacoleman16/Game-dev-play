@@ -26,6 +26,7 @@ PalletTown_PlayersHouse_2F_FirstWarpIn::
 PalletTown_PlayersHouse_2F_EventScript_NES::
 	lockall
 	msgbox PalletTown_PlayersHouse_2F_Text_PlayedWithNES, MSGBOX_DEFAULT
+	setvar VAR_TEMP_1, 0 @ the menu reopens on the last setting picked
 PalletTown_PlayersHouse_2F_EventScript_NESMenu::
 	message PalletTown_PlayersHouse_2F_Text_PickSetting
 	waitmessage
@@ -41,8 +42,10 @@ PalletTown_PlayersHouse_2F_EventScript_NESMenu::
 	call_if_set FLAG_QOL_FOLLOWERS_OFF, PalletTown_PlayersHouse_2F_EventScript_PushFollowersOff
 	call_if_set FLAG_QOL_VISIBLE_WILD, PalletTown_PlayersHouse_2F_EventScript_PushVisibleWildOn
 	call_if_unset FLAG_QOL_VISIBLE_WILD, PalletTown_PlayersHouse_2F_EventScript_PushVisibleWildOff
+	call PalletTown_PlayersHouse_2F_EventScript_PushShiny
 	dynmultipush PalletTown_PlayersHouse_2F_Text_Done, 9
-	dynmultistack 0, 0, FALSE, 6, FALSE, 0, DYN_MULTICHOICE_CB_NONE
+	dynmultistack 0, 0, FALSE, 6, FALSE, VAR_TEMP_1, DYN_MULTICHOICE_CB_NONE
+	copyvar VAR_TEMP_1, VAR_RESULT
 	switch VAR_RESULT
 	case 0, PalletTown_PlayersHouse_2F_EventScript_ToggleNuzlocke
 	case 1, PalletTown_PlayersHouse_2F_EventScript_ToggleCaps
@@ -50,6 +53,7 @@ PalletTown_PlayersHouse_2F_EventScript_NESMenu::
 	case 3, PalletTown_PlayersHouse_2F_EventScript_ToggleRandomizer
 	case 4, PalletTown_PlayersHouse_2F_EventScript_ToggleHard
 	case 5, PalletTown_PlayersHouse_2F_EventScript_ToggleVisibleWild
+	case 6, PalletTown_PlayersHouse_2F_EventScript_ToggleShiny
 	msgbox PalletTown_PlayersHouse_2F_Text_SettingsSaved, MSGBOX_DEFAULT
 	releaseall
 	end
@@ -178,6 +182,39 @@ PalletTown_PlayersHouse_2F_EventScript_VisibleWildOff::
 	clearflag FLAG_QOL_VISIBLE_WILD
 	goto PalletTown_PlayersHouse_2F_EventScript_NESMenu
 
+@ [QoL] SHINY ODDS: NORMAL (1 in 4096) -> x8 (about 1 in 512) -> x32 (about
+@ 1 in 128) -> NORMAL. The SHINY CHARM and the other boosts stack on top.
+PalletTown_PlayersHouse_2F_EventScript_PushShiny::
+	goto_if_set FLAG_QOL_SHINY_X32, PalletTown_PlayersHouse_2F_EventScript_PushShinyX32
+	goto_if_set FLAG_QOL_SHINY_X8, PalletTown_PlayersHouse_2F_EventScript_PushShinyX8
+	dynmultipush PalletTown_PlayersHouse_2F_Text_ShinyNormal, 6
+	return
+
+PalletTown_PlayersHouse_2F_EventScript_PushShinyX8::
+	dynmultipush PalletTown_PlayersHouse_2F_Text_ShinyX8, 6
+	return
+
+PalletTown_PlayersHouse_2F_EventScript_PushShinyX32::
+	dynmultipush PalletTown_PlayersHouse_2F_Text_ShinyX32, 6
+	return
+
+PalletTown_PlayersHouse_2F_EventScript_ToggleShiny::
+	goto_if_set FLAG_QOL_SHINY_X32, PalletTown_PlayersHouse_2F_EventScript_ShinyNormal
+	goto_if_set FLAG_QOL_SHINY_X8, PalletTown_PlayersHouse_2F_EventScript_ShinyX32
+	msgbox PalletTown_PlayersHouse_2F_Text_ShinyExplain, MSGBOX_DEFAULT
+	setflag FLAG_QOL_SHINY_X8
+	goto PalletTown_PlayersHouse_2F_EventScript_NESMenu
+
+PalletTown_PlayersHouse_2F_EventScript_ShinyX32::
+	clearflag FLAG_QOL_SHINY_X8
+	setflag FLAG_QOL_SHINY_X32
+	goto PalletTown_PlayersHouse_2F_EventScript_NESMenu
+
+PalletTown_PlayersHouse_2F_EventScript_ShinyNormal::
+	clearflag FLAG_QOL_SHINY_X8
+	clearflag FLAG_QOL_SHINY_X32
+	goto PalletTown_PlayersHouse_2F_EventScript_NESMenu
+
 PalletTown_PlayersHouse_2F_EventScript_Sign::
 	msgbox PalletTown_PlayersHouse_2F_Text_PressLRForHelp, MSGBOX_SIGN
 	end
@@ -264,6 +301,32 @@ PalletTown_PlayersHouse_2F_Text_VisibleWildExplain::
 	.string "うろつきます。\p"
 	.string "ふれると　バトル！　よければ　たたかわずに\n"
 	.string "すみます。$"
+
+PalletTown_PlayersHouse_2F_Text_ShinyNormal::
+	.string "SHINY ODDS: NORMAL$"
+	.string "{JPN}{JPN}いろちがい:ふつう$"
+
+PalletTown_PlayersHouse_2F_Text_ShinyX8::
+	.string "SHINY ODDS: x8$"
+	.string "{JPN}{JPN}いろちがい:8ばい$"
+
+PalletTown_PlayersHouse_2F_Text_ShinyX32::
+	.string "SHINY ODDS: x32$"
+	.string "{JPN}{JPN}いろちがい:32ばい$"
+
+PalletTown_PlayersHouse_2F_Text_ShinyExplain::
+	.string "SHINY ODDS makes shiny POKéMON\n"
+	.string "easier to find in the wild.\p"
+	.string "NORMAL is 1 in 4096, x8 about 1 in\n"
+	.string "512, and x32 about 1 in 128.\p"
+	.string "Pick it again to change the odds.$"
+	.string "{JPN}{JPN}いろちがいの　かくりつを　あげると　やせいで\n"
+	.string "いろちがいの　ポケモンに　であいやすく\l"
+	.string "なります。\p"
+	.string "ふつうは　4096ぶんの1　8ばいで　やく\n"
+	.string "512ぶんの1　32ばいで　やく\l"
+	.string "128ぶんの1です。\p"
+	.string "もういちど　えらぶと　きりかわります。$"
 
 PalletTown_PlayersHouse_2F_Text_Done::
 	.string "DONE$"
